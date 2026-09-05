@@ -68,7 +68,7 @@
 ### 5.1 競馬用語標準化ルール（JRA公式用語集準拠）
 レース名、競馬場名 (`racecourse`)、トラック種別、競馬用語などの英字・日本語対応は、JRA公式の海外競馬用語集マスターを基準として定義・統一する。
 
-> **用語マスターソース:** [https://www.jra.go.jp/keiba/overseas/yougo/index.html](https://www.jra.go.jp/keiba/overseas/yougo/index.html)
+> **用語マスターソース:** [海外競馬英和辞典](https://www.jra.go.jp/keiba/overseas/yougo/index.html)
 
 ### 5.2 データ補完マスター構造 (`src/data/race_master.json`)
 JRA公式 `.ics` に含まれない「日本語タイトル (`title_jp`)」「英語タイトル (`title_en`)」「日本語競馬場名 (`racecourse_jp`)」「英語競馬場名 (`racecourse_en`)」「デフォルト発走時刻（JST）」「コース種別 (`surface`)」「距離」を補完するための辞書データ。
@@ -129,7 +129,7 @@ JRA公式 `.ics` に含まれない「日本語タイトル (`title_jp`)」「�
 - JRA公式 `.ics` の `SUMMARY` から正規表現で「レース名」と「グレード (G1/G2/G3/J.G1等)」を抽出。
 - `DTSTART` から「開催日」、`LOCATION` から「開催競馬場」を取得。
 - レース名をキーにして `race_master.json` を参照し、`title_jp` / `title_en` / `racecourse_jp` / `racecourse_en` / `surface_jp` / `surface_en`/ `distance_m` を補完。
-- JRA公式用語集（ https://www.jra.go.jp/keiba/overseas/yougo/index.html ）の表記ルールに準拠（`venue` ではなく `racecourse` に統一）。
+- JRA公式用語集の表記ルールに準拠（`venue` ではなく `racecourse` に統一）。
 - 開催日と `default_time_jst` を組み合わせ、UTC 形式 (`Z`) に変換 して `start_time` に格納。
 
 ---
