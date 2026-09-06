@@ -119,6 +119,17 @@
 - **距離 (distance_m):**
   - カンマや「メートル」を除去し、整数型 (number) として保持（例: `1600`）。
 
+#### C. 発走時刻の取得・決定パイプライン
+発走時刻は「デフォルト推定値」と「直前確定値」の2段階構成で管理する。
+
+1. **初期推定値の設定（年間ビルド時）:**
+   - 重賞（平地11R中心）: 原則 `15:40` JST（一部関西等 `15:45` JST）を初期値としてセット。
+   - 障害重賞 (J.G1〜J.G3): `13:50`〜`14:30` JST の規定時間帯をセット。
+   - `is_time_confirmed: false` としてフラグ管理。
+2. **直前確定値の上書き更新（開催直前ビルド時）:**
+   - 開催週（木曜日以降）にJRA公式出馬表ページから正確な確定発走時刻をスクレイピング取得。
+   - 確定時刻で `start_time` を更新し、`is_time_confirmed: true` に変更。
+
 ### 5.3 データ補完マスター構造 (`src/data/race_master.json`)
 
 JRA公式 `.ics` に含まれない「日本語タイトル (`title_jp`)」「英語タイトル (`title_en`)」「日本語競馬場名 (`racecourse_jp`)」「英語競馬場名 (`racecourse_en`)」「デフォルト発走時刻（JST）」「性」「齢」「馬場 (`surface`)」「距離」を補完するための辞書データ。
@@ -132,6 +143,7 @@ JRA重賞レースソースのページからスクレイピングして生成�
     "title_en": "Fuchu Himba Stakes",
     "racecourse_jp": "東京競馬場",
     "racecourse_en": "Tokyo Racecourse",
+    "default_time_jst": "15:45",
     "sex_restriction_jp": "牝",
     "sex_restriction_en": "Fillies and Mares",
     "age_restriction_jp": "3歳以上",
@@ -145,6 +157,7 @@ JRA重賞レースソースのページからスクレイピングして生成�
     "title_en": "Satsuki Sho (Japanese 2000 Guineas)",
     "racecourse_jp": "中山競馬場",
     "racecourse_en": "Nakayama Racecourse",
+    "default_time_jst": "15:40",
     "sex_jp": "牡・牝",
     "sex_en": "Open to ALL",
     "age_jp": "3歳",
@@ -163,7 +176,7 @@ JRA重賞レースソースのページからスクレイピングして生成�
 ```json
 {
   "$schema": "[http://json-schema.org/draft-07/schema#](http://json-schema.org/draft-07/schema#)",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "updated_at": "2026-09-05T18:00:00Z",
   "races": [
     {
@@ -182,6 +195,7 @@ JRA重賞レースソースのページからスクレイピングして生成�
       "surface_jp": "芝",
       "surface_en": "Turf",
       "distance_m": 1800,
+      "is_time_confirmed": false,
       "start_time": "2026-06-21T06:45:00Z",
       "time_zone": "Asia/Tokyo"
     }
@@ -189,14 +203,13 @@ JRA重賞レースソースのページからスクレイピングして生成�
 }
 ```
 
-### 5.4 .ics パーサー (結合変換ロジック) 要件
+### 5.5 .ics パーサー (結合変換ロジック) 要件
 
 - JRA公式 `.ics` の `SUMMARY` から正規表現で「レース名」と「グレード (G1/G2/G3/J.G1等)」を抽出。
 - `DTSTART` から「開催日」、`LOCATION` から「開催競馬場」を取得。
 - レース名をキーにして `race_master.json` を参照し、`title_jp` / `title_en` / `racecourse_jp` / `racecourse_en` / `surface_jp` / `surface_en`/ `distance_m` を補完。
 - JRA公式用語集の表記ルールに準拠（`venue` ではなく `racecourse` に統一）。
-- 開催日と発走時刻を組み合わせ、UTC 形式 (`Z`) に変換 して `start_time` に格納。
-  - 発走時刻の取得方法は未決定。
+- 開催日と `default_time_jst`（確定時は出馬表の確定時刻）を組み合わせ、UTC 形式 (`Z`) に変換して `start_time` に格納。
 
 ---
 
