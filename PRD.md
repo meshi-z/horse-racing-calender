@@ -3,8 +3,8 @@
 | 項目 | 内容 |
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション (MVP) |
-| **作成日** | 2026年9月5日 |
-| **バージョン** | v1.3.0 (MVP) |
+| **作成日** | 2026年9月6日 |
+| **バージョン** | v1.4.0 (MVP) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 
 ---
@@ -23,7 +23,8 @@
 
 ### フェーズ1 (MVP / 現在のスコープ)
 
-- JRA公式提供の `.ics`（iCalendar）＋データ補完マスターによるビルド処理
+- JRA重賞一覧ページ（`jyusyo.html`）からデータ補完マスターを作成
+- 公式 `.ics`（iCalendar）からの当年のデータ取得、データ補完マスターとマージして当年のレース情報を作成
 - ユーザー登録不要のオープン型SPA
 - GitHub Pages による完全静的ホスティング（コスト0運用）
 - PWA & Service Worker によるオフライン高速閲覧
@@ -31,10 +32,10 @@
 
 ### フェーズ2 (将来拡張)
 
-- i18n 多言語切り替え（`title_jp` / `title_en`、`racecourse_jp` / `racecourse_en` 等を活用した多言語表示）
+- i18n 多言語切り替え（`title_jp` / `title_en`、`racecourse_jp` / `racecourse_en` 等を活用した多言語表示）UIスイッチ実装
 - NAR（地方競馬ダートグレード）および海外主要レース（米・豪・香港・サウジ・ドバイ・欧州）の拡張
 - GitHub Actions による `.ics` 自動パッチ＆ビルドバッチ化
-- 距離別・トラック（芝/ダート/障害）別フィルタリング機能追加
+- 性別・年齢・距離区分・馬場種別（芝/ダート/障害）による高度なフィルタリング機能追加
 
 ---
 
@@ -80,6 +81,8 @@
 - **重賞グレード絞り込み:** All / G1 / G2 / G3
 - **競馬場絞り込み:** 東京、中山、阪神、京都などの開催地による絞り込み（`racecourse_jp` / `racecourse_en` 対応）
 - **トラック（馬場）絞り込み:** 芝 (Turf) / ダート (Dirt) / 障害 (Jump)
+- **出走性別制限:** 牝限定 (Fillies/Mares Only) / 指定なし
+- **出走年齢制限:** 2歳 / 3歳 / 3歳以上 / 4歳以上
 - **（将来拡張フィールド）:** 国・団体コード、多言語表示切替、距離区分
 
 ---
@@ -88,13 +91,39 @@
 
 ### 5.1 競馬用語標準化ルール（JRA公式用語集準拠）
 
-レース名、競馬場名 (`racecourse`)、トラック種別、競馬用語などの英字・日本語対応は、JRA公式の海外競馬用語集マスターを基準として定義・統一する。
+レースマスター情報および条件データの一次情報源として、JRA公式の重賞日程ページおよび用語集を使用する。
 
+> **JRA重賞レースソース:** [重賞レース一覧](https://www.jra.go.jp/datafile/seiseki/replay/2026/jyusyo.html)
 > **用語マスターソース:** [海外競馬英和辞典](https://www.jra.go.jp/keiba/overseas/yougo/index.html)
 
-### 5.2 データ補完マスター構造 (`src/data/race_master.json`)
+### 5.2 データパース & 分割ルール
 
-JRA公式 `.ics` に含まれない「日本語タイトル (`title_jp`)」「英語タイトル (`title_en`)」「日本語競馬場名 (`racecourse_jp`)」「英語競馬場名 (`racecourse_en`)」「デフォルト発走時刻（JST）」「コース種別 (`surface`)」「距離」を補完するための辞書データ。
+#### A. 「性齢（出走資格）」の分離・構造化
+原本データ表記（例: 「3歳以上」「3歳牝馬」「2歳牡・牝」）を解析し、「性（Sex）」と「齢（Age）」に分割して日本語および英語のプロパティを割り当てる。
+
+- **性制限 (sex_restriction):**
+  - 「牝馬」「牝」表記あり $\rightarrow$ `sex_restriction_jp: "牝"`, `sex_restriction_en: "Fillies & Mares"`
+  - 制限なし/「牡・牝」 $\rightarrow$ `sex_restriction_jp: "牡・牝"`, `sex_restriction_en: "Open to All"`
+- **年齢制限 (age_restriction):**
+  - 「2歳」 $\rightarrow$ `age_restriction_jp: "2歳"`, `age_restriction_en: "2yo"`
+  - 「3歳以上」 $\rightarrow$ `age_restriction_jp: "3歳以上"`, `age_restriction_en: "3yo & Up"`
+  - 「4歳以上」 $\rightarrow$ `age_restriction_jp: "4歳以上"`, `age_restriction_en: "4yo & Up"`
+
+#### B. 「コース」の分離（馬場・距離）
+原本データ表記（例: 「芝1,600メートル」「ダート1,800メートル」「障害3,100メートル」）を正規表現で抽出し、種別と数値に分離する。
+
+- **馬場 (surface):**
+  - 「芝」 $\rightarrow$ `surface_jp: "芝"`, `surface_en: "Turf"`
+  - 「ダート」 $\rightarrow$ `surface_jp: "ダート"`, `surface_en: "Dirt"`
+  - 「障害」 $\rightarrow$ `surface_jp: "障害"`, `surface_en: "Jump"`
+- **距離 (distance_m):**
+  - カンマや「メートル」を除去し、整数型 (number) として保持（例: `1600`）。
+
+### 5.3 データ補完マスター構造 (`src/data/race_master.json`)
+
+JRA公式 `.ics` に含まれない「日本語タイトル (`title_jp`)」「英語タイトル (`title_en`)」「日本語競馬場名 (`racecourse_jp`)」「英語競馬場名 (`racecourse_en`)」「デフォルト発走時刻（JST）」「性」「齢」「馬場 (`surface`)」「距離」を補完するための辞書データ。
+
+JRA重賞レースソースのページからスクレイピングして生成。
 
 ```json
 {
@@ -103,30 +132,38 @@ JRA公式 `.ics` に含まれない「日本語タイトル (`title_jp`)」「�
     "title_en": "Fuchu Himba Stakes",
     "racecourse_jp": "東京競馬場",
     "racecourse_en": "Tokyo Racecourse",
-    "default_time_jst": "15:45",
-    "surface": "Turf",
+    "sex_restriction_jp": "牝",
+    "sex_restriction_en": "Fillies and Mares",
+    "age_restriction_jp": "3歳以上",
+    "age_restriction_en": "3yo & Up",
+    "surface_jp": "芝",
+    "surface_en": "Turf",
     "distance_m": 1800
   },
-  "桜花賞": {
-    "title_jp": "桜花賞",
-    "title_en": "Ouka Sho (Japanese 1000 Guineas)",
-    "racecourse_jp": "阪神競馬場",
-    "racecourse_en": "Hanshin Racecourse",
-    "default_time_jst": "15:40",
-    "surface": "Turf",
-    "distance_m": 1600
+  "皐月賞": {
+    "title_jp": "皐月賞",
+    "title_en": "Satsuki Sho (Japanese 2000 Guineas)",
+    "racecourse_jp": "中山競馬場",
+    "racecourse_en": "Nakayama Racecourse",
+    "sex_jp": "牡・牝",
+    "sex_en": "Open to ALL",
+    "age_jp": "3歳",
+    "age_en": "3yo",
+    "surface_jp": "芝",
+    "surface_en": "Turf",
+    "distance_m": 2000
   }
 }
 ```
 
-### 5.3 統合拡張 JSON スキーマ定義 (`public/data/races.json`)
+### 5.4 統合拡張 JSON スキーマ定義 (`public/data/races.json`)
 
 パーサーが `.ics` と `race_master.json` を結合して生成する統合出力データ。
 
 ```json
 {
   "$schema": "[http://json-schema.org/draft-07/schema#](http://json-schema.org/draft-07/schema#)",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "updated_at": "2026-09-05T18:00:00Z",
   "races": [
     {
@@ -138,6 +175,10 @@ JRA公式 `.ics` に含まれない「日本語タイトル (`title_jp`)」「�
       "country_code": "JP",
       "racecourse_jp": "東京競馬場",
       "racecourse_en": "Tokyo Racecourse",
+      "sex_restriction_jp": "牝",
+      "sex_restriction_en": "Fillies and Mares",
+      "age_restriction_jp": "3歳以上",
+      "age_restriction_en": "3yo & Up",
       "surface_jp": "芝",
       "surface_en": "Turf",
       "distance_m": 1800,
@@ -154,7 +195,8 @@ JRA公式 `.ics` に含まれない「日本語タイトル (`title_jp`)」「�
 - `DTSTART` から「開催日」、`LOCATION` から「開催競馬場」を取得。
 - レース名をキーにして `race_master.json` を参照し、`title_jp` / `title_en` / `racecourse_jp` / `racecourse_en` / `surface_jp` / `surface_en`/ `distance_m` を補完。
 - JRA公式用語集の表記ルールに準拠（`venue` ではなく `racecourse` に統一）。
-- 開催日と `default_time_jst` を組み合わせ、UTC 形式 (`Z`) に変換 して `start_time` に格納。
+- 開催日と発走時刻を組み合わせ、UTC 形式 (`Z`) に変換 して `start_time` に格納。
+  - 発走時刻の取得方法は未決定。
 
 ---
 
