@@ -15,6 +15,34 @@
 
 - **`.agents/rules/00-project.md`**: プロジェクトルールの正本（参照ドキュメントの優先順位、使用技術、変更スコープ）。
 
+### A. AIコードコミット規約 (AI Code Commit Rules)
+
+Gitコミットを行う際は、人間とAIの共同開発を正確に記録するため、コミットメッセージの最下部（フッター）に必ず以下の「`Co-authored-by`」表記を含めてください。
+
+メッセージの構成ルール:
+
+1. コミットメッセージ本文（通常の変更内容の記述）
+2. 「必ず1行の空行」を入れる
+3. 以下のテキストをそのまま記述する
+
+```text
+Co-authored-by: Antigravity <antigravity@example.com>
+```
+
+### B. AI GitHub規約 (AI GitHub Rules)
+
+GitHubにPull Requestを出したり、Issueを出したりする際は、人間とAIの共同開発を正確に記録するため、必ず `--body`（または `-b`）の末尾に必ず以下の「`Co-authored-by`」表記を含めてください。
+
+メッセージの構成ルール:
+
+1. 本文（通常の変更内容の記述）
+2. 「必ず1行の空行」を入れる
+3. 以下のテキストをそのまま記述する
+
+```text
+Co-authored-by: Antigravity <antigravity@example.com>
+```
+
 ## 3. UI/UX & デザインシステム要件 (Design System)
 
 フロントエンド（Shadcn UI, Tailwind CSS, アクセシビリティ）の実装・変更を行う場合は以下を参照してください。
