@@ -1,0 +1,43 @@
+export type LocalizedText = {
+  ja: string;
+  en: string;
+};
+
+export type Organization = 'jra' | 'nar' | 'overseas';
+export type TrackType = 'turf' | 'dirt' | 'obstacle';
+export type SexConstraint = 'filly_and_mare' | 'colt_and_filly' | 'none';
+export type AgeConstraint = '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up';
+export type Grade = 'G1' | 'G2' | 'G3' | 'J.G1' | 'J.G2' | 'J.G3';
+export type HandicapCode = 'weight_for_age' | 'special_weight' | 'set_weight' | 'handicap';
+
+export type Handicap = {
+  code: HandicapCode;
+  ja: string;
+  en: string;
+};
+
+export type Race = {
+  id: string;
+  organization: Organization;
+  name: LocalizedText;
+  grade: Grade;
+  date: string; // YYYY-MM-DD
+  start_time: string; // UTC ISO 8601 (例: "2026-02-22T06:40:00.000Z")
+  is_time_confirmed: boolean;
+  course: LocalizedText;
+  distance: number;
+  track_type: TrackType;
+  sex_constraint: SexConstraint;
+  age_constraint: AgeConstraint;
+  handicap: Handicap;
+};
+
+export type FilterState = {
+  searchQuery: string;
+  grades: Grade[];
+  trackTypes: TrackType[];
+  sexConstraints: SexConstraint[];
+  ageConstraints: AgeConstraint[];
+  courses: string[];
+  yearMonth: { year: number; month: number } | null;
+};

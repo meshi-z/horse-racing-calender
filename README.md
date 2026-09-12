@@ -10,7 +10,9 @@ src/
 |- features/    # 機能・ドメイン固有の実装
 |- hooks/       # 複数機能で利用する React Hooks
 |- libs/        # UIに依存しない共通処理
-`- styles/      # グローバルスタイルとテーマ
+|- store/       # Zustand による状態管理
+|- styles/      # グローバルスタイルとテーマ
+`- types/       # ドメイン型定義
 ```
 
 * 実際のファイル構造を正本とする。
