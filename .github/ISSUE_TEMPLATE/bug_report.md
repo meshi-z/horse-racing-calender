@@ -1,5 +1,5 @@
 ---
-name: "\U0001F41B バグ修正"
+name: "bug_report"
 about: 発生した不具合やエラーを報告・記録します
 title: "【不具合】"
 labels: bug

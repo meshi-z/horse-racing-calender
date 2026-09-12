@@ -1,5 +1,5 @@
 ---
-name: "\U0001F4AA 機能開発 / タスク"
+name: "feature_request"
 about: 新しい機能の追加や、作業タスクを記述します
 title: "【開発】"
 labels: enhancement
