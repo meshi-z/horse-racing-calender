@@ -92,6 +92,7 @@ Shadcn UI の `Badge` コンポーネントおよび Tailwind CSS カラーシ�
 レースマスター情報および条件データの一次情報源として、JRA公式の重賞日程ページおよび用語集を使用する。
 
 > **JRA重賞レースソース:** [重賞レース一覧](https://www.jra.go.jp/datafile/seiseki/replay/2026/jyusyo.html)
+
 > **用語マスターソース:** [海外競馬英和辞典](https://www.jra.go.jp/keiba/overseas/yougo/index.html)
 
 ### 5.2 データパース & 分割ルール
