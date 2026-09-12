@@ -1,10 +1,10 @@
-# 重賞カレンダーサービス プロダクト要求仕様書 (PRD)
+﻿# 重賞カレンダーサービス プロダクト要求仕様書 (PRD)
 
 | 項目 | 内容 |
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション (MVP) |
 | **作成日** | 2026年9月12日 |
-| **バージョン** | v1.5.0 |
+| **バージョン** | v1.5.1 |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 
 ---
@@ -25,6 +25,7 @@ UIライブラリには **Shadcn UI** (Radix UI + Tailwind CSS) を全面採用�
 
 - JRA重賞一覧ページ（`jyusyo.html`）からデータ補完マスターを作成
 - 公式 `.ics`（iCalendar）からの当年のデータ取得、データ補完マスターとマージして当年のレース情報を作成
+- i18n（国際化）を見据えた Localized Object 形式 `{ ja, en }` によるデータ構造化
 - ユーザー登録不要のオープン型SPA
 - GitHub Pages による完全静的ホスティング（コスト0運用）
 - PWA & Service Worker によるオフライン高速閲覧
@@ -32,8 +33,8 @@ UIライブラリには **Shadcn UI** (Radix UI + Tailwind CSS) を全面採用�
 
 ### フェーズ2 (将来拡張)
 
-- i18n 多言語切り替え（`title_jp` / `title_en`、`racecourse_jp` / `racecourse_en` 等を活用した多言語表示）UIスイッチ実装
-- NAR（地方競馬ダートグレード）および海外主要レース（米・豪・香港・サウジ・ドバイ・欧州）の拡張
+- i18n 多言語切り替え（`name.ja` / `name.en`、`course.ja` / `course.en`、`handicap.ja` / `handicap.en` 等を活用した多言語表示）UIスイッチ実装
+- NAR（地方競馬ダートグレード）および海外主要レース（米・豪・香港・サウジ・ドバイ・欧州）の拡張（`organization` フィールドおよび拡張ID体系を活用）
 - GitHub Actions による `.ics` 自動パッチ＆ビルドバッチ化
 - 性別・年齢・距離区分・馬場種別（芝/ダート/障害）による高度なフィルタリング機能追加（Shadcn UI の `Select` / `Popover` / `Command` を活用）
 
@@ -81,7 +82,7 @@ Shadcn UI の `Badge` コンポーネントおよび Tailwind CSS カラーシ�
 
 - **UI構成:** Shadcn UI の `Select` / `DropdownMenu` / `Badge` を使用したフィルターバー。
 - **条件:** グレード、競馬場、トラック（芝/ダート/障害）、出走性別制限、出走年齢制限。
-- **（将来拡張フィールド）**: 国・団体コード、多言語表示切替、距離区分
+- **（将来拡張フィールド）**: 国・団体コード（`organization`）、多言語表示切替、距離区分。
 
 ---
 
@@ -97,85 +98,152 @@ Shadcn UI の `Badge` コンポーネントおよび Tailwind CSS カラーシ�
 
 ### 5.2 データパース & 分割ルール
 
-#### A. 「性齢（出走資格）」の分離・構造化
+#### A. 「出走資格（性別・年齢制限）」の分離・構造化
+原本データ表記（例: 「3歳以上」「3歳牝馬」「2歳牡・牝」）を解析し、プログラム処理用のコード値（`constraint`）と多言語表示用ラベル（`label`）に構造化する。
 
-原本データ表記（例: 「3歳以上」「3歳牝馬」「2歳牡・牝」）を解析し、「性（Sex）」と「齢（Age）」に分割して日本語および英語のプロパティを割り当てる。
-
-- **性制限 (sex_restriction):**
-  - 「牝馬」「牝」表記あり $\rightarrow$ `sex_restriction_jp: "牝"`, `sex_restriction_en: "Fillies & Mares"`
-  - 制限なし/「牡・牝」 $\rightarrow$ `sex_restriction_jp: "牡・牝"`, `sex_restriction_en: "Open to All"`
-- **年齢制限 (age_restriction):**
-  - 「2歳」 $\rightarrow$ `age_restriction_jp: "2歳"`, `age_restriction_en: "2yo"`
-  - 「3歳以上」 $\rightarrow$ `age_restriction_jp: "3歳以上"`, `age_restriction_en: "3yo & Up"`
-  - 「4歳以上」 $\rightarrow$ `age_restriction_jp: "4歳以上"`, `age_restriction_en: "4yo & Up"`
+- **性別制限 (`sex_constraint`):**
+  - `/牡・牝|牡・牝馬/` $\rightarrow$ コード: `colt_and_filly`, ラベル: `{ ja: "牡・牝", en: "Colts & Fillies" }`
+  - `/牝/` $\rightarrow$ コード: `filly_and_mare`, ラベル: `{ ja: "牝", en: "Fillies & Mares" }`
+  - 上記以外 $\rightarrow$ コード: `none`, ラベル: `{ ja: "制限なし", en: "Open to All" }`
+- **年齢制限 (`age_constraint`):**
+  - `/3歳以上/` $\rightarrow$ コード: `3yo_and_up`, ラベル: `{ ja: "3歳以上", en: "3yo & Up" }`
+  - `/4歳以上/` $\rightarrow$ コード: `4yo_and_up`, ラベル: `{ ja: "4歳以上", en: "4yo & Up" }`
+  - `/2歳/` $\rightarrow$ コード: `2yo`, ラベル: `{ ja: "2歳", en: "2yo" }`
+  - `/3歳/` $\rightarrow$ コード: `3yo`, ラベル: `{ ja: "3歳", en: "3yo" }`
 
 #### B. 「コース」の分離（馬場・距離）
+原本データ表記（例: 「芝1,600メートル」「ダート1,800メートル」「障害3,100メートル」）を正規表現で抽出し、種別（`track_type`）と整数数値（`distance`）に分離する。
 
-原本データ表記（例: 「芝1,600メートル」「ダート1,800メートル」「障害3,100メートル」）を正規表現で抽出し、種別と数値に分離する。
-
-- **馬場 (surface):**
-  - 「芝」 $\rightarrow$ `surface_jp: "芝"`, `surface_en: "Turf"`
-  - 「ダート」 $\rightarrow$ `surface_jp: "ダート"`, `surface_en: "Dirt"`
-  - 「障害」 $\rightarrow$ `surface_jp: "障害"`, `surface_en: "Jump"`
-- **距離 (distance_m):**
+- **馬場種別 (`track_type`):**
+  - `/障害|J・G|障/` $\rightarrow$ コード: `obstacle`, ラベル: `{ ja: "障害", en: "Jump" }`
+  - `/ダート|ダ/` $\rightarrow$ コード: `dirt`, ラベル: `{ ja: "ダート", en: "Dirt" }`
+  - 上記以外（「芝」含む） $\rightarrow$ コード: `turf`, ラベル: `{ ja: "芝", en: "Turf" }`
+- **距離 (`distance`):**
   - カンマや「メートル」を除去し、整数型 (number) として保持（例: `1600`）。
 
-#### C. 発走時刻の取得・決定パイプライン
+#### C. 「負担重量（斤量種別）」の判定・構造化
+レース条件から斤量種別を判定し、コードと多言語ラベルを割り当てる。
 
+- **負担重量 (`handicap`):**
+  - 定量: コード `weight_for_age`, ラベル: `{ ja: "定量", en: "Weight for Age" }`
+  - 馬齢: コード `special_weight`, ラベル: `{ ja: "馬齢", en: "Special Weight" }`
+  - 別定: コード `set_weight`, ラベル: `{ ja: "別定", en: "Set Weight" }`
+  - ハンデ: コード `handicap`, ラベル: `{ ja: "ハンデ", en: "Handicap" }`
+
+#### D. 発走時刻の取得・決定パイプライン
 発走時刻は「デフォルト推定値」と「直前確定値」の2段階構成で管理する。
 
 1. **初期推定値の設定（年間ビルド時）:**
-   - 重賞（平地11R中心）: 原則 `15:40` JST（一部関西等 `15:45` JST）を初期値としてセット。
-   - 障害重賞 (J.G1〜J.G3): `13:50`〜`14:30` JST の規定時間帯をセット。
+   - 平地重賞（関東・新潟・福島）: 原則 `15:40` JST を初期値としてセット。
+   - 平地重賞（関西・中京・小倉）: 原則 `15:45` JST を初期値としてセット。
+   - 平地重賞（北海道・札幌・函館）: 原則 `15:35` JST を初期値としてセット。
+   - 障害重賞 (J.G1〜J.G3): `13:50`〜`14:45` JST（J.G1は `14:45`、一般は `13:50`）をセット。
+   - 開催日と `default_time_jst` を組み合わせ、UTC ISO 8601 形式 (`Z`) に変換して `start_time` に格納。
    - `is_time_confirmed: false` としてフラグ管理。
 2. **直前確定値の上書き更新（開催直前ビルド時）:**
    - 開催週（木曜日以降）にJRA公式出馬表ページから正確な確定発走時刻をスクレイピング取得。
    - 確定時刻で `start_time` を更新し、`is_time_confirmed: true` に変更。
 
+#### E. 組織コードおよびID体系 (拡張性設計)
+- 組織識別子 `organization`: `"jra"`（将来拡張: `"nar"`, `"overseas"` / `"intl"`）
+- レースID体系: `{年度}-{組織コード}-{グレード小文字}-{連番2桁}`（例: `2026-jra-g1-01`、将来は `2026-nar-jpn1-01`）
+
+---
+
 ### 5.3 データ補完マスター構造 (`src/data/race_master.json`)
 
-JRA公式 `.ics` に含まれないフィールド（日本語/英語タイトル・競馬場名・デフォルト発走時刻・性・齢・馬場・距離）を補完するための辞書データ。
+JRA公式 `.ics` に含まれないフィールド（多言語名称・競馬場名・デフォルト発走時刻・性齢制限・馬場・距離・斤量）を補完するための辞書データ。
 
 ```json
 {
-  "府中牝馬ステークス": {
-    "title_jp": "府中牝馬ステークス",
-    "title_en": "Fuchu Himba Stakes",
-    "racecourse_jp": "東京競馬場",
-    "racecourse_en": "Tokyo Racecourse",
-    "default_time_jst": "15:45",
-    "sex_restriction_jp": "牝",
-    "sex_restriction_en": "Fillies and Mares",
-    "age_restriction_jp": "3歳以上",
-    "age_restriction_en": "3yo & Up",
-    "surface_jp": "芝",
-    "surface_en": "Turf",
-    "distance_m": 1800
-  },
-  "皐月賞": {
-    "title_jp": "皐月賞",
-    "title_en": "Satsuki Sho (Japanese 2000 Guineas)",
-    "racecourse_jp": "中山競馬場",
-    "racecourse_en": "Nakayama Racecourse",
+  "フェブラリーステークス": {
+    "name": {
+      "ja": "フェブラリーステークス",
+      "en": "February Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
     "default_time_jst": "15:40",
-    "sex_jp": "牡・牝",
-    "sex_en": "Open to ALL",
-    "age_jp": "3歳",
-    "age_en": "3yo",
-    "surface_jp": "芝",
-    "surface_en": "Turf",
-    "distance_m": 2000
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
   }
 }
-
 ```
+
+---
+
+### 5.4 アプリケーション用出力データ構造 (`public/data/races.json`)
+
+フロントエンドのタイムラインビューおよびカレンダービューが表示・フィルタリングに使用する一次データ。
+
+```json
+[
+  {
+    "id": "2026-jra-g1-01",
+    "organization": "jra",
+    "name": {
+      "ja": "フェブラリーステークス",
+      "en": "February Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-02-22",
+    "start_time": "2026-02-22T06:40:00.000Z",
+    "is_time_confirmed": false,
+    "course": {
+      "ja": "東京",
+      "en": "Tokyo"
+    },
+    "distance": 1600,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  }
+]
+```
+
+---
 
 ### 5.5 .ics パーサー (結合変換ロジック) 要件
 
-- JRA公式 `.ics` の `SUMMARY` から正規表現で「レース名」と「グレード (G1/G2/G3/J.G1等)」を抽出。
+- JRA公式 `.ics` の `SUMMARY` から正規表現（半角・全角括弧の混在に対応）で「レース名」と「グレード (G1/G2/G3/J.G1等)」を抽出。
 - `DTSTART` から「開催日」、`LOCATION` から「開催競馬場」を取得。
+- レース名エイリアス辞書（略称マッピング）を用いて `jyusyo.html` の行データと1対1結合。
 - レース名をキーにして `race_master.json` を参照し、各フィールドを補完。
-- JRA公式用語集の表記ルールに準拠（`venue` ではなく `racecourse` に統一）。
 - 開催日と `default_time_jst`（確定時は出馬表の確定時刻）を組み合わせ、UTC 形式 (`Z`) に変換して `start_time` に格納。
 
 ---
@@ -193,6 +261,6 @@ JRA公式 `.ics` に含まれないフィールド（日本語/英語タイト�
 ## 7. Antigravity 連携手順
 
 1. Step 1: リポジトリ直下に本 PRD（`PRD.md`）および `AGENTS.md`（Shadcn UI 準拠ルール）を配置。
-2. Step 2: JRA公式の`jrarace2026.ics`と`jyusyo.html`を結合して `races.json`を出力するデータ生成スクリプトを作成。
+2. Step 2: JRA公式の`jrarace2026.ics`と`jyusyo.html`を結合して `races.json`および`race_master.json`を出力するデータ生成スクリプト（`npm run data:build`）を作成・実行。
 3. Step 3: `npx shadcn-ui@latest init`により Shadcn UI + Tailwind CSS を初期化。
 4. Step 4: Shadcn UI コンポーネント（`Card`, `Badge`, `Tabs`, `Select`, `Dialog`等）を使用してタイムライン / カレンダービューおよびフィルタリング機能を実装。

@@ -1,0 +1,5742 @@
+{
+  "スポーツニッポン賞京都金杯": {
+    "name": {
+      "ja": "スポーツニッポン賞京都金杯",
+      "en": "Kyoto Kimpai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "日刊スポーツ賞中山金杯": {
+    "name": {
+      "ja": "日刊スポーツ賞中山金杯",
+      "en": "Nakayama Kimpai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "フェアリーステークス": {
+    "name": {
+      "ja": "フェアリーステークス",
+      "en": "Fairy Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "日刊スポーツ賞シンザン記念": {
+    "name": {
+      "ja": "日刊スポーツ賞シンザン記念",
+      "en": "Nikkan Sports Sho Shinzan Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "日経新春杯": {
+    "name": {
+      "ja": "日経新春杯",
+      "en": "Nikkei Shinshun Hai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2400,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "京成杯": {
+    "name": {
+      "ja": "京成杯",
+      "en": "Keisei Hai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "小倉牝馬ステークス": {
+    "name": {
+      "ja": "小倉牝馬ステークス",
+      "en": "Kokura Himba Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "小倉競馬場",
+      "en": "Kokura Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "プロキオンステークス": {
+    "name": {
+      "ja": "プロキオンステークス",
+      "en": "Procyon Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "アメリカジョッキークラブカップ": {
+    "name": {
+      "ja": "アメリカジョッキークラブカップ",
+      "en": "American Jockey Club Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "根岸ステークス": {
+    "name": {
+      "ja": "根岸ステークス",
+      "en": "Negishi Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "シルクロードステークス": {
+    "name": {
+      "ja": "シルクロードステークス",
+      "en": "Silk Road Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "きさらぎ賞": {
+    "name": {
+      "ja": "きさらぎ賞",
+      "en": "Kisaragi Sho"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "東京新聞杯": {
+    "name": {
+      "ja": "東京新聞杯",
+      "en": "Tokyo Shimbun Hai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "小倉ジャンプステークス": {
+    "name": {
+      "ja": "小倉ジャンプステークス",
+      "en": "小倉ジャンプステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "小倉競馬場",
+      "en": "Kokura Racecourse"
+    },
+    "default_time_jst": "13:50",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "obstacle",
+      "label": {
+        "ja": "障害",
+        "en": "Jump"
+      }
+    },
+    "distance": 3390,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "デイリー杯クイーンカップ": {
+    "name": {
+      "ja": "デイリー杯クイーンカップ",
+      "en": "デイリー杯クイーンカップ"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "共同通信杯": {
+    "name": {
+      "ja": "共同通信杯",
+      "en": "Kyodo News Hai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "京都記念": {
+    "name": {
+      "ja": "京都記念",
+      "en": "Kyoto Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "ダイヤモンドステークス": {
+    "name": {
+      "ja": "ダイヤモンドステークス",
+      "en": "Diamond Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 3400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "阪急杯": {
+    "name": {
+      "ja": "阪急杯",
+      "en": "Hankyu Hai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "小倉大賞典": {
+    "name": {
+      "ja": "小倉大賞典",
+      "en": "Kokura Daishoten"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "小倉競馬場",
+      "en": "Kokura Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "フェブラリーステークス": {
+    "name": {
+      "ja": "フェブラリーステークス",
+      "en": "February Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "オーシャンステークス": {
+    "name": {
+      "ja": "オーシャンステークス",
+      "en": "Yukan Fuji Sho Ocean Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "中山記念": {
+    "name": {
+      "ja": "中山記念",
+      "en": "Nakayama Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "チューリップ賞": {
+    "name": {
+      "ja": "チューリップ賞",
+      "en": "Tulip Sho"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "報知杯フィリーズレビュー": {
+    "name": {
+      "ja": "報知杯フィリーズレビュー",
+      "en": "Hochi Hai Fillies' Revue"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "ローレル競馬場賞中山牝馬ステークス": {
+    "name": {
+      "ja": "ローレル競馬場賞中山牝馬ステークス",
+      "en": "ローレル競馬場賞中山牝馬ステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "報知杯弥生賞ディープインパクト記念": {
+    "name": {
+      "ja": "報知杯弥生賞ディープインパクト記念",
+      "en": "報知杯弥生賞ディープインパクト記念"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "阪神スプリングジャンプ": {
+    "name": {
+      "ja": "阪神スプリングジャンプ",
+      "en": "Hanshin Spring Jump"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "13:50",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "obstacle",
+      "label": {
+        "ja": "障害",
+        "en": "Jump"
+      }
+    },
+    "distance": 3900,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "フジテレビ賞スプリングステークス": {
+    "name": {
+      "ja": "フジテレビ賞スプリングステークス",
+      "en": "フジテレビ賞スプリングステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "colt_and_filly",
+      "label": {
+        "ja": "牡・牝",
+        "en": "Colts & Fillies"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "東海テレビ杯金鯱賞": {
+    "name": {
+      "ja": "東海テレビ杯金鯱賞",
+      "en": "Kinko Sho"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中京競馬場",
+      "en": "Chukyo Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "中日スポーツ賞ファルコンステークス": {
+    "name": {
+      "ja": "中日スポーツ賞ファルコンステークス",
+      "en": "中日スポーツ賞ファルコンステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中京競馬場",
+      "en": "Chukyo Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "フラワーカップ": {
+    "name": {
+      "ja": "フラワーカップ",
+      "en": "Flower Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "阪神大賞典": {
+    "name": {
+      "ja": "阪神大賞典",
+      "en": "Hanshin Daishoten"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 3000,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "愛知杯": {
+    "name": {
+      "ja": "愛知杯",
+      "en": "Aichi Hai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中京競馬場",
+      "en": "Chukyo Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "日経賞": {
+    "name": {
+      "ja": "日経賞",
+      "en": "Nikkei Sho"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2500,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "毎日杯": {
+    "name": {
+      "ja": "毎日杯",
+      "en": "Mainichi Hai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "高松宮記念": {
+    "name": {
+      "ja": "高松宮記念",
+      "en": "Takamatsunomiya Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中京競馬場",
+      "en": "Chukyo Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "マーチステークス": {
+    "name": {
+      "ja": "マーチステークス",
+      "en": "March Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "ダービー卿チャレンジトロフィー": {
+    "name": {
+      "ja": "ダービー卿チャレンジトロフィー",
+      "en": "Lord Derby Challenge Trophy"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "チャーチルダウンズカップ": {
+    "name": {
+      "ja": "チャーチルダウンズカップ",
+      "en": "Churchill Downs Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "大阪杯": {
+    "name": {
+      "ja": "大阪杯",
+      "en": "Osaka Hai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "ニュージーランドトロフィー": {
+    "name": {
+      "ja": "ニュージーランドトロフィー",
+      "en": "New Zealand Trophy"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "colt_and_filly",
+      "label": {
+        "ja": "牡・牝",
+        "en": "Colts & Fillies"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "サンケイスポーツ杯阪神牝馬ステークス": {
+    "name": {
+      "ja": "サンケイスポーツ杯阪神牝馬ステークス",
+      "en": "サンケイスポーツ杯阪神牝馬ステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "桜花賞": {
+    "name": {
+      "ja": "桜花賞",
+      "en": "Oka Sho (Japanese 1000 Guineas)"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "アンタレスステークス": {
+    "name": {
+      "ja": "アンタレスステークス",
+      "en": "Antares Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "中山グランドジャンプ": {
+    "name": {
+      "ja": "中山グランドジャンプ",
+      "en": "Nakayama Grand Jump"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "14:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "obstacle",
+      "label": {
+        "ja": "障害",
+        "en": "Jump"
+      }
+    },
+    "distance": 4260,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "皐月賞": {
+    "name": {
+      "ja": "皐月賞",
+      "en": "Satsuki Sho (Japanese 2000 Guineas)"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "colt_and_filly",
+      "label": {
+        "ja": "牡・牝",
+        "en": "Colts & Fillies"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "福島牝馬ステークス": {
+    "name": {
+      "ja": "福島牝馬ステークス",
+      "en": "Fukushima Himba Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "福島競馬場",
+      "en": "Fukushima Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "テレビ東京杯青葉賞": {
+    "name": {
+      "ja": "テレビ東京杯青葉賞",
+      "en": "TV Tokyo Hai Aoba Sho"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "読売マイラーズカップ": {
+    "name": {
+      "ja": "読売マイラーズカップ",
+      "en": "読売マイラーズカップ"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "サンケイスポーツ賞フローラステークス": {
+    "name": {
+      "ja": "サンケイスポーツ賞フローラステークス",
+      "en": "サンケイスポーツ賞フローラステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "京王杯スプリングカップ": {
+    "name": {
+      "ja": "京王杯スプリングカップ",
+      "en": "Keio Hai Spring Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "ユニコーンステークス": {
+    "name": {
+      "ja": "ユニコーンステークス",
+      "en": "ユニコーンステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1900,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "天皇賞(春)": {
+    "name": {
+      "ja": "天皇賞(春)",
+      "en": "Tenno Sho (Spring)"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 3200,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "エプソムカップ": {
+    "name": {
+      "ja": "エプソムカップ",
+      "en": "Epsom Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "京都新聞杯": {
+    "name": {
+      "ja": "京都新聞杯",
+      "en": "Kyoto Shimbun Hai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "NHKマイルカップ": {
+    "name": {
+      "ja": "NHKマイルカップ",
+      "en": "NHK Mile Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "colt_and_filly",
+      "label": {
+        "ja": "牡・牝",
+        "en": "Colts & Fillies"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "新潟大賞典": {
+    "name": {
+      "ja": "新潟大賞典",
+      "en": "Niigata Daishoten"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "新潟競馬場",
+      "en": "Niigata Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "京都ハイジャンプ": {
+    "name": {
+      "ja": "京都ハイジャンプ",
+      "en": "京都ハイジャンプ"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "13:50",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "obstacle",
+      "label": {
+        "ja": "障害",
+        "en": "Jump"
+      }
+    },
+    "distance": 3930,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "ヴィクトリアマイル": {
+    "name": {
+      "ja": "ヴィクトリアマイル",
+      "en": "Victoria Mile"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "平安ステークス": {
+    "name": {
+      "ja": "平安ステークス",
+      "en": "Heian Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1900,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "オークス": {
+    "name": {
+      "ja": "オークス",
+      "en": "オークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2400,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "葵ステークス": {
+    "name": {
+      "ja": "葵ステークス",
+      "en": "Aoi Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "日本ダービー": {
+    "name": {
+      "ja": "日本ダービー",
+      "en": "Tokyo Yushun (Japanese Derby)"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "colt_and_filly",
+      "label": {
+        "ja": "牡・牝",
+        "en": "Colts & Fillies"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2400,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "目黒記念": {
+    "name": {
+      "ja": "目黒記念",
+      "en": "Meguro Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "4yo_and_up",
+      "label": {
+        "ja": "4歳以上",
+        "en": "4yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2500,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "安田記念": {
+    "name": {
+      "ja": "安田記念",
+      "en": "Yasuda Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "函館スプリントステークス": {
+    "name": {
+      "ja": "函館スプリントステークス",
+      "en": "Hakodate Sprint Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "函館競馬場",
+      "en": "Hakodate Racecourse"
+    },
+    "default_time_jst": "15:35",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "東京ジャンプステークス": {
+    "name": {
+      "ja": "東京ジャンプステークス",
+      "en": "Tokyo Jump Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "13:50",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "obstacle",
+      "label": {
+        "ja": "障害",
+        "en": "Jump"
+      }
+    },
+    "distance": 3110,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "宝塚記念": {
+    "name": {
+      "ja": "宝塚記念",
+      "en": "Takarazuka Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2200,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "府中牝馬ステークス": {
+    "name": {
+      "ja": "府中牝馬ステークス",
+      "en": "Fuchu Himba Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "しらさぎステークス": {
+    "name": {
+      "ja": "しらさぎステークス",
+      "en": "しらさぎステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "ラジオNIKKEI賞": {
+    "name": {
+      "ja": "ラジオNIKKEI賞",
+      "en": "Radio NIKKEI Sho"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "福島競馬場",
+      "en": "Fukushima Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "函館記念": {
+    "name": {
+      "ja": "函館記念",
+      "en": "Hakodate Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "函館競馬場",
+      "en": "Hakodate Racecourse"
+    },
+    "default_time_jst": "15:35",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "テレビ西日本賞北九州記念": {
+    "name": {
+      "ja": "テレビ西日本賞北九州記念",
+      "en": "TV Nishinippon Corp.Sho Kitakyushu Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "小倉競馬場",
+      "en": "Kokura Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "七夕賞": {
+    "name": {
+      "ja": "七夕賞",
+      "en": "Tanabata Sho"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "福島競馬場",
+      "en": "Fukushima Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "函館2歳ステークス": {
+    "name": {
+      "ja": "函館2歳ステークス",
+      "en": "Hakodate Nisai Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "函館競馬場",
+      "en": "Hakodate Racecourse"
+    },
+    "default_time_jst": "15:35",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "special_weight",
+      "label": {
+        "ja": "馬齢",
+        "en": "Special Weight"
+      }
+    }
+  },
+  "小倉記念": {
+    "name": {
+      "ja": "小倉記念",
+      "en": "Kokura Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "小倉競馬場",
+      "en": "Kokura Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "関屋記念": {
+    "name": {
+      "ja": "関屋記念",
+      "en": "Sekiya Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "新潟競馬場",
+      "en": "Niigata Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "東海ステークス": {
+    "name": {
+      "ja": "東海ステークス",
+      "en": "Tokai TV Hai Tokai Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中京競馬場",
+      "en": "Chukyo Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "アイビスサマーダッシュ": {
+    "name": {
+      "ja": "アイビスサマーダッシュ",
+      "en": "Ibis Summer Dash"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "新潟競馬場",
+      "en": "Niigata Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1000,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "北海道新聞杯クイーンステークス": {
+    "name": {
+      "ja": "北海道新聞杯クイーンステークス",
+      "en": "北海道新聞杯クイーンステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "札幌競馬場",
+      "en": "Sapporo Racecourse"
+    },
+    "default_time_jst": "15:35",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "エルムステークス": {
+    "name": {
+      "ja": "エルムステークス",
+      "en": "Elm Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "札幌競馬場",
+      "en": "Sapporo Racecourse"
+    },
+    "default_time_jst": "15:35",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1700,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "レパードステークス": {
+    "name": {
+      "ja": "レパードステークス",
+      "en": "Leopard Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "新潟競馬場",
+      "en": "Niigata Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "CBC賞": {
+    "name": {
+      "ja": "CBC賞",
+      "en": "CBC Sho"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中京競馬場",
+      "en": "Chukyo Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "新潟ジャンプステークス": {
+    "name": {
+      "ja": "新潟ジャンプステークス",
+      "en": "Niigata Jump Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "新潟競馬場",
+      "en": "Niigata Racecourse"
+    },
+    "default_time_jst": "13:50",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "obstacle",
+      "label": {
+        "ja": "障害",
+        "en": "Jump"
+      }
+    },
+    "distance": 3250,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "中京記念": {
+    "name": {
+      "ja": "中京記念",
+      "en": "Toyota Sho Chukyo Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中京競馬場",
+      "en": "Chukyo Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "札幌記念": {
+    "name": {
+      "ja": "札幌記念",
+      "en": "Sapporo Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "札幌競馬場",
+      "en": "Sapporo Racecourse"
+    },
+    "default_time_jst": "15:35",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "新潟2歳ステークス": {
+    "name": {
+      "ja": "新潟2歳ステークス",
+      "en": "Niigata Nisai Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "新潟競馬場",
+      "en": "Niigata Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "special_weight",
+      "label": {
+        "ja": "馬齢",
+        "en": "Special Weight"
+      }
+    }
+  },
+  "キーンランドカップ": {
+    "name": {
+      "ja": "キーンランドカップ",
+      "en": "Keeneland Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "札幌競馬場",
+      "en": "Sapporo Racecourse"
+    },
+    "default_time_jst": "15:35",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "新潟記念": {
+    "name": {
+      "ja": "新潟記念",
+      "en": "Niigata Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "新潟競馬場",
+      "en": "Niigata Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "中京2歳ステークス": {
+    "name": {
+      "ja": "中京2歳ステークス",
+      "en": "中京2歳ステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中京競馬場",
+      "en": "Chukyo Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1400,
+    "handicap": {
+      "code": "special_weight",
+      "label": {
+        "ja": "馬齢",
+        "en": "Special Weight"
+      }
+    }
+  },
+  "京成杯オータムハンデキャップ": {
+    "name": {
+      "ja": "京成杯オータムハンデキャップ",
+      "en": "Keisei Hai Autumn Handicap"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "札幌2歳ステークス": {
+    "name": {
+      "ja": "札幌2歳ステークス",
+      "en": "Sapporo Nisai Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "札幌競馬場",
+      "en": "Sapporo Racecourse"
+    },
+    "default_time_jst": "15:35",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "special_weight",
+      "label": {
+        "ja": "馬齢",
+        "en": "Special Weight"
+      }
+    }
+  },
+  "産経賞セントウルステークス": {
+    "name": {
+      "ja": "産経賞セントウルステークス",
+      "en": "産経賞セントウルステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "紫苑ステークス": {
+    "name": {
+      "ja": "紫苑ステークス",
+      "en": "Shion Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "チャレンジカップ": {
+    "name": {
+      "ja": "チャレンジカップ",
+      "en": "Challenge Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "朝日杯セントライト記念": {
+    "name": {
+      "ja": "朝日杯セントライト記念",
+      "en": "Asahi Hai St. Lite Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "関西テレビ放送賞ローズステークス": {
+    "name": {
+      "ja": "関西テレビ放送賞ローズステークス",
+      "en": "関西テレビ放送賞ローズステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "阪神ジャンプステークス": {
+    "name": {
+      "ja": "阪神ジャンプステークス",
+      "en": "Hanshin Jump Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "13:50",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "obstacle",
+      "label": {
+        "ja": "障害",
+        "en": "Jump"
+      }
+    },
+    "distance": 3140,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "産経賞オールカマー": {
+    "name": {
+      "ja": "産経賞オールカマー",
+      "en": "Sankei Sho All Comers"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "神戸新聞杯": {
+    "name": {
+      "ja": "神戸新聞杯",
+      "en": "Kobe Shimbun Hai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "colt_and_filly",
+      "label": {
+        "ja": "牡・牝",
+        "en": "Colts & Fillies"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "シリウスステークス": {
+    "name": {
+      "ja": "シリウスステークス",
+      "en": "Sirius Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "スプリンターズステークス": {
+    "name": {
+      "ja": "スプリンターズステークス",
+      "en": "Sprinters Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "京都大賞典": {
+    "name": {
+      "ja": "京都大賞典",
+      "en": "Kyoto Daishoten"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "毎日王冠": {
+    "name": {
+      "ja": "毎日王冠",
+      "en": "Mainichi Okan"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "サウジアラビアロイヤルカップ": {
+    "name": {
+      "ja": "サウジアラビアロイヤルカップ",
+      "en": "Saudi Arabia Royal Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "special_weight",
+      "label": {
+        "ja": "馬齢",
+        "en": "Special Weight"
+      }
+    }
+  },
+  "アイルランドトロフィー": {
+    "name": {
+      "ja": "アイルランドトロフィー",
+      "en": "Ireland Trophy"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "MBS賞スワンステークス": {
+    "name": {
+      "ja": "MBS賞スワンステークス",
+      "en": "MBS賞スワンステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "富士ステークス": {
+    "name": {
+      "ja": "富士ステークス",
+      "en": "Fuji Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "東京ハイジャンプ": {
+    "name": {
+      "ja": "東京ハイジャンプ",
+      "en": "東京ハイジャンプ"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "13:50",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "obstacle",
+      "label": {
+        "ja": "障害",
+        "en": "Jump"
+      }
+    },
+    "distance": 3110,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "秋華賞": {
+    "name": {
+      "ja": "秋華賞",
+      "en": "Shuka Sho"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "アルテミスステークス": {
+    "name": {
+      "ja": "アルテミスステークス",
+      "en": "Artemis Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "special_weight",
+      "label": {
+        "ja": "馬齢",
+        "en": "Special Weight"
+      }
+    }
+  },
+  "菊花賞": {
+    "name": {
+      "ja": "菊花賞",
+      "en": "Kikuka Sho (Japanese St. Leger)"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "colt_and_filly",
+      "label": {
+        "ja": "牡・牝",
+        "en": "Colts & Fillies"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo",
+      "label": {
+        "ja": "3歳",
+        "en": "3yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 3000,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "KBS京都賞ファンタジーステークス": {
+    "name": {
+      "ja": "KBS京都賞ファンタジーステークス",
+      "en": "KBS京都賞ファンタジーステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1400,
+    "handicap": {
+      "code": "special_weight",
+      "label": {
+        "ja": "馬齢",
+        "en": "Special Weight"
+      }
+    }
+  },
+  "天皇賞(秋)": {
+    "name": {
+      "ja": "天皇賞(秋)",
+      "en": "Tenno Sho (Autumn)"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "京王杯2歳ステークス": {
+    "name": {
+      "ja": "京王杯2歳ステークス",
+      "en": "Keio Hai Nisai Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1400,
+    "handicap": {
+      "code": "special_weight",
+      "label": {
+        "ja": "馬齢",
+        "en": "Special Weight"
+      }
+    }
+  },
+  "京都ジャンプステークス": {
+    "name": {
+      "ja": "京都ジャンプステークス",
+      "en": "Kyoto Jump Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "13:50",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "obstacle",
+      "label": {
+        "ja": "障害",
+        "en": "Jump"
+      }
+    },
+    "distance": 3170,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "アルゼンチン共和国杯": {
+    "name": {
+      "ja": "アルゼンチン共和国杯",
+      "en": "Copa Republica Argentina"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2500,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "みやこステークス": {
+    "name": {
+      "ja": "みやこステークス",
+      "en": "Miyako Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "武蔵野ステークス": {
+    "name": {
+      "ja": "武蔵野ステークス",
+      "en": "Musashino Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "デイリー杯2歳ステークス": {
+    "name": {
+      "ja": "デイリー杯2歳ステークス",
+      "en": "Daily Hai Nisai Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "special_weight",
+      "label": {
+        "ja": "馬齢",
+        "en": "Special Weight"
+      }
+    }
+  },
+  "エリザベス女王杯": {
+    "name": {
+      "ja": "エリザベス女王杯",
+      "en": "Queen Elizabeth II Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2200,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "福島記念": {
+    "name": {
+      "ja": "福島記念",
+      "en": "Fukushima Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "福島競馬場",
+      "en": "Fukushima Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "マイルチャンピオンシップ": {
+    "name": {
+      "ja": "マイルチャンピオンシップ",
+      "en": "Mile Championship"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "東京スポーツ杯2歳ステークス": {
+    "name": {
+      "ja": "東京スポーツ杯2歳ステークス",
+      "en": "Tokyo Sports Hai Nisai Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "special_weight",
+      "label": {
+        "ja": "馬齢",
+        "en": "Special Weight"
+      }
+    }
+  },
+  "ラジオNIKKEI杯京都2歳ステークス": {
+    "name": {
+      "ja": "ラジオNIKKEI杯京都2歳ステークス",
+      "en": "ラジオNIKKEI杯京都2歳ステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "special_weight",
+      "label": {
+        "ja": "馬齢",
+        "en": "Special Weight"
+      }
+    }
+  },
+  "ジャパンカップ": {
+    "name": {
+      "ja": "ジャパンカップ",
+      "en": "Japan Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "東京競馬場",
+      "en": "Tokyo Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2400,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "京阪杯": {
+    "name": {
+      "ja": "京阪杯",
+      "en": "Keihan Hai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "京都競馬場",
+      "en": "Kyoto Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "鳴尾記念": {
+    "name": {
+      "ja": "鳴尾記念",
+      "en": "Naruo Kinen"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "スポーツニッポン賞ステイヤーズステークス": {
+    "name": {
+      "ja": "スポーツニッポン賞ステイヤーズステークス",
+      "en": "スポーツニッポン賞ステイヤーズステークス"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 3600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "チャンピオンズカップ": {
+    "name": {
+      "ja": "チャンピオンズカップ",
+      "en": "Champions Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中京競馬場",
+      "en": "Chukyo Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1800,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "中日新聞杯": {
+    "name": {
+      "ja": "中日新聞杯",
+      "en": "Chunichi Shimbun Hai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中京競馬場",
+      "en": "Chukyo Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "handicap",
+      "label": {
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    }
+  },
+  "阪神ジュベナイルフィリーズ": {
+    "name": {
+      "ja": "阪神ジュベナイルフィリーズ",
+      "en": "Hanshin Juvenile Fillies"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "カペラステークス": {
+    "name": {
+      "ja": "カペラステークス",
+      "en": "Capella Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "dirt",
+      "label": {
+        "ja": "ダート",
+        "en": "Dirt"
+      }
+    },
+    "distance": 1200,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "ターコイズステークス": {
+    "name": {
+      "ja": "ターコイズステークス",
+      "en": "Turquoise Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "filly_and_mare",
+      "label": {
+        "ja": "牝",
+        "en": "Fillies & Mares"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "朝日杯フューチュリティステークス": {
+    "name": {
+      "ja": "朝日杯フューチュリティステークス",
+      "en": "Asahi Hai Futurity Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "colt_and_filly",
+      "label": {
+        "ja": "牡・牝",
+        "en": "Colts & Fillies"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1600,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "ホープフルステークス": {
+    "name": {
+      "ja": "ホープフルステークス",
+      "en": "Hopeful Stakes"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "colt_and_filly",
+      "label": {
+        "ja": "牡・牝",
+        "en": "Colts & Fillies"
+      }
+    },
+    "age_constraint": {
+      "code": "2yo",
+      "label": {
+        "ja": "2歳",
+        "en": "2yo"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2000,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "阪神カップ": {
+    "name": {
+      "ja": "阪神カップ",
+      "en": "Hanshin Cup"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "阪神競馬場",
+      "en": "Hanshin Racecourse"
+    },
+    "default_time_jst": "15:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 1400,
+    "handicap": {
+      "code": "set_weight",
+      "label": {
+        "ja": "別定",
+        "en": "Set Weight"
+      }
+    }
+  },
+  "中山大障害": {
+    "name": {
+      "ja": "中山大障害",
+      "en": "Nakayama Daishogai"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "14:45",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "obstacle",
+      "label": {
+        "ja": "障害",
+        "en": "Jump"
+      }
+    },
+    "distance": 4100,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  },
+  "有馬記念": {
+    "name": {
+      "ja": "有馬記念",
+      "en": "Arima Kinen (The Grand Prix)"
+    },
+    "organization": "jra",
+    "course": {
+      "ja": "中山競馬場",
+      "en": "Nakayama Racecourse"
+    },
+    "default_time_jst": "15:40",
+    "sex_constraint": {
+      "code": "none",
+      "label": {
+        "ja": "制限なし",
+        "en": "Open to All"
+      }
+    },
+    "age_constraint": {
+      "code": "3yo_and_up",
+      "label": {
+        "ja": "3歳以上",
+        "en": "3yo & Up"
+      }
+    },
+    "track_type": {
+      "code": "turf",
+      "label": {
+        "ja": "芝",
+        "en": "Turf"
+      }
+    },
+    "distance": 2500,
+    "handicap": {
+      "code": "weight_for_age",
+      "label": {
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  }
+}
