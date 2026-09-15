@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useRaceStore } from "@/store/useRaceStore";
+import { useViewMode } from "@/hooks/useViewMode";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Calendar, ListFilter, Trophy } from "lucide-react";
 import { cn } from "@/libs/utils";
@@ -7,8 +7,7 @@ import { cn } from "@/libs/utils";
 export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
 
 export function Header({ className, ...props }: HeaderProps) {
-  const viewMode = useRaceStore((state) => state.viewMode);
-  const setViewMode = useRaceStore((state) => state.setViewMode);
+  const { viewMode, setViewMode } = useViewMode();
 
   return (
     <header

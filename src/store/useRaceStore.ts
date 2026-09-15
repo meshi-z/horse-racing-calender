@@ -20,6 +20,7 @@ export interface RaceState {
   setYearMonth: (yearMonth: YearMonth) => void;
   nextMonth: () => void;
   prevMonth: () => void;
+  goToCurrentMonth: () => void;
   getFilteredRaces: () => Race[];
 }
 
@@ -100,17 +101,47 @@ export const filterRaces = (races: Race[], filters: FilterState): Race[] => {
   });
 };
 
+let lastRaces: Race[] | null = null;
+let lastFilters: FilterState | null = null;
+let lastFilteredResult: Race[] = [];
+
 /**
- * Zustand 用の純粋セレクタ関数
+ * Zustand 用の純粋セレクタ関数（メモ化キャッシュ付き）
  */
 export const selectFilteredRaces = (state: RaceState): Race[] => {
-  return filterRaces(state.races, state.filters);
+  if (state.races === lastRaces && state.filters === lastFilters) {
+    return lastFilteredResult;
+  }
+  lastRaces = state.races;
+  lastFilters = state.filters;
+  lastFilteredResult = filterRaces(state.races, state.filters);
+  return lastFilteredResult;
 };
+
+export const VIEW_MODE_STORAGE_KEY = 'horse_racing_calendar_view_mode';
+
+export function getInitialViewMode(): 'timeline' | 'calendar' {
+  try {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const stored = window.localStorage.getItem(VIEW_MODE_STORAGE_KEY);
+      if (stored === 'timeline' || stored === 'calendar') {
+        return stored;
+      }
+    }
+    if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+      const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+      return isDesktop ? 'calendar' : 'timeline';
+    }
+  } catch {
+    // localStorageアクセスの制限やエラー時はデフォルトへフォールバック
+  }
+  return 'timeline';
+}
 
 export const useRaceStore = create<RaceState>((set, get) => ({
   races: [],
   filters: initialFilters,
-  viewMode: 'timeline',
+  viewMode: getInitialViewMode(),
   currentYearMonth: getInitialYearMonth(),
 
   setRaces: (races: Race[]) => set({ races }),
@@ -125,7 +156,16 @@ export const useRaceStore = create<RaceState>((set, get) => ({
 
   resetFilters: () => set({ filters: initialFilters }),
 
-  setViewMode: (viewMode) => set({ viewMode }),
+  setViewMode: (viewMode) => {
+    set({ viewMode });
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        window.localStorage.setItem(VIEW_MODE_STORAGE_KEY, viewMode);
+      }
+    } catch {
+      // ignore storage error
+    }
+  },
 
   setYearMonth: (currentYearMonth) => set({ currentYearMonth }),
 
@@ -146,6 +186,8 @@ export const useRaceStore = create<RaceState>((set, get) => ({
       }
       return { currentYearMonth: { year, month: month - 1 } };
     }),
+
+  goToCurrentMonth: () => set({ currentYearMonth: getInitialYearMonth() }),
 
   getFilteredRaces: () => filterRaces(get().races, get().filters),
 }));
