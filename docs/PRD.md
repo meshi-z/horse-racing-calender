@@ -1,10 +1,10 @@
-﻿# 重賞カレンダーサービス プロダクト要求仕様書 (PRD)
+# 重賞カレンダーサービス プロダクト要求仕様書 (PRD)
 
 | 項目 | 内容 |
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション (MVP) |
-| **作成日** | 2026年9月12日 |
-| **バージョン** | v1.5.1 |
+| **作成日** | 2026年9月12日 (最終更新: 2026年9月15日) |
+| **バージョン** | v1.5.2 |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 
 ---
@@ -49,13 +49,13 @@ UIライブラリには **Shadcn UI** (Radix UI + Tailwind CSS) を全面採用�
 
 ### 3.2 カラーパレット＆重賞グレードバッジ
 
-Shadcn UI の `Badge` コンポーネントおよび Tailwind CSS カラーシステムを適用し、コントラスト比（WCAG 2.1 AA 準拠）を満たす配色を設定する。
+Shadcn UI の `Badge` コンポーネントおよび Tailwind CSS デザイントークン（CSS Variables）を適用し、コントラスト比（WCAG 2.1 AA 準拠: 4.5:1 以上）を満たすセマンティックカラーを設定する。コンポーネント内への直接のカラーコードハードコードは行わず、CSS 変数を介して管理する。
 
-| グレード | カラーネーム | カラーコード (HEX / Tailwind) | 文字色 / 境界線 | 備考・アクセシビリティ配慮 |
+| グレード | セマンティックトークン | カラーコード (HEX / Tailwind) | 文字色トークン | 備考・アクセシビリティ配慮 |
 | :--- | :--- | :--- | :--- | :--- |
-| **G1 / J.G1** | Blue (G1) | `#1D4ED8` (`bg-blue-700`) | 白文字 (`#FFFFFF`) | 視認性の高いダークブルーバッジ |
-| **G2 / J.G2** | Red (G2) | `#B91C1C` (`bg-red-700`) | 白文字 (`#FFFFFF`) | 高コントラストのダークレッドバッジ |
-| **G3 / J.G3** | Green (G3) | `#15803D` (`bg-green-700`) | 白文字 (`#FFFFFF`) | 識別しやすいダークグリーンバッジ |
+| **G1 / J.G1** | `--grade-g1` | `#1D4ED8` (`bg-grade-g1`) | `--grade-g1-foreground` (`#FFFFFF`) | コントラスト比 7.42:1（WCAG AA 適合） |
+| **G2 / J.G2** | `--grade-g2` | `#B91C1C` (`bg-grade-g2`) | `--grade-g2-foreground` (`#FFFFFF`) | コントラスト比 7.02:1（WCAG AA 適合） |
+| **G3 / J.G3** | `--grade-g3` | `#15803D` (`bg-grade-g3`) | `--grade-g3-foreground` (`#FFFFFF`) | コントラスト比 5.86:1（WCAG AA 適合） |
 
 ---
 
@@ -71,17 +71,24 @@ Shadcn UI の `Badge` コンポーネントおよび Tailwind CSS カラーシ�
 ### 4.2 アクセシビリティ & コンポーネント要件
 
 - **キーボードナビゲーション:** Radix UI プリミティブにより、Tab / Shift+Tab / 矢印キーで完全操作可能。
-- **フォーカスインジケーター:** Shadcn UI 標準の `focus-visible:ring-2 focus-visible:ring-ring` による明確なアウトライン表示。
-- **ダイアログ/モーダル:** レース詳細表示には Shadcn UI の `Dialog` または `Drawer` (モバイル向け) を使用。
+- **カード操作:** レースカード（`RaceCard`）は `role="button"`, `tabindex="0"`, `aria-haspopup="dialog"` を持ち、Enter / Space キーで詳細ダイアログを起動。
+- **フォーカスインジケーター:** Shadcn UI 標準の `focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2` による明確なアウトライン表示。
+- **レース詳細ダイアログ (`RaceDetailDialog`):** レース詳細表示には独立したモーダルダイアログを使用。タイムラインビュー（`RaceCard` クリック時）およびカレンダービュー（日付・レースセル選択時）の双方から再利用可能な合成設計とする。
 
-### 4.3 タイムゾーン自動変換（グローバル対応）
+### 4.3 タイムゾーン自動変換 & 日時表示仕様
 
-- JSON内の発走時刻（UTC）を、クライアント側で端末のローカルタイムゾーンに変換して表示。
+- **ローカル時刻変換:** JSON内の発走時刻（UTC ISO 8601）を、クライアント側で端末のローカルタイムゾーン（通常は日本標準時 JST）に変換して `HH:mm` 形式で表示。
+- **開催日表示:** `YYYY年M月D日(曜日)` 形式で曜日を自動計算・付与して表示。
+- **確定ステータスバッジ:** `is_time_confirmed` フラグに応じて「発走確定」（強調）または「発走予定」（アウトライン）バッジを時刻横に併記。
 
 ### 4.4 フィルタリング機能
 
-- **UI構成:** Shadcn UI の `Select` / `DropdownMenu` / `Badge` を使用したフィルターバー。
-- **条件:** グレード、競馬場、トラック（芝/ダート/障害）、出走性別制限、出走年齢制限。
+- **UI構成:** Shadcn UI の `Input`（検索）、トグルチップ（`Button` / `Badge` 合成）、リセットボタンからなるフィルターバー（`FilterBar`）。
+- **条件:**
+  - キーワード検索: 日本語名（`name.ja`）・英語名（`name.en`）の部分一致検索（クリアボタン付き）。
+  - グレード絞り込み: `G1`, `G2`, `G3`, `J.G1`, `J.G2`, `J.G3` のトグルチップによる複数選択（OR検索）。
+  - 馬場種別絞り込み: `芝 (turf)`, `ダート (dirt)`, `障害 (obstacle)` のトグルチップによる複数選択。
+  - 条件リセット: 適用中の全フィルターをワンクリックで初期状態へ復元。
 - **（将来拡張フィールド）**: 国・団体コード（`organization`）、多言語表示切替、距離区分。
 
 ---
@@ -250,8 +257,10 @@ JRA公式 `.ics` に含まれないフィールド（多言語名称・競馬場
 
 ## 6. 技術スタック選定基準
 
-- **フロントエンド**: React + TypeScript (Vite)
-- **UIライブラリ / CSS**: Shadcn UI + Tailwind CSS (`shadcn-ui` CLI で生成するコンポーネント)
+- **フロントエンド**: React 19 + TypeScript (Vite)
+- **UIライブラリ / CSS**: Shadcn UI (New York スタイル) + Tailwind CSS + Radix UI
+- **状態管理**: Zustand
+- **テスト基盤**: Vitest + @testing-library/react + jsdom
 - **PWA / Cache**: `vite-plugin-pwa` (Workbox)
 - **インフラ**: GitHub Pages (GitHub Actions でビルド・デプロイ)
 - **セキュリティ・品質方針**: GitHub Dependabot の有効化、axe-core / Lighthouse による a11y 自動チェック。
@@ -260,7 +269,7 @@ JRA公式 `.ics` に含まれないフィールド（多言語名称・競馬場
 
 ## 7. Antigravity 連携手順
 
-1. Step 1: リポジトリ直下に本 PRD（`PRD.md`）および `AGENTS.md`（Shadcn UI 準拠ルール）を配置。
-2. Step 2: JRA公式の`jrarace2026.ics`と`jyusyo.html`を結合して `races.json`および`race_master.json`を出力するデータ生成スクリプト（`npm run data:build`）を作成・実行。
-3. Step 3: `npx shadcn-ui@latest init`により Shadcn UI + Tailwind CSS を初期化。
-4. Step 4: Shadcn UI コンポーネント（`Card`, `Badge`, `Tabs`, `Select`, `Dialog`等）を使用してタイムライン / カレンダービューおよびフィルタリング機能を実装。
+1. **Step 1:** リポジトリ直下に本 PRD（`PRD.md`）および `AGENTS.md`（Shadcn UI 準拠ルール）を配置。[完了]
+2. **Step 2:** JRA公式の`jrarace2026.ics`と`jyusyo.html`を結合して `races.json`および`race_master.json`を出力するデータ生成スクリプト（`npm run data:build`）を作成・実行。[完了]
+3. **Step 3:** Shadcn UI + Tailwind CSS を初期化し、セマンティックトークン基盤および共通UIコンポーネント群（`GradeBadge`, `RaceCard`, `RaceDetailDialog`, `FilterBar`, `Header`, `Layout`）を実装・検証。[完了]
+4. **Step 4:** 共通UIコンポーネントを活用し、レスポンシブな「タイムラインビュー」および「月間カレンダービュー」を実装。[次のステップ]
