@@ -1,8 +1,8 @@
 ---
-name: "feature_request"
-about: 新しい機能の追加や、作業タスクを記述します
-title: "[Feat]: "
-labels: enhancement
+name: 'feature_request'
+about: '新しい機能の追加や、作業タスクを記述します'
+title: '[Feat]: '
+labels: 'enhancement'
 assignees: ''
 
 ---
