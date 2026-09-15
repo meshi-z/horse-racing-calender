@@ -1,7 +1,7 @@
 ---
 name: "documentation"
 about: 仕様のメモ、設計、環境構築の手順、技術的な調査結果などを記録します
-title: '【資料】'
+title: '[Docs]: '
 labels: documentation
 assignees: ''
 
