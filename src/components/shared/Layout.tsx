@@ -1,5 +1,7 @@
 import * as React from "react";
 import { Header } from "./Header";
+import { OfflineIndicator } from "./OfflineIndicator";
+import { ReloadPrompt } from "./ReloadPrompt";
 import { cn } from "@/libs/utils";
 
 export interface LayoutProps {
@@ -11,6 +13,7 @@ export function Layout({ children, className }: LayoutProps) {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col antialiased">
       <Header />
+      <OfflineIndicator />
       <main className={cn("container flex-1 py-6 px-4 sm:px-6 space-y-6", className)}>
         {children}
       </main>
@@ -19,6 +22,7 @@ export function Layout({ children, className }: LayoutProps) {
           <p>© 2026 horse-racing-calendar. JRA 重賞スケジュール</p>
         </div>
       </footer>
+      <ReloadPrompt />
     </div>
   );
 }
