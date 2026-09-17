@@ -3,8 +3,8 @@
 | 項目 | 内容 |
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション (MVP) |
-| **作成日** | 2026年9月12日 (最終更新: 2026年9月16日) |
-| **バージョン** | v1.5.3 |
+| **作成日** | 2026年9月12日 (最終更新: 2026年9月17日) |
+| **バージョン** | v1.6.0 |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 
 ---
@@ -93,6 +93,22 @@ Shadcn UI の `Badge` コンポーネントおよび Tailwind CSS デザイン�
   - 馬場種別絞り込み: `芝 (turf)`, `ダート (dirt)`, `障害 (obstacle)` のトグルチップによる複数選択。
   - 条件リセット: 適用中の全フィルターをワンクリックで初期状態へ復元。
 - **（将来拡張フィールド）**: 国・団体コード（`organization`）、多言語表示切替、距離区分。
+
+### 4.5 PWA & オフラインキャッシュ仕様
+
+- **Web App Manifest 仕様:**
+  - アプリ名: `重賞カレンダー - JRA重賞レーススケジュール` (short_name: `重賞カレンダー`)
+  - 説明: `JRA重賞レースのスケジュールを閲覧・管理するオフライン対応カレンダー`
+  - 表示モード: `standalone`（ブラウザのアドレスバー非表示・ネイティブアプリライクなフルスクリーン）
+  - 画面向き: `portrait-primary`
+  - テーマカラー: `#1D4ED8` (G1プライマリカラー) / 背景色: `#FFFFFF`
+  - アイコン構成: 192x192, 512x512, maskable, SVG, iOS向け apple-touch-icon
+- **Service Worker & Workbox キャッシュ戦略:**
+  - **プリキャッシュ (Precache):** HTML, JS, CSS, Webフォント, アイコン等の静的アセットをインストール時に一括キャッシュ。
+  - **ランタイムキャッシュ (Runtime Cache: `/data/races.json`):** `Stale-While-Revalidate` 戦略を採用。競馬場や地下鉄などの電波不安定環境でもミリ秒単位で手元のキャッシュから即座に画面を表示し、バックグラウンドで最新データを取得・更新。有効期限7日間 (`maxAgeSeconds: 604800`)、エントリ上限10件。
+- **オフライン・更新案内 UI:**
+  - **オフラインインジケーター (`OfflineIndicator`):** 電波断絶時にヘッダー下部へ「オフライン表示中（キャッシュされたレースデータを表示しています）」バナーを表示 (`role="status"`, `aria-live="polite"`)。オンライン復帰時には自動で復帰案内を表示。
+  - **PWAリロードプロンプト (`ReloadPrompt`):** バックグラウンドで新しいService Workerが利用可能になった際、更新案内トーストを表示して即時反映を支援。
 
 ---
 
@@ -276,4 +292,5 @@ JRA公式 `.ics` に含まれないフィールド（多言語名称・競馬場
 2. **Step 2:** JRA公式の`jrarace2026.ics`と`jyusyo.html`を結合して `races.json`および`race_master.json`を出力するデータ生成スクリプト（`npm run data:build`）を作成・実行。[完了]
 3. **Step 3:** Shadcn UI + Tailwind CSS を初期化し、セマンティックトークン基盤および共通UIコンポーネント群（`GradeBadge`, `RaceCard`, `RaceDetailDialog`, `FilterBar`, `Header`, `Layout`）を実装・検証。[完了]
 4. **Step 4:** 共通UIコンポーネントを活用し、レスポンシブな「タイムラインビュー」および「月間カレンダービュー（月曜始まり・土日連続）」を実装・統合。[完了]
-5. **Step 5:** PWA & Service Worker（オフラインキャッシュ対応）および GitHub Pages 自動デプロイパイプラインの構築。[次のステップ]
+5. **Step 5:** PWA & Service Worker（Workbox）によるオフラインキャッシュおよびPWAマニフェストの実装。[完了]
+6. **Step 6:** GitHub Actions による自動ビルド＆GitHub Pages 自動デプロイパイプラインの構築。[次のステップ]
