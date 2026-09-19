@@ -2,9 +2,11 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { FilterBar } from "../../src/components/shared/FilterBar";
 import { useRaceStore } from "../../src/store/useRaceStore";
+import { useLanguageStore } from "../../src/store/useLanguageStore";
 
 describe("FilterBar", () => {
   beforeEach(() => {
+    useLanguageStore.setState({ language: "ja" });
     useRaceStore.getState().resetFilters();
   });
 
@@ -193,5 +195,71 @@ describe("FilterBar", () => {
     // 中距離も解除
     fireEvent.click(intermediateBtn);
     expect(useRaceStore.getState().filters.distanceCategories).toEqual([]);
+  });
+
+  describe("英語モード (English mode)", () => {
+    beforeEach(() => {
+      useLanguageStore.setState({ language: "en" });
+    });
+
+    it("英語のプレースホルダー・aria-label・セクション見出しが表示されること", () => {
+      render(<FilterBar />);
+      const input = screen.getByLabelText("Search races");
+      expect(input).toHaveAttribute("placeholder", "Search by race name (e.g. February, Arima Kinen)");
+      expect(screen.getByText("Grade:")).toBeInTheDocument();
+      expect(screen.getByText("Track:")).toBeInTheDocument();
+      expect(screen.getByText("Distance:")).toBeInTheDocument();
+      expect(screen.getByText("Courses")).toBeInTheDocument();
+    });
+
+    it("馬場種別・距離・競馬場パネルのラベルが英語で表示され操作できること", () => {
+      render(<FilterBar />);
+      const turfBtn = screen.getByRole("button", { name: "Turf" });
+      fireEvent.click(turfBtn);
+      expect(useRaceStore.getState().filters.trackTypes).toContain("turf");
+
+      const sprintBtn = screen.getByRole("button", {
+        name: "Distance filter: Sprint (~1,400m (Sprint))",
+      });
+      fireEvent.click(sprintBtn);
+      expect(useRaceStore.getState().filters.distanceCategories).toContain("sprint");
+
+      // 競馬場パネル展開
+      const courseExpandBtn = screen.getByRole("button", { name: "Toggle course filter" });
+      fireEvent.click(courseExpandBtn);
+      expect(screen.getByText("Select courses (multiple choice):")).toBeInTheDocument();
+
+      const tokyoBtn = screen.getByRole("button", { name: "Tokyo" });
+      fireEvent.click(tokyoBtn);
+      expect(useRaceStore.getState().filters.courses).toContain("東京");
+    });
+
+    it("選択中の競馬場バッジが英語表記され解除できること", () => {
+      useRaceStore.getState().setFilter("courses", ["東京", "阪神"]);
+      render(<FilterBar />);
+
+      expect(screen.getByText("Selected courses:")).toBeInTheDocument();
+      expect(screen.getByText("Tokyo")).toBeInTheDocument();
+      expect(screen.getByText("Hanshin")).toBeInTheDocument();
+
+      const removeTokyoBtn = screen.getByRole("button", { name: "Remove Tokyo filter" });
+      fireEvent.click(removeTokyoBtn);
+      expect(useRaceStore.getState().filters.courses).toEqual(["阪神"]);
+
+      const clearBtn = screen.getByRole("button", { name: "Clear" });
+      fireEvent.click(clearBtn);
+      expect(useRaceStore.getState().filters.courses).toEqual([]);
+    });
+
+    it("リセットボタンが英語で表示され機能すること", () => {
+      useRaceStore.getState().setFilter("grades", ["G1"]);
+      render(<FilterBar />);
+
+      const resetBtn = screen.getByRole("button", { name: "Reset filters" });
+      expect(resetBtn).toBeInTheDocument();
+      expect(screen.getByText("Reset")).toBeInTheDocument();
+      fireEvent.click(resetBtn);
+      expect(useRaceStore.getState().filters.grades).toEqual([]);
+    });
   });
 });

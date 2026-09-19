@@ -61,6 +61,31 @@ export const translations = {
       rescheduledShort: '代替',
       daysCount: '{count}件',
     },
+    filter: {
+      searchPlaceholder: 'レース名で検索（例: フェブラリー、有馬記念、February）',
+      searchAria: 'レース名検索',
+      clearSearchAria: '検索キーワードをクリア',
+      resetFilterAria: 'フィルターをリセット',
+      reset: 'リセット',
+      gradeLabel: 'グレード:',
+      trackLabel: '馬場:',
+      distanceLabel: '距離:',
+      courseLabel: '競馬場',
+      courseExpandAria: '競馬場フィルターを展開',
+      selectCourses: '競馬場を選択（複数選択可）:',
+      clearCourses: '競馬場選択をクリア',
+      selectedCourses: '選択中の競馬場:',
+      clear: 'クリア',
+      removeCourseAria: '{course}の絞り込みを解除',
+      distanceFilterAria: '距離フィルター: {label}（{description}）',
+      appDocTitle: '重賞カレンダー - JRA重賞レーススケジュール',
+      matchedRaces: '該当レース: {count} 件',
+      viewModeLabel: '表示: {mode}',
+      viewModeTimeline: 'タイムライン',
+      viewModeCalendar: '月間カレンダー',
+      loadingRaces: 'レース日程を読み込み中',
+      loadError: 'レースデータの取得に失敗しました: ',
+    },
   },
   en: {
     app: {
@@ -119,8 +144,101 @@ export const translations = {
       rescheduledShort: 'Resched',
       daysCount: '{count} races',
     },
+    filter: {
+      searchPlaceholder: 'Search by race name (e.g. February, Arima Kinen)',
+      searchAria: 'Search races',
+      clearSearchAria: 'Clear search keyword',
+      resetFilterAria: 'Reset filters',
+      reset: 'Reset',
+      gradeLabel: 'Grade:',
+      trackLabel: 'Track:',
+      distanceLabel: 'Distance:',
+      courseLabel: 'Courses',
+      courseExpandAria: 'Toggle course filter',
+      selectCourses: 'Select courses (multiple choice):',
+      clearCourses: 'Clear selected courses',
+      selectedCourses: 'Selected courses:',
+      clear: 'Clear',
+      removeCourseAria: 'Remove {course} filter',
+      distanceFilterAria: 'Distance filter: {label} ({description})',
+      appDocTitle: 'JRA Graded Races Calendar - Schedule & Details',
+      matchedRaces: 'Matching races: {count}',
+      viewModeLabel: 'View: {mode}',
+      viewModeTimeline: 'Timeline',
+      viewModeCalendar: 'Calendar',
+      loadingRaces: 'Loading race schedules',
+      loadError: 'Failed to load race data: ',
+    },
   },
 } as const;
+
+export interface DistanceOption {
+  label: string;
+  category: import('../types/race').DistanceCategory;
+  description: string;
+}
+
+export const DISTANCE_OPTIONS_BY_LANG: Record<Language, DistanceOption[]> = {
+  ja: [
+    { label: '短距離', category: 'sprint', description: '1400m以下（スプリント）' },
+    { label: 'マイル', category: 'mile', description: '1500〜1700m（マイル）' },
+    { label: '中距離', category: 'intermediate', description: '1800〜2200m（中距離）' },
+    { label: '長距離', category: 'long', description: '2400m以上（長距離・障害）' },
+  ],
+  en: [
+    { label: 'Sprint', category: 'sprint', description: '~1,400m (Sprint)' },
+    { label: 'Mile', category: 'mile', description: '1,401~1,700m (Mile)' },
+    { label: 'Intermediate', category: 'intermediate', description: '1,701~2,200m (Intermediate)' },
+    { label: 'Long', category: 'long', description: '2,300m~ (Long & Jump)' },
+  ],
+};
+
+export interface CourseOption {
+  label: string;
+  name: string; // 照合用キー（日本語名称）
+}
+
+export const COURSE_OPTIONS_BY_LANG: Record<Language, CourseOption[]> = {
+  ja: [
+    { label: '東京', name: '東京' },
+    { label: '中山', name: '中山' },
+    { label: '阪神', name: '阪神' },
+    { label: '京都', name: '京都' },
+    { label: '中京', name: '中京' },
+    { label: '小倉', name: '小倉' },
+    { label: '新潟', name: '新潟' },
+    { label: '福島', name: '福島' },
+    { label: '札幌', name: '札幌' },
+    { label: '函館', name: '函館' },
+  ],
+  en: [
+    { label: 'Tokyo', name: '東京' },
+    { label: 'Nakayama', name: '中山' },
+    { label: 'Hanshin', name: '阪神' },
+    { label: 'Kyoto', name: '京都' },
+    { label: 'Chukyo', name: '中京' },
+    { label: 'Kokura', name: '小倉' },
+    { label: 'Niigata', name: '新潟' },
+    { label: 'Fukushima', name: '福島' },
+    { label: 'Sapporo', name: '札幌' },
+    { label: 'Hakodate', name: '函館' },
+  ],
+};
+
+/**
+ * 競馬場名（日本語または英語）から現在の言語の表示ラベルを取得するヘルパー
+ */
+export function getLocalizedCourseName(courseName: string, lang: Language): string {
+  const found = COURSE_OPTIONS_BY_LANG.ja.findIndex((c) => c.name === courseName || c.label === courseName);
+  if (found !== -1) {
+    return COURSE_OPTIONS_BY_LANG[lang][found].label;
+  }
+  const foundEn = COURSE_OPTIONS_BY_LANG.en.findIndex((c) => c.label === courseName);
+  if (foundEn !== -1) {
+    return COURSE_OPTIONS_BY_LANG[lang][foundEn].label;
+  }
+  return courseName;
+}
 
 export const trackTypeLabels: Record<Language, Record<'turf' | 'dirt' | 'obstacle', string>> = {
   ja: {

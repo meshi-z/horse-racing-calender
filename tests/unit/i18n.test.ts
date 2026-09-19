@@ -38,4 +38,13 @@ describe('i18n dictionary & helper', () => {
     expect(t('timeline.racesCount', 'ja', { count: 3 })).toBe('3レース');
     expect(t('timeline.racesCount', 'en', { count: 3 })).toBe('3 Races');
   });
+
+  it('getLocalizedCourseName が日本語・英語のコース名を適切に変換すること', async () => {
+    const { getLocalizedCourseName } = await import('@/libs/i18n');
+    expect(getLocalizedCourseName('東京', 'ja')).toBe('東京');
+    expect(getLocalizedCourseName('東京', 'en')).toBe('Tokyo');
+    expect(getLocalizedCourseName('Tokyo', 'ja')).toBe('東京');
+    expect(getLocalizedCourseName('Tokyo', 'en')).toBe('Tokyo');
+    expect(getLocalizedCourseName('UnknownCourse', 'en')).toBe('UnknownCourse');
+  });
 });
