@@ -203,7 +203,7 @@ export function TimelineView({ races, className }: TimelineViewProps) {
                 top: "calc(3.5rem + var(--filterbar-height, 0px))",
               }}
               className={cn(
-                "sticky z-20 -mx-4 px-4 py-2 backdrop-blur transition-[top] duration-200 border-b",
+                "sticky z-20 -mx-4 px-4 py-2 backdrop-blur border-b",
                 isToday
                   ? "bg-primary/[0.08] supports-[backdrop-filter]:bg-primary/[0.06] border-primary/30 dark:bg-primary/[0.12] dark:supports-[backdrop-filter]:bg-primary/[0.10]"
                   : "bg-background/90 supports-[backdrop-filter]:bg-background/70 border-border/40"
