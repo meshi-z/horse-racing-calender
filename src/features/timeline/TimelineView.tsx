@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RaceCard } from "@/components/shared/RaceCard";
 import { Button } from "@/components/ui/button";
-import { formatLocalDate } from "@/libs/date";
+import { formatLocalDate, findUpcomingOrLatestDate, getTodayLocalDateString } from "@/libs/date";
 import { useRaceStore } from "@/store/useRaceStore";
 import type { Race } from "@/types/race";
 import { CalendarDays, RotateCcw } from "lucide-react";
@@ -58,8 +58,40 @@ function groupRacesByDate(races: Race[]): GroupedRaces[] {
  */
 export function TimelineView({ races, className }: TimelineViewProps) {
   const resetFilters = useRaceStore((state) => state.resetFilters);
+  const hasScrolledRef = React.useRef(false);
 
   const groupedRaces = React.useMemo(() => groupRacesByDate(races), [races]);
+  const todayStr = React.useMemo(() => getTodayLocalDateString(), []);
+
+  // タイムラインビュー表示時に今日または直近・次のレースへ自動スクロール (Issue #6)
+  React.useEffect(() => {
+    if (hasScrolledRef.current || groupedRaces.length === 0) {
+      return;
+    }
+
+    const dates = groupedRaces.map((g) => g.date);
+    const targetDate = findUpcomingOrLatestDate(dates, todayStr);
+    if (!targetDate) {
+      return;
+    }
+
+    const element = document.getElementById(`section-date-${targetDate}`);
+    if (element) {
+      const prefersReducedMotion =
+        typeof window !== "undefined" &&
+        window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+      const timer = setTimeout(() => {
+        element.scrollIntoView({
+          behavior: prefersReducedMotion ? "auto" : "smooth",
+          block: "start",
+        });
+      }, 0);
+
+      hasScrolledRef.current = true;
+      return () => clearTimeout(timer);
+    }
+  }, [groupedRaces, todayStr]);
 
   // 空状態（0件）表示
   if (races.length === 0) {
@@ -107,36 +139,52 @@ export function TimelineView({ races, className }: TimelineViewProps) {
       aria-busy="false"
       aria-label="重賞レース タイムライン"
     >
-      {groupedRaces.map(({ date, formattedDate, races: dateRaces }) => (
-        <section
-          key={date}
-          aria-labelledby={`heading-date-${date}`}
-          className="space-y-3"
-        >
-          {/* 日付ヘッダー */}
-          <div className="sticky top-14 z-10 -mx-4 px-4 py-2 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70 border-b border-border/40">
-            <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
-              <h3
-                id={`heading-date-${date}`}
-                className="text-sm sm:text-base font-bold tracking-tight text-foreground"
-              >
-                {formattedDate}
-              </h3>
-              <span className="text-xs text-muted-foreground font-normal">
-                ({dateRaces.length}レース)
-              </span>
-            </div>
-          </div>
+      {groupedRaces.map(({ date, formattedDate, races: dateRaces }) => {
+        const isToday = date === todayStr;
 
-          {/* その日のレースカード一覧 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {dateRaces.map((race) => (
-              <RaceCard key={race.id} race={race} />
-            ))}
-          </div>
-        </section>
-      ))}
+        return (
+          <section
+            key={date}
+            id={`section-date-${date}`}
+            aria-labelledby={`heading-date-${date}`}
+            className="scroll-mt-16 sm:scroll-mt-20 space-y-3"
+          >
+            {/* 日付ヘッダー */}
+            <div className="sticky top-14 z-10 -mx-4 px-4 py-2 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70 border-b border-border/40">
+              <div className="flex items-center gap-2">
+                <span
+                  className={cn(
+                    "h-2 w-2 rounded-full",
+                    isToday ? "bg-primary ring-2 ring-primary/30" : "bg-primary"
+                  )}
+                  aria-hidden="true"
+                />
+                <h3
+                  id={`heading-date-${date}`}
+                  className="text-sm sm:text-base font-bold tracking-tight text-foreground flex items-center gap-2"
+                >
+                  <span>{formattedDate}</span>
+                  {isToday && (
+                    <span className="text-[10px] font-semibold bg-primary text-primary-foreground px-1.5 py-0.5 rounded-full leading-none">
+                      今日
+                    </span>
+                  )}
+                </h3>
+                <span className="text-xs text-muted-foreground font-normal">
+                  ({dateRaces.length}レース)
+                </span>
+              </div>
+            </div>
+
+            {/* その日のレースカード一覧 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {dateRaces.map((race) => (
+                <RaceCard key={race.id} race={race} />
+              ))}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }

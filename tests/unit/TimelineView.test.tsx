@@ -120,4 +120,44 @@ describe("TimelineView", () => {
     // 当初予定からの順延案内
     expect(screen.getByText(/当初予定: 2026年2月22日\(日\) から順延/)).toBeInTheDocument();
   });
+
+  it("初期表示時に今日以降の直近レース日付セクションへ自動スクロールされること", () => {
+    // 仮想時刻を 2026-02-01 に設定（2026-02-22 のレースが直近となる）
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-02-01T00:00:00.000Z"));
+
+    const scrollIntoViewMock = vi.fn();
+    Element.prototype.scrollIntoView = scrollIntoViewMock;
+
+    render(<TimelineView races={mockRaces} />);
+
+    // setTimeout を進める
+    vi.runAllTimers();
+
+    // 2026-02-22 のセクション要素を取得
+    const targetSection = document.getElementById("section-date-2026-02-22");
+    expect(targetSection).toBeInTheDocument();
+    expect(targetSection).toHaveClass("scroll-mt-16");
+
+    // scrollIntoView が呼び出されたことを確認
+    expect(scrollIntoViewMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        block: "start",
+      })
+    );
+
+    vi.useRealTimers();
+  });
+
+  it("当日のレースがある場合、日付ヘッダーに'今日'バッジが表示されること", () => {
+    // 仮想時刻を 2026-01-04 (当日) に設定
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(2026, 0, 4, 10, 0, 0));
+
+    render(<TimelineView races={mockRaces} />);
+
+    expect(screen.getByText("今日")).toBeInTheDocument();
+
+    vi.useRealTimers();
+  });
 });

@@ -75,3 +75,36 @@ export function formatRaceTimeDisplay(
     isPast,
   };
 }
+
+/**
+ * クライアントのローカル時刻基準で今日の日付を YYYY-MM-DD 形式で取得する
+ */
+export function getTodayLocalDateString(now: Date = new Date()): string {
+  const year = now.getFullYear();
+  const month = (now.getMonth() + 1).toString().padStart(2, '0');
+  const day = now.getDate().toString().padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+/**
+ * 昇順ソートされた日付文字列配列から、今日以降の直近レース日付（または最新の過去日）を特定する
+ * 1. dates が空の場合は null を返す
+ * 2. 今日以降（date >= today）で最初に見つかる日付を返す
+ * 3. 全て過去日の場合は最後の開催日（最新の過去レース）を返す
+ */
+export function findUpcomingOrLatestDate(
+  dates: string[],
+  today: string = getTodayLocalDateString()
+): string | null {
+  if (dates.length === 0) {
+    return null;
+  }
+
+  const upcomingDate = dates.find((d) => d >= today);
+  if (upcomingDate) {
+    return upcomingDate;
+  }
+
+  // 今日以降のレースが存在しない場合は最新の過去日（末尾）
+  return dates[dates.length - 1];
+}
