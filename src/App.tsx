@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Layout } from "@/components/shared/Layout";
 import { FilterBar } from "@/components/shared/FilterBar";
 import { TimelineView } from "@/features/timeline/TimelineView";
@@ -5,13 +6,21 @@ import { CalendarView } from "@/features/calendar/CalendarView";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRaces } from "@/hooks/useRaces";
 import { useViewMode } from "@/hooks/useViewMode";
+import { useLanguageStore } from "@/store/useLanguageStore";
 import { useRaceStore, selectFilteredRaces } from "@/store/useRaceStore";
 import { AlertCircle } from "lucide-react";
 
 export function App() {
   const { isLoading, error } = useRaces();
   const { viewMode } = useViewMode();
+  const language = useLanguageStore((state) => state.language);
   const filteredRaces = useRaceStore(selectFilteredRaces);
+
+  React.useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = language;
+    }
+  }, [language]);
 
   return (
     <Layout>

@@ -1,9 +1,11 @@
 import * as React from "react";
 import { useViewMode } from "@/hooks/useViewMode";
 import { useTheme } from "@/hooks/useTheme";
+import { useTranslation } from "@/libs/i18n";
+import { trackEvent } from "@/libs/analytics";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Calendar, ListFilter, Moon, Sun } from "lucide-react";
+import { Calendar, Languages, ListFilter, Moon, Sun } from "lucide-react";
 import { cn } from "@/libs/utils";
 
 export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
@@ -11,6 +13,13 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
 export function Header({ className, ...props }: HeaderProps) {
   const { viewMode, setViewMode } = useViewMode();
   const { resolvedTheme, toggleTheme } = useTheme();
+  const { language, toggleLanguage, t } = useTranslation();
+
+  const handleToggleLanguage = () => {
+    const nextLanguage = language === "ja" ? "en" : "ja";
+    toggleLanguage();
+    trackEvent("language_change", { from: language, to: nextLanguage });
+  };
 
   return (
     <header
@@ -40,7 +49,7 @@ export function Header({ className, ...props }: HeaderProps) {
           </div>
         </div>
 
-        {/* 表示モード切替 (Tabs) & テーマ切替 */}
+        {/* 表示モード切替 (Tabs) & コントロール群 */}
         <div className="flex items-center gap-1.5 sm:gap-2">
           <Tabs
             value={viewMode}
@@ -50,15 +59,37 @@ export function Header({ className, ...props }: HeaderProps) {
             <TabsList className="grid grid-cols-2 h-8">
               <TabsTrigger value="timeline" className="gap-1 px-2.5 text-xs">
                 <ListFilter className="h-3.5 w-3.5" />
-                <span>タイムライン</span>
+                <span>{t("nav.timeline")}</span>
               </TabsTrigger>
               <TabsTrigger value="calendar" className="gap-1 px-2.5 text-xs">
                 <Calendar className="h-3.5 w-3.5" />
-                <span>カレンダー</span>
+                <span>{t("nav.calendar")}</span>
               </TabsTrigger>
             </TabsList>
           </Tabs>
 
+          {/* 言語切替トグル */}
+          <Button
+            variant="ghost"
+            size="sm"
+            className="h-8 px-2 text-xs font-semibold gap-1.5"
+            onClick={handleToggleLanguage}
+            aria-label={
+              language === "ja"
+                ? t("nav.switchLanguageToEn")
+                : t("nav.switchLanguageToJa")
+            }
+            title={
+              language === "ja"
+                ? t("nav.switchLanguageToEn")
+                : t("nav.switchLanguageToJa")
+            }
+          >
+            <Languages className="h-4 w-4" />
+            <span>{language.toUpperCase()}</span>
+          </Button>
+
+          {/* テーマ切替 */}
           <Button
             variant="ghost"
             size="icon"
@@ -66,13 +97,13 @@ export function Header({ className, ...props }: HeaderProps) {
             onClick={toggleTheme}
             aria-label={
               resolvedTheme === "dark"
-                ? "ライトモードに切り替え"
-                : "ダークモードに切り替え"
+                ? t("nav.switchToLight")
+                : t("nav.switchToDark")
             }
             title={
               resolvedTheme === "dark"
-                ? "ライトモードに切り替え"
-                : "ダークモードに切り替え"
+                ? t("nav.switchToLight")
+                : t("nav.switchToDark")
             }
           >
             {resolvedTheme === "dark" ? (
