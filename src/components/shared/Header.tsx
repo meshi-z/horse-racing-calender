@@ -1,13 +1,16 @@
 import * as React from "react";
 import { useViewMode } from "@/hooks/useViewMode";
+import { useTheme } from "@/hooks/useTheme";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calendar, ListFilter } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Calendar, ListFilter, Moon, Sun } from "lucide-react";
 import { cn } from "@/libs/utils";
 
 export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
 
 export function Header({ className, ...props }: HeaderProps) {
   const { viewMode, setViewMode } = useViewMode();
+  const { resolvedTheme, toggleTheme } = useTheme();
 
   return (
     <header
@@ -37,8 +40,8 @@ export function Header({ className, ...props }: HeaderProps) {
           </div>
         </div>
 
-        {/* 表示モード切替 (Tabs) */}
-        <div className="flex items-center gap-2">
+        {/* 表示モード切替 (Tabs) & テーマ切替 */}
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <Tabs
             value={viewMode}
             onValueChange={(val) => setViewMode(val as "timeline" | "calendar")}
@@ -55,6 +58,29 @@ export function Header({ className, ...props }: HeaderProps) {
               </TabsTrigger>
             </TabsList>
           </Tabs>
+
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            onClick={toggleTheme}
+            aria-label={
+              resolvedTheme === "dark"
+                ? "ライトモードに切り替え"
+                : "ダークモードに切り替え"
+            }
+            title={
+              resolvedTheme === "dark"
+                ? "ライトモードに切り替え"
+                : "ダークモードに切り替え"
+            }
+          >
+            {resolvedTheme === "dark" ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
+          </Button>
         </div>
       </div>
     </header>
