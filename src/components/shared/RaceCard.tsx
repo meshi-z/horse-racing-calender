@@ -37,7 +37,7 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
   ({ race, className, onSelect, ...props }, ref) => {
     const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
-    const timeInfo = formatRaceTimeDisplay(race.start_time, race.is_time_confirmed);
+    const timeInfo = formatRaceTimeDisplay(race.start_time);
     const formattedDate = formatLocalDate(race.date);
     const sexTag = sexConstraintShortLabels[race.sex_constraint];
 
@@ -71,7 +71,7 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
           {...props}
         >
           <CardContent className="p-4 sm:p-5 flex flex-col gap-3">
-            {/* 上部: 開催日・発走時刻・確定フラグ */}
+            {/* 上部: 開催日・発走時刻・発走予定バッジ */}
             <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
               <div className="flex items-center gap-1.5 font-medium">
                 <Calendar className="h-3.5 w-3.5" />
@@ -80,12 +80,14 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
               <div className="flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5" />
                 <span className="font-semibold text-foreground">{timeInfo.time}</span>
-                <Badge
-                  variant={timeInfo.isConfirmed ? "default" : "outline"}
-                  className="text-[10px] px-1.5 py-0 h-4"
-                >
-                  {timeInfo.statusLabel}
-                </Badge>
+                {timeInfo.statusLabel && (
+                  <Badge
+                    variant="outline"
+                    className="text-[10px] px-1.5 py-0 h-4"
+                  >
+                    {timeInfo.statusLabel}
+                  </Badge>
+                )}
               </div>
             </div>
 
