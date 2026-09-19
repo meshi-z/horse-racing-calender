@@ -622,6 +622,28 @@ async function ensureJyusyoHtml(filePath: string, year: number, force: boolean =
   return new TextDecoder('shift-jis').decode(buffer);
 }
 
+/**
+ * 既存の races.json から確定済み発走予定時刻の情報を抽出し、
+ * レース特定用キー（ID および "日付_レース名"）から時刻情報を引けるマップを構築する
+ */
+export function extractConfirmedRaceTimesMap(
+  existingRaces: Array<{ id: string; name?: { ja?: string }; date: string; start_time: string; is_time_confirmed?: boolean }>
+): Map<string, { start_time: string; is_time_confirmed: boolean }> {
+  const map = new Map<string, { start_time: string; is_time_confirmed: boolean }>();
+  for (const r of existingRaces) {
+    if (r.is_time_confirmed) {
+      const val = { start_time: r.start_time, is_time_confirmed: true };
+      if (r.id) {
+        map.set(r.id, val);
+      }
+      if (r.name?.ja && r.date) {
+        map.set(`${r.date}_${r.name.ja}`, val);
+      }
+    }
+  }
+  return map;
+}
+
 async function main() {
   const { year, force } = parseCliArgs();
   console.log(`Building races data for year: ${year} (force: ${force})`);
@@ -637,6 +659,20 @@ async function main() {
 
   const icsContent = await ensureJraIcs(year, icsPath, { force });
   const htmlContent = await ensureJyusyoHtml(htmlPath, year, force);
+
+  // 既存の races.json がある場合は確定済み発走予定時刻を引き継ぐ
+  let confirmedTimesMap = new Map<string, { start_time: string; is_time_confirmed: boolean }>();
+  if (fs.existsSync(publicOutPath)) {
+    try {
+      const existingRaces = JSON.parse(fs.readFileSync(publicOutPath, 'utf-8'));
+      if (Array.isArray(existingRaces)) {
+        confirmedTimesMap = extractConfirmedRaceTimesMap(existingRaces);
+        console.log(`Preserving confirmed race times from existing races.json.`);
+      }
+    } catch (err) {
+      console.warn(`[Warning] Failed to read existing races.json for confirmed times: ${(err as Error).message}`);
+    }
+  }
 
   const icsRaces = parseIcs(icsContent);
   const htmlRaces = parseHtml(htmlContent);
@@ -695,7 +731,14 @@ async function main() {
     }
 
     const defaultTimeJst = determineDefaultTimeJst(htmlData.track_type, ics.course, ics.grade);
-    const startTimeUtc = toIsoUtc(finalDate, defaultTimeJst);
+    let startTimeUtc = toIsoUtc(finalDate, defaultTimeJst);
+    let isTimeConfirmed = false;
+
+    const confirmedInfo = confirmedTimesMap.get(id) || confirmedTimesMap.get(`${finalDate}_${ics.cleanName}`);
+    if (confirmedInfo) {
+      startTimeUtc = confirmedInfo.start_time;
+      isTimeConfirmed = confirmedInfo.is_time_confirmed;
+    }
 
     const handicap = determineHandicap(ics.cleanName, ics.grade, htmlData.age_constraint);
 
@@ -715,7 +758,7 @@ async function main() {
       grade: ics.grade,
       date: finalDate,
       start_time: startTimeUtc,
-      is_time_confirmed: false,
+      is_time_confirmed: isTimeConfirmed,
       ...(isRescheduled ? { is_rescheduled: true, original_date: ics.date } : {}),
       course: {
         ja: ics.course,
@@ -798,7 +841,9 @@ async function main() {
   console.log('Build completed successfully with Pattern A (Localized Object)!');
 }
 
-main().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('parse-races.ts')) {
+  main().catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+}

@@ -2462,8 +2462,8 @@
     },
     "grade": "J.G3",
     "date": "2026-09-19",
-    "start_time": "2026-09-19T04:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-19T02:20:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -2487,8 +2487,8 @@
     },
     "grade": "G2",
     "date": "2026-09-20",
-    "start_time": "2026-09-20T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-20T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -2513,7 +2513,7 @@
     "grade": "G2",
     "date": "2026-09-21",
     "start_time": "2026-09-21T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
