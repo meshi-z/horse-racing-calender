@@ -97,4 +97,16 @@ describe("RaceDetailDialog", () => {
     expect(screen.getByText("悪天候等による代替開催（日程変更）")).toBeInTheDocument();
     expect(screen.getByText(/2026年2月22日\(日\)/)).toBeInTheDocument();
   });
+
+  it("出走条件・負担重量において斤量が日本語のみで表示され英語が併記されないこと", () => {
+    render(
+      <RaceDetailDialog
+        race={mockRace}
+        open={true}
+        onOpenChange={vi.fn()}
+      />
+    );
+    expect(screen.getByText("斤量: 定量")).toBeInTheDocument();
+    expect(screen.queryByText(/Weight for Age/)).not.toBeInTheDocument();
+  });
 });

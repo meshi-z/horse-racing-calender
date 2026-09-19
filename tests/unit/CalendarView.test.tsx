@@ -140,4 +140,10 @@ describe("CalendarView", () => {
     expect(raceButton).toBeInTheDocument();
     expect(raceButton).toHaveTextContent("代替");
   });
+
+  it("カレンダー上部に '月曜始まりカレンダー（土日連続表示）' が表示されないこと", () => {
+    render(<CalendarView races={mockRaces} />);
+
+    expect(screen.queryByText(/月曜始まりカレンダー/)).not.toBeInTheDocument();
+  });
 });

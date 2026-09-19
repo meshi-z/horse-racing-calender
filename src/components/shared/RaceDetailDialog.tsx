@@ -140,7 +140,7 @@ export function RaceDetailDialog({
                 {sexConstraintLabels[race.sex_constraint]}
               </Badge>
               <Badge variant="outline">
-                斤量: {race.handicap.ja} ({race.handicap.en})
+                斤量: {race.handicap.ja}
               </Badge>
             </div>
           </div>
