@@ -2,7 +2,7 @@
   "スポーツニッポン賞京都金杯": {
     "name": {
       "ja": "スポーツニッポン賞京都金杯",
-      "en": "Kyoto Kimpai"
+      "en": "Sports Nippon Sho Kyoto Kimpai"
     },
     "organization": "jra",
     "course": {
@@ -43,7 +43,7 @@
   "日刊スポーツ賞中山金杯": {
     "name": {
       "ja": "日刊スポーツ賞中山金杯",
-      "en": "Nakayama Kimpai"
+      "en": "Nikkan Sports Sho Nakayama Kimpai"
     },
     "organization": "jra",
     "course": {
@@ -535,7 +535,7 @@
   "小倉ジャンプステークス": {
     "name": {
       "ja": "小倉ジャンプステークス",
-      "en": "小倉ジャンプステークス"
+      "en": "Kokura Jump Stakes"
     },
     "organization": "jra",
     "course": {
@@ -576,7 +576,7 @@
   "デイリー杯クイーンカップ": {
     "name": {
       "ja": "デイリー杯クイーンカップ",
-      "en": "デイリー杯クイーンカップ"
+      "en": "Daily Hai Queen Cup"
     },
     "organization": "jra",
     "course": {
@@ -1027,7 +1027,7 @@
   "ローレル競馬場賞中山牝馬ステークス": {
     "name": {
       "ja": "ローレル競馬場賞中山牝馬ステークス",
-      "en": "ローレル競馬場賞中山牝馬ステークス"
+      "en": "Laurel R.C. Sho Nakayama Himba Stakes"
     },
     "organization": "jra",
     "course": {
@@ -1068,7 +1068,7 @@
   "報知杯弥生賞ディープインパクト記念": {
     "name": {
       "ja": "報知杯弥生賞ディープインパクト記念",
-      "en": "報知杯弥生賞ディープインパクト記念"
+      "en": "Hochi Hai Yayoi Sho Deep Impact Kinen"
     },
     "organization": "jra",
     "course": {
@@ -1150,7 +1150,7 @@
   "フジテレビ賞スプリングステークス": {
     "name": {
       "ja": "フジテレビ賞スプリングステークス",
-      "en": "フジテレビ賞スプリングステークス"
+      "en": "Fuji TV Sho Spring Stakes"
     },
     "organization": "jra",
     "course": {
@@ -1232,7 +1232,7 @@
   "中日スポーツ賞ファルコンステークス": {
     "name": {
       "ja": "中日スポーツ賞ファルコンステークス",
-      "en": "中日スポーツ賞ファルコンステークス"
+      "en": "Chunichi Sports Sho Falcon Stakes"
     },
     "organization": "jra",
     "course": {
@@ -1724,7 +1724,7 @@
   "サンケイスポーツ杯阪神牝馬ステークス": {
     "name": {
       "ja": "サンケイスポーツ杯阪神牝馬ステークス",
-      "en": "サンケイスポーツ杯阪神牝馬ステークス"
+      "en": "Sankei Sports Hai Hanshin Himba Stakes"
     },
     "organization": "jra",
     "course": {
@@ -2011,7 +2011,7 @@
   "読売マイラーズカップ": {
     "name": {
       "ja": "読売マイラーズカップ",
-      "en": "読売マイラーズカップ"
+      "en": "Yomiuri Milers Cup"
     },
     "organization": "jra",
     "course": {
@@ -2052,7 +2052,7 @@
   "サンケイスポーツ賞フローラステークス": {
     "name": {
       "ja": "サンケイスポーツ賞フローラステークス",
-      "en": "サンケイスポーツ賞フローラステークス"
+      "en": "Sankei Sports Sho Flora Stakes"
     },
     "organization": "jra",
     "course": {
@@ -2134,7 +2134,7 @@
   "ユニコーンステークス": {
     "name": {
       "ja": "ユニコーンステークス",
-      "en": "ユニコーンステークス"
+      "en": "Unicorn Stakes"
     },
     "organization": "jra",
     "course": {
@@ -2380,7 +2380,7 @@
   "京都ハイジャンプ": {
     "name": {
       "ja": "京都ハイジャンプ",
-      "en": "京都ハイジャンプ"
+      "en": "Kyoto High-Jump"
     },
     "organization": "jra",
     "course": {
@@ -2503,7 +2503,7 @@
   "オークス": {
     "name": {
       "ja": "オークス",
-      "en": "オークス"
+      "en": "Yushun Himba (Japanese Oaks)"
     },
     "organization": "jra",
     "course": {
@@ -2872,7 +2872,7 @@
   "しらさぎステークス": {
     "name": {
       "ja": "しらさぎステークス",
-      "en": "しらさぎステークス"
+      "en": "Shirasagi Stakes"
     },
     "organization": "jra",
     "course": {
@@ -3282,7 +3282,7 @@
   "北海道新聞杯クイーンステークス": {
     "name": {
       "ja": "北海道新聞杯クイーンステークス",
-      "en": "北海道新聞杯クイーンステークス"
+      "en": "Hokkaido Shimbun Hai Queen Stakes"
     },
     "organization": "jra",
     "course": {
@@ -3692,7 +3692,7 @@
   "中京2歳ステークス": {
     "name": {
       "ja": "中京2歳ステークス",
-      "en": "中京2歳ステークス"
+      "en": "Chukyo Nisai Stakes"
     },
     "organization": "jra",
     "course": {
@@ -3815,7 +3815,7 @@
   "産経賞セントウルステークス": {
     "name": {
       "ja": "産経賞セントウルステークス",
-      "en": "産経賞セントウルステークス"
+      "en": "Sankei Sho Centaur Stakes"
     },
     "organization": "jra",
     "course": {
@@ -3979,7 +3979,7 @@
   "関西テレビ放送賞ローズステークス": {
     "name": {
       "ja": "関西テレビ放送賞ローズステークス",
-      "en": "関西テレビ放送賞ローズステークス"
+      "en": "Kansai Telecasting Corp.Sho Rose Stakes"
     },
     "organization": "jra",
     "course": {
@@ -4389,7 +4389,7 @@
   "MBS賞スワンステークス": {
     "name": {
       "ja": "MBS賞スワンステークス",
-      "en": "MBS賞スワンステークス"
+      "en": "MBS Sho Swan Stakes"
     },
     "organization": "jra",
     "course": {
@@ -4471,7 +4471,7 @@
   "東京ハイジャンプ": {
     "name": {
       "ja": "東京ハイジャンプ",
-      "en": "東京ハイジャンプ"
+      "en": "Tokyo High-Jump"
     },
     "organization": "jra",
     "course": {
@@ -4635,7 +4635,7 @@
   "KBS京都賞ファンタジーステークス": {
     "name": {
       "ja": "KBS京都賞ファンタジーステークス",
-      "en": "KBS京都賞ファンタジーステークス"
+      "en": "KBS Kyoto Sho Fantasy Stakes"
     },
     "organization": "jra",
     "course": {
@@ -5127,7 +5127,7 @@
   "ラジオNIKKEI杯京都2歳ステークス": {
     "name": {
       "ja": "ラジオNIKKEI杯京都2歳ステークス",
-      "en": "ラジオNIKKEI杯京都2歳ステークス"
+      "en": "Radio NIKKEI Hai Kyoto Nisai Stakes"
     },
     "organization": "jra",
     "course": {
@@ -5291,7 +5291,7 @@
   "スポーツニッポン賞ステイヤーズステークス": {
     "name": {
       "ja": "スポーツニッポン賞ステイヤーズステークス",
-      "en": "スポーツニッポン賞ステイヤーズステークス"
+      "en": "Sports Nippon Sho Stayers Stakes"
     },
     "organization": "jra",
     "course": {

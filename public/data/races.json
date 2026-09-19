@@ -4,7 +4,7 @@
     "organization": "jra",
     "name": {
       "ja": "スポーツニッポン賞京都金杯",
-      "en": "Kyoto Kimpai"
+      "en": "Sports Nippon Sho Kyoto Kimpai"
     },
     "grade": "G3",
     "date": "2026-01-04",
@@ -29,7 +29,7 @@
     "organization": "jra",
     "name": {
       "ja": "日刊スポーツ賞中山金杯",
-      "en": "Nakayama Kimpai"
+      "en": "Nikkan Sports Sho Nakayama Kimpai"
     },
     "grade": "G3",
     "date": "2026-01-04",
@@ -329,7 +329,7 @@
     "organization": "jra",
     "name": {
       "ja": "小倉ジャンプステークス",
-      "en": "小倉ジャンプステークス"
+      "en": "Kokura Jump Stakes"
     },
     "grade": "J.G3",
     "date": "2026-02-14",
@@ -354,7 +354,7 @@
     "organization": "jra",
     "name": {
       "ja": "デイリー杯クイーンカップ",
-      "en": "デイリー杯クイーンカップ"
+      "en": "Daily Hai Queen Cup"
     },
     "grade": "G3",
     "date": "2026-02-14",
@@ -629,7 +629,7 @@
     "organization": "jra",
     "name": {
       "ja": "ローレル競馬場賞中山牝馬ステークス",
-      "en": "ローレル競馬場賞中山牝馬ステークス"
+      "en": "Laurel R.C. Sho Nakayama Himba Stakes"
     },
     "grade": "G3",
     "date": "2026-03-07",
@@ -654,7 +654,7 @@
     "organization": "jra",
     "name": {
       "ja": "報知杯弥生賞ディープインパクト記念",
-      "en": "報知杯弥生賞ディープインパクト記念"
+      "en": "Hochi Hai Yayoi Sho Deep Impact Kinen"
     },
     "grade": "G2",
     "date": "2026-03-08",
@@ -704,7 +704,7 @@
     "organization": "jra",
     "name": {
       "ja": "フジテレビ賞スプリングステークス",
-      "en": "フジテレビ賞スプリングステークス"
+      "en": "Fuji TV Sho Spring Stakes"
     },
     "grade": "G2",
     "date": "2026-03-15",
@@ -754,7 +754,7 @@
     "organization": "jra",
     "name": {
       "ja": "中日スポーツ賞ファルコンステークス",
-      "en": "中日スポーツ賞ファルコンステークス"
+      "en": "Chunichi Sports Sho Falcon Stakes"
     },
     "grade": "G3",
     "date": "2026-03-21",
@@ -1054,7 +1054,7 @@
     "organization": "jra",
     "name": {
       "ja": "サンケイスポーツ杯阪神牝馬ステークス",
-      "en": "サンケイスポーツ杯阪神牝馬ステークス"
+      "en": "Sankei Sports Hai Hanshin Himba Stakes"
     },
     "grade": "G2",
     "date": "2026-04-11",
@@ -1229,7 +1229,7 @@
     "organization": "jra",
     "name": {
       "ja": "読売マイラーズカップ",
-      "en": "読売マイラーズカップ"
+      "en": "Yomiuri Milers Cup"
     },
     "grade": "G2",
     "date": "2026-04-26",
@@ -1254,7 +1254,7 @@
     "organization": "jra",
     "name": {
       "ja": "サンケイスポーツ賞フローラステークス",
-      "en": "サンケイスポーツ賞フローラステークス"
+      "en": "Sankei Sports Sho Flora Stakes"
     },
     "grade": "G2",
     "date": "2026-04-26",
@@ -1304,7 +1304,7 @@
     "organization": "jra",
     "name": {
       "ja": "ユニコーンステークス",
-      "en": "ユニコーンステークス"
+      "en": "Unicorn Stakes"
     },
     "grade": "G3",
     "date": "2026-05-02",
@@ -1454,7 +1454,7 @@
     "organization": "jra",
     "name": {
       "ja": "京都ハイジャンプ",
-      "en": "京都ハイジャンプ"
+      "en": "Kyoto High-Jump"
     },
     "grade": "J.G2",
     "date": "2026-05-16",
@@ -1529,7 +1529,7 @@
     "organization": "jra",
     "name": {
       "ja": "オークス",
-      "en": "オークス"
+      "en": "Yushun Himba (Japanese Oaks)"
     },
     "grade": "G1",
     "date": "2026-05-24",
@@ -1754,7 +1754,7 @@
     "organization": "jra",
     "name": {
       "ja": "しらさぎステークス",
-      "en": "しらさぎステークス"
+      "en": "Shirasagi Stakes"
     },
     "grade": "G3",
     "date": "2026-06-21",
@@ -2004,7 +2004,7 @@
     "organization": "jra",
     "name": {
       "ja": "北海道新聞杯クイーンステークス",
-      "en": "北海道新聞杯クイーンステークス"
+      "en": "Hokkaido Shimbun Hai Queen Stakes"
     },
     "grade": "G3",
     "date": "2026-08-02",
@@ -2254,7 +2254,7 @@
     "organization": "jra",
     "name": {
       "ja": "中京2歳ステークス",
-      "en": "中京2歳ステークス"
+      "en": "Chukyo Nisai Stakes"
     },
     "grade": "G3",
     "date": "2026-08-30",
@@ -2329,7 +2329,7 @@
     "organization": "jra",
     "name": {
       "ja": "産経賞セントウルステークス",
-      "en": "産経賞セントウルステークス"
+      "en": "Sankei Sho Centaur Stakes"
     },
     "grade": "G2",
     "date": "2026-09-06",
@@ -2429,7 +2429,7 @@
     "organization": "jra",
     "name": {
       "ja": "関西テレビ放送賞ローズステークス",
-      "en": "関西テレビ放送賞ローズステークス"
+      "en": "Kansai Telecasting Corp.Sho Rose Stakes"
     },
     "grade": "G2",
     "date": "2026-09-13",
@@ -2679,7 +2679,7 @@
     "organization": "jra",
     "name": {
       "ja": "MBS賞スワンステークス",
-      "en": "MBS賞スワンステークス"
+      "en": "MBS Sho Swan Stakes"
     },
     "grade": "G2",
     "date": "2026-10-12",
@@ -2729,7 +2729,7 @@
     "organization": "jra",
     "name": {
       "ja": "東京ハイジャンプ",
-      "en": "東京ハイジャンプ"
+      "en": "Tokyo High-Jump"
     },
     "grade": "J.G2",
     "date": "2026-10-18",
@@ -2829,7 +2829,7 @@
     "organization": "jra",
     "name": {
       "ja": "KBS京都賞ファンタジーステークス",
-      "en": "KBS京都賞ファンタジーステークス"
+      "en": "KBS Kyoto Sho Fantasy Stakes"
     },
     "grade": "G3",
     "date": "2026-10-31",
@@ -3129,7 +3129,7 @@
     "organization": "jra",
     "name": {
       "ja": "ラジオNIKKEI杯京都2歳ステークス",
-      "en": "ラジオNIKKEI杯京都2歳ステークス"
+      "en": "Radio NIKKEI Hai Kyoto Nisai Stakes"
     },
     "grade": "G3",
     "date": "2026-11-28",
@@ -3229,7 +3229,7 @@
     "organization": "jra",
     "name": {
       "ja": "スポーツニッポン賞ステイヤーズステークス",
-      "en": "スポーツニッポン賞ステイヤーズステークス"
+      "en": "Sports Nippon Sho Stayers Stakes"
     },
     "grade": "G2",
     "date": "2026-12-05",

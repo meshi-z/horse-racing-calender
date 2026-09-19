@@ -25,6 +25,8 @@ describe('public/data/races.json integrity check', () => {
       expect(race.organization).toBe('jra');
       expect(typeof race.name.ja).toBe('string');
       expect(typeof race.name.en).toBe('string');
+      expect(race.name.en).not.toMatch(/[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]/);
+      expect(race.name.en).not.toBe(race.name.ja);
       expect(validGrades).toContain(race.grade);
       expect(race.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(typeof race.start_time).toBe('string');
@@ -38,6 +40,18 @@ describe('public/data/races.json integrity check', () => {
       expect(validHandicapCodes).toContain(race.handicap.code);
       expect(typeof race.handicap.ja).toBe('string');
       expect(typeof race.handicap.en).toBe('string');
+    }
+  });
+
+  it('全レースの英語名 (name.en) に日本語文字が含まれず、正しく英語化されていること', () => {
+    const filePath = path.resolve(process.cwd(), 'public/data/races.json');
+    const rawData = fs.readFileSync(filePath, 'utf-8');
+    const races = JSON.parse(rawData) as Race[];
+
+    for (const race of races) {
+      expect(race.name.en).not.toMatch(/[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]/);
+      expect(race.name.en.trim().length).toBeGreaterThan(0);
+      expect(race.name.en).not.toBe(race.name.ja);
     }
   });
 });
