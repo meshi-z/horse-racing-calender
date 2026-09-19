@@ -157,24 +157,34 @@ export function TimelineView({ races, className }: TimelineViewProps) {
               style={{
                 top: "calc(3.5rem + var(--filterbar-height, 0px))",
               }}
-              className="sticky z-20 -mx-4 px-4 py-2 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70 border-b border-border/40 transition-[top] duration-200"
+              className={cn(
+                "sticky z-20 -mx-4 px-4 py-2 backdrop-blur transition-[top] duration-200 border-b",
+                isToday
+                  ? "bg-primary/[0.08] supports-[backdrop-filter]:bg-primary/[0.06] border-primary/30 dark:bg-primary/[0.12] dark:supports-[backdrop-filter]:bg-primary/[0.10]"
+                  : "bg-background/90 supports-[backdrop-filter]:bg-background/70 border-border/40"
+              )}
             >
               <div className="flex items-center gap-2">
                 <span
                   className={cn(
-                    "h-2 w-2 rounded-full",
-                    isToday ? "bg-primary ring-2 ring-primary/30" : "bg-primary"
+                    "rounded-full transition-all",
+                    isToday
+                      ? "h-2.5 w-2.5 bg-primary ring-4 ring-primary/25"
+                      : "h-2 w-2 bg-primary"
                   )}
                   aria-hidden="true"
                 />
                 <h3
                   id={`heading-date-${date}`}
-                  className="text-sm sm:text-base font-bold tracking-tight text-foreground flex items-center gap-2"
+                  className={cn(
+                    "text-sm sm:text-base font-bold tracking-tight flex items-center gap-2",
+                    isToday ? "text-primary dark:text-primary" : "text-foreground"
+                  )}
                 >
                   <span>{formattedDate}</span>
                   {isToday && (
-                    <span className="text-[10px] font-semibold bg-primary text-primary-foreground px-1.5 py-0.5 rounded-full leading-none">
-                      今日
+                    <span className="text-[10px] font-bold bg-primary text-primary-foreground px-2 py-0.5 rounded-full leading-none shadow-2xs">
+                      本日開催
                     </span>
                   )}
                 </h3>
@@ -187,7 +197,7 @@ export function TimelineView({ races, className }: TimelineViewProps) {
             {/* その日のレースカード一覧 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {dateRaces.map((race) => (
-                <RaceCard key={race.id} race={race} />
+                <RaceCard key={race.id} race={race} isToday={isToday} />
               ))}
             </div>
           </section>

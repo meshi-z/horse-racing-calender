@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GradeBadge } from "./GradeBadge";
 import { RaceDetailDialog } from "./RaceDetailDialog";
-import { formatLocalDate, formatRaceTimeDisplay } from "@/libs/date";
+import { formatLocalDate, formatRaceTimeDisplay, getTodayLocalDateString } from "@/libs/date";
 import type { Race } from "@/types/race";
 import { cn } from "@/libs/utils";
 import { Calendar, Clock, MapPin } from "lucide-react";
@@ -11,6 +11,7 @@ import { Calendar, Clock, MapPin } from "lucide-react";
 export interface RaceCardProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "onSelect"> {
   race: Race;
+  isToday?: boolean;
   onSelect?: (race: Race) => void;
 }
 
@@ -34,9 +35,10 @@ const ageConstraintShortLabels: Record<Race["age_constraint"], string> = {
 };
 
 export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
-  ({ race, className, onSelect, ...props }, ref) => {
+  ({ race, isToday: isTodayProp, className, onSelect, ...props }, ref) => {
     const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
+    const isToday = isTodayProp ?? (race.date === getTodayLocalDateString());
     const timeInfo = formatRaceTimeDisplay(race.start_time);
     const formattedDate = formatLocalDate(race.date);
     const sexTag = sexConstraintShortLabels[race.sex_constraint];
@@ -66,6 +68,7 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
           className={cn(
             "group relative cursor-pointer transition-all duration-150 hover:shadow-md hover:border-primary/50",
             race.is_rescheduled && "border-amber-200 dark:border-amber-900/50 bg-amber-50/10",
+            isToday && "ring-2 ring-primary/80 border-primary/40 bg-primary/[0.02] dark:bg-primary/[0.04]",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
             className
           )}
@@ -77,6 +80,14 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
               <div className="flex items-center gap-1.5 font-medium flex-wrap">
                 <Calendar className="h-3.5 w-3.5 shrink-0" />
                 <span>{formattedDate}</span>
+                {isToday && (
+                  <Badge
+                    variant="default"
+                    className="text-[10px] px-1.5 py-0 h-4 bg-primary text-primary-foreground font-semibold"
+                  >
+                    本日開催
+                  </Badge>
+                )}
                 {race.is_rescheduled && (
                   <Badge
                     variant="outline"
