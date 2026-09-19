@@ -120,4 +120,21 @@ describe("RaceCard", () => {
     const card = screen.getByRole("button", { name: "フェブラリーステークス（代替開催） 詳細を表示" });
     expect(card).toBeInTheDocument();
   });
+
+  it("isToday=true の場合、カードにハイライトスタイル（ring-2等）と'本日開催'バッジが表示されること", () => {
+    render(<RaceCard race={mockRace} isToday={true} />);
+
+    const card = screen.getByRole("button", { name: "フェブラリーステークス 詳細を表示" });
+    expect(card).toHaveClass("ring-2");
+    expect(card).toHaveClass("ring-primary/80");
+    expect(screen.getByText("本日開催")).toBeInTheDocument();
+  });
+
+  it("isToday=false の場合、'本日開催'バッジが表示されないこと", () => {
+    render(<RaceCard race={mockRace} isToday={false} />);
+
+    const card = screen.getByRole("button", { name: "フェブラリーステークス 詳細を表示" });
+    expect(card).not.toHaveClass("ring-2");
+    expect(screen.queryByText("本日開催")).not.toBeInTheDocument();
+  });
 });

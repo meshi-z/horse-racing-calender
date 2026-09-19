@@ -149,14 +149,22 @@ describe("TimelineView", () => {
     vi.useRealTimers();
   });
 
-  it("当日のレースがある場合、日付ヘッダーに'今日'バッジが表示されること", () => {
+  it("当日のレースがある場合、日付ヘッダーおよび対象レースカードが強調（本日開催バッジ・ハイライト）表示されること", () => {
     // 仮想時刻を 2026-01-04 (当日) に設定
     vi.useFakeTimers();
     vi.setSystemTime(new Date(2026, 0, 4, 10, 0, 0));
 
     render(<TimelineView races={mockRaces} />);
 
-    expect(screen.getByText("今日")).toBeInTheDocument();
+    // 日付ヘッダーおよびカード内の「本日開催」バッジが表示されること
+    const todayBadges = screen.getAllByText("本日開催");
+    expect(todayBadges.length).toBeGreaterThanOrEqual(1);
+
+    // 2026-01-04 のセクションヘッダーが強調スタイル（border-primary/30）を持つこと
+    const section = document.getElementById("section-date-2026-01-04");
+    expect(section).toBeInTheDocument();
+    const dateHeader = section?.querySelector(".sticky");
+    expect(dateHeader).toHaveClass("border-primary/30");
 
     vi.useRealTimers();
   });
