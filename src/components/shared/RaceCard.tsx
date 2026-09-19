@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import { GradeBadge } from "./GradeBadge";
 import { RaceDetailDialog } from "./RaceDetailDialog";
 import { formatLocalDate, formatRaceTimeDisplay, getTodayLocalDateString } from "@/libs/date";
+import {
+  useTranslation,
+  trackTypeLabels,
+  sexConstraintLabels,
+  ageConstraintLabels,
+} from "@/libs/i18n";
 import type { Race } from "@/types/race";
 import { cn } from "@/libs/utils";
 import { Calendar, Clock, MapPin } from "lucide-react";
@@ -15,33 +21,25 @@ export interface RaceCardProps
   onSelect?: (race: Race) => void;
 }
 
-const trackTypeLabels: Record<Race["track_type"], string> = {
-  turf: "芝",
-  dirt: "ダート",
-  obstacle: "障害",
-};
-
-const sexConstraintShortLabels: Record<Race["sex_constraint"], string | null> = {
-  filly_and_mare: "牝",
-  colt_and_filly: "牡・牝",
-  none: null,
-};
-
-const ageConstraintShortLabels: Record<Race["age_constraint"], string> = {
-  "2yo": "2歳",
-  "3yo": "3歳",
-  "3yo_and_up": "3歳上",
-  "4yo_and_up": "4歳上",
-};
-
 export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
   ({ race, isToday: isTodayProp, className, onSelect, ...props }, ref) => {
     const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+    const { language, t } = useTranslation();
 
     const isToday = isTodayProp ?? (race.date === getTodayLocalDateString());
-    const timeInfo = formatRaceTimeDisplay(race.start_time);
-    const formattedDate = formatLocalDate(race.date);
-    const sexTag = sexConstraintShortLabels[race.sex_constraint];
+    const timeInfo = formatRaceTimeDisplay(race.start_time, undefined, language);
+    const formattedDate = formatLocalDate(race.date, language);
+    const sexTag = sexConstraintLabels[language][race.sex_constraint].short;
+    const ageTag = ageConstraintLabels[language][race.age_constraint].short;
+    const trackLabel = trackTypeLabels[language][race.track_type];
+
+    const primaryName = language === "en" ? race.name.en : race.name.ja;
+    const secondaryName = language === "en" ? race.name.ja : race.name.en;
+    const courseName = race.course[language];
+    const handicapName = race.handicap[language];
+
+    const rescheduledTagText = language === "en" ? " (Rescheduled)" : "（代替開催）";
+    const viewDetailText = language === "en" ? "View Details" : "詳細を表示";
 
     const handleClick = () => {
       onSelect?.(race);
@@ -62,7 +60,7 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
           role="button"
           tabIndex={0}
           aria-haspopup="dialog"
-          aria-label={`${race.name.ja}${race.is_rescheduled ? "（代替開催）" : ""} 詳細を表示`}
+          aria-label={`${primaryName}${race.is_rescheduled ? rescheduledTagText : ""} ${viewDetailText}`}
           onClick={handleClick}
           onKeyDown={handleKeyDown}
           className={cn(
@@ -85,7 +83,7 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                     variant="default"
                     className="text-[10px] px-1.5 py-0 h-4 bg-primary text-primary-foreground font-semibold"
                   >
-                    本日開催
+                    {t("timeline.todayBadge")}
                   </Badge>
                 )}
                 {race.is_rescheduled && (
@@ -93,7 +91,7 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                     variant="outline"
                     className="text-[10px] px-1.5 py-0 h-4 border-amber-500 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 font-semibold"
                   >
-                    代替開催
+                    {t("timeline.rescheduledBadge")}
                   </Badge>
                 )}
               </div>
@@ -114,7 +112,11 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
             {/* 代替開催時の元日程案内 */}
             {race.is_rescheduled && race.original_date && (
               <div className="text-[11px] text-amber-600 dark:text-amber-400 font-medium -mt-1 flex items-center gap-1">
-                <span>当初予定: {formatLocalDate(race.original_date)} から順延</span>
+                <span>
+                  {t("card.postponedFrom", {
+                    date: formatLocalDate(race.original_date, language),
+                  })}
+                </span>
               </div>
             )}
 
@@ -125,9 +127,9 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
               </div>
               <div className="min-w-0 flex-1">
                 <h4 className="font-bold text-base sm:text-lg leading-snug group-hover:text-primary transition-colors line-clamp-2">
-                  {race.name.ja}
+                  {primaryName}
                 </h4>
-                <p className="text-xs text-muted-foreground truncate">{race.name.en}</p>
+                <p className="text-xs text-muted-foreground truncate">{secondaryName}</p>
               </div>
             </div>
 
@@ -135,17 +137,17 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
             <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-border/50 text-xs">
               <div className="flex items-center gap-1.5 font-medium text-foreground">
                 <MapPin className="h-3.5 w-3.5 text-muted-foreground" />
-                <span>{race.course.ja}</span>
+                <span>{courseName}</span>
                 <span className="text-muted-foreground">・</span>
                 <span>
-                  {trackTypeLabels[race.track_type]} {race.distance}m
+                  {trackLabel} {race.distance}m
                 </span>
               </div>
 
               {/* 条件タグ */}
               <div className="flex flex-wrap items-center gap-1">
                 <Badge variant="secondary" className="text-[11px] px-1.5 py-0 font-normal">
-                  {ageConstraintShortLabels[race.age_constraint]}
+                  {ageTag}
                 </Badge>
                 {sexTag && (
                   <Badge variant="secondary" className="text-[11px] px-1.5 py-0 font-normal">
@@ -153,7 +155,7 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                   </Badge>
                 )}
                 <Badge variant="outline" className="text-[11px] px-1.5 py-0 font-normal">
-                  {race.handicap.ja}
+                  {handicapName}
                 </Badge>
               </div>
             </div>

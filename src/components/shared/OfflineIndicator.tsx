@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useNetworkStatus } from '@/hooks/useNetworkStatus';
 import { WifiOff, Wifi } from 'lucide-react';
 import { cn } from '@/libs/utils';
+import { useTranslation } from '@/libs/i18n';
 
 export interface OfflineIndicatorProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -9,6 +10,7 @@ export interface OfflineIndicatorProps extends React.HTMLAttributes<HTMLDivEleme
  * オフライン状態およびオンライン復帰をユーザーに通知するインジケーターコンポーネント
  */
 export function OfflineIndicator({ className, ...props }: OfflineIndicatorProps) {
+  const { t } = useTranslation();
   const { isOnline, wasOffline } = useNetworkStatus();
   const [showReconnected, setShowReconnected] = React.useState(false);
 
@@ -42,12 +44,12 @@ export function OfflineIndicator({ className, ...props }: OfflineIndicatorProps)
       {!isOnline ? (
         <>
           <WifiOff className="h-3.5 w-3.5 shrink-0 text-amber-600 dark:text-amber-400" />
-          <span>オフライン表示中（キャッシュされたレースデータを表示しています）</span>
+          <span>{t('offline.status')}</span>
         </>
       ) : (
         <>
           <Wifi className="h-3.5 w-3.5 shrink-0 text-emerald-600 dark:text-emerald-400" />
-          <span>オンラインに復帰しました</span>
+          <span>{t('offline.reconnected')}</span>
         </>
       )}
     </div>

@@ -1,8 +1,13 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Layout } from "../../src/components/shared/Layout";
+import { useLanguageStore } from "../../src/store/useLanguageStore";
 
 describe("Layout", () => {
+  beforeEach(() => {
+    useLanguageStore.setState({ language: "ja" });
+  });
+
   it("フッターにコピーライト、免責事項への導線、および非公式注記が表示されること", () => {
     render(
       <Layout>
@@ -22,6 +27,25 @@ describe("Layout", () => {
     expect(
       screen.getByText(
         /当サイトは非公式ファンサイトです。レース日程・発走時刻等の最新情報は必ず主催者（JRA等）公式発表をご確認ください。/
+      )
+    ).toBeInTheDocument();
+  });
+
+  it("英語モードでフッターの免責事項導線と非公式注記が英語で表示されること", () => {
+    useLanguageStore.setState({ language: "en" });
+
+    render(
+      <Layout>
+        <div>Content</div>
+      </Layout>
+    );
+
+    expect(
+      screen.getByRole("button", { name: "Disclaimer & Data Sources" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /This is an unofficial fan site. Please always verify the latest race schedules and post times/
       )
     ).toBeInTheDocument();
   });

@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   formatLocalTime,
   formatLocalDate,
+  formatYearMonth,
   formatRaceTimeDisplay,
   getTodayLocalDateString,
   findUpcomingOrLatestDate,
@@ -21,26 +22,56 @@ describe("src/libs/date.ts", () => {
   });
 
   describe("formatLocalDate", () => {
-    it("YYYY-MM-DD を 'YYYY年M月D日(曜日)' に変換すること", () => {
+    it("YYYY-MM-DD を 'YYYY年M月D日(曜日)' に変換すること (ja)", () => {
       // 2026-02-22 は日曜日
-      const formatted = formatLocalDate("2026-02-22");
+      const formatted = formatLocalDate("2026-02-22", "ja");
       expect(formatted).toBe("2026年2月22日(日)");
     });
 
-    it("1桁の月日でも正しくフォーマットされること", () => {
+    it("1桁の月日でも正しくフォーマットされること (ja)", () => {
       // 2026-01-04 は日曜日
-      const formatted = formatLocalDate("2026-01-04");
+      const formatted = formatLocalDate("2026-01-04", "ja");
       expect(formatted).toBe("2026年1月4日(日)");
+    });
+
+    it("英語モード時に 'ddd, MMM D, YYYY' 形式に変換されること (en)", () => {
+      // 2026-10-04 は日曜日
+      const formatted = formatLocalDate("2026-10-04", "en");
+      expect(formatted).toBe("Sun, Oct 4, 2026");
+
+      const febFormatted = formatLocalDate("2026-02-22", "en");
+      expect(febFormatted).toBe("Sun, Feb 22, 2026");
+    });
+  });
+
+  describe("formatYearMonth", () => {
+    it("日本語モードで 'YYYY年M月' を返すこと", () => {
+      expect(formatYearMonth(2026, 4, "ja")).toBe("2026年4月");
+      expect(formatYearMonth(2026, 12, "ja")).toBe("2026年12月");
+    });
+
+    it("英語モードで 'MMMM YYYY' を返すこと", () => {
+      expect(formatYearMonth(2026, 4, "en")).toBe("April 2026");
+      expect(formatYearMonth(2026, 1, "en")).toBe("January 2026");
+      expect(formatYearMonth(2026, 12, "en")).toBe("December 2026");
     });
   });
 
   describe("formatRaceTimeDisplay", () => {
     const startTime = "2026-02-22T06:40:00.000Z";
 
-    it("発走時刻前の場合、'発走予定' ステータスと isPast: false を返すこと", () => {
+    it("発走時刻前の場合、'発走予定' ステータスと isPast: false を返すこと (ja)", () => {
       const nowBefore = new Date("2026-02-22T06:30:00.000Z");
-      const result = formatRaceTimeDisplay(startTime, nowBefore);
+      const result = formatRaceTimeDisplay(startTime, nowBefore, "ja");
       expect(result.statusLabel).toBe("発走予定");
+      expect(result.isPast).toBe(false);
+      expect(result.time).toMatch(/^\d{2}:\d{2}$/);
+    });
+
+    it("英語モード時に 'Scheduled' ステータスを返すこと (en)", () => {
+      const nowBefore = new Date("2026-02-22T06:30:00.000Z");
+      const result = formatRaceTimeDisplay(startTime, nowBefore, "en");
+      expect(result.statusLabel).toBe("Scheduled");
       expect(result.isPast).toBe(false);
       expect(result.time).toMatch(/^\d{2}:\d{2}$/);
     });

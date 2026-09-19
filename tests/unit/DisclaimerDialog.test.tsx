@@ -1,8 +1,12 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { DisclaimerDialog } from "../../src/components/shared/DisclaimerDialog";
+import { useLanguageStore } from "../../src/store/useLanguageStore";
 
 describe("DisclaimerDialog", () => {
+  beforeEach(() => {
+    useLanguageStore.setState({ language: "ja" });
+  });
   it("デフォルトのトリガーボタンが表示され、クリックすると免責事項ダイアログが開くこと", () => {
     render(<DisclaimerDialog />);
 
@@ -75,5 +79,49 @@ describe("DisclaimerDialog", () => {
     expect(
       screen.getByRole("heading", { name: "免責事項・データ出典" })
     ).toBeInTheDocument();
+  });
+
+  describe("英語モード (English mode)", () => {
+    beforeEach(() => {
+      useLanguageStore.setState({ language: "en" });
+    });
+
+    it("英語のトリガーボタンが表示され、クリックすると英語の免責事項ダイアログが開くこと", () => {
+      render(<DisclaimerDialog />);
+
+      const triggerButton = screen.getByRole("button", {
+        name: "Disclaimer & Data Sources",
+      });
+      expect(triggerButton).toBeInTheDocument();
+
+      fireEvent.click(triggerButton);
+
+      expect(
+        screen.getByRole("heading", { name: "Disclaimer & Data Sources" })
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText("Terms of use, data handling, and disclaimer for this application.")
+      ).toBeInTheDocument();
+    });
+
+    it("英語の各セクション見出しおよび本文が表示されること", () => {
+      render(<DisclaimerDialog open={true} />);
+
+      // 見出しの確認
+      expect(screen.getByText("Unofficial Fan Site")).toBeInTheDocument();
+      expect(screen.getByText("Data Sources")).toBeInTheDocument();
+      expect(screen.getByText("Schedule Changes & Disclaimer")).toBeInTheDocument();
+      expect(screen.getByText("Intellectual Property & Trademarks")).toBeInTheDocument();
+      expect(screen.getByText("Access Analytics (Google Analytics)")).toBeInTheDocument();
+
+      // 本文の確認
+      expect(screen.getByText(/unofficial, personal fan project and has no affiliation with JRA/)).toBeInTheDocument();
+      expect(screen.getByText(/sourced and processed from publicly accessible JRA official information/)).toBeInTheDocument();
+      expect(screen.getByText(/When purchasing betting tickets or attending races in person, please always verify official announcements/)).toBeInTheDocument();
+      expect(screen.getByText(/assume no liability for any direct or indirect damages/)).toBeInTheDocument();
+      expect(screen.getByText(/belong to the Japan Racing Association \(JRA\)/)).toBeInTheDocument();
+      expect(screen.getByText(/Google Analytics \(GA4\) provided by Google LLC/)).toBeInTheDocument();
+      expect(screen.getByText(/Google Analytics uses cookies to collect data/)).toBeInTheDocument();
+    });
   });
 });

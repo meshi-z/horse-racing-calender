@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { App } from "../../src/App";
 import { useRaceStore } from "../../src/store/useRaceStore";
+import { useLanguageStore } from "../../src/store/useLanguageStore";
 import * as useRacesModule from "../../src/hooks/useRaces";
 import type { Race } from "../../src/types/race";
 
@@ -26,6 +27,7 @@ const mockRaces: Race[] = [
 describe("App Integration", () => {
   beforeEach(() => {
     localStorage.clear();
+    useLanguageStore.setState({ language: "ja" });
     useRaceStore.setState({
       races: mockRaces,
       viewMode: "timeline",
@@ -94,5 +96,31 @@ describe("App Integration", () => {
 
     expect(screen.getByRole("grid", { name: /カレンダー/ })).toBeInTheDocument();
     expect(screen.getByText("表示: 月間カレンダー")).toBeInTheDocument();
+  });
+
+  it("言語設定に応じて document.documentElement.lang と document.title が動的に更新されること", () => {
+    vi.spyOn(useRacesModule, "useRaces").mockReturnValue({
+      isLoading: false,
+      error: null,
+      races: mockRaces,
+    });
+
+    // 日本語モード
+    useLanguageStore.setState({ language: "ja" });
+    const { rerender } = render(<App />);
+
+    expect(document.documentElement.lang).toBe("ja");
+    expect(document.title).toBe("重賞カレンダー - JRA重賞レーススケジュール");
+    expect(screen.getByText("該当レース: 1 件")).toBeInTheDocument();
+    expect(screen.getByText("表示: タイムライン")).toBeInTheDocument();
+
+    // 英語モードへ切り替え
+    useLanguageStore.setState({ language: "en" });
+    rerender(<App />);
+
+    expect(document.documentElement.lang).toBe("en");
+    expect(document.title).toBe("JRA Graded Races Calendar - Schedule & Details");
+    expect(screen.getByText("Matching races: 1")).toBeInTheDocument();
+    expect(screen.getByText("View: Timeline")).toBeInTheDocument();
   });
 });

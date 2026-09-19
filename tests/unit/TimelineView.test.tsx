@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import { TimelineView } from "../../src/features/timeline/TimelineView";
 import { useRaceStore } from "../../src/store/useRaceStore";
+import { useLanguageStore } from "../../src/store/useLanguageStore";
 import type { Race } from "../../src/types/race";
 
 const mockRaces: Race[] = [
@@ -54,6 +55,7 @@ const mockRaces: Race[] = [
 
 describe("TimelineView", () => {
   beforeEach(() => {
+    useLanguageStore.setState({ language: "ja" });
     useRaceStore.setState({
       filters: {
         searchQuery: "",
@@ -264,6 +266,31 @@ describe("TimelineView", () => {
 
       // 表示クラス（opacity-100）に切り替わること
       expect(container).toHaveClass("opacity-100");
+    });
+  });
+
+  describe("多言語表示 (en)", () => {
+    beforeEach(() => {
+      useLanguageStore.setState({ language: "en" });
+    });
+
+    it("英語モード時に日付ヘッダーが英語フォーマットで表示されること", () => {
+      render(<TimelineView races={mockRaces} />);
+
+      expect(screen.getAllByText("Sun, Jan 4, 2026").length).toBeGreaterThan(0);
+      expect(screen.getAllByText("Sun, Feb 22, 2026").length).toBeGreaterThan(0);
+      expect(screen.getByText("(2 Races)")).toBeInTheDocument();
+      expect(screen.getByText("(1 Races)")).toBeInTheDocument();
+    });
+
+    it("英語モード時に空状態が英語で表示されること", () => {
+      render(<TimelineView races={[]} />);
+
+      expect(screen.getByText("No races found")).toBeInTheDocument();
+      expect(
+        screen.getByText("Try changing keywords/filter criteria or reset filters.")
+      ).toBeInTheDocument();
+      expect(screen.getByText("Reset Filters")).toBeInTheDocument();
     });
   });
 });

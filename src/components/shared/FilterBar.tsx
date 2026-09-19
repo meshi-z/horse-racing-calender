@@ -5,6 +5,13 @@ import { Button } from "@/components/ui/button";
 import type { Grade, TrackType, DistanceCategory } from "@/types/race";
 import { Search, RotateCcw, X, MapPin, ChevronDown } from "lucide-react";
 import { cn } from "@/libs/utils";
+import {
+  useTranslation,
+  DISTANCE_OPTIONS_BY_LANG,
+  COURSE_OPTIONS_BY_LANG,
+  getLocalizedCourseName,
+  trackTypeLabels,
+} from "@/libs/i18n";
 
 export const GRADE_OPTIONS: { label: string; grade: Grade }[] = [
   { label: "G1", grade: "G1" },
@@ -21,33 +28,13 @@ export const TRACK_OPTIONS: { label: string; type: TrackType }[] = [
   { label: "障害", type: "obstacle" },
 ];
 
-export const DISTANCE_OPTIONS: {
-  label: string;
-  category: DistanceCategory;
-  description: string;
-}[] = [
-  { label: "短距離", category: "sprint", description: "1400m以下（スプリント）" },
-  { label: "マイル", category: "mile", description: "1500〜1700m（マイル）" },
-  { label: "中距離", category: "intermediate", description: "1800〜2200m（中距離）" },
-  { label: "長距離", category: "long", description: "2400m以上（長距離・障害）" },
-];
-
-export const COURSE_OPTIONS: { label: string; name: string }[] = [
-  { label: "東京", name: "東京" },
-  { label: "中山", name: "中山" },
-  { label: "阪神", name: "阪神" },
-  { label: "京都", name: "京都" },
-  { label: "中京", name: "中京" },
-  { label: "小倉", name: "小倉" },
-  { label: "新潟", name: "新潟" },
-  { label: "福島", name: "福島" },
-  { label: "札幌", name: "札幌" },
-  { label: "函館", name: "函館" },
-];
+export const DISTANCE_OPTIONS = DISTANCE_OPTIONS_BY_LANG.ja;
+export const COURSE_OPTIONS = COURSE_OPTIONS_BY_LANG.ja;
 
 export interface FilterBarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function FilterBar({ className, ...props }: FilterBarProps) {
+  const { t, language } = useTranslation();
   const filters = useRaceStore((state) => state.filters);
   const setFilter = useRaceStore((state) => state.setFilter);
   const resetFilters = useRaceStore((state) => state.resetFilters);
@@ -55,6 +42,14 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isCourseExpanded, setIsCourseExpanded] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
+
+  const trackOptions: { label: string; type: TrackType }[] = [
+    { label: trackTypeLabels[language].turf, type: "turf" },
+    { label: trackTypeLabels[language].dirt, type: "dirt" },
+    { label: trackTypeLabels[language].obstacle, type: "obstacle" },
+  ];
+  const distanceOptions = DISTANCE_OPTIONS_BY_LANG[language];
+  const courseOptions = COURSE_OPTIONS_BY_LANG[language];
 
   // スクロール検知によりコンパクト表示フラグを切り替え
   React.useEffect(() => {
@@ -161,18 +156,18 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground pointer-events-none" />
           <Input
             type="text"
-            placeholder="レース名で検索（例: フェブラリー、有馬記念、February）"
+            placeholder={t("filter.searchPlaceholder")}
             value={filters.searchQuery}
             onChange={(e) => setFilter("searchQuery", e.target.value)}
             className="pl-8 sm:pl-9 pr-8 h-9 text-sm"
-            aria-label="レース名検索"
+            aria-label={t("filter.searchAria")}
           />
           {filters.searchQuery && (
             <button
               type="button"
               onClick={() => setFilter("searchQuery", "")}
               className="absolute right-2.5 top-2.5 text-muted-foreground hover:text-foreground"
-              aria-label="検索キーワードをクリア"
+              aria-label={t("filter.clearSearchAria")}
             >
               <X className="h-4 w-4" />
             </button>
@@ -185,10 +180,10 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
             size="sm"
             onClick={resetFilters}
             className="shrink-0 gap-1.5 h-9 px-3 text-xs text-muted-foreground hover:text-destructive hover:border-destructive transition-colors"
-            aria-label="フィルターをリセット"
+            aria-label={t("filter.resetFilterAria")}
           >
             <RotateCcw className="h-3.5 w-3.5" />
-            <span>リセット</span>
+            <span>{t("filter.reset")}</span>
           </Button>
         )}
       </div>
@@ -198,7 +193,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
         {/* グレード */}
         <div className="flex items-center flex-wrap gap-1.5">
           <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
-            グレード:
+            {t("filter.gradeLabel")}
           </span>
           {GRADE_OPTIONS.map(({ label, grade }) => {
             const isSelected = filters.grades.includes(grade);
@@ -226,9 +221,9 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
         {/* 馬場種別 */}
         <div className="flex items-center flex-wrap gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
           <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
-            馬場:
+            {t("filter.trackLabel")}
           </span>
-          {TRACK_OPTIONS.map(({ label, type }) => {
+          {trackOptions.map(({ label, type }) => {
             const isSelected = filters.trackTypes.includes(type);
             return (
               <button
@@ -254,9 +249,9 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
         {/* 距離区分 */}
         <div className="flex items-center flex-wrap gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
           <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
-            距離:
+            {t("filter.distanceLabel")}
           </span>
-          {DISTANCE_OPTIONS.map(({ label, category, description }) => {
+          {distanceOptions.map(({ label, category, description }) => {
             const isSelected = filters.distanceCategories.includes(category);
             return (
               <button
@@ -265,7 +260,9 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
                 onClick={() => handleDistanceToggle(category)}
                 aria-pressed={isSelected}
                 title={description}
-                aria-label={`距離フィルター: ${label}（${description}）`}
+                aria-label={t("filter.distanceFilterAria")
+                  .replace("{label}", label)
+                  .replace("{description}", description)}
                 className={cn(
                   "rounded-md border transition-colors cursor-pointer",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
@@ -287,7 +284,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
             type="button"
             onClick={() => setIsCourseExpanded((prev) => !prev)}
             aria-expanded={isCourseExpanded}
-            aria-label="競馬場フィルターを展開"
+            aria-label={t("filter.courseExpandAria")}
             className={cn(
               "flex items-center gap-1.5 rounded-md border font-semibold transition-colors cursor-pointer",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
@@ -298,7 +295,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
             )}
           >
             <MapPin className="h-3.5 w-3.5" />
-            <span>競馬場</span>
+            <span>{t("filter.courseLabel")}</span>
             {filters.courses.length > 0 && (
               <span className="ml-0.5 rounded-full bg-primary-foreground text-primary px-1.5 py-0.2 text-[10px] font-bold">
                 {filters.courses.length}
@@ -323,7 +320,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
           <div className="flex items-center justify-between text-xs">
             <span className="text-muted-foreground font-medium flex items-center gap-1">
               <MapPin className="h-3 w-3 text-primary" />
-              <span>競馬場を選択（複数選択可）:</span>
+              <span>{t("filter.selectCourses")}</span>
             </span>
             {filters.courses.length > 0 && (
               <button
@@ -331,12 +328,12 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
                 onClick={handleClearCourses}
                 className="text-[11px] text-muted-foreground hover:text-destructive transition-colors underline underline-offset-2 cursor-pointer"
               >
-                競馬場選択をクリア
+                {t("filter.clearCourses")}
               </button>
             )}
           </div>
           <div className="flex items-center flex-wrap gap-1.5">
-            {COURSE_OPTIONS.map(({ label, name }) => {
+            {courseOptions.map(({ label, name }) => {
               const isSelected = filters.courses.includes(name);
               return (
                 <button
@@ -369,30 +366,33 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
         >
           <span className="text-muted-foreground text-[11px] mr-0.5 flex items-center gap-1">
             <MapPin className="h-3 w-3 text-primary" />
-            <span>選択中の競馬場:</span>
+            <span>{t("filter.selectedCourses")}</span>
           </span>
-          {filters.courses.map((course) => (
-            <span
-              key={course}
-              className="inline-flex items-center gap-1 rounded-md bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 text-xs font-medium"
-            >
-              <span>{course}</span>
-              <button
-                type="button"
-                onClick={() => handleCourseToggle(course)}
-                className="hover:bg-primary/20 rounded-full p-0.5 transition-colors cursor-pointer"
-                aria-label={`${course}の絞り込みを解除`}
+          {filters.courses.map((course) => {
+            const localizedCourse = getLocalizedCourseName(course, language);
+            return (
+              <span
+                key={course}
+                className="inline-flex items-center gap-1 rounded-md bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 text-xs font-medium"
               >
-                <X className="h-3 w-3" />
-              </button>
-            </span>
-          ))}
+                <span>{localizedCourse}</span>
+                <button
+                  type="button"
+                  onClick={() => handleCourseToggle(course)}
+                  className="hover:bg-primary/20 rounded-full p-0.5 transition-colors cursor-pointer"
+                  aria-label={t("filter.removeCourseAria").replace("{course}", localizedCourse)}
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </span>
+            );
+          })}
           <button
             type="button"
             onClick={handleClearCourses}
             className="text-[11px] text-muted-foreground hover:text-destructive transition-colors ml-1 underline underline-offset-2 cursor-pointer"
           >
-            クリア
+            {t("filter.clear")}
           </button>
         </div>
       )}

@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Layout } from "@/components/shared/Layout";
 import { FilterBar } from "@/components/shared/FilterBar";
 import { TimelineView } from "@/features/timeline/TimelineView";
@@ -6,12 +7,21 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useRaces } from "@/hooks/useRaces";
 import { useViewMode } from "@/hooks/useViewMode";
 import { useRaceStore, selectFilteredRaces } from "@/store/useRaceStore";
+import { useTranslation } from "@/libs/i18n";
 import { AlertCircle } from "lucide-react";
 
 export function App() {
   const { isLoading, error } = useRaces();
   const { viewMode } = useViewMode();
+  const { t, language } = useTranslation();
   const filteredRaces = useRaceStore(selectFilteredRaces);
+
+  React.useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = language;
+      document.title = t("filter.appDocTitle");
+    }
+  }, [language, t]);
 
   return (
     <Layout>
@@ -25,7 +35,7 @@ export function App() {
             className="space-y-4"
             role="status"
             aria-live="polite"
-            aria-label="レース日程を読み込み中"
+            aria-label={t("filter.loadingRaces")}
           >
             <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
               <Skeleton className="h-4 w-28" />
@@ -60,7 +70,7 @@ export function App() {
             className="rounded-lg border border-destructive/50 bg-destructive/10 p-4 text-center text-sm text-destructive flex items-center justify-center gap-2"
           >
             <AlertCircle className="h-4 w-4 shrink-0" />
-            <span>レースデータの取得に失敗しました: {error.message}</span>
+            <span>{t("filter.loadError")}{error.message}</span>
           </div>
         )}
 
@@ -68,9 +78,14 @@ export function App() {
         {!isLoading && !error && (
           <>
             <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
-              <span>該当レース: {filteredRaces.length} 件</span>
+              <span>{t("filter.matchedRaces").replace("{count}", String(filteredRaces.length))}</span>
               <span className="capitalize">
-                表示: {viewMode === "timeline" ? "タイムライン" : "月間カレンダー"}
+                {t("filter.viewModeLabel").replace(
+                  "{mode}",
+                  viewMode === "timeline"
+                    ? t("filter.viewModeTimeline")
+                    : t("filter.viewModeCalendar")
+                )}
               </span>
             </div>
 

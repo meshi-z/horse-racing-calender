@@ -4,11 +4,11 @@ import { RaceDetailDialog } from "@/components/shared/RaceDetailDialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
-  CALENDAR_WEEKDAYS,
   getCalendarDays,
   type CalendarDay,
 } from "@/libs/calendar";
-import { formatLocalTime } from "@/libs/date";
+import { formatLocalDate, formatLocalTime, formatYearMonth } from "@/libs/date";
+import { useTranslation, CALENDAR_WEEKDAYS_BY_LANG } from "@/libs/i18n";
 import { cn } from "@/libs/utils";
 import { useRaceStore } from "@/store/useRaceStore";
 import type { Race } from "@/types/race";
@@ -28,6 +28,7 @@ export function CalendarView({ races, className }: CalendarViewProps) {
   const nextMonth = useRaceStore((state) => state.nextMonth);
   const prevMonth = useRaceStore((state) => state.prevMonth);
   const goToCurrentMonth = useRaceStore((state) => state.goToCurrentMonth);
+  const { language, t } = useTranslation();
 
   // 詳細ダイアログ管理
   const [selectedRace, setSelectedRace] = React.useState<Race | null>(null);
@@ -79,6 +80,9 @@ export function CalendarView({ races, className }: CalendarViewProps) {
     }
   };
 
+  const weekdays = CALENDAR_WEEKDAYS_BY_LANG[language];
+  const yearMonthTitle = formatYearMonth(currentYearMonth.year, currentYearMonth.month, language);
+
   return (
     <div className={cn("space-y-4", className)}>
       {/* ナビゲーションヘッダー */}
@@ -90,7 +94,7 @@ export function CalendarView({ races, className }: CalendarViewProps) {
               size="icon"
               className="h-8 w-8"
               onClick={prevMonth}
-              aria-label="前月へ"
+              aria-label={t("calendar.prevMonth")}
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
@@ -99,16 +103,16 @@ export function CalendarView({ races, className }: CalendarViewProps) {
               size="sm"
               className="h-8 text-xs font-medium"
               onClick={goToCurrentMonth}
-              aria-label="今月へジャンプ"
+              aria-label={t("calendar.todayAria")}
             >
-              今月
+              {t("calendar.today")}
             </Button>
             <Button
               variant="outline"
               size="icon"
               className="h-8 w-8"
               onClick={nextMonth}
-              aria-label="翌月へ"
+              aria-label={t("calendar.nextMonth")}
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
@@ -116,21 +120,20 @@ export function CalendarView({ races, className }: CalendarViewProps) {
 
           <div className="flex items-center gap-2">
             <h2 className="text-base sm:text-lg font-bold tracking-tight">
-              {currentYearMonth.year}年 {currentYearMonth.month}月
+              {yearMonthTitle}
             </h2>
             <Badge variant="secondary" className="text-xs">
-              {currentMonthRaceCount} レース
+              {t("calendar.monthRaces", { count: currentMonthRaceCount })}
             </Badge>
           </div>
         </div>
-
       </div>
 
       {/* カレンダーテーブル */}
       <div className="rounded-lg border bg-card shadow-sm overflow-hidden">
         {/* 曜日ヘッダー (月曜始まり) */}
         <div className="grid grid-cols-7 border-b text-center text-xs font-semibold bg-muted/40 py-2">
-          {CALENDAR_WEEKDAYS.map((weekday, idx) => {
+          {weekdays.map((weekday, idx) => {
             const isSat = idx === 5;
             const isSun = idx === 6;
             return (
@@ -141,7 +144,7 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                   isSat && "text-blue-600 dark:text-blue-400 font-bold",
                   isSun && "text-rose-600 dark:text-rose-400 font-bold"
                 )}
-                aria-label={`${weekday}曜日`}
+                aria-label={language === "ja" ? `${weekday}曜日` : weekday}
               >
                 {weekday}
               </div>
@@ -152,18 +155,19 @@ export function CalendarView({ races, className }: CalendarViewProps) {
         {/* 7列グリッド */}
         <div
           role="grid"
-          aria-label={`${currentYearMonth.year}年${currentYearMonth.month}月 カレンダー`}
+          aria-label={`${yearMonthTitle} ${language === "en" ? "Calendar" : "カレンダー"}`}
           className="grid grid-cols-7 divide-x divide-y border-b"
         >
           {calendarDays.map((day: CalendarDay) => {
             const dayRaces = racesByDate.get(day.date) || [];
             const hasRaces = dayRaces.length > 0;
+            const formattedDayDate = formatLocalDate(day.date, language);
 
             return (
               <div
                 key={day.date}
                 role="gridcell"
-                aria-label={`${day.year}年${day.month}月${day.day}日 ${hasRaces ? `${dayRaces.length}件のレース` : ""}`}
+                aria-label={`${formattedDayDate} ${hasRaces ? `(${dayRaces.length})` : ""}`}
                 className={cn(
                   "min-h-[105px] sm:min-h-[120px] p-1 sm:p-1.5 flex flex-col transition-colors",
                   !day.isCurrentMonth && "bg-muted/30 text-muted-foreground/50 opacity-60",
@@ -185,7 +189,7 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                   </span>
                   {hasRaces && (
                     <span className="text-[10px] text-muted-foreground font-medium hidden sm:inline">
-                      {dayRaces.length}件
+                      {t("calendar.daysCount", { count: dayRaces.length })}
                     </span>
                   )}
                 </div>
@@ -194,6 +198,15 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                 <div className="flex-1 space-y-1 overflow-y-auto max-h-[120px] pr-0.5">
                   {dayRaces.map((race) => {
                     const localTime = formatLocalTime(race.start_time);
+                    const raceName = race.name[language];
+                    const courseName = race.course[language];
+                    const rescheduledTag = race.is_rescheduled
+                      ? language === "en"
+                        ? " (Rescheduled)"
+                        : "（代替開催）"
+                      : "";
+                    const viewDetailText = language === "en" ? "View Details" : "詳細を表示";
+
                     return (
                       <button
                         key={race.id}
@@ -201,7 +214,7 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                         onClick={() => handleRaceSelect(race)}
                         onKeyDown={(e) => handleKeyDown(e, race)}
                         aria-haspopup="dialog"
-                        aria-label={`${race.name.ja}${race.is_rescheduled ? "（代替開催）" : ""} 詳細を表示`}
+                        aria-label={`${raceName}${rescheduledTag} ${viewDetailText}`}
                         className={cn(
                           "w-full text-left p-1 sm:p-1.5 rounded border bg-card hover:bg-accent hover:border-primary/50 transition-all",
                           race.is_rescheduled ? "border-amber-400/80 dark:border-amber-700/80 bg-amber-50/20" : "border-border/80",
@@ -219,7 +232,7 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                               variant="outline"
                               className="text-[8px] px-1 py-0 h-3.5 border-amber-500 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 shrink-0 font-medium"
                             >
-                              代替
+                              {t("calendar.rescheduledShort")}
                             </Badge>
                           )}
                           {localTime && (
@@ -229,10 +242,10 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                           )}
                         </div>
                         <div className="text-[11px] sm:text-xs font-bold leading-tight truncate group-hover:text-primary transition-colors">
-                          {race.name.ja}
+                          {raceName}
                         </div>
                         <div className="text-[10px] text-muted-foreground truncate hidden sm:block">
-                          {race.course.ja} · {race.distance}m
+                          {courseName} · {race.distance}m
                         </div>
                       </button>
                     );

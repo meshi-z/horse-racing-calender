@@ -2,7 +2,9 @@ import * as React from "react";
 import { RaceCard } from "@/components/shared/RaceCard";
 import { Button } from "@/components/ui/button";
 import { formatLocalDate, findUpcomingOrLatestDate, getTodayLocalDateString } from "@/libs/date";
+import { useTranslation } from "@/libs/i18n";
 import { useRaceStore } from "@/store/useRaceStore";
+import type { Language } from "@/store/useLanguageStore";
 import type { Race } from "@/types/race";
 import { CalendarDays, RotateCcw } from "lucide-react";
 import { cn } from "@/libs/utils";
@@ -21,7 +23,7 @@ interface GroupedRaces {
 /**
  * レース一覧を開催日昇順でグループ化するヘルパー
  */
-function groupRacesByDate(races: Race[]): GroupedRaces[] {
+function groupRacesByDate(races: Race[], lang: Language): GroupedRaces[] {
   // 日付昇順（同日の場合は発走時刻昇順）でソート
   const sortedRaces = [...races].sort((a, b) => {
     if (a.date !== b.date) {
@@ -44,7 +46,7 @@ function groupRacesByDate(races: Race[]): GroupedRaces[] {
   for (const [date, groupedRaces] of groupsMap.entries()) {
     result.push({
       date,
-      formattedDate: formatLocalDate(date),
+      formattedDate: formatLocalDate(date, lang),
       races: groupedRaces,
     });
   }
@@ -58,9 +60,10 @@ function groupRacesByDate(races: Race[]): GroupedRaces[] {
  */
 export function TimelineView({ races, className }: TimelineViewProps) {
   const resetFilters = useRaceStore((state) => state.resetFilters);
+  const { language, t } = useTranslation();
   const hasScrolledRef = React.useRef(false);
 
-  const groupedRaces = React.useMemo(() => groupRacesByDate(races), [races]);
+  const groupedRaces = React.useMemo(() => groupRacesByDate(races, language), [races, language]);
   const todayStr = React.useMemo(() => getTodayLocalDateString(), []);
 
   const dates = React.useMemo(() => groupedRaces.map((g) => g.date), [groupedRaces]);
@@ -156,10 +159,10 @@ export function TimelineView({ races, className }: TimelineViewProps) {
         </div>
         <div className="space-y-1">
           <h3 className="text-base font-semibold text-foreground">
-            該当するレースがありません
+            {t("timeline.noRacesTitle")}
           </h3>
           <p className="text-sm text-muted-foreground">
-            検索キーワードやフィルター条件を変更するか、条件のリセットをお試しください。
+            {t("timeline.noRacesDesc")}
           </p>
         </div>
         <div>
@@ -170,7 +173,7 @@ export function TimelineView({ races, className }: TimelineViewProps) {
             className="gap-2"
           >
             <RotateCcw className="h-3.5 w-3.5" />
-            <span>フィルターをリセット</span>
+            <span>{t("timeline.resetFilters")}</span>
           </Button>
         </div>
       </div>
@@ -182,7 +185,7 @@ export function TimelineView({ races, className }: TimelineViewProps) {
       className={cn("space-y-8", className)}
       role="feed"
       aria-busy="false"
-      aria-label="重賞レース タイムライン"
+      aria-label={t("timeline.ariaLabel")}
     >
       {groupedRaces.map(({ date, formattedDate, races: dateRaces }) => {
         const isToday = date === todayStr;
@@ -229,12 +232,12 @@ export function TimelineView({ races, className }: TimelineViewProps) {
                   <span>{formattedDate}</span>
                   {isToday && (
                     <span className="text-[10px] font-bold bg-primary text-primary-foreground px-2 py-0.5 rounded-full leading-none shadow-2xs">
-                      本日開催
+                      {t("timeline.todayBadge")}
                     </span>
                   )}
                 </h3>
                 <span className="text-xs text-muted-foreground font-normal">
-                  ({dateRaces.length}レース)
+                  ({t("timeline.racesCount", { count: dateRaces.length })})
                 </span>
               </div>
             </div>
@@ -265,11 +268,19 @@ export function TimelineView({ races, className }: TimelineViewProps) {
             variant="default"
             size="sm"
             onClick={handleJumpToTarget}
-            aria-label={targetDate === todayStr ? "今日開催のレースへジャンプ" : "直近のレースへジャンプ"}
+            aria-label={
+              targetDate === todayStr
+                ? t("timeline.jumpToTodayAria")
+                : t("timeline.jumpToUpcomingAria")
+            }
             className="gap-1.5 shadow-lg rounded-full px-3.5 h-9 sm:h-10 text-xs sm:text-sm font-semibold hover:shadow-xl transition-all"
           >
             <CalendarDays className="h-4 w-4" />
-            <span>{targetDate === todayStr ? "今日へ戻る" : "直近のレースへ"}</span>
+            <span>
+              {targetDate === todayStr
+                ? t("timeline.jumpToToday")
+                : t("timeline.jumpToUpcoming")}
+            </span>
           </Button>
         </div>
       )}

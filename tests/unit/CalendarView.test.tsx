@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { CalendarView } from "../../src/features/calendar/CalendarView";
 import { useRaceStore } from "../../src/store/useRaceStore";
+import { useLanguageStore } from "../../src/store/useLanguageStore";
 import type { Race } from "../../src/types/race";
 
 const mockRaces: Race[] = [
@@ -39,6 +40,7 @@ const mockRaces: Race[] = [
 
 describe("CalendarView", () => {
   beforeEach(() => {
+    useLanguageStore.setState({ language: "ja" });
     useRaceStore.setState({
       currentYearMonth: { year: 2026, month: 2 },
     });
@@ -58,7 +60,7 @@ describe("CalendarView", () => {
   it("現在の年月表示と当月レース件数が正しく表示されること", () => {
     render(<CalendarView races={mockRaces} />);
 
-    expect(screen.getByText("2026年 2月")).toBeInTheDocument();
+    expect(screen.getByText("2026年2月")).toBeInTheDocument();
     // 2026年2月のレースはフェブラリーSの1件
     expect(screen.getByText("1 レース")).toBeInTheDocument();
   });
@@ -145,5 +147,31 @@ describe("CalendarView", () => {
     render(<CalendarView races={mockRaces} />);
 
     expect(screen.queryByText(/月曜始まりカレンダー/)).not.toBeInTheDocument();
+  });
+
+  describe("多言語表示 (en)", () => {
+    beforeEach(() => {
+      useLanguageStore.setState({ language: "en" });
+    });
+
+    it("英語モード時に曜日ヘッダーがMon〜Sun、年月がFebruary 2026形式で表示されること", () => {
+      render(<CalendarView races={mockRaces} />);
+
+      const englishWeekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+      englishWeekdays.forEach((wd) => {
+        expect(screen.getByLabelText(wd)).toHaveTextContent(wd);
+      });
+
+      expect(screen.getByText("February 2026")).toBeInTheDocument();
+      expect(screen.getByText("1 Races")).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Jump to current month" })).toHaveTextContent("Today");
+
+      // セル内レース名
+      const raceButton = screen.getByRole("button", {
+        name: "February Stakes View Details",
+      });
+      expect(raceButton).toBeInTheDocument();
+      expect(raceButton).toHaveTextContent("February Stakes");
+    });
   });
 });
