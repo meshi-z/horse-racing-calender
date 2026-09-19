@@ -100,4 +100,24 @@ describe("TimelineView", () => {
     const section1 = feed.querySelector('section[aria-labelledby="heading-date-2026-01-04"]');
     expect(section1).toBeInTheDocument();
   });
+
+  it("代替開催レースが含まれる場合、新日程グループに代替開催バッジ付きで表示されること", () => {
+    const rescheduledRaces: Race[] = [
+      {
+        ...mockRaces[2],
+        date: "2026-02-23", // 2/22(日) から 2/23(月) に順延
+        is_rescheduled: true,
+        original_date: "2026-02-22",
+      },
+    ];
+
+    render(<TimelineView races={rescheduledRaces} />);
+
+    // 順延後の日付ヘッダー
+    expect(screen.getByRole("heading", { name: /2026年2月23日/ })).toBeInTheDocument();
+    // 代替開催バッジ
+    expect(screen.getByText("代替開催")).toBeInTheDocument();
+    // 当初予定からの順延案内
+    expect(screen.getByText(/当初予定: 2026年2月22日\(日\) から順延/)).toBeInTheDocument();
+  });
 });

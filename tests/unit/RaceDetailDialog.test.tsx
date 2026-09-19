@@ -78,4 +78,23 @@ describe("RaceDetailDialog", () => {
     expect(screen.getByText("発走予定")).toBeInTheDocument();
     expect(screen.queryByText("発走確定")).not.toBeInTheDocument();
   });
+
+  it("代替開催（is_rescheduled=true）のレースにおいて、代替開催バッジと日程変更案内が表示されること", () => {
+    const rescheduledRace: Race = {
+      ...mockRace,
+      date: "2026-02-23",
+      is_rescheduled: true,
+      original_date: "2026-02-22",
+    };
+    render(
+      <RaceDetailDialog
+        race={rescheduledRace}
+        open={true}
+        onOpenChange={vi.fn()}
+      />
+    );
+    expect(screen.getByText("代替開催")).toBeInTheDocument();
+    expect(screen.getByText("悪天候等による代替開催（日程変更）")).toBeInTheDocument();
+    expect(screen.getByText(/2026年2月22日\(日\)/)).toBeInTheDocument();
+  });
 });

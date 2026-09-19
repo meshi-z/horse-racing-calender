@@ -18,6 +18,8 @@ export interface RaceOutput {
   date: string;
   start_time: string;
   is_time_confirmed: boolean;
+  is_rescheduled?: boolean;
+  original_date?: string;
   course: {
     ja: string;
     en: string;
@@ -90,7 +92,10 @@ export class JraRaceTimeFetcher implements RaceTimeFetcher {
   getTargetWindowRaces(races: RaceOutput[], refDate: string): RaceOutput[] {
     const { startDate, endDate } = getJraUpcomingWeekendRange(refDate);
     return races.filter(
-      (r) => r.organization === this.organization && r.date >= startDate && r.date <= endDate
+      (r) =>
+        r.organization === this.organization &&
+        ((r.date >= startDate && r.date <= endDate) ||
+          (r.original_date && r.original_date >= startDate && r.original_date <= endDate))
     );
   }
 
@@ -119,9 +124,19 @@ export interface UpdateOptions {
   confirmedTimes?: ConfirmedRaceTime[]; // テスト用直接注入（全Fetcher共通フォールバック）
 }
 
+export interface UpdatedRaceItem {
+  id: string;
+  name: string;
+  date: string;
+  oldTime: string;
+  newTime: string;
+  isRescheduled?: boolean;
+  originalDate?: string;
+}
+
 export interface UpdateResult {
   totalRaces: number;
-  updatedRaces: Array<{ id: string; name: string; date: string; oldTime: string; newTime: string }>;
+  updatedRaces: UpdatedRaceItem[];
   orgResults: Record<string, { targetCount: number; skippedDueToConfirmed: boolean; updatedCount: number }>;
 }
 
@@ -153,7 +168,7 @@ export async function updateRaceTimes(options: UpdateOptions = {}): Promise<Upda
     ? [options.organization.toLowerCase()]
     : Object.keys(fetchersMap);
 
-  const updatedRaces: Array<{ id: string; name: string; date: string; oldTime: string; newTime: string }> = [];
+  const updatedRaces: UpdatedRaceItem[] = [];
   const orgResults: UpdateResult['orgResults'] = {};
 
   // 2. 組織ごとにプロバイダーを実行
@@ -209,17 +224,46 @@ export async function updateRaceTimes(options: UpdateOptions = {}): Promise<Upda
     for (const race of races) {
       if (race.organization !== org) continue;
 
-      const match = confirmedTimes.find(
+      // 1. 同日での一致を優先検索
+      let match = confirmedTimes.find(
         (c) => c.date === race.date && raceNameMatches(race.name.ja, c.raceName)
       );
 
+      // 2. 同日で見つからない場合、代替開催（同名レースで近傍日程）の候補を検索
+      let isRescheduled = false;
+      if (!match) {
+        const candidate = confirmedTimes.find((c) => {
+          if (!raceNameMatches(race.name.ja, c.raceName)) return false;
+          // 日付の差分をチェック (7日以内)
+          const raceTime = new Date(race.date).getTime();
+          const scrapedTime = new Date(c.date).getTime();
+          const diffDays = Math.abs((scrapedTime - raceTime) / 86400000);
+          return diffDays <= 7;
+        });
+
+        if (candidate) {
+          match = candidate;
+          isRescheduled = true;
+        }
+      }
+
       if (match) {
-        const newUtcTime = toIsoUtc(race.date, match.timeJst);
+        const isDateChanged = race.date !== match.date;
+        const targetDate = match.date;
+        const newUtcTime = toIsoUtc(targetDate, match.timeJst);
         const isTimeChanged = race.start_time !== newUtcTime;
         const wasNotConfirmed = !race.is_time_confirmed;
 
-        if (isTimeChanged || wasNotConfirmed) {
+        if (isTimeChanged || wasNotConfirmed || isDateChanged) {
           const oldTime = race.start_time;
+          const oldDate = race.date;
+
+          if (isDateChanged) {
+            race.original_date = race.original_date || oldDate;
+            race.date = targetDate;
+            race.is_rescheduled = true;
+          }
+
           race.start_time = newUtcTime;
           race.is_time_confirmed = true;
 
@@ -229,11 +273,14 @@ export async function updateRaceTimes(options: UpdateOptions = {}): Promise<Upda
             date: race.date,
             oldTime,
             newTime: newUtcTime,
+            isRescheduled: isDateChanged || isRescheduled,
+            originalDate: race.original_date,
           });
           orgUpdatedCount++;
 
           console.log(
             `[Update Race Times][${org}] UPDATED: [${race.date}] ${race.name.ja} (${race.id})` +
+              (isDateChanged ? `\n  - Rescheduled from: ${race.original_date} -> ${race.date}` : '') +
               `\n  - Old Time: ${oldTime} (confirmed: ${wasNotConfirmed ? 'false' : 'true'})` +
               `\n  - New Time: ${newUtcTime} (confirmed: true, ${match.timeJst} JST)`
           );

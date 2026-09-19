@@ -102,4 +102,22 @@ describe("RaceCard", () => {
 
     expect(screen.getByRole("dialog")).toBeInTheDocument();
   });
+
+  it("代替開催（is_rescheduled=true）のレースにおいて、代替開催バッジと当初予定日が表示されること", () => {
+    const rescheduledRace: Race = {
+      ...mockRace,
+      date: "2026-02-23", // 順延後の月曜
+      is_rescheduled: true,
+      original_date: "2026-02-22", // 当初の日曜
+    };
+
+    render(<RaceCard race={rescheduledRace} />);
+
+    expect(screen.getByText("代替開催")).toBeInTheDocument();
+    expect(screen.getByText(/当初予定: 2026年2月22日\(日\) から順延/)).toBeInTheDocument();
+
+    // aria-label にも代替開催の旨が含まれること
+    const card = screen.getByRole("button", { name: "フェブラリーステークス（代替開催） 詳細を表示" });
+    expect(card).toBeInTheDocument();
+  });
 });

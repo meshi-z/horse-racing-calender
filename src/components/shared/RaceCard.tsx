@@ -60,22 +60,31 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
           role="button"
           tabIndex={0}
           aria-haspopup="dialog"
-          aria-label={`${race.name.ja} 詳細を表示`}
+          aria-label={`${race.name.ja}${race.is_rescheduled ? "（代替開催）" : ""} 詳細を表示`}
           onClick={handleClick}
           onKeyDown={handleKeyDown}
           className={cn(
             "group relative cursor-pointer transition-all duration-150 hover:shadow-md hover:border-primary/50",
+            race.is_rescheduled && "border-amber-200 dark:border-amber-900/50 bg-amber-50/10",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
             className
           )}
           {...props}
         >
           <CardContent className="p-4 sm:p-5 flex flex-col gap-3">
-            {/* 上部: 開催日・発走時刻・発走予定バッジ */}
+            {/* 上部: 開催日・発走時刻・発走予定バッジ・代替開催バッジ */}
             <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
-              <div className="flex items-center gap-1.5 font-medium">
-                <Calendar className="h-3.5 w-3.5" />
+              <div className="flex items-center gap-1.5 font-medium flex-wrap">
+                <Calendar className="h-3.5 w-3.5 shrink-0" />
                 <span>{formattedDate}</span>
+                {race.is_rescheduled && (
+                  <Badge
+                    variant="outline"
+                    className="text-[10px] px-1.5 py-0 h-4 border-amber-500 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 font-semibold"
+                  >
+                    代替開催
+                  </Badge>
+                )}
               </div>
               <div className="flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5" />
@@ -90,6 +99,13 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                 )}
               </div>
             </div>
+
+            {/* 代替開催時の元日程案内 */}
+            {race.is_rescheduled && race.original_date && (
+              <div className="text-[11px] text-amber-600 dark:text-amber-400 font-medium -mt-1 flex items-center gap-1">
+                <span>当初予定: {formatLocalDate(race.original_date)} から順延</span>
+              </div>
+            )}
 
             {/* 中部: グレードバッジ & レース名 */}
             <div className="flex items-start gap-2.5">

@@ -24,6 +24,8 @@ export type Race = {
   date: string; // YYYY-MM-DD
   start_time: string; // UTC ISO 8601 (例: "2026-02-22T06:40:00.000Z")
   is_time_confirmed: boolean;
+  is_rescheduled?: boolean;
+  original_date?: string; // YYYY-MM-DD
   course: LocalizedText;
   distance: number;
   track_type: TrackType;

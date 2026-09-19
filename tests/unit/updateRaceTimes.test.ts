@@ -261,5 +261,42 @@ describe('update-race-times script (Provider Architecture)', () => {
       const afterFileContent = fs.readFileSync(tempFilePath, 'utf-8');
       expect(afterFileContent).toBe(originalFileContent);
     });
+
+    it('天候等による代替開催（日程変更）時に新開催日で上書きし、original_dateとis_rescheduledを保持すること', async () => {
+      // 2026-09-20（日）予定の「産経賞オールカマー」が 2026-09-21（月・代替開催）に順延されたケース
+      const mockConfirmedTimes: ConfirmedRaceTime[] = [
+        {
+          raceName: '産経賞オールカマー',
+          date: '2026-09-21', // 当初予定の2026-09-20から順延
+          timeJst: '15:45',
+          rawTime: '15時45分',
+        },
+      ];
+
+      const result = await updateRaceTimes({
+        filePath: tempFilePath,
+        referenceDate: '2026-09-19',
+        confirmedTimes: mockConfirmedTimes,
+      });
+
+      // 更新結果のアサート
+      const updatedRace = result.updatedRaces.find((r) => r.id === '2026-jra-g2-26');
+      expect(updatedRace).toBeDefined();
+      expect(updatedRace?.date).toBe('2026-09-21');
+      expect(updatedRace?.isRescheduled).toBe(true);
+      expect(updatedRace?.originalDate).toBe('2026-09-20');
+      // 15:45 JST -> 06:45 UTC (2026-09-21T06:45:00.000Z)
+      expect(updatedRace?.newTime).toBe('2026-09-21T06:45:00.000Z');
+
+      // ファイル保存内容のアサート
+      const savedData: RaceOutput[] = JSON.parse(fs.readFileSync(tempFilePath, 'utf-8'));
+      const savedTarget = savedData.find((r) => r.id === '2026-jra-g2-26');
+      expect(savedTarget).toBeDefined();
+      expect(savedTarget?.date).toBe('2026-09-21');
+      expect(savedTarget?.start_time).toBe('2026-09-21T06:45:00.000Z');
+      expect(savedTarget?.is_rescheduled).toBe(true);
+      expect(savedTarget?.original_date).toBe('2026-09-20');
+      expect(savedTarget?.is_time_confirmed).toBe(true);
+    });
   });
 });
