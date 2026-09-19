@@ -16,8 +16,8 @@ console.log('Reading PRD.md...');
 const markdown = fs.readFileSync(prdPath, 'utf8');
 
 // Extract Version dynamically from PRD.md
-const versionMatch = markdown.match(/\|\s*\*\*バージョン\*\*\s*\|\s*([^|\s]+)\s*\|/);
-const currentVersion = versionMatch ? versionMatch[1].trim() : 'v1.16.0';
+const versionMatch = markdown.match(/\|\s*\*\*バージョン\*\*\s*\|\s*([^|]+?)\s*\|/);
+const currentVersion = versionMatch ? versionMatch[1].trim() : 'v1.17.0';
 console.log(`Detected PRD version: ${currentVersion}`);
 
 console.log('Reading icon asset...');
