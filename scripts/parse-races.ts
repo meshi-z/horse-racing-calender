@@ -1,4 +1,4 @@
-﻿import fs from 'node:fs';
+import fs from 'node:fs';
 import path from 'node:path';
 
 // --- Type Definitions (Pattern A: Localized Object) ---
@@ -208,6 +208,41 @@ const RACE_NAME_EN: Record<string, string> = {
   '阪神スプリングジャンプ': 'Hanshin Spring Jump',
   'チャーチルダウンズカップ': 'Churchill Downs Cup',
   '東海テレビ杯金鯱賞': 'Kinko Sho',
+
+  // 冠名付き正式名称・表記ゆれ対応
+  '日刊スポーツ賞中山金杯': 'Nikkan Sports Sho Nakayama Kimpai',
+  'スポーツニッポン賞京都金杯': 'Sports Nippon Sho Kyoto Kimpai',
+  '日刊スポーツ賞シンザン記念': 'Nikkan Sports Sho Shinzan Kinen',
+  'デイリー杯クイーンカップ': 'Daily Hai Queen Cup',
+  'ローレル競馬場賞中山牝馬ステークス': 'Laurel R.C. Sho Nakayama Himba Stakes',
+  '報知杯フィリーズレビュー': 'Hochi Hai Fillies\' Revue',
+  '報知杯弥生賞ディープインパクト記念': 'Hochi Hai Yayoi Sho Deep Impact Kinen',
+  'フジテレビ賞スプリングステークス': 'Fuji TV Sho Spring Stakes',
+  '中日スポーツ賞ファルコンステークス': 'Chunichi Sports Sho Falcon Stakes',
+  'サンケイスポーツ杯阪神牝馬ステークス': 'Sankei Sports Hai Hanshin Himba Stakes',
+  '読売マイラーズカップ': 'Yomiuri Milers Cup',
+  'サンケイスポーツ賞フローラステークス': 'Sankei Sports Sho Flora Stakes',
+  'テレビ東京杯青葉賞': 'TV Tokyo Hai Aoba Sho',
+  '天皇賞(春)': 'Tenno Sho (Spring)',
+  '北海道新聞杯クイーンステークス': 'Hokkaido Shimbun Hai Queen Stakes',
+  '産経賞セントウルステークス': 'Sankei Sho Centaur Stakes',
+  '関西テレビ放送賞ローズステークス': 'Kansai Telecasting Corp.Sho Rose Stakes',
+  '朝日杯セントライト記念': 'Asahi Hai St. Lite Kinen',
+  '産経賞オールカマー': 'Sankei Sho All Comers',
+  'MBS賞スワンステークス': 'MBS Sho Swan Stakes',
+  '天皇賞(秋)': 'Tenno Sho (Autumn)',
+  'KBS京都賞ファンタジーステークス': 'KBS Kyoto Sho Fantasy Stakes',
+  'ラジオNIKKEI杯京都2歳ステークス': 'Radio NIKKEI Hai Kyoto Nisai Stakes',
+  'スポーツニッポン賞ステイヤーズステークス': 'Sports Nippon Sho Stayers Stakes',
+
+  // 新規・障害・追加重賞
+  '小倉ジャンプステークス': 'Kokura Jump Stakes',
+  'ユニコーンステークス': 'Unicorn Stakes',
+  '京都ハイジャンプ': 'Kyoto High-Jump',
+  'オークス': 'Yushun Himba (Japanese Oaks)',
+  'しらさぎステークス': 'Shirasagi Stakes',
+  '中京2歳ステークス': 'Chukyo Nisai Stakes',
+  '東京ハイジャンプ': 'Tokyo High-Jump',
 };
 
 const HANDICAP_RACE_NAMES = new Set([
@@ -496,6 +531,42 @@ function toIsoUtc(dateStr: string, timeJst: string): string {
   return jstDate.toISOString();
 }
 
+function resolveRaceNameEn(icsName: string, htmlName: string): string {
+  // 1. 完全一致
+  if (RACE_NAME_EN[icsName]) return RACE_NAME_EN[icsName];
+  if (RACE_NAME_EN[htmlName]) return RACE_NAME_EN[htmlName];
+
+  // 2. 括弧（全角/半角）正規化
+  const normIcs = icsName.replace(/（/g, '(').replace(/）/g, ')');
+  if (RACE_NAME_EN[normIcs]) return RACE_NAME_EN[normIcs];
+  const fullIcs = icsName.replace(/\(/g, '（').replace(/\)/g, '）');
+  if (RACE_NAME_EN[fullIcs]) return RACE_NAME_EN[fullIcs];
+
+  // 3. 冠名（「○○賞」「○○杯」等）を除去したベース名称でマッチ
+  const baseName = icsName.replace(/^.+?[賞杯]\s*/, '');
+  if (RACE_NAME_EN[baseName]) return RACE_NAME_EN[baseName];
+
+  // 4. HTML側プレフィックス等の除去（例: GⅡ京都ハイジャンプ -> 京都ハイジャンプ）
+  const cleanHtml = htmlName.replace(/^G[ⅠⅡⅢ&#0-9;]+/, '').trim();
+  if (RACE_NAME_EN[cleanHtml]) return RACE_NAME_EN[cleanHtml];
+
+  // 5. エイリアス辞書の参照
+  for (const [canonical, aliases] of Object.entries(RACE_ALIASES)) {
+    if (aliases.includes(icsName) || aliases.includes(htmlName) || aliases.includes(baseName)) {
+      if (RACE_NAME_EN[canonical]) return RACE_NAME_EN[canonical];
+    }
+  }
+
+  // 6. 辞書内のキーで部分一致
+  for (const [key, val] of Object.entries(RACE_NAME_EN)) {
+    if (icsName.includes(key) || key.includes(icsName)) {
+      return val;
+    }
+  }
+
+  throw new Error(`Failed to resolve English race name for "${icsName}" (HTML: "${htmlName}")`);
+}
+
 async function ensureJyusyoHtml(filePath: string): Promise<string> {
   if (fs.existsSync(filePath)) {
     console.log(`Loading HTML from local file: ${filePath}`);
@@ -579,7 +650,10 @@ async function main() {
 
     const handicap = determineHandicap(ics.cleanName, ics.grade, htmlData.age_constraint);
 
-    const nameEn = RACE_NAME_EN[ics.cleanName] || RACE_NAME_EN[htmlData.raceName] || ics.cleanName;
+    const nameEn = resolveRaceNameEn(ics.cleanName, htmlData.raceName);
+    if (/[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]/.test(nameEn)) {
+      throw new Error(`English race name contains Japanese characters: "${nameEn}" for race "${ics.cleanName}"`);
+    }
     const courseEn = COURSE_EN[ics.course] || ics.course;
 
     const raceItem: RaceOutput = {
