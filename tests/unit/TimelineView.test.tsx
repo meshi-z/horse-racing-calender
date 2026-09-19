@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import { TimelineView } from "../../src/features/timeline/TimelineView";
 import { useRaceStore } from "../../src/store/useRaceStore";
 import type { Race } from "../../src/types/race";
@@ -181,6 +181,78 @@ describe("TimelineView", () => {
     expect(dateHeader).toHaveClass("z-20");
     expect(dateHeader).toHaveStyle({
       top: "calc(3.5rem + var(--filterbar-height, 0px))",
+    });
+  });
+
+  describe("今日へ戻るジャンプボタン (Issue #9)", () => {
+    it("レースが存在する場合にジャンプボタンが配置され、クリックするとターゲットへスクロールすること", () => {
+      const scrollIntoViewMock = vi.fn();
+      Element.prototype.scrollIntoView = scrollIntoViewMock;
+
+      // 2026-01-04 当日に設定
+      vi.useFakeTimers();
+      vi.setSystemTime(new Date(2026, 0, 4, 10, 0, 0));
+
+      render(<TimelineView races={mockRaces} />);
+
+      const jumpButton = screen.getByRole("button", { name: "今日開催のレースへジャンプ" });
+      expect(jumpButton).toBeInTheDocument();
+      expect(screen.getByText("今日へ戻る")).toBeInTheDocument();
+
+      // ボタンをクリック
+      fireEvent.click(jumpButton);
+
+      expect(scrollIntoViewMock).toHaveBeenCalledWith(
+        expect.objectContaining({
+          block: "start",
+        })
+      );
+
+      vi.useRealTimers();
+    });
+
+    it("当日以降のレースがない場合は'直近のレースへ'ボタンが表示されること", () => {
+      // 2027年に設定（全レースが過去）
+      vi.useFakeTimers();
+      vi.setSystemTime(new Date(2027, 0, 1));
+
+      render(<TimelineView races={mockRaces} />);
+
+      const jumpButton = screen.getByRole("button", { name: "直近のレースへジャンプ" });
+      expect(jumpButton).toBeInTheDocument();
+      expect(screen.getByText("直近のレースへ")).toBeInTheDocument();
+
+      vi.useRealTimers();
+    });
+
+    it("IntersectionObserver でターゲットが画面外の場合にボタンが表示クラスを持つこと", () => {
+      let observerCallback: IntersectionObserverCallback = () => {};
+      class MockIntersectionObserver {
+        constructor(cb: IntersectionObserverCallback) {
+          observerCallback = cb;
+        }
+        observe = vi.fn();
+        disconnect = vi.fn();
+        unobserve = vi.fn();
+      }
+      window.IntersectionObserver = MockIntersectionObserver as unknown as typeof IntersectionObserver;
+
+      render(<TimelineView races={mockRaces} />);
+
+      const container = screen.getByTestId("jump-to-today-container");
+      // 初期状態は isTargetVisible = true (非表示クラス opacity-0)
+      expect(container).toHaveClass("opacity-0");
+
+      // ターゲットが画面外に出た（isIntersecting: false）を通知
+      act(() => {
+        observerCallback(
+          [{ isIntersecting: false } as IntersectionObserverEntry],
+          {} as IntersectionObserver
+        );
+      });
+
+      // 表示クラス（opacity-100）に切り替わること
+      expect(container).toHaveClass("opacity-100");
     });
   });
 });
