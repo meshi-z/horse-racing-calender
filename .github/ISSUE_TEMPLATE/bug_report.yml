@@ -1,0 +1,37 @@
+name: Bug Report
+description: "発生した不具合やエラーを報告・記録します"
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: "概要"
+      description: "どんなバグが起きているか記載してください"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: "再現手順"
+      description: "バグを再現するための手順を記載してください"
+      placeholder: |
+        1. 
+        2. 
+        3. 
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: "期待される挙動"
+      description: "本来、どう動くのが正しいか記載してください"
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: "備考 / メモ"
+      description: "エラーログやスクリーンショット、原因の予想などがあれば記載してください"
+    validations:
+      required: false

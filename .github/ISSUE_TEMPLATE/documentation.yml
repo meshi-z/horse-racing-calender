@@ -1,0 +1,34 @@
+name: Documentation
+description: "仕様のメモ、設計、環境構築の手順、技術的な調査結果などを記録します"
+title: "[Docs]: "
+labels: ["documentation"]
+body:
+  - type: textarea
+    id: purpose
+    attributes:
+      label: "目的 / 対象の機能"
+      description: "何についてのドキュメント（メモ）か（例: 認証機能の仕様、AWSの環境構築手順など）"
+    validations:
+      required: true
+  - type: textarea
+    id: content
+    attributes:
+      label: "メモ / 設計内容"
+      description: "自由に記述するスペース（箇条書きやコードブロックなど）"
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: "参考URL / 関連リソース"
+      description: "参考にした公式ドキュメントやテックブログのリンク"
+    validations:
+      required: false
+  - type: textarea
+    id: next-actions
+    attributes:
+      label: "次のアクション（もしあれば）"
+      placeholder: |
+        - [ ] 
+    validations:
+      required: false

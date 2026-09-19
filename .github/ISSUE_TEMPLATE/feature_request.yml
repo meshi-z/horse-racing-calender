@@ -1,0 +1,29 @@
+name: Feature Request
+description: "新しい機能の追加や、作業タスクを記述します"
+title: "[Feat]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: purpose
+    attributes:
+      label: "目的 / 背景"
+      description: "なぜこの機能を作るのか、何を達成したいかを1行で記述"
+    validations:
+      required: true
+  - type: textarea
+    id: todo
+    attributes:
+      label: "やること（Todo）"
+      placeholder: |
+        - [ ] 
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+  - type: textarea
+    id: dod
+    attributes:
+      label: "完了定義"
+      description: "どうなったらこのタスクを「完了」とするか（例: 画面にボタンが表示され、クリックして動くこと）"
+    validations:
+      required: true

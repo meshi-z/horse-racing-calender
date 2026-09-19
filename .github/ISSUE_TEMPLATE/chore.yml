@@ -1,0 +1,26 @@
+name: Chore
+description: "テキスト修正、リファクタリング、ライブラリ更新などの細かなメンテナンスタスク"
+title: "[Chore]: "
+labels: ["chore"]
+body:
+  - type: textarea
+    id: task-description
+    attributes:
+      label: "作業内容"
+      description: "何を変更・対応するか記載してください（例: 文言の変更、該当箇所のURLやファイル名）"
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: "目的・変更理由"
+      description: "なぜこの修正が必要なのか記載してください（例: タイポ解消、表現の統一）"
+    validations:
+      required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: "補足情報"
+      description: "参考リンク、Figma、スクリーンショットなどがあれば記載してください"
+    validations:
+      required: false
