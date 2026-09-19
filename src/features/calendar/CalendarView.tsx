@@ -12,7 +12,7 @@ import { formatLocalTime } from "@/libs/date";
 import { cn } from "@/libs/utils";
 import { useRaceStore } from "@/store/useRaceStore";
 import type { Race } from "@/types/race";
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface CalendarViewProps {
   races: Race[];
@@ -124,10 +124,6 @@ export function CalendarView({ races, className }: CalendarViewProps) {
           </div>
         </div>
 
-        <div className="text-xs text-muted-foreground hidden sm:flex items-center gap-1.5">
-          <CalendarIcon className="h-3.5 w-3.5" />
-          <span>月曜始まりカレンダー（土日連続表示）</span>
-        </div>
       </div>
 
       {/* カレンダーテーブル */}
