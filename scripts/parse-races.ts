@@ -27,6 +27,8 @@ export interface RaceOutput {
   date: string;
   start_time: string;
   is_time_confirmed: boolean;
+  is_rescheduled?: boolean;
+  original_date?: string;
   course: LocalizedString;
   distance: number;
   track_type: 'turf' | 'dirt' | 'obstacle';
@@ -683,8 +685,17 @@ async function main() {
     const seqStr = String(gradeSeqCount[gradeIdKey]).padStart(2, '0');
     const id = `${year}-jra-${gradeIdKey}-${seqStr}`;
 
+    // HTMLの実績開催日（YYYY-MM-DD）と比較し代替開催を検知
+    const htmlDateStr = `${year}-${String(htmlData.month).padStart(2, '0')}-${String(htmlData.day).padStart(2, '0')}`;
+    const isRescheduled = ics.date !== htmlDateStr;
+    const finalDate = isRescheduled ? htmlDateStr : ics.date;
+
+    if (isRescheduled) {
+      console.log(`[Rescheduled Race Detected] ${ics.cleanName}: original ${ics.date} -> actual ${finalDate}`);
+    }
+
     const defaultTimeJst = determineDefaultTimeJst(htmlData.track_type, ics.course, ics.grade);
-    const startTimeUtc = toIsoUtc(ics.date, defaultTimeJst);
+    const startTimeUtc = toIsoUtc(finalDate, defaultTimeJst);
 
     const handicap = determineHandicap(ics.cleanName, ics.grade, htmlData.age_constraint);
 
@@ -702,9 +713,10 @@ async function main() {
         en: nameEn,
       },
       grade: ics.grade,
-      date: ics.date,
+      date: finalDate,
       start_time: startTimeUtc,
       is_time_confirmed: false,
+      ...(isRescheduled ? { is_rescheduled: true, original_date: ics.date } : {}),
       course: {
         ja: ics.course,
         en: courseEn,
@@ -770,6 +782,9 @@ async function main() {
       },
     };
   }
+
+  // Sort races by date and start_time
+  racesOutput.sort((a, b) => a.date.localeCompare(b.date) || a.start_time.localeCompare(b.start_time));
 
   // Write output files
   fs.mkdirSync(path.dirname(publicOutPath), { recursive: true });
