@@ -2,9 +2,9 @@
 
 | 項目 | 内容 |
 | :--- | :--- |
-| **プロダクト名** | horse-racing-calendar Web アプリケーション (MVP) |
-| **作成日** | 2026年9月12日 (最終更新: 2026年9月17日) |
-| **バージョン** | v1.6.0 |
+| **プロダクト名** | horse-racing-calendar Web アプリケーション |
+| **作成日** | 2026年9月12日 (最終更新: 2026年9月19日) |
+| **バージョン** | v1.3.0 |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 
 ---
@@ -21,22 +21,30 @@ UIライブラリには **Shadcn UI** (Radix UI + Tailwind CSS) を全面採用�
 
 ## 2. コア要件およびビジョン
 
-### フェーズ1 (MVP / 現在のスコープ)
+### フェーズ1 (MVP / 実装完了スコープ)
 
-- JRA重賞一覧ページ（`jyusyo.html`）からデータ補完マスターを作成
-- 公式 `.ics`（iCalendar）からの当年のデータ取得、データ補完マスターとマージして当年のレース情報を作成
-- i18n（国際化）を見据えた Localized Object 形式 `{ ja, en }` によるデータ構造化
-- ユーザー登録不要のオープン型SPA
-- GitHub Pages による完全静的ホスティング（コスト0運用）
-- PWA & Service Worker によるオフライン高速閲覧
-- Shadcn UI によるコンポーネント基盤の構築とアクセシビリティ（a11y）確保
+- JRA重賞一覧ページ（`jyusyo.html`）からデータ補完マスターを作成 [完了]
+- JRA公式サイトからの公式 `.ics` / ZIP 自動ダウンロード・展開・マージパイプラインの実装（`jra-calendar.ts`） [完了]
+- 開催週のJRA公式出馬表から確定発走予定時刻を取得し、自動更新するパイプラインの実装（`jra-syutsuba.ts`, `update-race-times.ts`） [完了]
+  - 相手先サーバー負荷軽減のための早期終了ガード・指数バックオフリトライ搭載
+  - 将来のNAR・海外競馬拡張を見据えたプロバイダーアーキテクチャ（Strategyパターン）の導入
+- i18n（国際化）を見据えた Localized Object 形式 `{ ja, en }` によるデータ構造化 [完了]
+- ユーザー登録不要のオープン型SPA [完了]
+- GitHub Pages による完全静的ホスティング（コスト0運用） [完了]
+- GitHub Actions による CI/CD（自動テスト・ビルド・GitHub Pages デプロイ）および確定時刻の定期自動更新バッチ（cron）の整備 [完了]
+- PWA & Service Worker によるオフライン高速閲覧 [完了]
+- Shadcn UI によるコンポーネント基盤の構築とアクセシビリティ（a11y）確保 [完了]
+- 発走ステータスバッジの改善（レース終了後の自動非表示、発走前の「発走予定」統一） [完了]
+- GitHub Dependabot による依存関係セキュリティ監視の有効化 [完了]
 
 ### フェーズ2 (将来拡張)
 
+- NAR（地方競馬ダートグレード）および海外主要レース（米・豪・香港・サウジ・ドバイ・欧州）の拡張
+  - `RaceTimeFetcher` プロバイダーアーキテクチャへの `NarRaceTimeFetcher` / `OverseasRaceTimeFetcher` 追加
+  - `organization` フィールドおよび拡張ID体系を活用
 - i18n 多言語切り替え（`name.ja` / `name.en`、`course.ja` / `course.en`、`handicap.ja` / `handicap.en` 等を活用した多言語表示）UIスイッチ実装
-- NAR（地方競馬ダートグレード）および海外主要レース（米・豪・香港・サウジ・ドバイ・欧州）の拡張（`organization` フィールドおよび拡張ID体系を活用）
-- GitHub Actions による `.ics` 自動パッチ＆ビルドバッチ化
 - 性別・年齢・距離区分・馬場種別（芝/ダート/障害）による高度なフィルタリング機能追加（Shadcn UI の `Select` / `Popover` / `Command` を活用）
+- タイムラインビューにおける現在日（直近レース）へのワンタップジャンプ機能・当日開催レースの強調表示
 
 ---
 
@@ -157,7 +165,7 @@ Shadcn UI の `Badge` コンポーネントおよび Tailwind CSS デザイン�
   - ハンデ: コード `handicap`, ラベル: `{ ja: "ハンデ", en: "Handicap" }`
 
 #### D. 発走時刻の取得・決定パイプライン
-発走時刻は「デフォルト推定値」と「直前確定値」の2段階構成で管理する。
+発走時刻は「デフォルト推定値」と「直前確定値」の2段階構成で管理する。また、将来のNAR（地方競馬）や海外競馬の拡張に対応するため、主催者ごとのプロバイダーアーキテクチャ（`RaceTimeFetcher` Strategyパターン）を採用している。
 
 1. **初期推定値の設定（年間ビルド時）:**
    - 平地重賞（関東・新潟・福島）: 原則 `15:40` JST を初期値としてセット。
@@ -166,9 +174,13 @@ Shadcn UI の `Badge` コンポーネントおよび Tailwind CSS デザイン�
    - 障害重賞 (J.G1〜J.G3): `13:50`〜`14:45` JST（J.G1は `14:45`、一般は `13:50`）をセット。
    - 開催日と `default_time_jst` を組み合わせ、UTC ISO 8601 形式 (`Z`) に変換して `start_time` に格納。
    - `is_time_confirmed: false` としてフラグ管理。
-2. **直前確定値の上書き更新（開催直前ビルド時）:**
-   - 開催週（木曜日以降）にJRA公式出馬表ページから正確な確定発走時刻をスクレイピング取得。
-   - 確定時刻で `start_time` を更新し、`is_time_confirmed: true` に変更。
+2. **直前確定値の上書き更新（開催直前自動バッチパイプライン）:**
+   - **取得ソース:** JRA公式「今週の注目レース」ページ (`/keiba/thisweek/`) および出馬表詳細ページ (`/JRADB/accessD.html`) から確定発走時刻をスクレイピング取得（出馬表ポータルからのフォールバック探索も搭載）。
+   - **相手先サーバー負荷軽減ガード（早期終了）:** 当週の対象レースがすべて確定済み（`is_time_confirmed: true`）の場合、リモートリクエストを一切送信せず即座に正常終了。
+   - **耐障害性:** 通信エラーや一時的障害に対応する指数バックオフリトライ（最大3回）。
+   - **更新ロジック:** 確定時刻で `start_time` を UTC ISO 8601 形式に上書きし、`is_time_confirmed: true` に更新。他のデータ整合性は完全維持。
+   - **自動実行 (GitHub Actions):** 出馬表発表（木曜16時目安）および確定枠順発表（金曜10時目安）に合わせ、木・金・土・日の定期スケジュール（cron）および手動ディスパッチ (`workflow_dispatch`) で差分発生時のみ自動コミット＆デプロイ。
+   - **プロバイダー拡張性 (`scripts/update-race-times.ts`):** `RaceTimeFetcher` インターフェースを介し、`JraRaceTimeFetcher` のほか将来の `NarRaceTimeFetcher` / `OverseasRaceTimeFetcher` をプラグイン感覚で追加可能。
 
 #### E. 組織コードおよびID体系 (拡張性設計)
 - 組織識別子 `organization`: `"jra"`（将来拡張: `"nar"`, `"overseas"` / `"intl"`）
@@ -282,7 +294,7 @@ JRA公式 `.ics` に含まれないフィールド（多言語名称・競馬場
 - **テスト基盤**: Vitest + @testing-library/react + jsdom
 - **PWA / Cache**: `vite-plugin-pwa` (Workbox)
 - **インフラ**: GitHub Pages (GitHub Actions でビルド・デプロイ)
-- **セキュリティ・品質方針**: GitHub Dependabot の有効化、axe-core / Lighthouse による a11y 自動チェック。
+- **セキュリティ・品質方針**: GitHub Dependabot の有効化 [完了]、Secret Protection 有効化 [完了]、axe-core / Lighthouse による a11y 自動チェック。
 
 ---
 
@@ -293,4 +305,8 @@ JRA公式 `.ics` に含まれないフィールド（多言語名称・競馬場
 3. **Step 3:** Shadcn UI + Tailwind CSS を初期化し、セマンティックトークン基盤および共通UIコンポーネント群（`GradeBadge`, `RaceCard`, `RaceDetailDialog`, `FilterBar`, `Header`, `Layout`）を実装・検証。[完了]
 4. **Step 4:** 共通UIコンポーネントを活用し、レスポンシブな「タイムラインビュー」および「月間カレンダービュー（月曜始まり・土日連続）」を実装・統合。[完了]
 5. **Step 5:** PWA & Service Worker（Workbox）によるオフラインキャッシュおよびPWAマニフェストの実装。[完了]
-6. **Step 6:** GitHub Actions による自動ビルド＆GitHub Pages 自動デプロイパイプラインの構築。[次のステップ]
+6. **Step 6:** GitHub Actions による自動ビルド＆GitHub Pages 自動デプロイパイプライン（`deploy.yml`）の構築。[完了]
+7. **Step 7:** JRA公式からの `.ics` / ZIP 自動取得・展開機能（`jra-calendar.ts`）の実装。[完了]
+8. **Step 8:** 発走ステータスバッジの改善（レース終了後の自動非表示対応、`v1.2.0` リリース）。[完了]
+9. **Step 9:** JRA確定発走予定時刻の自動更新パイプライン・プロバイダー設計および定期実行ワークフローの実装（`v1.3.0` リリース）。[完了]
+10. **Step 10 (Next):** フェーズ2 拡張機能（NAR/海外競馬対応、多言語UI切替、詳細フィルター等）の順次実装。[次のステップ]
