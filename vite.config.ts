@@ -33,7 +33,7 @@ export default defineConfig({
         name: '重賞カレンダー - JRA重賞レーススケジュール',
         short_name: '重賞カレンダー',
         description: 'JRA重賞レースのスケジュールを閲覧・管理するオフライン対応カレンダー',
-        theme_color: '#1D4ED8',
+        theme_color: '#047B5F',
         background_color: '#FFFFFF',
         display: 'standalone',
         orientation: 'portrait-primary',

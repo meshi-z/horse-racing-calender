@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useViewMode } from "@/hooks/useViewMode";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calendar, ListFilter, Trophy } from "lucide-react";
+import { Calendar, ListFilter } from "lucide-react";
 import { cn } from "@/libs/utils";
 
 export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
@@ -19,10 +19,14 @@ export function Header({ className, ...props }: HeaderProps) {
     >
       <div className="container flex h-14 items-center justify-between gap-4">
         {/* タイトル & ロゴ */}
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm">
-            <Trophy className="h-4 w-4" />
-          </div>
+        <div className="flex items-center gap-2.5">
+          <img
+            src={`${import.meta.env.BASE_URL}icons/icon-192.png`}
+            alt="重賞カレンダー ロゴ"
+            className="h-8 w-8 rounded-lg shadow-sm object-cover"
+            width={32}
+            height={32}
+          />
           <div>
             <h1 className="text-base sm:text-lg font-bold tracking-tight">
               重賞カレンダー

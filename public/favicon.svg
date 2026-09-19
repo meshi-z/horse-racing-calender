@@ -1,23 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2563EB" />
-      <stop offset="100%" stop-color="#1D4ED8" />
-    </linearGradient>
-    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FDE047" />
-      <stop offset="50%" stop-color="#EAB308" />
-      <stop offset="100%" stop-color="#CA8A04" />
+      <stop offset="0%" stop-color="#01A350" />
+      <stop offset="40%" stop-color="#16A34A" />
+      <stop offset="100%" stop-color="#8BCA3D" />
     </linearGradient>
   </defs>
   <rect width="512" height="512" rx="96" fill="url(#bg)"/>
-  <g transform="translate(106, 106) scale(0.5859375)" fill="none" stroke="url(#gold)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M120 40 H392 V190 C392 265 330 326 256 326 C182 326 120 265 120 190 Z" fill="url(#gold)" fill-opacity="0.25"/>
-    <path d="M120 40 H392 V190 C392 265 330 326 256 326 C182 326 120 265 120 190 Z"/>
-    <path d="M120 90 H70 C47.9 90 30 107.9 30 130 C30 174.2 65.8 210 110 210 H124"/>
-    <path d="M392 90 H442 C464.1 90 482 107.9 482 130 C482 174.2 446.2 210 402 210 H388"/>
-    <path d="M256 326 V410"/>
-    <path d="M166 470 H346"/>
-    <path d="M196 410 H316"/>
-  </g>
+  <path d="M 223 42 L 246 52 L 259 61 L 275 77 L 289 100 L 315 105 L 349 120 L 373 136 L 393 154 L 393 156 L 401 163 L 419 188 L 432 213 L 441 237 L 449 272 L 431 273 L 425 245 L 414 216 L 400 191 L 375 161 L 373 161 L 357 146 L 328 129 L 303 120 L 277 116 L 273 106 L 263 90 L 253 79 L 241 71 L 240 118 L 192 138 L 176 156 L 176 158 L 170 163 L 170 165 L 164 170 L 164 172 L 158 177 L 158 179 L 152 184 L 152 186 L 146 191 L 146 193 L 140 198 L 135 206 L 129 211 L 129 213 L 123 218 L 123 220 L 117 225 L 117 227 L 111 232 L 111 234 L 105 239 L 100 247 L 93 253 L 88 261 L 82 266 L 88 302 L 126 312 L 126 310 L 146 287 L 190 268 L 196 267 L 212 273 L 231 273 L 249 267 L 257 262 L 273 244 L 278 233 L 281 215 L 298 215 L 296 235 L 292 246 L 283 261 L 269 275 L 252 284 L 249 288 L 247 296 L 244 300 L 183 448 L 167 449 L 164 448 L 164 446 L 229 291 L 212 291 L 196 286 L 188 288 L 156 302 L 144 318 L 139 322 L 139 324 L 134 328 L 134 330 L 129 332 L 73 316 L 63 262 L 182 123 L 223 106 L 223 42 Z M 307 299 L 331 299 L 350 306 L 362 318 L 367 332 L 367 347 L 365 354 L 361 361 L 347 373 L 358 379 L 368 394 L 370 404 L 368 421 L 363 431 L 353 441 L 344 446 L 329 450 L 308 450 L 287 443 L 273 430 L 267 414 L 267 408 L 295 408 L 296 414 L 301 422 L 310 427 L 322 428 L 332 425 L 341 413 L 341 399 L 334 388 L 324 384 L 302 384 L 302 362 L 322 362 L 332 358 L 336 354 L 339 346 L 339 335 L 336 328 L 326 321 L 311 321 L 301 327 L 298 332 L 297 339 L 269 339 L 270 329 L 277 315 L 289 305 L 307 299 Z M 444 300 L 449 300 L 449 448 L 421 449 L 421 334 L 386 345 L 386 322 L 444 300 Z" fill="#FFFFFF" fill-rule="evenodd"/>
 </svg>
