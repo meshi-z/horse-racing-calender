@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { ensureJraIcs } from './lib/jra-calendar';
 
 // --- Type Definitions (Pattern A: Localized Object) ---
 export interface LocalizedString {
@@ -567,16 +568,51 @@ function resolveRaceNameEn(icsName: string, htmlName: string): string {
   throw new Error(`Failed to resolve English race name for "${icsName}" (HTML: "${htmlName}")`);
 }
 
-async function ensureJyusyoHtml(filePath: string): Promise<string> {
-  if (fs.existsSync(filePath)) {
+interface CliOptions {
+  year: number;
+  force: boolean;
+}
+
+function parseCliArgs(): CliOptions {
+  const args = process.argv.slice(2);
+  let year = parseInt(process.env.TARGET_YEAR || '2026', 10);
+  let force = false;
+
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (arg === '--force' || arg === '-f') {
+      force = true;
+    } else if (arg.startsWith('--year=')) {
+      year = parseInt(arg.slice('--year='.length), 10);
+    } else if (arg === '--year' || arg === '-y') {
+      if (args[i + 1]) {
+        year = parseInt(args[++i], 10);
+      }
+    } else if (/^\d{4}$/.test(arg)) {
+      year = parseInt(arg, 10);
+    }
+  }
+
+  if (isNaN(year)) {
+    throw new Error('Invalid year provided in arguments or TARGET_YEAR environment variable');
+  }
+
+  return { year, force };
+}
+
+async function ensureJyusyoHtml(filePath: string, year: number, force: boolean = false): Promise<string> {
+  if (fs.existsSync(filePath) && !force) {
     console.log(`Loading HTML from local file: ${filePath}`);
     const buf = fs.readFileSync(filePath);
     return new TextDecoder('shift-jis').decode(buf);
   }
 
-  const url = 'https://www.jra.go.jp/datafile/seiseki/replay/2026/jyusyo.html';
+  const url = `https://www.jra.go.jp/datafile/seiseki/replay/${year}/jyusyo.html`;
   console.log(`Fetching jyusyo.html from ${url}...`);
   const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch jyusyo.html from ${url}: ${res.status} ${res.statusText}`);
+  }
   const arrayBuffer = await res.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
@@ -585,18 +621,20 @@ async function ensureJyusyoHtml(filePath: string): Promise<string> {
 }
 
 async function main() {
+  const { year, force } = parseCliArgs();
+  console.log(`Building races data for year: ${year} (force: ${force})`);
+
   const rootDir = process.cwd();
-  const icsPath = path.join(rootDir, 'src', 'data', 'jrarace2026.ics');
-  const htmlPath = path.join(rootDir, 'src', 'data', 'jyusyo.html');
+  const icsPath = path.join(rootDir, 'src', 'data', `jrarace${year}.ics`);
+  const htmlFileName = (year === 2026 && fs.existsSync(path.join(rootDir, 'src', 'data', 'jyusyo.html')) && !force)
+    ? 'jyusyo.html'
+    : `jyusyo${year === 2026 ? '' : year}.html`;
+  const htmlPath = path.join(rootDir, 'src', 'data', htmlFileName);
   const publicOutPath = path.join(rootDir, 'public', 'data', 'races.json');
   const masterOutPath = path.join(rootDir, 'src', 'data', 'race_master.json');
 
-  if (!fs.existsSync(icsPath)) {
-    throw new Error(`ICS file not found at ${icsPath}`);
-  }
-
-  const icsContent = fs.readFileSync(icsPath, 'utf-8');
-  const htmlContent = await ensureJyusyoHtml(htmlPath);
+  const icsContent = await ensureJraIcs(year, icsPath, { force });
+  const htmlContent = await ensureJyusyoHtml(htmlPath, year, force);
 
   const icsRaces = parseIcs(icsContent);
   const htmlRaces = parseHtml(htmlContent);
@@ -643,7 +681,7 @@ async function main() {
     const gradeIdKey = gradeToIdKey(ics.grade);
     gradeSeqCount[gradeIdKey] = (gradeSeqCount[gradeIdKey] || 0) + 1;
     const seqStr = String(gradeSeqCount[gradeIdKey]).padStart(2, '0');
-    const id = `2026-jra-${gradeIdKey}-${seqStr}`;
+    const id = `${year}-jra-${gradeIdKey}-${seqStr}`;
 
     const defaultTimeJst = determineDefaultTimeJst(htmlData.track_type, ics.course, ics.grade);
     const startTimeUtc = toIsoUtc(ics.date, defaultTimeJst);
