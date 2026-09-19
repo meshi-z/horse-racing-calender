@@ -45,21 +45,33 @@ export function formatLocalDate(dateString: string): string {
 
 export interface RaceTimeInfo {
   time: string;
-  statusLabel: string;
-  isConfirmed: boolean;
+  statusLabel: string | null;
+  isPast: boolean;
 }
 
 /**
- * レースの発走時刻と確定ステータスを整形して返す
+ * レースの発走時刻とステータスを整形して返す
+ * 発走時刻前の場合は「発走予定」、発走時刻を経過した場合は statusLabel を null とする
  */
 export function formatRaceTimeDisplay(
   startTime: string,
-  isTimeConfirmed: boolean
+  now: Date = new Date()
 ): RaceTimeInfo {
   const time = formatLocalTime(startTime);
+  const startDate = new Date(startTime);
+  if (isNaN(startDate.getTime())) {
+    return {
+      time: '',
+      statusLabel: null,
+      isPast: false,
+    };
+  }
+
+  const isPast = now.getTime() >= startDate.getTime();
+
   return {
     time,
-    statusLabel: isTimeConfirmed ? '発走確定' : '発走予定',
-    isConfirmed: isTimeConfirmed,
+    statusLabel: isPast ? null : '発走予定',
+    isPast,
   };
 }

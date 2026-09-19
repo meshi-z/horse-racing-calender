@@ -43,7 +43,7 @@ export function RaceDetailDialog({
 }: RaceDetailDialogProps) {
   if (!race) return null;
 
-  const timeInfo = formatRaceTimeDisplay(race.start_time, race.is_time_confirmed);
+  const timeInfo = formatRaceTimeDisplay(race.start_time);
   const formattedDate = formatLocalDate(race.date);
 
   return (
@@ -74,12 +74,14 @@ export function RaceDetailDialog({
             <div className="flex items-center gap-1.5">
               <Clock className="h-4 w-4 text-muted-foreground" />
               <span className="font-semibold">{timeInfo.time}</span>
-              <Badge
-                variant={timeInfo.isConfirmed ? "default" : "outline"}
-                className="text-[10px] px-1.5 py-0"
-              >
-                {timeInfo.statusLabel}
-              </Badge>
+              {timeInfo.statusLabel && (
+                <Badge
+                  variant="outline"
+                  className="text-[10px] px-1.5 py-0"
+                >
+                  {timeInfo.statusLabel}
+                </Badge>
+              )}
             </div>
           </div>
 

@@ -42,18 +42,35 @@ describe("RaceCard", () => {
     expect(screen.getByText("定量")).toBeInTheDocument();
   });
 
-  it("未確定の発走予定時刻において、'発走予定' バッジが表示されること", () => {
-    render(<RaceCard race={mockRace} />);
+  it("発走時刻前のレースにおいて、'発走予定' バッジが表示されること", () => {
+    const upcomingRace: Race = {
+      ...mockRace,
+      start_time: "2099-12-31T06:40:00.000Z",
+    };
+    render(<RaceCard race={upcomingRace} />);
     expect(screen.getByText("発走予定")).toBeInTheDocument();
+    expect(screen.queryByText("発走確定")).not.toBeInTheDocument();
   });
 
-  it("確定済みの発走時刻において、'発走確定' バッジが表示されること", () => {
-    const confirmedRace: Race = {
+  it("発走時刻を経過したレースにおいて、'発走予定' バッジが表示されないこと", () => {
+    const pastRace: Race = {
       ...mockRace,
+      start_time: "2000-01-01T06:40:00.000Z",
+    };
+    render(<RaceCard race={pastRace} />);
+    expect(screen.queryByText("発走予定")).not.toBeInTheDocument();
+    expect(screen.queryByText("発走確定")).not.toBeInTheDocument();
+  });
+
+  it("確定フラグに関わらず '発走確定' バッジは表示されないこと", () => {
+    const confirmedUpcomingRace: Race = {
+      ...mockRace,
+      start_time: "2099-12-31T06:40:00.000Z",
       is_time_confirmed: true,
     };
-    render(<RaceCard race={confirmedRace} />);
-    expect(screen.getByText("発走確定")).toBeInTheDocument();
+    render(<RaceCard race={confirmedUpcomingRace} />);
+    expect(screen.getByText("発走予定")).toBeInTheDocument();
+    expect(screen.queryByText("発走確定")).not.toBeInTheDocument();
   });
 
   it("アクセシビリティ属性（role='button', tabIndex=0, aria-haspopup='dialog'）を有していること", () => {

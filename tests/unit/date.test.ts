@@ -33,17 +33,29 @@ describe("src/libs/date.ts", () => {
   });
 
   describe("formatRaceTimeDisplay", () => {
-    it("確定フラグが true の場合、'発走確定' ステータスを返すこと", () => {
-      const result = formatRaceTimeDisplay("2026-02-22T06:40:00.000Z", true);
-      expect(result.statusLabel).toBe("発走確定");
-      expect(result.isConfirmed).toBe(true);
+    const startTime = "2026-02-22T06:40:00.000Z";
+
+    it("発走時刻前の場合、'発走予定' ステータスと isPast: false を返すこと", () => {
+      const nowBefore = new Date("2026-02-22T06:30:00.000Z");
+      const result = formatRaceTimeDisplay(startTime, nowBefore);
+      expect(result.statusLabel).toBe("発走予定");
+      expect(result.isPast).toBe(false);
       expect(result.time).toMatch(/^\d{2}:\d{2}$/);
     });
 
-    it("確定フラグが false の場合、'発走予定' ステータスを返すこと", () => {
-      const result = formatRaceTimeDisplay("2026-02-22T06:40:00.000Z", false);
-      expect(result.statusLabel).toBe("発走予定");
-      expect(result.isConfirmed).toBe(false);
+    it("発走時刻を経過した場合、statusLabel: null と isPast: true を返すこと", () => {
+      const nowAfter = new Date("2026-02-22T06:45:00.000Z");
+      const result = formatRaceTimeDisplay(startTime, nowAfter);
+      expect(result.statusLabel).toBeNull();
+      expect(result.isPast).toBe(true);
+      expect(result.time).toMatch(/^\d{2}:\d{2}$/);
+    });
+
+    it("無効な日時の場合は空文字と statusLabel: null を返すこと", () => {
+      const result = formatRaceTimeDisplay("invalid-date");
+      expect(result.time).toBe("");
+      expect(result.statusLabel).toBeNull();
+      expect(result.isPast).toBe(false);
     });
   });
 });
