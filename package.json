@@ -10,6 +10,7 @@
     "data:build": "tsx scripts/parse-races.ts",
     "data:update-times": "tsx scripts/update-race-times.ts",
     "icons:generate": "tsx scripts/generate-pwa-icons.ts",
+    "docs:pdf": "node scripts/generate-prd-pdf.js",
     "type-check": "tsc --noEmit",
     "test": "vitest run"
   },
