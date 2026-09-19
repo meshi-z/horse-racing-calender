@@ -3,10 +3,10 @@ import { useRaceStore } from "@/store/useRaceStore";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import type { Grade, TrackType } from "@/types/race";
-import { Search, RotateCcw, X } from "lucide-react";
+import { Search, RotateCcw, X, MapPin, ChevronDown } from "lucide-react";
 import { cn } from "@/libs/utils";
 
-const GRADE_OPTIONS: { label: string; grade: Grade }[] = [
+export const GRADE_OPTIONS: { label: string; grade: Grade }[] = [
   { label: "G1", grade: "G1" },
   { label: "G2", grade: "G2" },
   { label: "G3", grade: "G3" },
@@ -15,10 +15,23 @@ const GRADE_OPTIONS: { label: string; grade: Grade }[] = [
   { label: "J.G3", grade: "J.G3" },
 ];
 
-const TRACK_OPTIONS: { label: string; type: TrackType }[] = [
+export const TRACK_OPTIONS: { label: string; type: TrackType }[] = [
   { label: "芝", type: "turf" },
   { label: "ダート", type: "dirt" },
   { label: "障害", type: "obstacle" },
+];
+
+export const COURSE_OPTIONS: { label: string; name: string }[] = [
+  { label: "東京", name: "東京" },
+  { label: "中山", name: "中山" },
+  { label: "阪神", name: "阪神" },
+  { label: "京都", name: "京都" },
+  { label: "中京", name: "中京" },
+  { label: "小倉", name: "小倉" },
+  { label: "新潟", name: "新潟" },
+  { label: "福島", name: "福島" },
+  { label: "札幌", name: "札幌" },
+  { label: "函館", name: "函館" },
 ];
 
 export interface FilterBarProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -29,6 +42,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
   const resetFilters = useRaceStore((state) => state.resetFilters);
 
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isCourseExpanded, setIsCourseExpanded] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
   // スクロール検知によりコンパクト表示フラグを切り替え
@@ -71,7 +85,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     return () => {
       document.documentElement.style.removeProperty("--filterbar-height");
     };
-  }, [isScrolled]);
+  }, [isScrolled, isCourseExpanded, filters.courses.length]);
 
   const hasActiveFilters =
     filters.searchQuery.trim() !== "" ||
@@ -94,6 +108,17 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
       ? filters.trackTypes.filter((t) => t !== track)
       : [...filters.trackTypes, track];
     setFilter("trackTypes", nextTracks);
+  };
+
+  const handleCourseToggle = (courseName: string) => {
+    const nextCourses = filters.courses.includes(courseName)
+      ? filters.courses.filter((c) => c !== courseName)
+      : [...filters.courses, courseName];
+    setFilter("courses", nextCourses);
+  };
+
+  const handleClearCourses = () => {
+    setFilter("courses", []);
   };
 
   return (
@@ -149,8 +174,8 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
         )}
       </div>
 
-      {/* 絞り込み条件（グレード・馬場） */}
-      <div className="flex flex-col sm:flex-row sm:items-center text-xs gap-2 sm:gap-4">
+      {/* 絞り込み条件（グレード・馬場・競馬場展開） */}
+      <div className="flex flex-col sm:flex-row sm:items-center text-xs gap-2 sm:gap-4 flex-wrap">
         {/* グレード */}
         <div className="flex items-center flex-wrap gap-1.5">
           <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
@@ -206,7 +231,122 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
             );
           })}
         </div>
+
+        {/* 競馬場トグルボタン */}
+        <div className="flex items-center gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
+          <button
+            type="button"
+            onClick={() => setIsCourseExpanded((prev) => !prev)}
+            aria-expanded={isCourseExpanded}
+            aria-label="競馬場フィルターを展開"
+            className={cn(
+              "flex items-center gap-1.5 rounded-md border font-semibold transition-colors cursor-pointer",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+              "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+              filters.courses.length > 0
+                ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
+            )}
+          >
+            <MapPin className="h-3.5 w-3.5" />
+            <span>競馬場</span>
+            {filters.courses.length > 0 && (
+              <span className="ml-0.5 rounded-full bg-primary-foreground text-primary px-1.5 py-0.2 text-[10px] font-bold">
+                {filters.courses.length}
+              </span>
+            )}
+            <ChevronDown
+              className={cn(
+                "h-3.5 w-3.5 transition-transform duration-200",
+                isCourseExpanded && "rotate-180"
+              )}
+            />
+          </button>
+        </div>
       </div>
+
+      {/* 競馬場選択パネル（展開時） */}
+      {isCourseExpanded && (
+        <div
+          data-testid="course-filter-panel"
+          className="flex flex-col gap-2 pt-2 border-t border-border/60 animate-in fade-in-50 duration-150"
+        >
+          <div className="flex items-center justify-between text-xs">
+            <span className="text-muted-foreground font-medium flex items-center gap-1">
+              <MapPin className="h-3 w-3 text-primary" />
+              <span>競馬場を選択（複数選択可）:</span>
+            </span>
+            {filters.courses.length > 0 && (
+              <button
+                type="button"
+                onClick={handleClearCourses}
+                className="text-[11px] text-muted-foreground hover:text-destructive transition-colors underline underline-offset-2 cursor-pointer"
+              >
+                競馬場選択をクリア
+              </button>
+            )}
+          </div>
+          <div className="flex items-center flex-wrap gap-1.5">
+            {COURSE_OPTIONS.map(({ label, name }) => {
+              const isSelected = filters.courses.includes(name);
+              return (
+                <button
+                  key={name}
+                  type="button"
+                  onClick={() => handleCourseToggle(name)}
+                  aria-pressed={isSelected}
+                  className={cn(
+                    "rounded-md border transition-colors cursor-pointer",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                    "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                    isSelected
+                      ? "bg-primary text-primary-foreground border-primary shadow-sm font-semibold"
+                      : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
+                  )}
+                >
+                  {label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* 選択中の競馬場バッジ（折りたたみ時に表示） */}
+      {!isCourseExpanded && filters.courses.length > 0 && (
+        <div
+          data-testid="selected-courses-bar"
+          className="flex items-center flex-wrap gap-1.5 pt-1 text-xs border-t border-border/40"
+        >
+          <span className="text-muted-foreground text-[11px] mr-0.5 flex items-center gap-1">
+            <MapPin className="h-3 w-3 text-primary" />
+            <span>選択中の競馬場:</span>
+          </span>
+          {filters.courses.map((course) => (
+            <span
+              key={course}
+              className="inline-flex items-center gap-1 rounded-md bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 text-xs font-medium"
+            >
+              <span>{course}</span>
+              <button
+                type="button"
+                onClick={() => handleCourseToggle(course)}
+                className="hover:bg-primary/20 rounded-full p-0.5 transition-colors cursor-pointer"
+                aria-label={`${course}の絞り込みを解除`}
+              >
+                <X className="h-3 w-3" />
+              </button>
+            </span>
+          ))}
+          <button
+            type="button"
+            onClick={handleClearCourses}
+            className="text-[11px] text-muted-foreground hover:text-destructive transition-colors ml-1 underline underline-offset-2 cursor-pointer"
+          >
+            クリア
+          </button>
+        </div>
+      )}
     </div>
   );
 }

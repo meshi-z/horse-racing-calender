@@ -61,6 +61,7 @@ describe("FilterBar", () => {
     expect(useRaceStore.getState().filters.searchQuery).toBe("");
     expect(useRaceStore.getState().filters.grades).toEqual([]);
     expect(useRaceStore.getState().filters.trackTypes).toEqual([]);
+    expect(useRaceStore.getState().filters.courses).toEqual([]);
   });
 
   it("ヘッダー直下に固定表示するための sticky top-14 z-30 クラスが設定されていること", () => {
@@ -100,5 +101,66 @@ describe("FilterBar", () => {
 
     expect(bar).toHaveAttribute("data-scrolled", "false");
     expect(bar).toHaveClass("p-3.5");
+  });
+
+  it("競馬場ボタンをクリックすると展開パネルが開き、各競馬場をトグル選択できること (Issue #35)", () => {
+    render(<FilterBar />);
+
+    const courseToggleBtn = screen.getByRole("button", {
+      name: "競馬場フィルターを展開",
+    });
+    expect(courseToggleBtn).toBeInTheDocument();
+    expect(screen.queryByTestId("course-filter-panel")).not.toBeInTheDocument();
+
+    // 展開パネルを開く
+    fireEvent.click(courseToggleBtn);
+    expect(screen.getByTestId("course-filter-panel")).toBeInTheDocument();
+
+    // 東京競馬場を選択
+    const tokyoBtn = screen.getByRole("button", { name: "東京" });
+    fireEvent.click(tokyoBtn);
+    expect(useRaceStore.getState().filters.courses).toContain("東京");
+
+    // 阪神競馬場も選択（複数選択）
+    const hanshinBtn = screen.getByRole("button", { name: "阪神" });
+    fireEvent.click(hanshinBtn);
+    expect(useRaceStore.getState().filters.courses).toEqual(["東京", "阪神"]);
+
+    // 東京を再度クリックして解除
+    fireEvent.click(tokyoBtn);
+    expect(useRaceStore.getState().filters.courses).toEqual(["阪神"]);
+
+    // パネル内のクリアボタンで全解除
+    const clearCoursesBtn = screen.getByRole("button", {
+      name: "競馬場選択をクリア",
+    });
+    fireEvent.click(clearCoursesBtn);
+    expect(useRaceStore.getState().filters.courses).toEqual([]);
+  });
+
+  it("競馬場パネルが折りたたまれている場合でも選択中バッジが表示され個別解除できること (Issue #35)", () => {
+    // ストアに直接競馬場を設定
+    useRaceStore.getState().setFilter("courses", ["中山", "京都"]);
+
+    render(<FilterBar />);
+
+    // パネルが閉じていてもバッジが表示される
+    const badgesBar = screen.getByTestId("selected-courses-bar");
+    expect(badgesBar).toBeInTheDocument();
+    expect(screen.getByText("中山")).toBeInTheDocument();
+    expect(screen.getByText("京都")).toBeInTheDocument();
+
+    // 中山の解除ボタンをクリック
+    const removeNakayamaBtn = screen.getByRole("button", {
+      name: "中山の絞り込みを解除",
+    });
+    fireEvent.click(removeNakayamaBtn);
+    expect(useRaceStore.getState().filters.courses).toEqual(["京都"]);
+
+    // バッジバーのクリアボタンで全解除
+    const clearBtn = screen.getByRole("button", { name: "クリア" });
+    fireEvent.click(clearBtn);
+    expect(useRaceStore.getState().filters.courses).toEqual([]);
+    expect(screen.queryByTestId("selected-courses-bar")).not.toBeInTheDocument();
   });
 });
