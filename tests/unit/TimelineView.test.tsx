@@ -160,4 +160,19 @@ describe("TimelineView", () => {
 
     vi.useRealTimers();
   });
+
+  it("日付ヘッダーにFilterBar高さに連動するsticky topオフセットおよびz-20が設定されていること", () => {
+    render(<TimelineView races={mockRaces} />);
+
+    const feed = screen.getByRole("feed", { name: "重賞レース タイムライン" });
+    const section = feed.querySelector("#section-date-2026-01-04");
+    expect(section).toBeInTheDocument();
+
+    const dateHeader = section?.querySelector(".sticky");
+    expect(dateHeader).toBeInTheDocument();
+    expect(dateHeader).toHaveClass("z-20");
+    expect(dateHeader).toHaveStyle({
+      top: "calc(3.5rem + var(--filterbar-height, 0px))",
+    });
+  });
 });

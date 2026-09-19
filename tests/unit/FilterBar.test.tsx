@@ -62,4 +62,31 @@ describe("FilterBar", () => {
     expect(useRaceStore.getState().filters.grades).toEqual([]);
     expect(useRaceStore.getState().filters.trackTypes).toEqual([]);
   });
+
+  it("ヘッダー直下に固定表示するための sticky top-14 z-30 クラスが設定されていること", () => {
+    render(<FilterBar />);
+    const bar = screen.getByTestId("filter-bar");
+    expect(bar).toHaveClass("sticky");
+    expect(bar).toHaveClass("top-14");
+    expect(bar).toHaveClass("z-30");
+  });
+
+  it("ページスクロール時にコンパクト表示（data-scrolled='true'）に切り替わること", () => {
+    render(<FilterBar />);
+    const bar = screen.getByTestId("filter-bar");
+    expect(bar).toHaveAttribute("data-scrolled", "false");
+
+    // スクロール位置を 50px に変更してイベント発火
+    Object.defineProperty(window, "scrollY", { value: 50, writable: true, configurable: true });
+    fireEvent.scroll(window);
+
+    expect(bar).toHaveAttribute("data-scrolled", "true");
+    expect(bar).toHaveClass("shadow-md");
+
+    // 最上部へスクロールバック
+    Object.defineProperty(window, "scrollY", { value: 0, writable: true, configurable: true });
+    fireEvent.scroll(window);
+
+    expect(bar).toHaveAttribute("data-scrolled", "false");
+  });
 });
