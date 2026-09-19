@@ -15,6 +15,11 @@ const tempHtmlPath = path.join(rootDir, 'docs', '_temp_prd.html');
 console.log('Reading PRD.md...');
 const markdown = fs.readFileSync(prdPath, 'utf8');
 
+// Extract Version dynamically from PRD.md
+const versionMatch = markdown.match(/\|\s*\*\*バージョン\*\*\s*\|\s*([^|\s]+)\s*\|/);
+const currentVersion = versionMatch ? versionMatch[1].trim() : 'v1.16.0';
+console.log(`Detected PRD version: ${currentVersion}`);
+
 console.log('Reading icon asset...');
 const iconBase64 = fs.readFileSync(iconPath).toString('base64');
 const iconDataUri = `data:image/png;base64,${iconBase64}`;
@@ -220,8 +225,13 @@ function formatInline(text) {
   // Links: [label](url)
   res = res.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
 
+  // Line breaks in table cells
+  res = res.replace(/&lt;br\s*\/?&gt;/gi, '<br>');
+
   // Highlight status tags
   res = res.replace(/\[完了\]/g, '<span class="badge-done">完了</span>');
+  res = res.replace(/\[現在着手\]/g, '<span class="badge-current">現在着手</span>');
+  res = res.replace(/\[開発着手 \/ Current\]/g, '<span class="badge-current">開発着手 / Current</span>');
   res = res.replace(/\[次のステップ\]/g, '<span class="badge-next">次のステップ</span>');
 
   return res;
@@ -251,11 +261,11 @@ const fullHtml = `<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Horse Racing Calendar PRD</title>
+  <title>Horse Racing Calendar PRD ${currentVersion}</title>
   <style>
     @page {
       size: A4 portrait;
-      margin: 15mm 14mm 16mm 14mm;
+      margin: 14mm 14mm 15mm 14mm;
       @top-left {
         content: "重賞カレンダー プロダクト要求仕様書 (PRD)";
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", Meiryo, sans-serif;
@@ -267,7 +277,7 @@ const fullHtml = `<!DOCTYPE html>
         margin-bottom: 8px;
       }
       @top-right {
-        content: "v1.15.1 | 公式テーマカラー #047B5F";
+        content: "${currentVersion} | 公式テーマカラー #047B5F";
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", Meiryo, sans-serif;
         font-size: 8pt;
         color: #047b5f;
@@ -315,8 +325,8 @@ const fullHtml = `<!DOCTYPE html>
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", Meiryo, sans-serif;
-      font-size: 9.3pt;
-      line-height: 1.62;
+      font-size: 9.05pt;
+      line-height: 1.55;
       color: var(--text-main);
       background-color: #ffffff;
       margin: 0;
@@ -381,6 +391,16 @@ const fullHtml = `<!DOCTYPE html>
       border: 1px solid var(--primary);
     }
 
+    .doc-badge-accent {
+      display: inline-block;
+      font-size: 7.5pt;
+      font-weight: 700;
+      padding: 1.5px 7px;
+      border-radius: 9999px;
+      background-color: #0284c7;
+      color: #ffffff;
+    }
+
     .doc-title {
       margin: 0 0 3px 0;
       font-size: 16pt;
@@ -403,7 +423,7 @@ const fullHtml = `<!DOCTYPE html>
       border: 1px solid var(--primary-border);
       border-radius: 8px;
       padding: 10px 14px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       page-break-inside: avoid;
     }
 
@@ -456,13 +476,13 @@ const fullHtml = `<!DOCTYPE html>
     }
 
     h2 {
-      font-size: 12.5pt;
+      font-size: 12pt;
       font-weight: 700;
       color: var(--primary-dark);
       border-left: 5px solid var(--primary);
       background: linear-gradient(to right, var(--primary-light), transparent);
       padding: 5px 10px;
-      margin-top: 22px;
+      margin-top: 20px;
       margin-bottom: 10px;
       border-radius: 0 4px 4px 0;
       page-break-after: avoid;
@@ -470,10 +490,10 @@ const fullHtml = `<!DOCTYPE html>
     }
 
     h3 {
-      font-size: 10.8pt;
+      font-size: 10.5pt;
       font-weight: 700;
       color: var(--primary-dark);
-      margin-top: 16px;
+      margin-top: 15px;
       margin-bottom: 6px;
       padding-bottom: 3px;
       border-bottom: 1.5px solid var(--primary-tint);
@@ -482,10 +502,10 @@ const fullHtml = `<!DOCTYPE html>
     }
 
     h4 {
-      font-size: 9.8pt;
+      font-size: 9.6pt;
       font-weight: 700;
       color: #334155;
-      margin-top: 12px;
+      margin-top: 11px;
       margin-bottom: 4px;
       page-break-after: avoid;
     }
@@ -502,13 +522,13 @@ const fullHtml = `<!DOCTYPE html>
 
     /* Lists */
     ul, ol {
-      margin: 0 0 10px 0;
+      margin: 0 0 8px 0;
       padding-left: 20px;
     }
 
     li {
-      margin-bottom: 3px;
-      line-height: 1.58;
+      margin-bottom: 2px;
+      line-height: 1.52;
     }
 
     li.nested {
@@ -518,15 +538,15 @@ const fullHtml = `<!DOCTYPE html>
 
     /* Tables */
     .table-container {
-      margin: 10px 0 14px 0;
+      margin: 10px 0 13px 0;
       page-break-inside: avoid;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 8.5pt;
-      line-height: 1.48;
+      font-size: 8.4pt;
+      line-height: 1.46;
       background-color: #ffffff;
       border: 1px solid #cbd5e1;
       border-radius: 6px;
@@ -544,7 +564,7 @@ const fullHtml = `<!DOCTYPE html>
     }
 
     td {
-      padding: 5.5px 9px;
+      padding: 5px 9px;
       border: 1px solid #e2e8f0;
       vertical-align: top;
     }
@@ -556,7 +576,7 @@ const fullHtml = `<!DOCTYPE html>
     /* Code Blocks & Inline Code */
     code {
       font-family: "Cascadia Code", Consolas, Menlo, Monaco, monospace;
-      font-size: 8.2pt;
+      font-size: 8.1pt;
       background-color: #edf4f1;
       color: var(--primary-dark);
       padding: 1px 4px;
@@ -570,8 +590,8 @@ const fullHtml = `<!DOCTYPE html>
       color: #f8fafc;
       padding: 10px 12px;
       border-radius: 6px;
-      font-size: 8pt;
-      line-height: 1.44;
+      font-size: 7.9pt;
+      line-height: 1.42;
       overflow-x: auto;
       margin: 8px 0 12px 0;
       page-break-inside: avoid;
@@ -629,6 +649,20 @@ const fullHtml = `<!DOCTYPE html>
       white-space: nowrap;
     }
 
+    .badge-current {
+      display: inline-block;
+      font-size: 7.2pt;
+      font-weight: 700;
+      color: #0369a1;
+      background-color: #e0f2fe;
+      border: 1px solid #7dd3fc;
+      padding: 0.5px 5px;
+      border-radius: 3px;
+      margin-left: 4px;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
     .badge-next {
       display: inline-block;
       font-size: 7.2pt;
@@ -652,9 +686,10 @@ const fullHtml = `<!DOCTYPE html>
     <div class="doc-title-group">
       <div class="doc-badge-row">
         <span class="doc-badge">PRD (プロダクト要求仕様書)</span>
-        <span class="doc-badge-secondary">v1.15.1</span>
+        <span class="doc-badge-secondary">${currentVersion}</span>
         <span class="doc-badge-secondary">SPA / PWA</span>
         <span class="doc-badge-secondary">公式テーマ: #047B5F</span>
+        <span class="doc-badge-accent">i18n (日/英対応)</span>
       </div>
       <h1 class="doc-title">重賞カレンダーサービス 要求仕様書</h1>
       <p class="doc-subtitle">JRA Graded Races Calendar Web Application Specifications</p>
