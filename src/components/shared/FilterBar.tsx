@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRaceStore } from "@/store/useRaceStore";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import type { Grade, TrackType } from "@/types/race";
+import type { Grade, TrackType, DistanceCategory } from "@/types/race";
 import { Search, RotateCcw, X, MapPin, ChevronDown } from "lucide-react";
 import { cn } from "@/libs/utils";
 
@@ -19,6 +19,17 @@ export const TRACK_OPTIONS: { label: string; type: TrackType }[] = [
   { label: "芝", type: "turf" },
   { label: "ダート", type: "dirt" },
   { label: "障害", type: "obstacle" },
+];
+
+export const DISTANCE_OPTIONS: {
+  label: string;
+  category: DistanceCategory;
+  description: string;
+}[] = [
+  { label: "短距離", category: "sprint", description: "1400m以下（スプリント）" },
+  { label: "マイル", category: "mile", description: "1500〜1700m（マイル）" },
+  { label: "中距離", category: "intermediate", description: "1800〜2200m（中距離）" },
+  { label: "長距離", category: "long", description: "2400m以上（長距離・障害）" },
 ];
 
 export const COURSE_OPTIONS: { label: string; name: string }[] = [
@@ -85,12 +96,13 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     return () => {
       document.documentElement.style.removeProperty("--filterbar-height");
     };
-  }, [isScrolled, isCourseExpanded, filters.courses.length]);
+  }, [isScrolled, isCourseExpanded, filters.courses.length, filters.distanceCategories.length]);
 
   const hasActiveFilters =
     filters.searchQuery.trim() !== "" ||
     filters.grades.length > 0 ||
     filters.trackTypes.length > 0 ||
+    filters.distanceCategories.length > 0 ||
     filters.courses.length > 0 ||
     filters.sexConstraints.length > 0 ||
     filters.ageConstraints.length > 0 ||
@@ -108,6 +120,13 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
       ? filters.trackTypes.filter((t) => t !== track)
       : [...filters.trackTypes, track];
     setFilter("trackTypes", nextTracks);
+  };
+
+  const handleDistanceToggle = (category: DistanceCategory) => {
+    const nextCategories = filters.distanceCategories.includes(category)
+      ? filters.distanceCategories.filter((c) => c !== category)
+      : [...filters.distanceCategories, category];
+    setFilter("distanceCategories", nextCategories);
   };
 
   const handleCourseToggle = (courseName: string) => {
@@ -223,6 +242,36 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
                   "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
                   isSelected
                     ? "bg-secondary text-secondary-foreground font-medium border-secondary-foreground/20 shadow-sm"
+                    : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
+                )}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* 距離区分 */}
+        <div className="flex items-center flex-wrap gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
+          <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
+            距離:
+          </span>
+          {DISTANCE_OPTIONS.map(({ label, category, description }) => {
+            const isSelected = filters.distanceCategories.includes(category);
+            return (
+              <button
+                key={category}
+                type="button"
+                onClick={() => handleDistanceToggle(category)}
+                aria-pressed={isSelected}
+                title={description}
+                aria-label={`距離フィルター: ${label}（${description}）`}
+                className={cn(
+                  "rounded-md border transition-colors cursor-pointer",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                  "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                  isSelected
+                    ? "bg-primary text-primary-foreground border-primary shadow-sm font-semibold"
                     : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
                 )}
               >

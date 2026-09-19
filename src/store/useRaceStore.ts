@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { FilterState, Race } from '../types/race';
+import type { DistanceCategory, FilterState, Race } from '../types/race';
 
 export interface YearMonth {
   year: number;
@@ -31,6 +31,7 @@ export const initialFilters: FilterState = {
   sexConstraints: [],
   ageConstraints: [],
   courses: [],
+  distanceCategories: [],
   yearMonth: null,
 };
 
@@ -40,6 +41,24 @@ export const getInitialYearMonth = (): YearMonth => {
     year: now.getFullYear(),
     month: now.getMonth() + 1,
   };
+};
+
+/**
+ * 距離が指定された距離区分に合致するか判定する関数
+ */
+export const matchDistanceCategory = (distance: number, category: DistanceCategory): boolean => {
+  switch (category) {
+    case 'sprint':
+      return distance <= 1400;
+    case 'mile':
+      return distance >= 1401 && distance <= 1700;
+    case 'intermediate':
+      return distance >= 1701 && distance <= 2200;
+    case 'long':
+      return distance >= 2300;
+    default:
+      return false;
+  }
 };
 
 /**
@@ -83,6 +102,16 @@ export const filterRaces = (races: Race[], filters: FilterState): Race[] => {
         (c) => c === race.course.ja || c === race.course.en
       );
       if (!matchesCourse) {
+        return false;
+      }
+    }
+
+    // 距離区分絞り込み（指定されたいずれかの距離区分に合致）
+    if (filters.distanceCategories && filters.distanceCategories.length > 0) {
+      const matchesDistance = filters.distanceCategories.some((cat) =>
+        matchDistanceCategory(race.distance, cat)
+      );
+      if (!matchesDistance) {
         return false;
       }
     }

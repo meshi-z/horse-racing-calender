@@ -54,7 +54,18 @@ const mockRaces: Race[] = [
 
 describe("TimelineView", () => {
   beforeEach(() => {
-    useRaceStore.setState({ filters: { searchQuery: "", grades: [], trackTypes: [], sexConstraints: [], ageConstraints: [], courses: [], yearMonth: null } });
+    useRaceStore.setState({
+      filters: {
+        searchQuery: "",
+        grades: [],
+        trackTypes: [],
+        sexConstraints: [],
+        ageConstraints: [],
+        courses: [],
+        distanceCategories: [],
+        yearMonth: null,
+      },
+    });
   });
 
   it("レース開催日ごとにグループ化され、各日付ヘッダーが表示されること", () => {
