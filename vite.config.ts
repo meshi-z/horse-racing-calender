@@ -80,6 +80,12 @@ export default defineConfig({
               cacheableResponse: {
                 statuses: [0, 200],
               },
+              broadcastUpdate: {
+                channelName: 'races-data-updates',
+                options: {
+                  headersToCheck: ['content-length', 'etag', 'last-modified'],
+                },
+              },
             },
           },
         ],
