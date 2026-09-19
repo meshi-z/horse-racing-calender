@@ -79,6 +79,32 @@ npm run dev
 | `npm run test` | Vitest による単体・統合テストを実行 |
 | `npm run type-check` | `tsc --noEmit` による TypeScript 型検査 |
 | `npm run data:build` | 公式データ（ICS/HTML）をパースし、レースマスター JSON を生成 |
+| `npm run icons:generate` | PWA 用アプリアイコン（PNG/SVG）を一括生成 |
+
+---
+
+## デプロイ & CI/CD パイプライン (Deployment & CI/CD)
+
+本プロジェクトは **GitHub Pages** による静的ホスティングに対応しており、GitHub Actions ワークフロー（`.github/workflows/deploy.yml`）によって自動ビルド・デプロイが行われます。
+
+### 自動配信パイプラインの構成
+
+1. **トリガー条件:**
+   - `main` ブランチへの `push`: 自動ビルド、テスト、および GitHub Pages へのデプロイ
+   - `pull_request` (対象: `main`): 型検査・テスト・ビルド検証（デプロイはスキップ）
+   - 手動実行 (`workflow_dispatch`): GitHub Web UI からのオンデマンドデプロイ
+2. **サブディレクトリ配信 (`BASE_URL`) 対応:**
+   - GitHub Pages のリポジトリ名サブディレクトリ（`/<repo-name>/`）に対応するため、ビルド時に環境変数 `BASE_URL` が動的に注入されます。
+   - レースデータ (`data/races.json`)、PWA マニフェスト (`manifest.webmanifest`)、各種アセットパスは `BASE_URL` に自動追従します。
+   - SPA ルーティングのフォールバックとして `dist/404.html` がビルド時に自動生成されます。
+
+### GitHub Pages 初期設定手順
+
+初回デプロイを行う際は、GitHub リポジトリ設定で以下を一度だけ有効化してください。
+
+1. GitHub リポジトリの **Settings** > **Pages** を開く。
+2. **Build and deployment** > **Source** で **「GitHub Actions」** を選択する。
+3. `main` ブランチにコミットをプッシュするか、Actions タブからワークフローを手動実行すると自動的に配信が完了します。
 
 ---
 

@@ -13,7 +13,9 @@ export interface UseRacesResult {
   races: Race[];
 }
 
-const DEFAULT_DATA_URL = '/data/races.json';
+const baseUrl = import.meta.env.BASE_URL ?? '/';
+const normalizedBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+const DEFAULT_DATA_URL = `${normalizedBase}data/races.json`;
 
 /**
  * races.json からレースデータを非同期取得し、Store に格納する Custom Hook
