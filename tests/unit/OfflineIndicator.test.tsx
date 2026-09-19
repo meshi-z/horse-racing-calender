@@ -1,11 +1,13 @@
 import { render, screen, act } from '@testing-library/react';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { OfflineIndicator } from '@/components/shared/OfflineIndicator';
+import { useLanguageStore } from '@/store/useLanguageStore';
 
 describe('OfflineIndicator', () => {
   const originalOnLine = navigator.onLine;
 
   beforeEach(() => {
+    useLanguageStore.setState({ language: 'ja' });
     Object.defineProperty(navigator, 'onLine', {
       value: true,
       writable: true,
@@ -51,5 +53,25 @@ describe('OfflineIndicator', () => {
       window.dispatchEvent(new Event('online'));
     });
     expect(screen.getByText(/オンラインに復帰しました/)).toBeInTheDocument();
+  });
+
+  describe('英語モード (English mode)', () => {
+    beforeEach(() => {
+      useLanguageStore.setState({ language: 'en' });
+    });
+
+    it('英語でオフライン警告および復帰メッセージが表示されること', () => {
+      render(<OfflineIndicator />);
+
+      act(() => {
+        window.dispatchEvent(new Event('offline'));
+      });
+      expect(screen.getByText('Offline Mode (Displaying cached race data)')).toBeInTheDocument();
+
+      act(() => {
+        window.dispatchEvent(new Event('online'));
+      });
+      expect(screen.getByText('Back online')).toBeInTheDocument();
+    });
   });
 });

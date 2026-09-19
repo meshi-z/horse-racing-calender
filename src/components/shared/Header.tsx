@@ -41,10 +41,10 @@ export function Header({ className, ...props }: HeaderProps) {
           />
           <div>
             <h1 className="text-base sm:text-lg font-bold tracking-tight">
-              重賞カレンダー
+              {t("app.title")}
             </h1>
             <p className="hidden sm:block text-[10px] text-muted-foreground leading-none">
-              JRA Graded Races Calendar
+              {t("app.subtitle")}
             </p>
           </div>
         </div>

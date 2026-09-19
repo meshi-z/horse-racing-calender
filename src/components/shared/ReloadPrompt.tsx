@@ -1,11 +1,13 @@
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import { Button } from '@/components/ui/button';
 import { RefreshCw, X } from 'lucide-react';
+import { useTranslation } from '@/libs/i18n';
 
 /**
  * PWAのオフライン準備完了および新しいバージョン検知時の更新案内コンポーネント
  */
 export function ReloadPrompt() {
+  const { t } = useTranslation();
   const {
     offlineReady: [offlineReady, setOfflineReady],
     needRefresh: [needRefresh, setNeedRefresh],
@@ -39,16 +41,16 @@ export function ReloadPrompt() {
       <div className="flex items-start justify-between gap-2">
         <div className="text-xs">
           {offlineReady ? (
-            <span>アプリがオフラインで使用可能になりました</span>
+            <span>{t('pwa.ready')}</span>
           ) : (
-            <span>新しいバージョンが利用可能です。更新して最新のレース日程を反映しますか？</span>
+            <span>{t('pwa.updateAvailable')}</span>
           )}
         </div>
         <button
           type="button"
           onClick={close}
           className="text-muted-foreground hover:text-foreground rounded-sm p-0.5"
-          aria-label="閉じる"
+          aria-label={t('pwa.close')}
         >
           <X className="h-4 w-4" />
         </button>
@@ -62,7 +64,7 @@ export function ReloadPrompt() {
             className="h-7 text-xs px-2.5"
             onClick={close}
           >
-            後で
+            {t('pwa.later')}
           </Button>
           <Button
             size="sm"
@@ -70,7 +72,7 @@ export function ReloadPrompt() {
             onClick={() => void updateServiceWorker(true)}
           >
             <RefreshCw className="h-3 w-3" />
-            更新する
+            {t('pwa.update')}
           </Button>
         </div>
       )}
