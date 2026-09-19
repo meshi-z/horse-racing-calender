@@ -9,7 +9,7 @@ import { GradeBadge } from "./GradeBadge";
 import { Badge } from "@/components/ui/badge";
 import { formatLocalDate, formatRaceTimeDisplay } from "@/libs/date";
 import type { Race } from "@/types/race";
-import { Calendar, Clock, MapPin } from "lucide-react";
+import { Calendar, Clock, MapPin, AlertTriangle } from "lucide-react";
 
 export interface RaceDetailDialogProps {
   race: Race | null;
@@ -67,9 +67,17 @@ export function RaceDetailDialog({
         <div className="grid gap-3 py-2 text-sm">
           {/* 日程・発走時刻 */}
           <div className="flex items-center justify-between rounded-lg border p-3 bg-muted/40">
-            <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4 text-muted-foreground" />
+            <div className="flex items-center gap-2 flex-wrap">
+              <Calendar className="h-4 w-4 text-muted-foreground shrink-0" />
               <span className="font-medium">{formattedDate}</span>
+              {race.is_rescheduled && (
+                <Badge
+                  variant="outline"
+                  className="text-[10px] px-1.5 py-0 h-4 border-amber-500 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 font-semibold"
+                >
+                  代替開催
+                </Badge>
+              )}
             </div>
             <div className="flex items-center gap-1.5">
               <Clock className="h-4 w-4 text-muted-foreground" />
@@ -84,6 +92,23 @@ export function RaceDetailDialog({
               )}
             </div>
           </div>
+
+          {/* 代替開催の案内通知 */}
+          {race.is_rescheduled && (
+            <div className="rounded-lg border border-amber-300 dark:border-amber-800 bg-amber-50/70 dark:bg-amber-950/20 p-3 text-xs text-amber-900 dark:text-amber-200 flex items-start gap-2.5">
+              <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+              <div className="space-y-0.5">
+                <div className="font-semibold">悪天候等による代替開催（日程変更）</div>
+                <p className="text-amber-700 dark:text-amber-300/90">
+                  {race.original_date ? (
+                    <>当初開催予定日：<strong>{formatLocalDate(race.original_date)}</strong> より変更されました。</>
+                  ) : (
+                    <>当初の予定日程から変更されました。</>
+                  )}
+                </p>
+              </div>
+            </div>
+          )}
 
           {/* コース情報 */}
           <div className="grid grid-cols-2 gap-2">

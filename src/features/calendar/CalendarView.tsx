@@ -205,18 +205,27 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                         onClick={() => handleRaceSelect(race)}
                         onKeyDown={(e) => handleKeyDown(e, race)}
                         aria-haspopup="dialog"
-                        aria-label={`${race.name.ja} 詳細を表示`}
+                        aria-label={`${race.name.ja}${race.is_rescheduled ? "（代替開催）" : ""} 詳細を表示`}
                         className={cn(
-                          "w-full text-left p-1 sm:p-1.5 rounded border border-border/80 bg-card hover:bg-accent hover:border-primary/50 transition-all",
+                          "w-full text-left p-1 sm:p-1.5 rounded border bg-card hover:bg-accent hover:border-primary/50 transition-all",
+                          race.is_rescheduled ? "border-amber-400/80 dark:border-amber-700/80 bg-amber-50/20" : "border-border/80",
                           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                           "flex flex-col gap-0.5 shadow-2xs group"
                         )}
                       >
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-1 flex-wrap">
                           <GradeBadge
                             grade={race.grade}
                             className="text-[9px] px-1 py-0 h-3.5 shrink-0"
                           />
+                          {race.is_rescheduled && (
+                            <Badge
+                              variant="outline"
+                              className="text-[8px] px-1 py-0 h-3.5 border-amber-500 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 shrink-0 font-medium"
+                            >
+                              代替
+                            </Badge>
+                          )}
                           {localTime && (
                             <span className="text-[10px] text-muted-foreground font-mono leading-none">
                               {localTime}

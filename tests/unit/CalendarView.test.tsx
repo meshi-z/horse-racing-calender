@@ -121,4 +121,23 @@ describe("CalendarView", () => {
 
     expect(screen.getByRole("dialog")).toBeInTheDocument();
   });
+
+  it("代替開催（is_rescheduled=true）のレースにおいて '代替' バッジが表示されること", () => {
+    const rescheduledRaces: Race[] = [
+      {
+        ...mockRaces[1],
+        date: "2026-02-23", // 2/22(日) から 2/23(月) に順延
+        is_rescheduled: true,
+        original_date: "2026-02-22",
+      },
+    ];
+
+    render(<CalendarView races={rescheduledRaces} />);
+
+    const raceButton = screen.getByRole("button", {
+      name: "フェブラリーステークス（代替開催） 詳細を表示",
+    });
+    expect(raceButton).toBeInTheDocument();
+    expect(raceButton).toHaveTextContent("代替");
+  });
 });
