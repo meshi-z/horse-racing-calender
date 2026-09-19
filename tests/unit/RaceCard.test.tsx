@@ -1,6 +1,7 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { RaceCard } from "../../src/components/shared/RaceCard";
+import { useLanguageStore } from "../../src/store/useLanguageStore";
 import type { Race } from "../../src/types/race";
 
 const mockRace: Race = {
@@ -30,6 +31,10 @@ const mockRace: Race = {
 };
 
 describe("RaceCard", () => {
+  beforeEach(() => {
+    useLanguageStore.setState({ language: "ja" });
+  });
+
   it("レース名、英語名、グレード、開催場、距離、馬場情報が正しく表示されること", () => {
     render(<RaceCard race={mockRace} />);
 
@@ -136,5 +141,58 @@ describe("RaceCard", () => {
     const card = screen.getByRole("button", { name: "フェブラリーステークス 詳細を表示" });
     expect(card).not.toHaveClass("ring-2");
     expect(screen.queryByText("本日開催")).not.toBeInTheDocument();
+  });
+
+  describe("多言語表示 (en)", () => {
+    beforeEach(() => {
+      useLanguageStore.setState({ language: "en" });
+    });
+
+    it("英語モード時にレース名、競馬場名、馬場、出走条件、aria-labelが英語化されること", () => {
+      render(<RaceCard race={mockRace} />);
+
+      // 主タイトルが英語、副タイトルが日本語
+      expect(screen.getByText("February Stakes")).toBeInTheDocument();
+      expect(screen.getByText("フェブラリーステークス")).toBeInTheDocument();
+
+      // 競馬場名・コース・条件
+      expect(screen.getByText("Tokyo")).toBeInTheDocument();
+      expect(screen.getByText("Dirt 1600m")).toBeInTheDocument();
+      expect(screen.getByText("4yo+")).toBeInTheDocument();
+      expect(screen.getByText("Weight for Age")).toBeInTheDocument();
+
+      // aria-label
+      const card = screen.getByRole("button", { name: "February Stakes View Details" });
+      expect(card).toBeInTheDocument();
+    });
+
+    it("英語モード時に発走予定バッジ（Scheduled）および本日開催バッジ（Today）が表示されること", () => {
+      const upcomingRace: Race = {
+        ...mockRace,
+        start_time: "2099-12-31T06:40:00.000Z",
+      };
+      render(<RaceCard race={upcomingRace} isToday={true} />);
+
+      expect(screen.getByText("Scheduled")).toBeInTheDocument();
+      expect(screen.getByText("Today")).toBeInTheDocument();
+    });
+
+    it("英語モード時に代替開催バッジ（Rescheduled）および当初予定日が英語フォーマットで表示されること", () => {
+      const rescheduledRace: Race = {
+        ...mockRace,
+        date: "2026-02-23",
+        is_rescheduled: true,
+        original_date: "2026-02-22",
+      };
+      render(<RaceCard race={rescheduledRace} />);
+
+      expect(screen.getByText("Rescheduled")).toBeInTheDocument();
+      expect(screen.getByText(/Postponed from Sun, Feb 22, 2026/)).toBeInTheDocument();
+
+      const card = screen.getByRole("button", {
+        name: "February Stakes (Rescheduled) View Details",
+      });
+      expect(card).toBeInTheDocument();
+    });
   });
 });

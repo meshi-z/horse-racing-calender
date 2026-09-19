@@ -1,8 +1,21 @@
+import type { Language } from '../store/useLanguageStore';
+
 /**
  * 日時フォーマットおよびローカル時刻変換ユーティリティ
  */
 
 const DAY_OF_WEEK_JA = ['日', '月', '火', '水', '木', '金', '土'] as const;
+const DAY_OF_WEEK_EN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
+
+const MONTH_NAMES_SHORT_EN = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+] as const;
+
+const MONTH_NAMES_LONG_EN = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+] as const;
 
 /**
  * UTC ISO 8601 文字列（例: "2026-02-22T06:40:00.000Z"）を
@@ -23,9 +36,11 @@ export function formatLocalTime(utcIsoString: string): string {
 }
 
 /**
- * 日付文字列（YYYY-MM-DD）を「YYYY年M月D日(曜日)」形式に変換する
+ * 日付文字列（YYYY-MM-DD）を地域化された日付形式に変換する
+ * - ja: 2026年10月4日(日)
+ * - en: Sun, Oct 4, 2026
  */
-export function formatLocalDate(dateString: string): string {
+export function formatLocalDate(dateString: string, lang: Language = 'ja'): string {
   try {
     const [yearStr, monthStr, dayStr] = dateString.split('-');
     const year = parseInt(yearStr, 10);
@@ -36,11 +51,31 @@ export function formatLocalDate(dateString: string): string {
     if (isNaN(date.getTime())) {
       return dateString;
     }
+
+    if (lang === 'en') {
+      const dayOfWeek = DAY_OF_WEEK_EN[date.getDay()];
+      const monthName = MONTH_NAMES_SHORT_EN[month - 1];
+      return `${dayOfWeek}, ${monthName} ${day}, ${year}`;
+    }
+
     const dayOfWeek = DAY_OF_WEEK_JA[date.getDay()];
     return `${year}年${month}月${day}日(${dayOfWeek})`;
   } catch {
     return dateString;
   }
+}
+
+/**
+ * 年月を地域化された表示形式に変換する
+ * - ja: 2026年4月
+ * - en: April 2026
+ */
+export function formatYearMonth(year: number, month: number, lang: Language = 'ja'): string {
+  if (lang === 'en') {
+    const monthName = MONTH_NAMES_LONG_EN[month - 1] || '';
+    return `${monthName} ${year}`;
+  }
+  return `${year}年${month}月`;
 }
 
 export interface RaceTimeInfo {
@@ -51,11 +86,12 @@ export interface RaceTimeInfo {
 
 /**
  * レースの発走時刻とステータスを整形して返す
- * 発走時刻前の場合は「発走予定」、発走時刻を経過した場合は statusLabel を null とする
+ * 発走時刻前の場合は「発走予定」（en: "Scheduled"）、発走時刻を経過した場合は statusLabel を null とする
  */
 export function formatRaceTimeDisplay(
   startTime: string,
-  now: Date = new Date()
+  now: Date = new Date(),
+  lang: Language = 'ja'
 ): RaceTimeInfo {
   const time = formatLocalTime(startTime);
   const startDate = new Date(startTime);
@@ -71,7 +107,7 @@ export function formatRaceTimeDisplay(
 
   return {
     time,
-    statusLabel: isPast ? null : '発走予定',
+    statusLabel: isPast ? null : (lang === 'en' ? 'Scheduled' : '発走予定'),
     isPast,
   };
 }

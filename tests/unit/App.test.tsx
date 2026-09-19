@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { App } from "../../src/App";
 import { useRaceStore } from "../../src/store/useRaceStore";
+import { useLanguageStore } from "../../src/store/useLanguageStore";
 import * as useRacesModule from "../../src/hooks/useRaces";
 import type { Race } from "../../src/types/race";
 
@@ -26,6 +27,7 @@ const mockRaces: Race[] = [
 describe("App Integration", () => {
   beforeEach(() => {
     localStorage.clear();
+    useLanguageStore.setState({ language: "ja" });
     useRaceStore.setState({
       races: mockRaces,
       viewMode: "timeline",

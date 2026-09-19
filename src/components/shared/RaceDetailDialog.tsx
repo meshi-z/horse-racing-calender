@@ -8,6 +8,12 @@ import {
 import { GradeBadge } from "./GradeBadge";
 import { Badge } from "@/components/ui/badge";
 import { formatLocalDate, formatRaceTimeDisplay } from "@/libs/date";
+import {
+  useTranslation,
+  trackTypeLabels,
+  sexConstraintLabels,
+  ageConstraintLabels,
+} from "@/libs/i18n";
 import type { Race } from "@/types/race";
 import { Calendar, Clock, MapPin, AlertTriangle } from "lucide-react";
 
@@ -17,34 +23,26 @@ export interface RaceDetailDialogProps {
   onOpenChange: (open: boolean) => void;
 }
 
-const trackTypeLabels: Record<Race["track_type"], string> = {
-  turf: "芝",
-  dirt: "ダート",
-  obstacle: "障害",
-};
-
-const sexConstraintLabels: Record<Race["sex_constraint"], string> = {
-  filly_and_mare: "牝馬限定",
-  colt_and_filly: "牡・牝",
-  none: "性別不問（制限なし）",
-};
-
-const ageConstraintLabels: Record<Race["age_constraint"], string> = {
-  "2yo": "2歳",
-  "3yo": "3歳",
-  "3yo_and_up": "3歳以上",
-  "4yo_and_up": "4歳以上",
-};
-
 export function RaceDetailDialog({
   race,
   open,
   onOpenChange,
 }: RaceDetailDialogProps) {
+  const { language, t } = useTranslation();
+
   if (!race) return null;
 
-  const timeInfo = formatRaceTimeDisplay(race.start_time);
-  const formattedDate = formatLocalDate(race.date);
+  const timeInfo = formatRaceTimeDisplay(race.start_time, undefined, language);
+  const formattedDate = formatLocalDate(race.date, language);
+
+  const primaryName = race.name[language];
+  const secondaryName = race.name[language === "en" ? "ja" : "en"];
+  const coursePrimary = race.course[language];
+  const courseSecondary = race.course[language === "en" ? "ja" : "en"];
+  const trackLabel = trackTypeLabels[language][race.track_type];
+  const sexLabel = sexConstraintLabels[language][race.sex_constraint].full;
+  const ageLabel = ageConstraintLabels[language][race.age_constraint].full;
+  const handicapLabel = race.handicap[language];
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -57,10 +55,10 @@ export function RaceDetailDialog({
             </span>
           </div>
           <DialogTitle className="text-xl font-bold tracking-tight">
-            {race.name.ja}
+            {primaryName}
           </DialogTitle>
           <DialogDescription className="text-xs text-muted-foreground">
-            {race.name.en}
+            {secondaryName}
           </DialogDescription>
         </DialogHeader>
 
@@ -75,7 +73,7 @@ export function RaceDetailDialog({
                   variant="outline"
                   className="text-[10px] px-1.5 py-0 h-4 border-amber-500 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 font-semibold"
                 >
-                  代替開催
+                  {t("timeline.rescheduledBadge")}
                 </Badge>
               )}
             </div>
@@ -98,12 +96,16 @@ export function RaceDetailDialog({
             <div className="rounded-lg border border-amber-300 dark:border-amber-800 bg-amber-50/70 dark:bg-amber-950/20 p-3 text-xs text-amber-900 dark:text-amber-200 flex items-start gap-2.5">
               <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
               <div className="space-y-0.5">
-                <div className="font-semibold">悪天候等による代替開催（日程変更）</div>
+                <div className="font-semibold">{t("dialog.rescheduledTitle")}</div>
                 <p className="text-amber-700 dark:text-amber-300/90">
                   {race.original_date ? (
-                    <>当初開催予定日：<strong>{formatLocalDate(race.original_date)}</strong> より変更されました。</>
+                    <>
+                      {t("dialog.rescheduledNoticeWithDate", {
+                        date: formatLocalDate(race.original_date, language),
+                      })}
+                    </>
                   ) : (
-                    <>当初の予定日程から変更されました。</>
+                    <>{t("dialog.rescheduledNotice")}</>
                   )}
                 </p>
               </div>
@@ -115,32 +117,36 @@ export function RaceDetailDialog({
             <div className="rounded-lg border p-3">
               <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
                 <MapPin className="h-3.5 w-3.5" />
-                <span>開催場</span>
+                <span>{t("dialog.course")}</span>
               </div>
-              <div className="font-medium">{race.course.ja}</div>
-              <div className="text-xs text-muted-foreground">{race.course.en}</div>
+              <div className="font-medium">{coursePrimary}</div>
+              <div className="text-xs text-muted-foreground">{courseSecondary}</div>
             </div>
 
             <div className="rounded-lg border p-3">
-              <div className="text-xs text-muted-foreground mb-1">馬場・距離</div>
+              <div className="text-xs text-muted-foreground mb-1">
+                {t("dialog.trackAndDistance")}
+              </div>
               <div className="font-medium">
-                {trackTypeLabels[race.track_type]} {race.distance}m
+                {trackLabel} {race.distance}m
               </div>
             </div>
           </div>
 
           {/* 出走条件 */}
           <div className="rounded-lg border p-3 space-y-2">
-            <div className="text-xs font-semibold text-muted-foreground">出走条件・負担重量</div>
+            <div className="text-xs font-semibold text-muted-foreground">
+              {t("dialog.eligibilityAndWeight")}
+            </div>
             <div className="flex flex-wrap gap-1.5">
               <Badge variant="secondary">
-                {ageConstraintLabels[race.age_constraint]}
+                {ageLabel}
               </Badge>
               <Badge variant="secondary">
-                {sexConstraintLabels[race.sex_constraint]}
+                {sexLabel}
               </Badge>
               <Badge variant="outline">
-                斤量: {race.handicap.ja}
+                {t("dialog.weightPrefix")}{handicapLabel}
               </Badge>
             </div>
           </div>

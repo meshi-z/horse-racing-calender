@@ -1,6 +1,7 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { RaceDetailDialog } from "../../src/components/shared/RaceDetailDialog";
+import { useLanguageStore } from "../../src/store/useLanguageStore";
 import type { Race } from "../../src/types/race";
 
 const mockRace: Race = {
@@ -30,6 +31,10 @@ const mockRace: Race = {
 };
 
 describe("RaceDetailDialog", () => {
+  beforeEach(() => {
+    useLanguageStore.setState({ language: "ja" });
+  });
+
   it("発走時刻前のレースにおいて、'発走予定' バッジが表示されること", () => {
     const upcomingRace: Race = {
       ...mockRace,
@@ -108,5 +113,48 @@ describe("RaceDetailDialog", () => {
     );
     expect(screen.getByText("斤量: 定量")).toBeInTheDocument();
     expect(screen.queryByText(/Weight for Age/)).not.toBeInTheDocument();
+  });
+
+  describe("多言語表示 (en)", () => {
+    beforeEach(() => {
+      useLanguageStore.setState({ language: "en" });
+    });
+
+    it("英語モード時にモーダル各見出し・出走条件・斤量・代替開催案内が英語化されること", () => {
+      const rescheduledRace: Race = {
+        ...mockRace,
+        date: "2026-02-23",
+        is_rescheduled: true,
+        original_date: "2026-02-22",
+      };
+
+      render(
+        <RaceDetailDialog
+          race={rescheduledRace}
+          open={true}
+          onOpenChange={vi.fn()}
+        />
+      );
+
+      // 見出し
+      expect(screen.getByText("Course")).toBeInTheDocument();
+      expect(screen.getByText("Track & Distance")).toBeInTheDocument();
+      expect(screen.getByText("Eligibility & Weight")).toBeInTheDocument();
+
+      // 馬場・出走資格・斤量
+      expect(screen.getByText("Dirt 1600m")).toBeInTheDocument();
+      expect(screen.getByText("4yo & Up")).toBeInTheDocument();
+      expect(screen.getByText("Open to All")).toBeInTheDocument();
+      expect(screen.getByText("Weight: Weight for Age")).toBeInTheDocument();
+
+      // 代替開催案内
+      expect(screen.getByText("Rescheduled")).toBeInTheDocument();
+      expect(
+        screen.getByText("Rescheduled Race (Date Postponed)")
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText(/Postponed from original scheduled date: Sun, Feb 22, 2026\./)
+      ).toBeInTheDocument();
+    });
   });
 });

@@ -33,4 +33,9 @@ describe('i18n dictionary & helper', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect(t('non.existent.key' as any, 'ja')).toBe('non.existent.key');
   });
+
+  it('パラメータ展開が正常に機能すること', () => {
+    expect(t('timeline.racesCount', 'ja', { count: 3 })).toBe('3レース');
+    expect(t('timeline.racesCount', 'en', { count: 3 })).toBe('3 Races');
+  });
 });
