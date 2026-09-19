@@ -28,7 +28,7 @@ export default defineConfig({
     copyIndexTo404Plugin(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'icons/*.png', 'icons/*.svg'],
+      includeAssets: ['favicon.svg', 'icons/*.png', 'icons/*.svg', 'robots.txt', 'sitemap.xml'],
       manifest: {
         name: '重賞カレンダー - JRA重賞レーススケジュール',
         short_name: '重賞カレンダー',

@@ -6,11 +6,57 @@
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#047B5F" />
-    <meta name="description" content="JRA重賞レースのスケジュールを閲覧・管理するオフライン対応カレンダー" />
+    <title>重賞カレンダー | JRA Graded Races Calendar</title>
+    <meta name="description" content="JRA（日本中央競馬会）の全重賞レース（G1・G2・G3・障害）日程・発走時刻・条件を網羅したオフライン対応カレンダー。Schedule and confirmed race times for JRA graded horse racing in Japan." />
+    <meta name="keywords" content="競馬, JRA, 重賞, カレンダー, G1, スケジュール, 発走時刻, 中央競馬, horse racing, Japan, race calendar, graded races" />
+    <link rel="canonical" href="https://meshi-z.github.io/horse-racing-calender/" />
+
+    <!-- OGP (Open Graph Protocol) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://meshi-z.github.io/horse-racing-calender/" />
+    <meta property="og:site_name" content="重賞カレンダー" />
+    <meta property="og:title" content="重賞カレンダー | JRA Graded Races Calendar" />
+    <meta property="og:description" content="JRA全重賞レースの日程・発走時刻・出走条件をタイムラインと月間カレンダーで確認できるオフライン対応Webアプリ。" />
+    <meta property="og:image" content="https://meshi-z.github.io/horse-racing-calender/icons/icon-512.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="重賞カレンダー ロゴ" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="重賞カレンダー | JRA Graded Races Calendar" />
+    <meta name="twitter:description" content="JRA全重賞レースの日程・発走時刻・出走条件をタイムラインと月間カレンダーで確認できるオフライン対応Webアプリ。" />
+    <meta name="twitter:image" content="https://meshi-z.github.io/horse-racing-calender/icons/icon-512.png" />
+
+    <!-- PWA / Apple Mobile Web -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="重賞カレンダー" />
-    <title>重賞カレンダー | JRA Graded Races Calendar</title>
+
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "重賞カレンダー",
+        "alternateName": [
+          "JRA Graded Races Calendar",
+          "JRA 重賞カレンダー"
+        ],
+        "url": "https://meshi-z.github.io/horse-racing-calender/",
+        "description": "JRA（日本中央競馬会）の全重賞レース日程・確定発走時刻・出走条件を網羅したオフライン対応Webカレンダー。日英バイリンガル対応。",
+        "applicationCategory": "SportsApplication",
+        "operatingSystem": "All",
+        "inLanguage": ["ja", "en"],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "JPY"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
