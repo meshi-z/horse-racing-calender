@@ -62,6 +62,7 @@ describe("FilterBar", () => {
     expect(useRaceStore.getState().filters.grades).toEqual([]);
     expect(useRaceStore.getState().filters.trackTypes).toEqual([]);
     expect(useRaceStore.getState().filters.courses).toEqual([]);
+    expect(useRaceStore.getState().filters.distanceCategories).toEqual([]);
   });
 
   it("ヘッダー直下に固定表示するための sticky top-14 z-30 クラスが設定されていること", () => {
@@ -162,5 +163,35 @@ describe("FilterBar", () => {
     fireEvent.click(clearBtn);
     expect(useRaceStore.getState().filters.courses).toEqual([]);
     expect(screen.queryByTestId("selected-courses-bar")).not.toBeInTheDocument();
+  });
+
+  it("距離ボタンをクリックすると store.filters.distanceCategories にトグル反映されること (Issue #36)", () => {
+    render(<FilterBar />);
+
+    const sprintBtn = screen.getByRole("button", { name: "距離フィルター: 短距離（1400m以下（スプリント））" });
+    const mileBtn = screen.getByRole("button", { name: "距離フィルター: マイル（1500〜1700m（マイル））" });
+    const intermediateBtn = screen.getByRole("button", { name: "距離フィルター: 中距離（1800〜2200m（中距離））" });
+    const longBtn = screen.getByRole("button", { name: "距離フィルター: 長距離（2400m以上（長距離・障害））" });
+
+    expect(sprintBtn).toBeInTheDocument();
+    expect(mileBtn).toBeInTheDocument();
+    expect(intermediateBtn).toBeInTheDocument();
+    expect(longBtn).toBeInTheDocument();
+
+    // マイルを選択
+    fireEvent.click(mileBtn);
+    expect(useRaceStore.getState().filters.distanceCategories).toEqual(["mile"]);
+
+    // 中距離も選択（複数選択）
+    fireEvent.click(intermediateBtn);
+    expect(useRaceStore.getState().filters.distanceCategories).toEqual(["mile", "intermediate"]);
+
+    // マイルを再クリックして解除
+    fireEvent.click(mileBtn);
+    expect(useRaceStore.getState().filters.distanceCategories).toEqual(["intermediate"]);
+
+    // 中距離も解除
+    fireEvent.click(intermediateBtn);
+    expect(useRaceStore.getState().filters.distanceCategories).toEqual([]);
   });
 });

@@ -37,6 +37,7 @@ describe("App Integration", () => {
         sexConstraints: [],
         ageConstraints: [],
         courses: [],
+        distanceCategories: [],
         yearMonth: null,
       },
     });

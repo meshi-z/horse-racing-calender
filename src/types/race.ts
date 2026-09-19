@@ -34,6 +34,8 @@ export type Race = {
   handicap: Handicap;
 };
 
+export type DistanceCategory = 'sprint' | 'mile' | 'intermediate' | 'long';
+
 export type FilterState = {
   searchQuery: string;
   grades: Grade[];
@@ -41,5 +43,6 @@ export type FilterState = {
   sexConstraints: SexConstraint[];
   ageConstraints: AgeConstraint[];
   courses: string[];
+  distanceCategories: DistanceCategory[];
   yearMonth: { year: number; month: number } | null;
 };

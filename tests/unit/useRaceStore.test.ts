@@ -296,10 +296,61 @@ describe('useRaceStore & filterRaces', () => {
         sexConstraints: [],
         ageConstraints: [],
         courses: [],
+        distanceCategories: [],
         yearMonth: null,
       });
       expect(filtered).toHaveLength(1);
       expect(filtered[0].id).toBe('2026-jra-jg1-01');
+    });
+
+    describe('距離区分（スプリント/マイル/中距離/長距離）指定絞り込み (Issue #36)', () => {
+      it('マイル（1500〜1700m）を指定した場合、京都金杯とフェブラリーSが取得できること', () => {
+        useRaceStore.getState().setFilter('distanceCategories', ['mile']);
+        const results = useRaceStore.getState().getFilteredRaces();
+
+        expect(results).toHaveLength(2);
+        expect(results.map((r) => r.id)).toEqual(['2026-jra-g3-01', '2026-jra-g1-01']);
+        expect(results.every((r) => r.distance >= 1401 && r.distance <= 1700)).toBe(true);
+      });
+
+      it('中距離（1800〜2200m）を指定した場合、中山金杯とAJCCが取得できること', () => {
+        useRaceStore.getState().setFilter('distanceCategories', ['intermediate']);
+        const results = useRaceStore.getState().getFilteredRaces();
+
+        expect(results).toHaveLength(2);
+        expect(results.map((r) => r.id)).toEqual(['2026-jra-g3-02', '2026-jra-g2-01']);
+        expect(results.every((r) => r.distance >= 1701 && r.distance <= 2200)).toBe(true);
+      });
+
+      it('長距離（2400m〜）を指定した場合、障害レース（4100m）を含む長距離重賞が取得できること', () => {
+        useRaceStore.getState().setFilter('distanceCategories', ['long']);
+        const results = useRaceStore.getState().getFilteredRaces();
+
+        expect(results).toHaveLength(1);
+        expect(results[0].id).toBe('2026-jra-jg1-01');
+        expect(results[0].distance).toBe(4100);
+      });
+
+      it('マイルと中距離を複数指定した場合、両方の該当レースが取得できること', () => {
+        useRaceStore.getState().setFilter('distanceCategories', ['mile', 'intermediate']);
+        const results = useRaceStore.getState().getFilteredRaces();
+
+        expect(results).toHaveLength(4);
+      });
+
+      it('短距離（〜1400m）の追加レースで正しく絞り込めること', () => {
+        const sprintRace: Race = {
+          ...mockRaces[0],
+          id: '2026-sprint-test',
+          distance: 1200,
+        };
+        useRaceStore.getState().setRaces([...mockRaces, sprintRace]);
+        useRaceStore.getState().setFilter('distanceCategories', ['sprint']);
+
+        const results = useRaceStore.getState().getFilteredRaces();
+        expect(results).toHaveLength(1);
+        expect(results[0].id).toBe('2026-sprint-test');
+      });
     });
   });
 
@@ -335,11 +386,13 @@ describe('useRaceStore & filterRaces', () => {
     it('resetFilters でフィルタが初期化されること', () => {
       useRaceStore.getState().setFilter('searchQuery', 'test');
       useRaceStore.getState().setFilter('grades', ['G1']);
+      useRaceStore.getState().setFilter('distanceCategories', ['sprint', 'mile']);
       expect(useRaceStore.getState().filters.searchQuery).toBe('test');
 
       useRaceStore.getState().resetFilters();
       expect(useRaceStore.getState().filters.searchQuery).toBe('');
       expect(useRaceStore.getState().filters.grades).toEqual([]);
+      expect(useRaceStore.getState().filters.distanceCategories).toEqual([]);
     });
   });
 });
