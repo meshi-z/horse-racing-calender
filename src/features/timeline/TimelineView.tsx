@@ -147,10 +147,18 @@ export function TimelineView({ races, className }: TimelineViewProps) {
             key={date}
             id={`section-date-${date}`}
             aria-labelledby={`heading-date-${date}`}
+            style={{
+              scrollMarginTop: "calc(3.5rem + var(--filterbar-height, 0px) + 0.75rem)",
+            }}
             className="scroll-mt-16 sm:scroll-mt-20 space-y-3"
           >
             {/* 日付ヘッダー */}
-            <div className="sticky top-14 z-10 -mx-4 px-4 py-2 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70 border-b border-border/40">
+            <div
+              style={{
+                top: "calc(3.5rem + var(--filterbar-height, 0px))",
+              }}
+              className="sticky z-20 -mx-4 px-4 py-2 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70 border-b border-border/40 transition-[top] duration-200"
+            >
               <div className="flex items-center gap-2">
                 <span
                   className={cn(
