@@ -63,15 +63,14 @@ export function TimelineView({ races, className }: TimelineViewProps) {
   const groupedRaces = React.useMemo(() => groupRacesByDate(races), [races]);
   const todayStr = React.useMemo(() => getTodayLocalDateString(), []);
 
+  const dates = React.useMemo(() => groupedRaces.map((g) => g.date), [groupedRaces]);
+  const targetDate = React.useMemo(() => findUpcomingOrLatestDate(dates, todayStr), [dates, todayStr]);
+
+  const [isTargetVisible, setIsTargetVisible] = React.useState(true);
+
   // タイムラインビュー表示時に今日または直近・次のレースへ自動スクロール (Issue #6)
   React.useEffect(() => {
-    if (hasScrolledRef.current || groupedRaces.length === 0) {
-      return;
-    }
-
-    const dates = groupedRaces.map((g) => g.date);
-    const targetDate = findUpcomingOrLatestDate(dates, todayStr);
-    if (!targetDate) {
+    if (hasScrolledRef.current || !targetDate) {
       return;
     }
 
@@ -91,7 +90,53 @@ export function TimelineView({ races, className }: TimelineViewProps) {
       hasScrolledRef.current = true;
       return () => clearTimeout(timer);
     }
-  }, [groupedRaces, todayStr]);
+  }, [targetDate]);
+
+  // ターゲット日付セクションの画面内表示状態を監視し、ボタンの表示/非表示を制御 (Issue #9)
+  React.useEffect(() => {
+    if (!targetDate) {
+      setIsTargetVisible(true);
+      return;
+    }
+
+    const element = document.getElementById(`section-date-${targetDate}`);
+    if (!element) {
+      setIsTargetVisible(false);
+      return;
+    }
+
+    if (typeof IntersectionObserver === "undefined") {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsTargetVisible(entry.isIntersecting);
+      },
+      {
+        rootMargin: "-5% 0px -5% 0px",
+        threshold: 0,
+      }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [targetDate, groupedRaces]);
+
+  const handleJumpToTarget = () => {
+    if (!targetDate) return;
+    const element = document.getElementById(`section-date-${targetDate}`);
+    if (element) {
+      const prefersReducedMotion =
+        typeof window !== "undefined" &&
+        window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+      element.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start",
+      });
+    }
+  };
 
   // 空状態（0件）表示
   if (races.length === 0) {
@@ -203,6 +248,31 @@ export function TimelineView({ races, className }: TimelineViewProps) {
           </section>
         );
       })}
+
+      {/* 今日（または直近レース）へ戻るジャンプボタン (Issue #9) */}
+      {targetDate && races.length > 0 && (
+        <div
+          data-testid="jump-to-today-container"
+          className={cn(
+            "fixed bottom-6 right-6 z-30 transition-all duration-300",
+            isTargetVisible
+              ? "opacity-0 pointer-events-none translate-y-4 scale-95"
+              : "opacity-100 pointer-events-auto translate-y-0 scale-100"
+          )}
+        >
+          <Button
+            type="button"
+            variant="default"
+            size="sm"
+            onClick={handleJumpToTarget}
+            aria-label={targetDate === todayStr ? "今日開催のレースへジャンプ" : "直近のレースへジャンプ"}
+            className="gap-1.5 shadow-lg rounded-full px-3.5 h-9 sm:h-10 text-xs sm:text-sm font-semibold hover:shadow-xl transition-all"
+          >
+            <CalendarDays className="h-4 w-4" />
+            <span>{targetDate === todayStr ? "今日へ戻る" : "直近のレースへ"}</span>
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
