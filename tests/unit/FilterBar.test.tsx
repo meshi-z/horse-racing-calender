@@ -71,10 +71,16 @@ describe("FilterBar", () => {
     expect(bar).toHaveClass("z-30");
   });
 
-  it("ページスクロール時にコンパクト表示（data-scrolled='true'）に切り替わること", () => {
+  it("ページスクロール時もボタンや入力欄が縮小されず通常サイズと影が維持されること (Issue #33)", () => {
     render(<FilterBar />);
     const bar = screen.getByTestId("filter-bar");
+    const input = screen.getByLabelText("レース名検索");
+    const g1Btn = screen.getByRole("button", { name: "G1" });
+
     expect(bar).toHaveAttribute("data-scrolled", "false");
+    expect(bar).toHaveClass("p-3.5");
+    expect(input).toHaveClass("h-9");
+    expect(g1Btn).toHaveClass("min-h-[30px]");
 
     // スクロール位置を 50px に変更してイベント発火
     Object.defineProperty(window, "scrollY", { value: 50, writable: true, configurable: true });
@@ -83,10 +89,16 @@ describe("FilterBar", () => {
     expect(bar).toHaveAttribute("data-scrolled", "true");
     expect(bar).toHaveClass("shadow-md");
 
+    // スクロール後もパディング、入力欄の高さ、ボタンの高さが維持されていること（コンパクト縮小されない）
+    expect(bar).toHaveClass("p-3.5");
+    expect(input).toHaveClass("h-9");
+    expect(g1Btn).toHaveClass("min-h-[30px]");
+
     // 最上部へスクロールバック
     Object.defineProperty(window, "scrollY", { value: 0, writable: true, configurable: true });
     fireEvent.scroll(window);
 
     expect(bar).toHaveAttribute("data-scrolled", "false");
+    expect(bar).toHaveClass("p-3.5");
   });
 });
