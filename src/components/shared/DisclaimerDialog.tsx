@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Info, AlertTriangle, ShieldAlert, Copyright } from "lucide-react";
+import { Info, AlertTriangle, ShieldAlert, Copyright, BarChart3 } from "lucide-react";
 
 export interface DisclaimerDialogProps {
   children?: React.ReactNode;
@@ -98,6 +98,25 @@ export function DisclaimerDialog({
             <p className="text-muted-foreground">
               本サービスに記載されているレース名、競馬場名、主催団体名等の名称、商標およびロゴ等の知的財産権は、日本中央競馬会（JRA）ならびに各権利者に帰属します。
             </p>
+          </section>
+
+          {/* アクセス解析ツール（Google Analytics）について */}
+          <section className="rounded-lg border p-3.5 space-y-1.5 bg-muted/30 text-foreground">
+            <div className="flex items-center gap-1.5 font-semibold text-xs">
+              <BarChart3 className="h-4 w-4 text-primary shrink-0" />
+              <span>アクセス解析ツール（Google Analytics）について</span>
+            </div>
+            <div className="space-y-1.5 text-muted-foreground">
+              <p>
+                本サービスでは、利用状況の把握や機能改善・利便性向上のため、Google社が提供するアクセス解析ツール「Google Analytics（GA4）」を利用しています。
+              </p>
+              <p>
+                Google Analyticsはデータの収集のためにCookie（クッキー）を使用しています。このデータは匿名で収集されており、個人を特定する情報は含まれません。
+              </p>
+              <p>
+                データ収集を希望されない場合は、ブラウザの設定でCookieを無効化するか、Google社が提供する「Google アナリティクス オプトアウト アドオン」をご利用いただくことで拒否することが可能です。詳細についてはGoogle社の「ポリシーと規約」をご確認ください。
+              </p>
+            </div>
           </section>
         </div>
       </DialogContent>

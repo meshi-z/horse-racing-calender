@@ -30,6 +30,9 @@ describe("DisclaimerDialog", () => {
       screen.getByText("開催変更・公式発表確認の推奨と免責事項")
     ).toBeInTheDocument();
     expect(screen.getByText("権利・商標の帰属")).toBeInTheDocument();
+    expect(
+      screen.getByText("アクセス解析ツール（Google Analytics）について")
+    ).toBeInTheDocument();
 
     // 重要文言の確認
     expect(
@@ -46,6 +49,12 @@ describe("DisclaimerDialog", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByText(/日本中央競馬会（JRA）ならびに各権利者に帰属します/)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Google社が提供するアクセス解析ツール「Google Analytics（GA4）」を利用しています/)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Google Analyticsはデータの収集のためにCookie（クッキー）を使用しています/)
     ).toBeInTheDocument();
   });
 
