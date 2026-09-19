@@ -1,0 +1,296 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {
+  fetchConfirmedRaceTimes,
+  raceNameMatches,
+  toIsoUtc,
+  ConfirmedRaceTime,
+} from './lib/jra-syutsuba';
+
+export interface RaceOutput {
+  id: string;
+  organization: string;
+  name: {
+    ja: string;
+    en: string;
+  };
+  grade: string;
+  date: string;
+  start_time: string;
+  is_time_confirmed: boolean;
+  course: {
+    ja: string;
+    en: string;
+  };
+  distance: number;
+  track_type: 'turf' | 'dirt' | 'obstacle';
+  sex_constraint: 'none' | 'filly_and_mare' | 'colt_and_filly';
+  age_constraint: '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up';
+  handicap: {
+    code: 'weight_for_age' | 'special_weight' | 'set_weight' | 'handicap';
+    ja: string;
+    en: string;
+  };
+}
+
+/**
+ * 各競馬主催者（JRA, NAR, 海外等）ごとの出馬表・確定時刻取得プロバイダー
+ */
+export interface RaceTimeFetcher {
+  readonly organization: string;
+  /**
+   * 基準日をもとに、この組織の直近開催ウィンドウ（確認対象）となるレース群を抽出
+   */
+  getTargetWindowRaces(races: RaceOutput[], refDate: string): RaceOutput[];
+  /**
+   * 確定発走予定時刻を取得
+   */
+  fetchConfirmedTimes(targetRaces: RaceOutput[]): Promise<ConfirmedRaceTime[]>;
+}
+
+/**
+ * 基準日 (YYYY-MM-DD) からJRAの当週開催期間（木曜〜翌月曜）の範囲を算出
+ */
+export function getJraUpcomingWeekendRange(refDateStr: string): { startDate: string; endDate: string } {
+  const [y, m, d] = refDateStr.split('-').map(Number);
+  const ref = new Date(Date.UTC(y, m - 1, d));
+  const dayOfWeek = ref.getUTCDay(); // 0: 日, 1: 月, ..., 4: 木, 5: 金, 6: 土
+
+  let daysToThursday = 0;
+  if (dayOfWeek === 0) daysToThursday = -3; // 日曜 -> 直前の木曜
+  else if (dayOfWeek === 1) daysToThursday = -4; // 月曜 -> 直前の木曜
+  else if (dayOfWeek === 2) daysToThursday = 2; // 火曜 -> 次の木曜
+  else if (dayOfWeek === 3) daysToThursday = 1; // 水曜 -> 次の木曜
+  else if (dayOfWeek === 4) daysToThursday = 0; // 木曜
+  else if (dayOfWeek === 5) daysToThursday = -1; // 金曜 -> 木曜
+  else if (dayOfWeek === 6) daysToThursday = -2; // 土曜 -> 木曜
+
+  const thursday = new Date(ref.getTime() + daysToThursday * 86400000);
+  const nextMonday = new Date(thursday.getTime() + 4 * 86400000);
+
+  const formatYmd = (dt: Date) => {
+    const yr = dt.getUTCFullYear();
+    const mo = String(dt.getUTCMonth() + 1).padStart(2, '0');
+    const da = String(dt.getUTCDate()).padStart(2, '0');
+    return `${yr}-${mo}-${da}`;
+  };
+
+  return {
+    startDate: formatYmd(thursday),
+    endDate: formatYmd(nextMonday),
+  };
+}
+
+/**
+ * JRA（中央競馬）向けプロバイダー実装
+ */
+export class JraRaceTimeFetcher implements RaceTimeFetcher {
+  readonly organization = 'jra';
+
+  getTargetWindowRaces(races: RaceOutput[], refDate: string): RaceOutput[] {
+    const { startDate, endDate } = getJraUpcomingWeekendRange(refDate);
+    return races.filter(
+      (r) => r.organization === this.organization && r.date >= startDate && r.date <= endDate
+    );
+  }
+
+  async fetchConfirmedTimes(_targetRaces: RaceOutput[]): Promise<ConfirmedRaceTime[]> {
+    return await fetchConfirmedRaceTimes();
+  }
+}
+
+/**
+ * 登録済みフェッチャープロバイダーのマップ（将来 NAR, Overseas をここに追加可能）
+ */
+export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
+  jra: new JraRaceTimeFetcher(),
+  // 将来の拡張例:
+  // nar: new NarRaceTimeFetcher(),
+  // overseas: new OverseasRaceTimeFetcher(),
+};
+
+export interface UpdateOptions {
+  dryRun?: boolean;
+  force?: boolean;
+  organization?: string; // 特定の組織のみ実行する場合（例: 'jra'）
+  referenceDate?: string; // YYYY-MM-DD (JST)
+  filePath?: string;
+  fetchers?: Record<string, RaceTimeFetcher>; // テスト等で注入可能
+  confirmedTimes?: ConfirmedRaceTime[]; // テスト用直接注入（全Fetcher共通フォールバック）
+}
+
+export interface UpdateResult {
+  totalRaces: number;
+  updatedRaces: Array<{ id: string; name: string; date: string; oldTime: string; newTime: string }>;
+  orgResults: Record<string, { targetCount: number; skippedDueToConfirmed: boolean; updatedCount: number }>;
+}
+
+/**
+ * races.json を更新するメイン関数
+ */
+export async function updateRaceTimes(options: UpdateOptions = {}): Promise<UpdateResult> {
+  const filePath = options.filePath || path.resolve(process.cwd(), 'public/data/races.json');
+
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`Races data file not found at: ${filePath}`);
+  }
+
+  const rawData = fs.readFileSync(filePath, 'utf-8');
+  const races: RaceOutput[] = JSON.parse(rawData);
+
+  // 1. 基準日の決定 (JST)
+  let refDateStr = options.referenceDate;
+  if (!refDateStr) {
+    const nowJst = new Date(Date.now() + 9 * 3600 * 1000);
+    const yr = nowJst.getUTCFullYear();
+    const mo = String(nowJst.getUTCMonth() + 1).padStart(2, '0');
+    const da = String(nowJst.getUTCDate()).padStart(2, '0');
+    refDateStr = `${yr}-${mo}-${da}`;
+  }
+
+  const fetchersMap = options.fetchers || DEFAULT_FETCHERS;
+  const targetOrgs = options.organization
+    ? [options.organization.toLowerCase()]
+    : Object.keys(fetchersMap);
+
+  const updatedRaces: Array<{ id: string; name: string; date: string; oldTime: string; newTime: string }> = [];
+  const orgResults: UpdateResult['orgResults'] = {};
+
+  // 2. 組織ごとにプロバイダーを実行
+  for (const org of targetOrgs) {
+    const fetcher = fetchersMap[org];
+    if (!fetcher) {
+      console.warn(`[Update Race Times] No fetcher provider registered for organization: "${org}". Skipping.`);
+      continue;
+    }
+
+    console.log(`\n--- Processing organization: [${org.toUpperCase()}] ---`);
+    const targetWindowRaces = fetcher.getTargetWindowRaces(races, refDateStr);
+    console.log(`[Update Race Times][${org}] Found ${targetWindowRaces.length} race(s) in active window.`);
+
+    // 早期終了ガード（相手先サーバー負荷軽減）
+    if (targetWindowRaces.length > 0 && !options.force) {
+      const allAlreadyConfirmed = targetWindowRaces.every((r) => r.is_time_confirmed);
+      if (allAlreadyConfirmed) {
+        console.log(
+          `[Update Race Times][${org}] All ${targetWindowRaces.length} race(s) in window are already confirmed.`
+        );
+        console.log(`[Update Race Times][${org}] Skipping remote requests to minimize server load. (Use --force to override)`);
+        orgResults[org] = {
+          targetCount: targetWindowRaces.length,
+          skippedDueToConfirmed: true,
+          updatedCount: 0,
+        };
+        continue;
+      }
+    }
+
+    // 確定時刻の取得
+    let confirmedTimes: ConfirmedRaceTime[];
+    if (options.confirmedTimes) {
+      confirmedTimes = options.confirmedTimes;
+    } else {
+      confirmedTimes = await fetcher.fetchConfirmedTimes(targetWindowRaces);
+    }
+
+    if (confirmedTimes.length === 0) {
+      console.log(`[Update Race Times][${org}] No confirmed race times retrieved.`);
+      orgResults[org] = {
+        targetCount: targetWindowRaces.length,
+        skippedDueToConfirmed: false,
+        updatedCount: 0,
+      };
+      continue;
+    }
+
+    let orgUpdatedCount = 0;
+
+    // 該当組織のレースに対して更新適用
+    for (const race of races) {
+      if (race.organization !== org) continue;
+
+      const match = confirmedTimes.find(
+        (c) => c.date === race.date && raceNameMatches(race.name.ja, c.raceName)
+      );
+
+      if (match) {
+        const newUtcTime = toIsoUtc(race.date, match.timeJst);
+        const isTimeChanged = race.start_time !== newUtcTime;
+        const wasNotConfirmed = !race.is_time_confirmed;
+
+        if (isTimeChanged || wasNotConfirmed) {
+          const oldTime = race.start_time;
+          race.start_time = newUtcTime;
+          race.is_time_confirmed = true;
+
+          updatedRaces.push({
+            id: race.id,
+            name: race.name.ja,
+            date: race.date,
+            oldTime,
+            newTime: newUtcTime,
+          });
+          orgUpdatedCount++;
+
+          console.log(
+            `[Update Race Times][${org}] UPDATED: [${race.date}] ${race.name.ja} (${race.id})` +
+              `\n  - Old Time: ${oldTime} (confirmed: ${wasNotConfirmed ? 'false' : 'true'})` +
+              `\n  - New Time: ${newUtcTime} (confirmed: true, ${match.timeJst} JST)`
+          );
+        }
+      }
+    }
+
+    orgResults[org] = {
+      targetCount: targetWindowRaces.length,
+      skippedDueToConfirmed: false,
+      updatedCount: orgUpdatedCount,
+    };
+  }
+
+  // 3. 保存
+  if (updatedRaces.length > 0) {
+    if (options.dryRun) {
+      console.log(`\n[Update Race Times] Dry-run mode: ${updatedRaces.length} race(s) would be updated, but not written to file.`);
+    } else {
+      fs.writeFileSync(filePath, JSON.stringify(races, null, 2) + '\n', 'utf-8');
+      console.log(`\n[Update Race Times] Successfully written ${updatedRaces.length} updated race(s) to ${filePath}`);
+    }
+  } else {
+    console.log('\n[Update Race Times] No race updates needed. All matching races already up-to-date.');
+  }
+
+  return {
+    totalRaces: races.length,
+    updatedRaces,
+    orgResults,
+  };
+}
+
+// CLI エントリポイント
+async function main() {
+  const args = process.argv.slice(2);
+  const dryRun = args.includes('--dry-run');
+  const force = args.includes('--force');
+  const orgArg = args.find((a) => a.startsWith('--org='));
+  const organization = orgArg ? orgArg.split('=')[1] : undefined;
+  const dateArg = args.find((a) => a.startsWith('--date='));
+  const referenceDate = dateArg ? dateArg.split('=')[1] : undefined;
+
+  try {
+    const result = await updateRaceTimes({
+      dryRun,
+      force,
+      organization,
+      referenceDate,
+    });
+    console.log(`[Update Race Times] Done. Total updated races: ${result.updatedRaces.length}`);
+  } catch (err) {
+    console.error('[Update Race Times] Error:', err);
+    process.exit(1);
+  }
+}
+
+if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('update-race-times.ts')) {
+  main();
+}

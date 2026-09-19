@@ -8,6 +8,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "data:build": "tsx scripts/parse-races.ts",
+    "data:update-times": "tsx scripts/update-race-times.ts",
     "icons:generate": "tsx scripts/generate-pwa-icons.ts",
     "type-check": "tsc --noEmit",
     "test": "vitest run"
