@@ -245,7 +245,7 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                               {t("calendar.rescheduledShort")}
                             </Badge>
                           )}
-                          {localTime && (
+                          {race.is_time_confirmed && localTime && (
                             <span className="text-[10px] text-muted-foreground font-mono leading-none">
                               {localTime}
                             </span>

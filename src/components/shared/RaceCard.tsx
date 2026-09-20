@@ -27,7 +27,7 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
     const { language, t } = useTranslation();
 
     const isToday = isTodayProp ?? (race.date === getTodayLocalDateString());
-    const timeInfo = formatRaceTimeDisplay(race.start_time, undefined, language);
+    const timeInfo = formatRaceTimeDisplay(race.start_time, race.is_time_confirmed, undefined, language);
     const formattedDate = formatLocalDate(race.date, language);
     const sexTag = sexConstraintLabels[language][race.sex_constraint].short;
     const ageTag = ageConstraintLabels[language][race.age_constraint].short;
@@ -106,18 +106,25 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                   </Badge>
                 )}
               </div>
-              <div className="flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5" />
-                <span className="font-semibold text-foreground">{timeInfo.time}</span>
-                {timeInfo.statusLabel && (
-                  <Badge
-                    variant="outline"
-                    className="text-[10px] px-1.5 py-0 h-4"
-                  >
-                    {timeInfo.statusLabel}
-                  </Badge>
-                )}
-              </div>
+              {timeInfo.isConfirmed ? (
+                <div className="flex items-center gap-1.5">
+                  <Clock className="h-3.5 w-3.5" />
+                  <span className="font-semibold text-foreground">{timeInfo.time}</span>
+                  {timeInfo.statusLabel && (
+                    <Badge
+                      variant="outline"
+                      className="text-[10px] px-1.5 py-0 h-4"
+                    >
+                      {timeInfo.statusLabel}
+                    </Badge>
+                  )}
+                </div>
+              ) : (
+                <div className="flex items-center gap-1.5 text-muted-foreground">
+                  <Clock className="h-3.5 w-3.5" />
+                  <span className="font-medium text-[11px]">{t("status.timeTbd")}</span>
+                </div>
+              )}
             </div>
 
             {/* 代替開催時の元日程案内 */}

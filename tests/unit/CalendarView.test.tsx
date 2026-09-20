@@ -149,6 +149,34 @@ describe("CalendarView", () => {
     expect(screen.queryByText(/月曜始まりカレンダー/)).not.toBeInTheDocument();
   });
 
+  it("発走時刻が確定済み（is_time_confirmed: true）の場合は時刻が表示され、未確定の場合は時刻が表示されないこと (Issue #56)", () => {
+    const racesWithTimes: Race[] = [
+      {
+        ...mockRaces[1],
+        is_time_confirmed: true,
+      },
+      {
+        ...mockRaces[0],
+        date: "2026-02-15",
+        is_time_confirmed: false,
+      },
+    ];
+
+    render(<CalendarView races={racesWithTimes} />);
+
+    // 確定済みのフェブラリーSには時刻が表示されること
+    const confirmedButton = screen.getByRole("button", {
+      name: "フェブラリーステークス 詳細を表示",
+    });
+    expect(confirmedButton).toHaveTextContent(/\d{2}:\d{2}/);
+
+    // 未確定の京都金杯には時刻が表示されないこと
+    const unconfirmedButton = screen.getByRole("button", {
+      name: "スポーツニッポン賞京都金杯 詳細を表示",
+    });
+    expect(unconfirmedButton).not.toHaveTextContent(/\d{2}:\d{2}/);
+  });
+
   describe("多言語表示 (en)", () => {
     beforeEach(() => {
       useLanguageStore.setState({ language: "en" });
