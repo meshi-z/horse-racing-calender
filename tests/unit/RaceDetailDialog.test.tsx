@@ -192,4 +192,49 @@ describe("RaceDetailDialog", () => {
       expect(screen.queryByText("Scheduled")).not.toBeInTheDocument();
     });
   });
+
+  describe("フランス競馬・海外重賞対応", () => {
+    const mockFranceRace: Race = {
+      id: "2026-france-g1-01",
+      organization: "france_galop",
+      country_code: "FR",
+      name: {
+        ja: "凱旋門賞",
+        en: "Prix de l'Arc de Triomphe",
+        fr: "Prix de l'Arc de Triomphe",
+      },
+      grade: "G1",
+      date: "2026-10-04",
+      start_time: "2026-10-04T14:05:00.000Z",
+      is_time_confirmed: true,
+      course: {
+        ja: "パリロンシャン",
+        en: "ParisLongchamp",
+      },
+      distance: 2400,
+      track_type: "turf",
+      sex_constraint: "none",
+      age_constraint: "3yo_and_up",
+      handicap: {
+        code: "weight_for_age",
+        ja: "定量",
+        en: "Weight for Age",
+      },
+    };
+
+    it("詳細ダイアログに国コード「FR」、主催者「France Galop (フランス)」、原語表記が表示されること", () => {
+      render(
+        <RaceDetailDialog
+          race={mockFranceRace}
+          open={true}
+          onOpenChange={vi.fn()}
+        />
+      );
+
+      expect(screen.getByText("FR")).toBeInTheDocument();
+      expect(screen.getByText("France Galop (フランス)")).toBeInTheDocument();
+      expect(screen.getByText("凱旋門賞")).toBeInTheDocument();
+      expect(screen.getByText("Prix de l'Arc de Triomphe")).toBeInTheDocument();
+    });
+  });
 });

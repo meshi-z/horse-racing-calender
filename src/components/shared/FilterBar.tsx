@@ -87,6 +87,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
   const trackOptions: { label: string; type: TrackType }[] = [
     { label: trackTypeLabels[language].turf, type: "turf" },
     { label: trackTypeLabels[language].dirt, type: "dirt" },
+    { label: trackTypeLabels[language].aw, type: "aw" },
     { label: trackTypeLabels[language].obstacle, type: "obstacle" },
     { label: trackTypeLabels[language].banei, type: "banei" },
   ];
@@ -138,15 +139,18 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
         updateHeight();
       });
       observer.observe(el);
-      return () => {
-        observer.disconnect();
-        document.documentElement.style.removeProperty("--filterbar-height");
-      };
+      return () => observer.disconnect();
     }
+  }, []);
 
-    return () => {
-      document.documentElement.style.removeProperty("--filterbar-height");
-    };
+  // フィルター変更時、折りたたみ状態であれば展開する（ユーザーが操作した感触を維持）
+  // ただしマウント時およびスクロール時は除く
+  const isInitialMount = React.useRef(true);
+  React.useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
   }, [
     isScrolled,
     isCollapsed,
@@ -175,7 +179,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     filters.distanceCategories.length +
     filters.courses.length;
 
-  const handleOrgSelect = (org: "all" | "jra" | "nar") => {
+  const handleOrgSelect = (org: "all" | "jra" | "nar" | "france_galop") => {
     setFilter("organization", org);
   };
 
@@ -239,10 +243,11 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     setFilter("courses", []);
   };
 
-  const orgOptions: { value: "all" | "jra" | "nar"; label: string }[] = [
+  const orgOptions: { value: "all" | "jra" | "nar" | "france_galop"; label: string }[] = [
     { value: "all", label: t("filter.orgAll") },
     { value: "jra", label: t("filter.orgJra") },
     { value: "nar", label: t("filter.orgNar") },
+    { value: "france_galop", label: t("filter.orgFrance") },
   ];
 
   return (

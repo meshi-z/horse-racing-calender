@@ -706,10 +706,13 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - `scripts/lib/france-races.ts` の実装および `scripts/parse-races.ts` への統合マージ処理追加。
       - `public/data/races.json` へのフランス全114重賞データの統合マージ（ID体系: `{YYYY}-france-{grade}-{index}`、`country_code: "FR"`、既存JRA/NARへの `country_code: "JP"` 付与、全598レース出力）。
       - 単体テスト（`tests/unit/franceRaces.test.ts`, `tests/unit/racesData.test.ts`）の拡充と全テスト合格。
-    - **Phase 3: フランス競馬UI対応（主催者フィルター「France」、競馬場追加、FR国コードバッジ、多言語化） (Issue #66) [予定]**
-      - `FilterBar`: 主催者フィルターへの「France」追加、競馬場「海外・フランス」グループ新設、馬場「AW」チップ追加。
-      - UIバッジ: 国コード「FR」バッジの実装（タイムライン、カレンダー、詳細ダイアログ）。
-      - 多言語・免責事項: フランス語原語名併記、多言語辞書・免責事項モーダル更新。
+    - **Phase 3: フランス競馬UI対応（主催者フィルター「France」、競馬場追加、FR国コードバッジ、多言語化） (Issue #66) [完了]**
+      - `FilterBar`: 主催者フィルターセグメントに「France」を追加（`All` / `JRA` / `NAR` / `France`）、馬場種別に「AW（オールウェザー）」チップを追加。
+      - 競馬場フィルター: `COURSE_GROUPS` に新グループ「フランス (France)」を新設し、パリロンシャン、シャンティイ、ドーヴィル、サンクルー等の全16競馬場を選択可能化。
+      - UIバッジ: 国コード「FR」バッジの実装（タイムラインカード、カレンダービュー、詳細ダイアログ）および主催者「FRANCE GALOP」タグのカラーリング対応。
+      - 多言語・原語表記: レース詳細ダイアログ（`RaceDetailDialog`）において原語（フランス語 `race.name.fr`）表記の併記対応。
+      - 検索エンジン: レース名検索において日本語・英語に加えフランス語名称（`race.name.fr`）での部分一致検索に対応。
+      - 単体テストの拡充: `FilterBar.test.tsx`, `RaceCard.test.tsx`, `CalendarView.test.tsx`, `RaceDetailDialog.test.tsx`, `useRaceStore.test.ts` にテストケースを追加し、全275件のテストが完全合格。
 26. **Step 26 (Next): 海外主要レースさらなる拡張（香港・UAE・米国等） & リアルタイム馬場・天候情報**
     - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
     - `OverseasRaceTimeFetcher` の追加による確定発走時刻自動取得。

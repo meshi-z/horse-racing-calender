@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 import { FilterBar } from "../../src/components/shared/FilterBar";
 import { useRaceStore } from "../../src/store/useRaceStore";
 import { useLanguageStore } from "../../src/store/useLanguageStore";
@@ -269,6 +269,7 @@ describe("FilterBar", () => {
       render(<FilterBar />);
       const jraBtn = screen.getByRole("button", { name: "JRA (中央)" });
       const narBtn = screen.getByRole("button", { name: "地方競馬 (NAR)" });
+      const franceBtn = screen.getByRole("button", { name: "フランス (France)" });
       const allBtn = screen.getByRole("button", { name: "すべて" });
 
       // JRA を選択
@@ -278,6 +279,10 @@ describe("FilterBar", () => {
       // NAR を選択
       fireEvent.click(narBtn);
       expect(useRaceStore.getState().filters.organization).toBe("nar");
+
+      // France を選択
+      fireEvent.click(franceBtn);
+      expect(useRaceStore.getState().filters.organization).toBe("france_galop");
 
       // すべて を選択
       fireEvent.click(allBtn);
@@ -321,32 +326,39 @@ describe("FilterBar", () => {
       );
     });
 
-    it("馬場種別の「ばんえい」ボタンをクリックすると store.filters.trackTypes に banei が反映されること", () => {
+    it("馬場種別の「ばんえい」および「AW」ボタンをクリックすると store.filters.trackTypes に反映されること", () => {
       render(<FilterBar />);
       const baneiBtn = screen.getByRole("button", { name: "ばんえい" });
+      const awBtn = screen.getByRole("button", { name: "AW" });
 
       fireEvent.click(baneiBtn);
       expect(useRaceStore.getState().filters.trackTypes).toContain("banei");
 
+      fireEvent.click(awBtn);
+      expect(useRaceStore.getState().filters.trackTypes).toContain("aw");
+
       fireEvent.click(baneiBtn);
       expect(useRaceStore.getState().filters.trackTypes).not.toContain("banei");
+      expect(useRaceStore.getState().filters.trackTypes).toContain("aw");
     });
 
-    it("競馬場パネルで4つのグループ（中央、南関、その他地方、ばんえい）が表示され、グループ一括選択ができること", () => {
+    it("競馬場パネルで5つのグループ（中央、南関、その他地方、ばんえい、フランス）が表示され、グループ一括選択ができること", () => {
       render(<FilterBar />);
       const expandBtn = screen.getByRole("button", { name: "競馬場フィルターを展開" });
       fireEvent.click(expandBtn);
 
       // グループ見出しの確認
-      expect(screen.getByText("中央競馬 (JRA)")).toBeInTheDocument();
-      expect(screen.getByText("南関東 (NAR)")).toBeInTheDocument();
-      expect(screen.getByText("その他地方 (NAR)")).toBeInTheDocument();
-      expect(screen.getByText("ばんえい (NAR)")).toBeInTheDocument();
+      const coursePanel = screen.getByTestId("course-filter-panel");
+      expect(within(coursePanel).getByText("中央競馬 (JRA)")).toBeInTheDocument();
+      expect(within(coursePanel).getByText("南関東 (NAR)")).toBeInTheDocument();
+      expect(within(coursePanel).getByText("その他地方 (NAR)")).toBeInTheDocument();
+      expect(within(coursePanel).getByText("ばんえい (NAR)")).toBeInTheDocument();
+      expect(within(coursePanel).getByText("フランス (France)")).toBeInTheDocument();
 
-      // ばんえい競馬場（帯広）を選択
-      const obihiroBtn = screen.getByRole("button", { name: "帯広" });
-      fireEvent.click(obihiroBtn);
-      expect(useRaceStore.getState().filters.courses).toContain("帯広");
+      // フランス競馬場（パリロンシャン）を選択
+      const longchampBtn = screen.getByRole("button", { name: "パリロンシャン" });
+      fireEvent.click(longchampBtn);
+      expect(useRaceStore.getState().filters.courses).toContain("パリロンシャン");
 
       // 南関競馬（大井）を選択
       const oiBtn = screen.getByRole("button", { name: "大井" });

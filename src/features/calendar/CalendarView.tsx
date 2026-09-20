@@ -227,15 +227,29 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                             grade={race.grade}
                             className="text-[9px] px-1 py-0 h-3.5 shrink-0"
                           />
+                          {race.country_code && (
+                            <span
+                              className={cn(
+                                "text-[8px] px-1 py-0.5 rounded font-mono font-bold leading-none border",
+                                race.country_code === "FR"
+                                  ? "text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/40 border-indigo-200 dark:border-indigo-800"
+                                  : "text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800"
+                              )}
+                            >
+                              {race.country_code}
+                            </span>
+                          )}
                           <span
                             className={cn(
                               "text-[8px] px-1 py-0.5 rounded font-mono font-bold leading-none",
                               race.organization === "jra"
                                 ? "text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40"
+                                : race.organization === "france_galop"
+                                ? "text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/40"
                                 : "text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40"
                             )}
                           >
-                            {race.organization.toUpperCase()}
+                            {race.organization === "france_galop" ? "FRANCE" : race.organization.toUpperCase()}
                           </span>
                           {race.is_rescheduled && (
                             <Badge

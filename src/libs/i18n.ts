@@ -72,6 +72,7 @@ export const translations = {
       orgAll: 'すべて',
       orgJra: 'JRA (中央)',
       orgNar: '地方競馬 (NAR)',
+      orgFrance: 'フランス (France)',
       gradeLabel: 'グレード:',
       gradeGroupJra: 'JRA重賞',
       gradeGroupDart: 'ダートグレード',
@@ -205,6 +206,7 @@ export const translations = {
       orgAll: 'All',
       orgJra: 'JRA',
       orgNar: 'NAR',
+      orgFrance: 'France',
       gradeLabel: 'Grade:',
       gradeGroupJra: 'JRA Grades',
       gradeGroupDart: 'Dirt Grades',
@@ -293,7 +295,7 @@ export const DISTANCE_OPTIONS_BY_LANG: Record<Language, DistanceOption[]> = {
   ],
 };
 
-export type CourseRegion = 'jra' | 'nankanto' | 'regional' | 'banei';
+export type CourseRegion = 'jra' | 'nankanto' | 'regional' | 'banei' | 'france';
 
 export interface CourseGroup {
   region: CourseRegion;
@@ -352,6 +354,28 @@ export const COURSE_GROUPS: CourseGroup[] = [
     label: { ja: 'ばんえい (NAR)', en: 'Banei (NAR)' },
     courses: [
       { name: '帯広', label: { ja: '帯広', en: 'Obihiro' } },
+    ],
+  },
+  {
+    region: 'france',
+    label: { ja: 'フランス (France)', en: 'France' },
+    courses: [
+      { name: 'パリロンシャン', label: { ja: 'パリロンシャン', en: 'ParisLongchamp' } },
+      { name: 'シャンティイ', label: { ja: 'シャンティイ', en: 'Chantilly' } },
+      { name: 'ドーヴィル', label: { ja: 'ドーヴィル', en: 'Deauville' } },
+      { name: 'サンクルー', label: { ja: 'サンクルー', en: 'Saint-Cloud' } },
+      { name: 'フォンテーヌブロー', label: { ja: 'フォンテーヌブロー', en: 'Fontainebleau' } },
+      { name: 'トゥールーズ', label: { ja: 'トゥールーズ', en: 'Toulouse' } },
+      { name: 'ヴィシー', label: { ja: 'ヴィシー', en: 'Vichy' } },
+      { name: 'ボルドー', label: { ja: 'ボルドー', en: 'Bordeaux' } },
+      { name: 'マルセイユボレリー', label: { ja: 'マルセイユボレリー', en: 'Marseille-Borely' } },
+      { name: 'リヨン', label: { ja: 'リヨン', en: 'Lyon' } },
+      { name: 'クラオン', label: { ja: 'クラオン', en: 'Craon' } },
+      { name: 'クレールフォンテーヌ', label: { ja: 'クレールフォンテーヌ', en: 'Clairefontaine' } },
+      { name: 'コンピエーニュ', label: { ja: 'コンピエーニュ', en: 'Compiegne' } },
+      { name: 'ラテスト', label: { ja: 'ラテスト', en: 'La Teste' } },
+      { name: 'ナント', label: { ja: 'ナント', en: 'Nantes' } },
+      { name: 'カーニュ・シュル・メール', label: { ja: 'カーニュ・シュル・メール', en: 'Cagnes-sur-Mer' } },
     ],
   },
 ];

@@ -73,12 +73,13 @@ export const filterRaces = (races: Race[], filters: FilterState): Race[] => {
         return false;
       }
     }
-    // 検索クエリ（日本語名称・英語名称の部分一致・大小文字無視）
+    // 検索クエリ（日本語名称・英語名称・フランス語名称の部分一致・大小文字無視）
     if (filters.searchQuery.trim() !== '') {
       const query = filters.searchQuery.trim().toLowerCase();
       const matchJa = race.name.ja.toLowerCase().includes(query);
       const matchEn = race.name.en.toLowerCase().includes(query);
-      if (!matchJa && !matchEn) {
+      const matchFr = race.name.fr ? race.name.fr.toLowerCase().includes(query) : false;
+      if (!matchJa && !matchEn && !matchFr) {
         return false;
       }
     }
