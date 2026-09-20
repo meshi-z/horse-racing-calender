@@ -47,6 +47,12 @@ describe('NAR Race Master (nar_race_master.json)', () => {
     expect(master.races['東京ダービー']).toBe('Tokyo Derby');
     expect(master.races['ばんえい記念']).toBe('Banei Kinen');
     expect(master.races['帯広記念']).toBe('Obihiro Kinen');
+    expect(master.races['マーキュリーカップ']).toBe('Mercury Cup');
+    expect(master.races['マリーンカップ']).toBe('Marine Cup');
+    expect(master.races['フリオーソレジェンドカップ']).toBe('Furioso Legend Cup');
+    expect(master.races['ビューチフルドリーマーカップ']).toBe('Beautiful Dreamer Cup');
+    expect(master.races['レジーナディンヴェルノ賞']).toBe("Regina d'Inverno Sho");
+    expect(master.races['ル・プランタン賞']).toBe('Le Printemps Sho');
   });
 });
 
@@ -63,6 +69,28 @@ describe('Hepburn Romanization (hepburn.ts)', () => {
     expect(romanizeJapaneseRaceName('高知県知事賞')).toBe('Kochiken Chijisho');
     expect(romanizeJapaneseRaceName('新春賞')).toBe('Shinshun Sho');
     expect(romanizeJapaneseRaceName('オータムティアラ')).toBe('Autumn Tiara');
+  });
+
+  it('カタカナ外来語を含むレース名を適切な英単語表記に置換すること', () => {
+    expect(romanizeJapaneseRaceName('新春ペガサスカップ')).toBe('Shinshun Pegasus Cup');
+    expect(romanizeJapaneseRaceName('兵庫クイーンセレクション')).toBe('Hyogo Queen Selection');
+    expect(romanizeJapaneseRaceName('東京プリンセス賞')).toBe('Tokyo Princess Sho');
+    expect(romanizeJapaneseRaceName('九州クラウン')).toBe('Kyushu Crown');
+    expect(romanizeJapaneseRaceName('東京シンデレラマイル')).toBe('Tokyo Cinderella Mile');
+    expect(romanizeJapaneseRaceName('兵庫ユースカップ')).toBe('Hyogo Youth Cup');
+    expect(romanizeJapaneseRaceName('ダイヤモンドカップ')).toBe('Diamond Cup');
+    expect(romanizeJapaneseRaceName('川崎スパーキングスプリント')).toBe('Kawasaki Sparking Sprint');
+    expect(romanizeJapaneseRaceName('ブルーリボンマイル')).toBe('Blue Ribbon Mile');
+    expect(romanizeJapaneseRaceName('フロイラインスプリント')).toBe('Fraulein Sprint');
+    expect(romanizeJapaneseRaceName('金沢ファンセレクトカップ2026')).toBe('Kanazawa Fan Select Cup 2026');
+  });
+
+  it('和名・植物名・鳥名等のレース名はヘボン式ローマ字を維持すること', () => {
+    expect(romanizeJapaneseRaceName('コウノトリ賞')).toBe('Konotori Sho');
+    expect(romanizeJapaneseRaceName('佐賀がばいスプリント')).toBe('Saga Gabai Sprint');
+    expect(romanizeJapaneseRaceName('ノトキリシマ賞')).toBe('Notokirishima Sho');
+    expect(romanizeJapaneseRaceName('ヒダカソウカップ')).toBe('Hidakaso Cup');
+    expect(romanizeJapaneseRaceName('ハヤテスプリント')).toBe('Hayate Sprint');
   });
 });
 

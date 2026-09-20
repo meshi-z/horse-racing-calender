@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年9月20日) |
-| **バージョン** | v1.18.0 (フィルターバーのアコーディオン型折りたたみ/展開対応) |
+| **バージョン** | v1.18.1 (NAR重賞英語レース名のカタカナ外来語英単語置換) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -362,12 +362,13 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
 2. **南関東重賞 (S)**: `S1`, `S2`, `S3`
 3. **その他地方重賞 (Regional Grade)**: 各地区表記（重賞1〜3、H1〜H3、M1〜M3、BG1〜BG3 等）は一律 **`地方重賞`（英語表記: `Regional Grade`、コード: `local_grade`）** として正規化。
 
-#### E. 英語表記および補完マスター（`src/data/nar_race_master.json`）
+#### E. 英語表記および補完マスター（`src/data/nar_race_master.json`, `scripts/lib/hepburn.ts`）
 - **競馬場辞書（15場完全マッピング）**:
   - 門別: `Mombetsu`, 盛岡: `Morioka`, 水沢: `Mizusawa`, 浦和: `Urawa`, 船橋: `Funabashi`, 大井: `Oi`, 川崎: `Kawasaki`, 金沢: `Kanazawa`, 笠松: `Kasamatsu`, 名古屋: `Nagoya`, 園田: `Sonoda`, 姫路: `Himeji`, 高知: `Kochi`, 佐賀: `Saga`, 帯広: `Obihiro`
-- **レース名英語マスター & ヘボン式ローマ字フォールバック**:
-  - 主要重賞は `nar_race_master.json` で定義（例: `帝王賞` $\rightarrow$ `Teio Sho`, `東京ダービー` $\rightarrow$ `Tokyo Derby`）。
-  - マスター未登録の地方重賞はスクレイピング時にヘボン式ローマ字変換（例: `Kurofune Sho`）を自動適用してフォールバック。
+- **レース名英語マスター & ヘボン式ローマ字フォールバック & カタカナ外来語辞書 (Issue #59)**:
+  - 主要重賞および馬名・外国語由来レース（例: `フリオーソレジェンドカップ` $\rightarrow$ `Furioso Legend Cup`, `マーキュリーカップ` $\rightarrow$ `Mercury Cup`, `レジーナディンヴェルノ賞` $\rightarrow$ `Regina d'Inverno Sho`）は `nar_race_master.json` で個別定義。
+  - カタカナ外来語（例: `ペガサス` $\rightarrow$ `Pegasus`, `セレクション` $\rightarrow$ `Selection`, `プリンセス` $\rightarrow$ `Princess`, `クラウン` $\rightarrow$ `Crown`, `シンデレラ` $\rightarrow$ `Cinderella` 等40語以上）は `scripts/lib/hepburn.ts` に辞書マッピングを定義し、ヘボン式ローマ字（音写）のまま出力されるのを防止して自然な英語表記へと置換。
+  - 和名・植物名・鳥名・方言等（例: `コウノトリ賞` $\rightarrow$ `Konotori Sho`, `佐賀がばいスプリント` $\rightarrow$ `Saga Gabai Sprint`, `トレノ賞` $\rightarrow$ `Toreno Sho` 等）はヘボン式ローマ字表記を維持。
 - **競馬場別デフォルト発走時刻テーブル（年間推定値）**:
   - **ナイター開催場**（大井、川崎、船橋、高知、園田、門別、佐賀等）: 原則 `20:05` JST
   - **昼間開催場**（浦和、盛岡、水沢、金沢、笠松、名古屋、姫路等）: 原則 `16:30` JST
@@ -575,7 +576,7 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
 17. **Step 17:** Google Analytics 4（gtag.js）の導入、メタタグ・OGP・構造化データ（SportsEvent / WebSite）・robots・sitemap による包括的SEO最適化。[完了]
 18. **Step 18:** 年間データ再ビルド時の確定発走時刻・代替開催情報保持機能（`preserveConfirmedRaceTimes`）の追加、斤量日本語表記最適化（`v1.15.1` リリース）。[完了]
 19. **Step 19:** UI多言語（日/英）対応の実装（`v1.16.0`）。[完了]
-20. **Step 20 (Current / v1.17.0): NAR全重賞 & ばんえい競馬データパイプラインおよびUI対応 [完了]**
+20. **Step 20 (v1.17.0): NAR全重賞 & ばんえい競馬データパイプラインおよびUI対応 [完了]**
     - **Phase 1: NARスクレイパー & 補完マスター基盤の構築 [完了]**
       - NAR公式スケジュール（`schedule_2026.html`）スクレイパーの実装。
       - `src/data/nar_race_master.json`（日英辞書、未登録レース向けヘボン式ローマ字変換フォールバック、競馬場別推定発走時刻定義）の作成。
@@ -594,6 +595,13 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
       - `RaceTimeFetcher` プロバイダーアーキテクチャへの `NarRaceTimeFetcher` 追加と `DEFAULT_FETCHERS` への登録（直近7日間ウィンドウ抽出、早期終了ガード、指数バックオフ、`--org=nar` サポート）。
       - 単体テスト（`tests/unit/narSyutsuba.test.ts`）および更新バッチ統合テスト（`tests/unit/updateRaceTimes.test.ts`）の作成・全テストパス。
       - `public/data/races.json` のダートグレード40競走の確定発走時刻更新・反映（`is_time_confirmed: true`）。
-21. **Step 21 (Next): 海外主要レース拡張 & リアルタイム馬場・天候情報**
+21. **Step 21 (v1.18.0): フィルターバーのアコーディオン型折りたたみ/展開機能の実装 (Issue #51) [完了]**
+    - 画面スクロール連動による詳細フィルター自動折りたたみ/展開、手動トグル制御および要約バッジバーの実装。
+22. **Step 22 (Current / v1.18.1): NAR重賞英語レース名におけるカタカナ外来語の英単語置換 (Issue #59) [完了]**
+    - カタカナ外来語辞書（`scripts/lib/hepburn.ts`）に45語彙（Pegasus, Selection, Princess, Crown, Cinderella, Youth, Diamond, Sparking等）を拡充。
+    - レース名辞書（`src/data/nar_race_master.json`）にダートグレードおよび特殊・馬名由来の10レース（Mercury Cup, Marine Cup, Regina d'Inverno Sho, Le Printemps Sho, Furioso Legend Cup等）を個別追加。
+    - 和名・植物名・鳥名等のヘボン式ローマ字表記を維持。
+    - 単体テスト（`tests/unit/narSchedule.test.ts`）の拡充、`public/data/races.json` のNAR全344レース中62レースの英語表記更新。
+23. **Step 23 (Next): 海外主要レース拡張 & リアルタイム馬場・天候情報**
     - `OverseasRaceTimeFetcher` の追加と凱旋門賞、ブリーダーズカップ等のデータ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

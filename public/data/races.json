@@ -304,7 +304,7 @@
     "organization": "nar",
     "name": {
       "ja": "新春ペガサスカップ",
-      "en": "Shinshun Pegasasu Cup"
+      "en": "Shinshun Pegasus Cup"
     },
     "grade": "local_grade",
     "date": "2026-01-15",
@@ -479,7 +479,7 @@
     "organization": "nar",
     "name": {
       "ja": "兵庫クイーンセレクション",
-      "en": "Hyogo Queen Serekushon"
+      "en": "Hyogo Queen Selection"
     },
     "grade": "local_grade",
     "date": "2026-01-22",
@@ -1183,7 +1183,7 @@
     "organization": "nar",
     "name": {
       "ja": "ブルーリボンマイル",
-      "en": "Bururibon Mile"
+      "en": "Blue Ribbon Mile"
     },
     "grade": "local_grade",
     "date": "2026-02-19",
@@ -1208,7 +1208,7 @@
     "organization": "nar",
     "name": {
       "ja": "兵庫ユースカップ",
-      "en": "Hyogo Yusu Cup"
+      "en": "Hyogo Youth Cup"
     },
     "grade": "local_grade",
     "date": "2026-02-19",
@@ -1358,7 +1358,7 @@
     "organization": "nar",
     "name": {
       "ja": "レジーナディンヴェルノ賞",
-      "en": "Rejinadinvueruno Sho"
+      "en": "Regina d'Inverno Sho"
     },
     "grade": "local_grade",
     "date": "2026-02-22",
@@ -1608,7 +1608,7 @@
     "organization": "nar",
     "name": {
       "ja": "ジュニアグローリー",
-      "en": "Junior Gurori"
+      "en": "Junior Glory"
     },
     "grade": "local_grade",
     "date": "2026-03-05",
@@ -2033,7 +2033,7 @@
     "organization": "nar",
     "name": {
       "ja": "九州クラウン",
-      "en": "Kyushu Kuraun"
+      "en": "Kyushu Crown"
     },
     "grade": "local_grade",
     "date": "2026-03-15",
@@ -2083,7 +2083,7 @@
     "organization": "nar",
     "name": {
       "ja": "マーチカップ",
-      "en": "Machi Cup"
+      "en": "March Cup"
     },
     "grade": "local_grade",
     "date": "2026-03-20",
@@ -2658,7 +2658,7 @@
     "organization": "nar",
     "name": {
       "ja": "ル・プランタン賞",
-      "en": "Ru Purantan Sho"
+      "en": "Le Printemps Sho"
     },
     "grade": "local_grade",
     "date": "2026-04-05",
@@ -2883,7 +2883,7 @@
     "organization": "nar",
     "name": {
       "ja": "JBCイヤー記念",
-      "en": "JBCiya Kinen"
+      "en": "JBC Year Kinen"
     },
     "grade": "local_grade",
     "date": "2026-04-12",
@@ -3283,7 +3283,7 @@
     "organization": "nar",
     "name": {
       "ja": "エトワール賞",
-      "en": "Etowaru Sho"
+      "en": "Etoile Sho"
     },
     "grade": "local_grade",
     "date": "2026-04-23",
@@ -3408,7 +3408,7 @@
     "organization": "nar",
     "name": {
       "ja": "佐賀ヴィーナスカップ",
-      "en": "Saga Vuinasu Cup"
+      "en": "Saga Venus Cup"
     },
     "grade": "local_grade",
     "date": "2026-04-26",
@@ -3533,7 +3533,7 @@
     "organization": "nar",
     "name": {
       "ja": "東京プリンセス賞",
-      "en": "Tokyo Purinsesu Sho"
+      "en": "Tokyo Princess Sho"
     },
     "grade": "S1",
     "date": "2026-04-30",
@@ -3758,7 +3758,7 @@
     "organization": "nar",
     "name": {
       "ja": "ダイヤモンドカップ",
-      "en": "Daiyamondo Cup"
+      "en": "Diamond Cup"
     },
     "grade": "local_grade",
     "date": "2026-05-05",
@@ -3854,6 +3854,31 @@
     }
   },
   {
+    "id": "2026-nar-jpn2-04",
+    "organization": "nar",
+    "name": {
+      "ja": "兵庫チャンピオンシップ",
+      "en": "Hyogo Championship"
+    },
+    "grade": "Jpn2",
+    "date": "2026-05-06",
+    "start_time": "2026-05-06T07:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "園田",
+      "en": "Sonoda"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-73",
     "organization": "nar",
     "name": {
@@ -3894,31 +3919,6 @@
       "en": "Funabashi"
     },
     "distance": 1700,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-jpn2-04",
-    "organization": "nar",
-    "name": {
-      "ja": "兵庫チャンピオンシップ",
-      "en": "Hyogo Championship"
-    },
-    "grade": "Jpn2",
-    "date": "2026-05-06",
-    "start_time": "2026-05-06T07:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "園田",
-      "en": "Sonoda"
-    },
-    "distance": 1400,
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo",
@@ -4158,7 +4158,7 @@
     "organization": "nar",
     "name": {
       "ja": "フロイラインスプリント",
-      "en": "Furoirain Sprint"
+      "en": "Fraulein Sprint"
     },
     "grade": "local_grade",
     "date": "2026-05-14",
@@ -4283,7 +4283,7 @@
     "organization": "nar",
     "name": {
       "ja": "イーハトーブマイル",
-      "en": "Ihatobu Mile"
+      "en": "Ihatov Mile"
     },
     "grade": "local_grade",
     "date": "2026-05-17",
@@ -5058,7 +5058,7 @@
     "organization": "nar",
     "name": {
       "ja": "ウイナーカップ",
-      "en": "Uina Cup"
+      "en": "Winner Cup"
     },
     "grade": "local_grade",
     "date": "2026-06-14",
@@ -5158,7 +5158,7 @@
     "organization": "nar",
     "name": {
       "ja": "川崎スパーキングスプリント",
-      "en": "Kawasaki Supakingu Sprint"
+      "en": "Kawasaki Sparking Sprint"
     },
     "grade": "S3",
     "date": "2026-06-16",
@@ -5233,7 +5233,7 @@
     "organization": "nar",
     "name": {
       "ja": "トリトン争覇",
-      "en": "Toriton Soha"
+      "en": "Triton Soha"
     },
     "grade": "local_grade",
     "date": "2026-06-18",
@@ -5458,7 +5458,7 @@
     "organization": "nar",
     "name": {
       "ja": "フロイラインカップ",
-      "en": "Furoirain Cup"
+      "en": "Fraulein Cup"
     },
     "grade": "local_grade",
     "date": "2026-06-25",
@@ -5533,7 +5533,7 @@
     "organization": "nar",
     "name": {
       "ja": "サファイア賞",
-      "en": "Safaia Sho"
+      "en": "Sapphire Sho"
     },
     "grade": "local_grade",
     "date": "2026-06-28",
@@ -5758,7 +5758,7 @@
     "organization": "nar",
     "name": {
       "ja": "佐賀ユーススプリント",
-      "en": "Saga Yusu Sprint"
+      "en": "Saga Youth Sprint"
     },
     "grade": "local_grade",
     "date": "2026-07-05",
@@ -6008,7 +6008,7 @@
     "organization": "nar",
     "name": {
       "ja": "ノースクイーンカップ",
-      "en": "Nosu Queen Cup"
+      "en": "North Queen Cup"
     },
     "grade": "local_grade",
     "date": "2026-07-16",
@@ -6204,31 +6204,6 @@
     }
   },
   {
-    "id": "2026-nar-jpn3-10",
-    "organization": "nar",
-    "name": {
-      "ja": "マーキュリーカップ",
-      "en": "Makyuri Cup"
-    },
-    "grade": "Jpn3",
-    "date": "2026-07-20",
-    "start_time": "2026-07-20T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "盛岡",
-      "en": "Morioka"
-    },
-    "distance": 2000,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-131",
     "organization": "nar",
     "name": {
@@ -6254,11 +6229,36 @@
     }
   },
   {
+    "id": "2026-nar-jpn3-10",
+    "organization": "nar",
+    "name": {
+      "ja": "マーキュリーカップ",
+      "en": "Mercury Cup"
+    },
+    "grade": "Jpn3",
+    "date": "2026-07-20",
+    "start_time": "2026-07-20T09:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "盛岡",
+      "en": "Morioka"
+    },
+    "distance": 2000,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-132",
     "organization": "nar",
     "name": {
       "ja": "リリーカップ",
-      "en": "Riri Cup"
+      "en": "Lily Cup"
     },
     "grade": "local_grade",
     "date": "2026-07-22",
@@ -6433,7 +6433,7 @@
     "organization": "nar",
     "name": {
       "ja": "オパールカップ",
-      "en": "Oparu Cup"
+      "en": "Opal Cup"
     },
     "grade": "local_grade",
     "date": "2026-07-28",
@@ -6508,7 +6508,7 @@
     "organization": "nar",
     "name": {
       "ja": "ポラリスサマースプリント",
-      "en": "Porarisu Summer Sprint"
+      "en": "Polaris Summer Sprint"
     },
     "grade": "local_grade",
     "date": "2026-07-30",
@@ -6583,7 +6583,7 @@
     "organization": "nar",
     "name": {
       "ja": "フェアリーカップ",
-      "en": "Feari Cup"
+      "en": "Fairy Cup"
     },
     "grade": "local_grade",
     "date": "2026-08-02",
@@ -6779,36 +6779,11 @@
     }
   },
   {
-    "id": "2026-nar-jpn3-11",
-    "organization": "nar",
-    "name": {
-      "ja": "クラスターカップ",
-      "en": "Cluster Cup"
-    },
-    "grade": "Jpn3",
-    "date": "2026-08-11",
-    "start_time": "2026-08-11T08:05:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "盛岡",
-      "en": "Morioka"
-    },
-    "distance": 1200,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-s3-14",
     "organization": "nar",
     "name": {
       "ja": "ルーキーズサマーカップ",
-      "en": "Rukizu Summer Cup"
+      "en": "Rookies Summer Cup"
     },
     "grade": "S3",
     "date": "2026-08-11",
@@ -6846,6 +6821,31 @@
     "distance": 1500,
     "track_type": "dirt",
     "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-jpn3-11",
+    "organization": "nar",
+    "name": {
+      "ja": "クラスターカップ",
+      "en": "Cluster Cup"
+    },
+    "grade": "Jpn3",
+    "date": "2026-08-11",
+    "start_time": "2026-08-11T08:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "盛岡",
+      "en": "Morioka"
+    },
+    "distance": 1200,
+    "track_type": "dirt",
+    "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
@@ -7083,7 +7083,7 @@
     "organization": "nar",
     "name": {
       "ja": "フルールカップ",
-      "en": "Fururu Cup"
+      "en": "Fleur Cup"
     },
     "grade": "local_grade",
     "date": "2026-08-19",
@@ -7133,7 +7133,7 @@
     "organization": "nar",
     "name": {
       "ja": "ベイスプリント",
-      "en": "Bei Sprint"
+      "en": "Bay Sprint"
     },
     "grade": "local_grade",
     "date": "2026-08-20",
@@ -7158,7 +7158,7 @@
     "organization": "nar",
     "name": {
       "ja": "ブリーダーズゴールドジュニアカップ",
-      "en": "Buridazu Gold Junior Cup"
+      "en": "Breeders' Gold Junior Cup"
     },
     "grade": "local_grade",
     "date": "2026-08-20",
@@ -7333,7 +7333,7 @@
     "organization": "nar",
     "name": {
       "ja": "フリオーソレジェンドカップ",
-      "en": "Furiosorejiendo Cup"
+      "en": "Furioso Legend Cup"
     },
     "grade": "S3",
     "date": "2026-08-26",
@@ -7433,7 +7433,7 @@
     "organization": "nar",
     "name": {
       "ja": "ビューチフルドリーマーカップ",
-      "en": "Byuchifurudorima Cup"
+      "en": "Beautiful Dreamer Cup"
     },
     "grade": "local_grade",
     "date": "2026-08-30",
@@ -7658,7 +7658,7 @@
     "organization": "nar",
     "name": {
       "ja": "ビギナーズカップ",
-      "en": "Biginazu Cup"
+      "en": "Beginners Cup"
     },
     "grade": "local_grade",
     "date": "2026-09-06",
@@ -7908,7 +7908,7 @@
     "organization": "nar",
     "name": {
       "ja": "サラブレッド大賞典",
-      "en": "Sarabureddo Daishoten"
+      "en": "Thoroughbred Daishoten"
     },
     "grade": "local_grade",
     "date": "2026-09-13",
@@ -8033,7 +8033,7 @@
     "organization": "nar",
     "name": {
       "ja": "フローラルカップ",
-      "en": "Furoraru Cup"
+      "en": "Floral Cup"
     },
     "grade": "local_grade",
     "date": "2026-09-17",
@@ -8083,7 +8083,7 @@
     "organization": "nar",
     "name": {
       "ja": "園田プリンセスカップ",
-      "en": "Sonoda Purinsesu Cup"
+      "en": "Sonoda Princess Cup"
     },
     "grade": "local_grade",
     "date": "2026-09-17",
@@ -8279,6 +8279,31 @@
     }
   },
   {
+    "id": "2026-nar-local-173",
+    "organization": "nar",
+    "name": {
+      "ja": "ブルームカップ",
+      "en": "Bloom Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-09-23",
+    "start_time": "2026-09-23T07:30:00.000Z",
+    "is_time_confirmed": false,
+    "course": {
+      "ja": "笠松",
+      "en": "Kasamatsu"
+    },
+    "distance": 1800,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-jpn3-16",
     "organization": "nar",
     "name": {
@@ -8297,31 +8322,6 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-173",
-    "organization": "nar",
-    "name": {
-      "ja": "ブルームカップ",
-      "en": "Burumu Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-09-23",
-    "start_time": "2026-09-23T07:30:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "笠松",
-      "en": "Kasamatsu"
-    },
-    "distance": 1800,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -8358,7 +8358,7 @@
     "organization": "nar",
     "name": {
       "ja": "兵庫ジュベナイルカップ",
-      "en": "Hyogo Jubenairu Cup"
+      "en": "Hyogo Juvenile Cup"
     },
     "grade": "local_grade",
     "date": "2026-09-23",
@@ -8458,7 +8458,7 @@
     "organization": "nar",
     "name": {
       "ja": "ヴィーナススプリント",
-      "en": "Vuinasu Sprint"
+      "en": "Venus Sprint"
     },
     "grade": "local_grade",
     "date": "2026-09-27",
@@ -8533,7 +8533,7 @@
     "organization": "nar",
     "name": {
       "ja": "ロータスクラウン賞",
-      "en": "Rotasukuraun Sho"
+      "en": "Lotus Crown Sho"
     },
     "grade": "local_grade",
     "date": "2026-09-27",
@@ -8558,7 +8558,7 @@
     "organization": "nar",
     "name": {
       "ja": "サンライズカップ",
-      "en": "Sanraizu Cup"
+      "en": "Sunrise Cup"
     },
     "grade": "local_grade",
     "date": "2026-09-30",
@@ -8633,7 +8633,7 @@
     "organization": "nar",
     "name": {
       "ja": "マリーンカップ",
-      "en": "Marin Cup"
+      "en": "Marine Cup"
     },
     "grade": "Jpn3",
     "date": "2026-10-01",
@@ -8758,7 +8758,7 @@
     "organization": "nar",
     "name": {
       "ja": "金沢シンデレラカップ",
-      "en": "Kanazawa Shinderera Cup"
+      "en": "Kanazawa Cinderella Cup"
     },
     "grade": "local_grade",
     "date": "2026-10-04",
@@ -8908,7 +8908,7 @@
     "organization": "nar",
     "name": {
       "ja": "グランシャリオクイーンズ",
-      "en": "Guranshario Queens"
+      "en": "Grand Chariot Queens"
     },
     "grade": "local_grade",
     "date": "2026-10-08",
@@ -9058,7 +9058,7 @@
     "organization": "nar",
     "name": {
       "ja": "トパーズカップ",
-      "en": "Topazu Cup"
+      "en": "Topaz Cup"
     },
     "grade": "local_grade",
     "date": "2026-10-12",
@@ -9433,7 +9433,7 @@
     "organization": "nar",
     "name": {
       "ja": "ブロッサムカップ",
-      "en": "Burossamu Cup"
+      "en": "Blossom Cup"
     },
     "grade": "local_grade",
     "date": "2026-10-22",
@@ -9458,7 +9458,7 @@
     "organization": "nar",
     "name": {
       "ja": "東海クラウン",
-      "en": "Tokai Kuraun"
+      "en": "Tokai Crown"
     },
     "grade": "local_grade",
     "date": "2026-10-23",
@@ -9833,7 +9833,7 @@
     "organization": "nar",
     "name": {
       "ja": "プリンセスカップ",
-      "en": "Purinsesu Cup"
+      "en": "Princess Cup"
     },
     "grade": "local_grade",
     "date": "2026-11-01",
@@ -9929,23 +9929,23 @@
     }
   },
   {
-    "id": "2026-nar-jpn1-09",
+    "id": "2026-nar-jpn1-11",
     "organization": "nar",
     "name": {
-      "ja": "JBCクラシック",
-      "en": "JBC Classic"
+      "ja": "JBCレディスクラシック",
+      "en": "JBC Ladies' Classic"
     },
     "grade": "Jpn1",
     "date": "2026-11-03",
-    "start_time": "2026-11-03T07:25:00.000Z",
+    "start_time": "2026-11-03T05:25:00.000Z",
     "is_time_confirmed": true,
     "course": {
       "ja": "金沢",
       "en": "Kanazawa"
     },
-    "distance": 2100,
+    "distance": 1500,
     "track_type": "dirt",
-    "sex_constraint": "none",
+    "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "weight_for_age",
@@ -9979,23 +9979,48 @@
     }
   },
   {
-    "id": "2026-nar-jpn1-11",
+    "id": "2026-nar-jpn3-19",
     "organization": "nar",
     "name": {
-      "ja": "JBCレディスクラシック",
-      "en": "JBC Ladies' Classic"
+      "ja": "JBC2歳優駿",
+      "en": "JBC Nisai Yushun"
+    },
+    "grade": "Jpn3",
+    "date": "2026-11-03",
+    "start_time": "2026-11-03T06:40:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "門別",
+      "en": "Mombetsu"
+    },
+    "distance": 1800,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-jpn1-09",
+    "organization": "nar",
+    "name": {
+      "ja": "JBCクラシック",
+      "en": "JBC Classic"
     },
     "grade": "Jpn1",
     "date": "2026-11-03",
-    "start_time": "2026-11-03T05:25:00.000Z",
+    "start_time": "2026-11-03T07:25:00.000Z",
     "is_time_confirmed": true,
     "course": {
       "ja": "金沢",
       "en": "Kanazawa"
     },
-    "distance": 1500,
+    "distance": 2100,
     "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
+    "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "weight_for_age",
@@ -10019,31 +10044,6 @@
       "en": "Mombetsu"
     },
     "distance": 1200,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-jpn3-19",
-    "organization": "nar",
-    "name": {
-      "ja": "JBC2歳優駿",
-      "en": "JBC Nisai Yushun"
-    },
-    "grade": "Jpn3",
-    "date": "2026-11-03",
-    "start_time": "2026-11-03T06:40:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "門別",
-      "en": "Mombetsu"
-    },
-    "distance": 1800,
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "2yo",
@@ -10133,7 +10133,7 @@
     "organization": "nar",
     "name": {
       "ja": "ラブミーチャン記念",
-      "en": "Rabumichan Kinen"
+      "en": "Love Me Chan Kinen"
     },
     "grade": "local_grade",
     "date": "2026-11-05",
@@ -10358,7 +10358,7 @@
     "organization": "nar",
     "name": {
       "ja": "カペラ賞",
-      "en": "Kapera Sho"
+      "en": "Capella Sho"
     },
     "grade": "local_grade",
     "date": "2026-11-08",
@@ -10433,7 +10433,7 @@
     "organization": "nar",
     "name": {
       "ja": "ローレル賞",
-      "en": "Roreru Sho"
+      "en": "Laurel Sho"
     },
     "grade": "S2",
     "date": "2026-11-12",
@@ -10608,7 +10608,7 @@
     "organization": "nar",
     "name": {
       "ja": "金沢ヤングチャンピオン",
-      "en": "Kanazawa Yangu Champion"
+      "en": "Kanazawa Young Champion"
     },
     "grade": "local_grade",
     "date": "2026-11-17",
@@ -10858,7 +10858,7 @@
     "organization": "nar",
     "name": {
       "ja": "サザンスタースプリント",
-      "en": "Sazan Star Sprint"
+      "en": "Southern Star Sprint"
     },
     "grade": "S3",
     "date": "2026-11-26",
@@ -10883,7 +10883,7 @@
     "organization": "nar",
     "name": {
       "ja": "ゴールドウィング賞",
-      "en": "Gold Wingu Sho"
+      "en": "Gold Wing Sho"
     },
     "grade": "local_grade",
     "date": "2026-11-26",
@@ -11133,7 +11133,7 @@
     "organization": "nar",
     "name": {
       "ja": "ジェムストーン賞",
-      "en": "Jiemusuton Sho"
+      "en": "Gemstone Sho"
     },
     "grade": "S3",
     "date": "2026-12-03",
@@ -11158,7 +11158,7 @@
     "organization": "nar",
     "name": {
       "ja": "レジェンドハンター記念",
-      "en": "Rejiendohanta Kinen"
+      "en": "Legend Hunter Kinen"
     },
     "grade": "local_grade",
     "date": "2026-12-04",
@@ -11258,7 +11258,7 @@
     "organization": "nar",
     "name": {
       "ja": "フォーマルハウト賞",
-      "en": "Fomaruhauto Sho"
+      "en": "Fomalhaut Sho"
     },
     "grade": "local_grade",
     "date": "2026-12-06",
@@ -11808,7 +11808,7 @@
     "organization": "nar",
     "name": {
       "ja": "金沢ファンセレクトカップ2026",
-      "en": "Kanazawa Fanserekuto Cup 2026"
+      "en": "Kanazawa Fan Select Cup 2026"
     },
     "grade": "local_grade",
     "date": "2026-12-27",
@@ -11908,7 +11908,7 @@
     "organization": "nar",
     "name": {
       "ja": "ライデンリーダー記念",
-      "en": "Raidenrida Kinen"
+      "en": "Raiden Leader Kinen"
     },
     "grade": "local_grade",
     "date": "2026-12-30",
@@ -11958,7 +11958,7 @@
     "organization": "nar",
     "name": {
       "ja": "東京シンデレラマイル",
-      "en": "Tokyo Shinderera Mile"
+      "en": "Tokyo Cinderella Mile"
     },
     "grade": "S3",
     "date": "2026-12-30",
