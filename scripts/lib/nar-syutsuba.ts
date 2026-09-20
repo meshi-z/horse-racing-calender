@@ -185,9 +185,12 @@ export function cleanNarRaceName(name: string): string {
     .replace(/&#8545;|&RomanII;/gi, 'Ⅱ')
     .replace(/&#8546;|&RomanIII;/gi, 'Ⅲ')
     .replace(/&[a-z0-9#]+;/gi, '')
-    // 全角・半角括弧内のJpn/G/S/BG/J.G等の格付け表記を除去
-    .replace(/[\(（]\s*(?:Jpn|J・G|G|S|BG)?[ⅠⅡⅢ123IV,\s\d・]+[\)）]/gi, '')
-    .replace(/[\(（]\s*(?:Jpn|J・G|G|S|BG)[ⅠⅡⅢ123IV\d]*\s*[\)）]/gi, '')
+    // 全角英数字を半角に正規化 (例: ＪＢＣ -> JBC, ＦＣ -> FC, ＯＲＯ -> ORO)
+    .replace(/[Ａ-Ｚａ-ｚ０-９]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xfee0))
+    // 全角・半角括弧内のJpn/G/S/BG/J.G等の格付け表記や副題・TR表記を除去
+    .replace(/[\(（【\[]\s*(?:Jpn|J・G|G|S|BG)?[ⅠⅡⅢ123IV,\s\d・]+[\)）】\]]/gi, '')
+    .replace(/[\(（【\[]\s*(?:Jpn|J・G|G|S|BG)[ⅠⅡⅢ123IV\d]*\s*[\)）】\]]/gi, '')
+    .replace(/[\(（【\[][^\)）】\]]*(?:オークス|ダービー|TR|ＴＲ|選抜|認定|オープン)[^\)）】\]]*[\)）】\]]/gi, '')
     .replace(/\[指定\]|\[特指\]|（国際）|（特指）/g, '')
     .replace(/第\d+回/g, '')
     .replace(/\s+/g, '')
@@ -197,7 +200,7 @@ export function cleanNarRaceName(name: string): string {
   cleaned = cleaned.replace(/(?:Jpn|G|S|BG)[ⅠⅡⅢ123I|V]+$/i, '');
   cleaned = cleaned.replace(/(?:Jpn|G|S|BG)[ⅠⅡⅢ123I|V]+/gi, '');
   // 残った空括弧を除去
-  cleaned = cleaned.replace(/[\(（]\s*[\)）]/g, '');
+  cleaned = cleaned.replace(/[\(（【\[]\s*[\)）】\]]/g, '');
 
   return cleanRaceName(cleaned);
 }
@@ -217,8 +220,8 @@ export function parseNarRaceListHtml(
   for (const match of trMatches) {
     const trHtml = match[1];
 
-    // 発走時刻 (例: <td>\n 18:00 \n</td>)
-    const timeMatch = trHtml.match(/<td[^>]*>\s*(\d{1,2}:\d{2})\s*<\/td>/i);
+    // 発走時刻 (例: <td>\n 18:00 \n</td> や <td><span class="timechange">20:00</span></td>)
+    const timeMatch = trHtml.match(/<td[^>]*>[\s\S]*?(\d{1,2}:\d{2})[\s\S]*?<\/td>/i);
     if (!timeMatch) continue;
     const timeJst = timeMatch[1].padStart(5, '0');
 
