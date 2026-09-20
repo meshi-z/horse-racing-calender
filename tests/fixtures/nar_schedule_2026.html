@@ -1,0 +1,5952 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="重賞競走一覧｜シリーズ・重賞競走｜地方競馬情報サイト" name="title">
+  <meta content="KEIBA.GO.JP | 地方競馬情報サイトです。シリーズ・重賞競走の情報を掲載しております。" name="description">
+  <meta content="競馬,ケイバ,地方,ばんえい,ダート,レース,騎手,馬,シリーズ・重賞競走" name="keywords">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=yes">		<meta name="format-detection" content="telephone=no">
+  <title>
+    重賞競走一覧｜シリーズ・重賞競走｜地方競馬情報サイト
+  </title>
+
+  
+  <script type="text/javascript" src="../js/jquery-3.7.1.min.js?date=20260618"></script>
+  <script>
+    $(function() {
+      $("#topicsPart").load("topics_part/index.html" + "?rnd=" + String((new Date()).getTime()).replace(/\D/gi, ''),function(){
+        setTopicsHeight();
+        setTopicsTxt();
+      });
+      $("#infoPart").load("info_part/index.html" + "?rnd=" + String((new Date()).getTime()).replace(/\D/gi, ''),function(){
+        setTopicsHeight();
+        setTopicsTxt();
+      });
+    });
+  function setTopicsTxt(){
+    //アクティブになった一番目のクラス名を取得
+    var select_tab = $('.topicTab li.active')
+    var select_ctg = select_tab[0].className.split(" ")[0];
+    $('.topicsTxt ul').each(function () {
+      var target_ctg = $(this).attr('class')
+      if($(this).hasClass(select_ctg)){
+        $(this).fadeIn("slow");
+      }else{
+        $(this).hide();
+      }
+    });
+  }
+
+  function setTopicsHeight(){
+    /*console.log('setTopicsHeight処理開始');
+    var max_h=0;
+    var current_h=0;
+    $(".topicsTxt ul").each(function () {
+      console.log('最大高さ取得処理開始');
+      current_h=$(this).height();
+      if(max_h < current_h){
+        max_h=current_h
+      }
+    });
+    $('.topicsTxt').css('height',max_h+"px")
+    $('.topicsTxt ul').css('height',max_h+"px")*/
+  }
+  </script>
+  <script type="text/javascript" src="../js/common.js?date=20240401"></script>
+  
+  <!--ページ固有JS-->
+  
+  <script type="text/javascript" src="../js/jquery.matchHeight.js?date=20240401"></script>
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico" />
+
+  <!-- Global SIte tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111245021-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-111245021-1');
+  </script>
+   <!--共通CSS---------------------------------->
+   
+   <link rel="stylesheet" href="../css/sp_reset.css" type="text/css" media="all" />
+   <link rel="stylesheet" href="../css/sp_common.css" type="text/css" media="all" />
+   <link rel="stylesheet" href="../css/gradedrace_2023-.css?date=20230317" type="text/css" media="all" />
+   <!--pc CSS---------------------------------->
+   <!--sp CSS---------------------------------->
+
+   <!--スクロールヒント-->
+  <script type="text/javascript" src="../js/sp_scroll-hint.min.js"></script>
+  <link rel="stylesheet" href="../css/sp_scroll-hint.css">
+  <script type="text/javascript" src="../js/sp_script.js"></script>
+   
+	<!-- headerとfooterのインクルード-->  
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+	$.ajaxSetup({cache:false}); 
+	$('#header').load('../respons_live_header.html');
+	$('#footer').load('../respons_live_footer.html');
+	});
+	</script>
+	
+  <script type="text/javascript" src="../js/scrollMenu.js"></script>
+  
+  <!--ページ固有JS-->
+  
+  <script type="text/javascript" src="../js/sp_gradedrace.js"></script>
+  
+  <link rel="shortcut icon" href="../img/favicon.ico" />
+
+</head>
+
+
+
+<body>
+   <div id="header"></div>
+
+
+<!--ページ固有js-->
+<script src="../js/jquery.matchHeight.js?date=20240401"></script>
+<script type="text/javascript">
+  $(function() {
+    $('h4.cellTitle').matchHeight();
+    $('p.cellTxt').matchHeight();
+  });
+</script>
+
+<!-- 黒い線start -->
+<div class="breadCrumb sp_none" style="height: 10px;"></div>
+<!-- 黒い線end -->
+
+    <div id="infoContainer" class="pc_infoContainer">
+
+  <!--サブナビ-->
+  <div class="subMenu">
+  <ul class="clearfix">
+    <li><a href="index.html" id="index">シリーズ競走</a></li>
+    <li><a href="schedule.html" id="schedule" class="active">重賞競走一覧</a></li>
+  </ul>
+</div>
+
+</div>
+
+<!--spここから------------------------------------------------------------------>
+<div class="subNavi SP">
+    <div class="prevBtn"></div>
+    <div class="scrollBox">
+      <div class="sNaviWrapper clearfix">
+        
+        <a href="index.html" class="naviCell" id="index">シリーズ一覧</a><a href="schedule.html" class="naviCell active" id="schedule">重賞競走一覧</a>
+      </div>
+    </div>
+    <div class="nextBtn"></div>
+  </div>
+  
+  
+  <div id="infoContainer" class="sp_infoContainer">
+    <div class="pageHeader">
+      <h2>シリーズ・重賞競走</h2>
+    </div>
+  </div>
+
+
+  <!--spここまで------------------------------------------------------------------------->
+
+<!--mainContents-->
+<div id="mainContainer">
+  <!--レース年間一覧-->
+  <article>
+    <div class="innerWrapper">
+      <div class="scheduleArea_title">
+        <h3>重賞競走一覧（2026年）</h3>
+        <div class="yearSelectSchedule_wrap">
+          <select class="yearSelectSchedule">
+            <option value="2026" selected>2026年</option>
+            <option value="2025">2025年</option>
+            <option value="2024">2024年</option>
+            <option value="2023">2023年</option>
+            <option value="2022">2022年</option>
+            <option value="2021">2021年</option>
+            <option value="2020">2020年</option>
+            <option value="2019">2019年</option>
+            <option value="2018">2018年</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="scheduleArea">
+        <div class="chartHeader clearfixPC">
+          <div class="sortWrapper clearfix">
+            <p class="sortName">実施月</p>
+            <select class="monthSelect">
+              <option value="monthAll">全て</option>
+              <option value="m_01">1月</option>
+              <option value="m_02">2月</option>
+              <option value="m_03">3月</option>
+              <option value="m_04">4月</option>
+              <option value="m_05">5月</option>
+              <option value="m_06">6月</option>
+              <option value="m_07">7月</option>
+              <option value="m_08">8月</option>
+              <option value="m_09">9月</option>
+              <option value="m_10">10月</option>
+              <option value="m_11">11月</option>
+              <option value="m_12">12月</option>
+            </select>
+          </div>
+
+          <div class="sortWrapper clearfix">
+            <p class="sortName">開催場</p>
+            <select class="courseSelect">
+              <option value="courseAll">全て</option>
+              <option value="obi">帯広ばんえい</option>
+              <option value="monb">門別</option>
+              <option value="mori">盛岡</option>
+              <option value="mizu">水沢</option>
+              <option value="uraw">浦和</option>
+              <option value="funa">船橋</option>
+              <option value="ooi">大井</option>
+              <option value="kawa">川崎</option>
+              <option value="kana">金沢</option>
+              <option value="kasa">笠松</option>
+              <option value="nago">名古屋</option>
+              <option value="sono">園田</option>
+              <option value="hime">姫路</option>
+              <option value="kout">高知</option>
+              <option value="saga">佐賀</option>
+              <option value="iwat">★岩手</option>
+              <option value="nank">★南関東</option>
+              <option value="touk">★東海</option>
+              <option value="hyou">★兵庫</option>
+            </select>
+          </div>
+
+          <div class="sortWrapper clearfix">
+            <p class="sortName">馬齢・条件</p>
+            <!--全レース-->
+            <select class="ageSelect">
+              <option value="raceAll">全て</option>
+              <option value="age_2">2歳限定</option>
+              <option value="age_3">3歳限定</option>
+              <option value="age_4">4歳限定</option>
+              <option value="age_5">5歳限定</option>
+              <option value="over3">3・4歳以上（全て）</option>
+              <option value="over1600">3・4歳以上（1600m以上）</option>
+              <option value="under1500">3・4歳以上（1600m未満）</option>
+              <option value="age_3-4">3・4（4・5）歳限定</option>
+            </select>
+
+            <!--帯広ばんえい以外-->
+            <select class="normalSelect">
+              <option value="raceAll">全て</option>
+              <option value="age_2">2歳限定</option>
+              <option value="age_3">3歳限定</option>
+              <option value="over3">3・4歳以上（全て）</option>
+              <option value="over1600">3・4歳以上（1600m以上）</option>
+              <option value="under1500">3・4歳以上（1600m未満）</option>
+            </select>
+
+
+            <!--帯広ばんえい専用-->
+            <select class="obiSelect">
+              <option value="obiAll">全て</option>
+              <option value="age_2">2歳限定</option>
+              <option value="age_3">3歳限定</option>
+              <option value="age_4">4歳限定</option>
+              <option value="age_5">5歳限定</option>
+              <option value="age_3-4">3・4（4・5）歳限定</option>
+              <option value="over3">3・4歳以上（全て）</option>
+            </select>
+          </div>
+
+          <div class="sortWrapper clearfix">
+            <p class="sortName">格・シリーズ</p>
+            <select class="classSelect">
+              <option value="classAll">全て</option>
+              <option value="class_GI">GⅠ</option>
+              <option value="class_JpnI">JpnⅠ</option>
+              <option value="class_JpnII">JpnⅡ</option>
+              <option value="class_JpnIII">JpnⅢ</option>
+              <option value="class_GDJ">GDJ</option>
+              <option value="class_3SS">3SS</option>
+              <option value="class_DS">DS</option>
+              <option value="class_SSS">SSS</option>
+              <option value="class_3YO">3YO</option>
+              <option value="class_mirai">未来</option>
+              <option value="class_BG1">BG1</option>
+              <option value="class_BG2">BG2</option>
+              <option value="class_BG3">BG3</option>
+              <option value="class_H1">H1</option>
+              <option value="class_H2">H2</option>
+              <option value="class_H3">H3</option>
+              <option value="class_M1">M1</option>
+              <option value="class_M2">M2</option>
+              <option value="class_M3">M3</option>
+              <option value="class_SI">SⅠ</option>
+              <option value="class_SII">SⅡ</option>
+              <option value="class_SIII">SⅢ</option>
+              <option value="class_SPI">SPⅠ</option>
+              <option value="class_SPII">SPⅡ</option>
+              <option value="class_SPIII">SPⅢ</option>
+              <option value="class_JsI">重賞Ⅰ</option>
+              <option value="class_JsII">重賞Ⅱ</option>
+              <option value="class_JsIII">重賞Ⅲ</option>
+            </select>
+          </div>
+
+          <div class="sortWrapper clearfix">
+            <p class="sortName">牝馬限定</p>
+            <label class="checkBox">
+              <input type="checkbox" name="mareOnly" disabled>
+            </label>
+          </div>
+        </div>
+        
+        <div class="chartBody_wrap">
+        <div class="chartBody js-scrollable">
+
+
+<div id="month_01" class="cellCol">
+<ul class="race cell clearfix">
+
+
+<li class="obi obi over3 under1500 BG1 display">
+
+<p class="date">1/2</p>
+<p class="dayoftheweek">金</p>
+<p class="name">帯広記念</p>
+<div class="class">
+<p class="icon --other">BG1</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi age_5 BG1 display">
+
+<p class="date">1/3</p>
+<p class="dayoftheweek">土</p>
+<p class="name">天馬賞</p>
+<div class="class">
+<p class="icon --other">BG1</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank kawa over3 over1600 SIII display">
+
+<p class="date">1/3</p>
+<p class="dayoftheweek">土</p>
+<p class="name">川崎マイラーズ</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono over3 over1600 JsI display">
+
+<p class="date">1/3</p>
+<p class="dayoftheweek">土</p>
+<p class="name">新春賞</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1870m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga age_3 display">
+
+<p class="date">1/4</p>
+<p class="dayoftheweek">日</p>
+<p class="name">佐賀若駒賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1750m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk nago over3 over1600 SPI display">
+
+<p class="date">1/5</p>
+<p class="dayoftheweek">月</p>
+<p class="name">名古屋記念</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank uraw age_3 SIII display">
+
+<p class="date">1/7</p>
+<p class="dayoftheweek">水</p>
+<p class="name">ニューイヤーカップ</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">浦和</p>
+<p class="course">1500m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 under1500 display">
+
+<p class="date">1/11</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ゴールドスプリント</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1300m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk nago age_3 SPII display">
+
+<p class="date">1/15</p>
+<p class="dayoftheweek">木</p>
+<p class="name">新春ペガサスカップ</p>
+<div class="class">
+<p class="icon --other">SPⅡ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono over3 over1600 JsI mare display">
+
+<p class="date">1/15</p>
+<p class="dayoftheweek">木</p>
+<p class="name">コウノトリ賞</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1870m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="kout kout over3 under1500 display">
+
+<p class="date">1/18</p>
+<p class="dayoftheweek">日</p>
+<p class="name">大高坂賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank funa age_3 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0121_bluebirdcup/introduction.html">
+<p class="date">1/21</p>
+<p class="dayoftheweek">水</p>
+<p class="name">ブルーバードカップ</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+</a>
+</li>
+
+
+<li class="nank funa over3 over1600 SIII display">
+
+<p class="date">1/22</p>
+<p class="dayoftheweek">木</p>
+<p class="name">報知グランプリカップ</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk kasa over3 over1600 SPII display">
+
+<p class="date">1/22</p>
+<p class="dayoftheweek">木</p>
+<p class="name">白銀争覇</p>
+<div class="class">
+<p class="icon --other">SPⅡ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1900m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou hime age_3 JsII mare display">
+
+<p class="date">1/22</p>
+<p class="dayoftheweek">木</p>
+<p class="name">兵庫クイーンセレクション</p>
+<div class="class">
+<p class="icon --other">重賞Ⅱ</p>
+</div>
+<p class="area">姫路</p>
+<p class="course">1400m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="saga saga age_3 mare display">
+
+<p class="date">1/25</p>
+<p class="dayoftheweek">日</p>
+<p class="name">花吹雪賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1800m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="nank ooi over3 over1600 SII display">
+
+<p class="date">1/28</p>
+<p class="dayoftheweek">水</p>
+<p class="name">金盃</p>
+<div class="class">
+<p class="icon --other">SⅡ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">2600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk nago over3 under1500 SPI display">
+
+<p class="date">1/29</p>
+<p class="dayoftheweek">木</p>
+<p class="name">梅見月杯</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1500m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+</ul>
+</div>
+
+
+<div id="month_02" class="cellCol">
+<ul class="race cell clearfix">
+
+
+<li class="obi obi over3 under1500 BG1 mare display">
+
+<p class="date">2/1</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ヒロインズカップ</p>
+<div class="class">
+<p class="icon --other">BG1</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="kout kout over3 under1500 display">
+
+<p class="date">2/1</p>
+<p class="dayoftheweek">日</p>
+<p class="name">黒潮スプリンターズカップ</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1300m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank kawa over3 over1600 SIII display">
+
+<p class="date">2/4</p>
+<p class="dayoftheweek">水</p>
+<p class="name">報知オールスターカップ</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">2100m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk kasa age_3 SPIII display">
+
+<p class="date">2/5</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ゴールドジュニア</p>
+<div class="class">
+<p class="icon --other">SPⅢ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi age_3 BG2 display">
+
+<p class="date">2/8</p>
+<p class="dayoftheweek">日</p>
+<p class="name">翔雲賞</p>
+<div class="class">
+<p class="icon --other">BG2</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga age_3 display">
+
+<p class="date">2/8</p>
+<p class="dayoftheweek">日</p>
+<p class="name">飛燕賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank funa over3 over1600 JpnIII DG mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0211_queensho/introduction.html">
+<p class="date">2/11</p>
+<p class="dayoftheweek">祝水</p>
+<p class="name">クイーン賞</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1800m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="hyou hime over3 under1500 JsI display">
+
+<p class="date">2/11</p>
+<p class="dayoftheweek">祝水</p>
+<p class="name">兵庫ウインターカップ</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">姫路</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 over1600 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0212_sagakinen/introduction.html">
+<p class="date">2/12</p>
+<p class="dayoftheweek">木</p>
+<p class="name">佐賀記念</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">佐賀</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+</a>
+</li>
+
+
+<li class="obi obi age_3 BG2 mare display">
+
+<p class="date">2/15</p>
+<p class="dayoftheweek">日</p>
+<p class="name">黒ユリ賞</p>
+<div class="class">
+<p class="icon --other">BG2</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="kout kout over3 over1600 display">
+
+<p class="date">2/15</p>
+<p class="dayoftheweek">日</p>
+<p class="name">だるま夕日賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi age_3 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0218_kumotorisho/introduction.html">
+<p class="date">2/18</p>
+<p class="dayoftheweek">水</p>
+<p class="name">雲取賞</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+</a>
+</li>
+
+
+<li class="touk kasa over3 over1600 SPI mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-4-s/0219/index.html">
+<p class="date">2/19</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ブルーリボンマイル</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1600m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="hyou hime age_3 JsII display">
+
+<p class="date">2/19</p>
+<p class="dayoftheweek">木</p>
+<p class="name">兵庫ユースカップ</p>
+<div class="class">
+<p class="icon --other">重賞Ⅱ</p>
+</div>
+<p class="area">姫路</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi over3 under1500 BG2 display">
+
+<p class="date">2/22</p>
+<p class="dayoftheweek">日</p>
+<p class="name">チャンピオンカップ</p>
+<div class="class">
+<p class="icon --other">BG2</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kout kout over3 over1600 mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-4-s/0222/index.html">
+<p class="date">2/22</p>
+<p class="dayoftheweek">日</p>
+<p class="name">レジーナディンヴェルノ賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1900m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="touk nago over3 under1500 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0223_kakitsubatakinen/introduction.html">
+<p class="date">2/23</p>
+<p class="dayoftheweek">祝月</p>
+<p class="name">かきつばた記念</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1500m</p>
+<div class="mare"></div>
+</a>
+</li>
+
+
+<li class="nank uraw age_3 SII mare display">
+
+<p class="date">2/25</p>
+<p class="dayoftheweek">水</p>
+<p class="name">ユングフラウ賞</p>
+<div class="class">
+<p class="icon --other">SⅡ</p>
+</div>
+<p class="area">浦和</p>
+<p class="course">1400m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="saga saga age_3 display">
+
+<p class="date">2/25</p>
+<p class="dayoftheweek">水</p>
+<p class="name">たんぽぽ賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk nago age_3 SPI display">
+
+<p class="date">2/26</p>
+<p class="dayoftheweek">木</p>
+<p class="name">スプリングカップ</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou hime age_3 JsI display">
+
+<p class="date">2/26</p>
+<p class="dayoftheweek">木</p>
+<p class="name">兵庫若駒賞</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">姫路</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+</ul>
+</div>
+
+
+<div id="month_03" class="cellCol">
+<ul class="race cell clearfix">
+
+
+<li class="kout kout over3 under1500 display">
+
+<p class="date">3/1</p>
+<p class="dayoftheweek">日</p>
+<p class="name">御厨人窟賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk kasa age_3 SPII display">
+
+<p class="date">3/5</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ジュニアグローリー</p>
+<div class="class">
+<p class="icon --other">SPⅡ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi age_3-4 BG3 display">
+
+<p class="date">3/8</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ポプラ賞</p>
+<div class="class">
+<p class="icon --other">BG3</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kout kout age_3 display">
+
+<p class="date">3/8</p>
+<p class="dayoftheweek">日</p>
+<p class="name">土佐春花賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1300m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu age_3 M2 display">
+
+<p class="date">3/8</p>
+<p class="dayoftheweek">日</p>
+<p class="name">スプリングカップ</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi over3 under1500 SIII display">
+
+<p class="date">3/10</p>
+<p class="dayoftheweek">火</p>
+<p class="name">フジノウェーブ記念</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank funa over3 over1600 JpnII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0311_diolitekinen/introduction.html">
+<p class="date">3/11</p>
+<p class="dayoftheweek">水</p>
+<p class="name">ダイオライト記念</p>
+<div class="class">
+<p class="icon --grade">JpnⅡ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">2400m</p>
+<div class="mare"></div>
+</a>
+</li>
+
+
+<li class="nank funa age_3 SIII 3SS haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/sss2026/0312-2/index.html">
+<p class="date">3/12</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ネクストスター東日本</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">3SS</p></div>
+</a>
+
+</li>
+
+
+<li class="touk nago over3 under1500 SPI mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-4-s/0312-1/index.html">
+<p class="date">3/12</p>
+<p class="dayoftheweek">木</p>
+<p class="name">若草賞土古記念</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1500m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="hyou hime over3 over1600 JsI display">
+
+<p class="date">3/12</p>
+<p class="dayoftheweek">木</p>
+<p class="name">白鷺賞</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">姫路</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi age_3 BG1 display">
+
+<p class="date">3/15</p>
+<p class="dayoftheweek">日</p>
+<p class="name">イレネー記念</p>
+<div class="class">
+<p class="icon --other">BG1</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu over3 over1600 M3 display">
+
+<p class="date">3/15</p>
+<p class="dayoftheweek">日</p>
+<p class="name">駒形賞</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 under1500 display">
+
+<p class="date">3/15</p>
+<p class="dayoftheweek">日</p>
+<p class="name">九州クラウン</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank uraw age_3 SI mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-3/0318/index.html">
+<p class="date">3/18</p>
+<p class="dayoftheweek">水</p>
+<p class="name">桜花賞</p>
+<div class="class">
+<p class="icon --other">SⅠ</p>
+</div>
+<p class="area">浦和</p>
+<p class="course">1500m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="touk kasa over3 over1600 SPII display">
+
+<p class="date">3/20</p>
+<p class="dayoftheweek">祝金</p>
+<p class="name">マーチカップ</p>
+<div class="class">
+<p class="icon --other">SPⅡ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi over3 under1500 BG1 display">
+
+<p class="date">3/22</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ばんえい記念</p>
+<div class="class">
+<p class="icon --other">BG1</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu age_3 M2 mare display">
+
+<p class="date">3/22</p>
+<p class="dayoftheweek">日</p>
+<p class="name">あやめ賞</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1400m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="kout kout age_3 3SS haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/sss2026/0322/index.html">
+<p class="date">3/22</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ネクストスター西日本</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">3SS</p></div>
+</a>
+
+</li>
+
+
+<li class="kout kout over3 under1500 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0324_kurofunesho/introduction.html">
+<p class="date">3/24</p>
+<p class="dayoftheweek">火</p>
+<p class="name">黒船賞</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">高知</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+</a>
+</li>
+
+
+<li class="nank ooi age_3 JpnII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0325_keihinhai/introduction.html">
+
+<p class="date">3/25</p>
+<p class="dayoftheweek">水</p>
+<p class="name">京浜盃</p>
+<div class="class">
+<p class="icon --grade">JpnⅡ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+</a>
+</li>
+
+
+<li class="iwat mizu over3 under1500 M3 display">
+
+<p class="date">3/29</p>
+<p class="dayoftheweek">日</p>
+<p class="name">白嶺賞</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 over1600 display">
+
+<p class="date">3/29</p>
+<p class="dayoftheweek">日</p>
+<p class="name">はがくれ大賞典</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank funa over3 over1600 SI display">
+
+<p class="date">3/31</p>
+<p class="dayoftheweek">火</p>
+<p class="name">京成盃グランドマイラーズ</p>
+<div class="class">
+<p class="icon --other">SⅠ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+</ul>
+</div>
+
+
+
+<div id="month_04" class="cellCol">
+<ul class="race cell clearfix">
+
+<li class="hyou sono over3 over1600 JpnIII DG mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0401_hyogojo-ohai/introduction.html">
+<p class="date">4/1</p>
+<p class="dayoftheweek">水</p>
+<p class="name">兵庫女王盃</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1870m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="hyou sono age_3 JsI display">
+
+<p class="date">4/2</p>
+<p class="dayoftheweek">木</p>
+<p class="name">菊水賞</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu age_3 M1 3SS haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/sss2026/0405-2/index.html">
+<p class="date">4/5</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ネクストスター北日本</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">3SS</p></div>
+</a>
+</li>
+
+
+<li class="saga saga age_3 mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-3/0405-1/index.html">
+<p class="date">4/5</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ル・プランタン賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1800m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="nank kawa age_3 SIII display">
+
+<p class="date">4/7</p>
+<p class="dayoftheweek">火</p>
+<p class="name">クラウンカップ</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana age_3 3SS haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/sss2026/0407/index.html">
+<p class="date">4/7</p>
+<p class="dayoftheweek">火</p>
+<p class="name">ネクストスター中日本</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">3SS</p></div>
+</a>
+</li>
+
+
+<li class="touk nago over3 over1600 SPI display">
+
+<p class="date">4/7</p>
+<p class="dayoftheweek">火</p>
+<p class="name">東海桜花賞</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">2100m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank kawa over3 over1600 JpnI DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0408_kawasakikinen/introduction.html">
+<p class="date">4/8</p>
+<p class="dayoftheweek">水</p>
+<p class="name">川崎記念</p>
+<div class="class">
+<p class="icon --grade">JpnⅠ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">2100m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="touk nago age_3 SPI mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-3/0409/index.html">
+<p class="date">4/9</p>
+<p class="dayoftheweek">木</p>
+<p class="name">東海クイーンカップ</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1700m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="kana kana over3 over1600 display">
+
+<p class="date">4/12</p>
+<p class="dayoftheweek">日</p>
+<p class="name">JBCイヤー記念</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kout kout over3 over1600 display">
+
+<p class="date">4/12</p>
+<p class="dayoftheweek">日</p>
+<p class="name">二十四万石賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1900m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 under1500 display">
+
+<p class="date">4/12</p>
+<p class="dayoftheweek">日</p>
+<p class="name">佐賀がばいスプリント</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1300m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu over3 over1600 M2 display">
+
+<p class="date">4/14</p>
+<p class="dayoftheweek">火</p>
+<p class="name">赤松杯</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi over3 under1500 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0415_tokyosprint/introduction.html">
+<p class="date">4/15</p>
+<p class="dayoftheweek">水</p>
+<p class="name">東京スプリント</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="nank ooi over3 over1600 SIII display">
+
+<p class="date">4/16</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ブリリアントカップ</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono age_3 JsI display">
+
+<p class="date">4/16</p>
+<p class="dayoftheweek">木</p>
+<p class="name">西日本クラシック</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1870m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu age_3 M1 mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-3/0419/index.html">
+<p class="date">4/19</p>
+<p class="dayoftheweek">日</p>
+<p class="name">留守杯日高賞</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1600m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="kana kana age_3 mare display">
+
+<p class="date">4/19</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ノトキリシマ賞</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1500m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="saga saga age_3 display">
+
+<p class="date">4/19</p>
+<p class="dayoftheweek">日</p>
+<p class="name">佐賀城下スプリント</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1300m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 under1500 display">
+
+<p class="date">4/21</p>
+<p class="dayoftheweek">火</p>
+<p class="name">金沢スプリングカップ</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank uraw over3 under1500 SIII mare display">
+
+<p class="date">4/22</p>
+<p class="dayoftheweek">水</p>
+<p class="name">しらさぎ賞</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">浦和</p>
+<p class="course">1400m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="monb monb over3 under1500 H3 display">
+
+<p class="date">4/23</p>
+<p class="dayoftheweek">木</p>
+<p class="name">エトワール賞</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi over3 under1500 BG2 display">
+
+<p class="date">4/26</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ばんえい十勝オッズパーク杯</p>
+<div class="class">
+<p class="icon --other">BG2</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 over1600 mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-4-s/0426/index.html">
+<p class="date">4/26</p>
+<p class="dayoftheweek">日</p>
+<p class="name">佐賀ヴィーナスカップ</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1750m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="iwat mizu over3 under1500 M3 display">
+
+<p class="date">4/28</p>
+<p class="dayoftheweek">火</p>
+<p class="name">栗駒賞</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi age_3 JpnI DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0429_hanedahai/introduction.html">
+<p class="date">4/29</p>
+<p class="dayoftheweek">祝水</p>
+<p class="name">羽田盃</p>
+<div class="class">
+<p class="icon --grade">JpnⅠ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="touk kasa over3 under1500 SPI display">
+
+<p class="date">4/29</p>
+<p class="dayoftheweek">祝水</p>
+<p class="name">飛山濃水杯</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_3 H3 display">
+
+<p class="date">4/30</p>
+<p class="dayoftheweek">木</p>
+<p class="name">北斗盃</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi age_3 SI mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-3/0430/index.html">
+<p class="date">4/30</p>
+<p class="dayoftheweek">木</p>
+<p class="name">東京プリンセス賞</p>
+<div class="class">
+<p class="icon --other">SⅠ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1800m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+</ul>
+</div>
+
+
+<div id="month_05" class="cellCol">
+<ul class="race cell clearfix">
+
+
+<li class="kana kana over3 over1600 display">
+
+<p class="date">5/3</p>
+<p class="dayoftheweek">祝日</p>
+<p class="name">利家盃</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kout kout age_3 display">
+
+<p class="date">5/3</p>
+<p class="dayoftheweek">祝日</p>
+<p class="name">黒潮皐月賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga age_3 display">
+
+<p class="date">5/3</p>
+<p class="dayoftheweek">祝日</p>
+<p class="name">佐賀皐月賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk nago over3 over1600 JpnII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0504_nagoyagrandprix/introduction.html">
+<p class="date">5/4</p>
+<p class="dayoftheweek">祝月</p>
+<p class="name">名古屋グランプリ</p>
+<div class="class">
+<p class="icon --grade">JpnⅡ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">2100m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="hyou sono over3 under1500 JsI display">
+
+<p class="date">5/4</p>
+<p class="dayoftheweek">祝月</p>
+<p class="name">兵庫大賞典</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori age_3 M1 display">
+
+<p class="date">5/5</p>
+<p class="dayoftheweek">祝火</p>
+<p class="name">ダイヤモンドカップ</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank funa over3 over1600 JpnI DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0505_kashiwakinen/introduction.html">
+<p class="date">5/5</p>
+<p class="dayoftheweek">祝火</p>
+<p class="name">かしわ記念</p>
+<div class="class">
+<p class="icon --grade">JpnⅠ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="touk nago age_3 SPI display">
+
+<p class="date">5/5</p>
+<p class="dayoftheweek">祝火</p>
+<p class="name">駿蹄賞</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono age_3 JsI display">
+
+<p class="date">5/5</p>
+<p class="dayoftheweek">祝火</p>
+<p class="name">兵庫優駿</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1870m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb over3 over1600 H2 display">
+
+<p class="date">5/6</p>
+<p class="dayoftheweek">休水</p>
+<p class="name">コスモバルク記念</p>
+<div class="class">
+<p class="icon --other">H2</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank funa age_3 SII display">
+
+<p class="date">5/6</p>
+<p class="dayoftheweek">休水</p>
+<p class="name">東京湾カップ</p>
+<div class="class">
+<p class="icon --other">SⅡ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono age_3 JpnII DG 3SS haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0506_hyogochampionship/introduction.html">
+<p class="date">5/6</p>
+<p class="dayoftheweek">休水</p>
+<p class="name">兵庫チャンピオンシップ</p>
+<div class="class">
+<p class="icon --grade">JpnⅡ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">3SS</p></div>
+</a>
+</li>
+
+
+<li class="obi obi over3 under1500 BG3 mare display">
+
+<p class="date">5/10</p>
+<p class="dayoftheweek">日</p>
+<p class="name">カーネーションカップ</p>
+<div class="class">
+<p class="icon --other">BG3</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="iwat mori over3 over1600 M1 display">
+
+<p class="date">5/10</p>
+<p class="dayoftheweek">日</p>
+<p class="name">シアンモア記念</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana age_3 display">
+
+<p class="date">5/10</p>
+<p class="dayoftheweek">日</p>
+<p class="name">北日本新聞杯</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 over1600 display">
+
+<p class="date">5/10</p>
+<p class="dayoftheweek">日</p>
+<p class="name">佐賀スプリングカップ</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank kawa over3 over1600 JpnII DG mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0513_empresshai/introduction.html">
+<p class="date">5/13</p>
+<p class="dayoftheweek">水</p>
+<p class="name">エンプレス杯</p>
+<div class="class">
+<p class="icon --grade">JpnⅡ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">2100m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="monb monb age_3 H3 mare display">
+
+<p class="date">5/14</p>
+<p class="dayoftheweek">木</p>
+<p class="name">フロイラインスプリント</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="touk kasa age_3 SPIII mare display">
+
+<p class="date">5/14</p>
+<p class="dayoftheweek">木</p>
+<p class="name">クイーンカップ</p>
+<div class="class">
+<p class="icon --other">SPⅢ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1580m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="hyou sono age_3 JsI mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-3/0514/index.html">
+<p class="date">5/14</p>
+<p class="dayoftheweek">木</p>
+<p class="name">のじぎく賞</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1700m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="iwat mori age_3 M3 display">
+
+<p class="date">5/17</p>
+<p class="dayoftheweek">日</p>
+<p class="name">イーハトーブマイル</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 under1500 mare display">
+
+<p class="date">5/17</p>
+<p class="dayoftheweek">日</p>
+<p class="name">お松の方賞</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1500m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="saga saga age_3 display">
+
+<p class="date">5/17</p>
+<p class="dayoftheweek">日</p>
+<p class="name">佐賀かささぎスプリント</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1300m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi over3 over1600 SI display">
+
+<p class="date">5/20</p>
+<p class="dayoftheweek">水</p>
+<p class="name">大井記念</p>
+<div class="class">
+<p class="icon --other">SⅠ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori over3 over1600 M3 display">
+
+<p class="date">5/24</p>
+<p class="dayoftheweek">日</p>
+<p class="name">あすなろ賞</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kout kout over3 over1600 display">
+
+<p class="date">5/24</p>
+<p class="dayoftheweek">日</p>
+<p class="name">福永洋一記念</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank uraw over3 under1500 SIII display">
+
+<p class="date">5/27</p>
+<p class="dayoftheweek">水</p>
+<p class="name">プラチナカップ</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">浦和</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb over3 over1600 H3 mare display">
+
+<p class="date">5/28</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ヒダカソウカップ</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1600m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="touk kasa over3 under1500 SPI display">
+
+<p class="date">5/28</p>
+<p class="dayoftheweek">木</p>
+<p class="name">オグリキャップ記念</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu age_3 M1 display">
+
+<p class="date">5/31</p>
+<p class="dayoftheweek">日</p>
+<p class="name">東北優駿</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 over1600 display">
+
+<p class="date">5/31</p>
+<p class="dayoftheweek">日</p>
+<p class="name">百万石賞</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">2100m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga age_3 display">
+
+<p class="date">5/31</p>
+<p class="dayoftheweek">日</p>
+<p class="name">九州優駿栄城賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+</ul>
+</div>
+
+
+<div id="month_06" class="cellCol">
+<ul class="race cell clearfix">
+
+
+<li class="monb monb over3 under1500 H3 display">
+
+<p class="date">6/4</p>
+<p class="dayoftheweek">木</p>
+<p class="name">グランシャリオ門別スプリント</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank funa age_3 SIII display">
+
+<p class="date">6/4</p>
+<p class="dayoftheweek">木</p>
+<p class="name">若潮スプリント</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk nago age_3 SPI display">
+
+<p class="date">6/4</p>
+<p class="dayoftheweek">木</p>
+<p class="name">東海優駿</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">2100m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono over3 over1600 JsI display">
+
+<p class="date">6/4</p>
+<p class="dayoftheweek">木</p>
+<p class="name">六甲盃</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1870m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu over3 under1500 M2 display">
+
+<p class="date">6/7</p>
+<p class="dayoftheweek">日</p>
+<p class="name">早池峰賞</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 over1600 display">
+
+<p class="date">6/7</p>
+<p class="dayoftheweek">日</p>
+<p class="name">佐賀王冠賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana age_3 display">
+
+<p class="date">6/9</p>
+<p class="dayoftheweek">火</p>
+<p class="name">石川優駿</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi age_3 JpnI DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0610_tokyoderby/introduction.html">
+<p class="date">6/10</p>
+<p class="dayoftheweek">水</p>
+<p class="name">東京ダービー</p>
+<div class="class">
+<p class="icon --grade">JpnⅠ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="monb monb age_3 H1 display">
+
+<p class="date">6/11</p>
+<p class="dayoftheweek">木</p>
+<p class="name">北海優駿</p>
+<div class="class">
+<p class="icon --other">H1</p>
+</div>
+<p class="area">門別</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk kasa age_3 SPIII display">
+
+<p class="date">6/11</p>
+<p class="dayoftheweek">木</p>
+<p class="name">新緑賞</p>
+<div class="class">
+<p class="icon --other">SPⅢ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi over3 under1500 BG3 display">
+
+<p class="date">6/14</p>
+<p class="dayoftheweek">日</p>
+<p class="name">北斗賞</p>
+<div class="class">
+<p class="icon --other">BG3</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu age_3 M3 display">
+
+<p class="date">6/14</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ウイナーカップ</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 under1500 display">
+
+<p class="date">6/14</p>
+<p class="dayoftheweek">日</p>
+<p class="name">日本海スプリント</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kout kout age_3 display">
+
+<p class="date">6/14</p>
+<p class="dayoftheweek">日</p>
+<p class="name">高知優駿</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1900m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank kawa over3 under1500 SIII display">
+
+<p class="date">6/16</p>
+<p class="dayoftheweek">火</p>
+<p class="name">川崎スパーキングスプリント</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">900m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_2 H2 display">
+
+<p class="date">6/17</p>
+<p class="dayoftheweek">水</p>
+<p class="name">栄冠賞</p>
+<div class="class">
+<p class="icon --other">H2</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank kawa age_3 JpnII DG mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0617_kantooaks/introduction.html">
+<p class="date">6/17</p>
+<p class="dayoftheweek">水</p>
+<p class="name">関東オークス</p>
+<div class="class">
+<p class="icon --grade">JpnⅡ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">2100m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="monb monb over3 over1600 H3 display">
+
+<p class="date">6/18</p>
+<p class="dayoftheweek">木</p>
+<p class="name">赤レンガ記念</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk nago over3 under1500 SPII display">
+
+<p class="date">6/18</p>
+<p class="dayoftheweek">木</p>
+<p class="name">トリトン争覇</p>
+<div class="class">
+<p class="icon --other">SPⅡ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1500m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono over3 under1500 JsII display">
+
+<p class="date">6/18</p>
+<p class="dayoftheweek">木</p>
+<p class="name">園田FCスプリント</p>
+<div class="class">
+<p class="icon --other">重賞Ⅱ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">820m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu over3 over1600 M1 display">
+
+<p class="date">6/21</p>
+<p class="dayoftheweek">日</p>
+<p class="name">一條記念みちのく大賞典</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 under1500 display">
+
+<p class="date">6/21</p>
+<p class="dayoftheweek">日</p>
+<p class="name">吉野ヶ里記念</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank uraw over3 under1500 JpnI DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0624_sakitamahai/introduction.html">
+<p class="date">6/24</p>
+<p class="dayoftheweek">水</p>
+<p class="name">さきたま杯</p>
+<div class="class">
+<p class="icon --grade">JpnⅠ</p>
+</div>
+<p class="area">浦和</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="monb monb age_3 H3 mare display">
+
+<p class="date">6/25</p>
+<p class="dayoftheweek">木</p>
+<p class="name">フロイラインカップ</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1700m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="touk kasa over3 under1500 SPIII mare display">
+
+<p class="date">6/25</p>
+<p class="dayoftheweek">木</p>
+<p class="name">撫子争覇</p>
+<div class="class">
+<p class="icon --other">SPⅢ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1400m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="obi obi age_4 BG3 display">
+
+<p class="date">6/28</p>
+<p class="dayoftheweek">日</p>
+<p class="name">柏林賞</p>
+<div class="class">
+<p class="icon --other">BG3</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori age_3 M3 display">
+
+<p class="date">6/28</p>
+<p class="dayoftheweek">日</p>
+<p class="name">サファイア賞</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">芝1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 over1600 display">
+
+<p class="date">6/28</p>
+<p class="dayoftheweek">日</p>
+<p class="name">金沢サマーカップ</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori age_3 M2 display">
+
+<p class="date">6/30</p>
+<p class="dayoftheweek">火</p>
+<p class="name">ハヤテスプリント</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi age_3 SII display">
+
+<p class="date">6/30</p>
+<p class="dayoftheweek">火</p>
+<p class="name">優駿スプリント</p>
+<div class="class">
+<p class="icon --other">SⅡ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+</ul>
+</div>
+
+
+<div id="month_07" class="cellCol">
+<ul class="race cell clearfix">
+
+
+<li class="nank ooi over3 over1600 JpnI DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0701_teiosho/introduction.html">
+<p class="date">7/1</p>
+<p class="dayoftheweek">水</p>
+<p class="name">帝王賞</p>
+<div class="class">
+<p class="icon --grade">JpnⅠ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="iwat mori over3 over1600 M2 display">
+
+<p class="date">7/5</p>
+<p class="dayoftheweek">日</p>
+<p class="name">せきれい賞</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">芝2400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana age_3 display">
+
+<p class="date">7/5</p>
+<p class="dayoftheweek">日</p>
+<p class="name">兼六園スプリント</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1500m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga age_3 display">
+
+<p class="date">7/5</p>
+<p class="dayoftheweek">日</p>
+<p class="name">佐賀ユーススプリント</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori over3 under1500 M2 display">
+
+<p class="date">7/7</p>
+<p class="dayoftheweek">火</p>
+<p class="name">岩鷲賞</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank kawa over3 over1600 JpnIII DG mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0708_sparkingladycup/introduction.html">
+<p class="date">7/8</p>
+<p class="dayoftheweek">水</p>
+<p class="name">スパーキングレディーカップ</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">1600m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="monb monb age_3 H3 display">
+
+<p class="date">7/9</p>
+<p class="dayoftheweek">木</p>
+<p class="name">星雲賞</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk kasa age_3 SPI display">
+
+<p class="date">7/9</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ぎふ清流カップ</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono over3 over1600 JsI mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-4-f/0710/index.html">
+<p class="date">7/10</p>
+<p class="dayoftheweek">金</p>
+<p class="name">兵庫サマークイーン賞</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1700m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="obi obi over3 under1500 BG2 display">
+
+<p class="date">7/12</p>
+<p class="dayoftheweek">日</p>
+<p class="name">旭川記念</p>
+<div class="class">
+<p class="icon --other">BG2</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori age_3 M2 display">
+
+<p class="date">7/12</p>
+<p class="dayoftheweek">日</p>
+<p class="name">やまびこ賞</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 under1500 mare display">
+
+<p class="date">7/12</p>
+<p class="dayoftheweek">日</p>
+<p class="name">加賀友禅賞</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1500m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="monb monb over3 over1600 H2 mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-4-f/0716/index.html">
+<p class="date">7/16</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ノースクイーンカップ</p>
+<div class="class">
+<p class="icon --other">H2</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1800m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="saga saga over3 under1500 display">
+
+<p class="date">7/16</p>
+<p class="dayoftheweek">木</p>
+<p class="name">霧島賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi age_3 BG3 display">
+
+<p class="date">7/19</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ばんえい大賞典</p>
+<div class="class">
+<p class="icon --other">BG3</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori over3 over1600 M3 display">
+
+<p class="date">7/19</p>
+<p class="dayoftheweek">日</p>
+<p class="name">いしがきマイラーズ</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">芝1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana age_3 display">
+
+<p class="date">7/19</p>
+<p class="dayoftheweek">日</p>
+<p class="name">金沢城鼠多門賞</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1900m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kout kout over3 under1500 display">
+
+<p class="date">7/19</p>
+<p class="dayoftheweek">日</p>
+<p class="name">トレノ賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1300m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori over3 over1600 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0720_mercurycup/introduction.html">
+<p class="date">7/20</p>
+<p class="dayoftheweek">祝月</p>
+<p class="name">マーキュリーカップ</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="touk kasa over3 under1500 SPII display">
+
+<p class="date">7/20</p>
+<p class="dayoftheweek">祝月</p>
+<p class="name">サマーカップ</p>
+<div class="class">
+<p class="icon --other">SPⅡ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_2 H3 mare display">
+
+<p class="date">7/22</p>
+<p class="dayoftheweek">水</p>
+<p class="name">リリーカップ</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1000m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="nank ooi over3 over1600 SIII display">
+
+<p class="date">7/22</p>
+<p class="dayoftheweek">水</p>
+<p class="name">サンタアニタトロフィー</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_3 H2 display">
+
+<p class="date">7/23</p>
+<p class="dayoftheweek">木</p>
+<p class="name">王冠賞</p>
+<div class="class">
+<p class="icon --other">H2</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori age_2 M3 display">
+
+<p class="date">7/26</p>
+<p class="dayoftheweek">日</p>
+<p class="name">若鮎賞</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">芝1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 under1500 display">
+
+<p class="date">7/26</p>
+<p class="dayoftheweek">日</p>
+<p class="name">能登復興祈念 百万石かがやきナイター賞</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori age_3 M2 display">
+
+<p class="date">7/28</p>
+<p class="dayoftheweek">火</p>
+<p class="name">オパールカップ</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">芝1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk nago over3 over1600 SPI display">
+
+<p class="date">7/28</p>
+<p class="dayoftheweek">火</p>
+<p class="name">名港盃</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb over3 over1600 H3 display">
+
+<p class="date">7/29</p>
+<p class="dayoftheweek">水</p>
+<p class="name">旭岳賞</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb over3 under1500 H3 display">
+
+<p class="date">7/30</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ポラリスサマースプリント</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+</ul>
+</div>
+
+
+<div id="month_08" class="cellCol">
+<ul class="race cell clearfix">
+
+
+<li class="iwat mori over3 over1600 M3 mare display">
+
+<p class="date">8/2</p>
+<p class="dayoftheweek">日</p>
+<p class="name">フェアリーカップ</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1800m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="kout kout age_3 display">
+
+<p class="date">8/2</p>
+<p class="dayoftheweek">日</p>
+<p class="name">黒潮菊花賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1900m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_2 H3 display">
+
+<p class="date">8/6</p>
+<p class="dayoftheweek">木</p>
+<p class="name">サッポロクラシックカップ</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank funa over3 under1500 SII display">
+
+<p class="date">8/6</p>
+<p class="dayoftheweek">木</p>
+<p class="name">習志野きらっとスプリント</p>
+<div class="class">
+<p class="icon --other">SⅡ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori age_3 M1 mare display">
+
+<p class="date">8/9</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ひまわり賞(オークス)</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1800m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="iwat mori over3 under1500 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0811_clustercup/introduction.html">
+<p class="date">8/11</p>
+<p class="dayoftheweek">祝火</p>
+<p class="name">クラスターカップ</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="nank uraw age_2 SIII display">
+
+<p class="date">8/11</p>
+<p class="dayoftheweek">祝火</p>
+<p class="name">ルーキーズサマーカップ</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">浦和</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 under1500 mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-4-f/0811/index.html">
+<p class="date">8/11</p>
+<p class="dayoftheweek">祝火</p>
+<p class="name">読売レディス杯</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1500m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="touk kasa over3 under1500 SPI display">
+
+<p class="date">8/12</p>
+<p class="dayoftheweek">水</p>
+<p class="name">くろゆり賞</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1580m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_3 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0813_hokkaidosprintcup/introduction.html">
+<p class="date">8/13</p>
+<p class="dayoftheweek">木</p>
+<p class="name">北海道スプリントカップ</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="nank ooi age_3 SIII display">
+
+<p class="date">8/13</p>
+<p class="dayoftheweek">木</p>
+<p class="name">黒潮盃</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono over3 over1600 JsI display">
+
+<p class="date">8/14</p>
+<p class="dayoftheweek">金</p>
+<p class="name">摂津盃</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi over3 under1500 BG2 display">
+
+<p class="date">8/16</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ばんえいグランプリ</p>
+<div class="class">
+<p class="icon --other">BG2</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori over3 over1600 M1 display">
+
+<p class="date">8/18</p>
+<p class="dayoftheweek">火</p>
+<p class="name">岩手県知事杯OROカップ</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">芝1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_2 H3 mare display">
+
+<p class="date">8/19</p>
+<p class="dayoftheweek">水</p>
+<p class="name">フルールカップ</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="nank kawa over3 over1600 SII display">
+
+<p class="date">8/19</p>
+<p class="dayoftheweek">水</p>
+<p class="name">スパーキングサマーカップ</p>
+<div class="class">
+<p class="icon --other">SⅡ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_2 H2 display">
+
+<p class="date">8/20</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ブリーダーズゴールドジュニアカップ</p>
+<div class="class">
+<p class="icon --other">H2</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk nago over3 under1500 SPII display">
+
+<p class="date">8/20</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ベイスプリント</p>
+<div class="class">
+<p class="icon --other">SPⅡ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">920m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi age_3-4 BG3 display">
+
+<p class="date">8/23</p>
+<p class="dayoftheweek">日</p>
+<p class="name">はまなす賞</p>
+<div class="class">
+<p class="icon --other">BG3</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori age_2 M1 display">
+
+<p class="date">8/23</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ジュニアグランプリ</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">芝1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 over1600 display">
+
+<p class="date">8/23</p>
+<p class="dayoftheweek">日</p>
+<p class="name">九州チャンピオンシップ</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1750m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 over1600 display">
+
+<p class="date">8/25</p>
+<p class="dayoftheweek">火</p>
+<p class="name">イヌワシ賞</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank funa over3 over1600 SIII display">
+
+<p class="date">8/26</p>
+<p class="dayoftheweek">水</p>
+<p class="name">フリオーソレジェンドカップ</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb over3 over1600 JpnIII DG mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0827_breedersgoldcup/introduction.html">
+<p class="date">8/27</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ブリーダーズゴールドカップ</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">門別</p>
+<p class="course">2000m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="iwat mori over3 over1600 M1 mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-4-f/0830/index.html">
+<p class="date">8/30</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ビューチフルドリーマーカップ</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">2000m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+</ul>
+</div>
+
+
+<div id="month_09" class="cellCol">
+<ul class="race cell clearfix">
+
+
+<li class="iwat mori age_3 JpnII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0901_kozukatasho/introduction.html">
+<p class="date">9/1</p>
+<p class="dayoftheweek">火</p>
+<p class="name">不来方賞</p>
+<div class="class">
+<p class="icon --grade">JpnⅡ</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="nank ooi over3 under1500 SIII display">
+
+<p class="date">9/2</p>
+<p class="dayoftheweek">水</p>
+<p class="name">アフター５スター賞</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk nago over3 over1600 SPI mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/raceseries/race/gdj2026-4-f/0903/index.html">
+<p class="date">9/3</p>
+<p class="dayoftheweek">木</p>
+<p class="name">秋桜賞</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1700m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="saga saga over3 under1500 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0903_summerchampion/introduction.html">
+<p class="date">9/3</p>
+<p class="dayoftheweek">木</p>
+<p class="name">サマーチャンピオン</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">佐賀</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="iwat mizu age_2 M3 display">
+
+<p class="date">9/6</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ビギナーズカップ</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana age_2 display">
+
+<p class="date">9/6</p>
+<p class="dayoftheweek">日</p>
+<p class="name">石川テレビ杯</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga age_2 display">
+
+<p class="date">9/6</p>
+<p class="dayoftheweek">日</p>
+<p class="name">九州ジュニアチャンピオン</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank kawa age_3 SI display">
+
+<p class="date">9/9</p>
+<p class="dayoftheweek">水</p>
+<p class="name">戸塚記念</p>
+<div class="class">
+<p class="icon --other">SⅠ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">2100m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank kawa age_2 SIII display">
+
+<p class="date">9/10</p>
+<p class="dayoftheweek">木</p>
+<p class="name">若武者賞</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">1500m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk kasa age_3 display">
+
+<p class="date">9/11</p>
+<p class="dayoftheweek">金</p>
+<p class="name">西日本３歳優駿</p>
+<div class="class">
+
+</div>
+<p class="area">笠松</p>
+<p class="course">1900m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi over3 under1500 BG2 display">
+
+<p class="date">9/13</p>
+<p class="dayoftheweek">日</p>
+<p class="name">岩見沢記念</p>
+<div class="class">
+<p class="icon --other">BG2</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu over3 over1600 M2 display">
+
+<p class="date">9/13</p>
+<p class="dayoftheweek">日</p>
+<p class="name">青藍賞</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana age_3 display">
+
+<p class="date">9/13</p>
+<p class="dayoftheweek">日</p>
+<p class="name">サラブレッド大賞典</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kout kout over3 under1500 display">
+
+<p class="date">9/13</p>
+<p class="dayoftheweek">日</p>
+<p class="name">建依別賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi over3 over1600 SII display">
+
+<p class="date">9/16</p>
+<p class="dayoftheweek">水</p>
+<p class="name">東京記念</p>
+<div class="class">
+<p class="icon --other">SⅡ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">2400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_2 H3 mare display">
+
+<p class="date">9/17</p>
+<p class="dayoftheweek">木</p>
+<p class="name">フローラルカップ</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1600m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="nank ooi age_2 SIII mirai haslink display">
+<a href="../raceseries/race/future2026/0917-2/index.html">
+<p class="date">9/17</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ゴールドジュニア</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="touk nago age_3 SPI display">
+
+<p class="date">9/17</p>
+<p class="dayoftheweek">木</p>
+<p class="name">秋の鞍</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1500m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono age_2 JsII mare GDJ haslink display">
+<a href="../raceseries/race/gdj2026-2/0917-1/index.html">
+<p class="date">9/17</p>
+<p class="dayoftheweek">木</p>
+<p class="name">園田プリンセスカップ</p>
+<div class="class">
+<p class="icon --other">重賞Ⅱ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1400m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="iwat mizu age_3 M1 mare display">
+
+<p class="date">9/21</p>
+<p class="dayoftheweek">祝月</p>
+<p class="name">オータムティアラ</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1900m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="kana kana over3 under1500 display">
+
+<p class="date">9/21</p>
+<p class="dayoftheweek">祝月</p>
+<p class="name">金沢鼓門賞</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb over3 under1500 H2 display">
+
+<p class="date">9/22</p>
+<p class="dayoftheweek">休火</p>
+<p class="name">ウポポイオータムスプリント</p>
+<div class="class">
+<p class="icon --other">H2</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 over1600 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0922_hakusandaishoten/introduction.html">
+<p class="date">9/22</p>
+<p class="dayoftheweek">休火</p>
+<p class="name">白山大賞典</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">金沢</p>
+<p class="course">2100m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="monb monb over3 over1600 H2 display">
+
+<p class="date">9/23</p>
+<p class="dayoftheweek">祝水</p>
+<p class="name">瑞穂賞</p>
+<div class="class">
+<p class="icon --other">H2</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank uraw over3 under1500 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0923_ovalsprint/introduction.html">
+<p class="date">9/23</p>
+<p class="dayoftheweek">祝水</p>
+<p class="name">オーバルスプリント</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">浦和</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="touk kasa age_3 SPIII display">
+
+<p class="date">9/23</p>
+<p class="dayoftheweek">祝水</p>
+<p class="name">ブルームカップ</p>
+<div class="class">
+<p class="icon --other">SPⅢ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono age_2 JsII display">
+
+<p class="date">9/23</p>
+<p class="dayoftheweek">祝水</p>
+<p class="name">兵庫ジュベナイルカップ</p>
+<div class="class">
+<p class="icon --other">重賞Ⅱ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono over3 under1500 JsII display">
+
+<p class="date">9/25</p>
+<p class="dayoftheweek">金</p>
+<p class="name">園田チャレンジカップ</p>
+<div class="class">
+<p class="icon --other">重賞Ⅱ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi age_4 BG2 display">
+
+<p class="date">9/27</p>
+<p class="dayoftheweek">日</p>
+<p class="name">銀河賞</p>
+<div class="class">
+<p class="icon --other">BG2</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu over3 under1500 M3 mare display">
+
+<p class="date">9/27</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ヴィーナススプリント</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1400m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="kout kout over3 over1600 display">
+
+<p class="date">9/27</p>
+<p class="dayoftheweek">日</p>
+<p class="name">珊瑚冠賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1900m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga age_3 display">
+
+<p class="date">9/27</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ロータスクラウン賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1860m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_2 H1 display">
+
+<p class="date">9/30</p>
+<p class="dayoftheweek">水</p>
+<p class="name">サンライズカップ</p>
+<div class="class">
+<p class="icon --other">H1</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank funa over3 over1600 JpnII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/0930_nippontvhai/introduction.html">
+<p class="date">9/30</p>
+<p class="dayoftheweek">水</p>
+<p class="name">日本テレビ盃</p>
+<div class="class">
+<p class="icon --grade">JpnⅡ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+</ul>
+</div>
+
+
+<div id="month_10" class="cellCol">
+<ul class="race cell clearfix">
+
+
+<li class="monb monb age_2 H1 mirai haslink display">
+<a href="../raceseries/race/future2026/1001/index.html">
+<p class="date">10/1</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ネクストスター門別</p>
+<div class="class">
+<p class="icon --other">H1</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="nank funa age_3 JpnIII DG mare haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1001_marinecup/introduction.html">
+<p class="date">10/1</p>
+<p class="dayoftheweek">木</p>
+<p class="name">マリーンカップ</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1800m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+</a>
+
+</li>
+
+
+<li class="hyou sono over3 over1600 JsI display">
+
+<p class="date">10/1</p>
+<p class="dayoftheweek">木</p>
+<p class="name">姫山菊花賞</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori age_2 M2 display">
+
+<p class="date">10/4</p>
+<p class="dayoftheweek">日</p>
+<p class="name">若駒賞</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana age_2 mare GDJ haslink display">
+<a href="../raceseries/race/gdj2026-2/1004/index.html">
+<p class="date">10/4</p>
+<p class="dayoftheweek">日</p>
+<p class="name">金沢シンデレラカップ</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1500m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="nank ooi over3 over1600 JpnII DG mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1006_ladiesprelude/introduction.html">
+<p class="date">10/6</p>
+<p class="dayoftheweek">火</p>
+<p class="name">レディスプレリュード</p>
+<div class="class">
+<p class="icon --grade">JpnⅡ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1800m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="kana kana over3 under1500 mare display">
+
+<p class="date">10/6</p>
+<p class="dayoftheweek">火</p>
+<p class="name">金沢クイーン賞</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1500m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="nank ooi age_3 JpnI DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1007_japandirtclassic/introduction.html">
+<p class="date">10/7</p>
+<p class="dayoftheweek">水</p>
+<p class="name">ジャパンダートクラシック</p>
+<div class="class">
+<p class="icon --grade">JpnⅠ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="touk kasa over3 over1600 SPII display">
+
+<p class="date">10/7</p>
+<p class="dayoftheweek">水</p>
+<p class="name">オータムカップ</p>
+<div class="class">
+<p class="icon --other">SPⅡ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1900m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb over3 over1600 H3 mare display">
+
+<p class="date">10/8</p>
+<p class="dayoftheweek">木</p>
+<p class="name">グランシャリオクイーンズ</p>
+<div class="class">
+<p class="icon --other">H3</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1700m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="nank ooi over3 under1500 JpnII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1008_tokyohai/introduction.html">
+<p class="date">10/8</p>
+<p class="dayoftheweek">木</p>
+<p class="name">東京盃</p>
+<div class="class">
+<p class="icon --grade">JpnⅡ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="touk kasa age_2 mirai haslink display">
+<a href="../raceseries/race/future2026/1008/index.html">
+<p class="date">10/8</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ネクストスター笠松</p>
+<div class="class">
+
+</div>
+<p class="area">笠松</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="obi obi age_2 BG3 display">
+
+<p class="date">10/11</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ナナカマド賞</p>
+<div class="class">
+<p class="icon --other">BG3</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori age_3 M2 display">
+
+<p class="date">10/12</p>
+<p class="dayoftheweek">祝月</p>
+<p class="name">トパーズカップ</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori over3 over1600 JpnI DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1012_milechampionshipnambuhai/introduction.html">
+<p class="date">10/12</p>
+<p class="dayoftheweek">祝月</p>
+<p class="name">マイルチャンピオンシップ南部杯</p>
+<div class="class">
+<p class="icon --grade">JpnⅠ</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="saga saga age_2 mirai haslink display">
+<a href="../raceseries/race/future2026/1012/index.html">
+<p class="date">10/12</p>
+<p class="dayoftheweek">祝月</p>
+<p class="name">ネクストスター佐賀</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="nank kawa age_2 SII mirai haslink display">
+<a href="../raceseries/race/future2026/1014/index.html">
+<p class="date">10/14</p>
+<p class="dayoftheweek">水</p>
+<p class="name">鎌倉記念</p>
+<div class="class">
+<p class="icon --other">SⅡ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="touk nago over3 under1500 SPI display">
+
+<p class="date">10/15</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ゴールド争覇</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1500m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono age_3 JsI display">
+
+<p class="date">10/15</p>
+<p class="dayoftheweek">木</p>
+<p class="name">園田オータムトロフィー</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori age_2 M1 mirai haslink display">
+<a href="../raceseries/race/future2026/1018/index.html">
+<p class="date">10/18</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ネクストスター盛岡</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="kana kana over3 under1500 display">
+
+<p class="date">10/18</p>
+<p class="dayoftheweek">日</p>
+<p class="name">金沢スプリントカップ</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 under1500 display">
+
+<p class="date">10/18</p>
+<p class="dayoftheweek">日</p>
+<p class="name">佐賀オータムスプリント</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana age_2 mirai haslink display">
+<a href="../raceseries/race/future2026/1020/index.html">
+<p class="date">10/20</p>
+<p class="dayoftheweek">火</p>
+<p class="name">ネクストスター金沢</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="nank uraw over3 over1600 SIII display">
+
+<p class="date">10/21</p>
+<p class="dayoftheweek">水</p>
+<p class="name">埼玉栄冠</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">浦和</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_2 H2 mare display">
+
+<p class="date">10/22</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ブロッサムカップ</p>
+<div class="class">
+<p class="icon --other">H2</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1700m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="touk kasa age_3 SPI display">
+
+<p class="date">10/22</p>
+<p class="dayoftheweek">木</p>
+<p class="name">岐阜金賞</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1900m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk kasa over3 under1500 SPIII display">
+
+<p class="date">10/23</p>
+<p class="dayoftheweek">金</p>
+<p class="name">東海クラウン</p>
+<div class="class">
+<p class="icon --other">SPⅢ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono over3 under1500 JsI display">
+
+<p class="date">10/23</p>
+<p class="dayoftheweek">金</p>
+<p class="name">兵庫ゴールドカップ</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1230m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi over3 under1500 BG2 display">
+
+<p class="date">10/25</p>
+<p class="dayoftheweek">日</p>
+<p class="name">北見記念</p>
+<div class="class">
+<p class="icon --other">BG2</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori over3 under1500 M2 display">
+
+<p class="date">10/25</p>
+<p class="dayoftheweek">日</p>
+<p class="name">絆カップ</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana age_3 display">
+
+<p class="date">10/25</p>
+<p class="dayoftheweek">日</p>
+<p class="name">かがやきスプリント</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kout kout age_2 mirai haslink display">
+<a href="../raceseries/race/future2026/1025/index.html">
+<p class="date">10/25</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ネクストスター高知</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="nank ooi over3 over1600 SII display">
+
+<p class="date">10/28</p>
+<p class="dayoftheweek">水</p>
+<p class="name">マイルグランプリ</p>
+<div class="class">
+<p class="icon --other">SⅡ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_2 JpnIII DG mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1029_edelweisssho/introduction.html">
+<p class="date">10/29</p>
+<p class="dayoftheweek">木</p>
+<p class="name">エーデルワイス賞</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="touk nago age_2 mirai haslink display">
+<a href="../raceseries/race/future2026/1029-3/index.html">
+<p class="date">10/29</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ネクストスター名古屋</p>
+<div class="class">
+
+</div>
+<p class="area">名古屋</p>
+<p class="course">1500m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="hyou sono age_2 JsI mirai haslink display">
+<a href="../raceseries/race/future2026/1029-2/index.html">
+<p class="date">10/29</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ネクストスター園田</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="hyou sono over3 over1600 JsII mare display">
+
+<p class="date">10/30</p>
+<p class="dayoftheweek">金</p>
+<p class="name">兵庫クイーンカップ</p>
+<div class="class">
+<p class="icon --other">重賞Ⅱ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1400m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+</ul>
+</div>
+
+
+<div id="month_11" class="cellCol">
+<ul class="race cell clearfix">
+
+
+<li class="obi obi age_3 BG2 display">
+
+<p class="date">11/1</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ばんえい菊花賞</p>
+<div class="class">
+<p class="icon --other">BG2</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mori age_2 M1 mare GDJ haslink display">
+<a href="../raceseries/race/gdj2026-2/1101/index.html">
+<p class="date">11/1</p>
+<p class="dayoftheweek">日</p>
+<p class="name">プリンセスカップ</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1400m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="kout kout age_3 display">
+
+<p class="date">11/1</p>
+<p class="dayoftheweek">日</p>
+<p class="name">土佐秋月賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 over1600 display">
+
+<p class="date">11/1</p>
+<p class="dayoftheweek">日</p>
+<p class="name">九州大賞典</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">2500m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb age_2 H1 mirai haslink display">
+<a href="../raceseries/race/future2026/1103-2/index.html">
+<p class="date">11/3</p>
+<p class="dayoftheweek">祝火</p>
+<p class="name">北海道2歳スプリント</p>
+<div class="class">
+<p class="icon --other">H1</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="monb monb age_2 JpnIII DG mirai haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1103_JBCnisaiyushun/introduction.html">
+<p class="date">11/3</p>
+<p class="dayoftheweek">祝火</p>
+<p class="name">JBC2歳優駿</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+
+</li>
+
+
+<li class="kana kana over3 over1600 JpnI DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1103_JBCclassic/introduction.html">
+<p class="date">11/3</p>
+<p class="dayoftheweek">祝火</p>
+<p class="name">JBCクラシック</p>
+<div class="class">
+<p class="icon --grade">JpnⅠ</p>
+</div>
+<p class="area">金沢</p>
+<p class="course">2100m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="kana kana over3 under1500 JpnI DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1103_JBCsprint/introduction.html">
+<p class="date">11/3</p>
+<p class="dayoftheweek">祝火</p>
+<p class="name">JBCスプリント</p>
+<div class="class">
+<p class="icon --grade">JpnⅠ</p>
+</div>
+<p class="area">金沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="kana kana over3 under1500 JpnI DG mare GDJ haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1103_JBCladiesclassic/introduction.html">
+<p class="date">11/3</p>
+<p class="dayoftheweek">祝火</p>
+<p class="name">JBCレディスクラシック</p>
+<div class="class">
+<p class="icon --grade">JpnⅠ</p>
+</div>
+<p class="area">金沢</p>
+<p class="course">1500m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="monb monb over3 under1500 H1 display">
+
+<p class="date">11/4</p>
+<p class="dayoftheweek">水</p>
+<p class="name">道営スプリント</p>
+<div class="class">
+<p class="icon --other">H1</p>
+</div>
+<p class="area">門別</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank funa age_2 SII mirai haslink display">
+<a href="../raceseries/race/future2026/1104/index.html">
+<p class="date">11/4</p>
+<p class="dayoftheweek">水</p>
+<p class="name">平和賞</p>
+<div class="class">
+<p class="icon --other">SⅡ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="hyou sono age_3 JsI display">
+
+<p class="date">11/4</p>
+<p class="dayoftheweek">水</p>
+<p class="name">楠賞</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="monb monb over3 over1600 H1 display">
+
+<p class="date">11/5</p>
+<p class="dayoftheweek">木</p>
+<p class="name">道営記念</p>
+<div class="class">
+<p class="icon --other">H1</p>
+</div>
+<p class="area">門別</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk kasa age_2 SPI mare GDJ haslink display">
+<a href="../raceseries/race/gdj2026-2/1105/index.html">
+<p class="date">11/5</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ラブミーチャン記念</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1580m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="obi obi age_4 BG3 mare display">
+
+<p class="date">11/8</p>
+<p class="dayoftheweek">日</p>
+<p class="name">クインカップ</p>
+<div class="class">
+<p class="icon --other">BG3</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="iwat mori over3 over1600 M3 display">
+
+<p class="date">11/8</p>
+<p class="dayoftheweek">日</p>
+<p class="name">すずらん賞</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">盛岡</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kout kout over3 over1600 display">
+
+<p class="date">11/8</p>
+<p class="dayoftheweek">日</p>
+<p class="name">黒潮マイルチャンピオンシップ</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga age_2 display">
+
+<p class="date">11/8</p>
+<p class="dayoftheweek">日</p>
+<p class="name">カペラ賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1750m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank kawa age_3 SI mare display">
+
+<p class="date">11/11</p>
+<p class="dayoftheweek">水</p>
+<p class="name">ロジータ記念</p>
+<div class="class">
+<p class="icon --other">SⅠ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">2100m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="nank kawa age_2 SII mare GDJ haslink display">
+<a href="../raceseries/race/gdj2026-2/1112/index.html">
+<p class="date">11/12</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ローレル賞</p>
+<div class="class">
+<p class="icon --other">SⅡ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">1600m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="touk nago over3 over1600 SPI display">
+
+<p class="date">11/12</p>
+<p class="dayoftheweek">木</p>
+<p class="name">東海菊花賞</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu age_2 M1 display">
+
+<p class="date">11/15</p>
+<p class="dayoftheweek">日</p>
+<p class="name">南部駒賞</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 over1600 display">
+
+<p class="date">11/15</p>
+<p class="dayoftheweek">日</p>
+<p class="name">北國王冠</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">2600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 under1500 display">
+
+<p class="date">11/15</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ウインターチャンピオン</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana age_2 display">
+
+<p class="date">11/17</p>
+<p class="dayoftheweek">火</p>
+<p class="name">金沢ヤングチャンピオン</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi age_2 SI mirai haslink display">
+<a href="../raceseries/race/future2026/1118/index.html">
+<p class="date">11/18</p>
+<p class="dayoftheweek">水</p>
+<p class="name">ハイセイコー記念</p>
+<div class="class">
+<p class="icon --other">SⅠ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+<div class="series"><p class="icon --series">未来</p></div>
+</a>
+</li>
+
+
+<li class="touk kasa over3 under1500 SPI display">
+
+<p class="date">11/19</p>
+<p class="dayoftheweek">木</p>
+<p class="name">笠松グランプリ</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi over3 under1500 BG3 display">
+
+<p class="date">11/22</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ドリームエイジカップ</p>
+<div class="class">
+<p class="icon --other">BG3</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu over3 over1600 M2 display">
+
+<p class="date">11/23</p>
+<p class="dayoftheweek">祝月</p>
+<p class="name">トウケイニセイ記念</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana age_3 display">
+
+<p class="date">11/23</p>
+<p class="dayoftheweek">祝月</p>
+<p class="name">MRO金賞</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank uraw over3 over1600 JpnII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1125_urawakinen/introduction.html">
+<p class="date">11/25</p>
+<p class="dayoftheweek">水</p>
+<p class="name">浦和記念</p>
+<div class="class">
+<p class="icon --grade">JpnⅡ</p>
+</div>
+<p class="area">浦和</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="nank uraw age_3 SIII display">
+
+<p class="date">11/26</p>
+<p class="dayoftheweek">木</p>
+<p class="name">サザンスタースプリント</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">浦和</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk nago age_2 SPI display">
+
+<p class="date">11/26</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ゴールドウィング賞</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono age_2 JpnII DG mirai haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1126_hyogojuniorgrandprix/introduction.html">
+<p class="date">11/26</p>
+<p class="dayoftheweek">木</p>
+<p class="name">兵庫ジュニアグランプリ</p>
+<div class="class">
+<p class="icon --grade">JpnⅡ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+<div class="series">
+<p class="icon --series">未来</p>
+</div>
+</a>
+
+</li>
+
+
+<li class="obi obi age_3 BG1 mare display">
+
+<p class="date">11/29</p>
+<p class="dayoftheweek">日</p>
+<p class="name">ばんえいオークス</p>
+<div class="class">
+<p class="icon --other">BG1</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="iwat mizu age_2 M3 display">
+
+<p class="date">11/29</p>
+<p class="dayoftheweek">日</p>
+<p class="name">寒菊賞</p>
+<div class="class">
+<p class="icon --other">M3</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 under1500 mare display">
+
+<p class="date">11/29</p>
+<p class="dayoftheweek">日</p>
+<p class="name">徽軫賞</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1400m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="saga saga over3 over1600 display">
+
+<p class="date">11/29</p>
+<p class="dayoftheweek">日</p>
+<p class="name">鳥栖大賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+</ul>
+</div>
+
+
+<div id="month_12" class="cellCol">
+<ul class="race cell clearfix">
+
+
+<li class="nank ooi over3 over1600 SII display">
+
+<p class="date">12/2</p>
+<p class="dayoftheweek">水</p>
+<p class="name">勝島王冠</p>
+<div class="class">
+<p class="icon --other">SⅡ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi age_2 SIII display">
+
+<p class="date">12/3</p>
+<p class="dayoftheweek">木</p>
+<p class="name">ジェムストーン賞</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk kasa over3 over1600 SPIII display">
+
+<p class="date">12/4</p>
+<p class="dayoftheweek">金</p>
+<p class="name">レジェンドハンター記念</p>
+<div class="class">
+<p class="icon --other">SPⅢ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1900m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga age_2 mare display">
+
+<p class="date">12/6</p>
+<p class="dayoftheweek">日</p>
+<p class="name">フォーマルハウト賞</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1400m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="iwat mizu over3 over1600 M2 display">
+
+<p class="date">12/8</p>
+<p class="dayoftheweek">火</p>
+<p class="name">北上川大賞典</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">2500m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank funa over3 under1500 SIII display">
+
+<p class="date">12/9</p>
+<p class="dayoftheweek">水</p>
+<p class="name">船橋記念</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">船橋</p>
+<p class="course">1000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono over3 over1600 JsI display">
+
+<p class="date">12/9</p>
+<p class="dayoftheweek">水</p>
+<p class="name">園田金盃</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1870m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 over1600 display">
+
+<p class="date">12/13</p>
+<p class="dayoftheweek">日</p>
+<p class="name">中日杯</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 over1600 display">
+
+<p class="date">12/13</p>
+<p class="dayoftheweek">日</p>
+<p class="name">九州産グランプリ</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank kawa age_2 JpnI DG mirai haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1216_zen-nipponnisaiyushun/introduction.html">
+<p class="date">12/16</p>
+<p class="dayoftheweek">水</p>
+<p class="name">全日本2歳優駿</p>
+<div class="class">
+<p class="icon --grade">JpnⅠ</p>
+</div>
+<p class="area">川崎</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+<div class="series">
+<p class="icon --series">未来</p>
+</div>
+</a>
+
+</li>
+
+
+<li class="saga saga age_2 display">
+
+<p class="date">12/20</p>
+<p class="dayoftheweek">日</p>
+<p class="name">佐賀2歳優駿</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1860m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank uraw over3 under1500 SI display">
+
+<p class="date">12/23</p>
+<p class="dayoftheweek">水</p>
+<p class="name">ゴールドカップ</p>
+<div class="class">
+<p class="icon --other">SⅠ</p>
+</div>
+<p class="area">浦和</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="touk nago over3 over1600 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1223_nagoyadaishoten/introduction.html">
+<p class="date">12/23</p>
+<p class="dayoftheweek">水</p>
+<p class="name">名古屋大賞典</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">名古屋</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="hyou sono over3 under1500 JpnIII DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1224_hyogogoldtrophy/introduction.html">
+<p class="date">12/24</p>
+<p class="dayoftheweek">木</p>
+<p class="name">兵庫ゴールドトロフィー</p>
+<div class="class">
+<p class="icon --grade">JpnⅢ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="kout kout age_2 display">
+
+<p class="date">12/26</p>
+<p class="dayoftheweek">土</p>
+<p class="name">金の鞍賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu age_2 M2 display">
+
+<p class="date">12/27</p>
+<p class="dayoftheweek">日</p>
+<p class="name">金杯</p>
+<div class="class">
+<p class="icon --other">M2</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">1600m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kana kana over3 under1500 display">
+
+<p class="date">12/27</p>
+<p class="dayoftheweek">日</p>
+<p class="name">金沢ファンセレクトカップ2026</p>
+<div class="class">
+
+</div>
+<p class="area">金沢</p>
+<p class="course">1500m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="saga saga over3 over1600 display">
+
+<p class="date">12/27</p>
+<p class="dayoftheweek">日</p>
+<p class="name">中島記念</p>
+<div class="class">
+
+</div>
+<p class="area">佐賀</p>
+<p class="course">1800m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="obi obi age_2 BG2 display">
+
+<p class="date">12/29</p>
+<p class="dayoftheweek">火</p>
+<p class="name">ヤングチャンピオンシップ</p>
+<div class="class">
+<p class="icon --other">BG2</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi over3 over1600 GI DG haslink display">
+<a href="https://www.keiba.go.jp/dirtgraderace/2026/1229_tokyodaishoten/introduction.html">
+<p class="date">12/29</p>
+<p class="dayoftheweek">火</p>
+<p class="name">東京大賞典</p>
+<div class="class">
+<p class="icon --grade">GⅠ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+</a>
+
+</li>
+
+
+<li class="obi obi age_3 BG1 display">
+
+<p class="date">12/30</p>
+<p class="dayoftheweek">水</p>
+<p class="name">ばんえいダービー</p>
+<div class="class">
+<p class="icon --other">BG1</p>
+</div>
+<p class="area">帯広</p>
+<p class="course">200m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi over3 over1600 SIII mare display">
+
+<p class="date">12/30</p>
+<p class="dayoftheweek">水</p>
+<p class="name">東京シンデレラマイル</p>
+<div class="class">
+<p class="icon --other">SⅢ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1600m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+
+
+</li>
+
+
+<li class="touk kasa age_2 SPI display">
+
+<p class="date">12/30</p>
+<p class="dayoftheweek">水</p>
+<p class="name">ライデンリーダー記念</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">1400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="iwat mizu over3 over1600 M1 display">
+
+<p class="date">12/31</p>
+<p class="dayoftheweek">木</p>
+<p class="name">桐花賞</p>
+<div class="class">
+<p class="icon --other">M1</p>
+</div>
+<p class="area">水沢</p>
+<p class="course">2000m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="nank ooi age_2 SI GDJ mare haslink display">
+<a href="../raceseries/race/gdj2026-2/1231/index.html">
+<p class="date">12/31</p>
+<p class="dayoftheweek">木</p>
+<p class="name">東京2歳優駿牝馬</p>
+<div class="class">
+<p class="icon --other">SⅠ</p>
+</div>
+<p class="area">大井</p>
+<p class="course">1600m</p>
+<div class="mare"><p class="icon --mare">牝馬</p></div>
+<div class="series"><p class="icon --series">GDJ</p></div>
+</a>
+</li>
+
+
+<li class="touk kasa over3 over1600 SPI display">
+
+<p class="date">12/31</p>
+<p class="dayoftheweek">木</p>
+<p class="name">東海ゴールドカップ</p>
+<div class="class">
+<p class="icon --other">SPⅠ</p>
+</div>
+<p class="area">笠松</p>
+<p class="course">2500m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="hyou sono age_2 JsI display">
+
+<p class="date">12/31</p>
+<p class="dayoftheweek">木</p>
+<p class="name">園田ジュニアカップ</p>
+<div class="class">
+<p class="icon --other">重賞Ⅰ</p>
+</div>
+<p class="area">園田</p>
+<p class="course">1700m</p>
+<div class="mare"></div>
+
+
+</li>
+
+
+<li class="kout kout over3 over1600 display">
+
+<p class="date">12/31</p>
+<p class="dayoftheweek">木</p>
+<p class="name">高知県知事賞</p>
+<div class="class">
+
+</div>
+<p class="area">高知</p>
+<p class="course">2400m</p>
+<div class="mare"></div>
+
+
+</li>
+
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+
+      </div>
+    </div>
+  </article>
+
+</div>
+
+<!--ページトップへ戻る-->
+<div class="backBtn"></div>
+<div id="footer" class="footer"></div>
+<script type="text/javascript" src="../js/scrollhint.js"></script>
+<script type="text/javascript" src="../js/gradedrace_2023-.js?date=20240401"></script>
+
+</body>
+</html>
+
+
+
+
