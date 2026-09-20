@@ -25,6 +25,7 @@ export interface RaceState {
 }
 
 export const initialFilters: FilterState = {
+  organization: 'all',
   searchQuery: '',
   grades: [],
   trackTypes: [],
@@ -66,6 +67,12 @@ export const matchDistanceCategory = (distance: number, category: DistanceCatego
  */
 export const filterRaces = (races: Race[], filters: FilterState): Race[] => {
   return races.filter((race) => {
+    // 主催者（JRA / NAR）絞り込み
+    if (filters.organization && filters.organization !== 'all') {
+      if (race.organization !== filters.organization) {
+        return false;
+      }
+    }
     // 検索クエリ（日本語名称・英語名称の部分一致・大小文字無視）
     if (filters.searchQuery.trim() !== '') {
       const query = filters.searchQuery.trim().toLowerCase();

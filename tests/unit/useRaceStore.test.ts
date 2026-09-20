@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { useRaceStore, filterRaces, selectFilteredRaces } from '../../src/store/useRaceStore';
+import { useRaceStore, filterRaces, selectFilteredRaces, initialFilters } from '../../src/store/useRaceStore';
 import type { Race } from '../../src/types/race';
 
 const mockRaces: Race[] = [
@@ -290,6 +290,7 @@ describe('useRaceStore & filterRaces', () => {
 
     it('filterRaces を直接呼び出してフィルタリングできること', () => {
       const filtered = filterRaces(mockRaces, {
+        organization: 'all',
         searchQuery: '',
         grades: ['J.G1'],
         trackTypes: [],
@@ -301,6 +302,38 @@ describe('useRaceStore & filterRaces', () => {
       });
       expect(filtered).toHaveLength(1);
       expect(filtered[0].id).toBe('2026-jra-jg1-01');
+    });
+
+    it('organization フィルター (jra / nar) で正しく絞り込めること', () => {
+      const narRace = {
+        ...mockRaces[0],
+        id: '2026-nar-jpn1-01',
+        organization: 'nar' as const,
+        grade: 'Jpn1' as const,
+      };
+      const mixedRaces = [...mockRaces, narRace];
+
+      // JRAのみ
+      const jraOnly = filterRaces(mixedRaces, {
+        ...initialFilters,
+        organization: 'jra',
+      });
+      expect(jraOnly.every((r) => r.organization === 'jra')).toBe(true);
+
+      // NARのみ
+      const narOnly = filterRaces(mixedRaces, {
+        ...initialFilters,
+        organization: 'nar',
+      });
+      expect(narOnly).toHaveLength(1);
+      expect(narOnly[0].id).toBe('2026-nar-jpn1-01');
+
+      // all
+      const allRaces = filterRaces(mixedRaces, {
+        ...initialFilters,
+        organization: 'all',
+      });
+      expect(allRaces).toHaveLength(mixedRaces.length);
     });
 
     describe('距離区分（スプリント/マイル/中距離/長距離）指定絞り込み (Issue #36)', () => {

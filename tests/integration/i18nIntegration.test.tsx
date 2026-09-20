@@ -52,6 +52,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
       viewMode: "timeline",
       currentYearMonth: { year: 2026, month: 2 },
       filters: {
+        organization: "all",
         searchQuery: "",
         grades: [],
         trackTypes: [],
@@ -85,7 +86,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     // 1. 初期状態（日本語モード）の検証
     // ==========================================
     expect(document.documentElement.lang).toBe("ja");
-    expect(document.title).toBe("重賞カレンダー - JRA重賞レーススケジュール");
+    expect(document.title).toBe("重賞カレンダー - JRA & NAR 重賞レーススケジュール");
 
     // ヘッダー
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("重賞カレンダー");
@@ -137,7 +138,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
 
     // ドキュメントメタの更新
     expect(document.documentElement.lang).toBe("en");
-    expect(document.title).toBe("JRA Graded Races Calendar - Schedule & Details");
+    expect(document.title).toBe("Graded Races - JRA & NAR Graded Races Calendar");
 
     // ヘッダーの更新
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Graded Races");
@@ -234,7 +235,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     fireEvent.click(switchBackBtn);
 
     expect(document.documentElement.lang).toBe("ja");
-    expect(document.title).toBe("重賞カレンダー - JRA重賞レーススケジュール");
+    expect(document.title).toBe("重賞カレンダー - JRA & NAR 重賞レーススケジュール");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("重賞カレンダー");
     expect(screen.getByText("2026年2月")).toBeInTheDocument();
     expect(screen.getByText("月")).toBeInTheDocument();

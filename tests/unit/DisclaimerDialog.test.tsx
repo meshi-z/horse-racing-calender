@@ -40,19 +40,19 @@ describe("DisclaimerDialog", () => {
 
     // 重要文言の確認
     expect(
-      screen.getByText(/日本中央競馬会（JRA）およびその他の競馬主催団体、関連機関とは一切関係ありません/)
+      screen.getByText(/日本中央競馬会（JRA）、地方競馬全国協会（NAR）/)
     ).toBeInTheDocument();
     expect(
       screen.getByText(/一般公開されている公式情報.*を取得・加工して提供/)
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/必ず主催者（JRA等）公式発表の最新情報をご確認ください/)
+      screen.getByText(/必ず主催者（JRA・NAR等）公式発表の最新情報をご確認ください/)
     ).toBeInTheDocument();
     expect(
       screen.getByText(/開発者および運営者は一切の責任を負いません/)
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/日本中央競馬会（JRA）ならびに各権利者に帰属します/)
+      screen.getByText(/各主催者（JRA、NAR、各地方競馬主催者等）ならびに各権利者に帰属します/)
     ).toBeInTheDocument();
     expect(
       screen.getByText(/Google社が提供するアクセス解析ツール「Google Analytics（GA4）」を利用しています/)
@@ -116,10 +116,10 @@ describe("DisclaimerDialog", () => {
 
       // 本文の確認
       expect(screen.getByText(/unofficial, personal fan project and has no affiliation with JRA/)).toBeInTheDocument();
-      expect(screen.getByText(/sourced and processed from publicly accessible JRA official information/)).toBeInTheDocument();
+      expect(screen.getByText(/sourced and processed from publicly accessible official information published by JRA and NAR/)).toBeInTheDocument();
       expect(screen.getByText(/When purchasing betting tickets or attending races in person, please always verify official announcements/)).toBeInTheDocument();
       expect(screen.getByText(/assume no liability for any direct or indirect damages/)).toBeInTheDocument();
-      expect(screen.getByText(/belong to the Japan Racing Association \(JRA\)/)).toBeInTheDocument();
+      expect(screen.getByText(/belong to their respective rights holders \(JRA, NAR, local authorities, etc\.\)/)).toBeInTheDocument();
       expect(screen.getByText(/Google Analytics \(GA4\) provided by Google LLC/)).toBeInTheDocument();
       expect(screen.getByText(/Google Analytics uses cookies to collect data/)).toBeInTheDocument();
     });

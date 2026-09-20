@@ -61,6 +61,34 @@ export default {
           DEFAULT: "hsl(var(--grade-g3))",
           foreground: "hsl(var(--grade-g3-foreground))",
         },
+        "grade-jpn1": {
+          DEFAULT: "hsl(var(--grade-jpn1))",
+          foreground: "hsl(var(--grade-jpn1-foreground))",
+        },
+        "grade-jpn2": {
+          DEFAULT: "hsl(var(--grade-jpn2))",
+          foreground: "hsl(var(--grade-jpn2-foreground))",
+        },
+        "grade-jpn3": {
+          DEFAULT: "hsl(var(--grade-jpn3))",
+          foreground: "hsl(var(--grade-jpn3-foreground))",
+        },
+        "grade-s1": {
+          DEFAULT: "hsl(var(--grade-s1))",
+          foreground: "hsl(var(--grade-s1-foreground))",
+        },
+        "grade-s2": {
+          DEFAULT: "hsl(var(--grade-s2))",
+          foreground: "hsl(var(--grade-s2-foreground))",
+        },
+        "grade-s3": {
+          DEFAULT: "hsl(var(--grade-s3))",
+          foreground: "hsl(var(--grade-s3-foreground))",
+        },
+        "grade-local": {
+          DEFAULT: "hsl(var(--grade-local))",
+          foreground: "hsl(var(--grade-local-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

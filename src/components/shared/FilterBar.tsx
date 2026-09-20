@@ -9,9 +9,40 @@ import {
   useTranslation,
   DISTANCE_OPTIONS_BY_LANG,
   COURSE_OPTIONS_BY_LANG,
+  COURSE_GROUPS,
   getLocalizedCourseName,
   trackTypeLabels,
+  type TranslationKey,
 } from "@/libs/i18n";
+
+export interface GradeGroupItem {
+  id: string;
+  labelKey: TranslationKey;
+  grades: Grade[];
+}
+
+export const GRADE_GROUPS: GradeGroupItem[] = [
+  {
+    id: "jra",
+    labelKey: "filter.gradeGroupJra",
+    grades: ["G1", "G2", "G3", "J.G1", "J.G2", "J.G3"],
+  },
+  {
+    id: "dirt",
+    labelKey: "filter.gradeGroupDart",
+    grades: ["Jpn1", "Jpn2", "Jpn3"],
+  },
+  {
+    id: "nankanto",
+    labelKey: "filter.gradeGroupNankanto",
+    grades: ["S1", "S2", "S3"],
+  },
+  {
+    id: "regional",
+    labelKey: "filter.gradeGroupRegional",
+    grades: ["local_grade"],
+  },
+];
 
 export const GRADE_OPTIONS: { label: string; grade: Grade }[] = [
   { label: "G1", grade: "G1" },
@@ -20,12 +51,20 @@ export const GRADE_OPTIONS: { label: string; grade: Grade }[] = [
   { label: "J.G1", grade: "J.G1" },
   { label: "J.G2", grade: "J.G2" },
   { label: "J.G3", grade: "J.G3" },
+  { label: "Jpn1", grade: "Jpn1" },
+  { label: "Jpn2", grade: "Jpn2" },
+  { label: "Jpn3", grade: "Jpn3" },
+  { label: "S1", grade: "S1" },
+  { label: "S2", grade: "S2" },
+  { label: "S3", grade: "S3" },
+  { label: "地方重賞", grade: "local_grade" },
 ];
 
 export const TRACK_OPTIONS: { label: string; type: TrackType }[] = [
   { label: "芝", type: "turf" },
   { label: "ダート", type: "dirt" },
   { label: "障害", type: "obstacle" },
+  { label: "ばんえい", type: "banei" },
 ];
 
 export const DISTANCE_OPTIONS = DISTANCE_OPTIONS_BY_LANG.ja;
@@ -47,9 +86,9 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     { label: trackTypeLabels[language].turf, type: "turf" },
     { label: trackTypeLabels[language].dirt, type: "dirt" },
     { label: trackTypeLabels[language].obstacle, type: "obstacle" },
+    { label: trackTypeLabels[language].banei, type: "banei" },
   ];
   const distanceOptions = DISTANCE_OPTIONS_BY_LANG[language];
-  const courseOptions = COURSE_OPTIONS_BY_LANG[language];
 
   // スクロール検知によりコンパクト表示フラグを切り替え
   React.useEffect(() => {
@@ -91,10 +130,18 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     return () => {
       document.documentElement.style.removeProperty("--filterbar-height");
     };
-  }, [isScrolled, isCourseExpanded, filters.courses.length, filters.distanceCategories.length]);
+  }, [
+    isScrolled,
+    isCourseExpanded,
+    filters.courses.length,
+    filters.distanceCategories.length,
+    filters.grades.length,
+    filters.organization,
+  ]);
 
   const hasActiveFilters =
     filters.searchQuery.trim() !== "" ||
+    filters.organization !== "all" ||
     filters.grades.length > 0 ||
     filters.trackTypes.length > 0 ||
     filters.distanceCategories.length > 0 ||
@@ -103,11 +150,30 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     filters.ageConstraints.length > 0 ||
     filters.yearMonth !== null;
 
+  const handleOrgSelect = (org: "all" | "jra" | "nar") => {
+    setFilter("organization", org);
+  };
+
   const handleGradeToggle = (grade: Grade) => {
     const nextGrades = filters.grades.includes(grade)
       ? filters.grades.filter((g) => g !== grade)
       : [...filters.grades, grade];
     setFilter("grades", nextGrades);
+  };
+
+  const handleGroupToggle = (groupGrades: Grade[]) => {
+    const allSelected = groupGrades.every((g) => filters.grades.includes(g));
+    if (allSelected) {
+      // 解除
+      setFilter(
+        "grades",
+        filters.grades.filter((g) => !groupGrades.includes(g))
+      );
+    } else {
+      // 一括追加
+      const newGrades = Array.from(new Set([...filters.grades, ...groupGrades]));
+      setFilter("grades", newGrades);
+    }
   };
 
   const handleTrackToggle = (track: TrackType) => {
@@ -131,9 +197,28 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     setFilter("courses", nextCourses);
   };
 
+  const handleCourseGroupToggle = (courseNames: string[]) => {
+    const allSelected = courseNames.every((c) => filters.courses.includes(c));
+    if (allSelected) {
+      setFilter(
+        "courses",
+        filters.courses.filter((c) => !courseNames.includes(c))
+      );
+    } else {
+      const newCourses = Array.from(new Set([...filters.courses, ...courseNames]));
+      setFilter("courses", newCourses);
+    }
+  };
+
   const handleClearCourses = () => {
     setFilter("courses", []);
   };
+
+  const orgOptions: { value: "all" | "jra" | "nar"; label: string }[] = [
+    { value: "all", label: t("filter.orgAll") },
+    { value: "jra", label: t("filter.orgJra") },
+    { value: "nar", label: t("filter.orgNar") },
+  ];
 
   return (
     <div
@@ -150,8 +235,9 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
       )}
       {...props}
     >
-      {/* 検索入力 & リセット */}
-      <div className="flex items-center gap-2">
+      {/* 検索入力 & 主催者セグメント & リセット */}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+        {/* 検索バー */}
         <div className="relative flex-1">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground pointer-events-none" />
           <Input
@@ -174,12 +260,41 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
           )}
         </div>
 
+        {/* 主催者セグメントコントロール (All / JRA / NAR) */}
+        <div
+          role="group"
+          aria-label={t("filter.orgLabel")}
+          className="flex items-center rounded-lg border bg-muted/40 p-0.5 self-start sm:self-auto shrink-0"
+        >
+          {orgOptions.map((opt) => {
+            const isSelected = filters.organization === opt.value;
+            return (
+              <button
+                key={opt.value}
+                type="button"
+                onClick={() => handleOrgSelect(opt.value)}
+                aria-pressed={isSelected}
+                className={cn(
+                  "rounded-md px-2.5 py-1 text-xs font-semibold transition-all cursor-pointer",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                  isSelected
+                    ? "bg-background text-foreground shadow-xs"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                {opt.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* リセットボタン */}
         {hasActiveFilters && (
           <Button
             variant="outline"
             size="sm"
             onClick={resetFilters}
-            className="shrink-0 gap-1.5 h-9 px-3 text-xs text-muted-foreground hover:text-destructive hover:border-destructive transition-colors"
+            className="shrink-0 gap-1.5 h-9 px-3 text-xs text-muted-foreground hover:text-destructive hover:border-destructive transition-colors self-end sm:self-auto"
             aria-label={t("filter.resetFilterAria")}
           >
             <RotateCcw className="h-3.5 w-3.5" />
@@ -188,134 +303,244 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
         )}
       </div>
 
-      {/* 絞り込み条件（グレード・馬場・競馬場展開） */}
-      <div className="flex flex-col sm:flex-row sm:items-center text-xs gap-2 sm:gap-4 flex-wrap">
-        {/* グレード */}
-        <div className="flex items-center flex-wrap gap-1.5">
-          <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
-            {t("filter.gradeLabel")}
-          </span>
-          {GRADE_OPTIONS.map(({ label, grade }) => {
-            const isSelected = filters.grades.includes(grade);
-            return (
-              <button
-                key={grade}
-                type="button"
-                onClick={() => handleGradeToggle(grade)}
-                aria-pressed={isSelected}
-                className={cn(
-                  "rounded-md font-semibold border transition-colors cursor-pointer",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                  "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
-                  isSelected
-                    ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                    : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
-                )}
-              >
-                {label}
-              </button>
-            );
-          })}
+      {/* 絞り込み条件（グレード・クイックトグル・馬場・競馬場展開） */}
+      <div className="flex flex-col gap-2.5 text-xs">
+        {/* グレード選択行 */}
+        <div className="flex flex-col lg:flex-row lg:items-center gap-2">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
+              {t("filter.gradeLabel")}
+            </span>
+
+            {/* JRA重賞 (G1-G3, J.G1-J.G3) */}
+            <div className="flex items-center gap-1 flex-wrap">
+              {GRADE_OPTIONS.slice(0, 6).map(({ label, grade }) => {
+                const isSelected = filters.grades.includes(grade);
+                return (
+                  <button
+                    key={grade}
+                    type="button"
+                    onClick={() => handleGradeToggle(grade)}
+                    aria-pressed={isSelected}
+                    className={cn(
+                      "rounded-md font-semibold border transition-colors cursor-pointer",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                      "px-2 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                      isSelected
+                        ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                        : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
+                    )}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* ダートグレード (Jpn1-Jpn3) */}
+            <div className="flex items-center gap-1 flex-wrap pl-1 border-l border-border/60">
+              {GRADE_OPTIONS.slice(6, 9).map(({ label, grade }) => {
+                const isSelected = filters.grades.includes(grade);
+                return (
+                  <button
+                    key={grade}
+                    type="button"
+                    onClick={() => handleGradeToggle(grade)}
+                    aria-pressed={isSelected}
+                    className={cn(
+                      "rounded-md font-semibold border transition-colors cursor-pointer",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                      "px-2 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                      isSelected
+                        ? "bg-amber-600 text-white border-amber-600 shadow-sm dark:bg-amber-500"
+                        : "bg-background text-amber-700 dark:text-amber-400 border-input hover:bg-accent"
+                    )}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* 南関重賞 (S1-S3) */}
+            <div className="flex items-center gap-1 flex-wrap pl-1 border-l border-border/60">
+              {GRADE_OPTIONS.slice(9, 12).map(({ label, grade }) => {
+                const isSelected = filters.grades.includes(grade);
+                return (
+                  <button
+                    key={grade}
+                    type="button"
+                    onClick={() => handleGradeToggle(grade)}
+                    aria-pressed={isSelected}
+                    className={cn(
+                      "rounded-md font-semibold border transition-colors cursor-pointer",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                      "px-2 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                      isSelected
+                        ? "bg-cyan-700 text-white border-cyan-700 shadow-sm dark:bg-cyan-600"
+                        : "bg-background text-cyan-700 dark:text-cyan-400 border-input hover:bg-accent"
+                    )}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* 地方重賞 */}
+            <div className="flex items-center gap-1 flex-wrap pl-1 border-l border-border/60">
+              {GRADE_OPTIONS.slice(12, 13).map(({ grade }) => {
+                const isSelected = filters.grades.includes(grade);
+                const displayLabel = language === "en" ? "Regional" : "地方重賞";
+                return (
+                  <button
+                    key={grade}
+                    type="button"
+                    onClick={() => handleGradeToggle(grade)}
+                    aria-pressed={isSelected}
+                    className={cn(
+                      "rounded-md font-semibold border transition-colors cursor-pointer",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                      "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                      isSelected
+                        ? "bg-slate-700 text-white border-slate-700 shadow-sm dark:bg-slate-600"
+                        : "bg-background text-slate-700 dark:text-slate-300 border-input hover:bg-accent"
+                    )}
+                  >
+                    {displayLabel}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* クイックトグルボタン（ダートグレード一括 / 南関重賞一括 / 地方重賞一括） */}
+          <div className="flex items-center gap-1.5 flex-wrap text-[11px] text-muted-foreground pl-0 lg:pl-2">
+            <span className="text-[10px] uppercase font-bold text-muted-foreground/70">一括:</span>
+            {GRADE_GROUPS.slice(1).map((grp) => {
+              const allSelected = grp.grades.every((g) => filters.grades.includes(g));
+              const toggleLabel = `${t(grp.labelKey)}${language === "en" ? " All" : "一括"}`;
+              return (
+                <button
+                  key={grp.id}
+                  type="button"
+                  onClick={() => handleGroupToggle(grp.grades)}
+                  aria-label={toggleLabel}
+                  className={cn(
+                    "rounded border px-1.5 py-0.5 transition-colors cursor-pointer",
+                    allSelected
+                      ? "bg-primary/10 border-primary/40 text-primary font-bold"
+                      : "bg-muted/50 border-border hover:bg-muted text-muted-foreground"
+                  )}
+                >
+                  {toggleLabel}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* 馬場種別 */}
-        <div className="flex items-center flex-wrap gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
-          <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
-            {t("filter.trackLabel")}
-          </span>
-          {trackOptions.map(({ label, type }) => {
-            const isSelected = filters.trackTypes.includes(type);
-            return (
-              <button
-                key={type}
-                type="button"
-                onClick={() => handleTrackToggle(type)}
-                aria-pressed={isSelected}
-                className={cn(
-                  "rounded-md border transition-colors cursor-pointer",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                  "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
-                  isSelected
-                    ? "bg-secondary text-secondary-foreground font-medium border-secondary-foreground/20 shadow-sm"
-                    : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
-                )}
-              >
-                {label}
-              </button>
-            );
-          })}
-        </div>
+        {/* 馬場種別・距離・競馬場行 */}
+        <div className="flex flex-col sm:flex-row sm:items-center text-xs gap-2 sm:gap-4 flex-wrap pt-1 border-t border-border/40">
+          {/* 馬場種別 */}
+          <div className="flex items-center flex-wrap gap-1.5">
+            <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
+              {t("filter.trackLabel")}
+            </span>
+            {trackOptions.map(({ label, type }) => {
+              const isSelected = filters.trackTypes.includes(type);
+              return (
+                <button
+                  key={type}
+                  type="button"
+                  onClick={() => handleTrackToggle(type)}
+                  aria-pressed={isSelected}
+                  className={cn(
+                    "rounded-md border transition-colors cursor-pointer",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                    "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                    isSelected
+                      ? "bg-secondary text-secondary-foreground font-medium border-secondary-foreground/20 shadow-sm"
+                      : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
+                  )}
+                >
+                  {label}
+                </button>
+              );
+            })}
+          </div>
 
-        {/* 距離区分 */}
-        <div className="flex items-center flex-wrap gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
-          <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
-            {t("filter.distanceLabel")}
-          </span>
-          {distanceOptions.map(({ label, category, description }) => {
-            const isSelected = filters.distanceCategories.includes(category);
-            return (
-              <button
-                key={category}
-                type="button"
-                onClick={() => handleDistanceToggle(category)}
-                aria-pressed={isSelected}
-                title={description}
-                aria-label={t("filter.distanceFilterAria")
-                  .replace("{label}", label)
-                  .replace("{description}", description)}
-                className={cn(
-                  "rounded-md border transition-colors cursor-pointer",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                  "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
-                  isSelected
-                    ? "bg-primary text-primary-foreground border-primary shadow-sm font-semibold"
-                    : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
-                )}
-              >
-                {label}
-              </button>
-            );
-          })}
-        </div>
+          {/* 距離区分 */}
+          <div className="flex items-center flex-wrap gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
+            <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
+              {t("filter.distanceLabel")}
+            </span>
+            {distanceOptions.map(({ label, category, description }) => {
+              const isSelected = filters.distanceCategories.includes(category);
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => handleDistanceToggle(category)}
+                  aria-pressed={isSelected}
+                  title={description}
+                  aria-label={t("filter.distanceFilterAria")
+                    .replace("{label}", label)
+                    .replace("{description}", description)}
+                  className={cn(
+                    "rounded-md border transition-colors cursor-pointer",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                    "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                    isSelected
+                      ? "bg-primary text-primary-foreground border-primary shadow-sm font-semibold"
+                      : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
+                  )}
+                >
+                  {label}
+                </button>
+              );
+            })}
+          </div>
 
-        {/* 競馬場トグルボタン */}
-        <div className="flex items-center gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
-          <button
-            type="button"
-            onClick={() => setIsCourseExpanded((prev) => !prev)}
-            aria-expanded={isCourseExpanded}
-            aria-label={t("filter.courseExpandAria")}
-            className={cn(
-              "flex items-center gap-1.5 rounded-md border font-semibold transition-colors cursor-pointer",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-              "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
-              filters.courses.length > 0
-                ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
-            )}
-          >
-            <MapPin className="h-3.5 w-3.5" />
-            <span>{t("filter.courseLabel")}</span>
-            {filters.courses.length > 0 && (
-              <span className="ml-0.5 rounded-full bg-primary-foreground text-primary px-1.5 py-0.2 text-[10px] font-bold">
-                {filters.courses.length}
-              </span>
-            )}
-            <ChevronDown
+          {/* 競馬場トグルボタン */}
+          <div className="flex items-center gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
+            <button
+              type="button"
+              onClick={() => setIsCourseExpanded((prev) => !prev)}
+              aria-expanded={isCourseExpanded}
+              aria-label={t("filter.courseExpandAria")}
               className={cn(
-                "h-3.5 w-3.5 transition-transform duration-200",
-                isCourseExpanded && "rotate-180"
+                "flex items-center gap-1.5 rounded-md border font-semibold transition-colors cursor-pointer",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                filters.courses.length > 0
+                  ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                  : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
               )}
-            />
-          </button>
+            >
+              <MapPin className="h-3.5 w-3.5" />
+              <span>{t("filter.courseLabel")}</span>
+              {filters.courses.length > 0 && (
+                <span className="ml-0.5 rounded-full bg-primary-foreground text-primary px-1.5 py-0.2 text-[10px] font-bold">
+                  {filters.courses.length}
+                </span>
+              )}
+              <ChevronDown
+                className={cn(
+                  "h-3.5 w-3.5 transition-transform duration-200",
+                  isCourseExpanded && "rotate-180"
+                )}
+              />
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* 競馬場選択パネル（展開時） */}
+      {/* 競馬場選択パネル（展開時: 4グループ表示） */}
       {isCourseExpanded && (
         <div
           data-testid="course-filter-panel"
-          className="flex flex-col gap-2 pt-2 border-t border-border/60 animate-in fade-in-50 duration-150"
+          className="flex flex-col gap-3 pt-3 border-t border-border/60 animate-in fade-in-50 duration-150"
         >
           <div className="flex items-center justify-between text-xs">
             <span className="text-muted-foreground font-medium flex items-center gap-1">
@@ -332,26 +557,48 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
               </button>
             )}
           </div>
-          <div className="flex items-center flex-wrap gap-1.5">
-            {courseOptions.map(({ label, name }) => {
-              const isSelected = filters.courses.includes(name);
+
+          <div className="space-y-2.5">
+            {COURSE_GROUPS.map((group) => {
+              const groupCourseNames = group.courses.map((c) => c.name);
+              const allSelected = groupCourseNames.every((c) => filters.courses.includes(c));
+
               return (
-                <button
-                  key={name}
-                  type="button"
-                  onClick={() => handleCourseToggle(name)}
-                  aria-pressed={isSelected}
-                  className={cn(
-                    "rounded-md border transition-colors cursor-pointer",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                    "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
-                    isSelected
-                      ? "bg-primary text-primary-foreground border-primary shadow-sm font-semibold"
-                      : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
-                  )}
-                >
-                  {label}
-                </button>
+                <div key={group.region} className="space-y-1.5">
+                  <div className="flex items-center justify-between text-[11px] text-muted-foreground font-semibold">
+                    <span>{group.label[language]}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleCourseGroupToggle(groupCourseNames)}
+                      className="text-[10px] text-primary hover:underline cursor-pointer"
+                    >
+                      {allSelected ? t("filter.clearGroup") : t("filter.selectAll")}
+                    </button>
+                  </div>
+                  <div className="flex items-center flex-wrap gap-1.5">
+                    {group.courses.map((c) => {
+                      const isSelected = filters.courses.includes(c.name);
+                      return (
+                        <button
+                          key={c.name}
+                          type="button"
+                          onClick={() => handleCourseToggle(c.name)}
+                          aria-pressed={isSelected}
+                          className={cn(
+                            "rounded-md border transition-colors cursor-pointer",
+                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                            "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                            isSelected
+                              ? "bg-primary text-primary-foreground border-primary shadow-sm font-semibold"
+                              : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
+                          )}
+                        >
+                          {c.label[language]}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
               );
             })}
           </div>
