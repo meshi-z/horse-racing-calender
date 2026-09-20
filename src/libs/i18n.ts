@@ -381,18 +381,20 @@ export function getLocalizedCourseName(courseName: string, lang: Language): stri
   return courseName;
 }
 
-export const trackTypeLabels: Record<Language, Record<'turf' | 'dirt' | 'obstacle' | 'banei', string>> = {
+export const trackTypeLabels: Record<Language, Record<import('../types/race').TrackType, string>> = {
   ja: {
     turf: '芝',
     dirt: 'ダート',
     obstacle: '障害',
     banei: 'ばんえい',
+    aw: 'AW',
   },
   en: {
     turf: 'Turf',
     dirt: 'Dirt',
     obstacle: 'Jump',
     banei: 'Banei',
+    aw: 'AW',
   },
 };
 
