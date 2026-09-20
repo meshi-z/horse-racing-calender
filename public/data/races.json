@@ -26,27 +26,27 @@
     }
   },
   {
-    "id": "2026-nar-local-02",
+    "id": "2026-nar-local-03",
     "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "天馬賞",
-      "en": "Temma Sho"
+      "ja": "新春賞",
+      "en": "Shinshun Sho"
     },
     "grade": "local_grade",
     "date": "2026-01-03",
-    "start_time": "2026-01-03T09:20:00.000Z",
+    "start_time": "2026-01-03T06:50:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "帯広",
-      "en": "Obihiro"
+      "ja": "園田",
+      "en": "Sonoda"
     },
-    "distance": 200,
-    "track_type": "banei",
+    "distance": 1870,
+    "track_type": "dirt",
     "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
+    "age_constraint": "3yo_and_up",
     "handicap": {
-      "code": "special_weight",
+      "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
     }
@@ -78,25 +78,51 @@
     }
   },
   {
-    "id": "2026-nar-local-03",
+    "id": "2026-nar-local-02",
     "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "新春賞",
-      "en": "Shinshun Sho"
+      "ja": "天馬賞",
+      "en": "Temma Sho"
     },
     "grade": "local_grade",
     "date": "2026-01-03",
-    "start_time": "2026-01-03T06:50:00.000Z",
+    "start_time": "2026-01-03T09:20:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "園田",
-      "en": "Sonoda"
+      "ja": "帯広",
+      "en": "Obihiro"
     },
-    "distance": 1870,
-    "track_type": "dirt",
+    "distance": 200,
+    "track_type": "banei",
     "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-jra-g3-01",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "スポーツニッポン賞京都金杯",
+      "en": "Sports Nippon Sho Kyoto Kimpai"
+    },
+    "grade": "G3",
+    "date": "2026-01-04",
+    "start_time": "2026-01-04T06:30:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "京都",
+      "en": "Kyoto"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -120,32 +146,6 @@
       "en": "Nakayama"
     },
     "distance": 2000,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-jra-g3-01",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "スポーツニッポン賞京都金杯",
-      "en": "Sports Nippon Sho Kyoto Kimpai"
-    },
-    "grade": "G3",
-    "date": "2026-01-04",
-    "start_time": "2026-01-04T06:30:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "京都",
-      "en": "Kyoto"
-    },
-    "distance": 1600,
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "4yo_and_up",
@@ -312,32 +312,6 @@
     }
   },
   {
-    "id": "2026-nar-local-07",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "新春ペガサスカップ",
-      "en": "Shinshun Pegasus Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-01-15",
-    "start_time": "2026-01-15T11:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "名古屋",
-      "en": "Nagoya"
-    },
-    "distance": 1700,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-08",
     "organization": "nar",
     "country_code": "JP",
@@ -364,23 +338,23 @@
     }
   },
   {
-    "id": "2026-jra-g3-05",
-    "organization": "jra",
+    "id": "2026-nar-local-07",
+    "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "京成杯",
-      "en": "Keisei Hai"
+      "ja": "新春ペガサスカップ",
+      "en": "Shinshun Pegasus Cup"
     },
-    "grade": "G3",
-    "date": "2026-01-18",
-    "start_time": "2026-01-18T06:45:00.000Z",
+    "grade": "local_grade",
+    "date": "2026-01-15",
+    "start_time": "2026-01-15T11:15:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "中山",
-      "en": "Nakayama"
+      "ja": "名古屋",
+      "en": "Nagoya"
     },
-    "distance": 2000,
-    "track_type": "turf",
+    "distance": 1700,
+    "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo",
     "handicap": {
@@ -413,6 +387,32 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    }
+  },
+  {
+    "id": "2026-jra-g3-05",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "京成杯",
+      "en": "Keisei Hai"
+    },
+    "grade": "G3",
+    "date": "2026-01-18",
+    "start_time": "2026-01-18T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "中山",
+      "en": "Nakayama"
+    },
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -572,32 +572,6 @@
     }
   },
   {
-    "id": "2026-jra-g2-03",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "アメリカジョッキークラブカップ",
-      "en": "American Jockey Club Cup"
-    },
-    "grade": "G2",
-    "date": "2026-01-25",
-    "start_time": "2026-01-25T06:45:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "中山",
-      "en": "Nakayama"
-    },
-    "distance": 2200,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-jra-g2-02",
     "organization": "jra",
     "country_code": "JP",
@@ -615,6 +589,32 @@
     },
     "distance": 1800,
     "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-jra-g2-03",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "アメリカジョッキークラブカップ",
+      "en": "American Jockey Club Cup"
+    },
+    "grade": "G2",
+    "date": "2026-01-25",
+    "start_time": "2026-01-25T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "中山",
+      "en": "Nakayama"
+    },
+    "distance": 2200,
+    "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "4yo_and_up",
     "handicap": {
@@ -702,6 +702,32 @@
     }
   },
   {
+    "id": "2026-jra-g3-08",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "シルクロードステークス",
+      "en": "Silk Road Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-02-01",
+    "start_time": "2026-02-01T06:35:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "京都",
+      "en": "Kyoto"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-jra-g3-07",
     "organization": "jra",
     "country_code": "JP",
@@ -728,25 +754,25 @@
     }
   },
   {
-    "id": "2026-jra-g3-08",
-    "organization": "jra",
+    "id": "2026-nar-local-15",
+    "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "シルクロードステークス",
-      "en": "Silk Road Stakes"
+      "ja": "黒潮スプリンターズカップ",
+      "en": "Kuroshio Sprinters Cup"
     },
-    "grade": "G3",
+    "grade": "local_grade",
     "date": "2026-02-01",
-    "start_time": "2026-02-01T06:35:00.000Z",
+    "start_time": "2026-02-01T09:15:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "京都",
-      "en": "Kyoto"
+      "ja": "高知",
+      "en": "Kochi"
     },
-    "distance": 1200,
-    "track_type": "turf",
+    "distance": 1300,
+    "track_type": "dirt",
     "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -775,32 +801,6 @@
     "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "special_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-15",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "黒潮スプリンターズカップ",
-      "en": "Kuroshio Sprinters Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-02-01",
-    "start_time": "2026-02-01T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "高知",
-      "en": "Kochi"
-    },
-    "distance": 1300,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
     }
@@ -858,6 +858,32 @@
     }
   },
   {
+    "id": "2026-nar-local-18",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "飛燕賞",
+      "en": "Hien Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-02-08",
+    "start_time": "2026-02-08T09:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "佐賀",
+      "en": "Saga"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-17",
     "organization": "nar",
     "country_code": "JP",
@@ -884,23 +910,25 @@
     }
   },
   {
-    "id": "2026-nar-local-18",
-    "organization": "nar",
+    "id": "2026-jra-g3-09",
+    "organization": "jra",
     "country_code": "JP",
     "name": {
-      "ja": "飛燕賞",
-      "en": "Hien Sho"
+      "ja": "きさらぎ賞",
+      "en": "Kisaragi Sho"
     },
-    "grade": "local_grade",
-    "date": "2026-02-08",
-    "start_time": "2026-02-08T09:05:00.000Z",
+    "grade": "G3",
+    "date": "2026-02-10",
+    "start_time": "2026-02-10T06:35:00.000Z",
     "is_time_confirmed": true,
+    "is_rescheduled": true,
+    "original_date": "2026-02-08",
     "course": {
-      "ja": "佐賀",
-      "en": "Saga"
+      "ja": "京都",
+      "en": "Kyoto"
     },
-    "distance": 1400,
-    "track_type": "dirt",
+    "distance": 1800,
+    "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo",
     "handicap": {
@@ -931,34 +959,6 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-jra-g3-09",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "きさらぎ賞",
-      "en": "Kisaragi Sho"
-    },
-    "grade": "G3",
-    "date": "2026-02-10",
-    "start_time": "2026-02-10T06:35:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": true,
-    "original_date": "2026-02-08",
-    "course": {
-      "ja": "京都",
-      "en": "Kyoto"
-    },
-    "distance": 1800,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -1096,6 +1096,32 @@
     }
   },
   {
+    "id": "2026-jra-g2-04",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "京都記念",
+      "en": "Kyoto Kinen"
+    },
+    "grade": "G2",
+    "date": "2026-02-15",
+    "start_time": "2026-02-15T06:35:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "京都",
+      "en": "Kyoto"
+    },
+    "distance": 2200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-jra-g3-12",
     "organization": "jra",
     "country_code": "JP",
@@ -1122,25 +1148,25 @@
     }
   },
   {
-    "id": "2026-jra-g2-04",
-    "organization": "jra",
+    "id": "2026-nar-local-21",
+    "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "京都記念",
-      "en": "Kyoto Kinen"
+      "ja": "だるま夕日賞",
+      "en": "Daruma Yuhi Sho"
     },
-    "grade": "G2",
+    "grade": "local_grade",
     "date": "2026-02-15",
-    "start_time": "2026-02-15T06:35:00.000Z",
+    "start_time": "2026-02-15T09:15:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "京都",
-      "en": "Kyoto"
+      "ja": "高知",
+      "en": "Kochi"
     },
-    "distance": 2200,
-    "track_type": "turf",
+    "distance": 1600,
+    "track_type": "dirt",
     "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -1174,32 +1200,6 @@
     }
   },
   {
-    "id": "2026-nar-local-21",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "だるま夕日賞",
-      "en": "Daruma Yuhi Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-02-15",
-    "start_time": "2026-02-15T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "高知",
-      "en": "Kochi"
-    },
-    "distance": 1600,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-jpn3-04",
     "organization": "nar",
     "country_code": "JP",
@@ -1216,6 +1216,32 @@
       "en": "Oi"
     },
     "distance": 1800,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-23",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "兵庫ユースカップ",
+      "en": "Hyogo Youth Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-02-19",
+    "start_time": "2026-02-19T07:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "姫路",
+      "en": "Himeji"
+    },
+    "distance": 1400,
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo",
@@ -1252,25 +1278,25 @@
     }
   },
   {
-    "id": "2026-nar-local-23",
-    "organization": "nar",
+    "id": "2026-jra-g3-14",
+    "organization": "jra",
     "country_code": "JP",
     "name": {
-      "ja": "兵庫ユースカップ",
-      "en": "Hyogo Youth Cup"
+      "ja": "阪急杯",
+      "en": "Hankyu Hai"
     },
-    "grade": "local_grade",
-    "date": "2026-02-19",
-    "start_time": "2026-02-19T07:05:00.000Z",
+    "grade": "G3",
+    "date": "2026-02-21",
+    "start_time": "2026-02-21T06:35:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "姫路",
-      "en": "Himeji"
+      "ja": "阪神",
+      "en": "Hanshin"
     },
     "distance": 1400,
-    "track_type": "dirt",
+    "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "3yo",
+    "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -1304,29 +1330,29 @@
     }
   },
   {
-    "id": "2026-jra-g3-14",
+    "id": "2026-jra-g3-15",
     "organization": "jra",
     "country_code": "JP",
     "name": {
-      "ja": "阪急杯",
-      "en": "Hankyu Hai"
+      "ja": "小倉大賞典",
+      "en": "Kokura Daishoten"
     },
     "grade": "G3",
-    "date": "2026-02-21",
-    "start_time": "2026-02-21T06:35:00.000Z",
+    "date": "2026-02-22",
+    "start_time": "2026-02-22T06:20:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "阪神",
-      "en": "Hanshin"
+      "ja": "小倉",
+      "en": "Kokura"
     },
-    "distance": 1400,
+    "distance": 1800,
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "4yo_and_up",
     "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
@@ -1356,29 +1382,29 @@
     }
   },
   {
-    "id": "2026-jra-g3-15",
-    "organization": "jra",
+    "id": "2026-nar-local-25",
+    "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "小倉大賞典",
-      "en": "Kokura Daishoten"
+      "ja": "レジーナディンヴェルノ賞",
+      "en": "Regina d'Inverno Sho"
     },
-    "grade": "G3",
+    "grade": "local_grade",
     "date": "2026-02-22",
-    "start_time": "2026-02-22T06:20:00.000Z",
+    "start_time": "2026-02-22T09:15:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "小倉",
-      "en": "Kokura"
+      "ja": "高知",
+      "en": "Kochi"
     },
-    "distance": 1800,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
+    "distance": 1900,
+    "track_type": "dirt",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
     "handicap": {
-      "code": "handicap",
-      "ja": "ハンデ",
-      "en": "Handicap"
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -1408,32 +1434,6 @@
     }
   },
   {
-    "id": "2026-nar-local-25",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "レジーナディンヴェルノ賞",
-      "en": "Regina d'Inverno Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-02-22",
-    "start_time": "2026-02-22T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "高知",
-      "en": "Kochi"
-    },
-    "distance": 1900,
-    "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-jpn3-05",
     "organization": "nar",
     "country_code": "JP",
@@ -1453,6 +1453,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-26",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "たんぽぽ賞",
+      "en": "Tampopo Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-02-25",
+    "start_time": "2026-02-25T07:50:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "佐賀",
+      "en": "Saga"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -1486,22 +1512,22 @@
     }
   },
   {
-    "id": "2026-nar-local-26",
+    "id": "2026-nar-local-28",
     "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "たんぽぽ賞",
-      "en": "Tampopo Sho"
+      "ja": "兵庫若駒賞",
+      "en": "Hyogo Wakakoma Sho"
     },
     "grade": "local_grade",
-    "date": "2026-02-25",
-    "start_time": "2026-02-25T07:50:00.000Z",
+    "date": "2026-02-26",
+    "start_time": "2026-02-26T07:05:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "佐賀",
-      "en": "Saga"
+      "ja": "姫路",
+      "en": "Himeji"
     },
-    "distance": 1400,
+    "distance": 1800,
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo",
@@ -1538,32 +1564,6 @@
     }
   },
   {
-    "id": "2026-nar-local-28",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "兵庫若駒賞",
-      "en": "Hyogo Wakakoma Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-02-26",
-    "start_time": "2026-02-26T07:05:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "姫路",
-      "en": "Himeji"
-    },
-    "distance": 1800,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-jra-g3-16",
     "organization": "jra",
     "country_code": "JP",
@@ -1580,32 +1580,6 @@
       "en": "Nakayama"
     },
     "distance": 1200,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-jra-g2-05",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "中山記念",
-      "en": "Nakayama Kinen"
-    },
-    "grade": "G2",
-    "date": "2026-03-01",
-    "start_time": "2026-03-01T06:45:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "中山",
-      "en": "Nakayama"
-    },
-    "distance": 1800,
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "4yo_and_up",
@@ -1635,6 +1609,32 @@
     "track_type": "turf",
     "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-jra-g2-05",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "中山記念",
+      "en": "Nakayama Kinen"
+    },
+    "grade": "G2",
+    "date": "2026-03-01",
+    "start_time": "2026-03-01T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "中山",
+      "en": "Nakayama"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -1694,32 +1694,6 @@
     }
   },
   {
-    "id": "2026-jra-g3-17",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "ローレル競馬場賞中山牝馬ステークス",
-      "en": "Laurel R.C. Sho Nakayama Himba Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-03-07",
-    "start_time": "2026-03-07T06:45:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "中山",
-      "en": "Nakayama"
-    },
-    "distance": 1800,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-jra-g2-07",
     "organization": "jra",
     "country_code": "JP",
@@ -1739,6 +1713,32 @@
     "track_type": "turf",
     "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-jra-g3-17",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "ローレル競馬場賞中山牝馬ステークス",
+      "en": "Laurel R.C. Sho Nakayama Himba Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-03-07",
+    "start_time": "2026-03-07T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "中山",
+      "en": "Nakayama"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -1798,32 +1798,6 @@
     }
   },
   {
-    "id": "2026-nar-local-31",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "ポプラ賞",
-      "en": "Poplar Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-03-08",
-    "start_time": "2026-03-08T10:30:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "帯広",
-      "en": "Obihiro"
-    },
-    "distance": 200,
-    "track_type": "banei",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-32",
     "organization": "nar",
     "country_code": "JP",
@@ -1845,6 +1819,32 @@
     "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-31",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "ポプラ賞",
+      "en": "Poplar Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-03-08",
+    "start_time": "2026-03-08T10:30:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "帯広",
+      "en": "Obihiro"
+    },
+    "distance": 200,
+    "track_type": "banei",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
       "ja": "別定",
       "en": "Set Weight"
     }
@@ -1902,32 +1902,6 @@
     }
   },
   {
-    "id": "2026-nar-local-34",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "若草賞土古記念",
-      "en": "Wakakusa Sho Donko Kinen"
-    },
-    "grade": "local_grade",
-    "date": "2026-03-12",
-    "start_time": "2026-03-12T10:50:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "名古屋",
-      "en": "Nagoya"
-    },
-    "distance": 1500,
-    "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-35",
     "organization": "nar",
     "country_code": "JP",
@@ -1946,6 +1920,32 @@
     "distance": 2000,
     "track_type": "dirt",
     "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-34",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "若草賞土古記念",
+      "en": "Wakakusa Sho Donko Kinen"
+    },
+    "grade": "local_grade",
+    "date": "2026-03-12",
+    "start_time": "2026-03-12T10:50:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "名古屋",
+      "en": "Nagoya"
+    },
+    "distance": 1500,
+    "track_type": "dirt",
+    "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
@@ -2006,6 +2006,32 @@
     }
   },
   {
+    "id": "2026-jra-g2-10",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "東海テレビ杯金鯱賞",
+      "en": "Kinko Sho"
+    },
+    "grade": "G2",
+    "date": "2026-03-15",
+    "start_time": "2026-03-15T06:25:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "中京",
+      "en": "Chukyo"
+    },
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-jra-g2-09",
     "organization": "jra",
     "country_code": "JP",
@@ -2032,25 +2058,25 @@
     }
   },
   {
-    "id": "2026-jra-g2-10",
-    "organization": "jra",
+    "id": "2026-nar-local-38",
+    "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "東海テレビ杯金鯱賞",
-      "en": "Kinko Sho"
+      "ja": "九州クラウン",
+      "en": "Kyushu Crown"
     },
-    "grade": "G2",
+    "grade": "local_grade",
     "date": "2026-03-15",
-    "start_time": "2026-03-15T06:25:00.000Z",
+    "start_time": "2026-03-15T09:05:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "中京",
-      "en": "Chukyo"
+      "ja": "佐賀",
+      "en": "Saga"
     },
-    "distance": 2000,
-    "track_type": "turf",
+    "distance": 1400,
+    "track_type": "dirt",
     "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -2110,29 +2136,32 @@
     }
   },
   {
-    "id": "2026-nar-local-38",
-    "organization": "nar",
-    "country_code": "JP",
+    "id": "2026-france-g3-01",
+    "organization": "france_galop",
+    "country_code": "FR",
     "name": {
-      "ja": "九州クラウン",
-      "en": "Kyushu Crown"
+      "ja": "エクスビュリ賞",
+      "en": "Prix d'Exbury",
+      "fr": "Prix d'Exbury"
     },
-    "grade": "local_grade",
+    "grade": "G3",
     "date": "2026-03-15",
-    "start_time": "2026-03-15T09:05:00.000Z",
+    "start_time": "2026-03-15T16:00:00.000Z",
     "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-15",
     "course": {
-      "ja": "佐賀",
-      "en": "Saga"
+      "ja": "サンクルー",
+      "en": "Saint-Cloud"
     },
-    "distance": 1400,
-    "track_type": "dirt",
+    "distance": 2000,
+    "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
+    "age_constraint": "4yo_and_up",
     "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -2188,32 +2217,6 @@
     }
   },
   {
-    "id": "2026-jra-g3-19",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "フラワーカップ",
-      "en": "Flower Cup"
-    },
-    "grade": "G3",
-    "date": "2026-03-21",
-    "start_time": "2026-03-21T06:45:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "中山",
-      "en": "Nakayama"
-    },
-    "distance": 1800,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-jra-g3-18",
     "organization": "jra",
     "country_code": "JP",
@@ -2240,54 +2243,25 @@
     }
   },
   {
-    "id": "2026-france-g3-01",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "エクスビュリ賞",
-      "en": "Prix d'Exbury",
-      "fr": "Prix d'Exbury"
-    },
-    "grade": "G3",
-    "date": "2026-03-21",
-    "start_time": "2026-03-21T14:50:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-03-21",
-    "course": {
-      "ja": "サンクルー",
-      "en": "Saint-Cloud"
-    },
-    "distance": 2000,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-jra-g2-11",
+    "id": "2026-jra-g3-19",
     "organization": "jra",
     "country_code": "JP",
     "name": {
-      "ja": "阪神大賞典",
-      "en": "Hanshin Daishoten"
+      "ja": "フラワーカップ",
+      "en": "Flower Cup"
     },
-    "grade": "G2",
-    "date": "2026-03-22",
-    "start_time": "2026-03-22T06:35:00.000Z",
+    "grade": "G3",
+    "date": "2026-03-21",
+    "start_time": "2026-03-21T06:45:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "阪神",
-      "en": "Hanshin"
+      "ja": "中山",
+      "en": "Nakayama"
     },
-    "distance": 3000,
+    "distance": 1800,
     "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -2313,6 +2287,32 @@
     "distance": 1400,
     "track_type": "turf",
     "sex_constraint": "filly_and_mare",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-jra-g2-11",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "阪神大賞典",
+      "en": "Hanshin Daishoten"
+    },
+    "grade": "G2",
+    "date": "2026-03-22",
+    "start_time": "2026-03-22T06:35:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "阪神",
+      "en": "Hanshin"
+    },
+    "distance": 3000,
+    "track_type": "turf",
+    "sex_constraint": "none",
     "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "set_weight",
@@ -2347,32 +2347,6 @@
     }
   },
   {
-    "id": "2026-nar-local-40",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "ばんえい記念",
-      "en": "Banei Kinen"
-    },
-    "grade": "local_grade",
-    "date": "2026-03-22",
-    "start_time": "2026-03-22T11:00:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "帯広",
-      "en": "Obihiro"
-    },
-    "distance": 200,
-    "track_type": "banei",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-42",
     "organization": "nar",
     "country_code": "JP",
@@ -2394,6 +2368,32 @@
     "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-40",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "ばんえい記念",
+      "en": "Banei Kinen"
+    },
+    "grade": "local_grade",
+    "date": "2026-03-22",
+    "start_time": "2026-03-22T11:00:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "帯広",
+      "en": "Obihiro"
+    },
+    "distance": 200,
+    "track_type": "banei",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
       "ja": "別定",
       "en": "Set Weight"
     }
@@ -2451,32 +2451,6 @@
     }
   },
   {
-    "id": "2026-jra-g2-12",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "日経賞",
-      "en": "Nikkei Sho"
-    },
-    "grade": "G2",
-    "date": "2026-03-28",
-    "start_time": "2026-03-28T06:45:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "中山",
-      "en": "Nakayama"
-    },
-    "distance": 2500,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-jra-g3-21",
     "organization": "jra",
     "country_code": "JP",
@@ -2496,6 +2470,32 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-jra-g2-12",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "日経賞",
+      "en": "Nikkei Sho"
+    },
+    "grade": "G2",
+    "date": "2026-03-28",
+    "start_time": "2026-03-28T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "中山",
+      "en": "Nakayama"
+    },
+    "distance": 2500,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -2617,8 +2617,8 @@
     },
     "grade": "G3",
     "date": "2026-03-29",
-    "start_time": "2026-03-29T13:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-29T14:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-03-29",
     "course": {
@@ -2714,32 +2714,29 @@
     }
   },
   {
-    "id": "2026-france-g3-03",
-    "organization": "france_galop",
-    "country_code": "FR",
+    "id": "2026-jra-g3-24",
+    "organization": "jra",
+    "country_code": "JP",
     "name": {
-      "ja": "ペネロープ賞",
-      "en": "Prix Penelope",
-      "fr": "Prix Pénélope"
+      "ja": "チャーチルダウンズカップ",
+      "en": "Churchill Downs Cup"
     },
     "grade": "G3",
-    "date": "2026-04-02",
-    "start_time": "2026-04-02T13:50:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-04-02",
+    "date": "2026-04-04",
+    "start_time": "2026-04-04T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
+      "ja": "阪神",
+      "en": "Hanshin"
     },
     "distance": 1600,
     "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "4yo_and_up",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
     "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -2769,32 +2766,6 @@
     }
   },
   {
-    "id": "2026-jra-g3-24",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "チャーチルダウンズカップ",
-      "en": "Churchill Downs Cup"
-    },
-    "grade": "G3",
-    "date": "2026-04-04",
-    "start_time": "2026-04-04T06:35:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "阪神",
-      "en": "Hanshin"
-    },
-    "distance": 1600,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-jra-g1-03",
     "organization": "jra",
     "country_code": "JP",
@@ -2818,32 +2789,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-nar-local-46",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "ネクストスター北日本",
-      "en": "Next Star Kitanihon"
-    },
-    "grade": "local_grade",
-    "date": "2026-04-05",
-    "start_time": "2026-04-05T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "水沢",
-      "en": "Mizusawa"
-    },
-    "distance": 1400,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
     }
   },
   {
@@ -2873,20 +2818,20 @@
     }
   },
   {
-    "id": "2026-nar-local-48",
+    "id": "2026-nar-local-46",
     "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "ネクストスター中日本",
-      "en": "Next Star Nakanihon"
+      "ja": "ネクストスター北日本",
+      "en": "Next Star Kitanihon"
     },
     "grade": "local_grade",
-    "date": "2026-04-07",
-    "start_time": "2026-04-07T11:40:00.000Z",
+    "date": "2026-04-05",
+    "start_time": "2026-04-05T09:15:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "金沢",
-      "en": "Kanazawa"
+      "ja": "水沢",
+      "en": "Mizusawa"
     },
     "distance": 1400,
     "track_type": "dirt",
@@ -2896,6 +2841,64 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-france-g3-08",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "ラ・フォルス賞",
+      "en": "Prix La Force",
+      "fr": "Prix La Force"
+    },
+    "grade": "G3",
+    "date": "2026-04-05",
+    "start_time": "2026-04-05T13:50:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-05",
+    "course": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-france-g3-06",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "ヴァントー賞",
+      "en": "Prix Vanteaux",
+      "fr": "Prix Vanteaux"
+    },
+    "grade": "G3",
+    "date": "2026-04-05",
+    "start_time": "2026-04-05T14:25:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-05",
+    "course": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -2951,6 +2954,90 @@
     }
   },
   {
+    "id": "2026-nar-local-48",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "ネクストスター中日本",
+      "en": "Next Star Nakanihon"
+    },
+    "grade": "local_grade",
+    "date": "2026-04-07",
+    "start_time": "2026-04-07T11:40:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "金沢",
+      "en": "Kanazawa"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-france-g3-05",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "ジェベル賞",
+      "en": "Prix Djebel",
+      "fr": "Prix Djebel"
+    },
+    "grade": "G3",
+    "date": "2026-04-07",
+    "start_time": "2026-04-07T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-07",
+    "course": {
+      "ja": "ドーヴィル",
+      "en": "Deauville"
+    },
+    "distance": 1400,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-france-g3-04",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "アンプルダンス賞",
+      "en": "Prix Imprudence",
+      "fr": "Prix Imprudence"
+    },
+    "grade": "G3",
+    "date": "2026-04-07",
+    "start_time": "2026-04-07T14:50:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-07",
+    "course": {
+      "ja": "ドーヴィル",
+      "en": "Deauville"
+    },
+    "distance": 1400,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-nar-jpn1-01",
     "organization": "nar",
     "country_code": "JP",
@@ -3003,87 +3090,32 @@
     }
   },
   {
-    "id": "2026-france-g3-04",
+    "id": "2026-france-g2-01",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "アンプルダンス賞",
-      "en": "Prix Imprudence",
-      "fr": "Prix Imprudence"
-    },
-    "grade": "G3",
-    "date": "2026-04-09",
-    "start_time": "2026-04-09T13:15:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-04-09",
-    "course": {
-      "ja": "ドーヴィル",
-      "en": "Deauville"
-    },
-    "distance": 1400,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g3-05",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "ジェベル賞",
-      "en": "Prix Djebel",
-      "fr": "Prix Djebel"
-    },
-    "grade": "G3",
-    "date": "2026-04-09",
-    "start_time": "2026-04-09T13:50:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-04-09",
-    "course": {
-      "ja": "ドーヴィル",
-      "en": "Deauville"
-    },
-    "distance": 1400,
-    "track_type": "turf",
-    "sex_constraint": "colt_and_filly",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-jra-g2-13",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "ニュージーランドトロフィー",
-      "en": "New Zealand Trophy"
+      "ja": "ダルクール賞",
+      "en": "Prix d'Harcourt",
+      "fr": "Prix d'Harcourt"
     },
     "grade": "G2",
-    "date": "2026-04-11",
-    "start_time": "2026-04-11T06:45:00.000Z",
+    "date": "2026-04-10",
+    "start_time": "2026-04-10T17:13:00.000Z",
     "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-10",
     "course": {
-      "ja": "中山",
-      "en": "Nakayama"
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
     },
-    "distance": 1600,
+    "distance": 2000,
     "track_type": "turf",
-    "sex_constraint": "colt_and_filly",
-    "age_constraint": "3yo",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
     "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -3106,6 +3138,32 @@
     "track_type": "turf",
     "sex_constraint": "filly_and_mare",
     "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-jra-g2-13",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "ニュージーランドトロフィー",
+      "en": "New Zealand Trophy"
+    },
+    "grade": "G2",
+    "date": "2026-04-11",
+    "start_time": "2026-04-11T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "中山",
+      "en": "Nakayama"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -3165,32 +3223,6 @@
     }
   },
   {
-    "id": "2026-nar-local-52",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "二十四万石賞",
-      "en": "Nijuyonmangoku Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-04-12",
-    "start_time": "2026-04-12T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "高知",
-      "en": "Kochi"
-    },
-    "distance": 1900,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-53",
     "organization": "nar",
     "country_code": "JP",
@@ -3217,25 +3249,51 @@
     }
   },
   {
-    "id": "2026-france-g3-06",
+    "id": "2026-nar-local-52",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "二十四万石賞",
+      "en": "Nijuyonmangoku Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-04-12",
+    "start_time": "2026-04-12T09:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "高知",
+      "en": "Kochi"
+    },
+    "distance": 1900,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-france-g3-10",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "ヴァントー賞",
-      "en": "Prix Vanteaux",
-      "fr": "Prix Vanteaux"
+      "ja": "グロット賞",
+      "en": "Prix de la Grotte",
+      "fr": "Prix de la Grotte"
     },
     "grade": "G3",
     "date": "2026-04-12",
-    "start_time": "2026-04-12T12:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-12T12:36:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-04-12",
     "course": {
       "ja": "パリロンシャン",
       "en": "ParisLongchamp"
     },
-    "distance": 1800,
+    "distance": 1600,
     "track_type": "turf",
     "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo",
@@ -3256,8 +3314,8 @@
     },
     "grade": "G3",
     "date": "2026-04-12",
-    "start_time": "2026-04-12T12:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-12T14:32:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-04-12",
     "course": {
@@ -3265,93 +3323,6 @@
       "en": "ParisLongchamp"
     },
     "distance": 2100,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g3-08",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "ラ・フォルス賞",
-      "en": "Prix La Force",
-      "fr": "Prix La Force"
-    },
-    "grade": "G3",
-    "date": "2026-04-12",
-    "start_time": "2026-04-12T13:15:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-04-12",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 1800,
-    "track_type": "turf",
-    "sex_constraint": "colt_and_filly",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g2-01",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "ダルクール賞",
-      "en": "Prix d'Harcourt",
-      "fr": "Prix d'Harcourt"
-    },
-    "grade": "G2",
-    "date": "2026-04-12",
-    "start_time": "2026-04-12T13:50:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-04-12",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 2000,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g3-09",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "シジー賞",
-      "en": "Prix Sigy",
-      "fr": "Prix Sigy"
-    },
-    "grade": "G3",
-    "date": "2026-04-13",
-    "start_time": "2026-04-13T13:50:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-04-13",
-    "course": {
-      "ja": "シャンティイ",
-      "en": "Chantilly"
-    },
-    "distance": 1100,
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo",
@@ -3388,6 +3359,35 @@
     }
   },
   {
+    "id": "2026-france-g3-09",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "シジー賞",
+      "en": "Prix Sigy",
+      "fr": "Prix Sigy"
+    },
+    "grade": "G3",
+    "date": "2026-04-14",
+    "start_time": "2026-04-14T14:50:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-14",
+    "course": {
+      "ja": "シャンティイ",
+      "en": "Chantilly"
+    },
+    "distance": 1100,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-nar-jpn3-08",
     "organization": "nar",
     "country_code": "JP",
@@ -3404,32 +3404,6 @@
       "en": "Oi"
     },
     "distance": 1200,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-s3-08",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "ブリリアントカップ",
-      "en": "Brilliant Cup"
-    },
-    "grade": "S3",
-    "date": "2026-04-16",
-    "start_time": "2026-04-16T11:10:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "大井",
-      "en": "Oi"
-    },
-    "distance": 1800,
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
@@ -3466,25 +3440,54 @@
     }
   },
   {
-    "id": "2026-jra-jg1-01",
-    "organization": "jra",
+    "id": "2026-nar-s3-08",
+    "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "中山グランドジャンプ",
-      "en": "Nakayama Grand Jump"
+      "ja": "ブリリアントカップ",
+      "en": "Brilliant Cup"
     },
-    "grade": "J.G1",
-    "date": "2026-04-18",
-    "start_time": "2026-04-18T06:40:00.000Z",
+    "grade": "S3",
+    "date": "2026-04-16",
+    "start_time": "2026-04-16T11:10:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "中山",
-      "en": "Nakayama"
+      "ja": "大井",
+      "en": "Oi"
     },
-    "distance": 4260,
-    "track_type": "obstacle",
+    "distance": 1800,
+    "track_type": "dirt",
     "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-france-g3-12",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "クレオパトル賞",
+      "en": "Prix Cleopatre",
+      "fr": "Prix Cléopâtre"
+    },
+    "grade": "G3",
+    "date": "2026-04-17",
+    "start_time": "2026-04-17T14:59:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-17",
+    "course": {
+      "ja": "サンクルー",
+      "en": "Saint-Cloud"
+    },
+    "distance": 2100,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -3518,25 +3521,25 @@
     }
   },
   {
-    "id": "2026-jra-g1-05",
+    "id": "2026-jra-jg1-01",
     "organization": "jra",
     "country_code": "JP",
     "name": {
-      "ja": "皐月賞",
-      "en": "Satsuki Sho (Japanese 2000 Guineas)"
+      "ja": "中山グランドジャンプ",
+      "en": "Nakayama Grand Jump"
     },
-    "grade": "G1",
-    "date": "2026-04-19",
-    "start_time": "2026-04-19T06:40:00.000Z",
+    "grade": "J.G1",
+    "date": "2026-04-18",
+    "start_time": "2026-04-18T06:40:00.000Z",
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
     },
-    "distance": 2000,
-    "track_type": "turf",
-    "sex_constraint": "colt_and_filly",
-    "age_constraint": "3yo",
+    "distance": 4260,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -3570,24 +3573,50 @@
     }
   },
   {
-    "id": "2026-nar-local-56",
+    "id": "2026-jra-g1-05",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "皐月賞",
+      "en": "Satsuki Sho (Japanese 2000 Guineas)"
+    },
+    "grade": "G1",
+    "date": "2026-04-19",
+    "start_time": "2026-04-19T06:40:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "中山",
+      "en": "Nakayama"
+    },
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-nar-local-58",
     "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "留守杯日高賞",
-      "en": "Rusu Hai Hidaka Sho"
+      "ja": "佐賀城下スプリント",
+      "en": "Saga Jokamachi Sprint"
     },
     "grade": "local_grade",
     "date": "2026-04-19",
-    "start_time": "2026-04-19T09:15:00.000Z",
+    "start_time": "2026-04-19T08:25:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "水沢",
-      "en": "Mizusawa"
+      "ja": "佐賀",
+      "en": "Saga"
     },
-    "distance": 1600,
+    "distance": 1300,
     "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
+    "sex_constraint": "none",
     "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
@@ -3622,58 +3651,29 @@
     }
   },
   {
-    "id": "2026-nar-local-58",
+    "id": "2026-nar-local-56",
     "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "佐賀城下スプリント",
-      "en": "Saga Jokamachi Sprint"
+      "ja": "留守杯日高賞",
+      "en": "Rusu Hai Hidaka Sho"
     },
     "grade": "local_grade",
     "date": "2026-04-19",
-    "start_time": "2026-04-19T08:25:00.000Z",
+    "start_time": "2026-04-19T09:15:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "佐賀",
-      "en": "Saga"
+      "ja": "水沢",
+      "en": "Mizusawa"
     },
-    "distance": 1300,
+    "distance": 1600,
     "track_type": "dirt",
-    "sex_constraint": "none",
+    "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-france-g3-10",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "グロット賞",
-      "en": "Prix de la Grotte",
-      "fr": "Prix de la Grotte"
-    },
-    "grade": "G3",
-    "date": "2026-04-19",
-    "start_time": "2026-04-19T13:15:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-04-19",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 1600,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
     }
   },
   {
@@ -3686,11 +3686,11 @@
       "fr": "Prix de Fontainebleau"
     },
     "grade": "G3",
-    "date": "2026-04-19",
-    "start_time": "2026-04-19T13:50:00.000Z",
-    "is_time_confirmed": false,
+    "date": "2026-04-20",
+    "start_time": "2026-04-20T11:55:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
-    "original_date": "2026-04-19",
+    "original_date": "2026-04-20",
     "course": {
       "ja": "パリロンシャン",
       "en": "ParisLongchamp"
@@ -3784,35 +3784,6 @@
     }
   },
   {
-    "id": "2026-france-g3-12",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "クレオパトル賞",
-      "en": "Prix Cleopatre",
-      "fr": "Prix Cléopâtre"
-    },
-    "grade": "G3",
-    "date": "2026-04-24",
-    "start_time": "2026-04-24T13:50:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-04-24",
-    "course": {
-      "ja": "サンクルー",
-      "en": "Saint-Cloud"
-    },
-    "distance": 2100,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
     "id": "2026-jra-g2-15",
     "organization": "jra",
     "country_code": "JP",
@@ -3831,32 +3802,6 @@
     "distance": 2400,
     "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-jra-g2-17",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "サンケイスポーツ賞フローラステークス",
-      "en": "Sankei Sports Sho Flora Stakes"
-    },
-    "grade": "G2",
-    "date": "2026-04-26",
-    "start_time": "2026-04-26T06:45:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "東京",
-      "en": "Tokyo"
-    },
-    "distance": 2000,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
@@ -3891,27 +3836,27 @@
     }
   },
   {
-    "id": "2026-nar-local-61",
-    "organization": "nar",
+    "id": "2026-jra-g2-17",
+    "organization": "jra",
     "country_code": "JP",
     "name": {
-      "ja": "ばんえい十勝オッズパーク杯",
-      "en": "Banei Tokachi Odds Park Hai"
+      "ja": "サンケイスポーツ賞フローラステークス",
+      "en": "Sankei Sports Sho Flora Stakes"
     },
-    "grade": "local_grade",
+    "grade": "G2",
     "date": "2026-04-26",
-    "start_time": "2026-04-26T11:00:00.000Z",
+    "start_time": "2026-04-26T06:45:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "帯広",
-      "en": "Obihiro"
+      "ja": "東京",
+      "en": "Tokyo"
     },
-    "distance": 200,
-    "track_type": "banei",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
     "handicap": {
-      "code": "special_weight",
+      "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
     }
@@ -3943,27 +3888,53 @@
     }
   },
   {
-    "id": "2026-france-g3-13",
+    "id": "2026-nar-local-61",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "ばんえい十勝オッズパーク杯",
+      "en": "Banei Tokachi Odds Park Hai"
+    },
+    "grade": "local_grade",
+    "date": "2026-04-26",
+    "start_time": "2026-04-26T11:00:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "帯広",
+      "en": "Obihiro"
+    },
+    "distance": 200,
+    "track_type": "banei",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-france-g3-14",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "アレフランス賞",
-      "en": "Prix Allez France",
-      "fr": "Prix Allez France"
+      "ja": "バルブヴィル賞",
+      "en": "Prix de Barbeville",
+      "fr": "Prix de Barbeville"
     },
     "grade": "G3",
     "date": "2026-04-26",
-    "start_time": "2026-04-26T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-26T11:58:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-04-26",
     "course": {
-      "ja": "サンクルー",
-      "en": "Saint-Cloud"
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
     },
-    "distance": 2000,
+    "distance": 3000,
     "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
+    "sex_constraint": "none",
     "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "weight_for_age",
@@ -3982,8 +3953,8 @@
     },
     "grade": "G1",
     "date": "2026-04-26",
-    "start_time": "2026-04-26T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-26T14:28:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-04-26",
     "course": {
@@ -3991,35 +3962,6 @@
       "en": "ParisLongchamp"
     },
     "distance": 2100,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g3-14",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "バルブヴィル賞",
-      "en": "Prix de Barbeville",
-      "fr": "Prix de Barbeville"
-    },
-    "grade": "G3",
-    "date": "2026-04-26",
-    "start_time": "2026-04-26T14:25:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-04-26",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 3000,
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "4yo_and_up",
@@ -4108,32 +4050,6 @@
     }
   },
   {
-    "id": "2026-nar-local-65",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "北斗盃",
-      "en": "Hokuto Hai"
-    },
-    "grade": "local_grade",
-    "date": "2026-04-30",
-    "start_time": "2026-04-30T11:35:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "門別",
-      "en": "Mombetsu"
-    },
-    "distance": 1600,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-s1-03",
     "organization": "nar",
     "country_code": "JP",
@@ -4160,32 +4076,29 @@
     }
   },
   {
-    "id": "2026-france-g3-15",
-    "organization": "france_galop",
-    "country_code": "FR",
+    "id": "2026-nar-local-65",
+    "organization": "nar",
+    "country_code": "JP",
     "name": {
-      "ja": "グレフュール賞",
-      "en": "Prix Greffulhe",
-      "fr": "Prix Greffulhe"
+      "ja": "北斗盃",
+      "en": "Hokuto Hai"
     },
-    "grade": "G3",
-    "date": "2026-05-01",
-    "start_time": "2026-05-01T13:15:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-05-01",
+    "grade": "local_grade",
+    "date": "2026-04-30",
+    "start_time": "2026-04-30T11:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
-      "ja": "サンクルー",
-      "en": "Saint-Cloud"
+      "ja": "門別",
+      "en": "Mombetsu"
     },
-    "distance": 2100,
-    "track_type": "turf",
+    "distance": 1600,
+    "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo",
     "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -4199,8 +4112,8 @@
     },
     "grade": "G2",
     "date": "2026-05-01",
-    "start_time": "2026-05-01T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-01T13:50:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-01",
     "course": {
@@ -4218,29 +4131,32 @@
     }
   },
   {
-    "id": "2026-jra-g2-18",
-    "organization": "jra",
-    "country_code": "JP",
+    "id": "2026-france-g3-13",
+    "organization": "france_galop",
+    "country_code": "FR",
     "name": {
-      "ja": "京王杯スプリングカップ",
-      "en": "Keio Hai Spring Cup"
+      "ja": "アレフランス賞",
+      "en": "Prix Allez France",
+      "fr": "Prix Allez France"
     },
-    "grade": "G2",
-    "date": "2026-05-02",
-    "start_time": "2026-05-02T06:45:00.000Z",
+    "grade": "G3",
+    "date": "2026-05-01",
+    "start_time": "2026-05-01T14:25:00.000Z",
     "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-01",
     "course": {
-      "ja": "東京",
-      "en": "Tokyo"
+      "ja": "サンクルー",
+      "en": "Saint-Cloud"
     },
-    "distance": 1400,
+    "distance": 2000,
     "track_type": "turf",
-    "sex_constraint": "none",
+    "sex_constraint": "filly_and_mare",
     "age_constraint": "4yo_and_up",
     "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -4263,6 +4179,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-jra-g2-18",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "京王杯スプリングカップ",
+      "en": "Keio Hai Spring Cup"
+    },
+    "grade": "G2",
+    "date": "2026-05-02",
+    "start_time": "2026-05-02T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "東京",
+      "en": "Tokyo"
+    },
+    "distance": 1400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -4322,32 +4264,6 @@
     }
   },
   {
-    "id": "2026-nar-local-67",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "黒潮皐月賞",
-      "en": "Kuroshio Satsuki Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-05-03",
-    "start_time": "2026-05-03T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "高知",
-      "en": "Kochi"
-    },
-    "distance": 1400,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-68",
     "organization": "nar",
     "country_code": "JP",
@@ -4374,6 +4290,32 @@
     }
   },
   {
+    "id": "2026-nar-local-67",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "黒潮皐月賞",
+      "en": "Kuroshio Satsuki Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-05-03",
+    "start_time": "2026-05-03T09:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "高知",
+      "en": "Kochi"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-france-g3-16",
     "organization": "france_galop",
     "country_code": "FR",
@@ -4384,8 +4326,8 @@
     },
     "grade": "G3",
     "date": "2026-05-03",
-    "start_time": "2026-05-03T14:25:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-03T12:34:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-03",
     "course": {
@@ -4400,6 +4342,32 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-nar-local-69",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "兵庫大賞典",
+      "en": "Hyogo Daishoten"
+    },
+    "grade": "local_grade",
+    "date": "2026-05-04",
+    "start_time": "2026-05-04T07:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "園田",
+      "en": "Sonoda"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -4429,25 +4397,54 @@
     }
   },
   {
-    "id": "2026-nar-local-69",
+    "id": "2026-france-g3-17",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "ギシュ賞",
+      "en": "Prix de Guiche",
+      "fr": "Prix de Guiche"
+    },
+    "grade": "G3",
+    "date": "2026-05-04",
+    "start_time": "2026-05-04T14:35:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-04",
+    "course": {
+      "ja": "シャンティイ",
+      "en": "Chantilly"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-nar-local-72",
     "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "兵庫大賞典",
-      "en": "Hyogo Daishoten"
+      "ja": "兵庫優駿",
+      "en": "Hyogo Yushun"
     },
     "grade": "local_grade",
-    "date": "2026-05-04",
-    "start_time": "2026-05-04T07:05:00.000Z",
+    "date": "2026-05-05",
+    "start_time": "2026-05-05T07:15:00.000Z",
     "is_time_confirmed": true,
     "course": {
       "ja": "園田",
       "en": "Sonoda"
     },
-    "distance": 1400,
+    "distance": 1870,
     "track_type": "dirt",
     "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -4533,53 +4530,27 @@
     }
   },
   {
-    "id": "2026-nar-local-72",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "兵庫優駿",
-      "en": "Hyogo Yushun"
-    },
-    "grade": "local_grade",
-    "date": "2026-05-05",
-    "start_time": "2026-05-05T07:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "園田",
-      "en": "Sonoda"
-    },
-    "distance": 1870,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-france-g3-17",
+    "id": "2026-france-g3-15",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "ギシュ賞",
-      "en": "Prix de Guiche",
-      "fr": "Prix de Guiche"
+      "ja": "グレフュール賞",
+      "en": "Prix Greffulhe",
+      "fr": "Prix Greffulhe"
     },
     "grade": "G3",
     "date": "2026-05-05",
-    "start_time": "2026-05-05T13:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-05T13:07:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-05",
     "course": {
-      "ja": "シャンティイ",
-      "en": "Chantilly"
+      "ja": "サンクルー",
+      "en": "Saint-Cloud"
     },
-    "distance": 1800,
+    "distance": 2100,
     "track_type": "turf",
-    "sex_constraint": "colt_and_filly",
+    "sex_constraint": "none",
     "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
@@ -4604,6 +4575,32 @@
       "en": "Sonoda"
     },
     "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-s2-03",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "東京湾カップ",
+      "en": "Tokyo Wan Cup"
+    },
+    "grade": "S2",
+    "date": "2026-05-06",
+    "start_time": "2026-05-06T11:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "船橋",
+      "en": "Funabashi"
+    },
+    "distance": 1700,
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo",
@@ -4640,23 +4637,23 @@
     }
   },
   {
-    "id": "2026-nar-s2-03",
-    "organization": "nar",
+    "id": "2026-jra-g2-19",
+    "organization": "jra",
     "country_code": "JP",
     "name": {
-      "ja": "東京湾カップ",
-      "en": "Tokyo Wan Cup"
+      "ja": "京都新聞杯",
+      "en": "Kyoto Shimbun Hai"
     },
-    "grade": "S2",
-    "date": "2026-05-06",
-    "start_time": "2026-05-06T11:05:00.000Z",
+    "grade": "G2",
+    "date": "2026-05-09",
+    "start_time": "2026-05-09T06:35:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "船橋",
-      "en": "Funabashi"
+      "ja": "京都",
+      "en": "Kyoto"
     },
-    "distance": 1700,
-    "track_type": "dirt",
+    "distance": 2200,
+    "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo",
     "handicap": {
@@ -4692,32 +4689,6 @@
     }
   },
   {
-    "id": "2026-jra-g2-19",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "京都新聞杯",
-      "en": "Kyoto Shimbun Hai"
-    },
-    "grade": "G2",
-    "date": "2026-05-09",
-    "start_time": "2026-05-09T06:35:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "京都",
-      "en": "Kyoto"
-    },
-    "distance": 2200,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-jra-g1-07",
     "organization": "jra",
     "country_code": "JP",
@@ -4744,22 +4715,22 @@
     }
   },
   {
-    "id": "2026-nar-local-75",
+    "id": "2026-nar-local-77",
     "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "シアンモア記念",
-      "en": "Cyan More Kinen"
+      "ja": "佐賀スプリングカップ",
+      "en": "Saga Spring Cup"
     },
     "grade": "local_grade",
     "date": "2026-05-10",
-    "start_time": "2026-05-10T09:15:00.000Z",
+    "start_time": "2026-05-10T08:25:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "盛岡",
-      "en": "Morioka"
+      "ja": "佐賀",
+      "en": "Saga"
     },
-    "distance": 1600,
+    "distance": 1800,
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
@@ -4796,6 +4767,61 @@
     }
   },
   {
+    "id": "2026-nar-local-75",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "シアンモア記念",
+      "en": "Cyan More Kinen"
+    },
+    "grade": "local_grade",
+    "date": "2026-05-10",
+    "start_time": "2026-05-10T09:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "盛岡",
+      "en": "Morioka"
+    },
+    "distance": 1600,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-france-g3-18",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "サンジョルジュ賞",
+      "en": "Prix de Saint-Georges",
+      "fr": "Prix de Saint-Georges"
+    },
+    "grade": "G3",
+    "date": "2026-05-10",
+    "start_time": "2026-05-10T10:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-10",
+    "course": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
+    },
+    "distance": 1000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-nar-local-74",
     "organization": "nar",
     "country_code": "JP",
@@ -4822,80 +4848,25 @@
     }
   },
   {
-    "id": "2026-nar-local-77",
-    "organization": "nar",
-    "country_code": "JP",
+    "id": "2026-france-g2-03",
+    "organization": "france_galop",
+    "country_code": "FR",
     "name": {
-      "ja": "佐賀スプリングカップ",
-      "en": "Saga Spring Cup"
+      "ja": "サンタラリ賞",
+      "en": "Prix Saint-Alary",
+      "fr": "Prix Saint-Alary"
     },
-    "grade": "local_grade",
+    "grade": "G2",
     "date": "2026-05-10",
-    "start_time": "2026-05-10T08:25:00.000Z",
+    "start_time": "2026-05-10T11:50:00.000Z",
     "is_time_confirmed": true,
-    "course": {
-      "ja": "佐賀",
-      "en": "Saga"
-    },
-    "distance": 1800,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-france-g3-18",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "サンジョルジュ賞",
-      "en": "Prix de Saint-Georges",
-      "fr": "Prix de Saint-Georges"
-    },
-    "grade": "G3",
-    "date": "2026-05-10",
-    "start_time": "2026-05-10T12:35:00.000Z",
-    "is_time_confirmed": false,
     "is_rescheduled": false,
     "original_date": "2026-05-10",
     "course": {
       "ja": "パリロンシャン",
       "en": "ParisLongchamp"
     },
-    "distance": 1000,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g1-03",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "プール・デッセ・デ・プーリッシュ（仏1000ギニー）",
-      "en": "Poule d'Essai des Pouliches",
-      "fr": "Poule d'Essai des Pouliches"
-    },
-    "grade": "G1",
-    "date": "2026-05-10",
-    "start_time": "2026-05-10T13:25:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-05-10",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 1600,
+    "distance": 2000,
     "track_type": "turf",
     "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo",
@@ -4916,8 +4887,8 @@
     },
     "grade": "G1",
     "date": "2026-05-10",
-    "start_time": "2026-05-10T14:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-10T13:52:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-10",
     "course": {
@@ -4935,25 +4906,25 @@
     }
   },
   {
-    "id": "2026-france-g2-03",
+    "id": "2026-france-g1-03",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "サンタラリ賞",
-      "en": "Prix Saint-Alary",
-      "fr": "Prix Saint-Alary"
+      "ja": "プール・デッセ・デ・プーリッシュ（仏1000ギニー）",
+      "en": "Poule d'Essai des Pouliches",
+      "fr": "Poule d'Essai des Pouliches"
     },
-    "grade": "G2",
+    "grade": "G1",
     "date": "2026-05-10",
-    "start_time": "2026-05-10T14:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-10T14:27:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-10",
     "course": {
       "ja": "パリロンシャン",
       "en": "ParisLongchamp"
     },
-    "distance": 2000,
+    "distance": 1600,
     "track_type": "turf",
     "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo",
@@ -4990,32 +4961,29 @@
     }
   },
   {
-    "id": "2026-france-g3-19",
-    "organization": "france_galop",
-    "country_code": "FR",
+    "id": "2026-nar-local-80",
+    "organization": "nar",
+    "country_code": "JP",
     "name": {
-      "ja": "テクサニタ賞",
-      "en": "Prix Texanita",
-      "fr": "Prix Texanita"
+      "ja": "のじぎく賞",
+      "en": "Nojigiku Sho"
     },
-    "grade": "G3",
-    "date": "2026-05-13",
-    "start_time": "2026-05-13T13:50:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-05-13",
+    "grade": "local_grade",
+    "date": "2026-05-14",
+    "start_time": "2026-05-14T07:15:00.000Z",
+    "is_time_confirmed": true,
     "course": {
-      "ja": "シャンティイ",
-      "en": "Chantilly"
+      "ja": "園田",
+      "en": "Sonoda"
     },
-    "distance": 1200,
-    "track_type": "turf",
-    "sex_constraint": "none",
+    "distance": 1700,
+    "track_type": "dirt",
+    "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo",
     "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -5061,32 +5029,6 @@
       "en": "Mombetsu"
     },
     "distance": 1200,
-    "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-80",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "のじぎく賞",
-      "en": "Nojigiku Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-05-14",
-    "start_time": "2026-05-14T07:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "園田",
-      "en": "Sonoda"
-    },
-    "distance": 1700,
     "track_type": "dirt",
     "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo",
@@ -5175,6 +5117,32 @@
     }
   },
   {
+    "id": "2026-nar-local-83",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "佐賀かささぎスプリント",
+      "en": "Saga Kasasagi Sprint"
+    },
+    "grade": "local_grade",
+    "date": "2026-05-17",
+    "start_time": "2026-05-17T08:25:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "佐賀",
+      "en": "Saga"
+    },
+    "distance": 1300,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-81",
     "organization": "nar",
     "country_code": "JP",
@@ -5227,29 +5195,32 @@
     }
   },
   {
-    "id": "2026-nar-local-83",
-    "organization": "nar",
-    "country_code": "JP",
+    "id": "2026-france-g3-19",
+    "organization": "france_galop",
+    "country_code": "FR",
     "name": {
-      "ja": "佐賀かささぎスプリント",
-      "en": "Saga Kasasagi Sprint"
+      "ja": "テクサニタ賞",
+      "en": "Prix Texanita",
+      "fr": "Prix Texanita"
     },
-    "grade": "local_grade",
-    "date": "2026-05-17",
-    "start_time": "2026-05-17T08:25:00.000Z",
+    "grade": "G3",
+    "date": "2026-05-19",
+    "start_time": "2026-05-19T14:51:00.000Z",
     "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-19",
     "course": {
-      "ja": "佐賀",
-      "en": "Saga"
+      "ja": "シャンティイ",
+      "en": "Chantilly"
     },
-    "distance": 1300,
-    "track_type": "dirt",
+    "distance": 1200,
+    "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo",
     "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -5279,57 +5250,28 @@
     }
   },
   {
-    "id": "2026-france-g1-05",
+    "id": "2026-france-g3-21",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "ヴィコント・ヴィジェ賞",
-      "en": "Prix Vicomtesse Vigier",
-      "fr": "Prix Vicomtesse Vigier"
-    },
-    "grade": "G1",
-    "date": "2026-05-21",
-    "start_time": "2026-05-21T13:15:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-05-21",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 3100,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g3-20",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "オカール賞",
-      "en": "Prix Hocquart",
-      "fr": "Prix Hocquart"
+      "ja": "パレロワイヤル賞",
+      "en": "Prix du Palais-Royal",
+      "fr": "Prix du Palais-Royal"
     },
     "grade": "G3",
     "date": "2026-05-21",
-    "start_time": "2026-05-21T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-21T16:59:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-21",
     "course": {
       "ja": "パリロンシャン",
       "en": "ParisLongchamp"
     },
-    "distance": 2200,
+    "distance": 1400,
     "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "3yo",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -5347,8 +5289,8 @@
     },
     "grade": "G1",
     "date": "2026-05-21",
-    "start_time": "2026-05-21T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-21T17:33:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-21",
     "course": {
@@ -5356,6 +5298,35 @@
       "en": "ParisLongchamp"
     },
     "distance": 1850,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-france-g1-05",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "ヴィコント・ヴィジェ賞",
+      "en": "Prix Vicomtesse Vigier",
+      "fr": "Prix Vicomtesse Vigier"
+    },
+    "grade": "G1",
+    "date": "2026-05-21",
+    "start_time": "2026-05-21T18:50:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-21",
+    "course": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
+    },
+    "distance": 3100,
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "4yo_and_up",
@@ -5470,28 +5441,28 @@
     }
   },
   {
-    "id": "2026-france-g3-21",
+    "id": "2026-france-g3-20",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "パレロワイヤル賞",
-      "en": "Prix du Palais-Royal",
-      "fr": "Prix du Palais-Royal"
+      "ja": "オカール賞",
+      "en": "Prix Hocquart",
+      "fr": "Prix Hocquart"
     },
     "grade": "G3",
     "date": "2026-05-24",
-    "start_time": "2026-05-24T13:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-24T12:33:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-24",
     "course": {
       "ja": "パリロンシャン",
       "en": "ParisLongchamp"
     },
-    "distance": 1400,
+    "distance": 2200,
     "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -5508,11 +5479,11 @@
       "fr": "Prix Corrida"
     },
     "grade": "G2",
-    "date": "2026-05-25",
-    "start_time": "2026-05-25T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "date": "2026-05-24",
+    "start_time": "2026-05-24T13:50:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
-    "original_date": "2026-05-25",
+    "original_date": "2026-05-24",
     "course": {
       "ja": "パリロンシャン",
       "en": "ParisLongchamp"
@@ -5710,32 +5681,6 @@
     }
   },
   {
-    "id": "2026-nar-local-89",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "百万石賞",
-      "en": "Hyakumangoku Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-05-31",
-    "start_time": "2026-05-31T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "金沢",
-      "en": "Kanazawa"
-    },
-    "distance": 2100,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-90",
     "organization": "nar",
     "country_code": "JP",
@@ -5762,6 +5707,32 @@
     }
   },
   {
+    "id": "2026-nar-local-89",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "百万石賞",
+      "en": "Hyakumangoku Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-05-31",
+    "start_time": "2026-05-31T09:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "金沢",
+      "en": "Kanazawa"
+    },
+    "distance": 2100,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-france-g3-23",
     "organization": "france_galop",
     "country_code": "FR",
@@ -5772,8 +5743,8 @@
     },
     "grade": "G3",
     "date": "2026-05-31",
-    "start_time": "2026-05-31T12:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-31T12:05:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-31",
     "course": {
@@ -5801,8 +5772,8 @@
     },
     "grade": "G2",
     "date": "2026-05-31",
-    "start_time": "2026-05-31T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-31T12:40:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-31",
     "course": {
@@ -5820,28 +5791,28 @@
     }
   },
   {
-    "id": "2026-france-g2-05",
+    "id": "2026-france-g3-22",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "サンドリンガム賞",
-      "en": "Prix de Sandringham",
-      "fr": "Prix de Sandringham"
+      "ja": "グロシェーヌ賞",
+      "en": "Prix du Gros-Chene",
+      "fr": "Prix du Gros-Chêne"
     },
-    "grade": "G2",
+    "grade": "G3",
     "date": "2026-05-31",
-    "start_time": "2026-05-31T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-31T13:58:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-31",
     "course": {
       "ja": "シャンティイ",
       "en": "Chantilly"
     },
-    "distance": 1600,
+    "distance": 1000,
     "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -5859,8 +5830,8 @@
     },
     "grade": "G1",
     "date": "2026-05-31",
-    "start_time": "2026-05-31T14:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-31T14:40:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-31",
     "course": {
@@ -5878,32 +5849,58 @@
     }
   },
   {
-    "id": "2026-france-g3-22",
+    "id": "2026-france-g2-05",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "グロシェーヌ賞",
-      "en": "Prix du Gros-Chene",
-      "fr": "Prix du Gros-Chêne"
+      "ja": "サンドリンガム賞",
+      "en": "Prix de Sandringham",
+      "fr": "Prix de Sandringham"
     },
-    "grade": "G3",
+    "grade": "G2",
     "date": "2026-05-31",
-    "start_time": "2026-05-31T14:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-31T15:23:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-05-31",
     "course": {
       "ja": "シャンティイ",
       "en": "Chantilly"
     },
-    "distance": 1000,
+    "distance": 1600,
     "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-nar-local-93",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "六甲盃",
+      "en": "Rokko Hai"
+    },
+    "grade": "local_grade",
+    "date": "2026-06-04",
+    "start_time": "2026-06-04T06:55:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "園田",
+      "en": "Sonoda"
+    },
+    "distance": 1870,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -5923,6 +5920,32 @@
       "en": "Nagoya"
     },
     "distance": 2100,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-s3-11",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "若潮スプリント",
+      "en": "Wakashio Sprint"
+    },
+    "grade": "S3",
+    "date": "2026-06-04",
+    "start_time": "2026-06-04T11:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "船橋",
+      "en": "Funabashi"
+    },
+    "distance": 1200,
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo",
@@ -5959,58 +5982,6 @@
     }
   },
   {
-    "id": "2026-nar-s3-11",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "若潮スプリント",
-      "en": "Wakashio Sprint"
-    },
-    "grade": "S3",
-    "date": "2026-06-04",
-    "start_time": "2026-06-04T11:05:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "船橋",
-      "en": "Funabashi"
-    },
-    "distance": 1200,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-93",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "六甲盃",
-      "en": "Rokko Hai"
-    },
-    "grade": "local_grade",
-    "date": "2026-06-04",
-    "start_time": "2026-06-04T06:55:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "園田",
-      "en": "Sonoda"
-    },
-    "distance": 1870,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-jra-g1-11",
     "organization": "jra",
     "country_code": "JP",
@@ -6034,32 +6005,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-nar-local-94",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "早池峰賞",
-      "en": "Hayachine Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-06-07",
-    "start_time": "2026-06-07T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "水沢",
-      "en": "Mizusawa"
-    },
-    "distance": 1400,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
     }
   },
   {
@@ -6089,6 +6034,32 @@
     }
   },
   {
+    "id": "2026-nar-local-94",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "早池峰賞",
+      "en": "Hayachine Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-06-07",
+    "start_time": "2026-06-07T09:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "水沢",
+      "en": "Mizusawa"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-france-g2-07",
     "organization": "france_galop",
     "country_code": "FR",
@@ -6099,8 +6070,8 @@
     },
     "grade": "G2",
     "date": "2026-06-07",
-    "start_time": "2026-06-07T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-07T13:50:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-06-07",
     "course": {
@@ -6128,8 +6099,8 @@
     },
     "grade": "G3",
     "date": "2026-06-07",
-    "start_time": "2026-06-07T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-07T14:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-06-07",
     "course": {
@@ -6381,32 +6352,6 @@
     }
   },
   {
-    "id": "2026-nar-local-99",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "北斗賞",
-      "en": "Hokuto Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-06-14",
-    "start_time": "2026-06-14T11:05:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "帯広",
-      "en": "Obihiro"
-    },
-    "distance": 200,
-    "track_type": "banei",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-102",
     "organization": "nar",
     "country_code": "JP",
@@ -6433,27 +6378,53 @@
     }
   },
   {
-    "id": "2026-france-g3-26",
+    "id": "2026-nar-local-99",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "北斗賞",
+      "en": "Hokuto Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-06-14",
+    "start_time": "2026-06-14T11:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "帯広",
+      "en": "Obihiro"
+    },
+    "distance": 200,
+    "track_type": "banei",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-france-g1-07",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "リス賞",
-      "en": "Prix du Lys",
-      "fr": "Prix du Lys"
+      "ja": "ディアヌ賞（仏オークス）",
+      "en": "Prix de Diane",
+      "fr": "Prix de Diane"
     },
-    "grade": "G3",
+    "grade": "G1",
     "date": "2026-06-14",
-    "start_time": "2026-06-14T12:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-14T14:05:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-06-14",
     "course": {
       "ja": "シャンティイ",
       "en": "Chantilly"
     },
-    "distance": 2400,
+    "distance": 2100,
     "track_type": "turf",
-    "sex_constraint": "none",
+    "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
@@ -6472,8 +6443,8 @@
     },
     "grade": "G3",
     "date": "2026-06-14",
-    "start_time": "2026-06-14T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-14T16:03:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-06-14",
     "course": {
@@ -6491,27 +6462,27 @@
     }
   },
   {
-    "id": "2026-france-g1-07",
+    "id": "2026-france-g3-26",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "ディアヌ賞（仏オークス）",
-      "en": "Prix de Diane",
-      "fr": "Prix de Diane"
+      "ja": "リス賞",
+      "en": "Prix du Lys",
+      "fr": "Prix du Lys"
     },
-    "grade": "G1",
+    "grade": "G3",
     "date": "2026-06-14",
-    "start_time": "2026-06-14T14:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-14T16:37:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-06-14",
     "course": {
       "ja": "シャンティイ",
       "en": "Chantilly"
     },
-    "distance": 2100,
+    "distance": 2400,
     "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
+    "sex_constraint": "none",
     "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
@@ -6546,32 +6517,29 @@
     }
   },
   {
-    "id": "2026-france-g3-27",
-    "organization": "france_galop",
-    "country_code": "FR",
+    "id": "2026-nar-jpn2-06",
+    "organization": "nar",
+    "country_code": "JP",
     "name": {
-      "ja": "ボワ賞",
-      "en": "Prix du Bois",
-      "fr": "Prix du Bois"
+      "ja": "関東オークス",
+      "en": "Kanto Oaks"
     },
-    "grade": "G3",
-    "date": "2026-06-16",
-    "start_time": "2026-06-16T13:50:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-06-16",
+    "grade": "Jpn2",
+    "date": "2026-06-17",
+    "start_time": "2026-06-17T11:10:00.000Z",
+    "is_time_confirmed": true,
     "course": {
-      "ja": "シャンティイ",
-      "en": "Chantilly"
+      "ja": "川崎",
+      "en": "Kawasaki"
     },
-    "distance": 1200,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
+    "distance": 2100,
+    "track_type": "dirt",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
     "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -6601,25 +6569,25 @@
     }
   },
   {
-    "id": "2026-nar-jpn2-06",
+    "id": "2026-nar-local-106",
     "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "関東オークス",
-      "en": "Kanto Oaks"
+      "ja": "園田FCスプリント",
+      "en": "Sonoda FC Sprint"
     },
-    "grade": "Jpn2",
-    "date": "2026-06-17",
-    "start_time": "2026-06-17T11:10:00.000Z",
+    "grade": "local_grade",
+    "date": "2026-06-18",
+    "start_time": "2026-06-18T07:15:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "川崎",
-      "en": "Kawasaki"
+      "ja": "園田",
+      "en": "Sonoda"
     },
-    "distance": 2100,
+    "distance": 820,
     "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -6679,23 +6647,81 @@
     }
   },
   {
-    "id": "2026-nar-local-106",
-    "organization": "nar",
+    "id": "2026-france-g3-27",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "ボワ賞",
+      "en": "Prix du Bois",
+      "fr": "Prix du Bois"
+    },
+    "grade": "G3",
+    "date": "2026-06-18",
+    "start_time": "2026-06-18T15:00:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-18",
+    "course": {
+      "ja": "シャンティイ",
+      "en": "Chantilly"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-france-g3-28",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "ポルト・マイヨ賞",
+      "en": "Prix de la Porte Maillot",
+      "fr": "Prix de la Porte Maillot"
+    },
+    "grade": "G3",
+    "date": "2026-06-18",
+    "start_time": "2026-06-18T15:33:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-18",
+    "course": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
+    },
+    "distance": 1400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-jra-g3-34",
+    "organization": "jra",
     "country_code": "JP",
     "name": {
-      "ja": "園田FCスプリント",
-      "en": "Sonoda FC Sprint"
+      "ja": "しらさぎステークス",
+      "en": "Shirasagi Stakes"
     },
-    "grade": "local_grade",
-    "date": "2026-06-18",
-    "start_time": "2026-06-18T07:15:00.000Z",
+    "grade": "G3",
+    "date": "2026-06-21",
+    "start_time": "2026-06-21T06:35:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "園田",
-      "en": "Sonoda"
+      "ja": "阪神",
+      "en": "Hanshin"
     },
-    "distance": 820,
-    "track_type": "dirt",
+    "distance": 1600,
+    "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
     "handicap": {
@@ -6731,23 +6757,23 @@
     }
   },
   {
-    "id": "2026-jra-g3-34",
-    "organization": "jra",
+    "id": "2026-nar-local-108",
+    "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "しらさぎステークス",
-      "en": "Shirasagi Stakes"
+      "ja": "吉野ヶ里記念",
+      "en": "Yoshinogari Kinen"
     },
-    "grade": "G3",
+    "grade": "local_grade",
     "date": "2026-06-21",
-    "start_time": "2026-06-21T06:35:00.000Z",
+    "start_time": "2026-06-21T09:05:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "阪神",
-      "en": "Hanshin"
+      "ja": "佐賀",
+      "en": "Saga"
     },
-    "distance": 1600,
-    "track_type": "turf",
+    "distance": 1400,
+    "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
     "handicap": {
@@ -6773,32 +6799,6 @@
       "en": "Mizusawa"
     },
     "distance": 2000,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-108",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "吉野ヶ里記念",
-      "en": "Yoshinogari Kinen"
-    },
-    "grade": "local_grade",
-    "date": "2026-06-21",
-    "start_time": "2026-06-21T09:05:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "佐賀",
-      "en": "Saga"
-    },
-    "distance": 1400,
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
@@ -6887,35 +6887,6 @@
     }
   },
   {
-    "id": "2026-france-g3-28",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "ポルト・マイヨ賞",
-      "en": "Prix de la Porte Maillot",
-      "fr": "Prix de la Porte Maillot"
-    },
-    "grade": "G3",
-    "date": "2026-06-25",
-    "start_time": "2026-06-25T14:00:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-06-25",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 1400,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
     "id": "2026-jra-g3-36",
     "organization": "jra",
     "country_code": "JP",
@@ -6968,32 +6939,6 @@
     }
   },
   {
-    "id": "2026-nar-local-112",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "サファイア賞",
-      "en": "Sapphire Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-06-28",
-    "start_time": "2026-06-28T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "盛岡",
-      "en": "Morioka"
-    },
-    "distance": 1700,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-113",
     "organization": "nar",
     "country_code": "JP",
@@ -7013,6 +6958,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-112",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "サファイア賞",
+      "en": "Sapphire Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-06-28",
+    "start_time": "2026-06-28T09:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "盛岡",
+      "en": "Morioka"
+    },
+    "distance": 1700,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -7046,28 +7017,28 @@
     }
   },
   {
-    "id": "2026-france-g1-08",
+    "id": "2026-france-g2-10",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "サンクルー大賞",
-      "en": "Grand Prix de Saint-Cloud",
-      "fr": "Grand Prix de Saint-Cloud"
+      "ja": "ユジェーヌアダム賞",
+      "en": "Prix Eugene Adam",
+      "fr": "Prix Eugène Adam"
     },
-    "grade": "G1",
+    "grade": "G2",
     "date": "2026-06-28",
-    "start_time": "2026-06-28T14:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-28T14:00:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-06-28",
     "course": {
       "ja": "サンクルー",
       "en": "Saint-Cloud"
     },
-    "distance": 2400,
+    "distance": 2000,
     "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -7153,6 +7124,35 @@
     }
   },
   {
+    "id": "2026-france-g3-29",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "リスオランジス賞",
+      "en": "Prix de Ris-Orangis",
+      "fr": "Prix de Ris-Orangis"
+    },
+    "grade": "G3",
+    "date": "2026-07-04",
+    "start_time": "2026-07-04T14:55:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-04",
+    "course": {
+      "ja": "ドーヴィル",
+      "en": "Deauville"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-jra-g3-37",
     "organization": "jra",
     "country_code": "JP",
@@ -7205,32 +7205,6 @@
     }
   },
   {
-    "id": "2026-nar-local-116",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "兼六園スプリント",
-      "en": "Kenrokuen Sprint"
-    },
-    "grade": "local_grade",
-    "date": "2026-07-05",
-    "start_time": "2026-07-05T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "金沢",
-      "en": "Kanazawa"
-    },
-    "distance": 1500,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-117",
     "organization": "nar",
     "country_code": "JP",
@@ -7257,57 +7231,54 @@
     }
   },
   {
-    "id": "2026-france-g3-29",
-    "organization": "france_galop",
-    "country_code": "FR",
+    "id": "2026-nar-local-116",
+    "organization": "nar",
+    "country_code": "JP",
     "name": {
-      "ja": "リスオランジス賞",
-      "en": "Prix de Ris-Orangis",
-      "fr": "Prix de Ris-Orangis"
+      "ja": "兼六園スプリント",
+      "en": "Kenrokuen Sprint"
     },
-    "grade": "G3",
+    "grade": "local_grade",
     "date": "2026-07-05",
-    "start_time": "2026-07-05T12:35:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-07-05",
+    "start_time": "2026-07-05T09:15:00.000Z",
+    "is_time_confirmed": true,
     "course": {
-      "ja": "ドーヴィル",
-      "en": "Deauville"
+      "ja": "金沢",
+      "en": "Kanazawa"
     },
-    "distance": 1200,
-    "track_type": "turf",
+    "distance": 1500,
+    "track_type": "dirt",
     "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
+    "age_constraint": "3yo",
     "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
-    "id": "2026-france-g1-09",
+    "id": "2026-france-g1-08",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "ジャン・プラ賞",
-      "en": "Prix Jean Prat",
-      "fr": "Prix Jean Prat"
+      "ja": "サンクルー大賞",
+      "en": "Grand Prix de Saint-Cloud",
+      "fr": "Grand Prix de Saint-Cloud"
     },
     "grade": "G1",
     "date": "2026-07-05",
-    "start_time": "2026-07-05T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-07-05T14:40:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-07-05",
     "course": {
-      "ja": "ドーヴィル",
-      "en": "Deauville"
+      "ja": "サンクルー",
+      "en": "Saint-Cloud"
     },
-    "distance": 1400,
+    "distance": 2400,
     "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "3yo",
+    "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -7549,57 +7520,28 @@
     }
   },
   {
-    "id": "2026-france-g3-30",
+    "id": "2026-france-g1-09",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "クロエ賞",
-      "en": "Prix Chloe",
-      "fr": "Prix Chloé"
+      "ja": "ジャン・プラ賞",
+      "en": "Prix Jean Prat",
+      "fr": "Prix Jean Prat"
     },
-    "grade": "G3",
+    "grade": "G1",
     "date": "2026-07-12",
-    "start_time": "2026-07-12T13:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-07-12T14:28:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-07-12",
     "course": {
-      "ja": "シャンティイ",
-      "en": "Chantilly"
+      "ja": "ドーヴィル",
+      "en": "Deauville"
     },
-    "distance": 1800,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g2-09",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "モーリス・ド・ニュイユ賞",
-      "en": "Prix Maurice de Nieuil",
-      "fr": "Prix Maurice de Nieuil"
-    },
-    "grade": "G2",
-    "date": "2026-07-14",
-    "start_time": "2026-07-14T14:05:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-07-14",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 2800,
+    "distance": 1400,
     "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -7617,8 +7559,8 @@
     },
     "grade": "G2",
     "date": "2026-07-14",
-    "start_time": "2026-07-14T14:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-07-14T17:37:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-07-14",
     "course": {
@@ -7646,8 +7588,8 @@
     },
     "grade": "G1",
     "date": "2026-07-14",
-    "start_time": "2026-07-14T15:25:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-07-14T18:15:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-07-14",
     "course": {
@@ -7665,29 +7607,32 @@
     }
   },
   {
-    "id": "2026-nar-local-125",
-    "organization": "nar",
-    "country_code": "JP",
+    "id": "2026-france-g2-09",
+    "organization": "france_galop",
+    "country_code": "FR",
     "name": {
-      "ja": "ノースクイーンカップ",
-      "en": "North Queen Cup"
+      "ja": "モーリス・ド・ニュイユ賞",
+      "en": "Prix Maurice de Nieuil",
+      "fr": "Prix Maurice de Nieuil"
     },
-    "grade": "local_grade",
-    "date": "2026-07-16",
-    "start_time": "2026-07-16T11:50:00.000Z",
+    "grade": "G2",
+    "date": "2026-07-14",
+    "start_time": "2026-07-14T18:50:00.000Z",
     "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-14",
     "course": {
-      "ja": "門別",
-      "en": "Mombetsu"
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
     },
-    "distance": 1800,
-    "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo_and_up",
+    "distance": 2800,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
     "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -7709,6 +7654,32 @@
     "distance": 1400,
     "track_type": "dirt",
     "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-125",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "ノースクイーンカップ",
+      "en": "North Queen Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-07-16",
+    "start_time": "2026-07-16T11:50:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "門別",
+      "en": "Mombetsu"
+    },
+    "distance": 1800,
+    "track_type": "dirt",
+    "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
@@ -7795,6 +7766,32 @@
     }
   },
   {
+    "id": "2026-nar-local-130",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "トレノ賞",
+      "en": "Toreno Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-07-19",
+    "start_time": "2026-07-19T09:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "高知",
+      "en": "Kochi"
+    },
+    "distance": 1300,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-129",
     "organization": "nar",
     "country_code": "JP",
@@ -7847,29 +7844,61 @@
     }
   },
   {
-    "id": "2026-nar-local-130",
-    "organization": "nar",
-    "country_code": "JP",
+    "id": "2026-france-g2-11",
+    "organization": "france_galop",
+    "country_code": "FR",
     "name": {
-      "ja": "トレノ賞",
-      "en": "Toreno Sho"
+      "ja": "ロベール・パパン賞",
+      "en": "Prix Robert Papin",
+      "fr": "Prix Robert Papin"
     },
-    "grade": "local_grade",
+    "grade": "G2",
     "date": "2026-07-19",
-    "start_time": "2026-07-19T09:05:00.000Z",
+    "start_time": "2026-07-19T11:58:00.000Z",
     "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-19",
     "course": {
-      "ja": "高知",
-      "en": "Kochi"
+      "ja": "シャンティイ",
+      "en": "Chantilly"
     },
-    "distance": 1300,
-    "track_type": "dirt",
+    "distance": 1200,
+    "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
+    "age_constraint": "2yo",
     "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-france-g3-30",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "クロエ賞",
+      "en": "Prix Chloe",
+      "fr": "Prix Chloé"
+    },
+    "grade": "G3",
+    "date": "2026-07-19",
+    "start_time": "2026-07-19T14:25:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-19",
+    "course": {
+      "ja": "シャンティイ",
+      "en": "Chantilly"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -7883,8 +7912,8 @@
     },
     "grade": "G3",
     "date": "2026-07-19",
-    "start_time": "2026-07-19T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-07-19T15:37:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-07-19",
     "course": {
@@ -7895,35 +7924,6 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g2-10",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "ユジェーヌアダム賞",
-      "en": "Prix Eugene Adam",
-      "fr": "Prix Eugène Adam"
-    },
-    "grade": "G2",
-    "date": "2026-07-19",
-    "start_time": "2026-07-19T14:00:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-07-19",
-    "course": {
-      "ja": "サンクルー",
-      "en": "Saint-Cloud"
-    },
-    "distance": 2000,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -7983,32 +7983,6 @@
     }
   },
   {
-    "id": "2026-nar-local-132",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "リリーカップ",
-      "en": "Lily Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-07-22",
-    "start_time": "2026-07-22T11:35:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "門別",
-      "en": "Mombetsu"
-    },
-    "distance": 1000,
-    "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-s3-13",
     "organization": "nar",
     "country_code": "JP",
@@ -8035,6 +8009,32 @@
     }
   },
   {
+    "id": "2026-nar-local-132",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "リリーカップ",
+      "en": "Lily Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-07-22",
+    "start_time": "2026-07-22T11:35:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "門別",
+      "en": "Mombetsu"
+    },
+    "distance": 1000,
+    "track_type": "dirt",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-france-g3-32",
     "organization": "france_galop",
     "country_code": "FR",
@@ -8045,8 +8045,8 @@
     },
     "grade": "G3",
     "date": "2026-07-22",
-    "start_time": "2026-07-22T18:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-07-22T19:45:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-07-22",
     "course": {
@@ -8090,32 +8090,6 @@
     }
   },
   {
-    "id": "2026-jra-g3-41",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "関屋記念",
-      "en": "Sekiya Kinen"
-    },
-    "grade": "G3",
-    "date": "2026-07-26",
-    "start_time": "2026-07-26T06:45:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "新潟",
-      "en": "Niigata"
-    },
-    "distance": 1600,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "handicap",
-      "ja": "ハンデ",
-      "en": "Handicap"
-    }
-  },
-  {
     "id": "2026-jra-g3-42",
     "organization": "jra",
     "country_code": "JP",
@@ -8139,6 +8113,32 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-jra-g3-41",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "関屋記念",
+      "en": "Sekiya Kinen"
+    },
+    "grade": "G3",
+    "date": "2026-07-26",
+    "start_time": "2026-07-26T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "新潟",
+      "en": "Niigata"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
@@ -8191,35 +8191,6 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-france-g2-11",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "ロベール・パパン賞",
-      "en": "Prix Robert Papin",
-      "fr": "Prix Robert Papin"
-    },
-    "grade": "G2",
-    "date": "2026-07-26",
-    "start_time": "2026-07-26T14:00:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-07-26",
-    "course": {
-      "ja": "シャンティイ",
-      "en": "Chantilly"
-    },
-    "distance": 1200,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
     }
   },
   {
@@ -8327,64 +8298,6 @@
     }
   },
   {
-    "id": "2026-france-g3-33",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "シックスパーフェクションズ賞",
-      "en": "Prix Six Perfections",
-      "fr": "Prix Six Perfections"
-    },
-    "grade": "G3",
-    "date": "2026-08-01",
-    "start_time": "2026-08-01T13:15:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-08-01",
-    "course": {
-      "ja": "ドーヴィル",
-      "en": "Deauville"
-    },
-    "distance": 1400,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g3-34",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "プシシェ賞",
-      "en": "Prix de Psyche",
-      "fr": "Prix de Psyché"
-    },
-    "grade": "G3",
-    "date": "2026-08-01",
-    "start_time": "2026-08-01T13:50:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-08-01",
-    "course": {
-      "ja": "ドーヴィル",
-      "en": "Deauville"
-    },
-    "distance": 2000,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
     "id": "2026-jra-g3-44",
     "organization": "jra",
     "country_code": "JP",
@@ -8489,6 +8402,35 @@
     }
   },
   {
+    "id": "2026-france-g3-33",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "シックスパーフェクションズ賞",
+      "en": "Prix Six Perfections",
+      "fr": "Prix Six Perfections"
+    },
+    "grade": "G3",
+    "date": "2026-08-02",
+    "start_time": "2026-08-02T11:56:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-02",
+    "course": {
+      "ja": "ドーヴィル",
+      "en": "Deauville"
+    },
+    "distance": 1400,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-france-g3-35",
     "organization": "france_galop",
     "country_code": "FR",
@@ -8499,8 +8441,8 @@
     },
     "grade": "G3",
     "date": "2026-08-02",
-    "start_time": "2026-08-02T12:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-02T12:33:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-02",
     "course": {
@@ -8511,6 +8453,35 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-france-g3-34",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "プシシェ賞",
+      "en": "Prix de Psyche",
+      "fr": "Prix de Psyché"
+    },
+    "grade": "G3",
+    "date": "2026-08-02",
+    "start_time": "2026-08-02T14:05:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-02",
+    "course": {
+      "ja": "ドーヴィル",
+      "en": "Deauville"
+    },
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -8528,8 +8499,8 @@
     },
     "grade": "G1",
     "date": "2026-08-02",
-    "start_time": "2026-08-02T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-02T14:42:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-02",
     "course": {
@@ -8544,32 +8515,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-nar-local-142",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "サッポロクラシックカップ",
-      "en": "Sapporo Classic Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-08-06",
-    "start_time": "2026-08-06T11:30:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "門別",
-      "en": "Mombetsu"
-    },
-    "distance": 1200,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
     }
   },
   {
@@ -8592,6 +8537,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-142",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "サッポロクラシックカップ",
+      "en": "Sapporo Classic Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-08-06",
+    "start_time": "2026-08-06T11:30:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "門別",
+      "en": "Mombetsu"
+    },
+    "distance": 1200,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -8635,8 +8606,8 @@
     },
     "grade": "G3",
     "date": "2026-08-08",
-    "start_time": "2026-08-08T13:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-08T11:59:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-08",
     "course": {
@@ -8651,32 +8622,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-jra-g3-46",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "レパードステークス",
-      "en": "Leopard Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-08-09",
-    "start_time": "2026-08-09T06:45:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "新潟",
-      "en": "Niigata"
-    },
-    "distance": 1800,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
     }
   },
   {
@@ -8706,6 +8651,32 @@
     }
   },
   {
+    "id": "2026-jra-g3-46",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "レパードステークス",
+      "en": "Leopard Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-08-09",
+    "start_time": "2026-08-09T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "新潟",
+      "en": "Niigata"
+    },
+    "distance": 1800,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-143",
     "organization": "nar",
     "country_code": "JP",
@@ -8732,28 +8703,28 @@
     }
   },
   {
-    "id": "2026-france-g3-37",
+    "id": "2026-france-g3-41",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "フランソワ・ブータン賞",
-      "en": "Prix Francois Boutin",
-      "fr": "Prix François Boutin"
+      "ja": "ダフニス賞",
+      "en": "Prix Daphnis",
+      "fr": "Prix Daphnis"
     },
     "grade": "G3",
     "date": "2026-08-09",
-    "start_time": "2026-08-09T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-09T14:05:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-09",
     "course": {
       "ja": "ドーヴィル",
       "en": "Deauville"
     },
-    "distance": 1400,
+    "distance": 1600,
     "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "2yo",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -8771,8 +8742,8 @@
     },
     "grade": "G1",
     "date": "2026-08-09",
-    "start_time": "2026-08-09T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-09T14:41:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-09",
     "course": {
@@ -8787,6 +8758,32 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-nar-jpn3-11",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "クラスターカップ",
+      "en": "Cluster Cup"
+    },
+    "grade": "Jpn3",
+    "date": "2026-08-11",
+    "start_time": "2026-08-11T08:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "盛岡",
+      "en": "Morioka"
+    },
+    "distance": 1200,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -8834,32 +8831,6 @@
     "distance": 1500,
     "track_type": "dirt",
     "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-jpn3-11",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "クラスターカップ",
-      "en": "Cluster Cup"
-    },
-    "grade": "Jpn3",
-    "date": "2026-08-11",
-    "start_time": "2026-08-11T08:05:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "盛岡",
-      "en": "Morioka"
-    },
-    "distance": 1200,
-    "track_type": "dirt",
-    "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
@@ -8998,6 +8969,35 @@
     }
   },
   {
+    "id": "2026-france-g2-13",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "アレック・ヘッド賞",
+      "en": "Prix Alec Head",
+      "fr": "Prix Alec Head"
+    },
+    "grade": "G2",
+    "date": "2026-08-15",
+    "start_time": "2026-08-15T11:58:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-15",
+    "course": {
+      "ja": "ドーヴィル",
+      "en": "Deauville"
+    },
+    "distance": 2500,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-france-g2-12",
     "organization": "france_galop",
     "country_code": "FR",
@@ -9008,8 +9008,8 @@
     },
     "grade": "G2",
     "date": "2026-08-15",
-    "start_time": "2026-08-15T13:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-15T12:33:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-15",
     "course": {
@@ -9037,8 +9037,8 @@
     },
     "grade": "G3",
     "date": "2026-08-15",
-    "start_time": "2026-08-15T13:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-15T14:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-15",
     "course": {
@@ -9066,8 +9066,8 @@
     },
     "grade": "G3",
     "date": "2026-08-15",
-    "start_time": "2026-08-15T14:25:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-15T15:00:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-15",
     "course": {
@@ -9082,32 +9082,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-jra-g2-21",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "札幌記念",
-      "en": "Sapporo Kinen"
-    },
-    "grade": "G2",
-    "date": "2026-08-16",
-    "start_time": "2026-08-16T06:45:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "札幌",
-      "en": "Sapporo"
-    },
-    "distance": 2000,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
     }
   },
   {
@@ -9134,6 +9108,32 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    }
+  },
+  {
+    "id": "2026-jra-g2-21",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "札幌記念",
+      "en": "Sapporo Kinen"
+    },
+    "grade": "G2",
+    "date": "2026-08-16",
+    "start_time": "2026-08-16T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "札幌",
+      "en": "Sapporo"
+    },
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -9173,8 +9173,8 @@
     },
     "grade": "G3",
     "date": "2026-08-16",
-    "start_time": "2026-08-16T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-16T11:58:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-16",
     "course": {
@@ -9192,6 +9192,35 @@
     }
   },
   {
+    "id": "2026-france-g3-37",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "フランソワ・ブータン賞",
+      "en": "Prix Francois Boutin",
+      "fr": "Prix François Boutin"
+    },
+    "grade": "G3",
+    "date": "2026-08-16",
+    "start_time": "2026-08-16T12:33:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-16",
+    "course": {
+      "ja": "ドーヴィル",
+      "en": "Deauville"
+    },
+    "distance": 1400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-france-g1-13",
     "organization": "france_galop",
     "country_code": "FR",
@@ -9202,8 +9231,8 @@
     },
     "grade": "G1",
     "date": "2026-08-16",
-    "start_time": "2026-08-16T14:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-16T13:52:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-16",
     "course": {
@@ -9247,32 +9276,6 @@
     }
   },
   {
-    "id": "2026-nar-local-149",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "フルールカップ",
-      "en": "Fleur Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-08-19",
-    "start_time": "2026-08-19T11:35:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "門別",
-      "en": "Mombetsu"
-    },
-    "distance": 1200,
-    "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-s2-06",
     "organization": "nar",
     "country_code": "JP",
@@ -9292,6 +9295,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-149",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "フルールカップ",
+      "en": "Fleur Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-08-19",
+    "start_time": "2026-08-19T11:35:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "門別",
+      "en": "Mombetsu"
+    },
+    "distance": 1200,
+    "track_type": "dirt",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -9348,64 +9377,6 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-france-g2-14",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "カルヴァドス賞",
-      "en": "Prix du Calvados",
-      "fr": "Prix du Calvados"
-    },
-    "grade": "G2",
-    "date": "2026-08-22",
-    "start_time": "2026-08-22T13:15:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-08-22",
-    "course": {
-      "ja": "ドーヴィル",
-      "en": "Deauville"
-    },
-    "distance": 1400,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g2-13",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "アレック・ヘッド賞",
-      "en": "Prix Alec Head",
-      "fr": "Prix Alec Head"
-    },
-    "grade": "G2",
-    "date": "2026-08-22",
-    "start_time": "2026-08-22T13:50:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-08-22",
-    "course": {
-      "ja": "ドーヴィル",
-      "en": "Deauville"
-    },
-    "distance": 2500,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
     }
   },
   {
@@ -9487,32 +9458,6 @@
     }
   },
   {
-    "id": "2026-nar-local-152",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "はまなす賞",
-      "en": "Hamanasu Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-08-23",
-    "start_time": "2026-08-23T11:00:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "帯広",
-      "en": "Obihiro"
-    },
-    "distance": 200,
-    "track_type": "banei",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-154",
     "organization": "nar",
     "country_code": "JP",
@@ -9539,28 +9484,83 @@
     }
   },
   {
-    "id": "2026-france-g3-41",
+    "id": "2026-nar-local-152",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "はまなす賞",
+      "en": "Hamanasu Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-08-23",
+    "start_time": "2026-08-23T11:00:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "帯広",
+      "en": "Obihiro"
+    },
+    "distance": 200,
+    "track_type": "banei",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-france-g2-14",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "ダフニス賞",
-      "en": "Prix Daphnis",
-      "fr": "Prix Daphnis"
+      "ja": "カルヴァドス賞",
+      "en": "Prix du Calvados",
+      "fr": "Prix du Calvados"
     },
-    "grade": "G3",
+    "grade": "G2",
     "date": "2026-08-23",
-    "start_time": "2026-08-23T12:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-23T11:58:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-23",
     "course": {
       "ja": "ドーヴィル",
       "en": "Deauville"
     },
-    "distance": 1600,
+    "distance": 1400,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-france-g2-15",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "ケルゴルレイ賞",
+      "en": "Prix Kergorlay",
+      "fr": "Prix Kergorlay"
+    },
+    "grade": "G2",
+    "date": "2026-08-23",
+    "start_time": "2026-08-23T12:34:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-23",
+    "course": {
+      "ja": "ドーヴィル",
+      "en": "Deauville"
+    },
+    "distance": 3000,
     "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "3yo",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -9578,8 +9578,8 @@
     },
     "grade": "G1",
     "date": "2026-08-23",
-    "start_time": "2026-08-23T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-23T13:51:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-23",
     "course": {
@@ -9607,8 +9607,8 @@
     },
     "grade": "G1",
     "date": "2026-08-23",
-    "start_time": "2026-08-23T13:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-23T14:29:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-23",
     "course": {
@@ -9618,35 +9618,6 @@
     "distance": 2000,
     "track_type": "turf",
     "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g2-15",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "ケルゴルレイ賞",
-      "en": "Prix Kergorlay",
-      "fr": "Prix Kergorlay"
-    },
-    "grade": "G2",
-    "date": "2026-08-23",
-    "start_time": "2026-08-23T14:30:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-08-23",
-    "course": {
-      "ja": "ドーヴィル",
-      "en": "Deauville"
-    },
-    "distance": 3000,
-    "track_type": "turf",
-    "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "weight_for_age",
@@ -9733,32 +9704,6 @@
     }
   },
   {
-    "id": "2026-jra-g3-51",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "新潟記念",
-      "en": "Niigata Kinen"
-    },
-    "grade": "G3",
-    "date": "2026-08-30",
-    "start_time": "2026-08-30T06:45:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "新潟",
-      "en": "Niigata"
-    },
-    "distance": 2000,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "handicap",
-      "ja": "ハンデ",
-      "en": "Handicap"
-    }
-  },
-  {
     "id": "2026-jra-g3-52",
     "organization": "jra",
     "country_code": "JP",
@@ -9782,6 +9727,32 @@
       "code": "special_weight",
       "ja": "馬齢",
       "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-jra-g3-51",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "新潟記念",
+      "en": "Niigata Kinen"
+    },
+    "grade": "G3",
+    "date": "2026-08-30",
+    "start_time": "2026-08-30T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "新潟",
+      "en": "Niigata"
+    },
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
@@ -9821,8 +9792,8 @@
     },
     "grade": "G3",
     "date": "2026-08-30",
-    "start_time": "2026-08-30T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-30T12:33:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-30",
     "course": {
@@ -9830,35 +9801,6 @@
       "en": "Deauville"
     },
     "distance": 1600,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g3-43",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "メートリー賞",
-      "en": "Prix de Meautry",
-      "fr": "Prix de Meautry"
-    },
-    "grade": "G3",
-    "date": "2026-08-30",
-    "start_time": "2026-08-30T13:50:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-08-30",
-    "course": {
-      "ja": "ドーヴィル",
-      "en": "Deauville"
-    },
-    "distance": 1200,
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
@@ -9879,8 +9821,8 @@
     },
     "grade": "G2",
     "date": "2026-08-30",
-    "start_time": "2026-08-30T14:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-30T13:52:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-08-30",
     "course": {
@@ -9888,6 +9830,35 @@
       "en": "Deauville"
     },
     "distance": 2500,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-france-g3-43",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "メートリー賞",
+      "en": "Prix de Meautry",
+      "fr": "Prix de Meautry"
+    },
+    "grade": "G3",
+    "date": "2026-08-30",
+    "start_time": "2026-08-30T14:27:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-30",
+    "course": {
+      "ja": "ドーヴィル",
+      "en": "Deauville"
+    },
+    "distance": 1200,
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
@@ -10012,8 +9983,8 @@
     },
     "grade": "G3",
     "date": "2026-09-03",
-    "start_time": "2026-09-03T14:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-03T13:40:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-09-03",
     "course": {
@@ -10024,6 +9995,35 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-france-g3-48",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "ジェラル・ド・ジョフル賞",
+      "en": "Prix Gerald de Geoffre",
+      "fr": "Prix Gérald de Geoffre"
+    },
+    "grade": "G3",
+    "date": "2026-09-03",
+    "start_time": "2026-09-03T16:00:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-03",
+    "course": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
+    },
+    "distance": 3000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -10083,32 +10083,6 @@
     }
   },
   {
-    "id": "2026-jra-g2-23",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "紫苑ステークス",
-      "en": "Shion Stakes"
-    },
-    "grade": "G2",
-    "date": "2026-09-06",
-    "start_time": "2026-09-06T06:45:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "中山",
-      "en": "Nakayama"
-    },
-    "distance": 2000,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-jra-g2-22",
     "organization": "jra",
     "country_code": "JP",
@@ -10135,6 +10109,32 @@
     }
   },
   {
+    "id": "2026-jra-g2-23",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "紫苑ステークス",
+      "en": "Shion Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-06",
+    "start_time": "2026-09-06T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "中山",
+      "en": "Nakayama"
+    },
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-158",
     "organization": "nar",
     "country_code": "JP",
@@ -10149,32 +10149,6 @@
     "course": {
       "ja": "水沢",
       "en": "Mizusawa"
-    },
-    "distance": 1400,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-159",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "石川テレビ杯",
-      "en": "Ishikawa TV Hai"
-    },
-    "grade": "local_grade",
-    "date": "2026-09-06",
-    "start_time": "2026-09-06T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "金沢",
-      "en": "Kanazawa"
     },
     "distance": 1400,
     "track_type": "dirt",
@@ -10213,61 +10187,29 @@
     }
   },
   {
-    "id": "2026-france-g2-17",
-    "organization": "france_galop",
-    "country_code": "FR",
+    "id": "2026-nar-local-159",
+    "organization": "nar",
+    "country_code": "JP",
     "name": {
-      "ja": "オマール賞",
-      "en": "Prix d'Aumale",
-      "fr": "Prix d'Aumale"
+      "ja": "石川テレビ杯",
+      "en": "Ishikawa TV Hai"
     },
-    "grade": "G2",
+    "grade": "local_grade",
     "date": "2026-09-06",
-    "start_time": "2026-09-06T12:00:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-09-06",
+    "start_time": "2026-09-06T09:15:00.000Z",
+    "is_time_confirmed": true,
     "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
+      "ja": "金沢",
+      "en": "Kanazawa"
     },
-    "distance": 1600,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
     "age_constraint": "2yo",
     "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g3-46",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "シェーヌ賞",
-      "en": "Prix des Chenes",
-      "fr": "Prix des Chênes"
-    },
-    "grade": "G3",
-    "date": "2026-09-06",
-    "start_time": "2026-09-06T12:35:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-09-06",
-    "course": {
-      "ja": "シャンティイ",
-      "en": "Chantilly"
-    },
-    "distance": 1600,
-    "track_type": "turf",
-    "sex_constraint": "colt_and_filly",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -10281,8 +10223,8 @@
     },
     "grade": "G3",
     "date": "2026-09-06",
-    "start_time": "2026-09-06T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-06T11:58:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-09-06",
     "course": {
@@ -10300,6 +10242,64 @@
     }
   },
   {
+    "id": "2026-france-g2-17",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "オマール賞",
+      "en": "Prix d'Aumale",
+      "fr": "Prix d'Aumale"
+    },
+    "grade": "G2",
+    "date": "2026-09-06",
+    "start_time": "2026-09-06T12:33:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-06",
+    "course": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-france-g1-17",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "ヴェルメイユ賞",
+      "en": "Prix Vermeille",
+      "fr": "Prix Vermeille"
+    },
+    "grade": "G1",
+    "date": "2026-09-06",
+    "start_time": "2026-09-06T13:50:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-06",
+    "course": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
+    },
+    "distance": 2400,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-france-g1-16",
     "organization": "france_galop",
     "country_code": "FR",
@@ -10310,8 +10310,8 @@
     },
     "grade": "G1",
     "date": "2026-09-06",
-    "start_time": "2026-09-06T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-06T14:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-09-06",
     "course": {
@@ -10329,28 +10329,28 @@
     }
   },
   {
-    "id": "2026-france-g3-45",
+    "id": "2026-france-g2-18",
     "organization": "france_galop",
     "country_code": "FR",
     "name": {
-      "ja": "グラディアトゥール賞",
-      "en": "Prix Gladiateur",
-      "fr": "Prix Gladiateur"
+      "ja": "ニエル賞",
+      "en": "Prix Niel",
+      "fr": "Prix Niel"
     },
-    "grade": "G3",
+    "grade": "G2",
     "date": "2026-09-06",
-    "start_time": "2026-09-06T14:25:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-06T15:02:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-09-06",
     "course": {
       "ja": "パリロンシャン",
       "en": "ParisLongchamp"
     },
-    "distance": 3100,
+    "distance": 2400,
     "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -10410,6 +10410,35 @@
     }
   },
   {
+    "id": "2026-france-g3-45",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "グラディアトゥール賞",
+      "en": "Prix Gladiateur",
+      "fr": "Prix Gladiateur"
+    },
+    "grade": "G3",
+    "date": "2026-09-10",
+    "start_time": "2026-09-10T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-10",
+    "course": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
+    },
+    "distance": 3100,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-nar-local-161",
     "organization": "nar",
     "country_code": "JP",
@@ -10462,6 +10491,61 @@
     }
   },
   {
+    "id": "2026-france-g2-19",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "フォワ賞",
+      "en": "Prix Foy",
+      "fr": "Prix Foy"
+    },
+    "grade": "G2",
+    "date": "2026-09-12",
+    "start_time": "2026-09-12T18:10:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-12",
+    "course": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
+    },
+    "distance": 2400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-jra-g2-25",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "関西テレビ放送賞ローズステークス",
+      "en": "Kansai Telecasting Corp.Sho Rose Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-13",
+    "start_time": "2026-09-13T06:35:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "阪神",
+      "en": "Hanshin"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-jra-g2-24",
     "organization": "jra",
     "country_code": "JP",
@@ -10488,24 +10572,24 @@
     }
   },
   {
-    "id": "2026-jra-g2-25",
-    "organization": "jra",
+    "id": "2026-nar-local-164",
+    "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "関西テレビ放送賞ローズステークス",
-      "en": "Kansai Telecasting Corp.Sho Rose Stakes"
+      "ja": "サラブレッド大賞典",
+      "en": "Thoroughbred Daishoten"
     },
-    "grade": "G2",
+    "grade": "local_grade",
     "date": "2026-09-13",
-    "start_time": "2026-09-13T06:35:00.000Z",
+    "start_time": "2026-09-13T08:45:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "阪神",
-      "en": "Hanshin"
+      "ja": "金沢",
+      "en": "Kanazawa"
     },
-    "distance": 1800,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
+    "distance": 2000,
+    "track_type": "dirt",
+    "sex_constraint": "none",
     "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
@@ -10540,25 +10624,25 @@
     }
   },
   {
-    "id": "2026-nar-local-164",
+    "id": "2026-nar-local-165",
     "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "サラブレッド大賞典",
-      "en": "Thoroughbred Daishoten"
+      "ja": "建依別賞",
+      "en": "Taketoyo Sho"
     },
     "grade": "local_grade",
     "date": "2026-09-13",
-    "start_time": "2026-09-13T08:45:00.000Z",
+    "start_time": "2026-09-13T09:15:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "金沢",
-      "en": "Kanazawa"
+      "ja": "高知",
+      "en": "Kochi"
     },
-    "distance": 2000,
+    "distance": 1400,
     "track_type": "dirt",
     "sex_constraint": "none",
-    "age_constraint": "3yo",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -10592,32 +10676,6 @@
     }
   },
   {
-    "id": "2026-nar-local-165",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "建依別賞",
-      "en": "Taketoyo Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-09-13",
-    "start_time": "2026-09-13T09:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "高知",
-      "en": "Kochi"
-    },
-    "distance": 1400,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-france-g3-50",
     "organization": "france_galop",
     "country_code": "FR",
@@ -10628,8 +10686,8 @@
     },
     "grade": "G3",
     "date": "2026-09-13",
-    "start_time": "2026-09-13T12:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-13T12:36:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-09-13",
     "course": {
@@ -10640,93 +10698,6 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g3-48",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "ジェラル・ド・ジョフル賞",
-      "en": "Prix Gerald de Geoffre",
-      "fr": "Prix Gérald de Geoffre"
-    },
-    "grade": "G3",
-    "date": "2026-09-13",
-    "start_time": "2026-09-13T12:35:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-09-13",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 3000,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g2-18",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "ニエル賞",
-      "en": "Prix Niel",
-      "fr": "Prix Niel"
-    },
-    "grade": "G2",
-    "date": "2026-09-13",
-    "start_time": "2026-09-13T13:15:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-09-13",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 2400,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g2-19",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "フォワ賞",
-      "en": "Prix Foy",
-      "fr": "Prix Foy"
-    },
-    "grade": "G2",
-    "date": "2026-09-13",
-    "start_time": "2026-09-13T13:50:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-09-13",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 2400,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -10745,7 +10716,7 @@
     "grade": "G3",
     "date": "2026-09-13",
     "start_time": "2026-09-13T13:50:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-09-13",
     "course": {
@@ -10755,35 +10726,6 @@
     "distance": 1400,
     "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g1-17",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "ヴェルメイユ賞",
-      "en": "Prix Vermeille",
-      "fr": "Prix Vermeille"
-    },
-    "grade": "G1",
-    "date": "2026-09-13",
-    "start_time": "2026-09-13T14:05:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-09-13",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 2400,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "weight_for_age",
@@ -10802,8 +10744,8 @@
     },
     "grade": "G3",
     "date": "2026-09-13",
-    "start_time": "2026-09-13T14:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-13T14:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-09-13",
     "course": {
@@ -10847,6 +10789,32 @@
     }
   },
   {
+    "id": "2026-nar-local-168",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "園田プリンセスカップ",
+      "en": "Sonoda Princess Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-09-17",
+    "start_time": "2026-09-17T07:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "園田",
+      "en": "Sonoda"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-167",
     "organization": "nar",
     "country_code": "JP",
@@ -10866,32 +10834,6 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-166",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "フローラルカップ",
-      "en": "Floral Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-09-17",
-    "start_time": "2026-09-17T11:35:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "門別",
-      "en": "Mombetsu"
-    },
-    "distance": 1600,
-    "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "2yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -10925,22 +10867,22 @@
     }
   },
   {
-    "id": "2026-nar-local-168",
+    "id": "2026-nar-local-166",
     "organization": "nar",
     "country_code": "JP",
     "name": {
-      "ja": "園田プリンセスカップ",
-      "en": "Sonoda Princess Cup"
+      "ja": "フローラルカップ",
+      "en": "Floral Cup"
     },
     "grade": "local_grade",
     "date": "2026-09-17",
-    "start_time": "2026-09-17T07:15:00.000Z",
+    "start_time": "2026-09-17T11:35:00.000Z",
     "is_time_confirmed": true,
     "course": {
-      "ja": "園田",
-      "en": "Sonoda"
+      "ja": "門別",
+      "en": "Mombetsu"
     },
-    "distance": 1400,
+    "distance": 1600,
     "track_type": "dirt",
     "sex_constraint": "filly_and_mare",
     "age_constraint": "2yo",
@@ -10948,35 +10890,6 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-france-g3-52",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "ベルトラン・ド・タラゴン賞",
-      "en": "Prix Bertrand de Tarragon",
-      "fr": "Prix Bertrand de Tarragon"
-    },
-    "grade": "G3",
-    "date": "2026-09-18",
-    "start_time": "2026-09-18T14:00:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-09-18",
-    "course": {
-      "ja": "シャンティイ",
-      "en": "Chantilly"
-    },
-    "distance": 1800,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
     }
   },
   {
@@ -11006,6 +10919,35 @@
     }
   },
   {
+    "id": "2026-france-g3-46",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "シェーヌ賞",
+      "en": "Prix des Chenes",
+      "fr": "Prix des Chênes"
+    },
+    "grade": "G3",
+    "date": "2026-09-19",
+    "start_time": "2026-09-19T12:02:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-19",
+    "course": {
+      "ja": "シャンティイ",
+      "en": "Chantilly"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-france-g3-53",
     "organization": "france_galop",
     "country_code": "FR",
@@ -11016,8 +10958,8 @@
     },
     "grade": "G3",
     "date": "2026-09-19",
-    "start_time": "2026-09-19T13:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-19T12:37:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-09-19",
     "course": {
@@ -11028,6 +10970,35 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-france-g3-52",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "ベルトラン・ド・タラゴン賞",
+      "en": "Prix Bertrand de Tarragon",
+      "fr": "Prix Bertrand de Tarragon"
+    },
+    "grade": "G3",
+    "date": "2026-09-19",
+    "start_time": "2026-09-19T13:50:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-19",
+    "course": {
+      "ja": "シャンティイ",
+      "en": "Chantilly"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -11191,6 +11162,32 @@
     }
   },
   {
+    "id": "2026-nar-local-174",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "兵庫ジュベナイルカップ",
+      "en": "Hyogo Juvenile Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-09-23",
+    "start_time": "2026-09-23T07:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "園田",
+      "en": "Sonoda"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-173",
     "organization": "nar",
     "country_code": "JP",
@@ -11262,32 +11259,6 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-174",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "兵庫ジュベナイルカップ",
-      "en": "Hyogo Juvenile Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-09-23",
-    "start_time": "2026-09-23T07:15:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "園田",
-      "en": "Sonoda"
-    },
-    "distance": 1400,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",

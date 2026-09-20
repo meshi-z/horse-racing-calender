@@ -8,6 +8,8 @@ export interface ConfirmedRaceTime {
   timeJst: string; // HH:mm
   rawTime: string; // 例: 15時45分
   sourceUrl?: string;
+  raceId?: string;
+  utcIso?: string;
 }
 
 export interface ThisWeekRaceItem {

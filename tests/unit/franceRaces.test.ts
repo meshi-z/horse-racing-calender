@@ -22,10 +22,10 @@ describe('France Races Pipeline and Master Data (Issue #65)', () => {
       fr: 'Chantilly',
     });
 
-    expect(master.races).toHaveLength(114);
+    expect(master.races).toHaveLength(113);
   });
 
-  it('グレード別のレース数が正確であること (G1: 28, G2: 24, G3: 62)', () => {
+  it('グレード別のレース数が正確であること (G1: 28, G2: 24, G3: 61)', () => {
     const master = loadFranceRaceMaster(rootDir);
     const g1 = master.races.filter((r) => r.grade === 'G1');
     const g2 = master.races.filter((r) => r.grade === 'G2');
@@ -33,7 +33,7 @@ describe('France Races Pipeline and Master Data (Issue #65)', () => {
 
     expect(g1).toHaveLength(28);
     expect(g2).toHaveLength(24);
-    expect(g3).toHaveLength(62);
+    expect(g3).toHaveLength(61);
   });
 
   it('全レースが型安全なスキーマ要件を満たしていること', () => {
@@ -49,7 +49,7 @@ describe('France Races Pipeline and Master Data (Issue #65)', () => {
       expect(r.name.fr).toBeTruthy();
       expect(r.date).toMatch(/^2026-\d{2}-\d{2}$/);
       expect(r.start_time).toMatch(/^2026-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.000Z$/);
-      expect(r.is_time_confirmed).toBe(false);
+      expect(typeof r.is_time_confirmed).toBe('boolean');
       expect(r.course.ja).toBeTruthy();
       expect(r.course.en).toBeTruthy();
       expect(r.distance).toBeGreaterThan(0);
@@ -58,6 +58,14 @@ describe('France Races Pipeline and Master Data (Issue #65)', () => {
       expect(['2yo', '3yo', '3yo_and_up', '4yo_and_up']).toContain(r.age_constraint);
       expect(r.handicap.code).toBe('weight_for_age');
     }
+
+    // 過去レース（<= 2026-09-20）はすべて確定ステータス、未来レースは未確定であること
+    const pastRaces = races.filter((r) => r.date <= '2026-09-20');
+    const futureRaces = races.filter((r) => r.date > '2026-09-20');
+    expect(pastRaces).toHaveLength(88);
+    expect(pastRaces.every((r) => r.is_time_confirmed === true)).toBe(true);
+    expect(futureRaces).toHaveLength(25);
+    expect(futureRaces.every((r) => r.is_time_confirmed === false)).toBe(true);
   });
 
   it('凱旋門賞をはじめとする主要G1レースの情報が正しく設定されていること', () => {
@@ -126,12 +134,12 @@ describe('France Races Pipeline and Master Data (Issue #65)', () => {
     expect(winterRace?.start_time).toBe('2026-11-11T14:15:00.000Z');
   });
 
-  it('public/data/races.json に全598レースが保存され、JRA/NARにJP、FranceにFRが付与されていること', () => {
+  it('public/data/races.json に全597レースが保存され、JRA/NARにJP、FranceにFRが付与されていること', () => {
     const racesPath = path.join(rootDir, 'public', 'data', 'races.json');
     expect(fs.existsSync(racesPath)).toBe(true);
     const races: Race[] = JSON.parse(fs.readFileSync(racesPath, 'utf8'));
 
-    expect(races).toHaveLength(598);
+    expect(races).toHaveLength(597);
 
     const jraRaces = races.filter((r) => r.organization === 'jra');
     const narRaces = races.filter((r) => r.organization === 'nar');
@@ -139,7 +147,7 @@ describe('France Races Pipeline and Master Data (Issue #65)', () => {
 
     expect(jraRaces).toHaveLength(140);
     expect(narRaces).toHaveLength(344);
-    expect(franceRaces).toHaveLength(114);
+    expect(franceRaces).toHaveLength(113);
 
     expect(jraRaces.every((r) => r.country_code === 'JP')).toBe(true);
     expect(narRaces.every((r) => r.country_code === 'JP')).toBe(true);
