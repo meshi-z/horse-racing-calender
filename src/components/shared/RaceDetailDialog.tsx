@@ -15,6 +15,7 @@ import {
   ageConstraintLabels,
 } from "@/libs/i18n";
 import type { Race } from "@/types/race";
+import { cn } from "@/libs/utils";
 import { Calendar, Clock, MapPin, AlertTriangle } from "lucide-react";
 
 export interface RaceDetailDialogProps {
@@ -50,9 +51,19 @@ export function RaceDetailDialog({
         <DialogHeader className="space-y-2">
           <div className="flex items-center gap-2">
             <GradeBadge grade={race.grade} />
-            <span className="text-xs text-muted-foreground uppercase font-mono">
-              {race.organization}
-            </span>
+            <Badge
+              variant="outline"
+              className={cn(
+                "text-[10px] px-1.5 py-0 h-5 font-bold tracking-wider",
+                race.organization === "jra"
+                  ? "border-blue-500/40 text-blue-700 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/30"
+                  : "border-emerald-500/40 text-emerald-700 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/30"
+              )}
+            >
+              {race.organization === "jra"
+                ? language === "en" ? "JRA" : "JRA (中央)"
+                : language === "en" ? "NAR" : "地方競馬 (NAR)"}
+            </Badge>
           </div>
           <DialogTitle className="text-xl font-bold tracking-tight">
             {primaryName}

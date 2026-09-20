@@ -262,4 +262,95 @@ describe("FilterBar", () => {
       expect(useRaceStore.getState().filters.grades).toEqual([]);
     });
   });
+
+  describe("NAR全重賞・ばんえい競馬・新グレード対応 (Step 20 - Phase 3)", () => {
+    it("主催者セグメントコントロールで JRA / NAR / All を切り替えられること", () => {
+      render(<FilterBar />);
+      const jraBtn = screen.getByRole("button", { name: "JRA (中央)" });
+      const narBtn = screen.getByRole("button", { name: "地方競馬 (NAR)" });
+      const allBtn = screen.getByRole("button", { name: "すべて" });
+
+      // JRA を選択
+      fireEvent.click(jraBtn);
+      expect(useRaceStore.getState().filters.organization).toBe("jra");
+
+      // NAR を選択
+      fireEvent.click(narBtn);
+      expect(useRaceStore.getState().filters.organization).toBe("nar");
+
+      // すべて を選択
+      fireEvent.click(allBtn);
+      expect(useRaceStore.getState().filters.organization).toBe("all");
+    });
+
+    it("ダートグレード(Jpn1)、南関重賞(S1)、地方重賞(local_grade)がトグル選択できること", () => {
+      render(<FilterBar />);
+      const jpn1Btn = screen.getByRole("button", { name: "Jpn1" });
+      const s1Btn = screen.getByRole("button", { name: "S1" });
+      const localBtn = screen.getByRole("button", { name: "地方重賞" });
+
+      fireEvent.click(jpn1Btn);
+      expect(useRaceStore.getState().filters.grades).toContain("Jpn1");
+
+      fireEvent.click(s1Btn);
+      expect(useRaceStore.getState().filters.grades).toContain("S1");
+
+      fireEvent.click(localBtn);
+      expect(useRaceStore.getState().filters.grades).toContain("local_grade");
+
+      // 解除
+      fireEvent.click(jpn1Btn);
+      expect(useRaceStore.getState().filters.grades).not.toContain("Jpn1");
+    });
+
+    it("ダートグレード一括トグルで Jpn1〜Jpn3 がまとめて選択・解除できること", () => {
+      render(<FilterBar />);
+      const dirtGroupBtn = screen.getByRole("button", { name: "ダートグレード一括" });
+
+      // 一括選択
+      fireEvent.click(dirtGroupBtn);
+      expect(useRaceStore.getState().filters.grades).toEqual(
+        expect.arrayContaining(["Jpn1", "Jpn2", "Jpn3"])
+      );
+
+      // 再度クリックで一括解除
+      fireEvent.click(dirtGroupBtn);
+      expect(useRaceStore.getState().filters.grades).not.toEqual(
+        expect.arrayContaining(["Jpn1", "Jpn2", "Jpn3"])
+      );
+    });
+
+    it("馬場種別の「ばんえい」ボタンをクリックすると store.filters.trackTypes に banei が反映されること", () => {
+      render(<FilterBar />);
+      const baneiBtn = screen.getByRole("button", { name: "ばんえい" });
+
+      fireEvent.click(baneiBtn);
+      expect(useRaceStore.getState().filters.trackTypes).toContain("banei");
+
+      fireEvent.click(baneiBtn);
+      expect(useRaceStore.getState().filters.trackTypes).not.toContain("banei");
+    });
+
+    it("競馬場パネルで4つのグループ（中央、南関、その他地方、ばんえい）が表示され、グループ一括選択ができること", () => {
+      render(<FilterBar />);
+      const expandBtn = screen.getByRole("button", { name: "競馬場フィルターを展開" });
+      fireEvent.click(expandBtn);
+
+      // グループ見出しの確認
+      expect(screen.getByText("中央競馬 (JRA)")).toBeInTheDocument();
+      expect(screen.getByText("南関東 (NAR)")).toBeInTheDocument();
+      expect(screen.getByText("その他地方 (NAR)")).toBeInTheDocument();
+      expect(screen.getByText("ばんえい (NAR)")).toBeInTheDocument();
+
+      // ばんえい競馬場（帯広）を選択
+      const obihiroBtn = screen.getByRole("button", { name: "帯広" });
+      fireEvent.click(obihiroBtn);
+      expect(useRaceStore.getState().filters.courses).toContain("帯広");
+
+      // 南関競馬（大井）を選択
+      const oiBtn = screen.getByRole("button", { name: "大井" });
+      fireEvent.click(oiBtn);
+      expect(useRaceStore.getState().filters.courses).toContain("大井");
+    });
+  });
 });

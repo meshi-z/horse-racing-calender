@@ -33,6 +33,7 @@ describe("App Integration", () => {
       viewMode: "timeline",
       currentYearMonth: { year: 2026, month: 2 },
       filters: {
+        organization: "all",
         searchQuery: "",
         grades: [],
         trackTypes: [],
@@ -110,7 +111,7 @@ describe("App Integration", () => {
     const { rerender } = render(<App />);
 
     expect(document.documentElement.lang).toBe("ja");
-    expect(document.title).toBe("重賞カレンダー - JRA重賞レーススケジュール");
+    expect(document.title).toBe("重賞カレンダー - JRA & NAR 重賞レーススケジュール");
     expect(screen.getByText("該当レース: 1 件")).toBeInTheDocument();
     expect(screen.getByText("表示: タイムライン")).toBeInTheDocument();
 
@@ -119,7 +120,7 @@ describe("App Integration", () => {
     rerender(<App />);
 
     expect(document.documentElement.lang).toBe("en");
-    expect(document.title).toBe("JRA Graded Races Calendar - Schedule & Details");
+    expect(document.title).toBe("Graded Races - JRA & NAR Graded Races Calendar");
     expect(screen.getByText("Matching races: 1")).toBeInTheDocument();
     expect(screen.getByText("View: Timeline")).toBeInTheDocument();
   });

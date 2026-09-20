@@ -1,8 +1,13 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { GradeBadge } from "../../src/components/shared/GradeBadge";
+import { useLanguageStore } from "../../src/store/useLanguageStore";
 
 describe("GradeBadge", () => {
+  beforeEach(() => {
+    useLanguageStore.setState({ language: "ja" });
+  });
+
   it("G1 バッジが正しくレンダリングされ、G1 のセマンティックスタイルが適用されること", () => {
     render(<GradeBadge grade="G1" />);
     const badge = screen.getByLabelText("グレード: G1");
@@ -44,6 +49,53 @@ describe("GradeBadge", () => {
     const badgeJG3 = screen.getByLabelText("グレード: J.G3");
     expect(badgeJG3).toHaveTextContent("J.G3");
     expect(badgeJG3).toHaveClass("bg-grade-g3");
+  });
+
+  it("ダートグレード (Jpn1, Jpn2, Jpn3) が適切なスタイルでレンダリングされること", () => {
+    const { rerender } = render(<GradeBadge grade="Jpn1" />);
+    const badge1 = screen.getByLabelText("グレード: Jpn1");
+    expect(badge1).toHaveTextContent("Jpn1");
+    expect(badge1).toHaveClass("bg-grade-jpn1");
+
+    rerender(<GradeBadge grade="Jpn2" />);
+    const badge2 = screen.getByLabelText("グレード: Jpn2");
+    expect(badge2).toHaveTextContent("Jpn2");
+    expect(badge2).toHaveClass("bg-grade-jpn2");
+
+    rerender(<GradeBadge grade="Jpn3" />);
+    const badge3 = screen.getByLabelText("グレード: Jpn3");
+    expect(badge3).toHaveTextContent("Jpn3");
+    expect(badge3).toHaveClass("bg-grade-jpn3");
+  });
+
+  it("南関東重賞 (S1, S2, S3) が適切なスタイルでレンダリングされること", () => {
+    const { rerender } = render(<GradeBadge grade="S1" />);
+    const badge1 = screen.getByLabelText("グレード: S1");
+    expect(badge1).toHaveTextContent("S1");
+    expect(badge1).toHaveClass("bg-grade-s1");
+
+    rerender(<GradeBadge grade="S2" />);
+    const badge2 = screen.getByLabelText("グレード: S2");
+    expect(badge2).toHaveTextContent("S2");
+    expect(badge2).toHaveClass("bg-grade-s2");
+
+    rerender(<GradeBadge grade="S3" />);
+    const badge3 = screen.getByLabelText("グレード: S3");
+    expect(badge3).toHaveTextContent("S3");
+    expect(badge3).toHaveClass("bg-grade-s3");
+  });
+
+  it("地方重賞 (local_grade) が日本語・英語で正しくレンダリングされること", () => {
+    const { rerender } = render(<GradeBadge grade="local_grade" />);
+    const badgeJa = screen.getByLabelText("グレード: 地方重賞");
+    expect(badgeJa).toHaveTextContent("地方重賞");
+    expect(badgeJa).toHaveClass("bg-grade-local");
+
+    useLanguageStore.setState({ language: "en" });
+    rerender(<GradeBadge grade="local_grade" />);
+    const badgeEn = screen.getByLabelText("Grade: Regional");
+    expect(badgeEn).toHaveTextContent("Regional");
+    expect(badgeEn).toHaveClass("bg-grade-local");
   });
 
   it("children を渡した場合はカスタムテキストが表示されること", () => {

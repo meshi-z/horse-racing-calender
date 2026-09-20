@@ -58,6 +58,7 @@ describe("TimelineView", () => {
     useLanguageStore.setState({ language: "ja" });
     useRaceStore.setState({
       filters: {
+        organization: "all",
         searchQuery: "",
         grades: [],
         trackTypes: [],

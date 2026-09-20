@@ -227,6 +227,16 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                             grade={race.grade}
                             className="text-[9px] px-1 py-0 h-3.5 shrink-0"
                           />
+                          <span
+                            className={cn(
+                              "text-[8px] px-1 py-0.5 rounded font-mono font-bold leading-none",
+                              race.organization === "jra"
+                                ? "text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40"
+                                : "text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40"
+                            )}
+                          >
+                            {race.organization.toUpperCase()}
+                          </span>
                           {race.is_rescheduled && (
                             <Badge
                               variant="outline"

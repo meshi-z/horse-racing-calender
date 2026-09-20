@@ -73,9 +73,20 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
           {...props}
         >
           <CardContent className="p-4 sm:p-5 flex flex-col gap-3">
-            {/* 上部: 開催日・発走時刻・発走予定バッジ・代替開催バッジ */}
+            {/* 上部: 主催者タグ・開催日・発走時刻・発走予定バッジ・代替開催バッジ */}
             <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
               <div className="flex items-center gap-1.5 font-medium flex-wrap">
+                <Badge
+                  variant="outline"
+                  className={cn(
+                    "text-[10px] px-1.5 py-0 h-4 font-bold tracking-wider",
+                    race.organization === "jra"
+                      ? "border-blue-500/40 text-blue-700 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/30"
+                      : "border-emerald-500/40 text-emerald-700 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/30"
+                  )}
+                >
+                  {race.organization.toUpperCase()}
+                </Badge>
                 <Calendar className="h-3.5 w-3.5 shrink-0" />
                 <span>{formattedDate}</span>
                 {isToday && (

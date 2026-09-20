@@ -4,10 +4,23 @@ export type LocalizedText = {
 };
 
 export type Organization = 'jra' | 'nar' | 'overseas';
-export type TrackType = 'turf' | 'dirt' | 'obstacle';
+export type TrackType = 'turf' | 'dirt' | 'obstacle' | 'banei';
 export type SexConstraint = 'filly_and_mare' | 'colt_and_filly' | 'none';
 export type AgeConstraint = '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up';
-export type Grade = 'G1' | 'G2' | 'G3' | 'J.G1' | 'J.G2' | 'J.G3';
+export type Grade =
+  | 'G1'
+  | 'G2'
+  | 'G3'
+  | 'J.G1'
+  | 'J.G2'
+  | 'J.G3'
+  | 'Jpn1'
+  | 'Jpn2'
+  | 'Jpn3'
+  | 'S1'
+  | 'S2'
+  | 'S3'
+  | 'local_grade';
 export type HandicapCode = 'weight_for_age' | 'special_weight' | 'set_weight' | 'handicap';
 
 export type Handicap = {
@@ -37,6 +50,7 @@ export type Race = {
 export type DistanceCategory = 'sprint' | 'mile' | 'intermediate' | 'long';
 
 export type FilterState = {
+  organization: 'all' | 'jra' | 'nar';
   searchQuery: string;
   grades: Grade[];
   trackTypes: TrackType[];

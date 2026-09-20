@@ -25,7 +25,7 @@ export interface RaceOutput {
     en: string;
   };
   distance: number;
-  track_type: 'turf' | 'dirt' | 'obstacle';
+  track_type: 'turf' | 'dirt' | 'obstacle' | 'banei';
   sex_constraint: 'none' | 'filly_and_mare' | 'colt_and_filly';
   age_constraint: '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up';
   handicap: {
@@ -84,6 +84,27 @@ export function getJraUpcomingWeekendRange(refDateStr: string): { startDate: str
 }
 
 /**
+ * 基準日 (YYYY-MM-DD) からNARの当週開催期間（基準日〜7日間）の範囲を算出
+ */
+export function getNarUpcomingWindowRange(refDateStr: string, windowDays = 7): { startDate: string; endDate: string } {
+  const [y, m, d] = refDateStr.split('-').map(Number);
+  const ref = new Date(Date.UTC(y, m - 1, d));
+  const end = new Date(ref.getTime() + (windowDays - 1) * 86400000);
+
+  const formatYmd = (dt: Date) => {
+    const yr = dt.getUTCFullYear();
+    const mo = String(dt.getUTCMonth() + 1).padStart(2, '0');
+    const da = String(dt.getUTCDate()).padStart(2, '0');
+    return `${yr}-${mo}-${da}`;
+  };
+
+  return {
+    startDate: formatYmd(ref),
+    endDate: formatYmd(end),
+  };
+}
+
+/**
  * JRA（中央競馬）向けプロバイダー実装
  */
 export class JraRaceTimeFetcher implements RaceTimeFetcher {
@@ -105,13 +126,42 @@ export class JraRaceTimeFetcher implements RaceTimeFetcher {
 }
 
 /**
- * 登録済みフェッチャープロバイダーのマップ（将来 NAR, Overseas をここに追加可能）
+ * NAR（地方競馬）向けプロバイダー実装
+ */
+export class NarRaceTimeFetcher implements RaceTimeFetcher {
+  readonly organization = 'nar';
+  private localFixturePath?: string;
+
+  constructor(options?: { localFixturePath?: string }) {
+    this.localFixturePath = options?.localFixturePath;
+  }
+
+  getTargetWindowRaces(races: RaceOutput[], refDate: string): RaceOutput[] {
+    const { startDate, endDate } = getNarUpcomingWindowRange(refDate);
+    return races.filter(
+      (r) =>
+        r.organization === this.organization &&
+        ((r.date >= startDate && r.date <= endDate) ||
+          (r.original_date && r.original_date >= startDate && r.original_date <= endDate))
+    );
+  }
+
+  async fetchConfirmedTimes(targetRaces: RaceOutput[]): Promise<ConfirmedRaceTime[]> {
+    const year = targetRaces.length > 0 ? Number(targetRaces[0].date.slice(0, 4)) : new Date().getFullYear();
+    const { fetchNarConfirmedRaceTimes } = await import('./lib/nar-syutsuba');
+    return await fetchNarConfirmedRaceTimes({
+      year,
+      localFixturePath: this.localFixturePath,
+    });
+  }
+}
+
+/**
+ * 登録済みフェッチャープロバイダーのマップ（JRA, NAR対応）
  */
 export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
   jra: new JraRaceTimeFetcher(),
-  // 将来の拡張例:
-  // nar: new NarRaceTimeFetcher(),
-  // overseas: new OverseasRaceTimeFetcher(),
+  nar: new NarRaceTimeFetcher(),
 };
 
 export interface UpdateOptions {

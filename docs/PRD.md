@@ -66,20 +66,19 @@ v1.16.0 で導入されたUI多言語（日/英）対応（i18n）基盤の上�
   - `localStorage`（キー: `language`）による永続化およびブラウザ言語自動フォールバック判定。
   - レースデータ、カレンダー、フィルター、モーダル、静的文言の日英動的切り替え。
 
-### フェーズ2 (開発着手スコープ: v1.17.0)
+### フェーズ2 (実装完了スコープ: v1.17.0)
 
-- **NAR（地方競馬）全重賞 & ばんえい競馬対応 [開発着手 / Current]**:
-  - **NAR公式データスクレイピング**: NAR公式スケジュール（`schedule_2026.html`）からダートグレード・南関東重賞・各地区地方重賞・ばんえい重賞を抽出。
-  - **グレード標準化体系**: ダートグレード（`Jpn1`〜`Jpn3`、国際G1は `G1`）、南関東重賞（`S1`〜`S3`）、その他地区重賞（`local_grade` / 地方重賞）の正規化。
-  - **馬場種別 `banei` の新設**: 直線200mそりレース（帯広）を独立種別として構造化。
-  - **英語表記マスター & ヘボン式ローマ字フォールバック**: `nar_race_master.json` の策定と自動ローマ字変換。
-  - **競馬場別デフォルト発走時刻**: ナイター場（`20:05`）、昼間場（`16:30`）、ばんえい（`19:30`）の推定値割り当て。
-  - **UI/UX 拡張**: 主催者（All/JRA/NAR）フィルター、グレードグループ一括選択、全国25競馬場のグルーピング選択、馬場「ばんえい」チップ、WCAG 2.1 AA準拠の新グレードバッジ。
+- **NAR（地方競馬）全重賞 & ばんえい競馬対応 [完了]**:
+  - **NAR公式データスクレイピング**: NAR公式スケジュール（`schedule_2026.html`）からダートグレード・南関東重賞・各地区地方重賞・ばんえい重賞を抽出 [完了]。
+  - **グレード標準化体系**: ダートグレード（`Jpn1`〜`Jpn3`、国際G1は `G1`）、南関東重賞（`S1`〜`S3`）、その他地区重賞（`local_grade` / 地方重賞）の正規化 [完了]。
+  - **馬場種別 `banei` の新設**: 直線200mそりレース（帯広）を独立種別として構造化 [完了]。
+  - **英語表記マスター & ヘボン式ローマ字フォールバック**: `nar_race_master.json` の策定と自動ローマ字変換 [完了]。
+  - **競馬場別デフォルト発走時刻**: ナイター場（`20:05`）、昼間場（`16:30`）、ばんえい（`19:30`）の推定値割り当て [完了]。
+  - **当週NAR確定発走時刻自動取得**: `RaceTimeFetcher` プロバイダーアーキテクチャへの `NarRaceTimeFetcher` 追加とダートグレード競走日程からの確定時刻自動更新 [完了]。
+  - **UI/UX 拡張**: 主催者（All/JRA/NAR）フィルター、グレードグループ一括選択、全国25競馬場のグルーピング選択、馬場「ばんえい」チップ、WCAG 2.1 AA準拠の新グレードバッジ [完了]。
 
 ### フェーズ2 (将来拡張スコープ: v1.17.1〜)
 
-- **当週NARレース確定発走時刻の自動取得**:
-  - `RaceTimeFetcher` プロバイダーアーキテクチャへの `NarRaceTimeFetcher` 追加。
 - **海外主要レースの拡張**:
   - `OverseasRaceTimeFetcher` の追加と凱旋門賞、ブリーダーズカップ等のデータ統合。
 - **リアルタイム馬場状態・天候情報の表示**:
@@ -318,6 +317,7 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
 
 - **JRA重賞レースソース**: [JRA重賞レース一覧](https://www.jra.go.jp/datafile/seiseki/replay/2026/jyusyo.html) および 公式カレンダー `.ics`
 - **NAR重賞レースソース**: [NARダートグレード競走・重賞競走年間実施スケジュール](https://www.keiba.go.jp/gradedrace/schedule_2026.html)
+- **NARダートグレード競走日程・確定時刻ソース**: [NARダートグレード競走年間日程・出馬表](https://www.keiba.go.jp/dirtgraderace/2026/racelist/) (`https://www.keiba.go.jp/dirtgraderace/{YYYY}/racelist/`)
 - **用語マスターソース**: [海外競馬英和辞典](https://www.jra.go.jp/keiba/overseas/yougo/index.html)
 
 ### 5.2 データパース & 分割ルール
@@ -367,18 +367,38 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
   - **ばんえい競馬**（帯広）: 原則 `19:30` JST
 
 #### F. 発走時刻の決定 & 確定データ保護パイプライン
-発走時刻は「年間推定値」と「直前確定値」の2段階で管理し、プロバイダーアーキテクチャ（Strategyパターン）を採用。
+発走時刻は「年間推定値」と「直前確定値」の2段階で管理し、プロバイダーアーキテクチャ（Strategyパターン）を採用して JRA / NAR の双方に対応。
 
 1. **年間ビルド時（`parse-races.ts` & NARマージ）**:
    - JRA平地（関東: `15:40` JST、関西: `15:45` JST、北海道: `15:35` JST）、障害（`13:50`〜`14:45` JST）。
    - NARナイター（`20:05` JST）、NAR昼間（`16:30` JST）、ばんえい（`19:30` JST）を初期値として設定。
    - **確定発走時刻・代替開催情報の保持機能 (`preserveConfirmedRaceTimes`)**:
      年間データ再生成時、既存の `races.json` に存在する確定済み発走時刻（`is_time_confirmed: true`）や代替開催フラグ（`is_rescheduled: true`, `original_date`）を自動退避し、再パース後の新規データへ復元・マージする。
-2. **開催直前自動バッチパイプライン（`update-race-times.ts` & 将来の `NarRaceTimeFetcher`）**:
-   - **取得ソース**: JRA公式「今週の注目レース」および出馬表詳細ページ（将来はNAR公式出馬表）から確定発走時刻をスクレイピング取得。
-   - **早期終了ガード**: 当週の全レースが確定済みの場合はリモートアクセスを即座に中断。
-   - **指数バックオフリトライ**: 最大3回のエラー再試行。
-   - **定期実行**: GitHub Actions により木・金・土・日（NAR拡張時は全日対応）に定期実行（cron）し、差分発生時のみ自動コミット・デプロイ。
+2. **開催直前自動バッチパイプライン（`update-race-times.ts` & プロバイダーアーキテクチャ）**:
+   - **プロバイダーインターフェース (`RaceTimeFetcher`)**:
+     主催者ごとの取得戦略（Strategyパターン）をカプセル化。
+     ```typescript
+     export interface RaceTimeFetcher {
+       readonly organization: string;
+       getTargetWindowRaces(races: RaceOutput[], refDate: string): RaceOutput[];
+       fetchConfirmedTimes(targetRaces: RaceOutput[]): Promise<ConfirmedRaceTime[]>;
+     }
+     ```
+   - **JRA向けプロバイダー (`JraRaceTimeFetcher`)**:
+     - 対象ウィンドウ: 木曜〜翌月曜（`getJraUpcomingWeekendRange`）。
+     - 取得ソース: JRA公式「今週の注目レース」および出馬表詳細ページ（`scripts/lib/jra-syutsuba.ts`）。
+   - **NAR向けプロバイダー (`NarRaceTimeFetcher`)**:
+     - 対象ウィンドウ: 基準日〜直近7日間のローリングウィンドウ（`getNarUpcomingWindowRange`）。
+     - 取得ソース: NAR公式ダートグレード競走日程・出馬表（`scripts/lib/nar-syutsuba.ts`, `https://www.keiba.go.jp/dirtgraderace/{YYYY}/racelist/`）。
+     - レース名（正規化突合）および開催日の一致により、ダートグレード競走（Jpn1〜Jpn3）および国際G1（東京大賞典等）の確定発走時刻を自動取得。
+   - **早期終了ガード**:
+     各プロバイダーの対象ウィンドウ内に未確定（`is_time_confirmed: false`）レースが存在しない場合、リモートHTTPリクエストをスキップして即座に終了。
+   - **指数バックオフリトライ**:
+     HTTP 429 / 5xx エラー等の一時的障害に対し、最大3回の指数バックオフ再試行を実行。
+   - **CLI実行オプション**:
+     `npm run data:update-times -- --org=jra|nar|all` により、主催者ごとの単独更新および一括更新に対応。
+   - **定期実行**:
+     GitHub Actions ワークフロー（`update-race-times.yml`）により定期実行（cron）し、差分発生時のみ自動コミット・GitHub Pagesデプロイ。
 
 ---
 
@@ -518,7 +538,7 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
 | **アイコン** | Lucide React + 新公式アプリアイコン | 洗練されたベクターアイコンセットおよび独自最適化アセット。 |
 | **状態管理** | Zustand 5 | 軽量・最小限のボイラープレートでフィルター・主催者・ビュー切替状態を管理。 |
 | **多言語化 (i18n)** | Zustand 5 + 自前軽量UI辞書 | 外部巨大ライブラリ不要。バンドルサイズ増加0で言語ストア（`useLanguageStore`）を構築、`localStorage` 永続化とブラウザ言語自動フォールバック。 |
-| **データパイプライン / スクレイピング** | Cheerio + Axios + 自前ヘボン式ローマ字パーサー | JRAおよびNAR公式HTMLの高速パース、正規化、型安全なJSON生成。 |
+| **データパイプライン / スクレイピング** | Cheerio + Axios + 自前ヘボン式ローマ字パーサー | JRAおよびNAR公式HTMLの高速パース、正規化、型安全なJSON生成。`RaceTimeFetcher` プロバイダー（JRA/NAR）による確定発走時刻自動更新。 |
 | **テスト基盤** | Vitest 5 + Testing Library + jsdom | 高速なインメモリテスト、コンポーネント操作およびa11yの網羅的検証。 |
 | **PWA / キャッシュ** | vite-plugin-pwa (Workbox) | 静的リソースとレースデータの完全オフラインキャッシュ、自動画面更新。 |
 | **SEO & 分析** | Google Analytics 4 (gtag.js) + JSON-LD | 利用状況分析およびSchema.orgによる検索結果リッチスニペット対応。 |
@@ -548,23 +568,25 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
 17. **Step 17:** Google Analytics 4（gtag.js）の導入、メタタグ・OGP・構造化データ（SportsEvent / WebSite）・robots・sitemap による包括的SEO最適化。[完了]
 18. **Step 18:** 年間データ再ビルド時の確定発走時刻・代替開催情報保持機能（`preserveConfirmedRaceTimes`）の追加、斤量日本語表記最適化（`v1.15.1` リリース）。[完了]
 19. **Step 19:** UI多言語（日/英）対応の実装（`v1.16.0`）。[完了]
-20. **Step 20 (Current / v1.17.0): NAR全重賞 & ばんえい競馬データパイプラインおよびUI対応 [開発着手 / Current]**
-    - **Phase 1: NARスクレイパー & 補完マスター基盤の構築**
+20. **Step 20 (Current / v1.17.0): NAR全重賞 & ばんえい競馬データパイプラインおよびUI対応 [完了]**
+    - **Phase 1: NARスクレイパー & 補完マスター基盤の構築 [完了]**
       - NAR公式スケジュール（`schedule_2026.html`）スクレイパーの実装。
       - `src/data/nar_race_master.json`（日英辞書、未登録レース向けヘボン式ローマ字変換フォールバック、競馬場別推定発走時刻定義）の作成。
       - グレード正規化（`Jpn1〜3`, `S1〜3`, `local_grade`）および馬場種別 `banei`（直線200m）判定ロジックの実装。
-    - **Phase 2: データ統合 & 型安全マージパイプラインの実装**
+    - **Phase 2: データ統合 & 型安全マージパイプラインの実装 [完了]**
       - `public/data/races.json` への JRA/NAR 統合マージ処理（ID体系: `{YYYY}-nar-{grade_code}-{index}`）。
       - TypeScript型定義（`src/types/race.ts`）の拡張（`organization: 'nar'`, `track_type: 'banei'`, 拡張 `Grade`）。
       - `preserveConfirmedRaceTimes` の NAR 対応検証。
-    - **Phase 3: フロントエンド & デザインシステム対応**
+    - **Phase 3: フロントエンド & デザインシステム対応 [完了]**
       - グレードバッジ（`Jpn1〜3`, `S1〜3`, `local_grade`）のTailwind CSS変数およびスタイル定義（WCAG 2.1 AA準拠）。
       - `FilterBar`: 主催者（All/JRA/NAR）セグメント、グレードグループ一括選択Popover、全国25場のグルーピングSelect（中央・南関・その他地方・ばんえい）、馬場「ばんえい」チップの実装。
       - `RaceDetailDialog`, `RaceCard`, `CalendarView` での NAR/ばんえい表示対応。
       - 免責事項モーダル（`DisclaimerDialog`）のNAR各団体注記の追記。
-21. **Step 21 (Next): 当週NARレース確定発走時刻自動取得（`NarRaceTimeFetcher`）の実装**
-    - NAR公式サイト出馬表からの確定発走時刻自動スクレイピングプロバイダーの作成。
-    - 毎日/直前のGitHub Actions更新バッチへの統合。
-22. **Step 22 (Future): 海外主要レース拡張 & リアルタイム馬場・天候情報**
+    - **Phase 4: 当週NARレース確定発走時刻自動取得（`NarRaceTimeFetcher`）の実装 [完了]**
+      - NARダートグレード競走日程・出馬表スクレイパー（`scripts/lib/nar-syutsuba.ts`）の実装。
+      - `RaceTimeFetcher` プロバイダーアーキテクチャへの `NarRaceTimeFetcher` 追加と `DEFAULT_FETCHERS` への登録（直近7日間ウィンドウ抽出、早期終了ガード、指数バックオフ、`--org=nar` サポート）。
+      - 単体テスト（`tests/unit/narSyutsuba.test.ts`）および更新バッチ統合テスト（`tests/unit/updateRaceTimes.test.ts`）の作成・全テストパス。
+      - `public/data/races.json` のダートグレード40競走の確定発走時刻更新・反映（`is_time_confirmed: true`）。
+21. **Step 21 (Next): 海外主要レース拡張 & リアルタイム馬場・天候情報**
     - `OverseasRaceTimeFetcher` の追加と凱旋門賞、ブリーダーズカップ等のデータ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

@@ -67,7 +67,17 @@ export const translations = {
       clearSearchAria: '検索キーワードをクリア',
       resetFilterAria: 'フィルターをリセット',
       reset: 'リセット',
+      orgLabel: '主催者:',
+      orgAll: 'すべて',
+      orgJra: 'JRA (中央)',
+      orgNar: '地方競馬 (NAR)',
       gradeLabel: 'グレード:',
+      gradeGroupJra: 'JRA重賞',
+      gradeGroupDart: 'ダートグレード',
+      gradeGroupNankanto: '南関東重賞',
+      gradeGroupRegional: '地方重賞',
+      selectAll: '一括選択',
+      clearGroup: '解除',
       trackLabel: '馬場:',
       distanceLabel: '距離:',
       courseLabel: '競馬場',
@@ -78,7 +88,7 @@ export const translations = {
       clear: 'クリア',
       removeCourseAria: '{course}の絞り込みを解除',
       distanceFilterAria: '距離フィルター: {label}（{description}）',
-      appDocTitle: '重賞カレンダー - JRA重賞レーススケジュール',
+      appDocTitle: '重賞カレンダー - JRA & NAR 重賞レーススケジュール',
       matchedRaces: '該当レース: {count} 件',
       viewModeLabel: '表示: {mode}',
       viewModeTimeline: 'タイムライン',
@@ -91,16 +101,16 @@ export const translations = {
       title: '免責事項・データ出典',
       description: '本アプリの利用に関する規約、データの取り扱い、および免責規定です。',
       fanSiteTitle: '非公式ファンサイトについて',
-      fanSiteBody: '本サービス（重賞カレンダー）は、個人が開発・運営する非公式のファンサイトです。日本中央競馬会（JRA）およびその他の競馬主催団体、関連機関とは一切関係ありません。',
+      fanSiteBody: '本サービス（重賞カレンダー）は、個人が開発・運営する非公式のファンサイトです。日本中央競馬会（JRA）、地方競馬全国協会（NAR）、各地方競馬主催者（道営、岩手、南関東4場、金沢、愛知、笠松、兵庫、高知、佐賀、ばんえい帯広）およびその他の関連団体とは一切関係ありません。',
       dataSourceTitle: 'データの出典',
-      dataSourceBody: '本アプリで掲載しているレース日程、発走予定時刻、出走条件（コース・距離・出走資格・斤量等）のデータは、JRA（日本中央競馬会）公式サイト等で一般公開されている公式情報（カレンダーファイル、重賞一覧、確定出馬表等）を取得・加工して提供しています。',
+      dataSourceBody: '本アプリで掲載しているレース日程、発走予定時刻、出走条件（コース・距離・出走資格・斤量等）のデータは、JRA（日本中央競馬会）公式サイトおよびNAR（地方競馬全国協会）公式サイト等で一般公開されている公式情報（カレンダーファイル、重賞一覧、確定出馬表等）を取得・加工して提供しています。',
       changesTitle: '開催変更・公式発表確認の推奨と免責事項',
       changesP1: 'レースの日程、発走時刻、出走馬、斤量等の情報は、天候悪化・自然災害や主催者の都合等により、予告なく変更・中止・延期（代替開催・続行競馬等）となる場合があります。',
-      changesP2: '情報の正確性・網羅性には細心の注意を払っておりますが、リアルタイム性や完全性を保証するものではありません。馬券の購入、現地観戦、遠征等の際は、必ず主催者（JRA等）公式発表の最新情報をご確認ください。',
-      changesP2Strong: '馬券の購入、現地観戦、遠征等の際は、必ず主催者（JRA等）公式発表の最新情報をご確認ください。',
+      changesP2: '情報の正確性・網羅性には細心の注意を払っておりますが、リアルタイム性や完全性を保証するものではありません。馬券の購入、現地観戦、遠征等の際は、必ず主催者（JRA・NAR等）公式発表の最新情報をご確認ください。',
+      changesP2Strong: '馬券の購入、現地観戦、遠征等の際は、必ず主催者（JRA・NAR等）公式発表の最新情報をご確認ください。',
       changesP3: '本サービスの利用、または利用できなかったことにより生じたあらゆる直接的・間接的な損害・トラブル（馬券投票結果、交通・宿泊費用等を含むがこれらに限定されません）について、本サービスの開発者および運営者は一切の責任を負いません。',
       rightsTitle: '権利・商標の帰属',
-      rightsBody: '本サービスに記載されているレース名、競馬場名、主催団体名等の名称、商標およびロゴ等の知的財産権は、日本中央競馬会（JRA）ならびに各権利者に帰属します。',
+      rightsBody: '本サービスに記載されているレース名、競馬場名、主催団体名等の名称、商標およびロゴ等の知的財産権は、各主催者（JRA、NAR、各地方競馬主催者等）ならびに各権利者に帰属します。',
       analyticsTitle: 'アクセス解析ツール（Google Analytics）について',
       analyticsP1: '本サービスでは、利用状況の把握や機能改善・利便性向上のため、Google社が提供するアクセス解析ツール「Google Analytics（GA4）」を利用しています。',
       analyticsP2: 'Google Analyticsはデータの収集のためにCookie（クッキー）を使用しています。このデータは匿名で収集されており、個人を特定する情報は含まれません。',
@@ -185,7 +195,17 @@ export const translations = {
       clearSearchAria: 'Clear search keyword',
       resetFilterAria: 'Reset filters',
       reset: 'Reset',
+      orgLabel: 'Organization:',
+      orgAll: 'All',
+      orgJra: 'JRA',
+      orgNar: 'NAR',
       gradeLabel: 'Grade:',
+      gradeGroupJra: 'JRA Grades',
+      gradeGroupDart: 'Dirt Grades',
+      gradeGroupNankanto: 'Minami Kanto',
+      gradeGroupRegional: 'Regional Grades',
+      selectAll: 'Select All',
+      clearGroup: 'Clear',
       trackLabel: 'Track:',
       distanceLabel: 'Distance:',
       courseLabel: 'Courses',
@@ -196,7 +216,7 @@ export const translations = {
       clear: 'Clear',
       removeCourseAria: 'Remove {course} filter',
       distanceFilterAria: 'Distance filter: {label} ({description})',
-      appDocTitle: 'JRA Graded Races Calendar - Schedule & Details',
+      appDocTitle: 'Graded Races - JRA & NAR Graded Races Calendar',
       matchedRaces: 'Matching races: {count}',
       viewModeLabel: 'View: {mode}',
       viewModeTimeline: 'Timeline',
@@ -209,16 +229,16 @@ export const translations = {
       title: 'Disclaimer & Data Sources',
       description: 'Terms of use, data handling, and disclaimer for this application.',
       fanSiteTitle: 'Unofficial Fan Site',
-      fanSiteBody: 'This service (Graded Races Calendar) is an unofficial, personal fan project and has no affiliation with JRA (Japan Racing Association) or any racing associations.',
+      fanSiteBody: 'This service (Graded Races Calendar) is an unofficial, personal fan project and has no affiliation with JRA (Japan Racing Association), NAR (National Association of Racing), local racing authorities, or any racing associations.',
       dataSourceTitle: 'Data Sources',
-      dataSourceBody: 'Race schedules, post times, and race conditions (course, distance, eligibility, weight, etc.) published on this app are sourced and processed from publicly accessible JRA official information (calendar files, graded race lists, confirmed racecards, etc.).',
+      dataSourceBody: 'Race schedules, post times, and race conditions (course, distance, eligibility, weight, etc.) published on this app are sourced and processed from publicly accessible official information published by JRA and NAR.',
       changesTitle: 'Schedule Changes & Disclaimer',
       changesP1: 'Race schedules, post times, entries, and weights are subject to change, cancellation, or postponement (e.g. rescheduled races) without notice due to severe weather, contingencies, or organizer reasons.',
-      changesP2: 'While every effort is made to ensure accuracy and completeness, real-time validity and completeness are not guaranteed. When purchasing betting tickets or attending races in person, please always verify official announcements from the organizers (e.g., JRA).',
-      changesP2Strong: 'When purchasing betting tickets or attending races in person, please always verify official announcements from the organizers (e.g., JRA).',
+      changesP2: 'While every effort is made to ensure accuracy and completeness, real-time validity and completeness are not guaranteed. When purchasing betting tickets or attending races in person, please always verify official announcements from the organizers (e.g., JRA or NAR).',
+      changesP2Strong: 'When purchasing betting tickets or attending races in person, please always verify official announcements from the organizers (e.g., JRA or NAR).',
       changesP3: 'The developer and operator assume no liability for any direct or indirect damages, losses, or issues arising from the use or inability to use this service (including but not limited to betting results, transportation, or accommodation costs).',
       rightsTitle: 'Intellectual Property & Trademarks',
-      rightsBody: 'Race names, track names, organization names, trademarks, and logos displayed on this service belong to the Japan Racing Association (JRA) and their respective rights holders.',
+      rightsBody: 'Race names, track names, organization names, trademarks, and logos displayed on this service belong to their respective rights holders (JRA, NAR, local authorities, etc.).',
       analyticsTitle: 'Access Analytics (Google Analytics)',
       analyticsP1: 'This service uses Google Analytics (GA4) provided by Google LLC to understand usage patterns and enhance service quality and user experience.',
       analyticsP2: 'Google Analytics uses cookies to collect data. This data is collected anonymously and does not contain personally identifiable information.',
@@ -263,36 +283,77 @@ export const DISTANCE_OPTIONS_BY_LANG: Record<Language, DistanceOption[]> = {
   ],
 };
 
+export type CourseRegion = 'jra' | 'nankanto' | 'regional' | 'banei';
+
+export interface CourseGroup {
+  region: CourseRegion;
+  label: Record<Language, string>;
+  courses: {
+    name: string; // 照合用キー（日本語名称）
+    label: Record<Language, string>;
+  }[];
+}
+
+export const COURSE_GROUPS: CourseGroup[] = [
+  {
+    region: 'jra',
+    label: { ja: '中央競馬 (JRA)', en: 'JRA (Central)' },
+    courses: [
+      { name: '札幌', label: { ja: '札幌', en: 'Sapporo' } },
+      { name: '函館', label: { ja: '函館', en: 'Hakodate' } },
+      { name: '福島', label: { ja: '福島', en: 'Fukushima' } },
+      { name: '新潟', label: { ja: '新潟', en: 'Niigata' } },
+      { name: '東京', label: { ja: '東京', en: 'Tokyo' } },
+      { name: '中山', label: { ja: '中山', en: 'Nakayama' } },
+      { name: '中京', label: { ja: '中京', en: 'Chukyo' } },
+      { name: '京都', label: { ja: '京都', en: 'Kyoto' } },
+      { name: '阪神', label: { ja: '阪神', en: 'Hanshin' } },
+      { name: '小倉', label: { ja: '小倉', en: 'Kokura' } },
+    ],
+  },
+  {
+    region: 'nankanto',
+    label: { ja: '南関東 (NAR)', en: 'Minami Kanto (NAR)' },
+    courses: [
+      { name: '浦和', label: { ja: '浦和', en: 'Urawa' } },
+      { name: '船橋', label: { ja: '船橋', en: 'Funabashi' } },
+      { name: '大井', label: { ja: '大井', en: 'Oi' } },
+      { name: '川崎', label: { ja: '川崎', en: 'Kawasaki' } },
+    ],
+  },
+  {
+    region: 'regional',
+    label: { ja: 'その他地方 (NAR)', en: 'Regional (NAR)' },
+    courses: [
+      { name: '門別', label: { ja: '門別', en: 'Mombetsu' } },
+      { name: '盛岡', label: { ja: '盛岡', en: 'Morioka' } },
+      { name: '水沢', label: { ja: '水沢', en: 'Mizusawa' } },
+      { name: '金沢', label: { ja: '金沢', en: 'Kanazawa' } },
+      { name: '笠松', label: { ja: '笠松', en: 'Kasamatsu' } },
+      { name: '名古屋', label: { ja: '名古屋', en: 'Nagoya' } },
+      { name: '園田', label: { ja: '園田', en: 'Sonoda' } },
+      { name: '姫路', label: { ja: '姫路', en: 'Himeji' } },
+      { name: '高知', label: { ja: '高知', en: 'Kochi' } },
+      { name: '佐賀', label: { ja: '佐賀', en: 'Saga' } },
+    ],
+  },
+  {
+    region: 'banei',
+    label: { ja: 'ばんえい (NAR)', en: 'Banei (NAR)' },
+    courses: [
+      { name: '帯広', label: { ja: '帯広', en: 'Obihiro' } },
+    ],
+  },
+];
+
 export interface CourseOption {
   label: string;
   name: string; // 照合用キー（日本語名称）
 }
 
 export const COURSE_OPTIONS_BY_LANG: Record<Language, CourseOption[]> = {
-  ja: [
-    { label: '東京', name: '東京' },
-    { label: '中山', name: '中山' },
-    { label: '阪神', name: '阪神' },
-    { label: '京都', name: '京都' },
-    { label: '中京', name: '中京' },
-    { label: '小倉', name: '小倉' },
-    { label: '新潟', name: '新潟' },
-    { label: '福島', name: '福島' },
-    { label: '札幌', name: '札幌' },
-    { label: '函館', name: '函館' },
-  ],
-  en: [
-    { label: 'Tokyo', name: '東京' },
-    { label: 'Nakayama', name: '中山' },
-    { label: 'Hanshin', name: '阪神' },
-    { label: 'Kyoto', name: '京都' },
-    { label: 'Chukyo', name: '中京' },
-    { label: 'Kokura', name: '小倉' },
-    { label: 'Niigata', name: '新潟' },
-    { label: 'Fukushima', name: '福島' },
-    { label: 'Sapporo', name: '札幌' },
-    { label: 'Hakodate', name: '函館' },
-  ],
+  ja: COURSE_GROUPS.flatMap((g) => g.courses.map((c) => ({ label: c.label.ja, name: c.name }))),
+  en: COURSE_GROUPS.flatMap((g) => g.courses.map((c) => ({ label: c.label.en, name: c.name }))),
 };
 
 /**
@@ -310,16 +371,18 @@ export function getLocalizedCourseName(courseName: string, lang: Language): stri
   return courseName;
 }
 
-export const trackTypeLabels: Record<Language, Record<'turf' | 'dirt' | 'obstacle', string>> = {
+export const trackTypeLabels: Record<Language, Record<'turf' | 'dirt' | 'obstacle' | 'banei', string>> = {
   ja: {
     turf: '芝',
     dirt: 'ダート',
     obstacle: '障害',
+    banei: 'ばんえい',
   },
   en: {
     turf: 'Turf',
     dirt: 'Dirt',
     obstacle: 'Jump',
+    banei: 'Banei',
   },
 };
 
