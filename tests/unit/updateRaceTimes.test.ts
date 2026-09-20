@@ -5,7 +5,9 @@ import os from 'node:os';
 import {
   updateRaceTimes,
   getJraUpcomingWeekendRange,
+  getNarUpcomingWindowRange,
   RaceTimeFetcher,
+  NarRaceTimeFetcher,
   RaceOutput,
 } from '../../scripts/update-race-times';
 import { ConfirmedRaceTime } from '../../scripts/lib/jra-syutsuba';
@@ -28,6 +30,20 @@ describe('update-race-times script (Provider Architecture)', () => {
       const range = getJraUpcomingWeekendRange('2026-09-16'); // 水曜日
       expect(range.startDate).toBe('2026-09-17');
       expect(range.endDate).toBe('2026-09-21');
+    });
+  });
+
+  describe('getNarUpcomingWindowRange', () => {
+    it('基準日から7日間の範囲を算出できること', () => {
+      const range = getNarUpcomingWindowRange('2026-09-20');
+      expect(range.startDate).toBe('2026-09-20');
+      expect(range.endDate).toBe('2026-09-26');
+    });
+
+    it('任意の日数を指定して範囲を算出できること', () => {
+      const range = getNarUpcomingWindowRange('2026-09-20', 3);
+      expect(range.startDate).toBe('2026-09-20');
+      expect(range.endDate).toBe('2026-09-22');
     });
   });
 
@@ -98,6 +114,32 @@ describe('update-race-times script (Provider Architecture)', () => {
         handicap: { code: 'set_weight', ja: '別定', en: 'Set Weight' },
       },
     ];
+
+    describe('NarRaceTimeFetcher', () => {
+      it('organization が nar であり、対象ウィンドウのNARレースを抽出できること', () => {
+        const fetcher = new NarRaceTimeFetcher();
+        expect(fetcher.organization).toBe('nar');
+
+        const sampleRaces: RaceOutput[] = [
+          {
+            ...mockInitialRaces[0],
+            id: '2026-nar-test-01',
+            organization: 'nar',
+            date: '2026-09-22',
+          },
+          {
+            ...mockInitialRaces[0],
+            id: '2026-nar-test-02',
+            organization: 'nar',
+            date: '2026-10-30', // ウィンドウ外
+          },
+        ];
+
+        const targets = fetcher.getTargetWindowRaces(sampleRaces, '2026-09-20');
+        expect(targets).toHaveLength(1);
+        expect(targets[0].id).toBe('2026-nar-test-01');
+      });
+    });
 
     beforeEach(() => {
       tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'races-test-'));
@@ -297,6 +339,65 @@ describe('update-race-times script (Provider Architecture)', () => {
       expect(savedTarget?.is_rescheduled).toBe(true);
       expect(savedTarget?.original_date).toBe('2026-09-20');
       expect(savedTarget?.is_time_confirmed).toBe(true);
+    });
+
+    it('NARフェッチャーにより対象ウィンドウ内のNARレースの発走時刻を更新しis_time_confirmedをtrueにすること', async () => {
+      const narRaces: RaceOutput[] = [
+        ...mockInitialRaces,
+        {
+          id: '2026-nar-jpn3-05',
+          organization: 'nar',
+          name: { ja: '白山大賞典', en: 'Hakusan Daishoten' },
+          grade: 'Jpn3',
+          date: '2026-09-22',
+          start_time: '2026-09-22T08:00:00.000Z', // 推定値 17:00 JST
+          is_time_confirmed: false,
+          course: { ja: '金沢', en: 'Kanazawa' },
+          distance: 2100,
+          track_type: 'dirt',
+          sex_constraint: 'none',
+          age_constraint: '3yo_and_up',
+          handicap: { code: 'set_weight', ja: '別定', en: 'Set Weight' },
+        },
+      ];
+      fs.writeFileSync(tempFilePath, JSON.stringify(narRaces, null, 2), 'utf-8');
+
+      const mockNarConfirmed: ConfirmedRaceTime[] = [
+        {
+          raceName: '白山大賞典',
+          date: '2026-09-22',
+          timeJst: '18:00', // 確定発走時刻 18:00 JST -> 09:00 UTC
+          rawTime: '18:00発走',
+        },
+      ];
+
+      const customFetcher: RaceTimeFetcher = {
+        organization: 'nar',
+        getTargetWindowRaces(races, refDate) {
+          const { startDate, endDate } = getNarUpcomingWindowRange(refDate);
+          return races.filter((r) => r.organization === 'nar' && r.date >= startDate && r.date <= endDate);
+        },
+        async fetchConfirmedTimes() {
+          return mockNarConfirmed;
+        },
+      };
+
+      const result = await updateRaceTimes({
+        filePath: tempFilePath,
+        referenceDate: '2026-09-20',
+        organization: 'nar',
+        fetchers: { nar: customFetcher },
+      });
+
+      expect(result.updatedRaces).toHaveLength(1);
+      expect(result.updatedRaces[0].id).toBe('2026-nar-jpn3-05');
+      // 18:00 JST -> 09:00 UTC (2026-09-22T09:00:00.000Z)
+      expect(result.updatedRaces[0].newTime).toBe('2026-09-22T09:00:00.000Z');
+
+      const saved: RaceOutput[] = JSON.parse(fs.readFileSync(tempFilePath, 'utf-8'));
+      const hakusan = saved.find((r) => r.id === '2026-nar-jpn3-05');
+      expect(hakusan?.is_time_confirmed).toBe(true);
+      expect(hakusan?.start_time).toBe('2026-09-22T09:00:00.000Z');
     });
   });
 });
