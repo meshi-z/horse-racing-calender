@@ -206,7 +206,7 @@ describe("FilterBar", () => {
     it("英語のプレースホルダー・aria-label・セクション見出しが表示されること", () => {
       render(<FilterBar />);
       const input = screen.getByLabelText("Search races");
-      expect(input).toHaveAttribute("placeholder", "Search by race name (e.g. February, Arima Kinen)");
+      expect(input).toHaveAttribute("placeholder", "Search by race name (e.g. Arima Kinen, Tokyo Daishoten, February, Tokyo Derby)");
       expect(screen.getByText("Grade:")).toBeInTheDocument();
       expect(screen.getByText("Track:")).toBeInTheDocument();
       expect(screen.getByText("Distance:")).toBeInTheDocument();

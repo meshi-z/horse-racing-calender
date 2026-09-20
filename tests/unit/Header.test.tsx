@@ -22,7 +22,7 @@ describe("Header", () => {
     render(<Header />);
 
     expect(screen.getByText("重賞カレンダー")).toBeInTheDocument();
-    expect(screen.getByText("JRA Graded Races Calendar")).toBeInTheDocument();
+    expect(screen.getByText("Graded Races Calendar")).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: /タイムライン/ })).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: /カレンダー/ })).toBeInTheDocument();
   });
