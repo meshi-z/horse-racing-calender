@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年9月20日) |
-| **バージョン** | v1.18.2 (NAR・将来拡張に対応したヘッダー英語表記・検索例・metaタグの再整理) |
+| **バージョン** | v1.19.0 (フランス競馬・海外重賞対応、データスキーマ拡張・国コード・AW馬場) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -12,13 +12,13 @@
 
 ## 1. プロジェクト概要
 
-本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、およびばんえい競馬（重賞）を包括的に統合し、全国の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
+本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、そして海外競馬第1弾としての **フランス競馬（France-Galop / IFHA Part I 重賞: G1, G2, G3）** を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
 
 モバイル閲覧時は直近レースを素早く確認できる **「タイムライン形式」**、PC/タブレット閲覧時は月全体のスケジュールを鳥瞰できる **「月間カレンダー形式」** を初期表示とし、PWA（Progressive Web Apps）およびオフライン閲覧に対応することで、競馬場や外出先などの電波状況が不安定な環境でもミリ秒単位でストレスなくアクセスできる体験を提供する。
 
-UIライブラリには **Shadcn UI** (Radix UI + Tailwind CSS) を全面採用。ターフを象徴する公式イメージカラー（`#047B5F`）をベースとした洗練されたデザイン、Radix UI 由来の完全なキーボード操作・WAI-ARIAアクセシビリティ、OS設定連動のダークモード対応、そして多角的なフィルター機能（主催者・グレード・馬場・競馬場・距離）を両立したユーザー体験を実現している。
+UIライブラリには **Shadcn UI** (Radix UI + Tailwind CSS) を全面採用。ターフを象徴する公式イメージカラー（`#047B5F`）をベースとした洗練されたデザイン、Radix UI 由来の完全なキーボード操作・WAI-ARIAアクセシビリティ、OS設定連動のダークモード対応、そして多角的なフィルター機能（主催者・国コード・グレード・馬場・競馬場・距離）を両立したユーザー体験を実現している。
 
-v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい競馬対応、v1.18.0 のフィルターバーアコーディオン機能、v1.18.1 のNAR英語レース名整理の上に、v1.18.2 では **ヘッダー英語サブタイトル（Graded Races Calendar）、FilterBarの検索例（有馬記念、東京大賞典、February、Tokyo Derby）、およびmeta/OGP/構造化データの包括的再整理** を実施し、中央・地方・多言語対応サービスとしての整合性とSEOを強化する。
+v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい競馬対応、v1.18.0 のアコーディオンフィルター、v1.18.1 のNAR英語名整理、v1.18.2 のヘッダー英語・検索例・SEO再整理を経て、**v1.19.0 では凱旋門賞をはじめとするフランス平地重賞（France-Galop / IFHA Part I）のデータ取り込み・日仏英マスタ・AW馬場・国コード「FR」バッジ・主催者「France」フィルター** を統合し、本格的な国際競馬カレンダーサービスへと進化する。
 
 ---
 
@@ -77,12 +77,43 @@ v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい
   - **当週NAR確定発走時刻自動取得**: `RaceTimeFetcher` プロバイダーアーキテクチャへの `NarRaceTimeFetcher` 追加とダートグレード競走日程からの確定時刻自動更新 [完了]。
   - **UI/UX 拡張**: 主催者（All/JRA/NAR）フィルター、グレードグループ一括選択、全国25競馬場のグルーピング選択、馬場「ばんえい」チップ、WCAG 2.1 AA準拠の新グレードバッジ [完了]。
 
-### フェーズ2 (将来拡張スコープ: v1.17.1〜)
+### フェーズ2 (実装完了スコープ: v1.18.0 〜 v1.18.2)
 
-- **海外主要レースの拡張**:
-  - `OverseasRaceTimeFetcher` の追加と凱旋門賞、ブリーダーズカップ等のデータ統合。
+- **フィルターバーのアコーディオン型折りたたみ/展開 (v1.18.0) [完了]**: スクロール連動自動折りたたみ、手動トグル、適用中条件バッジバー。
+- **NAR英語レース名カタカナ外来語英単語置換 (v1.18.1) [完了]**: カタカナ外来語辞書（45語彙）拡充、主要レース辞書追加。
+- **未確定レース時刻未定対応 (Issue #56) [完了]**: 公式発表前の未来レース時刻非表示・「時刻未定/TBD」表示。
+- **包括的英語表記・検索例・SEO再整理 (v1.18.2) [完了]**: ヘッダーサブタイトル、検索プレースホルダー例、meta/OGP/構造化データ再整理。
+
+### フェーズ3 (進行中スコープ: v1.19.0)
+
+- **海外競馬：フランス競馬（France-Galop / IFHA Part I 重賞）統合 [進行中]**:
+  - **一次ソースからのデータ構築**: IFHA Part I リスト（格付け・条件・馬場・距離）および France Galop 公式開催カレンダー（開催日・競馬場）の2大公式PDFからの自動抽出・統合。
+  - **データアーキテクチャ拡張**:
+    - `country_code`: 国コード `"FR"`（国内レースは `"JP"`）をスキーマに追加。
+    - `organization`: `"france_galop"` を新設。
+    - `track_type`: 全天候型PSF（Piste en Sable Fibré）に対応するため **`aw`（All Weather / オールウェザー）** を新設（今後の米国競馬等でも共用）。
+    - `LocalizedText`: 原語フランス語表記（`fr?: string`）を許容。
+    - タイムゾーン・発走時刻変換: フランス現地時間（CET/CEST）から夏時間を考慮して UTC ISO 8601 文字列（`start_time`）へ変換（凱旋門賞等の主要G1は現地16:05 / JST 23:05前後をデフォルト推定値とする）。
+  - **日仏英対応マスタ (`src/data/france_race_master.json`)**:
+    - レース名: 原語・英名（`Prix de l'Arc de Triomphe`）$\leftrightarrow$ 日本語通称（`凱旋門賞`）のマッピング。
+    - 競馬場名: 日英仏対応（パリロンシャン、シャンティイ、ドーヴィル、サンクルー等）。
+    - 出走資格・馬場・斤量の正規化。
+  - **UI/UX 拡張**:
+    - 主催者フィルターへの「France」の追加（`All` / `JRA` / `NAR` / `France`）。
+    - 競馬場セレクトへの「海外・フランス (France)」グループ新設。
+    - 馬場種別フィルターへの「AW（オールウェザー）」チップ追加。
+    - タイムラインビュー・カレンダービュー・詳細ダイアログでの国コード「FR」バッジ表示。
+    - レース詳細ダイアログでのフランス語原語名併記。
+
+### フェーズ3 (将来拡張スコープ: v1.19.1〜)
+
+- **海外主要レースのさらなる拡張**:
+  - 香港（HKJC）、UAE/ドバイ（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
+  - `OverseasRaceTimeFetcher` の追加による確定発走時刻自動取得。
 - **リアルタイム馬場状態・天候情報の表示**:
   - レース当日の天候（晴・雨等）および馬場状態（良・稍重・重・不良）のリアルタイム取得とバッジ表示。
+- **カレンダー連携（iCalendar / Google Calendar 出力）**:
+  - お気に入りレースや特定グレードのレースを選択し、外部カレンダーアプリへワンクリックで登録できる `.ics` エクスポート機能。
 - **カレンダー連携（iCalendar / Google Calendar 出力）**:
   - お気に入りレースや特定グレードのレースを選択し、外部カレンダーアプリへワンクリックで登録できる `.ics` エクスポート機能。
 
@@ -127,13 +158,22 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
 | **S3** | `--grade-s3` | `#C026D3` (`bg-grade-s3`) | `--grade-s3-foreground` (`#FFFFFF`) | コントラスト比 4.78:1（WCAG AA 適合）。南関東重賞専用フューシャ |
 | **地方重賞 (`local_grade`)** | `--grade-local` | `#475569` (`bg-grade-local`) | `--grade-local-foreground` (`#FFFFFF`) | コントラスト比 5.58:1（WCAG AA 適合）。落ち着いたSlate/Zincで過度な主張を抑制 |
 
+### 3.4 国コードバッジ仕様 (Country Code Badges)
+
+海外競馬の統合に伴い、レースの開催国を即座に識別できるよう、タイムライン、カレンダー、および詳細ダイアログに **ISO 2文字国コード（例: `FR`, `JP`）** を基盤とした軽量バッジを配置する。
+
+- **仕様原則**:
+  - 今後導入される海外競馬（香港: `HK`、UAE: `AE`、米国: `US` 等）を含め、国旗絵文字ではなくプラットフォーム非依存で一貫した可読性を保つため **2文字の国コードテキスト表記（`FR`）** で統一。
+  - セマンティックトークン: フランス競馬向けには洗練されたトリコロール・フレンチブルー（`bg-sky-700` / `text-white`、コントラスト比 4.5:1 以上）を適用。
+  - 日本国内レース（`JP`）については、過度な視覚的ノイズを抑制するためデフォルトではJRA/NARバッジを優先表示し、海外レース（`FR`）において明確な国識別バッジとして強調表示する。
+
 ---
 
 ## 4. UI/UX コンポーネント仕様
 
 ### 4.1 ヘッダー & ナビゲーション (`Header`)
 
-- **ロゴ & タイトル**: 新公式アプリアイコン（32x32px）、アプリ名「重賞カレンダー」、サブタイトル「JRA & NAR Graded Races Calendar」を表示。
+- **ロゴ & タイトル**: 新公式アプリアイコン（32x32px）、アプリ名「重賞カレンダー」、サブタイトル「Graded Races Calendar」を表示。
 - **ビュー切替 (`Tabs`)**:
   - タイムラインビュー（リストアイコン）: `ja`「タイムライン」↔ `en`「Timeline」
   - カレンダービュー（カレンダーアイコン）: `ja`「カレンダー」↔ `en`「Calendar」
@@ -150,13 +190,13 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
 
 直近のレースを時系列で素早く確認するためのリスト形式ビュー（モバイル幅 `< 768px` での初期表示）。
 
-- **言語・主催者連動表示**:
+- **言語・主催者・国連動表示**:
   - レース名（`name.ja` ↔ `name.en`）、開催競馬場（`course.ja` ↔ `course.en`）の自動切り替え。
-  - 主催者タグ/アイコン（JRA / NAR）および新グレードバッジ（Jpn1〜3, S1〜3, 地方重賞）の識別表示。
+  - 主催者タグ/アイコン（JRA / NAR / France Galop）および国コードバッジ（`FR`）、グレードバッジ（G1〜G3, Jpn1〜3, S1〜3, 地方重賞）の識別表示。
   - 発走ステータスバッジ: `ja`「発走予定」↔ `en`「Scheduled」。
   - 本日開催バッジ: `ja`「今日」↔ `en`「Today」。
   - 代替開催バッジ: `ja`「代替開催」↔ `en`「Rescheduled」。
-  - ばんえい競馬は「帯広 直線200m」の固有コース属性をわかりやすく提示。
+  - ばんえい競馬は「帯広 直線200m」、フランスPSF競走は「AW（オールウェザー）」の固有コース属性を提示。
 - **初期スクロール位置の最適化**:
   - 初回アクセス時またはビュー切替時、今日の日付（または直近に開催されるレース）の日付セクションへスムーズに自動スクロール。
 - **当日開催レースの強調表示**:
@@ -173,7 +213,7 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
 月全体の重賞スケジュールを俯瞰するためのグリッド形式ビュー（PC/タブレット幅 `>= 768px` での初期表示）。
 
 - **月曜始まり（月〜日）7列グリッド**:
-  - 競馬の土日中央開催および平日・ナイター地方開催を直感的に把握できるよう、月曜日始まりを厳格に適用。
+  - 競馬の土日中央開催、平日・ナイター地方開催、およびフランス競馬の週末開催を直感的に把握できるよう、月曜日始まりを厳格に適用。
   - **曜日ヘッダーのローカライズ**:
     - `ja`: 月 / 火 / 水 / 木 / 金 / 土 / 日
     - `en`: Mon / Tue / Wed / Thu / Fri / Sat / Sun
@@ -188,30 +228,30 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
     - `ja`: `今月の重賞: XX件`
     - `en`: `This Month: XX Races`
 - **セル内レース表示 & 代替開催バッジ**:
-  - 日付セル内にグレード別カラーのレースチップを配置（言語連動したレース名表示）。
+  - 日付セル内にグレード別カラーのレースチップを配置（言語連動したレース名表示、海外レースには `FR` バッジ付与）。
   - 代替競馬となったレースにはミニバッジを表示（`ja`「代替」↔ `en`「Rescheduled」）。
   - 日付セルまたはレースチップクリックで `RaceDetailDialog` を起動。
 
 ### 4.4 フィルターバー (`FilterBar`)
 
 - **主催者（Organization）フィルター**:
-  - `All`（すべて）/ `JRA`（中央競馬）/ `NAR`（地方競馬）のセグメントコントロール切替。
+  - `All`（すべて）/ `JRA`（中央競馬）/ `NAR`（地方競馬）/ `France`（フランス競馬）のセグメントコントロール切替。
   - 選択した主催者に連動して、グレードおよび競馬場フィルターの表示選択肢が動的に最適化。
 - **キーワード検索 (`Input`)**:
   - プレースホルダーの多言語化（`ja`「レース名を検索...」↔ `en`「Search race name...」）。
-  - **バイリンガル・インクリメンタル検索**: 表示言語に関わらず、日本語名（`name.ja`）・英語名（`name.en`）の双方に対して部分一致検索が機能するよう担保。
+  - **バイリンガル・インクリメンタル検索**: 表示言語に関わらず、日本語名（`name.ja`）・英語名（`name.en`）・フランス語原語名（`name.fr`）に対して部分一致検索が機能するよう担保。
   - クリアボタン付き。
 - **グレード絞り込み (`Popover` / マルチセレクト)**:
   - 体系増加に対応し、グループ単位での一括トグルおよび個別選択が可能な Popover 形式を採用：
-    - **JRA/国際重賞**: `G1`, `G2`, `G3`, `J.G1`, `J.G2`, `J.G3`
+    - **JRA/国際重賞（フランス重賞含む）**: `G1`, `G2`, `G3`, `J.G1`, `J.G2`, `J.G3`
     - **ダートグレード**: `Jpn1`, `Jpn2`, `Jpn3`（「ダートグレード一括」ボタン付き）
     - **南関東重賞**: `S1`, `S2`, `S3`（「南関重賞一括」ボタン付き）
     - **地方重賞**: `地方重賞` (`local_grade`)
 - **馬場種別絞り込み (トグルチップ)**:
-  - `ja`: `芝`, `ダート`, `障害`, `ばんえい`
-  - `en`: `Turf`, `Dirt`, `Jump`, `Banei`
+  - `ja`: `芝`, `ダート`, `障害`, `ばんえい`, `AW`
+  - `en`: `Turf`, `Dirt`, `Jump`, `Banei`, `AW`
 - **競馬場絞り込み (`Select`)**:
-  - 全国の25競馬場を Shadcn UI の `<SelectGroup>` でグルーピング表示：
+  - 日本全国および海外の競馬場を Shadcn UI の `<SelectGroup>` でグルーピング表示：
     1. **中央競馬 (JRA)**:
        - `ja`: 札幌 / 函館 / 福島 / 新潟 / 東京 / 中山 / 中京 / 京都 / 阪神 / 小倉
        - `en`: Sapporo / Hakodate / Fukushima / Niigata / Tokyo / Nakayama / Chukyo / Kyoto / Hanshin / Kokura
@@ -224,6 +264,9 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
     4. **ばんえい (NAR)**:
        - `ja`: 帯広
        - `en`: Obihiro
+    5. **海外・フランス (France)**:
+       - `ja`: パリロンシャン / シャンティイ / ドーヴィル / サンクルー 等
+       - `en`: ParisLongchamp / Chantilly / Deauville / Saint-Cloud etc.
 - **距離区分絞り込み (`Select`)**:
   - 4区分の選択肢をローカライズ表示（ばんえい200mは短距離区分に包括）：
     1. **短距離**: `ja`「短距離 (〜1,400m)」↔ `en`「Sprint (~1,400m)」
@@ -246,12 +289,12 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
 レースカードやカレンダーセルから呼び出されるアクセシブルな詳細ダイアログ。
 
 - **多言語表示項目**:
-  - 主催者バッジ（JRA / NAR）
-  - レース名（`name.ja` ↔ `name.en`）および新グレードバッジ
+  - 国コードバッジ（`FR` 等）および主催者バッジ（JRA / NAR / France Galop）
+  - レース名（`name.ja` ↔ `name.en`）、原語表記（`name.fr` が存在する場合は併記表示）およびグレードバッジ
   - 開催日・開催競馬場（`course.ja` ↔ `course.en`）・発走時刻（ローカルタイム変換表示。確定時のみ時刻を表示し、未確定時は `時刻未定` ↔ `TBD`）
   - 発走ステータス（確定時かつ発走前: `ja`「発走予定」↔ `en`「Scheduled」。未確定時または発走後は非表示）
   - 代替開催案内（代替レースの場合、`ja`「【代替開催】当初予定日: YYYY年M月D日 からの順延」↔ `en`「[Rescheduled] Postponed from original date: MMM D, YYYY」）
-  - コース詳細: 馬場種別（芝/Turf, ダート/Dirt, 障害/Jump, ばんえい/Banei）および距離（m）
+  - コース詳細: 馬場種別（芝/Turf, ダート/Dirt, 障害/Jump, ばんえい/Banei, オールウェザー/AW）および距離（m）
   - 出走資格: 性別制限ラベル（牡・牝/Colts & Fillies, 牝/Fillies & Mares, 制限なし/Open to All）、年齢制限ラベル（3歳以上/3yo & Up 等）
   - 負担重量（斤量種別）: 日本語・英語表記（定量/Weight for Age, 馬齢/Special Weight, 別定/Set Weight, ハンデ/Handicap）
   - ダイアログ各項目見出し（主催/Org, 開催日/Date, 発走時刻/Post Time, コース/Course, 出走資格/Eligibility, 負担重量/Weight）
@@ -325,23 +368,26 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
 - **JRA重賞レースソース**: [JRA重賞レース一覧](https://www.jra.go.jp/datafile/seiseki/replay/2026/jyusyo.html) および 公式カレンダー `.ics`
 - **NAR重賞レースソース**: [NARダートグレード競走・重賞競走年間実施スケジュール](https://www.keiba.go.jp/gradedrace/schedule_2026.html)
 - **NARダートグレード競走日程・確定時刻ソース**: [NARダートグレード競走年間日程・出馬表](https://www.keiba.go.jp/dirtgraderace/2026/racelist/) (`https://www.keiba.go.jp/dirtgraderace/{YYYY}/racelist/`)
+- **フランス重賞レース格付け・条件ソース**: [IFHA / ICSC パートI リスト (France)](https://www.tjcis.com/pdf/icsc26/ICSC-PartI_France.pdf)（参照元: [IFHA Resources](https://www.ifhaonline.org/Default.asp?section=Resources&area=8)）
+- **フランス競馬開催日程・競馬場ソース**: [France Galop 公式開催カレンダー 2026](https://billetterie.france-galop.com/app/uploads/2025/12/NUM_Calendrier-parieur-2026-12-12.pdf)（参照元: [France Galop Calendar](https://billetterie.france-galop.com/en/the-calendar/)）
 - **用語マスターソース**: [海外競馬英和辞典](https://www.jra.go.jp/keiba/overseas/yougo/index.html)
 
 ### 5.2 データパース & 分割ルール
 
 #### A. 出走資格（性別・年齢制限）の構造化
 - **性別制限 (`sex_constraint`)**:
-  - `/牡・牝|牡・牝馬/` $\rightarrow$ コード: `colt_and_filly`, ラベル: `{ ja: "牡・牝", en: "Colts & Fillies" }`
-  - `/牝|牝馬/` $\rightarrow$ コード: `filly_and_mare`, ラベル: `{ ja: "牝", en: "Fillies & Mares" }`
+  - `/牡・牝|牡・牝馬|c&f/i` $\rightarrow$ コード: `colt_and_filly`, ラベル: `{ ja: "牡・牝", en: "Colts & Fillies" }`
+  - `/牝|牝馬|f&m|fillies/i` $\rightarrow$ コード: `filly_and_mare`, ラベル: `{ ja: "牝", en: "Fillies & Mares" }`
   - 上記以外 $\rightarrow$ コード: `none`, ラベル: `{ ja: "制限なし", en: "Open to All" }`
 - **年齢制限 (`age_constraint`)**:
-  - `/3歳以上|3歳上/` $\rightarrow$ `3yo_and_up`, ラベル: `{ ja: "3歳以上", en: "3yo & Up" }`
-  - `/4歳以上|4歳上/` $\rightarrow$ `4yo_and_up`, ラベル: `{ ja: "4歳以上", en: "4yo & Up" }`
-  - `/2歳/` $\rightarrow$ `2yo`, ラベル: `{ ja: "2歳", en: "2yo" }`
-  - `/3歳/` $\rightarrow$ `3yo`, ラベル: `{ ja: "3歳", en: "3yo" }`
+  - `/3歳以上|3歳上|3yo\s*\+/i` $\rightarrow$ `3yo_and_up`, ラベル: `{ ja: "3歳以上", en: "3yo & Up" }`
+  - `/4歳以上|4歳上|4yo\s*\+/i` $\rightarrow$ `4yo_and_up`, ラベル: `{ ja: "4歳以上", en: "4yo & Up" }`
+  - `/2歳|2yo/i` $\rightarrow$ `2yo`, ラベル: `{ ja: "2歳", en: "2yo" }`
+  - `/3歳|3yo/i` $\rightarrow$ `3yo`, ラベル: `{ ja: "3歳", en: "3yo" }`
 
 #### B. コース（馬場・距離）の構造化
 - **馬場種別 (`track_type`)**:
+  - フランスPSF（全天候型コース）および海外オールウェザー競走 $\rightarrow$ **`aw`（オールウェザー / All Weather）** ※今後の米国等でも共用
   - 帯広・ばんえい競馬（そり競走） $\rightarrow$ `banei`（ばんえい / Banei）
   - `/障害|J・G|障/` $\rightarrow$ `obstacle`（障害 / Jump）※後方互換性維持
   - `/ダート|ダ/` $\rightarrow$ `dirt`（ダート / Dirt）
@@ -357,22 +403,23 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
   - ハンデ: コード `handicap`, ラベル: `{ ja: "ハンデ", en: "Handicap" }`
 
 #### D. グレード（格付け）体系の標準化ルール
-NAR公式の多様な格付け表記を以下の基準で分類・正規化し、バッジ表示およびフィルター条件にマッピングする。
-1. **ダートグレード (Jpn)**: `Jpn1`, `Jpn2`, `Jpn3`（※国際G1の東京大賞典等は `G1` を維持）
-2. **南関東重賞 (S)**: `S1`, `S2`, `S3`
-3. **その他地方重賞 (Regional Grade)**: 各地区表記（重賞1〜3、H1〜H3、M1〜M3、BG1〜BG3 等）は一律 **`地方重賞`（英語表記: `Regional Grade`、コード: `local_grade`）** として正規化。
+NAR公式および海外公式の格付け表記を以下の基準で分類・正規化し、バッジ表示およびフィルター条件にマッピングする。
+1. **国際重賞 / フランス重賞**: `G1`, `G2`, `G3`（※フランスPart I平地重賞はすべて国際G1〜G3として正規化）
+2. **ダートグレード (Jpn)**: `Jpn1`, `Jpn2`, `Jpn3`（※国際G1の東京大賞典等は `G1` を維持）
+3. **南関東重賞 (S)**: `S1`, `S2`, `S3`
+4. **その他地方重賞 (Regional Grade)**: 各地区表記（重賞1〜3、H1〜H3、M1〜M3、BG1〜BG3 等）は一律 **`地方重賞`（英語表記: `Regional Grade`、コード: `local_grade`）** として正規化。
 
-#### E. 英語表記および補完マスター（`src/data/nar_race_master.json`, `scripts/lib/hepburn.ts`）
-- **競馬場辞書（15場完全マッピング）**:
-  - 門別: `Mombetsu`, 盛岡: `Morioka`, 水沢: `Mizusawa`, 浦和: `Urawa`, 船橋: `Funabashi`, 大井: `Oi`, 川崎: `Kawasaki`, 金沢: `Kanazawa`, 笠松: `Kasamatsu`, 名古屋: `Nagoya`, 園田: `Sonoda`, 姫路: `Himeji`, 高知: `Kochi`, 佐賀: `Saga`, 帯広: `Obihiro`
-- **レース名英語マスター & ヘボン式ローマ字フォールバック & カタカナ外来語辞書 (Issue #59)**:
-  - 主要重賞および馬名・外国語由来レース（例: `フリオーソレジェンドカップ` $\rightarrow$ `Furioso Legend Cup`, `マーキュリーカップ` $\rightarrow$ `Mercury Cup`, `レジーナディンヴェルノ賞` $\rightarrow$ `Regina d'Inverno Sho`）は `nar_race_master.json` で個別定義。
-  - カタカナ外来語（例: `ペガサス` $\rightarrow$ `Pegasus`, `セレクション` $\rightarrow$ `Selection`, `プリンセス` $\rightarrow$ `Princess`, `クラウン` $\rightarrow$ `Crown`, `シンデレラ` $\rightarrow$ `Cinderella` 等40語以上）は `scripts/lib/hepburn.ts` に辞書マッピングを定義し、ヘボン式ローマ字（音写）のまま出力されるのを防止して自然な英語表記へと置換。
-  - 和名・植物名・鳥名・方言等（例: `コウノトリ賞` $\rightarrow$ `Konotori Sho`, `佐賀がばいスプリント` $\rightarrow$ `Saga Gabai Sprint`, `トレノ賞` $\rightarrow$ `Toreno Sho` 等）はヘボン式ローマ字表記を維持。
-- **競馬場別デフォルト発走時刻テーブル（年間推定値）**:
-  - **ナイター開催場**（大井、川崎、船橋、高知、園田、門別、佐賀等）: 原則 `20:05` JST
-  - **昼間開催場**（浦和、盛岡、水沢、金沢、笠松、名古屋、姫路等）: 原則 `16:30` JST
-  - **ばんえい競馬**（帯広）: 原則 `19:30` JST
+#### E. 多言語表記マスター & 補完辞書
+- **NAR補完マスター (`src/data/nar_race_master.json`, `scripts/lib/hepburn.ts`)**:
+  - 15場競馬場辞書およびレース名英語辞書、カタカナ外来語辞書。
+- **フランス重賞マスター (`src/data/france_race_master.json`)**:
+  - **レース名辞書**: 原語（フランス語名: `Prix de l'Arc de Triomphe`）に対し、英語名、日本語通称名（`凱旋門賞`）をマッピング。
+  - **競馬場辞書**: パリロンシャン（ParisLongchamp）、シャンティイ（Chantilly）、ドーヴィル（Deauville）、サンクルー（Saint-Cloud）等の主要場日英対訳。
+  - **国コード**: `"FR"` を付与。
+- **タイムゾーン & 発走時刻変換規則**:
+  - フランス現地時刻（CET: UTC+1、CEST: 夏時間 UTC+2）から UTC ISO 8601 文字列を算出。
+  - 夏時間適用期間: 3月最終日曜〜10月最終日曜。
+  - 主要G1（凱旋門賞など）は現地16:05（夏時間: UTC 14:05 / 日本時間 JST 23:05）前後をデフォルト推定発走時刻とし、クライアント側で端末タイムゾーン（JST等）に自動ローカライズ。
 
 #### F. 発走時刻の決定 & 確定データ保護パイプライン
 発走時刻は「年間推定値」と「直前確定値」の2段階で管理し、プロバイダーアーキテクチャ（Strategyパターン）を採用して JRA / NAR の双方に対応。
@@ -412,7 +459,7 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
 
 ### 5.3 アプリケーション用出力データ構造 (`public/data/races.json`)
 
-`races.json` は構築初期より多言語オブジェクト形式（`{ ja, en }`）で設計されており、JRA・NAR・ばんえい競馬を統一スキーマで統合管理する。
+`races.json` は構築初期より多言語オブジェクト形式（`{ ja, en, fr? }`）で設計されており、JRA・NAR・ばんえい競馬・海外（フランス）重賞を統一スキーマで統合管理する。
 
 #### ID採番標準ルール
 - 書式: `{YYYY}-{org}-{grade_code}-{index}`
@@ -421,12 +468,14 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
   - NAR 国際G1例: `2026-nar-g1-01`（東京大賞典）
   - NAR 南関重賞例: `2026-nar-s1-01`
   - NAR 地方重賞例: `2026-nar-local-01`
+  - フランスG1例: `2026-france-g1-01`（凱旋門賞等）
 
 ```json
 [
   {
     "id": "2026-jra-g1-01",
     "organization": "jra",
+    "country_code": "JP",
     "name": {
       "ja": "フェブラリーステークス",
       "en": "February Stakes"
@@ -452,8 +501,38 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
     }
   },
   {
+    "id": "2026-france-g1-01",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "凱旋門賞",
+      "en": "Prix de l'Arc de Triomphe",
+      "fr": "Prix de l'Arc de Triomphe"
+    },
+    "grade": "G1",
+    "date": "2026-10-04",
+    "start_time": "2026-10-04T14:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-04",
+    "course": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
+    },
+    "distance": 2400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-nar-jpn1-01",
     "organization": "nar",
+    "country_code": "JP",
     "name": {
       "ja": "川崎記念",
       "en": "Kawasaki Kinen"
@@ -481,6 +560,7 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
   {
     "id": "2026-nar-s1-01",
     "organization": "nar",
+    "country_code": "JP",
     "name": {
       "ja": "桜花賞（浦和）",
       "en": "Oka Sho (Urawa)"
@@ -508,6 +588,7 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
   {
     "id": "2026-nar-local-01",
     "organization": "nar",
+    "country_code": "JP",
     "name": {
       "ja": "ばんえい記念",
       "en": "Banei Kinen"
@@ -602,18 +683,32 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
     - レース名辞書（`src/data/nar_race_master.json`）にダートグレードおよび特殊・馬名由来の10レース（Mercury Cup, Marine Cup, Regina d'Inverno Sho, Le Printemps Sho, Furioso Legend Cup等）を個別追加。
     - 和名・植物名・鳥名等のヘボン式ローマ字表記を維持。
     - 単体テスト（`tests/unit/narSchedule.test.ts`）の拡充、`public/data/races.json` のNAR全344レース中62レースの英語表記更新。
-23. **Step 23 (v1.19.0): 未確定レースの未来発走予定時刻非表示・時刻未定対応 (Issue #56) [完了]**
+23. **Step 23 (v1.18.2): 未確定レースの未来発走予定時刻非表示・時刻未定対応 (Issue #56) [完了]**
     - `is_time_confirmed: false` の未来レースにおいてデフォルト推定時刻の表示を廃止し、公式発表（確定時刻）が入ったレースのみ時刻を表示するように改修。
     - `formatRaceTimeDisplay` を拡張し、未確定時は `time: ''`, `statusLabel: null`, `isConfirmed: false` を返却（後方互換性維持）。
     - `RaceCard` および `RaceDetailDialog` で未確定時に「時刻未定 / TBD」をニュートラルに表示（発走予定バッジ非表示）。
     - `CalendarView` のセル内において未確定レースの時刻を非表示化し省スペース化。
     - 単体テスト（`date.test.ts`, `RaceCard.test.tsx`, `RaceDetailDialog.test.tsx`, `CalendarView.test.tsx`）の拡充と全テスト合格。
-24. **Step 24 (Current / v1.18.2): NAR・将来拡張に対応したヘッダー英語表記・検索例・metaタグの再整理 (Issue #62) [完了]**
+24. **Step 24 (v1.18.2): NAR・将来拡張に対応したヘッダー英語表記・検索例・metaタグの再整理 (Issue #62) [完了]**
     - ヘッダーサブタイトルの英語表記を `JRA Graded Races Calendar` から包括的な `Graded Races Calendar` へ更新（`src/libs/i18n.ts`）。
     - フィルターバー検索フォームのプレースホルダーを、中央・地方・日英検索に対応していることが伝わる表記（`有馬記念、東京大賞典、February、Tokyo Derby` 等）へ更新（`src/libs/i18n.ts`）。
     - `index.html` の title, description, keywords, og:title, og:description, twitter:title, twitter:description, および Schema.org JSON-LD 構造化データを、JRA（中央競馬）およびNAR（地方競馬・ダートグレード・ばんえい）の双方を網羅した包括的内容へと再整理。
     - フッター非公式注記の案内を「主催者（JRA・NAR等）公式発表」（英語: `(e.g., JRA, NAR)`）へ更新（`src/libs/i18n.ts`）。
     - 単体テストおよび統合テスト（`Header.test.tsx`, `FilterBar.test.tsx`, `Layout.test.tsx`, `i18nIntegration.test.tsx`, `seo.test.ts`）を更新し全テスト通過。
-25. **Step 25 (Next): 海外主要レース拡張 & リアルタイム馬場・天候情報**
-    - `OverseasRaceTimeFetcher` の追加と凱旋門賞、ブリーダーズカップ等のデータ統合。
+25. **Step 25 (Current / v1.19.0): 海外競馬：フランス競馬（France-Galop / IFHA Part I 重賞）統合 (Issue #64, #65, #66) [進行中]**
+    - **Phase 1: PRD改訂 (v1.19.0) および海外・フランス競馬スキーマ定義 (Issue #64) [完了]**
+      - `docs/PRD.md` の改訂（v1.19.0、一次ソース情報、データアーキテクチャ、UI仕様）。
+      - `src/types/race.ts` の型定義拡張（`country_code: string;`, `Organization: 'france_galop'`, `TrackType: 'aw'`, `LocalizedText.fr?: string`, `FilterState`）。
+      - `package.json` のバージョンを `1.19.0` へ更新。
+    - **Phase 2: フランス重賞データ抽出・日仏英マスタ作成および統合マージ (Issue #65) [予定]**
+      - 2大公式PDF（IFHA Part I France & France Galop 公式開催カレンダー）解析スクリプトの実装。
+      - `src/data/france_race_master.json`（日仏英辞書、出走条件・距離・馬場AW・斤量正規化、推定発走時刻）の作成。
+      - `public/data/races.json` へのフランス重賞データの統合マージ（ID体系: `{YYYY}-france-{grade}-{index}`、`country_code: "FR"`）。
+    - **Phase 3: フランス競馬UI対応（主催者フィルター「France」、競馬場追加、FR国コードバッジ、多言語化） (Issue #66) [予定]**
+      - `FilterBar`: 主催者フィルターへの「France」追加、競馬場「海外・フランス」グループ新設、馬場「AW」チップ追加。
+      - UIバッジ: 国コード「FR」バッジの実装（タイムライン、カレンダー、詳細ダイアログ）。
+      - 多言語・免責事項: フランス語原語名併記、多言語辞書・免責事項モーダル更新。
+26. **Step 26 (Next): 海外主要レースさらなる拡張（香港・UAE・米国等） & リアルタイム馬場・天候情報**
+    - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
+    - `OverseasRaceTimeFetcher` の追加による確定発走時刻自動取得。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。
