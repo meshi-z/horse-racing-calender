@@ -3,7 +3,7 @@ import { useRaceStore } from "@/store/useRaceStore";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import type { Grade, TrackType, DistanceCategory } from "@/types/race";
-import { Search, RotateCcw, X, MapPin, ChevronDown } from "lucide-react";
+import { Search, RotateCcw, X, MapPin, ChevronDown, ChevronUp, SlidersHorizontal } from "lucide-react";
 import { cn } from "@/libs/utils";
 import {
   useTranslation,
@@ -79,6 +79,8 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
   const resetFilters = useRaceStore((state) => state.resetFilters);
 
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isCollapsed, setIsCollapsed] = React.useState(false);
+  const isManuallyToggledRef = React.useRef(false);
   const [isCourseExpanded, setIsCourseExpanded] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -90,16 +92,31 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
   ];
   const distanceOptions = DISTANCE_OPTIONS_BY_LANG[language];
 
-  // スクロール検知によりコンパクト表示フラグを切り替え
+  // スクロール検知により詳細エリアの自動折りたたみを制御（手動操作時の意図を尊重）
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const scrolled = window.scrollY > 20;
+      setIsScrolled(scrolled);
+
+      if (!scrolled) {
+        // 最上部に戻ったら手動操作フラグをリセットし、自動で展開状態に戻す
+        isManuallyToggledRef.current = false;
+        setIsCollapsed(false);
+      } else if (!isManuallyToggledRef.current) {
+        // スクロールダウン時、手動操作されていなければ自動で折りたたむ
+        setIsCollapsed(true);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleToggleCollapse = () => {
+    isManuallyToggledRef.current = true;
+    setIsCollapsed((prev) => !prev);
+  };
 
   // FilterBarの実際の高さを計測し、CSSカスタムプロパティ（--filterbar-height）として共有
   React.useEffect(() => {
@@ -132,11 +149,13 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     };
   }, [
     isScrolled,
+    isCollapsed,
     isCourseExpanded,
     filters.courses.length,
     filters.distanceCategories.length,
     filters.grades.length,
     filters.organization,
+    filters.trackTypes.length,
   ]);
 
   const hasActiveFilters =
@@ -149,6 +168,12 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     filters.sexConstraints.length > 0 ||
     filters.ageConstraints.length > 0 ||
     filters.yearMonth !== null;
+
+  const activeDetailFiltersCount =
+    filters.grades.length +
+    filters.trackTypes.length +
+    filters.distanceCategories.length +
+    filters.courses.length;
 
   const handleOrgSelect = (org: "all" | "jra" | "nar") => {
     setFilter("organization", org);
@@ -235,7 +260,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
       )}
       {...props}
     >
-      {/* 検索入力 & 主催者セグメント & リセット */}
+      {/* 検索入力 & 主催者セグメント & 詳細展開トグル & リセット */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-2">
         {/* 検索バー */}
         <div className="relative flex-1">
@@ -252,7 +277,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
             <button
               type="button"
               onClick={() => setFilter("searchQuery", "")}
-              className="absolute right-2.5 top-2.5 text-muted-foreground hover:text-foreground"
+              className="absolute right-2.5 top-2.5 text-muted-foreground hover:text-foreground cursor-pointer"
               aria-label={t("filter.clearSearchAria")}
             >
               <X className="h-4 w-4" />
@@ -260,53 +285,200 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
           )}
         </div>
 
-        {/* 主催者セグメントコントロール (All / JRA / NAR) */}
-        <div
-          role="group"
-          aria-label={t("filter.orgLabel")}
-          className="flex items-center rounded-lg border bg-muted/40 p-0.5 self-start sm:self-auto shrink-0"
-        >
-          {orgOptions.map((opt) => {
-            const isSelected = filters.organization === opt.value;
-            return (
-              <button
-                key={opt.value}
-                type="button"
-                onClick={() => handleOrgSelect(opt.value)}
-                aria-pressed={isSelected}
-                className={cn(
-                  "rounded-md px-2.5 py-1 text-xs font-semibold transition-all cursor-pointer",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                  isSelected
-                    ? "bg-background text-foreground shadow-xs"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
+        {/* コントロール群（主催者・詳細トグル・リセット） */}
+        <div className="flex items-center justify-between sm:justify-start gap-2 shrink-0 flex-wrap">
+          {/* 主催者セグメントコントロール (All / JRA / NAR) */}
+          <div
+            role="group"
+            aria-label={t("filter.orgLabel")}
+            className="flex items-center rounded-lg border bg-muted/40 p-0.5 shrink-0"
+          >
+            {orgOptions.map((opt) => {
+              const isSelected = filters.organization === opt.value;
+              return (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => handleOrgSelect(opt.value)}
+                  aria-pressed={isSelected}
+                  className={cn(
+                    "rounded-md px-2.5 py-1 text-xs font-semibold transition-all cursor-pointer",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                    isSelected
+                      ? "bg-background text-foreground shadow-xs"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {opt.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="flex items-center gap-1.5 ml-auto sm:ml-0">
+            {/* 詳細フィルター展開/折りたたみボタン */}
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={handleToggleCollapse}
+              aria-expanded={!isCollapsed}
+              aria-controls="detailed-filters-panel"
+              aria-label={
+                isCollapsed
+                  ? t("filter.expandFilters")
+                  : t("filter.collapseFilters")
+              }
+              className={cn(
+                "shrink-0 gap-1.5 h-9 px-2.5 sm:px-3 text-xs transition-colors cursor-pointer",
+                !isCollapsed
+                  ? "bg-accent text-accent-foreground border-accent-foreground/20"
+                  : activeDetailFiltersCount > 0
+                  ? "border-primary/50 text-primary hover:bg-primary/10"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              <SlidersHorizontal className="h-3.5 w-3.5" />
+              <span>
+                {isCollapsed ? t("filter.expandFilters") : t("filter.collapseFilters")}
+              </span>
+              {activeDetailFiltersCount > 0 && (
+                <span
+                  data-testid="filter-badge-count"
+                  className="rounded-full bg-primary text-primary-foreground px-1.5 py-0.2 text-[10px] font-bold leading-none"
+                >
+                  {activeDetailFiltersCount}
+                </span>
+              )}
+              {isCollapsed ? (
+                <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200" />
+              ) : (
+                <ChevronUp className="h-3.5 w-3.5 transition-transform duration-200" />
+              )}
+            </Button>
+
+            {/* リセットボタン */}
+            {hasActiveFilters && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={resetFilters}
+                className="shrink-0 gap-1.5 h-9 px-2.5 sm:px-3 text-xs text-muted-foreground hover:text-destructive hover:border-destructive transition-colors cursor-pointer"
+                aria-label={t("filter.resetFilterAria")}
               >
-                {opt.label}
+                <RotateCcw className="h-3.5 w-3.5" />
+                <span>{t("filter.reset")}</span>
+              </Button>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* 折りたたみ時の適用中詳細フィルター要約バッジ */}
+      {isCollapsed && activeDetailFiltersCount > 0 && (
+        <div
+          data-testid="active-filters-summary"
+          className="flex items-center flex-wrap gap-1.5 pt-1 text-xs border-t border-border/40 animate-in fade-in-50 duration-150"
+        >
+          <span className="text-muted-foreground text-[11px] font-medium mr-0.5 flex items-center gap-1">
+            <span>{t("filter.activeFiltersCount").replace("{count}", String(activeDetailFiltersCount))}</span>
+          </span>
+
+          {/* 選択中グレード */}
+          {filters.grades.map((grade) => (
+            <span
+              key={grade}
+              className="inline-flex items-center gap-1 rounded-md bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 text-xs font-medium"
+            >
+              <span>{grade}</span>
+              <button
+                type="button"
+                onClick={() => handleGradeToggle(grade)}
+                className="hover:bg-primary/20 rounded-full p-0.5 transition-colors cursor-pointer"
+                aria-label={`${grade}の絞り込みを解除`}
+              >
+                <X className="h-3 w-3" />
               </button>
+            </span>
+          ))}
+
+          {/* 選択中馬場種別 */}
+          {filters.trackTypes.map((track) => {
+            const trackLabel = trackTypeLabels[language][track];
+            return (
+              <span
+                key={track}
+                className="inline-flex items-center gap-1 rounded-md bg-secondary text-secondary-foreground border border-secondary-foreground/20 px-2 py-0.5 text-xs font-medium"
+              >
+                <span>{trackLabel}</span>
+                <button
+                  type="button"
+                  onClick={() => handleTrackToggle(track)}
+                  className="hover:bg-secondary-foreground/20 rounded-full p-0.5 transition-colors cursor-pointer"
+                  aria-label={`${trackLabel}の絞り込みを解除`}
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </span>
+            );
+          })}
+
+          {/* 選択中距離 */}
+          {filters.distanceCategories.map((category) => {
+            const opt = distanceOptions.find((d) => d.category === category);
+            const label = opt ? opt.label : category;
+            return (
+              <span
+                key={category}
+                className="inline-flex items-center gap-1 rounded-md bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 text-xs font-medium"
+              >
+                <span>{label}</span>
+                <button
+                  type="button"
+                  onClick={() => handleDistanceToggle(category)}
+                  className="hover:bg-primary/20 rounded-full p-0.5 transition-colors cursor-pointer"
+                  aria-label={`${label}の絞り込みを解除`}
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </span>
+            );
+          })}
+
+          {/* 選択中競馬場 */}
+          {filters.courses.map((course) => {
+            const localizedCourse = getLocalizedCourseName(course, language);
+            return (
+              <span
+                key={course}
+                className="inline-flex items-center gap-1 rounded-md bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 text-xs font-medium"
+              >
+                <MapPin className="h-2.5 w-2.5" />
+                <span>{localizedCourse}</span>
+                <button
+                  type="button"
+                  onClick={() => handleCourseToggle(course)}
+                  className="hover:bg-primary/20 rounded-full p-0.5 transition-colors cursor-pointer"
+                  aria-label={t("filter.removeCourseAria").replace("{course}", localizedCourse)}
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </span>
             );
           })}
         </div>
+      )}
 
-        {/* リセットボタン */}
-        {hasActiveFilters && (
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={resetFilters}
-            className="shrink-0 gap-1.5 h-9 px-3 text-xs text-muted-foreground hover:text-destructive hover:border-destructive transition-colors self-end sm:self-auto"
-            aria-label={t("filter.resetFilterAria")}
-          >
-            <RotateCcw className="h-3.5 w-3.5" />
-            <span>{t("filter.reset")}</span>
-          </Button>
-        )}
-      </div>
-
-      {/* 絞り込み条件（グレード・クイックトグル・馬場・競馬場展開） */}
-      <div className="flex flex-col gap-2.5 text-xs">
-        {/* グレード選択行 */}
-        <div className="flex flex-col lg:flex-row lg:items-center gap-2">
+      {/* 絞り込み条件（グレード・クイックトグル・馬場・競馬場展開 - アコーディオンパネル） */}
+      {!isCollapsed && (
+        <div
+          id="detailed-filters-panel"
+          data-testid="detailed-filters-panel"
+          className="flex flex-col gap-3 animate-in fade-in-50 duration-150"
+        >
+          <div className="flex flex-col gap-2.5 text-xs">
+            {/* グレード選択行 */}
+            <div className="flex flex-col lg:flex-row lg:items-center gap-2">
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
               {t("filter.gradeLabel")}
@@ -641,6 +813,8 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
           >
             {t("filter.clear")}
           </button>
+        </div>
+      )}
         </div>
       )}
     </div>
