@@ -641,6 +641,7 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
 | **SEO & 分析** | Google Analytics 4 (gtag.js) + JSON-LD | 利用状況分析およびSchema.orgによる検索結果リッチスニペット対応。 |
 | **インフラ** | GitHub Pages (GitHub Actions) | 無料の完全静的ホスティング、自動CI/CD、定期更新cronバッチ。 |
 | **運用ドキュメント** | `docs/batch-schedules.md` | バッチ実行スケジュール一覧表、手動実行コマンド、早期終了ガード・リトライ等の運用仕様書。 |
+| **開発ガイド** | `docs/guides/adding-new-country.md` | 新しい国の競馬（海外競馬）を追加する包括的開発・運用手順書（データ選定、スキーマ、マスタ、フェッチャー、UI、多言語、テスト）。 |
 | **セキュリティ** | Dependabot + Secret Scanning | 依存関係の脆弱性検知とシークレット保護の自動化。 |
 
 ---
@@ -740,7 +741,7 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
     - **JRA過去発走時刻バックフィルスクリプト (`scripts/backfill-jra-past-times.ts`)**: `src/data/jra_past_times_2026.json` を読み込み、`public/data/races.json` 内の過去JRA重賞レースの発走時刻（UTC/JST）および `is_time_confirmed: true` を一括更新するスクリプト（`npm run data:backfill-jra`、`--dry-run`、`--before` 対応）を実装。
     - **国内過去重賞100%確定化**: JRAの過去98レース全てを確定（`is_time_confirmed: true`）へ更新。これによりNAR過去199レースと合わせて、本日（2026年9月20日）までに開催された国内全297重賞の発走時刻がすべて確定ステータスとなった。
     - **テストの追加**: `tests/unit/backfillJraPastTimes.test.ts` を新設し、マスタデータの妥当性・マッピング整合性・更新関数のユニットテストを実施。全34スイート・285テスト完全合格。
-29. **Step 29 (Current / v1.21.0): フランス重賞発走予定時刻自動更新パイプライン整備 & 過去重賞実績発走時刻補完 (Issue #73, #77) [完了]**
+29. **Step 29 (v1.21.0): フランス重賞発走予定時刻自動更新パイプライン整備 & 過去重賞実績発走時刻補完 (Issue #73, #77) [完了]**
     - **確定発走予定時刻自動取得パイプライン (`FranceRaceTimeFetcher` / Issue #73)**:
       - PMU公開エンドポイント（`https://offline.turfinfo.api.pmu.fr/rest/client/7/programme/{DDMMYYYY}`）からの出馬表プログラム自動取得スクリプト（`scripts/lib/france-syutsuba.ts`）を実装。
       - ミリ秒タイムスタンプから直接 UTC ISO 8601 文字列（`...Z`）および JST（UTC+9）表記を自動算出。夏時間（CEST: UTC+2）／冬時間（CET: UTC+1）の時差やサマータイム切り替えを完全自動吸収。
@@ -754,6 +755,10 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - これにより、国内（JRA 100レース、NAR 226レース）に加え、フランス（88レース）を含む**過去開催全414レースがすべて確定発走時刻（100%）**となり、Issue #56 の未確定時刻非表示ルール下でも過去レースが正常に表示されるようになった。
     - **テストと型検証**:
       - 単体テスト `tests/unit/franceSyutsuba.test.ts` を新設、`tests/unit/franceRaces.test.ts`、`tests/unit/racesData.test.ts` を更新し、全35スイート・296テスト完全合格。型エラー0件。
-30. **Step 30 (Next): 海外主要レース拡張（香港・UAE・米国） & 外部カレンダー連携**
-    - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
+30. **Step 30 (Current): 新しい国の競馬（海外競馬）を追加する開発・運用手順書の作成 (Issue #79) [完了]**
+    - フランス競馬（France Galop / PMU）対応で確立されたデータ設計・確定時刻取得・UI拡張の知見を体系化した開発・運用ガイド（`docs/guides/adding-new-country.md`）の新設。
+    - IFHA Part I/II データ選定、スキーマ・型定義（`src/types/race.ts`）、レースマスタ（`src/data/{country}_race_master.json`）、確定発走時刻フェッチャー（`RaceTimeFetcher`）、Actions定期バッチ、UI拡張、多言語化（i18n）、過去データ実績補完、テストチェックリスト、および実践ケーススタディを網羅。
+    - `README.md` および `docs/PRD.md` からの参照導線を追加。
+31. **Step 31 (Next): 海外主要レース拡張（イギリス・香港・UAE・米国） & 外部カレンダー連携**
+    - 本開発ガイドに基づくイギリス（BHA）、香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。
