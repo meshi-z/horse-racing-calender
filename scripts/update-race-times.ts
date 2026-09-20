@@ -10,9 +10,11 @@ import {
 export interface RaceOutput {
   id: string;
   organization: string;
+  country_code?: string;
   name: {
     ja: string;
     en: string;
+    fr?: string;
   };
   grade: string;
   date: string;
@@ -25,7 +27,7 @@ export interface RaceOutput {
     en: string;
   };
   distance: number;
-  track_type: 'turf' | 'dirt' | 'obstacle' | 'banei';
+  track_type: 'turf' | 'dirt' | 'obstacle' | 'banei' | 'aw';
   sex_constraint: 'none' | 'filly_and_mare' | 'colt_and_filly';
   age_constraint: '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up';
   handicap: {
@@ -161,11 +163,63 @@ export class NarRaceTimeFetcher implements RaceTimeFetcher {
 }
 
 /**
- * 登録済みフェッチャープロバイダーのマップ（JRA, NAR対応）
+ * 基準日 (YYYY-MM-DD) からフランス競馬の確認対象期間（基準日〜7日間）の範囲を算出
+ */
+export function getFranceUpcomingWindowRange(refDateStr: string, windowDays = 7): { startDate: string; endDate: string } {
+  const [y, m, d] = refDateStr.split('-').map(Number);
+  const ref = new Date(Date.UTC(y, m - 1, d));
+  const end = new Date(ref.getTime() + (windowDays - 1) * 86400000);
+
+  const formatYmd = (dt: Date) => {
+    const yr = dt.getUTCFullYear();
+    const mo = String(dt.getUTCMonth() + 1).padStart(2, '0');
+    const da = String(dt.getUTCDate()).padStart(2, '0');
+    return `${yr}-${mo}-${da}`;
+  };
+
+  return {
+    startDate: formatYmd(ref),
+    endDate: formatYmd(end),
+  };
+}
+
+/**
+ * フランス競馬（France Galop）向けプロバイダー実装
+ */
+export class FranceRaceTimeFetcher implements RaceTimeFetcher {
+  readonly organization = 'france_galop';
+  private fixtures?: Record<string, import('./lib/france-syutsuba').PmuProgrammeResponse>;
+
+  constructor(options?: { fixtures?: Record<string, import('./lib/france-syutsuba').PmuProgrammeResponse> }) {
+    this.fixtures = options?.fixtures;
+  }
+
+  getTargetWindowRaces(races: RaceOutput[], refDate: string): RaceOutput[] {
+    const { startDate, endDate } = getFranceUpcomingWindowRange(refDate);
+    return races.filter(
+      (r) =>
+        r.organization === this.organization &&
+        ((r.date >= startDate && r.date <= endDate) ||
+          (r.original_date && r.original_date >= startDate && r.original_date <= endDate))
+    );
+  }
+
+  async fetchConfirmedTimes(targetRaces: RaceOutput[]): Promise<ConfirmedRaceTime[]> {
+    const { fetchFranceConfirmedRaceTimes } = await import('./lib/france-syutsuba');
+    return await fetchFranceConfirmedRaceTimes({
+      targetRaces,
+      fixtures: this.fixtures,
+    });
+  }
+}
+
+/**
+ * 登録済みフェッチャープロバイダーのマップ（JRA, NAR, France対応）
  */
 export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
   jra: new JraRaceTimeFetcher(),
   nar: new NarRaceTimeFetcher(),
+  france_galop: new FranceRaceTimeFetcher(),
 };
 
 export interface UpdateOptions {
@@ -278,16 +332,18 @@ export async function updateRaceTimes(options: UpdateOptions = {}): Promise<Upda
     for (const race of races) {
       if (race.organization !== org) continue;
 
-      // 1. 同日での一致を優先検索
-      let match = confirmedTimes.find(
-        (c) => c.date === race.date && raceNameMatches(race.name.ja, c.raceName)
-      );
+      // 1. 同日での一致を優先検索（raceIdの一致またはレース名一致）
+      let match = confirmedTimes.find((c) => {
+        if (c.raceId && c.raceId === race.id) return true;
+        return c.date === race.date && raceNameMatches(race.name.ja, c.raceName);
+      });
 
       // 2. 同日で見つからない場合、代替開催（同名レースで近傍日程）の候補を検索
       let isRescheduled = false;
       if (!match) {
         const candidate = confirmedTimes.find((c) => {
-          if (!raceNameMatches(race.name.ja, c.raceName)) return false;
+          const isNameOrIdMatch = (c.raceId && c.raceId === race.id) || raceNameMatches(race.name.ja, c.raceName);
+          if (!isNameOrIdMatch) return false;
           // 日付の差分をチェック (7日以内)
           const raceTime = new Date(race.date).getTime();
           const scrapedTime = new Date(c.date).getTime();
@@ -304,7 +360,7 @@ export async function updateRaceTimes(options: UpdateOptions = {}): Promise<Upda
       if (match) {
         const isDateChanged = race.date !== match.date;
         const targetDate = match.date;
-        const newUtcTime = toIsoUtc(targetDate, match.timeJst);
+        const newUtcTime = match.utcIso || toIsoUtc(targetDate, match.timeJst);
         const isTimeChanged = race.start_time !== newUtcTime;
         const wasNotConfirmed = !race.is_time_confirmed;
 
@@ -374,9 +430,11 @@ async function main() {
   const dryRun = args.includes('--dry-run');
   const force = args.includes('--force');
   const orgArg = args.find((a) => a.startsWith('--org='));
-  const organization = orgArg ? orgArg.split('=')[1] : undefined;
+  const orgIdx = args.indexOf('--org');
+  const organization = orgArg ? orgArg.split('=')[1] : (orgIdx !== -1 && args[orgIdx + 1] ? args[orgIdx + 1] : undefined);
   const dateArg = args.find((a) => a.startsWith('--date='));
-  const referenceDate = dateArg ? dateArg.split('=')[1] : undefined;
+  const dateIdx = args.indexOf('--date');
+  const referenceDate = dateArg ? dateArg.split('=')[1] : (dateIdx !== -1 && args[dateIdx + 1] ? args[dateIdx + 1] : undefined);
 
   try {
     const result = await updateRaceTimes({
