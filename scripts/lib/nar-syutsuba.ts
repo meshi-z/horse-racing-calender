@@ -156,48 +156,233 @@ export function parseDirtGradeRacelistHtml(
   return confirmedList;
 }
 
-export interface FetchNarOptions {
-  year?: number;
-  localFixturePath?: string;
+export const NAR_BABA_CODES: Record<string, number> = {
+  帯広: 3,
+  帯広ば: 3,
+  門別: 36,
+  盛岡: 10,
+  水沢: 11,
+  浦和: 18,
+  船橋: 19,
+  大井: 20,
+  川崎: 21,
+  金沢: 22,
+  笠松: 23,
+  名古屋: 24,
+  園田: 27,
+  姫路: 28,
+  高知: 31,
+  佐賀: 32,
+};
+
+/**
+ * NAR出馬表等のレース名から格付け表記や不要タグを除去
+ */
+export function cleanNarRaceName(name: string): string {
+  let cleaned = name
+    .replace(/<[^>]+>/g, '')
+    .replace(/&#8544;|&RomanI;/gi, 'Ⅰ')
+    .replace(/&#8545;|&RomanII;/gi, 'Ⅱ')
+    .replace(/&#8546;|&RomanIII;/gi, 'Ⅲ')
+    .replace(/&[a-z0-9#]+;/gi, '')
+    // 全角・半角括弧内のJpn/G/S/BG/J.G等の格付け表記を除去
+    .replace(/[\(（]\s*(?:Jpn|J・G|G|S|BG)?[ⅠⅡⅢ123IV,\s\d・]+[\)）]/gi, '')
+    .replace(/[\(（]\s*(?:Jpn|J・G|G|S|BG)[ⅠⅡⅢ123IV\d]*\s*[\)）]/gi, '')
+    .replace(/\[指定\]|\[特指\]|（国際）|（特指）/g, '')
+    .replace(/第\d+回/g, '')
+    .replace(/\s+/g, '')
+    .trim();
+
+  // 末尾や途中のJpn/G/S/BG等の格付け表記を除去
+  cleaned = cleaned.replace(/(?:Jpn|G|S|BG)[ⅠⅡⅢ123I|V]+$/i, '');
+  cleaned = cleaned.replace(/(?:Jpn|G|S|BG)[ⅠⅡⅢ123I|V]+/gi, '');
+  // 残った空括弧を除去
+  cleaned = cleaned.replace(/[\(（]\s*[\)）]/g, '');
+
+  return cleanRaceName(cleaned);
 }
 
 /**
- * NARの確定・予定発走時刻を取得
+ * NAR公式各競馬場「当日メニュー/出馬表一覧」HTML（RaceList）をパース
+ */
+export function parseNarRaceListHtml(
+  html: string,
+  targetDateStr: string
+): ConfirmedRaceTime[] {
+  const confirmedList: ConfirmedRaceTime[] = [];
+
+  // 各レース行 (<tr class="data"> ... </tr>) を抽出
+  const trMatches = html.matchAll(/<tr[^>]*class=["'][^"']*data[^"']*["'][^>]*>([\s\S]*?)<\/tr>/gi);
+
+  for (const match of trMatches) {
+    const trHtml = match[1];
+
+    // 発走時刻 (例: <td>\n 18:00 \n</td>)
+    const timeMatch = trHtml.match(/<td[^>]*>\s*(\d{1,2}:\d{2})\s*<\/td>/i);
+    if (!timeMatch) continue;
+    const timeJst = timeMatch[1].padStart(5, '0');
+
+    // レース名・出馬表リンク (例: <a href=...DebaTable?...>白山大賞典JpnIII</a>)
+    const raceLinkMatch = trHtml.match(
+      /<a[^>]*href=["']?([^"'>]*DebaTable[^"'>]*)["']?[^>]*>([\s\S]*?)<\/a>/i
+    );
+    if (!raceLinkMatch) continue;
+
+    const sourceUrlPath = raceLinkMatch[1].trim();
+    const rawRaceName = raceLinkMatch[2].trim();
+    const cleanedName = cleanNarRaceName(rawRaceName);
+    if (!cleanedName) continue;
+
+    const sourceUrl = sourceUrlPath.startsWith('http')
+      ? sourceUrlPath
+      : sourceUrlPath.startsWith('/')
+      ? `https://www.keiba.go.jp${sourceUrlPath}`
+      : `https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/${sourceUrlPath}`;
+
+    confirmedList.push({
+      raceName: cleanedName,
+      date: targetDateStr,
+      timeJst,
+      rawTime: `${timeJst}発走`,
+      sourceUrl,
+    });
+  }
+
+  return confirmedList;
+}
+
+export interface NarTargetRaceInput {
+  date: string;
+  course: {
+    ja: string;
+    en?: string;
+  };
+  name: {
+    ja: string;
+    en?: string;
+  };
+}
+
+export interface FetchNarOptions {
+  year?: number;
+  localFixturePath?: string;
+  raceListFixtures?: Record<string, string>; // `${date}_${babaCode}` -> fixturePath
+  targetRaces?: NarTargetRaceInput[];
+}
+
+/**
+ * 特定の競馬場・開催日の出馬表（RaceList）から確定時刻を取得
+ */
+export async function fetchNarRaceListTimes(options: {
+  date: string; // YYYY-MM-DD
+  babaCode: number;
+  localFixturePath?: string;
+}): Promise<ConfirmedRaceTime[]> {
+  const { date, babaCode, localFixturePath } = options;
+
+  // ローカルフィクスチャが指定されている場合はそれを優先
+  if (localFixturePath && fs.existsSync(localFixturePath)) {
+    const html = fs.readFileSync(localFixturePath, 'utf-8');
+    return parseNarRaceListHtml(html, date);
+  }
+
+  // YYYY-MM-DD -> YYYY/MM/DD
+  const kRaceDate = date.replace(/-/g, '/');
+  const encodedDate = encodeURIComponent(kRaceDate);
+  const url = `https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/RaceList?k_raceDate=${encodedDate}&k_babaCode=${babaCode}`;
+
+  try {
+    const res = await fetchWithRetry(url, undefined, 2, 800);
+    if (res.ok) {
+      const html = await res.text();
+      return parseNarRaceListHtml(html, date);
+    }
+  } catch (err) {
+    console.warn(`[NAR Syutsuba] Failed to fetch RaceList (${url}): ${(err as Error).message}`);
+  }
+
+  return [];
+}
+
+/**
+ * NARの確定・予定発走時刻を取得（ダートグレード年間一覧 + 直近出馬表の統合）
  */
 export async function fetchNarConfirmedRaceTimes(
   options: FetchNarOptions = {}
 ): Promise<ConfirmedRaceTime[]> {
   const year = options.year || new Date().getFullYear();
+  const confirmedList: ConfirmedRaceTime[] = [];
 
-  // 1. ローカルフィクスチャ指定がある場合は優先（オフライン・テスト対応）
+  // 1. ダートグレード競走年間一覧の取得
+  let dirtGradeTimes: ConfirmedRaceTime[] = [];
   if (options.localFixturePath && fs.existsSync(options.localFixturePath)) {
     const html = fs.readFileSync(options.localFixturePath, 'utf-8');
-    return parseDirtGradeRacelistHtml(html, year);
+    dirtGradeTimes = parseDirtGradeRacelistHtml(html, year);
+  } else {
+    const fallbackFixture = path.resolve(process.cwd(), `tests/fixtures/nar_racelist_${year}.html`);
+    const url = `https://www.keiba.go.jp/dirtgraderace/${year}/racelist/`;
+    try {
+      const res = await fetchWithRetry(url, undefined, 2, 800);
+      if (res.ok) {
+        const html = await res.text();
+        dirtGradeTimes = parseDirtGradeRacelistHtml(html, year);
+      }
+    } catch (err) {
+      console.warn(`[NAR Syutsuba] Failed to fetch remote racelist (${url}): ${(err as Error).message}`);
+    }
+
+    if (dirtGradeTimes.length === 0 && fs.existsSync(fallbackFixture)) {
+      console.log(`[NAR Syutsuba] Using local racelist cache: ${fallbackFixture}`);
+      const html = fs.readFileSync(fallbackFixture, 'utf-8');
+      dirtGradeTimes = parseDirtGradeRacelistHtml(html, year);
+    }
   }
 
-  // 2. tests/fixtures/nar_racelist_{year}.html があればオフラインキャッシュとしてフォールバック可能
-  const fallbackFixture = path.resolve(process.cwd(), `tests/fixtures/nar_racelist_${year}.html`);
+  confirmedList.push(...dirtGradeTimes);
 
-  const url = `https://www.keiba.go.jp/dirtgraderace/${year}/racelist/`;
-  try {
-    const res = await fetchWithRetry(url, undefined, 2, 800);
-    if (res.ok) {
-      const html = await res.text();
-      const results = parseDirtGradeRacelistHtml(html, year);
-      if (results.length > 0) {
-        return results;
+  // 2. targetRaces が渡されている場合、対象競馬場の当日メニュー出馬表（RaceList）を取得
+  if (options.targetRaces && options.targetRaces.length > 0) {
+    // 日付と競馬場コードの組み合わせをユニーク化
+    const targetBatches = new Map<string, { date: string; babaCode: number }>();
+
+    for (const race of options.targetRaces) {
+      const courseName = race.course.ja.replace(/競馬場$/, '').trim();
+      const babaCode = NAR_BABA_CODES[courseName] || NAR_BABA_CODES[race.course.ja];
+      if (babaCode) {
+        const key = `${race.date}_${babaCode}`;
+        if (!targetBatches.has(key)) {
+          targetBatches.set(key, { date: race.date, babaCode });
+        }
       }
     }
-  } catch (err) {
-    console.warn(`[NAR Syutsuba] Failed to fetch remote racelist (${url}): ${(err as Error).message}`);
+
+    for (const [key, batch] of targetBatches.entries()) {
+      const fixtureForBatch = options.raceListFixtures?.[key];
+      try {
+        const raceListTimes = await fetchNarRaceListTimes({
+          date: batch.date,
+          babaCode: batch.babaCode,
+          localFixturePath: fixtureForBatch,
+        });
+
+        for (const item of raceListTimes) {
+          // 既存の同日・同名レースがあれば出馬表の確定時刻で上書き、なければ追加
+          const existingIdx = confirmedList.findIndex(
+            (c) => c.date === item.date && raceNameMatches(c.raceName, item.raceName)
+          );
+          if (existingIdx >= 0) {
+            confirmedList[existingIdx] = item;
+          } else {
+            confirmedList.push(item);
+          }
+        }
+      } catch (err) {
+        console.warn(
+          `[NAR Syutsuba] Error fetching RaceList for ${batch.date} (babaCode=${batch.babaCode}): ${(err as Error).message}`
+        );
+      }
+    }
   }
 
-  // リモート失敗時はキャッシュフィクスチャを試行
-  if (fs.existsSync(fallbackFixture)) {
-    console.log(`[NAR Syutsuba] Using local racelist cache: ${fallbackFixture}`);
-    const html = fs.readFileSync(fallbackFixture, 'utf-8');
-    return parseDirtGradeRacelistHtml(html, year);
-  }
-
-  return [];
+  return confirmedList;
 }

@@ -399,5 +399,60 @@ describe('update-race-times script (Provider Architecture)', () => {
       expect(hakusan?.is_time_confirmed).toBe(true);
       expect(hakusan?.start_time).toBe('2026-09-22T09:00:00.000Z');
     });
+
+    it('NarRaceTimeFetcherの実装を用いて出馬表（RaceList）から確定時刻を正しく更新できること', async () => {
+      const narRaces: RaceOutput[] = [
+        ...mockInitialRaces,
+        {
+          id: '2026-nar-jpn3-05',
+          organization: 'nar',
+          name: { ja: '白山大賞典', en: 'Hakusan Daishoten' },
+          grade: 'Jpn3',
+          date: '2026-09-22',
+          start_time: '2026-09-22T08:00:00.000Z', // 推定値 17:00 JST
+          is_time_confirmed: false,
+          course: { ja: '金沢', en: 'Kanazawa' },
+          distance: 2100,
+          track_type: 'dirt',
+          sex_constraint: 'none',
+          age_constraint: '3yo_and_up',
+          handicap: { code: 'set_weight', ja: '別定', en: 'Set Weight' },
+        },
+      ];
+      fs.writeFileSync(tempFilePath, JSON.stringify(narRaces, null, 2), 'utf-8');
+
+      const kanazawaFixture = path.resolve(
+        __dirname,
+        '../fixtures/nar_racelist_kanazawa_20260922.html'
+      );
+      const dirtGradeFixture = path.resolve(
+        __dirname,
+        '../fixtures/nar_racelist_2026.html'
+      );
+
+      const realFetcher = new NarRaceTimeFetcher({
+        localFixturePath: dirtGradeFixture,
+        raceListFixtures: {
+          '2026-09-22_22': kanazawaFixture,
+        },
+      });
+
+      const result = await updateRaceTimes({
+        filePath: tempFilePath,
+        referenceDate: '2026-09-20',
+        organization: 'nar',
+        fetchers: { nar: realFetcher },
+      });
+
+      expect(result.updatedRaces.length).toBeGreaterThanOrEqual(1);
+      const hakusanUpdated = result.updatedRaces.find((r) => r.id === '2026-nar-jpn3-05');
+      expect(hakusanUpdated).toBeDefined();
+      expect(hakusanUpdated?.newTime).toBe('2026-09-22T09:00:00.000Z');
+
+      const saved: RaceOutput[] = JSON.parse(fs.readFileSync(tempFilePath, 'utf-8'));
+      const hakusan = saved.find((r) => r.id === '2026-nar-jpn3-05');
+      expect(hakusan?.is_time_confirmed).toBe(true);
+      expect(hakusan?.start_time).toBe('2026-09-22T09:00:00.000Z');
+    });
   });
 });

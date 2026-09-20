@@ -131,9 +131,11 @@ export class JraRaceTimeFetcher implements RaceTimeFetcher {
 export class NarRaceTimeFetcher implements RaceTimeFetcher {
   readonly organization = 'nar';
   private localFixturePath?: string;
+  private raceListFixtures?: Record<string, string>;
 
-  constructor(options?: { localFixturePath?: string }) {
+  constructor(options?: { localFixturePath?: string; raceListFixtures?: Record<string, string> }) {
     this.localFixturePath = options?.localFixturePath;
+    this.raceListFixtures = options?.raceListFixtures;
   }
 
   getTargetWindowRaces(races: RaceOutput[], refDate: string): RaceOutput[] {
@@ -152,6 +154,8 @@ export class NarRaceTimeFetcher implements RaceTimeFetcher {
     return await fetchNarConfirmedRaceTimes({
       year,
       localFixturePath: this.localFixturePath,
+      raceListFixtures: this.raceListFixtures,
+      targetRaces,
     });
   }
 }

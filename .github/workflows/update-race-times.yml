@@ -2,19 +2,20 @@ name: Update Confirmed Race Times
 
 on:
   schedule:
-    # 木曜日 (出馬表発表目安 16:00すぎ) -> 30分後, 1時間後, 2時間後
-    - cron: '30 7 * * 4'   # 16:30 JST
-    - cron: '0 8 * * 4'    # 17:00 JST
-    - cron: '0 9 * * 4'    # 18:00 JST
-    # 金曜日 (確定枠順発表目安 10:00すぎ) -> 30分後, 1時間後, 2時間後
-    - cron: '30 1 * * 5'   # 10:30 JST
-    - cron: '0 2 * * 5'    # 11:00 JST
-    - cron: '0 3 * * 5'    # 12:00 JST
-    # 土曜日 (土曜当日朝 07:30 JST / 日曜前日夕方 17:30 JST)
-    - cron: '30 22 * * 5'  # 土曜 07:30 JST (金曜 22:30 UTC)
-    - cron: '30 8 * * 6'   # 土曜 17:30 JST
-    # 日曜日 (日曜当日朝 07:30 JST)
-    - cron: '30 22 * * 6'  # 日曜 07:30 JST (土曜 22:30 UTC)
+    # 毎日朝 07:30 JST (当日開催レースの最終確認・天候等順延検知)
+    - cron: '30 22 * * *'  # 毎日 22:30 UTC = 07:30 JST
+    # 平日昼 12:30 JST (NAR昼間開催直前・当日確定確認)
+    - cron: '30 3 * * 1-5' # 月〜金 03:30 UTC = 12:30 JST
+    # 平日〜土曜夕方 17:30 JST (NARナイター開催直前・翌日以降出馬表更新、JRA土曜前日夕方)
+    - cron: '30 8 * * 1-6' # 月〜土 08:30 UTC = 17:30 JST
+    # 木曜日 (JRA出馬表発表目安 16:00すぎ) -> 30分後, 1時間後, 2時間後
+    - cron: '30 7 * * 4'   # 木曜 16:30 JST
+    - cron: '0 8 * * 4'    # 木曜 17:00 JST
+    - cron: '0 9 * * 4'    # 木曜 18:00 JST
+    # 金曜日 (JRA確定枠順発表目安 10:00すぎ) -> 30分後, 1時間後, 2時間後
+    - cron: '30 1 * * 5'   # 金曜 10:30 JST
+    - cron: '0 2 * * 5'    # 金曜 11:00 JST
+    - cron: '0 3 * * 5'    # 金曜 12:00 JST
   workflow_dispatch:
     inputs:
       force:
@@ -65,6 +66,6 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add public/data/races.json
-            git commit -m "chore(data): update confirmed race times from JRA racecard" -m "Co-authored-by: Antigravity <antigravity@example.com>"
+            git commit -m "chore(data): update confirmed race times from official racecards" -m "Co-authored-by: Antigravity <antigravity@example.com>"
             git push origin main
           fi
