@@ -65,4 +65,44 @@ describe('parse-races confirmed race time preservation', () => {
     ]);
     expect(mapUnconfirmed.size).toBe(0);
   });
+
+  it('NARレース（ダートグレード・南関重賞・ばんえい等）の確定時刻も同様に保持されること', () => {
+    const existingNarRaces = [
+      {
+        id: '2026-nar-jpn1-01',
+        name: { ja: '川崎記念' },
+        date: '2026-04-08',
+        start_time: '2026-04-08T11:10:00.000Z',
+        is_time_confirmed: true,
+      },
+      {
+        id: '2026-nar-local-01',
+        name: { ja: '帯広記念' },
+        date: '2026-01-02',
+        start_time: '2026-01-02T10:45:00.000Z',
+        is_time_confirmed: true,
+      },
+      {
+        id: '2026-nar-s1-01',
+        name: { ja: '桜花賞' },
+        date: '2026-03-25',
+        start_time: '2026-03-25T07:30:00.000Z',
+        is_time_confirmed: false,
+      },
+    ];
+
+    const map = extractConfirmedRaceTimesMap(existingNarRaces);
+
+    // 未確定の桜花賞は含まれない
+    expect(map.has('2026-nar-s1-01')).toBe(false);
+
+    // 川崎記念（Jpn1）は保持される
+    expect(map.has('2026-nar-jpn1-01')).toBe(true);
+    expect(map.get('2026-nar-jpn1-01')?.start_time).toBe('2026-04-08T11:10:00.000Z');
+    expect(map.get('2026-04-08_川崎記念')?.is_time_confirmed).toBe(true);
+
+    // 帯広記念（ばんえい）は保持される
+    expect(map.has('2026-nar-local-01')).toBe(true);
+    expect(map.get('2026-nar-local-01')?.start_time).toBe('2026-01-02T10:45:00.000Z');
+  });
 });

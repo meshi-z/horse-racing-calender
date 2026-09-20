@@ -1,6 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { ensureJraIcs } from './lib/jra-calendar';
+import {
+  parseNarScheduleHtml,
+  fetchNarScheduleHtml,
+} from './lib/nar-schedule';
 
 // --- Type Definitions (Pattern A: Localized Object) ---
 export interface LocalizedString {
@@ -31,7 +35,7 @@ export interface RaceOutput {
   original_date?: string;
   course: LocalizedString;
   distance: number;
-  track_type: 'turf' | 'dirt' | 'obstacle';
+  track_type: 'turf' | 'dirt' | 'obstacle' | 'banei';
   sex_constraint: 'none' | 'filly_and_mare' | 'colt_and_filly';
   age_constraint: '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up';
   handicap: HandicapInfo;
@@ -826,8 +830,113 @@ async function main() {
     };
   }
 
-  // Sort races by date and start_time
-  racesOutput.sort((a, b) => a.date.localeCompare(b.date) || a.start_time.localeCompare(b.start_time));
+function narGradeToIdKey(grade: string): string {
+  switch (grade) {
+    case 'G1': return 'g1';
+    case 'Jpn1': return 'jpn1';
+    case 'Jpn2': return 'jpn2';
+    case 'Jpn3': return 'jpn3';
+    case 'S1': return 's1';
+    case 'S2': return 's2';
+    case 'S3': return 's3';
+    default: return 'local';
+  }
+}
+
+function determineNarHandicap(raceName: string, _grade: string, course: string): HandicapInfo {
+  if (course === '帯広') {
+    return {
+      code: 'special_weight',
+      ja: '別定',
+      en: 'Set Weight',
+    };
+  }
+  if (/ハンデ|ハンディ/.test(raceName)) {
+    return {
+      code: 'handicap',
+      ja: 'ハンデ',
+      en: 'Handicap',
+    };
+  }
+  if (/東京大賞典|川崎記念|かしわ記念|帝王賞|JBCクラシック|JBCスプリント|JBCレディスクラシック|ジャパンダートクラシック/.test(raceName)) {
+    return {
+      code: 'weight_for_age',
+      ja: '定量',
+      en: 'Weight for Age',
+    };
+  }
+  return {
+    code: 'set_weight',
+    ja: '別定',
+    en: 'Set Weight',
+  };
+}
+
+  // --- Process NAR Races ---
+  console.log('Fetching and merging NAR races...');
+  let narHtml: string;
+  const narFixturePath = path.join(rootDir, 'tests', 'fixtures', 'nar_schedule_2026.html');
+  if (fs.existsSync(narFixturePath)) {
+    console.log(`[NAR Schedule] Using cached schedule: ${narFixturePath}`);
+    narHtml = fs.readFileSync(narFixturePath, 'utf8');
+  } else {
+    console.log('[NAR Schedule] Fetching live schedule from keiba.go.jp...');
+    narHtml = await fetchNarScheduleHtml(year);
+  }
+
+  const narRaces = parseNarScheduleHtml(narHtml, year);
+  const narGradeSeqCount: Record<string, number> = {};
+
+  for (const nar of narRaces) {
+    const gradeIdKey = narGradeToIdKey(nar.grade);
+    narGradeSeqCount[gradeIdKey] = (narGradeSeqCount[gradeIdKey] || 0) + 1;
+    const seqStr = String(narGradeSeqCount[gradeIdKey]).padStart(2, '0');
+    const id = `${year}-nar-${gradeIdKey}-${seqStr}`;
+
+    const defaultTimeJst = nar.default_time_jst;
+    let startTimeUtc = toIsoUtc(nar.date, defaultTimeJst);
+    let isTimeConfirmed = false;
+
+    const confirmedInfo = confirmedTimesMap.get(id) || confirmedTimesMap.get(`${nar.date}_${nar.name.ja}`);
+    if (confirmedInfo) {
+      startTimeUtc = confirmedInfo.start_time;
+      isTimeConfirmed = confirmedInfo.is_time_confirmed;
+    }
+
+    const handicap = determineNarHandicap(nar.name.ja, nar.grade, nar.course.ja);
+
+    const raceItem: RaceOutput = {
+      id,
+      organization: 'nar',
+      name: {
+        ja: nar.name.ja,
+        en: nar.name.en,
+      },
+      grade: nar.grade,
+      date: nar.date,
+      start_time: startTimeUtc,
+      is_time_confirmed: isTimeConfirmed,
+      course: {
+        ja: nar.course.ja,
+        en: nar.course.en,
+      },
+      distance: nar.distance,
+      track_type: nar.track_type,
+      sex_constraint: nar.sex_constraint,
+      age_constraint: nar.age_constraint,
+      handicap,
+    };
+
+    racesOutput.push(raceItem);
+  }
+  console.log(`Merged ${narRaces.length} NAR races into races output.`);
+
+  // Sort races by date, start_time, and organization
+  racesOutput.sort((a, b) =>
+    a.date.localeCompare(b.date) ||
+    a.start_time.localeCompare(b.start_time) ||
+    a.organization.localeCompare(b.organization)
+  );
 
   // Write output files
   fs.mkdirSync(path.dirname(publicOutPath), { recursive: true });
