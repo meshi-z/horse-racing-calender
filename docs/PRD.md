@@ -632,6 +632,7 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
 | **PWA / キャッシュ** | vite-plugin-pwa (Workbox) | 静的リソースとレースデータの完全オフラインキャッシュ、自動画面更新。 |
 | **SEO & 分析** | Google Analytics 4 (gtag.js) + JSON-LD | 利用状況分析およびSchema.orgによる検索結果リッチスニペット対応。 |
 | **インフラ** | GitHub Pages (GitHub Actions) | 無料の完全静的ホスティング、自動CI/CD、定期更新cronバッチ。 |
+| **運用ドキュメント** | `docs/batch-schedules.md` | バッチ実行スケジュール一覧表、手動実行コマンド、早期終了ガード・リトライ等の運用仕様書。 |
 | **セキュリティ** | Dependabot + Secret Scanning | 依存関係の脆弱性検知とシークレット保護の自動化。 |
 
 ---
@@ -695,7 +696,7 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
     - `index.html` の title, description, keywords, og:title, og:description, twitter:title, twitter:description, および Schema.org JSON-LD 構造化データを、JRA（中央競馬）およびNAR（地方競馬・ダートグレード・ばんえい）の双方を網羅した包括的内容へと再整理。
     - フッター非公式注記の案内を「主催者（JRA・NAR等）公式発表」（英語: `(e.g., JRA, NAR)`）へ更新（`src/libs/i18n.ts`）。
     - 単体テストおよび統合テスト（`Header.test.tsx`, `FilterBar.test.tsx`, `Layout.test.tsx`, `i18nIntegration.test.tsx`, `seo.test.ts`）を更新し全テスト通過。
-25. **Step 25 (Current / v1.19.0): 海外競馬：フランス競馬（France-Galop / IFHA Part I 重賞）統合 (Issue #64, #65, #66) [進行中]**
+25. **Step 25 (v1.19.0): 海外競馬：フランス競馬（France-Galop / IFHA Part I 重賞）統合 (Issue #64, #65, #66) [完了]**
     - **Phase 1: PRD改訂 (v1.19.0) および海外・フランス競馬スキーマ定義 (Issue #64) [完了]**
       - `docs/PRD.md` の改訂（v1.19.0、一次ソース情報、データアーキテクチャ、UI仕様）。
       - `src/types/race.ts` の型定義拡張（`country_code: string;`, `Organization: 'france_galop'`, `TrackType: 'aw'`, `LocalizedText.fr?: string`, `FilterState`）。
@@ -713,7 +714,11 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - 多言語・原語表記: レース詳細ダイアログ（`RaceDetailDialog`）において原語（フランス語 `race.name.fr`）表記の併記対応。
       - 検索エンジン: レース名検索において日本語・英語に加えフランス語名称（`race.name.fr`）での部分一致検索に対応。
       - 単体テストの拡充: `FilterBar.test.tsx`, `RaceCard.test.tsx`, `CalendarView.test.tsx`, `RaceDetailDialog.test.tsx`, `useRaceStore.test.ts` にテストケースを追加し、全275件のテストが完全合格。
-26. **Step 26 (Next): 海外主要レースさらなる拡張（香港・UAE・米国等） & リアルタイム馬場・天候情報**
+26. **Step 26 (Current): バッチ処理スケジュール・運用ドキュメントの整備 (Issue #69) [完了]**
+    - 管理者・開発者向け運用仕様書（`docs/batch-schedules.md`）の新設。
+    - GitHub Actions 定期cronバッチ（木/金/土/日 週9回）スケジュール一覧表、詳細コマンド（`--force`, `--dry-run`, `--org`）、早期終了ガード・リトライ設計、手動実行手順、およびトラブルシューティングのドキュメント化。
+    - `README.md` の利用可能スクリプトおよびCI/CDセクションからの参照リンク追加。
+27. **Step 27 (Next): 海外主要レースさらなる拡張（香港・UAE・米国等） & リアルタイム馬場・天候情報**
     - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
     - `OverseasRaceTimeFetcher` の追加による確定発走時刻自動取得。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

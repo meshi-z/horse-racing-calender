@@ -78,19 +78,24 @@ npm run dev
 | `npm run preview` | ビルド成果物（`dist/`）をローカルでプレビュー |
 | `npm run test` | Vitest による単体・統合テストを実行 |
 | `npm run type-check` | `tsc --noEmit` による TypeScript 型検査 |
-| `npm run data:build` | 公式データ（ICS/HTML）をパースし、レースマスター JSON を生成 |
+| `npm run data:build` | 公式データ（JRA/NAR/フランス）をパースし、レースマスター JSON を生成 |
+| `npm run data:update-times` | JRA・NAR公式出馬表から確定発走時刻・代替開催日を取得・更新 |
 | `npm run icons:generate` | PWA 用アプリアイコン（PNG/SVG）を一括生成 |
+| `npm run docs:pdf` | PRD仕様書から公式PDF（`Horse_Racing_Calendar_PRD.pdf`）を生成 |
+
+> [!TIP]
+> 各バッチスクリプトの詳細なコマンドオプション（`--force`, `--dry-run`, `--org` 等）や、GitHub Actions による確定時刻自動更新の定期スケジュール（cron）については、[バッチ処理・定期実行パイプライン スケジュール & 運用ガイド](docs/batch-schedules.md) をご覧ください。
 
 ---
 
 ## デプロイ & CI/CD パイプライン (Deployment & CI/CD)
 
-本プロジェクトは **GitHub Pages** による静的ホスティングに対応しており、GitHub Actions ワークフロー（`.github/workflows/deploy.yml`）によって自動ビルド・デプロイが行われます。
+本プロジェクトは **GitHub Pages** による静的ホスティングに対応しており、GitHub Actions ワークフロー（`.github/workflows/deploy.yml`）によって自動ビルド・デプロイが行われます。また、毎週木〜日曜に確定発走時刻を自動取得するワークフロー（`.github/workflows/update-race-times.yml`）も稼働しています。
 
 ### 自動配信パイプラインの構成
 
 1. **トリガー条件:**
-   - `main` ブランチへの `push`: 自動ビルド、テスト、および GitHub Pages へのデプロイ
+   - `main` ブランチへの `push`: 自動ビルド、テスト、および GitHub Pages へのデプロイ（PRマージ時やデータ自動更新コミット時）
    - `pull_request` (対象: `main`): 型検査・テスト・ビルド検証（デプロイはスキップ）
    - 手動実行 (`workflow_dispatch`): GitHub Web UI からのオンデマンドデプロイ
 2. **サブディレクトリ配信 (`BASE_URL`) 対応:**
