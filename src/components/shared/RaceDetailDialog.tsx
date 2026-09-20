@@ -33,7 +33,7 @@ export function RaceDetailDialog({
 
   if (!race) return null;
 
-  const timeInfo = formatRaceTimeDisplay(race.start_time, undefined, language);
+  const timeInfo = formatRaceTimeDisplay(race.start_time, race.is_time_confirmed, undefined, language);
   const formattedDate = formatLocalDate(race.date, language);
 
   const primaryName = race.name[language];
@@ -88,18 +88,25 @@ export function RaceDetailDialog({
                 </Badge>
               )}
             </div>
-            <div className="flex items-center gap-1.5">
-              <Clock className="h-4 w-4 text-muted-foreground" />
-              <span className="font-semibold">{timeInfo.time}</span>
-              {timeInfo.statusLabel && (
-                <Badge
-                  variant="outline"
-                  className="text-[10px] px-1.5 py-0"
-                >
-                  {timeInfo.statusLabel}
-                </Badge>
-              )}
-            </div>
+            {timeInfo.isConfirmed ? (
+              <div className="flex items-center gap-1.5">
+                <Clock className="h-4 w-4 text-muted-foreground" />
+                <span className="font-semibold">{timeInfo.time}</span>
+                {timeInfo.statusLabel && (
+                  <Badge
+                    variant="outline"
+                    className="text-[10px] px-1.5 py-0"
+                  >
+                    {timeInfo.statusLabel}
+                  </Badge>
+                )}
+              </div>
+            ) : (
+              <div className="flex items-center gap-1.5 text-muted-foreground">
+                <Clock className="h-4 w-4" />
+                <span className="font-medium text-xs sm:text-sm">{t("status.timeTbd")}</span>
+              </div>
+            )}
           </div>
 
           {/* 代替開催の案内通知 */}

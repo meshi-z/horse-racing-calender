@@ -35,10 +35,11 @@ describe("RaceDetailDialog", () => {
     useLanguageStore.setState({ language: "ja" });
   });
 
-  it("発走時刻前のレースにおいて、'発走予定' バッジが表示されること", () => {
+  it("発走時刻前かつ確定済みのレースにおいて、'発走予定' バッジが表示されること", () => {
     const upcomingRace: Race = {
       ...mockRace,
       start_time: "2099-12-31T06:40:00.000Z",
+      is_time_confirmed: true,
     };
     render(
       <RaceDetailDialog
@@ -49,6 +50,22 @@ describe("RaceDetailDialog", () => {
     );
     expect(screen.getByText("発走予定")).toBeInTheDocument();
     expect(screen.queryByText("発走確定")).not.toBeInTheDocument();
+  });
+
+  it("発走時刻が未確定のレースにおいて、'時刻未定' が表示され '発走予定' バッジが表示されないこと (Issue #56)", () => {
+    const unconfirmedRace: Race = {
+      ...mockRace,
+      is_time_confirmed: false,
+    };
+    render(
+      <RaceDetailDialog
+        race={unconfirmedRace}
+        open={true}
+        onOpenChange={vi.fn()}
+      />
+    );
+    expect(screen.getByText("時刻未定")).toBeInTheDocument();
+    expect(screen.queryByText("発走予定")).not.toBeInTheDocument();
   });
 
   it("発走時刻を経過したレースにおいて、'発走予定' バッジが表示されないこと", () => {
@@ -155,6 +172,24 @@ describe("RaceDetailDialog", () => {
       expect(
         screen.getByText(/Postponed from original scheduled date: Sun, Feb 22, 2026\./)
       ).toBeInTheDocument();
+    });
+
+    it("英語モード時に未確定レースで 'TBD' が表示されること (Issue #56)", () => {
+      const unconfirmedRace: Race = {
+        ...mockRace,
+        is_time_confirmed: false,
+      };
+
+      render(
+        <RaceDetailDialog
+          race={unconfirmedRace}
+          open={true}
+          onOpenChange={vi.fn()}
+        />
+      );
+
+      expect(screen.getByText("TBD")).toBeInTheDocument();
+      expect(screen.queryByText("Scheduled")).not.toBeInTheDocument();
     });
   });
 });

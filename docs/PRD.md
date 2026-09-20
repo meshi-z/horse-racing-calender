@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年9月20日) |
-| **バージョン** | v1.18.1 (NAR重賞英語レース名のカタカナ外来語英単語置換) |
+| **バージョン** | v1.19.0 (未確定レースの未来発走予定時刻非表示・時刻未定対応) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -248,8 +248,8 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
 - **多言語表示項目**:
   - 主催者バッジ（JRA / NAR）
   - レース名（`name.ja` ↔ `name.en`）および新グレードバッジ
-  - 開催日・開催競馬場（`course.ja` ↔ `course.en`）・発走時刻（ローカルタイム変換表示）
-  - 発走ステータス（`ja`「発走予定」↔ `en`「Scheduled」）
+  - 開催日・開催競馬場（`course.ja` ↔ `course.en`）・発走時刻（ローカルタイム変換表示。確定時のみ時刻を表示し、未確定時は `時刻未定` ↔ `TBD`）
+  - 発走ステータス（確定時かつ発走前: `ja`「発走予定」↔ `en`「Scheduled」。未確定時または発走後は非表示）
   - 代替開催案内（代替レースの場合、`ja`「【代替開催】当初予定日: YYYY年M月D日 からの順延」↔ `en`「[Rescheduled] Postponed from original date: MMM D, YYYY」）
   - コース詳細: 馬場種別（芝/Turf, ダート/Dirt, 障害/Jump, ばんえい/Banei）および距離（m）
   - 出走資格: 性別制限ラベル（牡・牝/Colts & Fillies, 牝/Fillies & Mares, 制限なし/Open to All）、年齢制限ラベル（3歳以上/3yo & Up 等）
@@ -313,7 +313,7 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
 | **タイムライン日付見出し** | `YYYY年M月D日(ddd)`<br>例: `2026年10月4日(日)` | `ddd, MMM D, YYYY`<br>例: `Sun, Oct 4, 2026` | 曜日略称も含めて自動ローカライズ |
 | **カレンダー年月見出し** | `YYYY年M月`<br>例: `2026年4月` | `MMMM YYYY`<br>例: `April 2026` | 英語表記は月名フルスペル |
 | **カレンダー曜日ヘッダー** | `月 / 火 / 水 / 木 / 金 / 土 / 日` | `Mon / Tue / Wed / Thu / Fri / Sat / Sun` | 月曜始まり7列グリッド厳格維持 |
-| **発走予定時刻** | `HH:mm`<br>例: `15:40` / `20:05` | `HH:mm`<br>例: `15:40` / `20:05` (または `8:05 PM`) | クライアント端末のローカル時（通常JST） |
+| **発走予定時刻** | `HH:mm`<br>例: `15:40` / `20:05`<br>（未確定時: `時刻未定`） | `HH:mm`<br>例: `15:40` / `20:05` (または `8:05 PM`)<br>（未確定時: `TBD`） | クライアント端末のローカル時（通常JST）。公式発表前の未確定レース（`is_time_confirmed: false`）は推定時刻を表示せず未定表記とし、カレンダーマスでは非表示 (Issue #56) |
 | **詳細モーダル開催日** | `YYYY年M月D日(ddd)`<br>例: `2026年2月22日(日)` | `ddd, MMM D, YYYY`<br>例: `Sun, Feb 22, 2026` | 月名の英名略称を使用 |
 
 ---
@@ -597,11 +597,17 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
       - `public/data/races.json` のダートグレード40競走の確定発走時刻更新・反映（`is_time_confirmed: true`）。
 21. **Step 21 (v1.18.0): フィルターバーのアコーディオン型折りたたみ/展開機能の実装 (Issue #51) [完了]**
     - 画面スクロール連動による詳細フィルター自動折りたたみ/展開、手動トグル制御および要約バッジバーの実装。
-22. **Step 22 (Current / v1.18.1): NAR重賞英語レース名におけるカタカナ外来語の英単語置換 (Issue #59) [完了]**
+22. **Step 22 (v1.18.1): NAR重賞英語レース名におけるカタカナ外来語の英単語置換 (Issue #59) [完了]**
     - カタカナ外来語辞書（`scripts/lib/hepburn.ts`）に45語彙（Pegasus, Selection, Princess, Crown, Cinderella, Youth, Diamond, Sparking等）を拡充。
     - レース名辞書（`src/data/nar_race_master.json`）にダートグレードおよび特殊・馬名由来の10レース（Mercury Cup, Marine Cup, Regina d'Inverno Sho, Le Printemps Sho, Furioso Legend Cup等）を個別追加。
     - 和名・植物名・鳥名等のヘボン式ローマ字表記を維持。
     - 単体テスト（`tests/unit/narSchedule.test.ts`）の拡充、`public/data/races.json` のNAR全344レース中62レースの英語表記更新。
-23. **Step 23 (Next): 海外主要レース拡張 & リアルタイム馬場・天候情報**
+23. **Step 23 (Current / v1.19.0): 未確定レースの未来発走予定時刻非表示・時刻未定対応 (Issue #56) [完了]**
+    - `is_time_confirmed: false` の未来レースにおいてデフォルト推定時刻の表示を廃止し、公式発表（確定時刻）が入ったレースのみ時刻を表示するように改修。
+    - `formatRaceTimeDisplay` を拡張し、未確定時は `time: ''`, `statusLabel: null`, `isConfirmed: false` を返却（後方互換性維持）。
+    - `RaceCard` および `RaceDetailDialog` で未確定時に「時刻未定 / TBD」をニュートラルに表示（発走予定バッジ非表示）。
+    - `CalendarView` のセル内において未確定レースの時刻を非表示化し省スペース化。
+    - 単体テスト（`date.test.ts`, `RaceCard.test.tsx`, `RaceDetailDialog.test.tsx`, `CalendarView.test.tsx`）の拡充と全テスト合格。
+24. **Step 24 (Next): 海外主要レース拡張 & リアルタイム馬場・天候情報**
     - `OverseasRaceTimeFetcher` の追加と凱旋門賞、ブリーダーズカップ等のデータ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

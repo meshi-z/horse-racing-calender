@@ -47,14 +47,25 @@ describe("RaceCard", () => {
     expect(screen.getByText("定量")).toBeInTheDocument();
   });
 
-  it("発走時刻前のレースにおいて、'発走予定' バッジが表示されること", () => {
+  it("発走時刻前かつ確定済みのレースにおいて、'発走予定' バッジが表示されること", () => {
     const upcomingRace: Race = {
       ...mockRace,
       start_time: "2099-12-31T06:40:00.000Z",
+      is_time_confirmed: true,
     };
     render(<RaceCard race={upcomingRace} />);
     expect(screen.getByText("発走予定")).toBeInTheDocument();
     expect(screen.queryByText("発走確定")).not.toBeInTheDocument();
+  });
+
+  it("発走時刻が未確定のレースにおいて、'時刻未定' が表示され '発走予定' バッジが表示されないこと (Issue #56)", () => {
+    const unconfirmedRace: Race = {
+      ...mockRace,
+      is_time_confirmed: false,
+    };
+    render(<RaceCard race={unconfirmedRace} />);
+    expect(screen.getByText("時刻未定")).toBeInTheDocument();
+    expect(screen.queryByText("発走予定")).not.toBeInTheDocument();
   });
 
   it("発走時刻を経過したレースにおいて、'発走予定' バッジが表示されないこと", () => {
@@ -166,15 +177,27 @@ describe("RaceCard", () => {
       expect(card).toBeInTheDocument();
     });
 
-    it("英語モード時に発走予定バッジ（Scheduled）および本日開催バッジ（Today）が表示されること", () => {
+    it("英語モード時に確定済みレースの発走予定バッジ（Scheduled）および本日開催バッジ（Today）が表示されること", () => {
       const upcomingRace: Race = {
         ...mockRace,
         start_time: "2099-12-31T06:40:00.000Z",
+        is_time_confirmed: true,
       };
       render(<RaceCard race={upcomingRace} isToday={true} />);
 
       expect(screen.getByText("Scheduled")).toBeInTheDocument();
       expect(screen.getByText("Today")).toBeInTheDocument();
+    });
+
+    it("英語モード時に未確定レースで 'TBD' が表示されること (Issue #56)", () => {
+      const unconfirmedRace: Race = {
+        ...mockRace,
+        is_time_confirmed: false,
+      };
+      render(<RaceCard race={unconfirmedRace} />);
+
+      expect(screen.getByText("TBD")).toBeInTheDocument();
+      expect(screen.queryByText("Scheduled")).not.toBeInTheDocument();
     });
 
     it("英語モード時に代替開催バッジ（Rescheduled）および当初予定日が英語フォーマットで表示されること", () => {

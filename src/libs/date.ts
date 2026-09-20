@@ -82,17 +82,54 @@ export interface RaceTimeInfo {
   time: string;
   statusLabel: string | null;
   isPast: boolean;
+  isConfirmed: boolean;
 }
 
 /**
  * レースの発走時刻とステータスを整形して返す
- * 発走時刻前の場合は「発走予定」（en: "Scheduled"）、発走時刻を経過した場合は statusLabel を null とする
+ * - isTimeConfirmed が false（未確定）の場合: time: '', statusLabel: null, isPast: false, isConfirmed: false を返す
+ * - isTimeConfirmed が true（確定済み）の場合:
+ *   - 発走前: statusLabel は「発走予定」（en: "Scheduled"）
+ *   - 発走後: statusLabel は null
+ *
+ * ※後方互換性のため、第2引数に Date が渡された場合（旧シグネチャ: formatRaceTimeDisplay(startTime, now, lang)）も自動判定してサポート
  */
 export function formatRaceTimeDisplay(
   startTime: string,
-  now: Date = new Date(),
-  lang: Language = 'ja'
+  isTimeConfirmedOrNow: boolean | Date = true,
+  nowOrLang: Date | Language = new Date(),
+  langProp: Language = 'ja'
 ): RaceTimeInfo {
+  let isConfirmed = true;
+  let now = new Date();
+  let lang: Language = 'ja';
+
+  if (typeof isTimeConfirmedOrNow === 'boolean') {
+    isConfirmed = isTimeConfirmedOrNow;
+    if (nowOrLang instanceof Date) {
+      now = nowOrLang;
+    }
+    if (typeof langProp === 'string') {
+      lang = langProp;
+    }
+  } else if (isTimeConfirmedOrNow instanceof Date) {
+    now = isTimeConfirmedOrNow;
+    if (typeof nowOrLang === 'string') {
+      lang = nowOrLang;
+    }
+  } else if (typeof nowOrLang === 'string') {
+    lang = nowOrLang;
+  }
+
+  if (!isConfirmed) {
+    return {
+      time: '',
+      statusLabel: null,
+      isPast: false,
+      isConfirmed: false,
+    };
+  }
+
   const time = formatLocalTime(startTime);
   const startDate = new Date(startTime);
   if (isNaN(startDate.getTime())) {
@@ -100,6 +137,7 @@ export function formatRaceTimeDisplay(
       time: '',
       statusLabel: null,
       isPast: false,
+      isConfirmed: true,
     };
   }
 
@@ -109,6 +147,7 @@ export function formatRaceTimeDisplay(
     time,
     statusLabel: isPast ? null : (lang === 'en' ? 'Scheduled' : '発走予定'),
     isPast,
+    isConfirmed: true,
   };
 }
 

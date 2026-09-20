@@ -21,6 +21,7 @@ export const translations = {
       scheduled: '発走予定',
       today: '今日',
       rescheduled: '代替開催',
+      timeTbd: '時刻未定',
     },
     action: {
       close: '閉じる',
@@ -153,6 +154,7 @@ export const translations = {
       scheduled: 'Scheduled',
       today: 'Today',
       rescheduled: 'Rescheduled',
+      timeTbd: 'TBD',
     },
     action: {
       close: 'Close',

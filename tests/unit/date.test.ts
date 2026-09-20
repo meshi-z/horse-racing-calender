@@ -60,11 +60,12 @@ describe("src/libs/date.ts", () => {
   describe("formatRaceTimeDisplay", () => {
     const startTime = "2026-02-22T06:40:00.000Z";
 
-    it("発走時刻前の場合、'発走予定' ステータスと isPast: false を返すこと (ja)", () => {
+    it("発走時刻前の場合、'発走予定' ステータスと isPast: false, isConfirmed: true を返すこと (ja)", () => {
       const nowBefore = new Date("2026-02-22T06:30:00.000Z");
       const result = formatRaceTimeDisplay(startTime, nowBefore, "ja");
       expect(result.statusLabel).toBe("発走予定");
       expect(result.isPast).toBe(false);
+      expect(result.isConfirmed).toBe(true);
       expect(result.time).toMatch(/^\d{2}:\d{2}$/);
     });
 
@@ -73,6 +74,7 @@ describe("src/libs/date.ts", () => {
       const result = formatRaceTimeDisplay(startTime, nowBefore, "en");
       expect(result.statusLabel).toBe("Scheduled");
       expect(result.isPast).toBe(false);
+      expect(result.isConfirmed).toBe(true);
       expect(result.time).toMatch(/^\d{2}:\d{2}$/);
     });
 
@@ -81,7 +83,25 @@ describe("src/libs/date.ts", () => {
       const result = formatRaceTimeDisplay(startTime, nowAfter);
       expect(result.statusLabel).toBeNull();
       expect(result.isPast).toBe(true);
+      expect(result.isConfirmed).toBe(true);
       expect(result.time).toMatch(/^\d{2}:\d{2}$/);
+    });
+
+    it("発走時刻が未確定（isTimeConfirmed: false）の場合、time: '', statusLabel: null, isConfirmed: false を返すこと (Issue #56)", () => {
+      const result = formatRaceTimeDisplay(startTime, false);
+      expect(result.time).toBe("");
+      expect(result.statusLabel).toBeNull();
+      expect(result.isPast).toBe(false);
+      expect(result.isConfirmed).toBe(false);
+    });
+
+    it("発走時刻が確定済み（isTimeConfirmed: true）の場合、時刻とステータスを正しく返すこと", () => {
+      const nowBefore = new Date("2026-02-22T06:30:00.000Z");
+      const result = formatRaceTimeDisplay(startTime, true, nowBefore, "ja");
+      expect(result.time).toMatch(/^\d{2}:\d{2}$/);
+      expect(result.statusLabel).toBe("発走予定");
+      expect(result.isPast).toBe(false);
+      expect(result.isConfirmed).toBe(true);
     });
 
     it("無効な日時の場合は空文字と statusLabel: null を返すこと", () => {
@@ -89,6 +109,7 @@ describe("src/libs/date.ts", () => {
       expect(result.time).toBe("");
       expect(result.statusLabel).toBeNull();
       expect(result.isPast).toBe(false);
+      expect(result.isConfirmed).toBe(true);
     });
   });
 
