@@ -1,0 +1,3392 @@
+{
+  "venues": {
+    "ParisLongchamp": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp",
+      "fr": "ParisLongchamp"
+    },
+    "Chantilly": {
+      "ja": "シャンティイ",
+      "en": "Chantilly",
+      "fr": "Chantilly"
+    },
+    "Deauville": {
+      "ja": "ドーヴィル",
+      "en": "Deauville",
+      "fr": "Deauville"
+    },
+    "Saint-Cloud": {
+      "ja": "サンクルー",
+      "en": "Saint-Cloud",
+      "fr": "Saint-Cloud"
+    },
+    "Fontainebleau": {
+      "ja": "フォンテーヌブロー",
+      "en": "Fontainebleau",
+      "fr": "Fontainebleau"
+    },
+    "Toulouse": {
+      "ja": "トゥールーズ",
+      "en": "Toulouse",
+      "fr": "Toulouse"
+    },
+    "Vichy": {
+      "ja": "ヴィシー",
+      "en": "Vichy",
+      "fr": "Vichy"
+    },
+    "Bordeaux": {
+      "ja": "ボルドー",
+      "en": "Bordeaux",
+      "fr": "Bordeaux"
+    },
+    "Marseille-Borely": {
+      "ja": "マルセイユボレリー",
+      "en": "Marseille-Borely",
+      "fr": "Marseille-Borély"
+    },
+    "Lyon": {
+      "ja": "リヨン",
+      "en": "Lyon",
+      "fr": "Lyon-Parilly"
+    },
+    "Craon": {
+      "ja": "クラオン",
+      "en": "Craon",
+      "fr": "Craon"
+    },
+    "Clairefontaine": {
+      "ja": "クレールフォンテーヌ",
+      "en": "Clairefontaine",
+      "fr": "Clairefontaine"
+    },
+    "Compiegne": {
+      "ja": "コンピエーニュ",
+      "en": "Compiegne",
+      "fr": "Compiègne"
+    },
+    "La Teste": {
+      "ja": "ラテスト",
+      "en": "La Teste",
+      "fr": "La Teste de Buch"
+    },
+    "Nantes": {
+      "ja": "ナント",
+      "en": "Nantes",
+      "fr": "Nantes"
+    },
+    "Cagnes-sur-Mer": {
+      "ja": "カーニュ・シュル・メール",
+      "en": "Cagnes-sur-Mer",
+      "fr": "Cagnes-sur-Mer"
+    }
+  },
+  "races": [
+    {
+      "id": "2026-france-g3-01",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "エクスビュリ賞",
+        "en": "Prix d'Exbury",
+        "fr": "Prix d'Exbury"
+      },
+      "grade": "G3",
+      "date": "2026-03-21",
+      "start_time": "2026-03-21T14:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-03-21",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-02",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "エドモンブラン賞",
+        "en": "Prix Edmond Blanc",
+        "fr": "Prix Edmond Blanc"
+      },
+      "grade": "G3",
+      "date": "2026-03-29",
+      "start_time": "2026-03-29T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-03-29",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-03",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ペネロープ賞",
+        "en": "Prix Penelope",
+        "fr": "Prix Pénélope"
+      },
+      "grade": "G3",
+      "date": "2026-04-02",
+      "start_time": "2026-04-02T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-02",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-04",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "アンプルダンス賞",
+        "en": "Prix Imprudence",
+        "fr": "Prix Imprudence"
+      },
+      "grade": "G3",
+      "date": "2026-04-09",
+      "start_time": "2026-04-09T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-09",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-05",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ジェベル賞",
+        "en": "Prix Djebel",
+        "fr": "Prix Djebel"
+      },
+      "grade": "G3",
+      "date": "2026-04-09",
+      "start_time": "2026-04-09T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-09",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-01",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ダルクール賞",
+        "en": "Prix d'Harcourt",
+        "fr": "Prix d'Harcourt"
+      },
+      "grade": "G2",
+      "date": "2026-04-12",
+      "start_time": "2026-04-12T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-12",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-06",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ヴァントー賞",
+        "en": "Prix Vanteaux",
+        "fr": "Prix Vanteaux"
+      },
+      "grade": "G3",
+      "date": "2026-04-12",
+      "start_time": "2026-04-12T12:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-12",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1800,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-07",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ノアイユ賞",
+        "en": "Prix Noailles",
+        "fr": "Prix Noailles"
+      },
+      "grade": "G3",
+      "date": "2026-04-12",
+      "start_time": "2026-04-12T12:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-12",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2100,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-08",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ラ・フォルス賞",
+        "en": "Prix La Force",
+        "fr": "Prix La Force"
+      },
+      "grade": "G3",
+      "date": "2026-04-12",
+      "start_time": "2026-04-12T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-12",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1800,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-09",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "シジー賞",
+        "en": "Prix Sigy",
+        "fr": "Prix Sigy"
+      },
+      "grade": "G3",
+      "date": "2026-04-13",
+      "start_time": "2026-04-13T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-13",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1100,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-10",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "グロット賞",
+        "en": "Prix de la Grotte",
+        "fr": "Prix de la Grotte"
+      },
+      "grade": "G3",
+      "date": "2026-04-19",
+      "start_time": "2026-04-19T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-19",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-11",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "フォンテーヌブロー賞",
+        "en": "Prix de Fontainebleau",
+        "fr": "Prix de Fontainebleau"
+      },
+      "grade": "G3",
+      "date": "2026-04-19",
+      "start_time": "2026-04-19T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-19",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-12",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "クレオパトル賞",
+        "en": "Prix Cleopatre",
+        "fr": "Prix Cléopâtre"
+      },
+      "grade": "G3",
+      "date": "2026-04-24",
+      "start_time": "2026-04-24T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-24",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 2100,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-01",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ガネー賞",
+        "en": "Prix Ganay",
+        "fr": "Prix Ganay"
+      },
+      "grade": "G1",
+      "date": "2026-04-26",
+      "start_time": "2026-04-26T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-26",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2100,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-13",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "アレフランス賞",
+        "en": "Prix Allez France",
+        "fr": "Prix Allez France"
+      },
+      "grade": "G3",
+      "date": "2026-04-26",
+      "start_time": "2026-04-26T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-26",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-14",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "バルブヴィル賞",
+        "en": "Prix de Barbeville",
+        "fr": "Prix de Barbeville"
+      },
+      "grade": "G3",
+      "date": "2026-04-26",
+      "start_time": "2026-04-26T14:25:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-26",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 3000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-02",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ミュゲ賞",
+        "en": "Prix du Muguet",
+        "fr": "Prix du Muguet"
+      },
+      "grade": "G2",
+      "date": "2026-05-01",
+      "start_time": "2026-05-01T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-01",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-15",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "グレフュール賞",
+        "en": "Prix Greffulhe",
+        "fr": "Prix Greffulhe"
+      },
+      "grade": "G3",
+      "date": "2026-05-01",
+      "start_time": "2026-05-01T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-01",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 2100,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-16",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "エドゥヴィル賞",
+        "en": "Prix d'Hedouville",
+        "fr": "Prix d'Hédouville"
+      },
+      "grade": "G3",
+      "date": "2026-05-03",
+      "start_time": "2026-05-03T14:25:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-03",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-17",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ギシュ賞",
+        "en": "Prix de Guiche",
+        "fr": "Prix de Guiche"
+      },
+      "grade": "G3",
+      "date": "2026-05-05",
+      "start_time": "2026-05-05T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-05",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1800,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-02",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "プール・デッセ・デ・プーラン（仏2000ギニー）",
+        "en": "Poule d'Essai des Poulains",
+        "fr": "Poule d'Essai des Poulains"
+      },
+      "grade": "G1",
+      "date": "2026-05-10",
+      "start_time": "2026-05-10T14:05:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-10",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-03",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "プール・デッセ・デ・プーリッシュ（仏1000ギニー）",
+        "en": "Poule d'Essai des Pouliches",
+        "fr": "Poule d'Essai des Pouliches"
+      },
+      "grade": "G1",
+      "date": "2026-05-10",
+      "start_time": "2026-05-10T13:25:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-10",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-03",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "サンタラリ賞",
+        "en": "Prix Saint-Alary",
+        "fr": "Prix Saint-Alary"
+      },
+      "grade": "G2",
+      "date": "2026-05-10",
+      "start_time": "2026-05-10T14:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-10",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-18",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "サンジョルジュ賞",
+        "en": "Prix de Saint-Georges",
+        "fr": "Prix de Saint-Georges"
+      },
+      "grade": "G3",
+      "date": "2026-05-10",
+      "start_time": "2026-05-10T12:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-10",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-19",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "テクサニタ賞",
+        "en": "Prix Texanita",
+        "fr": "Prix Texanita"
+      },
+      "grade": "G3",
+      "date": "2026-05-13",
+      "start_time": "2026-05-13T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-13",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-04",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "イスパーン賞",
+        "en": "Prix d'Ispahan",
+        "fr": "Prix d'Ispahan"
+      },
+      "grade": "G1",
+      "date": "2026-05-21",
+      "start_time": "2026-05-21T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-21",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1850,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-05",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ヴィコント・ヴィジェ賞",
+        "en": "Prix Vicomtesse Vigier",
+        "fr": "Prix Vicomtesse Vigier"
+      },
+      "grade": "G1",
+      "date": "2026-05-21",
+      "start_time": "2026-05-21T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-21",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 3100,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-20",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "オカール賞",
+        "en": "Prix Hocquart",
+        "fr": "Prix Hocquart"
+      },
+      "grade": "G3",
+      "date": "2026-05-21",
+      "start_time": "2026-05-21T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-21",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-21",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "パレロワイヤル賞",
+        "en": "Prix du Palais-Royal",
+        "fr": "Prix du Palais-Royal"
+      },
+      "grade": "G3",
+      "date": "2026-05-24",
+      "start_time": "2026-05-24T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-24",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-04",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "コリーダ賞",
+        "en": "Prix Corrida",
+        "fr": "Prix Corrida"
+      },
+      "grade": "G2",
+      "date": "2026-05-25",
+      "start_time": "2026-05-25T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-25",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2100,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-06",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ジョッケクリュブ賞（仏ダービー）",
+        "en": "Prix du Jockey Club",
+        "fr": "Prix du Jockey Club"
+      },
+      "grade": "G1",
+      "date": "2026-05-31",
+      "start_time": "2026-05-31T14:05:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-31",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 2100,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-05",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "サンドリンガム賞",
+        "en": "Prix de Sandringham",
+        "fr": "Prix de Sandringham"
+      },
+      "grade": "G2",
+      "date": "2026-05-31",
+      "start_time": "2026-05-31T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-31",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-06",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "シャンティイ大賞",
+        "en": "Grand Prix de Chantilly",
+        "fr": "Grand Prix de Chantilly"
+      },
+      "grade": "G2",
+      "date": "2026-05-31",
+      "start_time": "2026-05-31T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-31",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-22",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "グロシェーヌ賞",
+        "en": "Prix du Gros-Chene",
+        "fr": "Prix du Gros-Chêne"
+      },
+      "grade": "G3",
+      "date": "2026-05-31",
+      "start_time": "2026-05-31T14:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-31",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-23",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ロワイヨモン賞",
+        "en": "Prix de Royaumont",
+        "fr": "Prix de Royaumont"
+      },
+      "grade": "G3",
+      "date": "2026-05-31",
+      "start_time": "2026-05-31T12:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-31",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-07",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ポール・ド・ムサック賞",
+        "en": "Prix Paul de Moussac",
+        "fr": "Prix Paul de Moussac"
+      },
+      "grade": "G2",
+      "date": "2026-06-07",
+      "start_time": "2026-06-07T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-07",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-24",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ラ・クープ",
+        "en": "La Coupe",
+        "fr": "La Coupe"
+      },
+      "grade": "G3",
+      "date": "2026-06-07",
+      "start_time": "2026-06-07T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-07",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-07",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ディアヌ賞（仏オークス）",
+        "en": "Prix de Diane",
+        "fr": "Prix de Diane"
+      },
+      "grade": "G1",
+      "date": "2026-06-14",
+      "start_time": "2026-06-14T14:05:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-14",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 2100,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-25",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ベルトラン・デュ・ブルイユ賞",
+        "en": "Prix Bertrand du Breuil",
+        "fr": "Prix Bertrand du Breuil"
+      },
+      "grade": "G3",
+      "date": "2026-06-14",
+      "start_time": "2026-06-14T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-14",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-26",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "リス賞",
+        "en": "Prix du Lys",
+        "fr": "Prix du Lys"
+      },
+      "grade": "G3",
+      "date": "2026-06-14",
+      "start_time": "2026-06-14T12:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-14",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-27",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ボワ賞",
+        "en": "Prix du Bois",
+        "fr": "Prix du Bois"
+      },
+      "grade": "G3",
+      "date": "2026-06-16",
+      "start_time": "2026-06-16T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-16",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-28",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ポルト・マイヨ賞",
+        "en": "Prix de la Porte Maillot",
+        "fr": "Prix de la Porte Maillot"
+      },
+      "grade": "G3",
+      "date": "2026-06-25",
+      "start_time": "2026-06-25T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-25",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-08",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "サンクルー大賞",
+        "en": "Grand Prix de Saint-Cloud",
+        "fr": "Grand Prix de Saint-Cloud"
+      },
+      "grade": "G1",
+      "date": "2026-06-28",
+      "start_time": "2026-06-28T14:05:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-28",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-09",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ジャン・プラ賞",
+        "en": "Prix Jean Prat",
+        "fr": "Prix Jean Prat"
+      },
+      "grade": "G1",
+      "date": "2026-07-05",
+      "start_time": "2026-07-05T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-05",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-29",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "リスオランジス賞",
+        "en": "Prix de Ris-Orangis",
+        "fr": "Prix de Ris-Orangis"
+      },
+      "grade": "G3",
+      "date": "2026-07-05",
+      "start_time": "2026-07-05T12:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-05",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-30",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "クロエ賞",
+        "en": "Prix Chloe",
+        "fr": "Prix Chloé"
+      },
+      "grade": "G3",
+      "date": "2026-07-12",
+      "start_time": "2026-07-12T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-12",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1800,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-10",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "パリ大賞典",
+        "en": "Grand Prix de Paris",
+        "fr": "Grand Prix de Paris"
+      },
+      "grade": "G1",
+      "date": "2026-07-14",
+      "start_time": "2026-07-14T15:25:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-14",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-08",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "マレレ賞",
+        "en": "Prix de Malleret",
+        "fr": "Prix de Malleret"
+      },
+      "grade": "G2",
+      "date": "2026-07-14",
+      "start_time": "2026-07-14T14:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-14",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-09",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "モーリス・ド・ニュイユ賞",
+        "en": "Prix Maurice de Nieuil",
+        "fr": "Prix Maurice de Nieuil"
+      },
+      "grade": "G2",
+      "date": "2026-07-14",
+      "start_time": "2026-07-14T14:05:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-14",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2800,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-10",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ユジェーヌアダム賞",
+        "en": "Prix Eugene Adam",
+        "fr": "Prix Eugène Adam"
+      },
+      "grade": "G2",
+      "date": "2026-07-19",
+      "start_time": "2026-07-19T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-19",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-31",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "メシドール賞",
+        "en": "Prix Messidor",
+        "fr": "Prix Messidor"
+      },
+      "grade": "G3",
+      "date": "2026-07-19",
+      "start_time": "2026-07-19T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-19",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-32",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ヴィシー大賞",
+        "en": "Grand Prix de Vichy",
+        "fr": "Grand Prix de Vichy"
+      },
+      "grade": "G3",
+      "date": "2026-07-22",
+      "start_time": "2026-07-22T18:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-22",
+      "course": {
+        "ja": "ヴィシー",
+        "en": "Vichy"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-11",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ロベール・パパン賞",
+        "en": "Prix Robert Papin",
+        "fr": "Prix Robert Papin"
+      },
+      "grade": "G2",
+      "date": "2026-07-26",
+      "start_time": "2026-07-26T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-26",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-33",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "シックスパーフェクションズ賞",
+        "en": "Prix Six Perfections",
+        "fr": "Prix Six Perfections"
+      },
+      "grade": "G3",
+      "date": "2026-08-01",
+      "start_time": "2026-08-01T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-01",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-34",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "プシシェ賞",
+        "en": "Prix de Psyche",
+        "fr": "Prix de Psyché"
+      },
+      "grade": "G3",
+      "date": "2026-08-01",
+      "start_time": "2026-08-01T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-01",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-11",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ロートシルト賞",
+        "en": "Prix Rothschild",
+        "fr": "Prix Rothschild"
+      },
+      "grade": "G1",
+      "date": "2026-08-02",
+      "start_time": "2026-08-02T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-02",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-35",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "カブール賞",
+        "en": "Prix de Cabourg",
+        "fr": "Prix de Cabourg"
+      },
+      "grade": "G3",
+      "date": "2026-08-02",
+      "start_time": "2026-08-02T12:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-02",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-36",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ルー賞",
+        "en": "Prix de Reux",
+        "fr": "Prix de Reux"
+      },
+      "grade": "G3",
+      "date": "2026-08-08",
+      "start_time": "2026-08-08T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-08",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 2500,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-12",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "モーリス・ド・ゲスト賞",
+        "en": "Prix Maurice de Gheest",
+        "fr": "Prix Maurice de Gheest"
+      },
+      "grade": "G1",
+      "date": "2026-08-09",
+      "start_time": "2026-08-09T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-09",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1300,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-37",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "フランソワ・ブータン賞",
+        "en": "Prix Francois Boutin",
+        "fr": "Prix François Boutin"
+      },
+      "grade": "G3",
+      "date": "2026-08-09",
+      "start_time": "2026-08-09T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-09",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-12",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ギヨーム・ドルナノ賞",
+        "en": "Prix Guillaume d'Ornano",
+        "fr": "Prix Guillaume d'Ornano"
+      },
+      "grade": "G2",
+      "date": "2026-08-15",
+      "start_time": "2026-08-15T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-15",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-38",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ゴントービロン賞",
+        "en": "Prix Gontaut-Biron",
+        "fr": "Prix Gontaut-Biron"
+      },
+      "grade": "G3",
+      "date": "2026-08-15",
+      "start_time": "2026-08-15T14:25:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-15",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-39",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "リューレイ賞",
+        "en": "Prix de Lieurey",
+        "fr": "Prix de Lieurey"
+      },
+      "grade": "G3",
+      "date": "2026-08-15",
+      "start_time": "2026-08-15T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-15",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-13",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ジャック・ル・マロワ賞",
+        "en": "Prix Jacques Le Marois",
+        "fr": "Prix Jacques Le Marois"
+      },
+      "grade": "G1",
+      "date": "2026-08-16",
+      "start_time": "2026-08-16T14:05:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-16",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-40",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ミネルヴ賞",
+        "en": "Prix Minerve",
+        "fr": "Prix Minerve"
+      },
+      "grade": "G3",
+      "date": "2026-08-16",
+      "start_time": "2026-08-16T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-16",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 2500,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-13",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "アレック・ヘッド賞",
+        "en": "Prix Alec Head",
+        "fr": "Prix Alec Head"
+      },
+      "grade": "G2",
+      "date": "2026-08-22",
+      "start_time": "2026-08-22T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-22",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 2500,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-14",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "カルヴァドス賞",
+        "en": "Prix du Calvados",
+        "fr": "Prix du Calvados"
+      },
+      "grade": "G2",
+      "date": "2026-08-22",
+      "start_time": "2026-08-22T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-22",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-14",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ジャン・ロマネ賞",
+        "en": "Prix Jean Romanet",
+        "fr": "Prix Jean Romanet"
+      },
+      "grade": "G1",
+      "date": "2026-08-23",
+      "start_time": "2026-08-23T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-23",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-15",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "モルニ賞",
+        "en": "Prix Morny",
+        "fr": "Prix Morny"
+      },
+      "grade": "G1",
+      "date": "2026-08-23",
+      "start_time": "2026-08-23T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-23",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-15",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ケルゴルレイ賞",
+        "en": "Prix Kergorlay",
+        "fr": "Prix Kergorlay"
+      },
+      "grade": "G2",
+      "date": "2026-08-23",
+      "start_time": "2026-08-23T14:30:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-23",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 3000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-41",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ダフニス賞",
+        "en": "Prix Daphnis",
+        "fr": "Prix Daphnis"
+      },
+      "grade": "G3",
+      "date": "2026-08-23",
+      "start_time": "2026-08-23T12:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-23",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-16",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ドーヴィル大賞",
+        "en": "Grand Prix de Deauville",
+        "fr": "Grand Prix de Deauville"
+      },
+      "grade": "G2",
+      "date": "2026-08-30",
+      "start_time": "2026-08-30T14:30:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-30",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 2500,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-42",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "カンセ賞",
+        "en": "Prix Quincey",
+        "fr": "Prix Quincey"
+      },
+      "grade": "G3",
+      "date": "2026-08-30",
+      "start_time": "2026-08-30T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-30",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-43",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "メートリー賞",
+        "en": "Prix de Meautry",
+        "fr": "Prix de Meautry"
+      },
+      "grade": "G3",
+      "date": "2026-08-30",
+      "start_time": "2026-08-30T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-30",
+      "course": {
+        "ja": "ドーヴィル",
+        "en": "Deauville"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-44",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "アランベール賞",
+        "en": "Prix d'Arenberg",
+        "fr": "Prix d'Arenberg"
+      },
+      "grade": "G3",
+      "date": "2026-09-03",
+      "start_time": "2026-09-03T14:30:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-03",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-16",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ムーラン・ド・ロンシャン賞",
+        "en": "Prix du Moulin de Longchamp",
+        "fr": "Prix du Moulin de Longchamp"
+      },
+      "grade": "G1",
+      "date": "2026-09-06",
+      "start_time": "2026-09-06T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-06",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-17",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "オマール賞",
+        "en": "Prix d'Aumale",
+        "fr": "Prix d'Aumale"
+      },
+      "grade": "G2",
+      "date": "2026-09-06",
+      "start_time": "2026-09-06T12:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-06",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-45",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "グラディアトゥール賞",
+        "en": "Prix Gladiateur",
+        "fr": "Prix Gladiateur"
+      },
+      "grade": "G3",
+      "date": "2026-09-06",
+      "start_time": "2026-09-06T14:25:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-06",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 3100,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-46",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "シェーヌ賞",
+        "en": "Prix des Chenes",
+        "fr": "Prix des Chênes"
+      },
+      "grade": "G3",
+      "date": "2026-09-06",
+      "start_time": "2026-09-06T12:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-06",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-47",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ラ・ロシェット賞",
+        "en": "Prix La Rochette",
+        "fr": "Prix La Rochette"
+      },
+      "grade": "G3",
+      "date": "2026-09-06",
+      "start_time": "2026-09-06T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-06",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-17",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ヴェルメイユ賞",
+        "en": "Prix Vermeille",
+        "fr": "Prix Vermeille"
+      },
+      "grade": "G1",
+      "date": "2026-09-13",
+      "start_time": "2026-09-13T14:05:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-13",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-18",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ニエル賞",
+        "en": "Prix Niel",
+        "fr": "Prix Niel"
+      },
+      "grade": "G2",
+      "date": "2026-09-13",
+      "start_time": "2026-09-13T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-13",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-19",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "フォワ賞",
+        "en": "Prix Foy",
+        "fr": "Prix Foy"
+      },
+      "grade": "G2",
+      "date": "2026-09-13",
+      "start_time": "2026-09-13T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-13",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-48",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ジェラル・ド・ジョフル賞",
+        "en": "Prix Gerald de Geoffre",
+        "fr": "Prix Gérald de Geoffre"
+      },
+      "grade": "G3",
+      "date": "2026-09-13",
+      "start_time": "2026-09-13T12:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-13",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 3000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-49",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "パン賞",
+        "en": "Prix du Pin",
+        "fr": "Prix du Pin"
+      },
+      "grade": "G3",
+      "date": "2026-09-13",
+      "start_time": "2026-09-13T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-13",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-50",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "プティ・クヴェール賞",
+        "en": "Prix du Petit Couvert",
+        "fr": "Prix du Petit Couvert"
+      },
+      "grade": "G3",
+      "date": "2026-09-13",
+      "start_time": "2026-09-13T12:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-13",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-51",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "プランス・ドランジュ賞",
+        "en": "Prix du Prince d'Orange",
+        "fr": "Prix du Prince d'Orange"
+      },
+      "grade": "G3",
+      "date": "2026-09-13",
+      "start_time": "2026-09-13T14:30:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-13",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-52",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ベルトラン・ド・タラゴン賞",
+        "en": "Prix Bertrand de Tarragon",
+        "fr": "Prix Bertrand de Tarragon"
+      },
+      "grade": "G3",
+      "date": "2026-09-18",
+      "start_time": "2026-09-18T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-18",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1800,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-53",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "エクリプス賞",
+        "en": "Prix d'Eclipse",
+        "fr": "Prix d'Éclipse"
+      },
+      "grade": "G3",
+      "date": "2026-09-19",
+      "start_time": "2026-09-19T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-19",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-54",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "コンデ賞",
+        "en": "Prix de Conde",
+        "fr": "Prix de Condé"
+      },
+      "grade": "G3",
+      "date": "2026-09-26",
+      "start_time": "2026-09-26T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-26",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-55",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "トマ・ブリョン賞",
+        "en": "Prix Thomas Bryon",
+        "fr": "Prix Thomas Bryon"
+      },
+      "grade": "G3",
+      "date": "2026-10-02",
+      "start_time": "2026-10-02T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-02",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1800,
+      "track_type": "aw",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-18",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "カドラン賞",
+        "en": "Prix du Cadran",
+        "fr": "Prix du Cadran"
+      },
+      "grade": "G1",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T12:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-03",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 4000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-19",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ロワイヤリュー賞",
+        "en": "Prix de Royallieu",
+        "fr": "Prix de Royallieu"
+      },
+      "grade": "G1",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T13:20:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-03",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2800,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-20",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ショードネイ賞",
+        "en": "Prix Chaudenay",
+        "fr": "Prix Chaudenay"
+      },
+      "grade": "G2",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T12:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-03",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 3000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-21",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ダニエル・ウィルデンシュタイン賞",
+        "en": "Prix Daniel Wildenstein",
+        "fr": "Prix Daniel Wildenstein"
+      },
+      "grade": "G2",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-03",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-22",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ドラール賞",
+        "en": "Prix Dollar",
+        "fr": "Prix Dollar"
+      },
+      "grade": "G2",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T14:40:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-03",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1950,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-20",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "アベイ・ド・ロンシャン賞",
+        "en": "Prix de l'Abbaye de Longchamp",
+        "fr": "Prix de l'Abbaye de Longchamp"
+      },
+      "grade": "G1",
+      "date": "2026-10-04",
+      "start_time": "2026-10-04T12:20:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-04",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-21",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "オペラ賞",
+        "en": "Prix de l'Opera",
+        "fr": "Prix de l'Opéra"
+      },
+      "grade": "G1",
+      "date": "2026-10-04",
+      "start_time": "2026-10-04T14:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-04",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-22",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ジャン・リュック・ラガルデール賞",
+        "en": "Prix Jean-Luc Lagardere",
+        "fr": "Prix Jean-Luc Lagardère"
+      },
+      "grade": "G1",
+      "date": "2026-10-04",
+      "start_time": "2026-10-04T12:55:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-04",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-23",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "フォレ賞",
+        "en": "Prix de la Foret",
+        "fr": "Prix de la Forêt"
+      },
+      "grade": "G1",
+      "date": "2026-10-04",
+      "start_time": "2026-10-04T15:30:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-04",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-24",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "マルセル・ブサック賞",
+        "en": "Prix Marcel Boussac",
+        "fr": "Prix Marcel Boussac"
+      },
+      "grade": "G1",
+      "date": "2026-10-04",
+      "start_time": "2026-10-04T11:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-04",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-25",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "凱旋門賞",
+        "en": "Prix de l'Arc de Triomphe",
+        "fr": "Prix de l'Arc de Triomphe"
+      },
+      "grade": "G1",
+      "date": "2026-10-04",
+      "start_time": "2026-10-04T14:05:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-04",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-23",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "メゾンラフィットクリテリウム",
+        "en": "Criterium de Maisons-Laffitte",
+        "fr": "Critérium de Maisons-Laffitte"
+      },
+      "grade": "G2",
+      "date": "2026-10-10",
+      "start_time": "2026-10-10T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-10",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g2-24",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "コンセイユ・ド・パリ賞",
+        "en": "Prix du Conseil de Paris",
+        "fr": "Prix du Conseil de Paris"
+      },
+      "grade": "G2",
+      "date": "2026-10-18",
+      "start_time": "2026-10-18T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-18",
+      "course": {
+        "ja": "パリロンシャン",
+        "en": "ParisLongchamp"
+      },
+      "distance": 2200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-56",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "レゼルヴォワール賞",
+        "en": "Prix des Reservoirs",
+        "fr": "Prix des Réservoirs"
+      },
+      "grade": "G3",
+      "date": "2026-10-21",
+      "start_time": "2026-10-21T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-21",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-57",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ベルドニュイ賞",
+        "en": "Prix Belle de Nuit",
+        "fr": "Prix Belle de Nuit"
+      },
+      "grade": "G3",
+      "date": "2026-10-22",
+      "start_time": "2026-10-22T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-22",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 2800,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-58",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "フロール賞",
+        "en": "Prix de Flore",
+        "fr": "Prix de Flore"
+      },
+      "grade": "G3",
+      "date": "2026-10-24",
+      "start_time": "2026-10-24T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-24",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 2100,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-26",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "クリテリウムアンテルナシオナル",
+        "en": "Criterium International",
+        "fr": "Critérium International"
+      },
+      "grade": "G1",
+      "date": "2026-10-25",
+      "start_time": "2026-10-25T12:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-25",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-27",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "クリテリウムドサンクルー",
+        "en": "Criterium de Saint-Cloud",
+        "fr": "Critérium de Saint-Cloud"
+      },
+      "grade": "G1",
+      "date": "2026-10-25",
+      "start_time": "2026-10-25T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-25",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-28",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ロワイヤル・オーク賞",
+        "en": "Prix Royal-Oak",
+        "fr": "Prix Royal-Oak"
+      },
+      "grade": "G1",
+      "date": "2026-10-25",
+      "start_time": "2026-10-25T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-25",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 3100,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-59",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "パース賞",
+        "en": "Prix Perth",
+        "fr": "Prix Perth"
+      },
+      "grade": "G3",
+      "date": "2026-10-25",
+      "start_time": "2026-10-25T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-25",
+      "course": {
+        "ja": "サンクルー",
+        "en": "Saint-Cloud"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-60",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "セーネオワーズ賞",
+        "en": "Prix de Seine-et-Oise",
+        "fr": "Prix de Seine-et-Oise"
+      },
+      "grade": "G3",
+      "date": "2026-10-27",
+      "start_time": "2026-10-27T14:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-27",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-61",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ミエスク賞",
+        "en": "Prix Miesque",
+        "fr": "Prix Miesque"
+      },
+      "grade": "G3",
+      "date": "2026-10-27",
+      "start_time": "2026-10-27T14:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-27",
+      "course": {
+        "ja": "シャンティイ",
+        "en": "Chantilly"
+      },
+      "distance": 1400,
+      "track_type": "aw",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g3-62",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "フィユドレール賞",
+        "en": "Prix Fille de l'Air",
+        "fr": "Prix Fille de l'Air"
+      },
+      "grade": "G3",
+      "date": "2026-11-11",
+      "start_time": "2026-11-11T14:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-11-11",
+      "course": {
+        "ja": "トゥールーズ",
+        "en": "Toulouse"
+      },
+      "distance": 2100,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    }
+  ]
+}

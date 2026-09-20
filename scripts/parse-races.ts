@@ -5,11 +5,13 @@ import {
   parseNarScheduleHtml,
   fetchNarScheduleHtml,
 } from './lib/nar-schedule';
+import { loadFranceRaceMaster, getFranceRaces } from './lib/france-races';
 
 // --- Type Definitions (Pattern A: Localized Object) ---
 export interface LocalizedString {
   ja: string;
   en: string;
+  fr?: string;
 }
 
 export interface HandicapInfo {
@@ -26,6 +28,7 @@ export interface LocalizedConstraint<T extends string> {
 export interface RaceOutput {
   id: string;
   organization: string;
+  country_code?: string;
   name: LocalizedString;
   grade: string;
   date: string;
@@ -35,7 +38,7 @@ export interface RaceOutput {
   original_date?: string;
   course: LocalizedString;
   distance: number;
-  track_type: 'turf' | 'dirt' | 'obstacle' | 'banei';
+  track_type: 'turf' | 'dirt' | 'obstacle' | 'banei' | 'aw';
   sex_constraint: 'none' | 'filly_and_mare' | 'colt_and_filly';
   age_constraint: '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up';
   handicap: HandicapInfo;
@@ -755,6 +758,7 @@ async function main() {
     const raceItem: RaceOutput = {
       id,
       organization: 'jra',
+      country_code: 'JP',
       name: {
         ja: ics.cleanName,
         en: nameEn,
@@ -908,6 +912,7 @@ function determineNarHandicap(raceName: string, _grade: string, course: string):
     const raceItem: RaceOutput = {
       id,
       organization: 'nar',
+      country_code: 'JP',
       name: {
         ja: nar.name.ja,
         en: nar.name.en,
@@ -930,6 +935,15 @@ function determineNarHandicap(raceName: string, _grade: string, course: string):
     racesOutput.push(raceItem);
   }
   console.log(`Merged ${narRaces.length} NAR races into races output.`);
+
+  // --- Process France Races ---
+  console.log('Loading and merging France races...');
+  const franceMaster = loadFranceRaceMaster(rootDir);
+  const franceRaces = getFranceRaces(franceMaster, confirmedTimesMap);
+  for (const fr of franceRaces) {
+    racesOutput.push(fr);
+  }
+  console.log(`Merged ${franceRaces.length} France races into races output.`);
 
   // Sort races by date, start_time, and organization
   racesOutput.sort((a, b) =>
