@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年9月20日) |
-| **バージョン** | v1.19.1 (NAR・将来拡張に対応したヘッダー英語表記・検索例・metaタグの再整理) |
+| **バージョン** | v1.18.2 (NAR・将来拡張に対応したヘッダー英語表記・検索例・metaタグの再整理) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -18,7 +18,7 @@
 
 UIライブラリには **Shadcn UI** (Radix UI + Tailwind CSS) を全面採用。ターフを象徴する公式イメージカラー（`#047B5F`）をベースとした洗練されたデザイン、Radix UI 由来の完全なキーボード操作・WAI-ARIAアクセシビリティ、OS設定連動のダークモード対応、そして多角的なフィルター機能（主催者・グレード・馬場・競馬場・距離）を両立したユーザー体験を実現している。
 
-v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい競馬対応、v1.18.0 のフィルターバーアコーディオン機能、v1.19.0 の未確定発走時刻非表示化の上に、v1.19.1 では **ヘッダー英語サブタイトル（Graded Races Calendar）、FilterBarの検索例（有馬記念、東京大賞典、February、Tokyo Derby）、およびmeta/OGP/構造化データの包括的再整理** を実施し、中央・地方・多言語対応サービスとしての整合性とSEOを強化する。
+v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい競馬対応、v1.18.0 のフィルターバーアコーディオン機能、v1.18.1 のNAR英語レース名整理の上に、v1.18.2 では **ヘッダー英語サブタイトル（Graded Races Calendar）、FilterBarの検索例（有馬記念、東京大賞典、February、Tokyo Derby）、およびmeta/OGP/構造化データの包括的再整理** を実施し、中央・地方・多言語対応サービスとしての整合性とSEOを強化する。
 
 ---
 
@@ -608,7 +608,7 @@ NAR公式の多様な格付け表記を以下の基準で分類・正規化し�
     - `RaceCard` および `RaceDetailDialog` で未確定時に「時刻未定 / TBD」をニュートラルに表示（発走予定バッジ非表示）。
     - `CalendarView` のセル内において未確定レースの時刻を非表示化し省スペース化。
     - 単体テスト（`date.test.ts`, `RaceCard.test.tsx`, `RaceDetailDialog.test.tsx`, `CalendarView.test.tsx`）の拡充と全テスト合格。
-24. **Step 24 (Current / v1.19.1): NAR・将来拡張に対応したヘッダー英語表記・検索例・metaタグの再整理 (Issue #62) [完了]**
+24. **Step 24 (Current / v1.18.2): NAR・将来拡張に対応したヘッダー英語表記・検索例・metaタグの再整理 (Issue #62) [完了]**
     - ヘッダーサブタイトルの英語表記を `JRA Graded Races Calendar` から包括的な `Graded Races Calendar` へ更新（`src/libs/i18n.ts`）。
     - フィルターバー検索フォームのプレースホルダーを、中央・地方・日英検索に対応していることが伝わる表記（`有馬記念、東京大賞典、February、Tokyo Derby` 等）へ更新（`src/libs/i18n.ts`）。
     - `index.html` の title, description, keywords, og:title, og:description, twitter:title, twitter:description, および Schema.org JSON-LD 構造化データを、JRA（中央競馬）およびNAR（地方競馬・ダートグレード・ばんえい）の双方を網羅した包括的内容へと再整理。
