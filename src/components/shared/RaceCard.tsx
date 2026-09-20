@@ -76,16 +76,31 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
             {/* 上部: 主催者タグ・開催日・発走時刻・発走予定バッジ・代替開催バッジ */}
             <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
               <div className="flex items-center gap-1.5 font-medium flex-wrap">
+                {race.country_code && (
+                  <Badge
+                    variant="outline"
+                    className={cn(
+                      "text-[10px] px-1.5 py-0 h-4 font-bold tracking-wider",
+                      race.country_code === "FR"
+                        ? "border-indigo-500/40 text-indigo-700 dark:text-indigo-300 bg-indigo-50/60 dark:bg-indigo-950/40"
+                        : "border-slate-500/40 text-slate-700 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900/40"
+                    )}
+                  >
+                    {race.country_code}
+                  </Badge>
+                )}
                 <Badge
                   variant="outline"
                   className={cn(
                     "text-[10px] px-1.5 py-0 h-4 font-bold tracking-wider",
                     race.organization === "jra"
                       ? "border-blue-500/40 text-blue-700 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/30"
+                      : race.organization === "france_galop"
+                      ? "border-indigo-500/40 text-indigo-700 dark:text-indigo-300 bg-indigo-50/50 dark:bg-indigo-950/30"
                       : "border-emerald-500/40 text-emerald-700 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/30"
                   )}
                 >
-                  {race.organization.toUpperCase()}
+                  {race.organization === "france_galop" ? "FRANCE GALOP" : race.organization.toUpperCase()}
                 </Badge>
                 <Calendar className="h-3.5 w-3.5 shrink-0" />
                 <span>{formattedDate}</span>

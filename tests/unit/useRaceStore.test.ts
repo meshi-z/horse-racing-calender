@@ -202,6 +202,25 @@ describe('useRaceStore & filterRaces', () => {
       expect(results[0].name.en).toBe('American Jockey Club Cup');
     });
 
+    it('フランス語名称の部分一致（"arc"）で該当するレースを取得できること', () => {
+      const franceRace: Race = {
+        ...mockRaces[0],
+        id: '2026-france-g1-01',
+        organization: 'france_galop',
+        name: {
+          ja: '凱旋門賞',
+          en: "Prix de l'Arc de Triomphe",
+          fr: "Prix de l'Arc de Triomphe",
+        },
+      };
+      useRaceStore.getState().setRaces([...mockRaces, franceRace]);
+      useRaceStore.getState().setFilter('searchQuery', 'arc');
+      const results = useRaceStore.getState().getFilteredRaces();
+
+      expect(results).toHaveLength(1);
+      expect(results[0].name.ja).toBe('凱旋門賞');
+    });
+
     it('合致しないキーワードの場合は空配列を返すこと', () => {
       useRaceStore.getState().setFilter('searchQuery', '有馬記念');
       const results = useRaceStore.getState().getFilteredRaces();
@@ -311,7 +330,13 @@ describe('useRaceStore & filterRaces', () => {
         organization: 'nar' as const,
         grade: 'Jpn1' as const,
       };
-      const mixedRaces = [...mockRaces, narRace];
+      const franceRace = {
+        ...mockRaces[0],
+        id: '2026-france-g1-01',
+        organization: 'france_galop' as const,
+        grade: 'G1' as const,
+      };
+      const mixedRaces = [...mockRaces, narRace, franceRace];
 
       // JRAのみ
       const jraOnly = filterRaces(mixedRaces, {
@@ -327,6 +352,14 @@ describe('useRaceStore & filterRaces', () => {
       });
       expect(narOnly).toHaveLength(1);
       expect(narOnly[0].id).toBe('2026-nar-jpn1-01');
+
+      // Franceのみ
+      const franceOnly = filterRaces(mixedRaces, {
+        ...initialFilters,
+        organization: 'france_galop',
+      });
+      expect(franceOnly).toHaveLength(1);
+      expect(franceOnly[0].id).toBe('2026-france-g1-01');
 
       // all
       const allRaces = filterRaces(mixedRaces, {
