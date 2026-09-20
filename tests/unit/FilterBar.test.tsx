@@ -6,6 +6,7 @@ import { useLanguageStore } from "../../src/store/useLanguageStore";
 
 describe("FilterBar", () => {
   beforeEach(() => {
+    Object.defineProperty(window, "scrollY", { value: 0, writable: true, configurable: true });
     useLanguageStore.setState({ language: "ja" });
     useRaceStore.getState().resetFilters();
   });
@@ -351,6 +352,121 @@ describe("FilterBar", () => {
       const oiBtn = screen.getByRole("button", { name: "大井" });
       fireEvent.click(oiBtn);
       expect(useRaceStore.getState().filters.courses).toContain("大井");
+    });
+  });
+
+  describe("アコーディオン型折りたたみ/展開機能 (Issue #51)", () => {
+    it("初期状態（最上部）では詳細フィルターパネルが展開表示されていること", () => {
+      render(<FilterBar />);
+      expect(screen.getByTestId("detailed-filters-panel")).toBeInTheDocument();
+      const toggleBtn = screen.getByRole("button", { name: "フィルターを折りたたむ" });
+      expect(toggleBtn).toHaveAttribute("aria-expanded", "true");
+      expect(toggleBtn).toHaveAttribute("aria-controls", "detailed-filters-panel");
+    });
+
+    it("スクロール時に詳細フィルターが自動で折りたたまれ、展開ボタンで再展開できること", () => {
+      render(<FilterBar />);
+      expect(screen.getByTestId("detailed-filters-panel")).toBeInTheDocument();
+
+      // スクロール実行
+      Object.defineProperty(window, "scrollY", { value: 50, writable: true, configurable: true });
+      fireEvent.scroll(window);
+
+      // 自動折りたたみ確認
+      expect(screen.queryByTestId("detailed-filters-panel")).not.toBeInTheDocument();
+      const expandBtn = screen.getByRole("button", { name: "フィルターを展開" });
+      expect(expandBtn).toHaveAttribute("aria-expanded", "false");
+
+      // 手動で展開ボタンをクリック
+      fireEvent.click(expandBtn);
+      expect(screen.getByTestId("detailed-filters-panel")).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "フィルターを折りたたむ" })).toHaveAttribute("aria-expanded", "true");
+    });
+
+    it("手動展開後にスクロールしても展開状態が維持されること（意図の尊重）", () => {
+      render(<FilterBar />);
+
+      // スクロールで折りたたみ
+      Object.defineProperty(window, "scrollY", { value: 50, writable: true, configurable: true });
+      fireEvent.scroll(window);
+      expect(screen.queryByTestId("detailed-filters-panel")).not.toBeInTheDocument();
+
+      // 手動で展開
+      const expandBtn = screen.getByRole("button", { name: "フィルターを展開" });
+      fireEvent.click(expandBtn);
+      expect(screen.getByTestId("detailed-filters-panel")).toBeInTheDocument();
+
+      // さらにスクロールしても展開されたまま
+      Object.defineProperty(window, "scrollY", { value: 100, writable: true, configurable: true });
+      fireEvent.scroll(window);
+      expect(screen.getByTestId("detailed-filters-panel")).toBeInTheDocument();
+
+      // 最上部へ戻ると手動フラグがリセットされ、引き続き展開されている
+      Object.defineProperty(window, "scrollY", { value: 0, writable: true, configurable: true });
+      fireEvent.scroll(window);
+      expect(screen.getByTestId("detailed-filters-panel")).toBeInTheDocument();
+
+      // 再びスクロールすると、リセットされたため自動で折りたたまれる
+      Object.defineProperty(window, "scrollY", { value: 50, writable: true, configurable: true });
+      fireEvent.scroll(window);
+      expect(screen.queryByTestId("detailed-filters-panel")).not.toBeInTheDocument();
+    });
+
+    it("折りたたみ状態でも適用中のフィルター件数バッジおよび要約バッジが表示され、個別解除とリセットができること", () => {
+      // グレード、馬場、距離、競馬場を複数選択
+      useRaceStore.getState().setFilter("grades", ["G1"]);
+      useRaceStore.getState().setFilter("trackTypes", ["turf"]);
+      useRaceStore.getState().setFilter("distanceCategories", ["mile"]);
+      useRaceStore.getState().setFilter("courses", ["東京"]);
+
+      render(<FilterBar />);
+
+      // スクロールして折りたたむ
+      Object.defineProperty(window, "scrollY", { value: 50, writable: true, configurable: true });
+      fireEvent.scroll(window);
+
+      // バッジ件数の確認 (4件)
+      const countBadge = screen.getByTestId("filter-badge-count");
+      expect(countBadge).toHaveTextContent("4");
+
+      // 要約バッジバーの表示確認
+      const summaryBar = screen.getByTestId("active-filters-summary");
+      expect(summaryBar).toBeInTheDocument();
+      expect(summaryBar).toHaveTextContent("4件適用中");
+      expect(screen.getByText("G1")).toBeInTheDocument();
+      expect(screen.getByText("芝")).toBeInTheDocument();
+      expect(screen.getByText("マイル")).toBeInTheDocument();
+      expect(screen.getByText("東京")).toBeInTheDocument();
+
+      // G1の個別解除ボタンをクリック
+      const removeG1Btn = screen.getByLabelText("G1の絞り込みを解除");
+      fireEvent.click(removeG1Btn);
+      expect(useRaceStore.getState().filters.grades).not.toContain("G1");
+      expect(countBadge).toHaveTextContent("3");
+
+      // 常時表示エリアのリセットボタンで全解除
+      const resetBtn = screen.getByRole("button", { name: "フィルターをリセット" });
+      fireEvent.click(resetBtn);
+      expect(useRaceStore.getState().filters.grades).toEqual([]);
+      expect(useRaceStore.getState().filters.trackTypes).toEqual([]);
+      expect(useRaceStore.getState().filters.distanceCategories).toEqual([]);
+      expect(useRaceStore.getState().filters.courses).toEqual([]);
+      expect(screen.queryByTestId("active-filters-summary")).not.toBeInTheDocument();
+    });
+
+    it("英語モードで展開/折りたたみボタンのラベルが正しくローカライズされること", () => {
+      useLanguageStore.setState({ language: "en" });
+      render(<FilterBar />);
+
+      const collapseBtn = screen.getByRole("button", { name: "Collapse filters" });
+      expect(collapseBtn).toBeInTheDocument();
+
+      // スクロールで折りたたみ
+      Object.defineProperty(window, "scrollY", { value: 50, writable: true, configurable: true });
+      fireEvent.scroll(window);
+
+      const expandBtn = screen.getByRole("button", { name: "Expand filters" });
+      expect(expandBtn).toBeInTheDocument();
     });
   });
 });
