@@ -700,10 +700,12 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - `docs/PRD.md` の改訂（v1.19.0、一次ソース情報、データアーキテクチャ、UI仕様）。
       - `src/types/race.ts` の型定義拡張（`country_code: string;`, `Organization: 'france_galop'`, `TrackType: 'aw'`, `LocalizedText.fr?: string`, `FilterState`）。
       - `package.json` のバージョンを `1.19.0` へ更新。
-    - **Phase 2: フランス重賞データ抽出・日仏英マスタ作成および統合マージ (Issue #65) [予定]**
+    - **Phase 2: フランス重賞データ抽出・日仏英マスタ作成および統合マージ (Issue #65) [完了]**
       - 2大公式PDF（IFHA Part I France & France Galop 公式開催カレンダー）解析スクリプトの実装。
-      - `src/data/france_race_master.json`（日仏英辞書、出走条件・距離・馬場AW・斤量正規化、推定発走時刻）の作成。
-      - `public/data/races.json` へのフランス重賞データの統合マージ（ID体系: `{YYYY}-france-{grade}-{index}`、`country_code: "FR"`）。
+      - `src/data/france_race_master.json`（全114重賞の日仏英辞書、出走条件・距離・馬場AW・斤量正規化、夏時間・冬時間UTC推定発走時刻）の作成。
+      - `scripts/lib/france-races.ts` の実装および `scripts/parse-races.ts` への統合マージ処理追加。
+      - `public/data/races.json` へのフランス全114重賞データの統合マージ（ID体系: `{YYYY}-france-{grade}-{index}`、`country_code: "FR"`、既存JRA/NARへの `country_code: "JP"` 付与、全598レース出力）。
+      - 単体テスト（`tests/unit/franceRaces.test.ts`, `tests/unit/racesData.test.ts`）の拡充と全テスト合格。
     - **Phase 3: フランス競馬UI対応（主催者フィルター「France」、競馬場追加、FR国コードバッジ、多言語化） (Issue #66) [予定]**
       - `FilterBar`: 主催者フィルターへの「France」追加、競馬場「海外・フランス」グループ新設、馬場「AW」チップ追加。
       - UIバッジ: 国コード「FR」バッジの実装（タイムライン、カレンダー、詳細ダイアログ）。
