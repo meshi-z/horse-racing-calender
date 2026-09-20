@@ -12,7 +12,7 @@ describe("SEO and Meta configuration", () => {
     const html = fs.readFileSync(indexHtmlPath, "utf-8");
 
     // Title
-    expect(html).toContain("<title>重賞カレンダー | JRA Graded Races Calendar</title>");
+    expect(html).toContain("<title>重賞カレンダー | JRA & NAR Graded Races Calendar</title>");
 
     // Canonical URL
     expect(html).toContain(
@@ -21,11 +21,12 @@ describe("SEO and Meta configuration", () => {
 
     // Description (日英キーワード含有)
     expect(html).toContain('name="description"');
-    expect(html).toContain("JRA（日本中央競馬会）の全重賞レース");
-    expect(html).toContain("Schedule and confirmed race times for JRA graded horse racing in Japan");
+    expect(html).toContain("JRA（中央競馬）およびNAR（地方競馬・ダートグレード・ばんえい）の全重賞レース日程");
+    expect(html).toContain("Comprehensive schedule and confirmed race times for JRA & NAR graded horse racing in Japan");
 
     // Keywords
     expect(html).toContain('name="keywords"');
+    expect(html).toContain("JRA, NAR, 地方競馬, ダートグレード");
     expect(html).toContain("horse racing, Japan, race calendar, graded races");
   });
 
@@ -38,6 +39,12 @@ describe("SEO and Meta configuration", () => {
       'property="og:url" content="https://meshi-z.github.io/horse-racing-calender/"'
     );
     expect(html).toContain(
+      'property="og:title" content="重賞カレンダー | JRA & NAR Graded Races Calendar"'
+    );
+    expect(html).toContain(
+      'property="og:description" content="JRA（中央競馬）およびNAR（地方競馬）の全重賞レース日程・確定発走時刻・出走条件をタイムラインと月間カレンダーで確認できるオフライン対応Webアプリ。"'
+    );
+    expect(html).toContain(
       'property="og:image" content="https://meshi-z.github.io/horse-racing-calender/icons/icon-512.png"'
     );
     expect(html).toContain('property="og:locale" content="ja_JP"');
@@ -45,6 +52,12 @@ describe("SEO and Meta configuration", () => {
 
     // Twitter
     expect(html).toContain('name="twitter:card" content="summary"');
+    expect(html).toContain(
+      'name="twitter:title" content="重賞カレンダー | JRA & NAR Graded Races Calendar"'
+    );
+    expect(html).toContain(
+      'name="twitter:description" content="JRA（中央競馬）およびNAR（地方競馬）の全重賞レース日程・確定発走時刻・出走条件をタイムラインと月間カレンダーで確認できるオフライン対応Webアプリ。"'
+    );
     expect(html).toContain(
       'name="twitter:image" content="https://meshi-z.github.io/horse-racing-calender/icons/icon-512.png"'
     );
@@ -63,6 +76,9 @@ describe("SEO and Meta configuration", () => {
     expect(data["@context"]).toBe("https://schema.org");
     expect(data["@type"]).toBe("WebApplication");
     expect(data.name).toBe("重賞カレンダー");
+    expect(data.alternateName).toContain("Graded Races Calendar");
+    expect(data.alternateName).toContain("JRA & NAR Graded Races Calendar");
+    expect(data.description).toContain("JRA（中央競馬）およびNAR（地方競馬・ダートグレード・ばんえい）");
     expect(data.inLanguage).toContain("ja");
     expect(data.inLanguage).toContain("en");
     expect(data.applicationCategory).toBe("SportsApplication");

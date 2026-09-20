@@ -100,7 +100,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     const searchInput = screen.getByLabelText("レース名検索");
     expect(searchInput).toHaveAttribute(
       "placeholder",
-      "レース名で検索（例: フェブラリー、有馬記念、February）"
+      "レース名で検索（例: 有馬記念、東京大賞典、February、Tokyo Derby）"
     );
     expect(screen.getByText("グレード:")).toBeInTheDocument();
     expect(screen.getByText("馬場:")).toBeInTheDocument();
@@ -152,7 +152,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     const enSearchInput = screen.getByLabelText("Search races");
     expect(enSearchInput).toHaveAttribute(
       "placeholder",
-      "Search by race name (e.g. February, Arima Kinen)"
+      "Search by race name (e.g. Arima Kinen, Tokyo Daishoten, February, Tokyo Derby)"
     );
     expect(screen.getByText("Grade:")).toBeInTheDocument();
     expect(screen.getByText("Track:")).toBeInTheDocument();

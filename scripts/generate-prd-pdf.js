@@ -692,7 +692,7 @@ const fullHtml = `<!DOCTYPE html>
         <span class="doc-badge-accent">i18n (日/英対応)</span>
       </div>
       <h1 class="doc-title">重賞カレンダーサービス 要求仕様書</h1>
-      <p class="doc-subtitle">JRA Graded Races Calendar Web Application Specifications</p>
+      <p class="doc-subtitle">JRA & NAR Graded Races Calendar Web Application Specifications</p>
     </div>
   </div>
 

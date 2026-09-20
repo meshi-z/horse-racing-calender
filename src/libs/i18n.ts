@@ -7,7 +7,7 @@ export const translations = {
   ja: {
     app: {
       title: '重賞カレンダー',
-      subtitle: 'JRA Graded Races Calendar',
+      subtitle: 'Graded Races Calendar',
     },
     nav: {
       timeline: 'タイムライン',
@@ -63,7 +63,7 @@ export const translations = {
       daysCount: '{count}件',
     },
     filter: {
-      searchPlaceholder: 'レース名で検索（例: フェブラリー、有馬記念、February）',
+      searchPlaceholder: 'レース名で検索（例: 有馬記念、東京大賞典、February、Tokyo Derby）',
       searchAria: 'レース名検索',
       clearSearchAria: '検索キーワードをクリア',
       resetFilterAria: 'フィルターをリセット',
@@ -123,7 +123,7 @@ export const translations = {
     },
     footer: {
       copyright: '© 2026 horse-racing-calendar',
-      unofficialNotice: '当サイトは非公式ファンサイトです。レース日程・発走時刻等の最新情報は必ず主催者（JRA等）公式発表をご確認ください。',
+      unofficialNotice: '当サイトは非公式ファンサイトです。レース日程・発走時刻等の最新情報は必ず主催者（JRA・NAR等）公式発表をご確認ください。',
     },
     offline: {
       status: 'オフライン表示中（キャッシュされたレースデータを表示しています）',
@@ -140,7 +140,7 @@ export const translations = {
   en: {
     app: {
       title: 'Graded Races',
-      subtitle: 'JRA Graded Races Calendar',
+      subtitle: 'Graded Races Calendar',
     },
     nav: {
       timeline: 'Timeline',
@@ -196,7 +196,7 @@ export const translations = {
       daysCount: '{count} races',
     },
     filter: {
-      searchPlaceholder: 'Search by race name (e.g. February, Arima Kinen)',
+      searchPlaceholder: 'Search by race name (e.g. Arima Kinen, Tokyo Daishoten, February, Tokyo Derby)',
       searchAria: 'Search races',
       clearSearchAria: 'Clear search keyword',
       resetFilterAria: 'Reset filters',
@@ -256,7 +256,7 @@ export const translations = {
     },
     footer: {
       copyright: '© 2026 horse-racing-calendar',
-      unofficialNotice: 'This is an unofficial fan site. Please always verify the latest race schedules and post times with official organizers (e.g., JRA).',
+      unofficialNotice: 'This is an unofficial fan site. Please always verify the latest race schedules and post times with official organizers (e.g., JRA, NAR).',
     },
     offline: {
       status: 'Offline Mode (Displaying cached race data)',
