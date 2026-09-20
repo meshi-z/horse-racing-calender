@@ -113,8 +113,8 @@
     },
     "grade": "G3",
     "date": "2026-01-04",
-    "start_time": "2026-01-04T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-01-04T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -139,8 +139,8 @@
     },
     "grade": "G3",
     "date": "2026-01-04",
-    "start_time": "2026-01-04T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-01-04T06:30:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -243,8 +243,8 @@
     },
     "grade": "G3",
     "date": "2026-01-11",
-    "start_time": "2026-01-11T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-01-11T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -296,7 +296,7 @@
     "grade": "G3",
     "date": "2026-01-12",
     "start_time": "2026-01-12T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -373,8 +373,8 @@
     },
     "grade": "G3",
     "date": "2026-01-18",
-    "start_time": "2026-01-18T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-01-18T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -399,8 +399,8 @@
     },
     "grade": "G2",
     "date": "2026-01-18",
-    "start_time": "2026-01-18T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-01-18T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -555,8 +555,8 @@
     },
     "grade": "G3",
     "date": "2026-01-24",
-    "start_time": "2026-01-24T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-01-24T06:25:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "小倉",
       "en": "Kokura"
@@ -581,8 +581,8 @@
     },
     "grade": "G2",
     "date": "2026-01-25",
-    "start_time": "2026-01-25T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-01-25T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -607,8 +607,8 @@
     },
     "grade": "G2",
     "date": "2026-01-25",
-    "start_time": "2026-01-25T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-01-25T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -711,8 +711,8 @@
     },
     "grade": "G3",
     "date": "2026-02-01",
-    "start_time": "2026-02-01T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-02-01T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -737,8 +737,8 @@
     },
     "grade": "G3",
     "date": "2026-02-01",
-    "start_time": "2026-02-01T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-02-01T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -919,8 +919,8 @@
     },
     "grade": "G3",
     "date": "2026-02-10",
-    "start_time": "2026-02-10T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-02-10T06:45:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": true,
     "original_date": "2026-02-08",
     "course": {
@@ -947,8 +947,8 @@
     },
     "grade": "G3",
     "date": "2026-02-10",
-    "start_time": "2026-02-10T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-02-10T06:35:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": true,
     "original_date": "2026-02-08",
     "course": {
@@ -1053,8 +1053,8 @@
     },
     "grade": "J.G3",
     "date": "2026-02-14",
-    "start_time": "2026-02-14T04:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-02-14T04:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "小倉",
       "en": "Kokura"
@@ -1079,8 +1079,8 @@
     },
     "grade": "G3",
     "date": "2026-02-14",
-    "start_time": "2026-02-14T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-02-14T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -1105,8 +1105,8 @@
     },
     "grade": "G3",
     "date": "2026-02-15",
-    "start_time": "2026-02-15T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-02-15T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -1131,8 +1131,8 @@
     },
     "grade": "G2",
     "date": "2026-02-15",
-    "start_time": "2026-02-15T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-02-15T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -1287,8 +1287,8 @@
     },
     "grade": "G3",
     "date": "2026-02-21",
-    "start_time": "2026-02-21T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-02-21T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -1313,8 +1313,8 @@
     },
     "grade": "G3",
     "date": "2026-02-21",
-    "start_time": "2026-02-21T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-02-21T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -1340,7 +1340,7 @@
     "grade": "G1",
     "date": "2026-02-22",
     "start_time": "2026-02-22T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -1365,8 +1365,8 @@
     },
     "grade": "G3",
     "date": "2026-02-22",
-    "start_time": "2026-02-22T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-02-22T06:20:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "小倉",
       "en": "Kokura"
@@ -1573,8 +1573,8 @@
     },
     "grade": "G3",
     "date": "2026-02-28",
-    "start_time": "2026-02-28T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-02-28T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -1599,8 +1599,8 @@
     },
     "grade": "G2",
     "date": "2026-03-01",
-    "start_time": "2026-03-01T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-01T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -1625,8 +1625,8 @@
     },
     "grade": "G2",
     "date": "2026-03-01",
-    "start_time": "2026-03-01T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-01T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -1703,8 +1703,8 @@
     },
     "grade": "G3",
     "date": "2026-03-07",
-    "start_time": "2026-03-07T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-07T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -1729,8 +1729,8 @@
     },
     "grade": "G2",
     "date": "2026-03-07",
-    "start_time": "2026-03-07T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-07T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -1755,8 +1755,8 @@
     },
     "grade": "G2",
     "date": "2026-03-08",
-    "start_time": "2026-03-08T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-08T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -1989,8 +1989,8 @@
     },
     "grade": "J.G2",
     "date": "2026-03-14",
-    "start_time": "2026-03-14T04:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-14T04:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -2015,8 +2015,8 @@
     },
     "grade": "G2",
     "date": "2026-03-15",
-    "start_time": "2026-03-15T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-15T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -2041,8 +2041,8 @@
     },
     "grade": "G2",
     "date": "2026-03-15",
-    "start_time": "2026-03-15T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-15T06:25:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中京",
       "en": "Chukyo"
@@ -2197,8 +2197,8 @@
     },
     "grade": "G3",
     "date": "2026-03-21",
-    "start_time": "2026-03-21T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-21T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -2223,8 +2223,8 @@
     },
     "grade": "G3",
     "date": "2026-03-21",
-    "start_time": "2026-03-21T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-21T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中京",
       "en": "Chukyo"
@@ -2278,8 +2278,8 @@
     },
     "grade": "G2",
     "date": "2026-03-22",
-    "start_time": "2026-03-22T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-22T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -2304,8 +2304,8 @@
     },
     "grade": "G3",
     "date": "2026-03-22",
-    "start_time": "2026-03-22T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-22T06:25:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中京",
       "en": "Chukyo"
@@ -2460,8 +2460,8 @@
     },
     "grade": "G2",
     "date": "2026-03-28",
-    "start_time": "2026-03-28T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-28T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -2486,8 +2486,8 @@
     },
     "grade": "G3",
     "date": "2026-03-28",
-    "start_time": "2026-03-28T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-28T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -2512,8 +2512,8 @@
     },
     "grade": "G3",
     "date": "2026-03-29",
-    "start_time": "2026-03-29T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-29T06:30:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -2538,8 +2538,8 @@
     },
     "grade": "G1",
     "date": "2026-03-29",
-    "start_time": "2026-03-29T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-03-29T06:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中京",
       "en": "Chukyo"
@@ -2752,8 +2752,8 @@
     },
     "grade": "G3",
     "date": "2026-04-04",
-    "start_time": "2026-04-04T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-04T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -2778,8 +2778,8 @@
     },
     "grade": "G3",
     "date": "2026-04-04",
-    "start_time": "2026-04-04T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-04T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -2804,8 +2804,8 @@
     },
     "grade": "G1",
     "date": "2026-04-05",
-    "start_time": "2026-04-05T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-05T06:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -3070,8 +3070,8 @@
     },
     "grade": "G2",
     "date": "2026-04-11",
-    "start_time": "2026-04-11T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-11T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -3096,8 +3096,8 @@
     },
     "grade": "G2",
     "date": "2026-04-11",
-    "start_time": "2026-04-11T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-11T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -3122,8 +3122,8 @@
     },
     "grade": "G1",
     "date": "2026-04-12",
-    "start_time": "2026-04-12T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-12T06:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -3475,8 +3475,8 @@
     },
     "grade": "J.G1",
     "date": "2026-04-18",
-    "start_time": "2026-04-18T05:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-18T06:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -3501,8 +3501,8 @@
     },
     "grade": "G3",
     "date": "2026-04-18",
-    "start_time": "2026-04-18T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-18T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -3528,7 +3528,7 @@
     "grade": "G1",
     "date": "2026-04-19",
     "start_time": "2026-04-19T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -3553,8 +3553,8 @@
     },
     "grade": "G3",
     "date": "2026-04-19",
-    "start_time": "2026-04-19T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-19T06:25:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "福島",
       "en": "Fukushima"
@@ -3822,8 +3822,8 @@
     },
     "grade": "G2",
     "date": "2026-04-25",
-    "start_time": "2026-04-25T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-25T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -3848,8 +3848,8 @@
     },
     "grade": "G2",
     "date": "2026-04-26",
-    "start_time": "2026-04-26T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-26T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -3874,8 +3874,8 @@
     },
     "grade": "G2",
     "date": "2026-04-26",
-    "start_time": "2026-04-26T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-04-26T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -4227,8 +4227,8 @@
     },
     "grade": "G2",
     "date": "2026-05-02",
-    "start_time": "2026-05-02T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-02T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -4253,8 +4253,8 @@
     },
     "grade": "G3",
     "date": "2026-05-02",
-    "start_time": "2026-05-02T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-02T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -4279,8 +4279,8 @@
     },
     "grade": "G1",
     "date": "2026-05-03",
-    "start_time": "2026-05-03T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-03T06:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -4675,8 +4675,8 @@
     },
     "grade": "G3",
     "date": "2026-05-09",
-    "start_time": "2026-05-09T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-09T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -4701,8 +4701,8 @@
     },
     "grade": "G2",
     "date": "2026-05-09",
-    "start_time": "2026-05-09T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-09T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -4728,7 +4728,7 @@
     "grade": "G1",
     "date": "2026-05-10",
     "start_time": "2026-05-10T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -5106,8 +5106,8 @@
     },
     "grade": "J.G2",
     "date": "2026-05-16",
-    "start_time": "2026-05-16T04:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-16T04:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -5132,8 +5132,8 @@
     },
     "grade": "G3",
     "date": "2026-05-16",
-    "start_time": "2026-05-16T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-16T06:25:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
       "en": "Niigata"
@@ -5159,7 +5159,7 @@
     "grade": "G1",
     "date": "2026-05-17",
     "start_time": "2026-05-17T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -5375,8 +5375,8 @@
     },
     "grade": "G3",
     "date": "2026-05-23",
-    "start_time": "2026-05-23T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-23T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -5402,7 +5402,7 @@
     "grade": "G1",
     "date": "2026-05-24",
     "start_time": "2026-05-24T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -5615,8 +5615,8 @@
     },
     "grade": "G3",
     "date": "2026-05-30",
-    "start_time": "2026-05-30T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-30T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto"
@@ -5642,7 +5642,7 @@
     "grade": "G1",
     "date": "2026-05-31",
     "start_time": "2026-05-31T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -5667,8 +5667,8 @@
     },
     "grade": "G2",
     "date": "2026-05-31",
-    "start_time": "2026-05-31T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-05-31T08:00:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -6021,7 +6021,7 @@
     "grade": "G1",
     "date": "2026-06-07",
     "start_time": "2026-06-07T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -6260,8 +6260,8 @@
     },
     "grade": "J.G3",
     "date": "2026-06-13",
-    "start_time": "2026-06-13T04:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-13T02:30:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -6286,8 +6286,8 @@
     },
     "grade": "G3",
     "date": "2026-06-13",
-    "start_time": "2026-06-13T06:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-13T06:25:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "函館",
       "en": "Hakodate"
@@ -6312,8 +6312,8 @@
     },
     "grade": "G1",
     "date": "2026-06-14",
-    "start_time": "2026-06-14T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-14T06:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -6714,8 +6714,8 @@
     },
     "grade": "G3",
     "date": "2026-06-21",
-    "start_time": "2026-06-21T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-21T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo"
@@ -6740,8 +6740,8 @@
     },
     "grade": "G3",
     "date": "2026-06-21",
-    "start_time": "2026-06-21T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-21T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -6925,8 +6925,8 @@
     },
     "grade": "G3",
     "date": "2026-06-28",
-    "start_time": "2026-06-28T06:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-28T06:25:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "函館",
       "en": "Hakodate"
@@ -6951,8 +6951,8 @@
     },
     "grade": "G3",
     "date": "2026-06-28",
-    "start_time": "2026-06-28T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-06-28T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "福島",
       "en": "Fukushima"
@@ -7163,7 +7163,7 @@
     "grade": "G3",
     "date": "2026-07-05",
     "start_time": "2026-07-05T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "小倉",
       "en": "Kokura"
@@ -7454,8 +7454,8 @@
     },
     "grade": "G3",
     "date": "2026-07-12",
-    "start_time": "2026-07-12T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-07-12T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "福島",
       "en": "Fukushima"
@@ -7726,8 +7726,8 @@
     },
     "grade": "G3",
     "date": "2026-07-19",
-    "start_time": "2026-07-19T06:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-07-19T06:20:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "函館",
       "en": "Hakodate"
@@ -7753,7 +7753,7 @@
     "grade": "G3",
     "date": "2026-07-19",
     "start_time": "2026-07-19T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "小倉",
       "en": "Kokura"
@@ -8099,8 +8099,8 @@
     },
     "grade": "G3",
     "date": "2026-07-26",
-    "start_time": "2026-07-26T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-07-26T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
       "en": "Niigata"
@@ -8125,8 +8125,8 @@
     },
     "grade": "G3",
     "date": "2026-07-26",
-    "start_time": "2026-07-26T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-07-26T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中京",
       "en": "Chukyo"
@@ -8394,8 +8394,8 @@
     },
     "grade": "G3",
     "date": "2026-08-02",
-    "start_time": "2026-08-02T06:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-02T06:25:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "札幌",
       "en": "Sapporo"
@@ -8420,8 +8420,8 @@
     },
     "grade": "G3",
     "date": "2026-08-02",
-    "start_time": "2026-08-02T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-02T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
       "en": "Niigata"
@@ -8609,7 +8609,7 @@
     "grade": "G3",
     "date": "2026-08-08",
     "start_time": "2026-08-08T06:35:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "札幌",
       "en": "Sapporo"
@@ -8663,8 +8663,8 @@
     },
     "grade": "G3",
     "date": "2026-08-09",
-    "start_time": "2026-08-09T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-09T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
       "en": "Niigata"
@@ -8689,8 +8689,8 @@
     },
     "grade": "G3",
     "date": "2026-08-09",
-    "start_time": "2026-08-09T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-09T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中京",
       "en": "Chukyo"
@@ -8981,8 +8981,8 @@
     },
     "grade": "J.G3",
     "date": "2026-08-15",
-    "start_time": "2026-08-15T04:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-15T07:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
       "en": "Niigata"
@@ -9094,8 +9094,8 @@
     },
     "grade": "G2",
     "date": "2026-08-16",
-    "start_time": "2026-08-16T06:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-16T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "札幌",
       "en": "Sapporo"
@@ -9120,8 +9120,8 @@
     },
     "grade": "G3",
     "date": "2026-08-16",
-    "start_time": "2026-08-16T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-16T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中京",
       "en": "Chukyo"
@@ -9419,7 +9419,7 @@
     "grade": "G3",
     "date": "2026-08-23",
     "start_time": "2026-08-23T06:35:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "札幌",
       "en": "Sapporo"
@@ -9444,8 +9444,8 @@
     },
     "grade": "G3",
     "date": "2026-08-23",
-    "start_time": "2026-08-23T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-23T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
       "en": "Niigata"
@@ -9742,8 +9742,8 @@
     },
     "grade": "G3",
     "date": "2026-08-30",
-    "start_time": "2026-08-30T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-30T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
       "en": "Niigata"
@@ -9768,8 +9768,8 @@
     },
     "grade": "G3",
     "date": "2026-08-30",
-    "start_time": "2026-08-30T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-08-30T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中京",
       "en": "Chukyo"
@@ -10040,8 +10040,8 @@
     },
     "grade": "G3",
     "date": "2026-09-05",
-    "start_time": "2026-09-05T06:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-05T06:25:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "札幌",
       "en": "Sapporo"
@@ -10066,8 +10066,8 @@
     },
     "grade": "G3",
     "date": "2026-09-05",
-    "start_time": "2026-09-05T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-05T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -10092,8 +10092,8 @@
     },
     "grade": "G2",
     "date": "2026-09-06",
-    "start_time": "2026-09-06T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-06T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -10118,8 +10118,8 @@
     },
     "grade": "G2",
     "date": "2026-09-06",
-    "start_time": "2026-09-06T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-06T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -10445,8 +10445,8 @@
     },
     "grade": "G3",
     "date": "2026-09-12",
-    "start_time": "2026-09-12T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-12T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"
@@ -10471,8 +10471,8 @@
     },
     "grade": "G2",
     "date": "2026-09-13",
-    "start_time": "2026-09-13T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-13T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "中山",
       "en": "Nakayama"
@@ -10497,8 +10497,8 @@
     },
     "grade": "G2",
     "date": "2026-09-13",
-    "start_time": "2026-09-13T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-13T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
       "en": "Hanshin"

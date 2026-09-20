@@ -1,7 +1,7 @@
 {
   "name": "horse-racing-calendar",
   "private": true,
-  "version": "1.20.1",
+  "version": "1.20.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,6 +10,7 @@
     "data:build": "tsx scripts/parse-races.ts",
     "data:update-times": "tsx scripts/update-race-times.ts",
     "data:backfill-nar": "tsx scripts/backfill-nar-past-times.ts",
+    "data:backfill-jra": "tsx scripts/backfill-jra-past-times.ts",
     "icons:generate": "tsx scripts/generate-pwa-icons.ts",
     "docs:pdf": "node scripts/generate-prd-pdf.js",
     "type-check": "tsc --noEmit",
