@@ -10,6 +10,7 @@
     "data:build": "tsx scripts/parse-races.ts",
     "data:update-times": "tsx scripts/update-race-times.ts",
     "data:update-times:uk": "tsx scripts/update-race-times.ts --org bha",
+    "data:update-times:us": "tsx scripts/update-race-times.ts --org equibase",
     "data:backfill-nar": "tsx scripts/backfill-nar-past-times.ts",
     "data:backfill-jra": "tsx scripts/backfill-jra-past-times.ts",
     "icons:generate": "tsx scripts/generate-pwa-icons.ts",

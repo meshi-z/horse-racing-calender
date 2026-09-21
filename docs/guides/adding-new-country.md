@@ -458,10 +458,11 @@ npm run docs:pdf
 
 今後の機能拡張（ロードマップ）で予定されている主要国の基本情報です。
 
-| 国・地域 | 統轄団体 / 公式元 | 国コード | 主要競馬場 | タイムゾーン | 想定馬場 |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **イギリス (UK)** | British Horseracing Authority (BHA) | `GB` | Ascot, Newmarket, Epsom, York, Doncaster, Goodwood | GMT (UTC+0) / BST (UTC+1) | 芝 (Turf), オールウェザー (AW) |
-| **アメリカ (USA)** | The Jockey Club / Equibase | `US` | Churchill Downs, Belmont Park, Saratoga, Santa Anita, Del Mar | ET / CT / MT / PT (夏時間あり) | ダート (Dirt), 芝 (Turf) |
-| **香港 (HK)** | Hong Kong Jockey Club (HKJC) | `HK` | 沙田 (Sha Tin), 快活谷 (Happy Valley) | HKT (UTC+8, 通年固定) | 芝 (Turf), オールウェザー (AW) |
-| **オーストラリア (AUS)** | Racing Australia | `AU` | Flemington, Randwick, Caulfield, Rosehill, Moonee Valley | AEST (UTC+10) / AEDT (UTC+11) ※南半球 | 芝 (Turf) |
-| **UAE (ドバイ)** | Emirates Racing Authority (ERA) | `AE` | Meydan, Jebel Ali, Abu Dhabi | GST (UTC+4, 通年固定) | ダート (Dirt), 芝 (Turf) |
+| 国・地域 | 統轄団体 / 公式元 | 国コード | 主要競馬場 | タイムゾーン | 想定馬場 | ステータス |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **フランス (France)** | France Galop | `FR` | Longchamp, Chantilly, Deauville, Saint-Cloud | CET (UTC+1) / CEST (UTC+2) | 芝 (Turf), オールウェザー (AW) | **対応済み (v1.19.0)** |
+| **イギリス (UK)** | British Horseracing Authority (BHA) | `GB` | Ascot, Newmarket, Epsom, York, Doncaster, Goodwood | GMT (UTC+0) / BST (UTC+1) | 芝 (Turf), オールウェザー (AW) | **対応済み (v1.23.0)** |
+| **アメリカ (USA)** | The Jockey Club / Equibase | `US` | Churchill Downs, Belmont Park, Saratoga, Santa Anita, Del Mar | ET / CT / MT / PT (夏時間あり) | ダート (Dirt), 芝 (Turf) | **対応済み (v1.28.0)** |
+| **香港 (HK)** | Hong Kong Jockey Club (HKJC) | `HK` | 沙田 (Sha Tin), 快活谷 (Happy Valley) | HKT (UTC+8, 通年固定) | 芝 (Turf), オールウェザー (AW) | 次期候補 |
+| **オーストラリア (AUS)** | Racing Australia | `AU` | Flemington, Randwick, Caulfield, Rosehill, Moonee Valley | AEST (UTC+10) / AEDT (UTC+11) ※南半球 | 芝 (Turf) | 次期候補 |
+| **UAE (ドバイ)** | Emirates Racing Authority (ERA) | `AE` | Meydan, Jebel Ali, Abu Dhabi | GST (UTC+4, 通年固定) | ダート (Dirt), 芝 (Turf) | 次期候補 |

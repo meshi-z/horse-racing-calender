@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年9月21日) |
-| **バージョン** | v1.28.0 (アメリカ競馬（US / Equibase）追加準備およびスキーマ・型定義拡張) |
+| **バージョン** | v1.28.0 (アメリカ競馬（US / Equibase / IFHA Part I 重賞）統合) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -996,8 +996,24 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - 原語判定（`src/libs/raceLanguage.ts`）に `equibase` を追加し、原語を英語として自動判定。
       - Schema.org JSON-LD（`index.html`）にアメリカ競馬（Equibase）を反映。
       - 単体・統合テストの拡充（`FilterBar.test.tsx`, `geolocation.test.ts`, `DisclaimerDialog.test.tsx`, `Layout.test.tsx`, `App.test.tsx`, `i18nIntegration.test.tsx` 等）、全42テストファイル・377テスト完全合格。
-    - **Phase 4: 確定発走時刻自動更新パイプラインおよび過去開催実績バックフィル (Issue #104) [進行予定]**
-      - `UsRaceTimeFetcher` の実装、発走時刻バックフィル、GitHub Actions ワークフロー連携。
+    - **Phase 4: 確定発走時刻自動更新パイプラインおよび過去開催実績バックフィル (Issue #104) [完了]**
+      - `scripts/lib/us-syutsuba.ts` の実装:
+        - 米国タイムゾーン（ET, CT, MT, PT）および夏時間（DST: 3月第2日曜日〜11月第1日曜日）の自動判定と UTC ISO 8601 / JST 発走時刻換算。
+        - 競馬場名（主要トラック16場等）に応じたタイムゾーン自動マッピング（`getCourseTimeZone`）。
+        - レース名・競馬場名の表記揺れを吸収する正規化・トークン化マッチングアルゴリズム（`usRaceMatches`, `usCourseMatches`）。
+        - Equibase出馬表データ（`EquibaseRaceItem`）からの確定発走時刻パース処理（`parseEquibaseRacecardsJson`）。
+        - 指数バックオフ付きHTTPリトライ通信（`fetchWithRetry`）。
+      - `scripts/update-race-times.ts` へのプロバイダー統合:
+        - `UsRaceTimeFetcher` の実装と `DEFAULT_FETCHERS` への `equibase` / `us` 登録。
+        - 基準日（JST）から直近7日間の開催予定ウィンドウ算出（`getUsUpcomingWindowRange`）。
+      - 過去開催済み重賞（2026年今日以前の296レース）の確定発走時刻バックフィル:
+        - `src/data/us_race_master.json` の過去レース（ペガサスWC、三冠、メトロポリタンH等）を `is_time_confirmed: true` に更新。
+        - `scripts/parse-races.ts` による再生成で `public/data/races.json` の確定済みフラグを同期反映（408レース中296レース確定済み、112レースが今後の予定）。
+      - バッチスケジュール・ワークフロー連携:
+        - `.github/workflows/update-race-times.yml`: 朝 07:30 JST および夜 21:30 JST の定期バッチにアメリカ競馬の確定・天候監視を統合。
+        - `docs/batch-schedules.md`: アメリカ競馬自動更新仕様、手動実行コマンド（`npm run data:update-times:us`）を明文化。
+      - 単体テスト（`tests/unit/usSyutsuba.test.ts`）の実装:
+        - 夏時間判定、各タイムゾーン換算（EDT/EST/PDT）、レース名・競馬場名マッチング、出馬表パース、`updateRaceTimes` 統合の全15テスト完全合格。
 34. **Step 34 (Next): 海外主要レース拡張（香港・UAE・豪州） & 外部カレンダー連携**
     - 香港（HKJC）、UAE（ERA）、オーストラリア（Racing Australia）の重賞データ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

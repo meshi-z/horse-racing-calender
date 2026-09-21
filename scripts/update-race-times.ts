@@ -265,7 +265,58 @@ export class UkRaceTimeFetcher implements RaceTimeFetcher {
 }
 
 /**
- * 登録済みフェッチャープロバイダーのマップ（JRA, NAR, France, UK対応）
+ * 基準日 (YYYY-MM-DD) からアメリカの当週開催期間（基準日〜7日間）の範囲を算出
+ */
+export function getUsUpcomingWindowRange(refDateStr: string, windowDays = 7): { startDate: string; endDate: string } {
+  const [y, m, d] = refDateStr.split('-').map(Number);
+  const ref = new Date(Date.UTC(y, m - 1, d));
+  const end = new Date(ref.getTime() + (windowDays - 1) * 86400000);
+
+  const formatYmd = (dt: Date) => {
+    const yr = dt.getUTCFullYear();
+    const mo = String(dt.getUTCMonth() + 1).padStart(2, '0');
+    const da = String(dt.getUTCDate()).padStart(2, '0');
+    return `${yr}-${mo}-${da}`;
+  };
+
+  return {
+    startDate: formatYmd(ref),
+    endDate: formatYmd(end),
+  };
+}
+
+/**
+ * アメリカ競馬（Equibase）向けプロバイダー実装
+ */
+export class UsRaceTimeFetcher implements RaceTimeFetcher {
+  readonly organization = 'equibase';
+  private fixtures?: Record<string, import('./lib/us-syutsuba').EquibaseRaceItem[]>;
+
+  constructor(options?: { fixtures?: Record<string, import('./lib/us-syutsuba').EquibaseRaceItem[]> }) {
+    this.fixtures = options?.fixtures;
+  }
+
+  getTargetWindowRaces(races: RaceOutput[], refDate: string): RaceOutput[] {
+    const { startDate, endDate } = getUsUpcomingWindowRange(refDate);
+    return races.filter(
+      (r) =>
+        r.organization === this.organization &&
+        ((r.date >= startDate && r.date <= endDate) ||
+          (r.original_date && r.original_date >= startDate && r.original_date <= endDate))
+    );
+  }
+
+  async fetchConfirmedTimes(targetRaces: RaceOutput[]): Promise<ConfirmedRaceTime[]> {
+    const { fetchUsConfirmedRaceTimes } = await import('./lib/us-syutsuba');
+    return await fetchUsConfirmedRaceTimes({
+      targetRaces,
+      fixtures: this.fixtures,
+    });
+  }
+}
+
+/**
+ * 登録済みフェッチャープロバイダーのマップ（JRA, NAR, France, UK, US対応）
  */
 export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
   jra: new JraRaceTimeFetcher(),
@@ -273,6 +324,8 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
   france_galop: new FranceRaceTimeFetcher(),
   bha: new UkRaceTimeFetcher(),
   uk: new UkRaceTimeFetcher(),
+  equibase: new UsRaceTimeFetcher(),
+  us: new UsRaceTimeFetcher(),
 };
 
 export interface UpdateOptions {

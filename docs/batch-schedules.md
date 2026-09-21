@@ -10,9 +10,9 @@ GitHub Actions で定期稼働するバッチおよびローカル・手動実�
 
 | バッチ名称 | ワークフロー / スクリプト | トリガー / 頻度 | 実行タイミング（JST） | Cron設定 (UTC) | 主な処理内容 | 入力・出力対象 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **確定発走時刻自動更新** | `.github/workflows/update-race-times.yml`<br>`scripts/update-race-times.ts` | GitHub Actions (cron)<br>手動 (`workflow_dispatch`) | **毎日朝**: 07:30<br>**平日昼**: 12:30<br>**平日〜土曜夕**: 17:30<br>**毎日夜**: 21:30<br>**木曜**: 16:30, 17:00, 18:00<br>**金曜**: 10:30, 11:00, 12:00 | `30 22 * * *`<br>`30 3 * * 1-5`<br>`30 8 * * 1-6`<br>`30 12 * * *`<br>`30 7 * * 4`<br>`0 8 * * 4`<br>`0 9 * * 4`<br>`30 1 * * 5`<br>`0 2 * * 5`<br>`0 3 * * 5` | JRA公式出馬表、NAR公式出馬表（ダートグレード年間日程＋各競馬場RaceList）、PMUプログラム（フランス重賞）、およびSporting Life API（イギリス重賞）から直近レースの確定発走時刻・代替開催日を取得し更新 | 入力: 公式出馬表/API<br>出力: `public/data/races.json` |
+| **確定発走時刻自動更新** | `.github/workflows/update-race-times.yml`<br>`scripts/update-race-times.ts` | GitHub Actions (cron)<br>手動 (`workflow_dispatch`) | **毎日朝**: 07:30<br>**平日昼**: 12:30<br>**平日〜土曜夕**: 17:30<br>**毎日夜**: 21:30<br>**木曜**: 16:30, 17:00, 18:00<br>**金曜**: 10:30, 11:00, 12:00 | `30 22 * * *`<br>`30 3 * * 1-5`<br>`30 8 * * 1-6`<br>`30 12 * * *`<br>`30 7 * * 4`<br>`0 8 * * 4`<br>`0 9 * * 4`<br>`30 1 * * 5`<br>`0 2 * * 5`<br>`0 3 * * 5` | JRA公式出馬表、NAR公式出馬表（ダートグレード年間日程＋各競馬場RaceList）、PMUプログラム（フランス重賞）、Sporting Life API（イギリス重賞）、およびEquibase（アメリカ重賞）から直近レースの確定発走時刻・代替開催日を取得し更新 | 入力: 公式出馬表/API<br>出力: `public/data/races.json` |
 | **自動テスト・デプロイ** | `.github/workflows/deploy.yml` | push to `main`<br>手動 (`workflow_dispatch`) | 随時（PRマージ時、データ更新コミット時） | イベント駆動 | 型検査 (`type-check`)、テスト (`test`)、プロダクションビルド (`build`) を実行し GitHub Pages へ自動配信 | 入力: ソースコード<br>出力: `dist/` (GitHub Pages) |
-| **年間データ一括ビルド** | `scripts/parse-races.ts` | 手動実行 (ローカル) | 年間更新時、開催日程・マスタ辞書更新時 | オンデマンド | JRA公式ICS/HTML、NARスケジュールHTML、フランス競馬マスタ、イギリス競馬マスタから全レースデータを統合マージして再生成 | 入力: 各マスタ/公式データ<br>出力: `public/data/races.json` |
+| **年間データ一括ビルド** | `scripts/parse-races.ts` | 手動実行 (ローカル) | 年間更新時、開催日程・マスタ辞書更新時 | オンデマンド | JRA公式ICS/HTML、NARスケジュールHTML、フランス競馬マスタ、イギリス競馬マスタ、アメリカ競馬マスタから全レースデータを統合マージして再生成 | 入力: 各マスタ/公式データ<br>出力: `public/data/races.json` |
 | **PWAアイコン一括生成** | `scripts/generate-pwa-icons.ts` | 手動実行 (ローカル) | アプリアイコン刷新時 | オンデマンド | SVGアセットから各解像度PNGアイコンおよびファビコンを一括生成 | 入力: `src/assets/icon.svg`<br>出力: `public/icons/`, `favicon.svg` |
 | **PRDドキュメントPDF生成** | `scripts/generate-prd-pdf.js` | 手動実行 (ローカル) | PRD改訂時・新機能リリース時 | オンデマンド | Headless Chrome を利用して `docs/PRD.md` から公式仕様書PDFを生成 | 入力: `docs/PRD.md`<br>出力: `docs/Horse_Racing_Calendar_PRD.pdf` |
 
@@ -23,12 +23,12 @@ GitHub Actions で定期稼働するバッチおよびローカル・手動実�
 ### 2.1 確定発走時刻自動更新パイプライン (`update-race-times.ts`)
 
 #### 概要・設計根拠
-- **対象レース**: JRA当週開催レース（木〜翌月曜）、NAR直近7日間の全重賞（ダートグレード競走、南関重賞、各地区地方重賞、ばんえい重賞）、フランス競馬（France Galop 直近7日間）、およびイギリス競馬（BHA 直近7日間）。
+- **対象レース**: JRA当週開催レース（木〜翌月曜）、NAR直近7日間の全重賞（ダートグレード競走、南関重賞、各地区地方重賞、ばんえい重賞）、フランス競馬（France Galop 直近7日間）、イギリス競馬（BHA 直近7日間）、およびアメリカ競馬（Equibase 直近7日間）。
 - **実行スケジュールの根拠**:
-  - **毎日朝 (07:30 JST)**: 当日開催レースの最終確認（悪天候による順延・代替開催の検知等）。
+  - **毎日朝 (07:30 JST)**: 当日開催レースの最終確認（悪天候による順延・代替開催の検知等）および前夜〜早朝のアメリカ競馬確定結果の確認。
   - **平日昼 (12:30 JST)**: 地方競馬（NAR）の昼間開催レース直前・当日確定状況の確認。
   - **平日〜土曜夕方 (17:30 JST)**: 地方競馬（NAR）のナイター開催レース直前確認、翌日以降の出馬表更新の検知、およびJRA土曜前日夕方の確認。
-  - **毎日夜 (21:30 JST)**: 欧州競馬（フランス・イギリス重賞）の当日開催直前・確定確認。
+  - **毎日夜 (21:30 JST)**: 欧州競馬（フランス・イギリス重賞）およびアメリカ競馬の当日開催直前・確定確認。
   - **木曜日 (16:30, 17:00, 18:00 JST)**: JRAの出馬表発表（通常16:00頃）に合わせ、段階的に確定時刻をフェッチ。
   - **金曜日 (10:30, 11:00, 12:00 JST)**: JRAの確定枠順・発走時刻発表（通常10:00頃）を網羅。
 
@@ -43,11 +43,12 @@ npm run data:update-times -- --force
 # ドライラン（ファイル書き込みを行わず、取得・更新内容の確認のみ実施）
 npm run data:update-times -- --dry-run
 
-# 特定の主催者のみを対象に実行（'jra', 'nar', 'france_galop', 'bha'）
+# 特定の主催者のみを対象に実行（'jra', 'nar', 'france_galop', 'bha', 'equibase'）
 npm run data:update-times -- --org=jra
 npm run data:update-times -- --org=nar
 npm run data:update-times -- --org=france_galop
 npm run data:update-times:uk   # または npm run data:update-times -- --org=bha
+npm run data:update-times:us   # または npm run data:update-times -- --org=equibase
 ```
 
 #### GitHub Actions からの手動実行
