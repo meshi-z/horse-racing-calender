@@ -134,12 +134,12 @@ describe('France Races Pipeline and Master Data (Issue #65)', () => {
     expect(winterRace?.start_time).toBe('2026-11-11T14:15:00.000Z');
   });
 
-  it('public/data/races.json に全597レースが保存され、JRA/NARにJP、FranceにFRが付与されていること', () => {
+  it('public/data/races.json に全レース（753レース）が保存され、JRA/NARにJP、FranceにFRが付与されていること', () => {
     const racesPath = path.join(rootDir, 'public', 'data', 'races.json');
     expect(fs.existsSync(racesPath)).toBe(true);
     const races: Race[] = JSON.parse(fs.readFileSync(racesPath, 'utf8'));
 
-    expect(races).toHaveLength(597);
+    expect(races).toHaveLength(753);
 
     const jraRaces = races.filter((r) => r.organization === 'jra');
     const narRaces = races.filter((r) => r.organization === 'nar');
