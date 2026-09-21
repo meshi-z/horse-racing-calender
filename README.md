@@ -84,7 +84,8 @@ npm run dev
 | `npm run docs:pdf` | PRD仕様書から公式PDF（`Horse_Racing_Calendar_PRD.pdf`）を生成 |
 
 > [!TIP]
-> 各バッチスクリプトの詳細なコマンドオプション（`--force`, `--dry-run`, `--org` 等）や、GitHub Actions による確定時刻自動更新の定期スケジュール（cron）については、[バッチ処理・定期実行パイプライン スケジュール & 運用ガイド](docs/batch-schedules.md) をご覧ください。
+> - **バッチ運用ガイド**: 各バッチスクリプトの詳細なコマンドオプション（`--force`, `--dry-run`, `--org` 等）や、GitHub Actions による確定時刻自動更新の定期スケジュール（cron）については、[バッチ処理・定期実行パイプライン スケジュール & 運用ガイド](docs/batch-schedules.md) をご覧ください。
+> - **海外競馬追加ガイド**: イギリス・アメリカ・香港など新しい国の競馬を追加する手順については、[新しい国の競馬（海外競馬）追加 開発・運用ガイド](docs/guides/adding-new-country.md) をご覧ください。
 
 ---
 
