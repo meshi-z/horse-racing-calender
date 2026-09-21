@@ -35,6 +35,12 @@ describe('public/data/races.json integrity check', () => {
       expect(race.name.en).not.toBe(race.name.ja);
       expect(validGrades).toContain(race.grade);
       expect(race.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      const [y, m, d] = race.date.split('-').map(Number);
+      const dateObj = new Date(Date.UTC(y, m - 1, d));
+      expect(dateObj.getUTCFullYear()).toBe(y);
+      expect(dateObj.getUTCMonth()).toBe(m - 1);
+      expect(dateObj.getUTCDate()).toBe(d);
+
       expect(typeof race.start_time).toBe('string');
       expect(typeof race.is_time_confirmed).toBe('boolean');
       expect(typeof race.course.ja).toBe('string');

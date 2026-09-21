@@ -62,6 +62,17 @@ describe('US Races Pipeline and Master Data (Issue #102)', () => {
       expect(['none', 'filly_and_mare', 'colt_and_filly']).toContain(r.sex_constraint);
       expect(['2yo', '3yo', '3yo_and_up', '4yo_and_up']).toContain(r.age_constraint);
       expect(['weight_for_age', 'special_weight', 'set_weight', 'handicap']).toContain(r.handicap.code);
+
+      // 実在する暦日（カレンダー上の日付）であること（Issue #106）
+      const [year, month, day] = r.date.split('-').map(Number);
+      const dt = new Date(Date.UTC(year, month - 1, day));
+      expect(dt.getUTCFullYear()).toBe(year);
+      expect(dt.getUTCMonth()).toBe(month - 1);
+      expect(dt.getUTCDate()).toBe(day);
+
+      // マークアップやエンティティの混入がないこと
+      expect(r.name.en).not.toMatch(/[<>{}\[\]"\\]|&lt;|&gt;/);
+      expect(r.name.ja).not.toMatch(/[<>{}\[\]"\\]|&lt;|&gt;/);
     }
   });
 
