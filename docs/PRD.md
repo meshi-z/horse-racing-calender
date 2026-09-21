@@ -922,9 +922,8 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
         - 日本語（`ja`）: `重賞カレンダー`（短縮名） / `重賞カレンダー - JRA・NAR重賞レース`（正式名）
         - 英語（`en`）: `Graded Races`（短縮名） / `Graded Races Calendar`（正式名）
         - フランス語（`fr`）: `Courses de Groupe`（短縮名） / `Calendrier des Courses de Groupe`（正式名）
-      - メタタグ・マニフェスト動的同期ロジックの実装（`src/libs/pwaMetadata.ts`）:
+      - メタタグ動的同期ロジックの実装（`src/libs/pwaMetadata.ts`）:
         - ページ初期化時および言語切替時に、`<meta name="apple-mobile-web-app-title">`、`<meta name="application-name">`、`document.title` を現在の言語に合わせて動的に同期更新。
-        - Web App Manifest（`<link rel="manifest">`）の `name` および `short_name` を選択言語に合わせて動的に再生成・置換し、Android Chrome等のPWAインストールダイアログやホーム画面名に即座に反映。
       - 海外競馬追加手順書（`docs/guides/adding-new-country.md`）の更新:
         - 新規言語追加時の必須手順として PWA アプリ名称定義（`app.appName` / `app.appFullName`）および動的同期テストを明記。
       - 単体テスト（`tests/unit/pwaMetadata.test.ts`）の新設および統合テスト（`tests/integration/i18nIntegration.test.tsx`）の拡充。
@@ -942,6 +941,12 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
         - 日本語（`ja`）、英語（`en`）、フランス語（`fr`）の案内テキストおよびアクセシビリティラベルの完全提供。
       - 単体テスト（`tests/unit/PwaInstallPrompt.test.tsx`）の新設:
         - スタンドアロン時非表示、Dismiss時非表示、Androidプロンプト呼び出し、iOS手順ガイド表示、閉じる操作、多言語切り替えの全網羅テスト。
+    - **Phase 10: Android PWAインストール時のアイコン余白解消 & 静的マニフェスト配信担保 (Issue #98) [完了]**
+      - 不具合原因の究明: クライアント側で `<link rel="manifest">` をメモリ内 Blob URL へ動的差し替えしたことにより、Android の WebAPK Minting サーバーがマニフェストおよび `purpose: "maskable"` アイコンを取得できず、Chrome が安全策として白い角丸四角形背景中央にアイコンを縮小配置（余白発生）していた。
+      - 恒久対策: マニフェストの Blob URL 動的置換処理を完全廃止し、Vite PWA がビルド生成する正規の静的 `manifest.webmanifest` を常に参照するように復元。
+      - WebAPK の maskable アイコン（`icon-maskable.png`）が確実に適用され、以前のようにホーム画面いっぱいに余白なくアイコンが描画される状態を復元。
+      - iOS 向けの `<meta name="apple-mobile-web-app-title">` による多言語ホーム画面名連動は安全に維持。
+      - 単体テスト（`tests/unit/pwaMetadata.test.ts`）を更新し、静的マニフェストリンクの保持を保証。
 33. **Step 33 (Next): 海外主要レース拡張（香港・UAE・米国） & 外部カレンダー連携**
     - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。
