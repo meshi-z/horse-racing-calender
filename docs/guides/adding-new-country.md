@@ -318,6 +318,17 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
 - **データ出典**: 新規団体の公式発表データを利用・加工している旨を明記。
 - **商標・知的財産権**: 新規団体の権利帰属を追記。
 
+### 7.3 SEO & メタ情報（`index.html` / OGP / PWA Manifest）の更新
+海外競馬や対象国の追加に合わせて、検索エンジンへの最適化（SEO）およびSNSシェア（OGP）の文言・構造化データを適宜更新・汎用化します。
+
+1. **`index.html` のメタタグ**:
+   - `<meta name="description">`: 新規追加国の主要重賞を含む説明文（日英）の更新。
+   - `<meta name="keywords">`: 新規国の競馬関連キーワード（国名、統轄団体名等）の追加。
+   - **OGP / Twitter Card**: `og:description` や `twitter:description` を更新。
+   - **JSON-LD 構造化データ**: Schema.org（`@type: WebApplication`）の `description` や `alternateName` の同期。
+2. **`vite.config.ts` (PWA Manifest)**:
+   - `VitePWA` プラグイン内の `manifest.description` を更新。
+
 ---
 
 ## 8. Step 7: テスト・品質検証 & リリース
@@ -339,6 +350,8 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
    - `FilterBar.test.tsx`: 新規主催者フィルターの切替、競馬場グループ選択の検証。
    - `RaceCard.test.tsx` / `RaceDetailDialog.test.tsx`: 国コードバッジや原語表記が表示されること。
    - `useRaceStore.test.ts`: 新規国のレースが検索・フィルタリングできること。
+5. **SEO・メタ設定テスト (`tests/unit/seo.test.ts`)**:
+   - `index.html` の meta タグや JSON-LD、OGP を更新した場合は、本テストの期待値も同期して更新すること。
 
 ### 8.2 品質チェックリスト
 作業完了時は、リポジトリ規約に基づき以下のコマンドをすべてパスすることを確認します。

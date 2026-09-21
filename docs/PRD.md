@@ -757,7 +757,7 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - 単体テスト `tests/unit/franceSyutsuba.test.ts` を新設、`tests/unit/franceRaces.test.ts`、`tests/unit/racesData.test.ts` を更新し、全35スイート・296テスト完全合格。型エラー0件。
 30. **Step 30 (Current): 新しい国の競馬（海外競馬）を追加する開発・運用手順書の作成 (Issue #79) [完了]**
     - フランス競馬（France Galop / PMU）対応で確立されたデータ設計・確定時刻取得・UI拡張の知見を体系化した開発・運用ガイド（`docs/guides/adding-new-country.md`）の新設。
-    - IFHA Part I/II データ選定、スキーマ・型定義（`src/types/race.ts`）、レースマスタ（`src/data/{country}_race_master.json`）、確定発走時刻フェッチャー（`RaceTimeFetcher`）、Actions定期バッチ、UI拡張、多言語化（i18n）、過去データ実績補完、テストチェックリスト、および実践ケーススタディを網羅。
+    - IFHA Part I/II データ選定、スキーマ・型定義（`src/types/race.ts`）、レースマスタ（`src/data/{country}_race_master.json`）、確定発走時刻フェッチャー（`RaceTimeFetcher`）、Actions定期バッチ、UI拡張、多言語化（i18n）・SEO/メタ情報更新、過去データ実績補完、テストチェックリスト、および実践ケーススタディを網羅。
     - `README.md` および `docs/PRD.md` からの参照導線を追加。
 31. **Step 31 (Next): 海外主要レース拡張（イギリス・香港・UAE・米国） & 外部カレンダー連携**
     - 本開発ガイドに基づくイギリス（BHA）、香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
