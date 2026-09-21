@@ -4,7 +4,8 @@ export type LocalizedText = {
   fr?: string;
 };
 
-export type Organization = 'jra' | 'nar' | 'france_galop' | 'overseas';
+export type CountryCode = 'JP' | 'FR' | 'GB' | 'US' | 'HK' | 'AU';
+export type Organization = 'jra' | 'nar' | 'france_galop' | 'bha' | 'overseas';
 export type TrackType = 'turf' | 'dirt' | 'obstacle' | 'banei' | 'aw';
 export type SexConstraint = 'filly_and_mare' | 'colt_and_filly' | 'none';
 export type AgeConstraint = '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up';
@@ -33,7 +34,7 @@ export type Handicap = {
 export type Race = {
   id: string;
   organization: Organization;
-  country_code?: string; // ISO 3166-1 alpha-2 (例: "JP", "FR")
+  country_code?: CountryCode; // ISO 3166-1 alpha-2 (例: "JP", "FR", "GB")
   name: LocalizedText;
   grade: Grade;
   date: string; // YYYY-MM-DD
@@ -52,7 +53,7 @@ export type Race = {
 export type DistanceCategory = 'sprint' | 'mile' | 'intermediate' | 'long';
 
 export type FilterState = {
-  organization: 'all' | 'jra' | 'nar' | 'france_galop';
+  organization: 'all' | 'jra' | 'nar' | 'france_galop' | 'bha';
   searchQuery: string;
   grades: Grade[];
   trackTypes: TrackType[];
