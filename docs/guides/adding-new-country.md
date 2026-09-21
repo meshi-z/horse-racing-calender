@@ -297,8 +297,32 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
   )}
   ```
 
-### 6.3 原語レース名の併記 (`RaceDetailDialog.tsx`)
-英語以外の母国語（フランス語、ドイツ語等）を持つ国の場合、詳細モーダルで原語名称を併記します。
+### 6.3 レース名表示・原語併記の統一仕様 (`src/libs/raceLanguage.ts`)
+
+レースカード（`RaceCard.tsx`）およびレース詳細ダイアログ（`RaceDetailDialog.tsx`）では、言語が増加しても画面が煩雑化せず、かつ直感的に把握できるよう、以下の**統一多言語表示ルール**（`getRaceDisplayNames(race, currentLang)`）を厳格に適用します。
+
+| 項目 | 表示ルール |
+| :--- | :--- |
+| **メイン表示 (Primary)** | **現在の選択言語（UI言語）** でのレース名。 |
+| **サブ表示 (Secondary)** | **レース開催国の原語（Origin Language）** でのレース名。<br>ただし、**選択言語と原語が一致する場合は「英語（en）」** を表示。 |
+| **同一文字列の非表示** | メイン表示とサブ表示の文字列が完全一致する場合（大文字・小文字、前後の空白を除いて同値の場合）、**サブ表示を自動的に非表示（省略）** とする。 |
+
+#### 原語（Origin Language）の判定ロジック
+`src/libs/raceLanguage.ts` 内の `getRaceOriginLanguage(race)` に、新規追加国の判定を追加します:
+- フランス (`country_code === 'FR'` または `organization === 'france_galop'`): `'fr'`
+- 日本 (`country_code === 'JP'` または `jra` / `nar`): `'ja'`
+- イギリス (`GB` / `bha`)、アメリカ (`US`) 等: `'en'`
+- 香港 (`HK` / `hkjc`): `'zh'` (または `'zh-HK'`)
+
+#### 表示具体例
+- **凱旋門賞（原語: fr, 仏名: Prix de l'Arc de Triomphe, 英名: Prix de l'Arc de Triomphe）**:
+  - 日本語UI (`ja`): メイン「凱旋門賞」、サブ「Prix de l'Arc de Triomphe (原語fr)」
+  - 英語UI (`en`): メイン「Prix de l'Arc de Triomphe」、サブ非表示（原語frと完全同一のため省略）
+  - フランス語UI (`fr`): メイン「Prix de l'Arc de Triomphe」、サブ非表示（原語＝選択言語のためサブ候補enとなるが、同一文字列のため省略）
+- **日本ダービー（原語: ja, 日名: 東京優駿, 仏名: Derby Japonais, 英名: Tokyo Yushun (Japanese Derby)）**:
+  - フランス語UI (`fr`): メイン「Derby Japonais」、サブ「東京優駿 (原語ja)」
+  - 英語UI (`en`): メイン「Tokyo Yushun (Japanese Derby)」、サブ「東京優駿 (原語ja)」
+  - 日本語UI (`ja`): メイン「東京優駿」、サブ「Tokyo Yushun (Japanese Derby) (原語ja＝選択言語のため英語)」
 
 ### 6.4 検索エンジンの拡張 (`src/store/useRaceStore.ts`)
 フィルター検索時、原語名称（`race.name.fr` 等）でも部分一致検索できるように `matchesSearchQuery` を更新します。
@@ -319,17 +343,24 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
 
 #### 7.1.2 サイトUIの母国語（第3言語）サポート（オプション・発展）
 新設国（例: フランス、香港等）の母国語（フランス語 `fr`、繁体字中国語 `zh-HK` 等）をサイト全体のUI言語として正式サポートする場合は、以下のサイト規模拡張を行います:
-1. **言語ストアの拡張 (`src/store/useLanguageStore.ts`)**:
+
+1. **他国レース名のデータ作成方針（フォールバックとカバー範囲）**:
+   > [!IMPORTANT]
+   > **他国の全地方重賞まで新言語のレース名を用意・保守する必要はありません。**
+   > - **地方重賞等のフォールバック**: 他言語データがないレースは、`getLocalizedText` により自動的に **英語（`en`）へフォールバック** します（`name[lang] || name.en || name.ja`）。
+   > - **主要G1への名称追加**: 世界的に著名な **主要G1（日本ダービー、ジャパンカップ、有馬記念、天皇賞など）** についてのみ、その言語の公式・慣用名称（例: `Derby Japonais`, `Coupe du Japon` 等）をマスタ／パース処理（`scripts/parse-races.ts` 等）で追加します。
+2. **言語ストアの拡張 (`src/store/useLanguageStore.ts`)**:
    - `Language` 型への新言語追加（例: `'ja' | 'en' | 'fr'`）。
    - `getInitialLanguage()` でのブラウザ言語（`navigator.language`）判定の追加。
-2. **新言語UI辞書の新設 (`src/libs/i18n.ts`)**:
-   - `translations.{lang}` を定義し、全UI文言（ナビゲーション、ステータス、ダイアログ、フィルター、空状態、免責事項等）の対訳を網羅。
-3. **言語切替UIの刷新 (`src/components/shared/Header.tsx`)**:
-   - 2値トグルボタン（`JA ⇄ EN`）から、3言語以上に対応したドロップダウンメニュー（Shadcn UI `DropdownMenu`）等の選択UIへ改修。
-4. **メタ情報・ロケールの同期 (`index.html`)**:
-   - Schema.org JSON-LD の `inLanguage` に新言語を追加、OGP（`og:locale:alternate`）の同期。
-5. **テストの拡充**:
-   - `useLanguageStore.test.ts`, `Header.test.tsx`, `i18n.test.ts` の言語切り替えテストを更新。
+3. **新言語UI辞書の新設 (`src/libs/i18n.ts`)**:
+   - `translations.{lang}` を定義し、全UI文言（ナビゲーション、ステータス、ダイアログ、フィルター、空状態、免責事項、日付・曜日フォーマット等）の対訳を網羅。
+   - `i18n.test.ts` で既存言語辞書とのキー完全一致（パリティ）を自動検証。
+4. **言語切替UIの選択肢追加 (`src/components/shared/Header.tsx`)**:
+   - Shadcn UI `Select` コンポーネントに新言語の選択肢アイテム（例: `<SelectItem value="fr">Français (FR)</SelectItem>`）を追加。
+5. **メタ情報・ロケールの同期 (`index.html`)**:
+   - Schema.org JSON-LD の `inLanguage` に新言語を追加、OGP（`og:locale:alternate`）の同期、サイト別名（`alternateName`）の追加。
+6. **テストの拡充**:
+   - `useLanguageStore.test.ts`, `Header.test.tsx`, `i18n.test.ts`, `raceLanguage.test.ts`, `i18nIntegration.test.tsx` の言語切り替えテストを更新。
 
 ### 7.2 免責事項・データ出典の追記 (`DisclaimerDialog.tsx` & `i18n.ts`)
 - **非公式ファンサイト注記**: 新規統轄団体（BHA, Equibase等）と本アプリが無関係である旨を追記。
@@ -405,6 +436,12 @@ npm run docs:pdf
 ### ③ レース中止・廃止の公式アナウンス
 - **課題**: 年初スケジュールに記載されていたペネロープ賞（Prix Penelope）が、フランスギャロの公式発表により開催廃止となっていました。
 - **対策**: 単に年間PDFを盲信するだけでなく、現地公式アナウンスを確認し、廃止レースはマスタから適切に除外（または代替設定）しました。
+
+### ④ 多言語表示ルールの確立（サブ表示増加の防止とフォールバック方針）
+- **課題**: サイトUI言語を増やす際、レースカードのサブ言語を単純に羅列すると画面が肥大化し視認性が悪化する。また、他国（日本等）の全地方重賞まで新言語の辞書を作成・保守するのは非現実的。
+- **対策**:
+  1. **表示ルール**: メイン＝選択言語、サブ＝開催国原語（選択言語と原語が同じ場合は英語）。メインとサブの文字列が一致する場合はサブを自動非表示化。
+  2. **辞書範囲**: 地方重賞等は英語フォールバックで吸収し、世界的な主要G1（日本ダービー、ジャパンカップ、有馬記念、天皇賞等）のみ新言語名称を整備する方針を確立。
 
 ---
 
