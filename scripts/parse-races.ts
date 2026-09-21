@@ -73,6 +73,19 @@ const COURSE_EN: Record<string, string> = {
   '函館': 'Hakodate',
 };
 
+const COURSE_FR: Record<string, string> = {
+  '東京': 'Tokyo',
+  '中山': 'Nakayama',
+  '京都': 'Kyoto',
+  '阪神': 'Hanshin',
+  '中京': 'Chukyo',
+  '新潟': 'Niigata',
+  '福島': 'Fukushima',
+  '小倉': 'Kokura',
+  '札幌': 'Sapporo',
+  '函館': 'Hakodate',
+};
+
 const RACE_NAME_EN: Record<string, string> = {
   '中山金杯': 'Nakayama Kimpai',
   '京都金杯': 'Kyoto Kimpai',
@@ -577,6 +590,43 @@ function resolveRaceNameEn(icsName: string, htmlName: string): string {
   throw new Error(`Failed to resolve English race name for "${icsName}" (HTML: "${htmlName}")`);
 }
 
+const RACE_NAME_FR: Record<string, string> = {
+  '日本ダービー': 'Derby Japonais',
+  '東京優駿': 'Derby Japonais',
+  'ジャパンカップ': 'Coupe du Japon (Japan Cup)',
+  '優駿牝馬': 'Oaks Japonais',
+  'オークス': 'Oaks Japonais',
+  '有馬記念': 'Arima Kinen (Grand Prix)',
+  '天皇賞(春)': 'Tenno Sho (Printemps)',
+  '天皇賞(秋)': 'Tenno Sho (Automne)',
+  '菊花賞': 'Kikuka Sho (St. Léger Japonais)',
+  '皐月賞': 'Satsuki Sho (2000 Guinées Japonaises)',
+  '桜花賞': 'Oka Sho (1000 Guinées Japonaises)',
+  '宝塚記念': 'Takarazuka Kinen',
+  '安田記念': 'Yasuda Kinen',
+  'マイルチャンピオンシップ': 'Mile Championship',
+  'スプリンターズステークス': 'Sprinters Stakes',
+  '大阪杯': 'Osaka Hai',
+  '高松宮記念': 'Takamatsunomiya Kinen',
+  'エリザベス女王杯': 'Queen Elizabeth II Cup',
+  '秋華賞': 'Shuka Sho',
+  'チャンピオンズカップ': 'Champions Cup',
+  'フェブラリーステークス': 'February Stakes',
+  'ホープフルステークス': 'Hopeful Stakes',
+  '阪神ジュベナイルフィリーズ': 'Hanshin Juvenile Fillies',
+  '朝日杯フューチュリティステークス': 'Asahi Hai Futurity Stakes',
+  '中山大障害': 'Nakayama Daishogai',
+  '中山グランドジャンプ': 'Nakayama Grand Jump',
+};
+
+function resolveRaceNameFr(icsName: string, htmlName: string): string | undefined {
+  if (RACE_NAME_FR[icsName]) return RACE_NAME_FR[icsName];
+  if (RACE_NAME_FR[htmlName]) return RACE_NAME_FR[htmlName];
+  const baseName = icsName.replace(/^.+?[賞杯]\s*/, '');
+  if (RACE_NAME_FR[baseName]) return RACE_NAME_FR[baseName];
+  return undefined;
+}
+
 interface CliOptions {
   year: number;
   force: boolean;
@@ -754,6 +804,8 @@ async function main() {
       throw new Error(`English race name contains Japanese characters: "${nameEn}" for race "${ics.cleanName}"`);
     }
     const courseEn = COURSE_EN[ics.course] || ics.course;
+    const courseFr = COURSE_FR[ics.course] || courseEn;
+    const nameFr = resolveRaceNameFr(ics.cleanName, htmlData.raceName);
 
     const raceItem: RaceOutput = {
       id,
@@ -762,6 +814,7 @@ async function main() {
       name: {
         ja: ics.cleanName,
         en: nameEn,
+        ...(nameFr ? { fr: nameFr } : {}),
       },
       grade: ics.grade,
       date: finalDate,
@@ -771,6 +824,7 @@ async function main() {
       course: {
         ja: ics.course,
         en: courseEn,
+        fr: courseFr,
       },
       distance: htmlData.distance,
       track_type: htmlData.track_type,
@@ -795,11 +849,13 @@ async function main() {
       name: {
         ja: ics.cleanName,
         en: nameEn,
+        ...(nameFr ? { fr: nameFr } : {}),
       },
       organization: 'jra',
       course: {
         ja: `${ics.course}競馬場`,
         en: `${courseEn} Racecourse`,
+        fr: `${courseFr} Hippodrome`,
       },
       default_time_jst: defaultTimeJst,
       sex_constraint: {

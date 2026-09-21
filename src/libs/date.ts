@@ -6,15 +6,26 @@ import type { Language } from '../store/useLanguageStore';
 
 const DAY_OF_WEEK_JA = ['日', '月', '火', '水', '木', '金', '土'] as const;
 const DAY_OF_WEEK_EN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
+const DAY_OF_WEEK_FR = ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'] as const;
 
 const MONTH_NAMES_SHORT_EN = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
 ] as const;
 
+const MONTH_NAMES_SHORT_FR = [
+  'janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin',
+  'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.',
+] as const;
+
 const MONTH_NAMES_LONG_EN = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December',
+] as const;
+
+const MONTH_NAMES_LONG_FR = [
+  'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+  'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre',
 ] as const;
 
 /**
@@ -39,6 +50,7 @@ export function formatLocalTime(utcIsoString: string): string {
  * 日付文字列（YYYY-MM-DD）を地域化された日付形式に変換する
  * - ja: 2026年10月4日(日)
  * - en: Sun, Oct 4, 2026
+ * - fr: dim. 4 oct. 2026
  */
 export function formatLocalDate(dateString: string, lang: Language = 'ja'): string {
   try {
@@ -58,6 +70,12 @@ export function formatLocalDate(dateString: string, lang: Language = 'ja'): stri
       return `${dayOfWeek}, ${monthName} ${day}, ${year}`;
     }
 
+    if (lang === 'fr') {
+      const dayOfWeek = DAY_OF_WEEK_FR[date.getDay()];
+      const monthName = MONTH_NAMES_SHORT_FR[month - 1];
+      return `${dayOfWeek} ${day} ${monthName} ${year}`;
+    }
+
     const dayOfWeek = DAY_OF_WEEK_JA[date.getDay()];
     return `${year}年${month}月${day}日(${dayOfWeek})`;
   } catch {
@@ -69,10 +87,15 @@ export function formatLocalDate(dateString: string, lang: Language = 'ja'): stri
  * 年月を地域化された表示形式に変換する
  * - ja: 2026年4月
  * - en: April 2026
+ * - fr: avril 2026
  */
 export function formatYearMonth(year: number, month: number, lang: Language = 'ja'): string {
   if (lang === 'en') {
     const monthName = MONTH_NAMES_LONG_EN[month - 1] || '';
+    return `${monthName} ${year}`;
+  }
+  if (lang === 'fr') {
+    const monthName = MONTH_NAMES_LONG_FR[month - 1] || '';
     return `${monthName} ${year}`;
   }
   return `${year}年${month}月`;
@@ -145,7 +168,7 @@ export function formatRaceTimeDisplay(
 
   return {
     time,
-    statusLabel: isPast ? null : (lang === 'en' ? 'Scheduled' : '発走予定'),
+    statusLabel: isPast ? null : (lang === 'en' ? 'Scheduled' : lang === 'fr' ? 'Prévu' : '発走予定'),
     isPast,
     isConfirmed: true,
   };

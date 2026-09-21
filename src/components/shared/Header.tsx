@@ -2,9 +2,16 @@ import * as React from "react";
 import { useViewMode } from "@/hooks/useViewMode";
 import { useTheme } from "@/hooks/useTheme";
 import { useTranslation } from "@/libs/i18n";
+import type { Language } from "@/store/useLanguageStore";
 import { trackEvent } from "@/libs/analytics";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+} from "@/components/ui/select";
 import { Calendar, Languages, ListFilter, Moon, Sun } from "lucide-react";
 import { cn } from "@/libs/utils";
 
@@ -13,12 +20,13 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
 export function Header({ className, ...props }: HeaderProps) {
   const { viewMode, setViewMode } = useViewMode();
   const { resolvedTheme, toggleTheme } = useTheme();
-  const { language, toggleLanguage, t } = useTranslation();
+  const { language, setLanguage, t } = useTranslation();
 
-  const handleToggleLanguage = () => {
-    const nextLanguage = language === "ja" ? "en" : "ja";
-    toggleLanguage();
-    trackEvent("language_change", { from: language, to: nextLanguage });
+  const handleLanguageChange = (newLanguage: Language) => {
+    if (newLanguage === language) return;
+    const oldLanguage = language;
+    setLanguage(newLanguage);
+    trackEvent("language_change", { from: oldLanguage, to: newLanguage });
   };
 
   return (
@@ -68,26 +76,30 @@ export function Header({ className, ...props }: HeaderProps) {
             </TabsList>
           </Tabs>
 
-          {/* 言語切替トグル */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="h-8 px-2 text-xs font-semibold gap-1.5"
-            onClick={handleToggleLanguage}
-            aria-label={
-              language === "ja"
-                ? t("nav.switchLanguageToEn")
-                : t("nav.switchLanguageToJa")
-            }
-            title={
-              language === "ja"
-                ? t("nav.switchLanguageToEn")
-                : t("nav.switchLanguageToJa")
-            }
+          {/* 言語切替セレクター (Shadcn UI Select) */}
+          <Select
+            value={language}
+            onValueChange={(val) => handleLanguageChange(val as Language)}
           >
-            <Languages className="h-4 w-4" />
-            <span>{language.toUpperCase()}</span>
-          </Button>
+            <SelectTrigger
+              className="h-8 px-2 text-xs font-semibold gap-1.5 border-transparent bg-transparent hover:bg-accent focus:ring-0 focus:ring-offset-0 shadow-none w-auto"
+              aria-label={
+                language === "ja"
+                  ? "言語を選択 (日本語)"
+                  : language === "fr"
+                  ? "Choisir la langue (Français)"
+                  : "Select language (English)"
+              }
+            >
+              <Languages className="h-4 w-4 shrink-0" />
+              <span className="font-bold">{language.toUpperCase()}</span>
+            </SelectTrigger>
+            <SelectContent align="end" className="min-w-[130px]">
+              <SelectItem value="ja">日本語 (JA)</SelectItem>
+              <SelectItem value="en">English (EN)</SelectItem>
+              <SelectItem value="fr">Français (FR)</SelectItem>
+            </SelectContent>
+          </Select>
 
           {/* テーマ切替 */}
           <Button

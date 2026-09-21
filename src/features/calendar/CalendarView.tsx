@@ -9,6 +9,7 @@ import {
 } from "@/libs/calendar";
 import { formatLocalDate, formatLocalTime, formatYearMonth } from "@/libs/date";
 import { useTranslation, CALENDAR_WEEKDAYS_BY_LANG } from "@/libs/i18n";
+import { getLocalizedText } from "@/libs/raceLanguage";
 import { cn } from "@/libs/utils";
 import { useRaceStore } from "@/store/useRaceStore";
 import type { Race } from "@/types/race";
@@ -198,14 +199,21 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                 <div className="flex-1 space-y-1 overflow-y-auto max-h-[120px] pr-0.5">
                   {dayRaces.map((race) => {
                     const localTime = formatLocalTime(race.start_time);
-                    const raceName = race.name[language];
-                    const courseName = race.course[language];
+                    const raceName = getLocalizedText(race.name, language);
+                    const courseName = race.course[language] || race.course.en || race.course.ja;
                     const rescheduledTag = race.is_rescheduled
                       ? language === "en"
                         ? " (Rescheduled)"
+                        : language === "fr"
+                        ? " (Reporté)"
                         : "（代替開催）"
                       : "";
-                    const viewDetailText = language === "en" ? "View Details" : "詳細を表示";
+                    const viewDetailText =
+                      language === "en"
+                        ? "View Details"
+                        : language === "fr"
+                        ? "Voir les détails"
+                        : "詳細を表示";
 
                     return (
                       <button

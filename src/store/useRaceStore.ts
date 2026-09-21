@@ -104,10 +104,10 @@ export const filterRaces = (races: Race[], filters: FilterState): Race[] => {
       return false;
     }
 
-    // 競馬場（日本語・英語いずれかの一致）
+    // 競馬場（日本語・英語・フランス語いずれかの一致）
     if (filters.courses.length > 0) {
       const matchesCourse = filters.courses.some(
-        (c) => c === race.course.ja || c === race.course.en
+        (c) => c === race.course.ja || c === race.course.en || (race.course.fr && c === race.course.fr)
       );
       if (!matchesCourse) {
         return false;

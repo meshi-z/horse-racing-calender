@@ -32,6 +32,13 @@ describe('useLanguageStore', () => {
       expect(getInitialLanguage()).toBe('en');
     });
 
+    it('localStorageに fr が保存されている場合、navigatorにかかわらず fr を返すこと', () => {
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, 'fr');
+      vi.spyOn(navigator, 'language', 'get').mockReturnValue('ja');
+
+      expect(getInitialLanguage()).toBe('fr');
+    });
+
     it('localStorageが未設定かつ navigator.language が ja の場合、ja を返すこと', () => {
       vi.spyOn(navigator, 'language', 'get').mockReturnValue('ja');
       expect(getInitialLanguage()).toBe('ja');
@@ -47,8 +54,13 @@ describe('useLanguageStore', () => {
       expect(getInitialLanguage()).toBe('en');
     });
 
-    it('localStorageが未設定かつ navigator.language がフランス語など非日本語の場合、英語にフォールバックすること', () => {
+    it('localStorageが未設定かつ navigator.language が fr-FR の場合、fr を返すこと', () => {
       vi.spyOn(navigator, 'language', 'get').mockReturnValue('fr-FR');
+      expect(getInitialLanguage()).toBe('fr');
+    });
+
+    it('localStorageが未設定かつ navigator.language がその他の言語（例: de-DE）の場合、英語にフォールバックすること', () => {
+      vi.spyOn(navigator, 'language', 'get').mockReturnValue('de-DE');
       expect(getInitialLanguage()).toBe('en');
     });
 
@@ -69,13 +81,18 @@ describe('useLanguageStore', () => {
       expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe('en');
       expect(document.documentElement.lang).toBe('en');
 
+      store.setLanguage('fr');
+      expect(useLanguageStore.getState().language).toBe('fr');
+      expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe('fr');
+      expect(document.documentElement.lang).toBe('fr');
+
       store.setLanguage('ja');
       expect(useLanguageStore.getState().language).toBe('ja');
       expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe('ja');
       expect(document.documentElement.lang).toBe('ja');
     });
 
-    it('toggleLanguage で ja と en がトグル切り替えされること', () => {
+    it('toggleLanguage で ja -> en -> fr -> ja がトグル切り替えされること', () => {
       const store = useLanguageStore.getState();
       store.setLanguage('ja');
 
@@ -83,6 +100,11 @@ describe('useLanguageStore', () => {
       expect(useLanguageStore.getState().language).toBe('en');
       expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe('en');
       expect(document.documentElement.lang).toBe('en');
+
+      store.toggleLanguage();
+      expect(useLanguageStore.getState().language).toBe('fr');
+      expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe('fr');
+      expect(document.documentElement.lang).toBe('fr');
 
       store.toggleLanguage();
       expect(useLanguageStore.getState().language).toBe('ja');

@@ -10,6 +10,7 @@ import {
   sexConstraintLabels,
   ageConstraintLabels,
 } from "@/libs/i18n";
+import { getRaceDisplayNames } from "@/libs/raceLanguage";
 import type { Race } from "@/types/race";
 import { cn } from "@/libs/utils";
 import { Calendar, Clock, MapPin } from "lucide-react";
@@ -33,13 +34,22 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
     const ageTag = ageConstraintLabels[language][race.age_constraint].short;
     const trackLabel = trackTypeLabels[language][race.track_type];
 
-    const primaryName = language === "en" ? race.name.en : race.name.ja;
-    const secondaryName = language === "en" ? race.name.ja : race.name.en;
-    const courseName = race.course[language];
-    const handicapName = race.handicap[language];
+    const { primary: primaryName, secondary: secondaryName } = getRaceDisplayNames(race, language);
+    const courseName = race.course[language] || race.course.en || race.course.ja;
+    const handicapName = race.handicap[language as 'ja' | 'en'] || race.handicap.en;
 
-    const rescheduledTagText = language === "en" ? " (Rescheduled)" : "（代替開催）";
-    const viewDetailText = language === "en" ? "View Details" : "詳細を表示";
+    const rescheduledTagText =
+      language === "en"
+        ? " (Rescheduled)"
+        : language === "fr"
+        ? " (Reporté)"
+        : "（代替開催）";
+    const viewDetailText =
+      language === "en"
+        ? "View Details"
+        : language === "fr"
+        ? "Voir les détails"
+        : "詳細を表示";
 
     const handleClick = () => {
       onSelect?.(race);
@@ -162,7 +172,9 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                 <h4 className="font-bold text-base sm:text-lg leading-snug group-hover:text-primary transition-colors line-clamp-2">
                   {primaryName}
                 </h4>
-                <p className="text-xs text-muted-foreground truncate">{secondaryName}</p>
+                {secondaryName && (
+                  <p className="text-xs text-muted-foreground truncate">{secondaryName}</p>
+                )}
               </div>
             </div>
 

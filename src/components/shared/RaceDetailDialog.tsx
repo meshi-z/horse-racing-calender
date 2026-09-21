@@ -14,6 +14,7 @@ import {
   sexConstraintLabels,
   ageConstraintLabels,
 } from "@/libs/i18n";
+import { getRaceDisplayNames } from "@/libs/raceLanguage";
 import type { Race } from "@/types/race";
 import { cn } from "@/libs/utils";
 import { Calendar, Clock, MapPin, AlertTriangle } from "lucide-react";
@@ -36,14 +37,13 @@ export function RaceDetailDialog({
   const timeInfo = formatRaceTimeDisplay(race.start_time, race.is_time_confirmed, undefined, language);
   const formattedDate = formatLocalDate(race.date, language);
 
-  const primaryName = race.name[language];
-  const secondaryName = race.name[language === "en" ? "ja" : "en"];
-  const coursePrimary = race.course[language];
-  const courseSecondary = race.course[language === "en" ? "ja" : "en"];
+  const { primary: primaryName, secondary: secondaryName } = getRaceDisplayNames(race, language);
+  const coursePrimary = race.course[language] || race.course.en || race.course.ja;
+  const courseSecondary = language === "ja" ? race.course.en : race.course.ja;
   const trackLabel = trackTypeLabels[language][race.track_type];
   const sexLabel = sexConstraintLabels[language][race.sex_constraint].full;
   const ageLabel = ageConstraintLabels[language][race.age_constraint].full;
-  const handicapLabel = race.handicap[language];
+  const handicapLabel = race.handicap[language as 'ja' | 'en'] || race.handicap.en;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -76,19 +76,21 @@ export function RaceDetailDialog({
               )}
             >
               {race.organization === "jra"
-                ? language === "en" ? "JRA" : "JRA (中央)"
+                ? language === "en" ? "JRA" : language === "fr" ? "JRA (Japon)" : "JRA (中央)"
                 : race.organization === "france_galop"
-                ? language === "en" ? "France Galop" : "France Galop (フランス)"
-                : language === "en" ? "NAR" : "地方競馬 (NAR)"}
+                ? language === "ja" ? "France Galop (フランス)" : "France Galop"
+                : language === "en" ? "NAR" : language === "fr" ? "NAR (Japon Régional)" : "地方競馬 (NAR)"}
             </Badge>
           </div>
           <DialogTitle className="text-xl font-bold tracking-tight">
             {primaryName}
           </DialogTitle>
           <div className="flex flex-col gap-0.5">
-            <DialogDescription className="text-xs text-muted-foreground">
-              {secondaryName}
-            </DialogDescription>
+            {secondaryName && (
+              <DialogDescription className="text-xs text-muted-foreground">
+                {secondaryName}
+              </DialogDescription>
+            )}
             {race.name.fr && race.name.fr !== primaryName && race.name.fr !== secondaryName && (
               <span className="text-xs text-muted-foreground/80 italic font-serif">
                 原語 (FR): {race.name.fr}

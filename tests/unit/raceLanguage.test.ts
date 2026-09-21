@@ -1,0 +1,185 @@
+import { describe, it, expect } from 'vitest';
+import { getRaceOriginLanguage, getLocalizedText, getRaceDisplayNames } from '../../src/libs/raceLanguage';
+import type { Race } from '../../src/types/race';
+
+describe('raceLanguage utility', () => {
+  const sampleJraRace: Race = {
+    id: '2026-jra-sample-arima',
+    organization: 'jra',
+    country_code: 'JP',
+    name: {
+      ja: '有馬記念',
+      en: 'Arima Kinen',
+    },
+    grade: 'G1',
+    date: '2026-12-27',
+    start_time: '2026-12-27T06:25:00.000Z',
+    is_time_confirmed: true,
+    course: { ja: '中山', en: 'Nakayama' },
+    distance: 2500,
+    track_type: 'turf',
+    sex_constraint: 'none',
+    age_constraint: '3yo_and_up',
+    handicap: { code: 'special_weight', ja: '定量', en: 'Weight for Age' },
+  };
+
+  const sampleJraDerby: Race = {
+    id: '2026-jra-sample-derby',
+    organization: 'jra',
+    country_code: 'JP',
+    name: {
+      ja: '日本ダービー',
+      en: 'Tokyo Yushun',
+      fr: 'Derby Japonais',
+    },
+    grade: 'G1',
+    date: '2026-05-31',
+    start_time: '2026-05-31T06:40:00.000Z',
+    is_time_confirmed: true,
+    course: { ja: '東京', en: 'Tokyo' },
+    distance: 2400,
+    track_type: 'turf',
+    sex_constraint: 'colt_and_filly',
+    age_constraint: '3yo',
+    handicap: { code: 'set_weight', ja: '馬齢', en: 'Set Weight' },
+  };
+
+  const sampleFranceRace: Race = {
+    id: '2026-france-sample-arc',
+    organization: 'france_galop',
+    country_code: 'FR',
+    name: {
+      ja: '凱旋門賞',
+      en: "Prix de l'Arc de Triomphe",
+      fr: "Prix de l'Arc de Triomphe",
+    },
+    grade: 'G1',
+    date: '2026-10-04',
+    start_time: '2026-10-04T14:05:00.000Z',
+    is_time_confirmed: true,
+    course: { ja: 'パリロンシャン', en: 'ParisLongchamp', fr: 'ParisLongchamp' },
+    distance: 2400,
+    track_type: 'turf',
+    sex_constraint: 'none',
+    age_constraint: '3yo_and_up',
+    handicap: { code: 'weight_for_age', ja: '馬齢', en: 'Weight for Age' },
+  };
+
+  const sampleUkRace: Race = {
+    id: '2026-uk-sample-king-george',
+    organization: 'overseas',
+    country_code: 'GB',
+    name: {
+      ja: 'キングジョージ6世&QES',
+      en: 'King George VI & Queen Elizabeth Stakes',
+    },
+    grade: 'G1',
+    date: '2026-07-25',
+    start_time: '2026-07-25T14:35:00.000Z',
+    is_time_confirmed: true,
+    course: { ja: 'アスコット', en: 'Ascot' },
+    distance: 2400,
+    track_type: 'turf',
+    sex_constraint: 'none',
+    age_constraint: '3yo_and_up',
+    handicap: { code: 'weight_for_age', ja: '馬齢', en: 'Weight for Age' },
+  };
+
+  describe('getRaceOriginLanguage', () => {
+    it('JRA / NAR レースは ja を返すこと', () => {
+      expect(getRaceOriginLanguage(sampleJraRace)).toBe('ja');
+    });
+
+    it('フランスレースは fr を返すこと', () => {
+      expect(getRaceOriginLanguage(sampleFranceRace)).toBe('fr');
+    });
+
+    it('イギリスレースは en を返すこと', () => {
+      expect(getRaceOriginLanguage(sampleUkRace)).toBe('en');
+    });
+  });
+
+  describe('getLocalizedText', () => {
+    it('指定言語が存在する場合はその値を返すこと', () => {
+      expect(getLocalizedText(sampleJraDerby.name, 'fr')).toBe('Derby Japonais');
+    });
+
+    it('指定言語が存在しない場合は en にフォールバックすること', () => {
+      expect(getLocalizedText(sampleJraRace.name, 'fr')).toBe('Arima Kinen');
+    });
+
+    it('en も存在しない場合は ja にフォールバックすること', () => {
+      expect(getLocalizedText({ ja: 'テスト' } as any, 'fr')).toBe('テスト');
+    });
+  });
+
+  describe('getRaceDisplayNames', () => {
+    describe('日本レース（原語: ja、fr未定義）', () => {
+      it('日本語UI: メイン有馬記念、サブ英語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleJraRace, 'ja');
+        expect(primary).toBe('有馬記念');
+        expect(secondary).toBe('Arima Kinen');
+      });
+
+      it('英語UI: メイン英語、サブ日本語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleJraRace, 'en');
+        expect(primary).toBe('Arima Kinen');
+        expect(secondary).toBe('有馬記念');
+      });
+
+      it('フランス語UI: メイン英語フォールバック、サブ日本語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleJraRace, 'fr');
+        expect(primary).toBe('Arima Kinen');
+        expect(secondary).toBe('有馬記念');
+      });
+    });
+
+    describe('日本レース（原語: ja、fr定義あり: 日本ダービー）', () => {
+      it('フランス語UI: メインDerby Japonais、サブ日本ダービー', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleJraDerby, 'fr');
+        expect(primary).toBe('Derby Japonais');
+        expect(secondary).toBe('日本ダービー');
+      });
+    });
+
+    describe('フランスレース（原語: fr、凱旋門賞）', () => {
+      it('日本語UI: メイン凱旋門賞、サブ原語フランス語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleFranceRace, 'ja');
+        expect(primary).toBe('凱旋門賞');
+        expect(secondary).toBe("Prix de l'Arc de Triomphe");
+      });
+
+      it('英語UI: メインPrix de l\'Arc de Triomphe、サブは同一のため非表示', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleFranceRace, 'en');
+        expect(primary).toBe("Prix de l'Arc de Triomphe");
+        expect(secondary).toBeUndefined();
+      });
+
+      it('フランス語UI: メインPrix de l\'Arc de Triomphe、サブは同一のため非表示', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleFranceRace, 'fr');
+        expect(primary).toBe("Prix de l'Arc de Triomphe");
+        expect(secondary).toBeUndefined();
+      });
+    });
+
+    describe('イギリスレース（原語: en、キングジョージ）', () => {
+      it('日本語UI: メイン日本語、サブ原語英語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleUkRace, 'ja');
+        expect(primary).toBe('キングジョージ6世&QES');
+        expect(secondary).toBe('King George VI & Queen Elizabeth Stakes');
+      });
+
+      it('英語UI: 英語レース×英語UIのためサブ非表示', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleUkRace, 'en');
+        expect(primary).toBe('King George VI & Queen Elizabeth Stakes');
+        expect(secondary).toBeUndefined();
+      });
+
+      it('フランス語UI: メイン英語フォールバック、サブ非表示', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleUkRace, 'fr');
+        expect(primary).toBe('King George VI & Queen Elizabeth Stakes');
+        expect(secondary).toBeUndefined();
+      });
+    });
+  });
+});

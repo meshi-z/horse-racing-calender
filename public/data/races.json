@@ -117,7 +117,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -143,7 +144,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -247,7 +249,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -299,7 +302,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -377,7 +381,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 2400,
     "track_type": "turf",
@@ -403,7 +408,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -559,7 +565,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "小倉",
-      "en": "Kokura"
+      "en": "Kokura",
+      "fr": "Kokura"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -585,7 +592,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1800,
     "track_type": "dirt",
@@ -611,7 +619,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 2200,
     "track_type": "turf",
@@ -715,7 +724,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1200,
     "track_type": "turf",
@@ -741,7 +751,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1400,
     "track_type": "dirt",
@@ -925,7 +936,8 @@
     "original_date": "2026-02-08",
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -953,7 +965,8 @@
     "original_date": "2026-02-08",
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -1057,7 +1070,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "小倉",
-      "en": "Kokura"
+      "en": "Kokura",
+      "fr": "Kokura"
     },
     "distance": 3390,
     "track_type": "obstacle",
@@ -1083,7 +1097,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -1109,7 +1124,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 2200,
     "track_type": "turf",
@@ -1135,7 +1151,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -1291,7 +1308,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1400,
     "track_type": "turf",
@@ -1317,7 +1335,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 3400,
     "track_type": "turf",
@@ -1343,7 +1362,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "小倉",
-      "en": "Kokura"
+      "en": "Kokura",
+      "fr": "Kokura"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -1361,7 +1381,8 @@
     "country_code": "JP",
     "name": {
       "ja": "フェブラリーステークス",
-      "en": "February Stakes"
+      "en": "February Stakes",
+      "fr": "February Stakes"
     },
     "grade": "G1",
     "date": "2026-02-22",
@@ -1369,7 +1390,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1600,
     "track_type": "dirt",
@@ -1577,7 +1599,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1200,
     "track_type": "turf",
@@ -1603,7 +1626,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -1629,7 +1653,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -1707,7 +1732,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1400,
     "track_type": "turf",
@@ -1733,7 +1759,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -1759,7 +1786,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -1993,7 +2021,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 3900,
     "track_type": "obstacle",
@@ -2019,7 +2048,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中京",
-      "en": "Chukyo"
+      "en": "Chukyo",
+      "fr": "Chukyo"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -2045,7 +2075,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -2230,7 +2261,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中京",
-      "en": "Chukyo"
+      "en": "Chukyo",
+      "fr": "Chukyo"
     },
     "distance": 1400,
     "track_type": "turf",
@@ -2256,7 +2288,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -2282,7 +2315,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中京",
-      "en": "Chukyo"
+      "en": "Chukyo",
+      "fr": "Chukyo"
     },
     "distance": 1400,
     "track_type": "turf",
@@ -2308,7 +2342,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 3000,
     "track_type": "turf",
@@ -2464,7 +2499,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -2490,7 +2526,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 2500,
     "track_type": "turf",
@@ -2516,7 +2553,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1800,
     "track_type": "dirt",
@@ -2534,7 +2572,8 @@
     "country_code": "JP",
     "name": {
       "ja": "高松宮記念",
-      "en": "Takamatsunomiya Kinen"
+      "en": "Takamatsunomiya Kinen",
+      "fr": "Takamatsunomiya Kinen"
     },
     "grade": "G1",
     "date": "2026-03-29",
@@ -2542,7 +2581,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中京",
-      "en": "Chukyo"
+      "en": "Chukyo",
+      "fr": "Chukyo"
     },
     "distance": 1200,
     "track_type": "turf",
@@ -2727,7 +2767,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -2753,7 +2794,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -2771,7 +2813,8 @@
     "country_code": "JP",
     "name": {
       "ja": "大阪杯",
-      "en": "Osaka Hai"
+      "en": "Osaka Hai",
+      "fr": "Osaka Hai"
     },
     "grade": "G1",
     "date": "2026-04-05",
@@ -2779,7 +2822,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -3132,7 +3176,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -3158,7 +3203,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -3176,7 +3222,8 @@
     "country_code": "JP",
     "name": {
       "ja": "桜花賞",
-      "en": "Oka Sho (Japanese 1000 Guineas)"
+      "en": "Oka Sho (Japanese 1000 Guineas)",
+      "fr": "Oka Sho (1000 Guinées Japonaises)"
     },
     "grade": "G1",
     "date": "2026-04-12",
@@ -3184,7 +3231,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -3508,7 +3556,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1800,
     "track_type": "dirt",
@@ -3526,7 +3575,8 @@
     "country_code": "JP",
     "name": {
       "ja": "中山グランドジャンプ",
-      "en": "Nakayama Grand Jump"
+      "en": "Nakayama Grand Jump",
+      "fr": "Nakayama Grand Jump"
     },
     "grade": "J.G1",
     "date": "2026-04-18",
@@ -3534,7 +3584,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 4260,
     "track_type": "obstacle",
@@ -3560,7 +3611,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "福島",
-      "en": "Fukushima"
+      "en": "Fukushima",
+      "fr": "Fukushima"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -3578,7 +3630,8 @@
     "country_code": "JP",
     "name": {
       "ja": "皐月賞",
-      "en": "Satsuki Sho (Japanese 2000 Guineas)"
+      "en": "Satsuki Sho (Japanese 2000 Guineas)",
+      "fr": "Satsuki Sho (2000 Guinées Japonaises)"
     },
     "grade": "G1",
     "date": "2026-04-19",
@@ -3586,7 +3639,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -3797,7 +3851,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 2400,
     "track_type": "turf",
@@ -3823,7 +3878,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -3849,7 +3905,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -4173,7 +4230,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1900,
     "track_type": "dirt",
@@ -4199,7 +4257,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1400,
     "track_type": "turf",
@@ -4217,7 +4276,8 @@
     "country_code": "JP",
     "name": {
       "ja": "天皇賞(春)",
-      "en": "Tenno Sho (Spring)"
+      "en": "Tenno Sho (Spring)",
+      "fr": "Tenno Sho (Printemps)"
     },
     "grade": "G1",
     "date": "2026-05-03",
@@ -4225,7 +4285,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 3200,
     "track_type": "turf",
@@ -4650,7 +4711,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 2200,
     "track_type": "turf",
@@ -4676,7 +4738,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -4702,7 +4765,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -5052,7 +5116,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 3930,
     "track_type": "obstacle",
@@ -5078,7 +5143,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
-      "en": "Niigata"
+      "en": "Niigata",
+      "fr": "Niigata"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -5104,7 +5170,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -5350,7 +5417,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1900,
     "track_type": "dirt",
@@ -5368,7 +5436,8 @@
     "country_code": "JP",
     "name": {
       "ja": "オークス",
-      "en": "Yushun Himba (Japanese Oaks)"
+      "en": "Yushun Himba (Japanese Oaks)",
+      "fr": "Oaks Japonais"
     },
     "grade": "G1",
     "date": "2026-05-24",
@@ -5376,7 +5445,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 2400,
     "track_type": "turf",
@@ -5590,7 +5660,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1200,
     "track_type": "turf",
@@ -5608,7 +5679,8 @@
     "country_code": "JP",
     "name": {
       "ja": "日本ダービー",
-      "en": "Tokyo Yushun (Japanese Derby)"
+      "en": "Tokyo Yushun (Japanese Derby)",
+      "fr": "Derby Japonais"
     },
     "grade": "G1",
     "date": "2026-05-31",
@@ -5616,7 +5688,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 2400,
     "track_type": "turf",
@@ -5642,7 +5715,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 2500,
     "track_type": "turf",
@@ -5987,7 +6061,8 @@
     "country_code": "JP",
     "name": {
       "ja": "安田記念",
-      "en": "Yasuda Kinen"
+      "en": "Yasuda Kinen",
+      "fr": "Yasuda Kinen"
     },
     "grade": "G1",
     "date": "2026-06-07",
@@ -5995,7 +6070,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -6235,7 +6311,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 3110,
     "track_type": "obstacle",
@@ -6261,7 +6338,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "函館",
-      "en": "Hakodate"
+      "en": "Hakodate",
+      "fr": "Hakodate"
     },
     "distance": 1200,
     "track_type": "turf",
@@ -6279,7 +6357,8 @@
     "country_code": "JP",
     "name": {
       "ja": "宝塚記念",
-      "en": "Takarazuka Kinen"
+      "en": "Takarazuka Kinen",
+      "fr": "Takarazuka Kinen"
     },
     "grade": "G1",
     "date": "2026-06-14",
@@ -6287,7 +6366,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 2200,
     "track_type": "turf",
@@ -6718,7 +6798,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -6744,7 +6825,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -6900,7 +6982,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "函館",
-      "en": "Hakodate"
+      "en": "Hakodate",
+      "fr": "Hakodate"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -6926,7 +7009,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "福島",
-      "en": "Fukushima"
+      "en": "Fukushima",
+      "fr": "Fukushima"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -7166,7 +7250,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "小倉",
-      "en": "Kokura"
+      "en": "Kokura",
+      "fr": "Kokura"
     },
     "distance": 1200,
     "track_type": "turf",
@@ -7429,7 +7514,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "福島",
-      "en": "Fukushima"
+      "en": "Fukushima",
+      "fr": "Fukushima"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -7701,7 +7787,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "函館",
-      "en": "Hakodate"
+      "en": "Hakodate",
+      "fr": "Hakodate"
     },
     "distance": 1200,
     "track_type": "turf",
@@ -7727,7 +7814,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "小倉",
-      "en": "Kokura"
+      "en": "Kokura",
+      "fr": "Kokura"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -8103,7 +8191,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中京",
-      "en": "Chukyo"
+      "en": "Chukyo",
+      "fr": "Chukyo"
     },
     "distance": 1400,
     "track_type": "dirt",
@@ -8129,7 +8218,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
-      "en": "Niigata"
+      "en": "Niigata",
+      "fr": "Niigata"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -8311,7 +8401,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "札幌",
-      "en": "Sapporo"
+      "en": "Sapporo",
+      "fr": "Sapporo"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -8337,7 +8428,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
-      "en": "Niigata"
+      "en": "Niigata",
+      "fr": "Niigata"
     },
     "distance": 1000,
     "track_type": "turf",
@@ -8583,7 +8675,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "札幌",
-      "en": "Sapporo"
+      "en": "Sapporo",
+      "fr": "Sapporo"
     },
     "distance": 1700,
     "track_type": "dirt",
@@ -8638,7 +8731,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中京",
-      "en": "Chukyo"
+      "en": "Chukyo",
+      "fr": "Chukyo"
     },
     "distance": 1200,
     "track_type": "turf",
@@ -8664,7 +8758,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
-      "en": "Niigata"
+      "en": "Niigata",
+      "fr": "Niigata"
     },
     "distance": 1800,
     "track_type": "dirt",
@@ -8956,7 +9051,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
-      "en": "Niigata"
+      "en": "Niigata",
+      "fr": "Niigata"
     },
     "distance": 3250,
     "track_type": "obstacle",
@@ -9098,7 +9194,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中京",
-      "en": "Chukyo"
+      "en": "Chukyo",
+      "fr": "Chukyo"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -9124,7 +9221,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "札幌",
-      "en": "Sapporo"
+      "en": "Sapporo",
+      "fr": "Sapporo"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -9393,7 +9491,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "札幌",
-      "en": "Sapporo"
+      "en": "Sapporo",
+      "fr": "Sapporo"
     },
     "distance": 1200,
     "track_type": "turf",
@@ -9419,7 +9518,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
-      "en": "Niigata"
+      "en": "Niigata",
+      "fr": "Niigata"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -9717,7 +9817,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中京",
-      "en": "Chukyo"
+      "en": "Chukyo",
+      "fr": "Chukyo"
     },
     "distance": 1400,
     "track_type": "turf",
@@ -9743,7 +9844,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "新潟",
-      "en": "Niigata"
+      "en": "Niigata",
+      "fr": "Niigata"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -10044,7 +10146,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "札幌",
-      "en": "Sapporo"
+      "en": "Sapporo",
+      "fr": "Sapporo"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -10070,7 +10173,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -10096,7 +10200,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1200,
     "track_type": "turf",
@@ -10122,7 +10227,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -10478,7 +10584,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -10533,7 +10640,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -10559,7 +10667,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 2200,
     "track_type": "turf",
@@ -10906,7 +11015,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 3140,
     "track_type": "obstacle",
@@ -11019,7 +11129,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 2200,
     "track_type": "turf",
@@ -11045,7 +11156,8 @@
     "is_time_confirmed": true,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 2400,
     "track_type": "turf",
@@ -11305,7 +11417,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 2000,
     "track_type": "dirt",
@@ -11352,7 +11465,8 @@
     "country_code": "JP",
     "name": {
       "ja": "スプリンターズステークス",
-      "en": "Sprinters Stakes"
+      "en": "Sprinters Stakes",
+      "fr": "Sprinters Stakes"
     },
     "grade": "G1",
     "date": "2026-09-27",
@@ -11360,7 +11474,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1200,
     "track_type": "turf",
@@ -11794,7 +11909,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -11820,7 +11936,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 2400,
     "track_type": "turf",
@@ -12254,7 +12371,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -12309,7 +12427,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -12361,7 +12480,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1400,
     "track_type": "turf",
@@ -12543,7 +12663,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -12569,7 +12690,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 3110,
     "track_type": "obstacle",
@@ -12587,7 +12709,8 @@
     "country_code": "JP",
     "name": {
       "ja": "秋華賞",
-      "en": "Shuka Sho"
+      "en": "Shuka Sho",
+      "fr": "Shuka Sho"
     },
     "grade": "G1",
     "date": "2026-10-18",
@@ -12595,7 +12718,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -12942,7 +13066,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -12989,7 +13114,8 @@
     "country_code": "JP",
     "name": {
       "ja": "菊花賞",
-      "en": "Kikuka Sho (Japanese St. Leger)"
+      "en": "Kikuka Sho (Japanese St. Leger)",
+      "fr": "Kikuka Sho (St. Léger Japonais)"
     },
     "grade": "G1",
     "date": "2026-10-25",
@@ -12997,7 +13123,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 3000,
     "track_type": "turf",
@@ -13431,7 +13558,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1400,
     "track_type": "turf",
@@ -13449,7 +13577,8 @@
     "country_code": "JP",
     "name": {
       "ja": "天皇賞(秋)",
-      "en": "Tenno Sho (Autumn)"
+      "en": "Tenno Sho (Autumn)",
+      "fr": "Tenno Sho (Automne)"
     },
     "grade": "G1",
     "date": "2026-11-01",
@@ -13457,7 +13586,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -13847,7 +13977,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 3170,
     "track_type": "obstacle",
@@ -13873,7 +14004,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1400,
     "track_type": "turf",
@@ -13899,7 +14031,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 2500,
     "track_type": "turf",
@@ -13925,7 +14058,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1800,
     "track_type": "dirt",
@@ -14162,7 +14296,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1600,
     "track_type": "dirt",
@@ -14188,7 +14323,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -14206,7 +14342,8 @@
     "country_code": "JP",
     "name": {
       "ja": "エリザベス女王杯",
-      "en": "Queen Elizabeth II Cup"
+      "en": "Queen Elizabeth II Cup",
+      "fr": "Queen Elizabeth II Cup"
     },
     "grade": "G1",
     "date": "2026-11-15",
@@ -14214,7 +14351,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 2200,
     "track_type": "turf",
@@ -14396,7 +14534,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "福島",
-      "en": "Fukushima"
+      "en": "Fukushima",
+      "fr": "Fukushima"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -14414,7 +14553,8 @@
     "country_code": "JP",
     "name": {
       "ja": "マイルチャンピオンシップ",
-      "en": "Mile Championship"
+      "en": "Mile Championship",
+      "fr": "Mile Championship"
     },
     "grade": "G1",
     "date": "2026-11-22",
@@ -14422,7 +14562,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -14474,7 +14615,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -14656,7 +14798,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -14674,7 +14817,8 @@
     "country_code": "JP",
     "name": {
       "ja": "ジャパンカップ",
-      "en": "Japan Cup"
+      "en": "Japan Cup",
+      "fr": "Coupe du Japon (Japan Cup)"
     },
     "grade": "G1",
     "date": "2026-11-29",
@@ -14682,7 +14826,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "東京",
-      "en": "Tokyo"
+      "en": "Tokyo",
+      "fr": "Tokyo"
     },
     "distance": 2400,
     "track_type": "turf",
@@ -14708,7 +14853,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "京都",
-      "en": "Kyoto"
+      "en": "Kyoto",
+      "fr": "Kyoto"
     },
     "distance": 1200,
     "track_type": "turf",
@@ -14916,7 +15062,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 3600,
     "track_type": "turf",
@@ -14942,7 +15089,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1800,
     "track_type": "turf",
@@ -14960,7 +15108,8 @@
     "country_code": "JP",
     "name": {
       "ja": "チャンピオンズカップ",
-      "en": "Champions Cup"
+      "en": "Champions Cup",
+      "fr": "Champions Cup"
     },
     "grade": "G1",
     "date": "2026-12-06",
@@ -14968,7 +15117,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "中京",
-      "en": "Chukyo"
+      "en": "Chukyo",
+      "fr": "Chukyo"
     },
     "distance": 1800,
     "track_type": "dirt",
@@ -15098,7 +15248,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "中京",
-      "en": "Chukyo"
+      "en": "Chukyo",
+      "fr": "Chukyo"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -15124,7 +15275,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1200,
     "track_type": "dirt",
@@ -15142,7 +15294,8 @@
     "country_code": "JP",
     "name": {
       "ja": "阪神ジュベナイルフィリーズ",
-      "en": "Hanshin Juvenile Fillies"
+      "en": "Hanshin Juvenile Fillies",
+      "fr": "Hanshin Juvenile Fillies"
     },
     "grade": "G1",
     "date": "2026-12-13",
@@ -15150,7 +15303,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -15254,7 +15408,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -15272,7 +15427,8 @@
     "country_code": "JP",
     "name": {
       "ja": "朝日杯フューチュリティステークス",
-      "en": "Asahi Hai Futurity Stakes"
+      "en": "Asahi Hai Futurity Stakes",
+      "fr": "Asahi Hai Futurity Stakes"
     },
     "grade": "G1",
     "date": "2026-12-20",
@@ -15280,7 +15436,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1600,
     "track_type": "turf",
@@ -15402,7 +15559,8 @@
     "country_code": "JP",
     "name": {
       "ja": "中山大障害",
-      "en": "Nakayama Daishogai"
+      "en": "Nakayama Daishogai",
+      "fr": "Nakayama Daishogai"
     },
     "grade": "J.G1",
     "date": "2026-12-26",
@@ -15410,7 +15568,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 4100,
     "track_type": "obstacle",
@@ -15428,7 +15587,8 @@
     "country_code": "JP",
     "name": {
       "ja": "ホープフルステークス",
-      "en": "Hopeful Stakes"
+      "en": "Hopeful Stakes",
+      "fr": "Hopeful Stakes"
     },
     "grade": "G1",
     "date": "2026-12-26",
@@ -15436,7 +15596,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 2000,
     "track_type": "turf",
@@ -15462,7 +15623,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "阪神",
-      "en": "Hanshin"
+      "en": "Hanshin",
+      "fr": "Hanshin"
     },
     "distance": 1400,
     "track_type": "turf",
@@ -15506,7 +15668,8 @@
     "country_code": "JP",
     "name": {
       "ja": "有馬記念",
-      "en": "Arima Kinen (The Grand Prix)"
+      "en": "Arima Kinen (The Grand Prix)",
+      "fr": "Arima Kinen (Grand Prix)"
     },
     "grade": "G1",
     "date": "2026-12-27",
@@ -15514,7 +15677,8 @@
     "is_time_confirmed": false,
     "course": {
       "ja": "中山",
-      "en": "Nakayama"
+      "en": "Nakayama",
+      "fr": "Nakayama"
     },
     "distance": 2500,
     "track_type": "turf",

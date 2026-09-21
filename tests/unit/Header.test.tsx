@@ -57,21 +57,23 @@ describe("Header", () => {
     ).toBeInTheDocument();
   });
 
-  it("言語切替ボタンが表示され、クリックするとJA/ENがトグルされ、タブ表示や属性が切り替わること", () => {
+  it("言語切替セレクターが表示され、JA/EN/FRを選択するとタブ表示や属性が切り替わること", () => {
     const trackEventSpy = vi.spyOn(analytics, "trackEvent").mockImplementation(() => {});
 
     render(<Header />);
 
-    const langButton = screen.getByRole("button", {
-      name: "英語に切り替え",
+    const langTrigger = screen.getByRole("combobox", {
+      name: "言語を選択 (日本語)",
     });
-    expect(langButton).toBeInTheDocument();
-    expect(langButton).toHaveTextContent("JA");
+    expect(langTrigger).toBeInTheDocument();
+    expect(langTrigger).toHaveTextContent("JA");
     expect(screen.getByRole("tab", { name: "タイムライン" })).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: "カレンダー" })).toBeInTheDocument();
 
-    // クリックして英語へ切り替え
-    fireEvent.click(langButton);
+    // 英語を選択
+    fireEvent.click(langTrigger);
+    const enOption = screen.getByRole("option", { name: /English \(EN\)/ });
+    fireEvent.click(enOption);
 
     expect(trackEventSpy).toHaveBeenCalledWith("language_change", {
       from: "ja",
@@ -80,27 +82,24 @@ describe("Header", () => {
     expect(useLanguageStore.getState().language).toBe("en");
     expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("en");
     expect(document.documentElement.lang).toBe("en");
-
-    // ボタンのテキストとaria-label、タブの英語表示を確認
-    expect(langButton).toHaveTextContent("EN");
-    expect(
-      screen.getByRole("button", { name: "Switch to Japanese" })
-    ).toBeInTheDocument();
+    expect(langTrigger).toHaveTextContent("EN");
     expect(screen.getByRole("tab", { name: "Timeline" })).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: "Calendar" })).toBeInTheDocument();
 
-    // 再度クリックして日本語へ切り替え
-    fireEvent.click(langButton);
+    // フランス語を選択
+    fireEvent.click(langTrigger);
+    const frOption = screen.getByRole("option", { name: /Français \(FR\)/ });
+    fireEvent.click(frOption);
 
     expect(trackEventSpy).toHaveBeenCalledWith("language_change", {
       from: "en",
-      to: "ja",
+      to: "fr",
     });
-    expect(useLanguageStore.getState().language).toBe("ja");
-    expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("ja");
-    expect(document.documentElement.lang).toBe("ja");
-    expect(langButton).toHaveTextContent("JA");
-    expect(screen.getByRole("tab", { name: "タイムライン" })).toBeInTheDocument();
-    expect(screen.getByRole("tab", { name: "カレンダー" })).toBeInTheDocument();
+    expect(useLanguageStore.getState().language).toBe("fr");
+    expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("fr");
+    expect(document.documentElement.lang).toBe("fr");
+    expect(langTrigger).toHaveTextContent("FR");
+    expect(screen.getByRole("tab", { name: "Chronologie" })).toBeInTheDocument();
+    expect(screen.getByRole("tab", { name: "Calendrier" })).toBeInTheDocument();
   });
 });
