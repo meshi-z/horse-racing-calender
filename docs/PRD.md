@@ -978,7 +978,26 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
         - ボタングループの横間隔をモバイルで `gap-1`（`sm:gap-2`）へ微調整。
         - 各ボタンの水平パディングをモバイルで `px-2`（`sm:px-2.5`）へ縮小。
         - 主催者トリガーボタンの最大幅をモバイルで `max-w-[120px]`（`sm:max-w-[130px]`）へ調整。
-      - 単体テストの拡充: `FilterBar.test.tsx` に短縮表示テキストおよび多言語（日・英・仏）での表示検証テストを追加し、全41スイート・369テスト完全合格。
-33. **Step 33 (Next): 海外主要レース拡張（香港・UAE・米国） & 外部カレンダー連携**
-    - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
+33. **Step 33 (v1.28.0): 海外競馬第3弾・アメリカ競馬（US / Equibase）の統合 (Issue #101, #102, #103, #104)**
+    - **Phase 1: PRD改訂およびスキーマ・型定義拡張 (Issue #101) [完了]**
+      - `src/types/race.ts`: `Organization` 型に `'equibase'` を追加。
+      - `docs/PRD.md`: v1.28.0 仕様策定（一次データソース、タイムゾーン、ID体系等の明文化）。
+    - **Phase 2: アメリカ重賞データ抽出・日英マスタ作成およびパイプライン統合 (Issue #102) [完了]**
+      - `src/data/us_race_master.json`: 米国全408重賞（G1 92競走、G2 133競走、G3 183競走）の日英マスタ作成（ケンタッキーダービー等の三冠、ブリーダーズカップ全競走等を網羅）。
+      - `scripts/lib/us-races.ts`: マスタ読み込み・データ正規化モジュール実装。
+      - `scripts/parse-races.ts`: ビルドパイプライン統合（国内・欧州・米国合算で全1161レース生成）。
+      - 単体テスト（`tests/unit/usRaces.test.ts`）の実装と既存テストの追従。
+    - **Phase 3: アメリカ競馬UI対応（主催者フィルター・主要競馬場・USバッジ・免責事項） (Issue #103) [完了]**
+      - 主催者フィルターへの「アメリカ (Equibase)」追加、モバイルモーダルでの北米地域グルーピング（「米国全重賞」一括選択/解除）対応。
+      - 競馬場フィルターへのアメリカ主要16競馬場（チャーチルダウンズ、サラトガ、ベルモントパーク、デルマー、サンタアニタ等）の追加（日/英/仏3言語完全対応）。
+      - タイムラインビュー、カレンダービュー、詳細ダイアログにおける国コード「US」バッジおよび「EQUIBASE」組織バッジのスタイル適用。
+      - 免責事項ダイアログ（`DisclaimerDialog`）およびフッターへの Equibase / The Jockey Club の出典・非公式性・知的財産権の明記（日/英/仏）。
+      - 接続元地域判定（`src/libs/geolocation.ts`）に米国タイムゾーン（`America/*`, `US/*`）および `en-US` ロケールからの `US` 判定と初期主催者 `['equibase']` マッピングを追加。
+      - 原語判定（`src/libs/raceLanguage.ts`）に `equibase` を追加し、原語を英語として自動判定。
+      - Schema.org JSON-LD（`index.html`）にアメリカ競馬（Equibase）を反映。
+      - 単体・統合テストの拡充（`FilterBar.test.tsx`, `geolocation.test.ts`, `DisclaimerDialog.test.tsx`, `Layout.test.tsx`, `App.test.tsx`, `i18nIntegration.test.tsx` 等）、全42テストファイル・377テスト完全合格。
+    - **Phase 4: 確定発走時刻自動更新パイプラインおよび過去開催実績バックフィル (Issue #104) [進行予定]**
+      - `UsRaceTimeFetcher` の実装、発走時刻バックフィル、GitHub Actions ワークフロー連携。
+34. **Step 34 (Next): 海外主要レース拡張（香港・UAE・豪州） & 外部カレンダー連携**
+    - 香港（HKJC）、UAE（ERA）、オーストラリア（Racing Australia）の重賞データ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

@@ -59,6 +59,16 @@ export const ORGANIZATION_GROUPS: OrganizationGroupItem[] = [
       { value: "bha", labelKey: "filter.orgUk" },
     ],
   },
+  {
+    id: "north_america",
+    labelKey: "filter.regionAmerica",
+    allLabelKey: "filter.selectAllAmerica",
+    flag: "🇺🇸",
+    organizations: ["equibase"],
+    items: [
+      { value: "equibase", labelKey: "filter.orgUsa" },
+    ],
+  },
 ];
 
 export interface GradeGroupItem {
@@ -272,12 +282,19 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     if (isAllEurope) {
       return `🇪🇺 ${t("filter.regionEurope")} (2)`;
     }
+    const isAllAmerica =
+      filters.organizations.length === 1 &&
+      filters.organizations.includes("equibase");
+    if (isAllAmerica) {
+      return `🇺🇸 ${t("filter.regionAmerica")}`;
+    }
     if (filters.organizations.length === 1) {
       const org = filters.organizations[0];
       if (org === "jra") return "🇯🇵 JRA";
       if (org === "nar") return "🇯🇵 NAR";
       if (org === "france_galop") return "🇫🇷 France";
       if (org === "bha") return "🇬🇧 UK";
+      if (org === "equibase") return "🇺🇸 USA";
     }
     return `${t("filter.orgSelectTrigger")} (${filters.organizations.length})`;
   };
@@ -348,6 +365,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     { value: "nar", label: t("filter.orgNar") },
     { value: "france_galop", label: t("filter.orgFrance") },
     { value: "bha", label: t("filter.orgUk") },
+    { value: "equibase", label: t("filter.orgUsa") },
   ];
 
   return (

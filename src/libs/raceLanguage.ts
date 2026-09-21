@@ -11,7 +11,7 @@ export function getRaceOriginLanguage(race: Race): Language {
   if (race.country_code === 'JP' || race.organization === 'jra' || race.organization === 'nar') {
     return 'ja';
   }
-  if (race.country_code === 'GB' || (race.organization as string) === 'bha' || race.country_code === 'US') {
+  if (race.country_code === 'GB' || (race.organization as string) === 'bha' || race.country_code === 'US' || (race.organization as string) === 'equibase') {
     return 'en';
   }
   return 'ja';

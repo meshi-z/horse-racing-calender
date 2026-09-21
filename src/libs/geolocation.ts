@@ -1,6 +1,6 @@
 import type { Organization } from '../types/race';
 
-export type UserRegion = 'JP' | 'FR' | 'GB' | 'OTHER';
+export type UserRegion = 'JP' | 'FR' | 'GB' | 'US' | 'OTHER';
 
 export const ORGANIZATIONS_STORAGE_KEY = 'horse_racing_calendar_organizations_filter';
 export const LEGACY_ORGANIZATION_STORAGE_KEY = 'horse_racing_calendar_organization_filter';
@@ -75,6 +75,36 @@ export function detectUserRegion(context?: GeolocationContext): UserRegion {
       return 'GB';
     }
 
+    // 4. アメリカ (US) 判定
+    const usTimeZones = [
+      'America/New_York',
+      'America/Chicago',
+      'America/Denver',
+      'America/Los_Angeles',
+      'America/Phoenix',
+      'America/Anchorage',
+      'Pacific/Honolulu',
+      'America/Detroit',
+      'America/Boise',
+      'America/Kentucky/Louisville',
+      'US/Eastern',
+      'US/Central',
+      'US/Mountain',
+      'US/Pacific',
+      'US/Alaska',
+      'US/Hawaii',
+    ];
+    if (timeZone) {
+      if (usTimeZones.includes(timeZone) || timeZone.startsWith('US/')) {
+        return 'US';
+      }
+      if (timeZone.startsWith('America/') && (langLower === 'en-us' || langLower.startsWith('en-us-') || langLower === 'en')) {
+        return 'US';
+      }
+    } else if (langLower === 'en-us' || langLower.startsWith('en-us-')) {
+      return 'US';
+    }
+
     return 'OTHER';
   } catch {
     return 'OTHER';
@@ -86,6 +116,7 @@ export function detectUserRegion(context?: GeolocationContext): UserRegion {
  * - JP: ['jra', 'nar'] (日本国内重賞)
  * - FR: ['france_galop'] (フランス重賞)
  * - GB: ['bha'] (イギリス重賞)
+ * - US: ['equibase'] (アメリカ重賞)
  * - OTHER: [] (すべて)
  */
 export function getDefaultOrganizationsForRegion(region: UserRegion): Organization[] {
@@ -96,6 +127,8 @@ export function getDefaultOrganizationsForRegion(region: UserRegion): Organizati
       return ['france_galop'];
     case 'GB':
       return ['bha'];
+    case 'US':
+      return ['equibase'];
     case 'OTHER':
     default:
       return [];
@@ -107,6 +140,7 @@ const VALID_ORGANIZATIONS: ReadonlySet<string> = new Set([
   'nar',
   'france_galop',
   'bha',
+  'equibase',
   'overseas',
 ]);
 

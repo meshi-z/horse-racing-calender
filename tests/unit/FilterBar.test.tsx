@@ -385,20 +385,31 @@ describe("FilterBar", () => {
       const oiBtn = screen.getByRole("button", { name: "大井" });
       fireEvent.click(oiBtn);
       expect(useRaceStore.getState().filters.courses).toContain("大井");
+
+      // アメリカ競馬場（チャーチルダウンズ）を選択
+      const churchillBtn = screen.getByRole("button", { name: "チャーチルダウンズ" });
+      fireEvent.click(churchillBtn);
+      expect(useRaceStore.getState().filters.courses).toContain("チャーチルダウンズ");
     });
 
-    it("主催者フィルターでイギリス (UK) を選択できること", () => {
+    it("主催者フィルターでイギリス (UK) およびアメリカ (Equibase) を選択できること", () => {
       render(<FilterBar />);
       const ukOrgBtn = screen.getByRole("button", { name: "イギリス (UK)" });
       expect(ukOrgBtn).toBeInTheDocument();
 
       fireEvent.click(ukOrgBtn);
       expect(useRaceStore.getState().filters.organizations).toContain("bha");
+
+      const usaOrgBtn = screen.getByRole("button", { name: "アメリカ (Equibase)" });
+      expect(usaOrgBtn).toBeInTheDocument();
+
+      fireEvent.click(usaOrgBtn);
+      expect(useRaceStore.getState().filters.organizations).toContain("equibase");
     });
   });
 
   describe("スマホ画面での開催国・主催者フィルターUI (Issue #92)", () => {
-    it("モバイル用トリガーボタンからダイアログが開き、地域別グルーピング（日本・欧州）が表示されること", () => {
+    it("モバイル用トリガーボタンからダイアログが開き、地域別グルーピング（日本・欧州・アメリカ）が表示されること", () => {
       useRaceStore.getState().setFilter("organizations", ["jra", "nar"]);
       render(<FilterBar />);
 
@@ -410,9 +421,10 @@ describe("FilterBar", () => {
       fireEvent.click(triggerBtn);
       expect(screen.getByRole("dialog")).toBeInTheDocument();
       expect(screen.getByText("表示する競馬の開催団体を選択してください（複数選択可）")).toBeInTheDocument();
-      // 日本はすでに全選択されているため「解除」、欧州は未選択のため「欧州全重賞」
+      // 日本はすでに全選択されているため「解除」、欧州は未選択のため「欧州全重賞」、アメリカは未選択のため「米国全重賞」
       expect(screen.getByRole("button", { name: "解除" })).toBeInTheDocument();
       expect(screen.getByRole("button", { name: "欧州全重賞" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "米国全重賞" })).toBeInTheDocument();
     });
 
     it("ダイアログ内で日本全重賞の一括解除・一括選択が動作すること", () => {
@@ -435,7 +447,7 @@ describe("FilterBar", () => {
       expect(useRaceStore.getState().filters.organizations).toContain("nar");
     });
 
-    it("ダイアログ内で欧州全重賞の一括選択が動作すること", () => {
+    it("ダイアログ内で欧州全重賞および米国全重賞の一括選択が動作すること", () => {
       useRaceStore.getState().setFilter("organizations", []);
       render(<FilterBar />);
 
@@ -445,6 +457,10 @@ describe("FilterBar", () => {
       const allEuropeBtn = screen.getByRole("button", { name: "欧州全重賞" });
       fireEvent.click(allEuropeBtn);
       expect(useRaceStore.getState().filters.organizations).toEqual(["france_galop", "bha"]);
+
+      const allAmericaBtn = screen.getByRole("button", { name: "米国全重賞" });
+      fireEvent.click(allAmericaBtn);
+      expect(useRaceStore.getState().filters.organizations).toEqual(["france_galop", "bha", "equibase"]);
     });
 
     it("ダイアログ内の「完了」ボタンでダイアログを閉じられること", () => {

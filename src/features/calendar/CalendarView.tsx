@@ -243,6 +243,8 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                                   ? "text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/40 border-indigo-200 dark:border-indigo-800"
                                   : race.country_code === "GB"
                                   ? "text-sky-800 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/40 border-sky-200 dark:border-sky-800"
+                                  : race.country_code === "US"
+                                  ? "text-blue-800 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800"
                                   : "text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800"
                               )}
                             >
@@ -258,6 +260,8 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                                 ? "text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/40"
                                 : race.organization === "bha"
                                 ? "text-sky-800 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/40"
+                                : race.organization === "equibase"
+                                ? "text-blue-800 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/40"
                                 : "text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40"
                             )}
                           >
