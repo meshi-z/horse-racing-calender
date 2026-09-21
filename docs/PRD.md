@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年9月21日) |
-| **バージョン** | v1.27.2 (モバイルフィルター操作ボタン文言短縮による横幅収容・見切れ解消) |
+| **バージョン** | v1.28.0 (アメリカ競馬（US / Equibase / IFHA Part I 重賞）統合) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -12,13 +12,13 @@
 
 ## 1. プロジェクト概要
 
-本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France-Galop / IFHA Part I 重賞: G1, G2, G3）、そして海外競馬第2弾としての **イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 重賞: G1, G2, G3）** を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
+本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France-Galop / IFHA Part I 重賞: G1, G2, G3）、海外競馬第2弾としての **イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 重賞: G1, G2, G3）**、そして海外競馬第3弾としての **アメリカ競馬（The Jockey Club / Equibase / IFHA Part I 重賞: G1, G2, G3）** を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
 
 モバイル閲覧時は直近レースを素早く確認できる **「タイムライン形式」**、PC/タブレット閲覧時は月全体のスケジュールを鳥瞰できる **「月間カレンダー形式」** を初期表示とし、PWA（Progressive Web Apps）およびオフライン閲覧に対応することで、競馬場や外出先などの電波状況が不安定な環境でもミリ秒単位でストレスなくアクセスできる体験を提供する。
 
 UIライブラリには **Shadcn UI** (Radix UI + Tailwind CSS) を全面採用。ターフを象徴する公式イメージカラー（`#047B5F`）をベースとした洗練されたデザイン、Radix UI 由来の完全なキーボード操作・WAI-ARIAアクセシビリティ、OS設定連動のダークモード対応、そして多角的なフィルター機能（主催者・国コード・グレード・馬場・競馬場・距離）を両立したユーザー体験を実現している。
 
-v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい競馬対応、v1.18.0 のアコーディオンフィルター、v1.18.1 のNAR英語名整理、v1.18.2 のヘッダー英語・検索例・SEO再整理、v1.19.0 のフランス平地重賞統合、v1.20.0 のNAR確定発走予定時刻自動更新パイプライン拡充、v1.20.1/v1.20.2/v1.21.0 の国内外全過去重賞確定バックフィル、Step 30 の海外競馬追加開発ガイド整備、v1.22.0 のフランス語UI対応、v1.23.0 のイギリス平地重賞（全156競走）統合、v1.24.0 の地域自動判別、v1.25.0 の主催者複数選択を経て、**v1.26.0 ではスマホ実機（375px〜400px）での横スクロール・はみ出しを解消する開催国・主催者フィルターUIの最適化（1画面集約＆地域別モーダルダイアログ導入）および今後の多国展開に対応したスケーラブルなUI基盤を実装した**。
+v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい競馬対応、v1.18.0 のアコーディオンフィルター、v1.18.1 のNAR英語名整理、v1.18.2 のヘッダー英語・検索例・SEO再整理、v1.19.0 のフランス平地重賞統合、v1.20.0 のNAR確定発走予定時刻自動更新パイプライン拡充、v1.20.1/v1.20.2/v1.21.0 の国内外全過去重賞確定バックフィル、Step 30 の海外競馬追加開発ガイド整備、v1.22.0 のフランス語UI対応、v1.23.0 のイギリス平地重賞（全156競走）統合、v1.24.0 の地域自動判別、v1.25.0 の主催者複数選択、v1.26.0 のスマホ向け開催国・主催者フィルターUI最適化（モーダル集約）、v1.27.0〜v1.27.2 のフィルター操作性向上を経て、**v1.28.0 では北米・アメリカ合衆国の主要重賞（ケンタッキーダービー、プリークネスS、ベルモントSのアメリカ三冠、ブリーダーズカップ各競走等）を統合する**。
 
 ---
 
@@ -130,11 +130,30 @@ v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい
     - `UkRaceTimeFetcher` の実装による出馬表・確定発走時刻の自動取得。
     - 2026年開催済みの過去イギリス重賞レースの発走時刻を確定実績値で完全バックフィル（`is_time_confirmed: true`）。
 
-### フェーズ4 (将来拡張スコープ: v1.24.0〜)
+- **海外競馬：アメリカ競馬（Equibase / IFHA Part I 重賞）統合 (v1.28.0 / Issue #101, #102, #103, #104)**:
+  - **一次ソースからのデータ構築 [完了]**: IFHA Part I リスト (United States of America: 格付け・出走資格・距離・馬場) および Equibase 公式開催日程に基づく平地全408重賞（G1 92、G2 133、G3 183）の構造化。ケンタッキーダービー、プリークネスS、ベルモントSのアメリカ三冠競走、トラヴァーズS、メトロポリタンH、ホイットニーS、ブリーダーズカップ各競走等を含む。
+  - **データアーキテクチャ拡張 [完了]**:
+    - `country_code`: 国コード `"US"` をスキーマに完全適用。
+    - `organization`: `"equibase"` を新設。
+    - タイムゾーン・発走時刻変換: アメリカ各州の競馬場タイムゾーン（東部 EDT/EST: UTC-4/-5、中部 CDT/CST: UTC-5/-6、山岳部 MDT/MST: UTC-6/-7、太平洋 PDT/PST: UTC-7/-8）から夏時間を考慮して正確に UTC ISO 8601 文字列（`start_time`）へ変換。
+  - **日英対応マスタ (`src/data/us_race_master.json`) [完了]**:
+    - レース名: 英語正式名（`Kentucky Derby`, `Preakness Stakes`, `Belmont Stakes`, `Breeders' Cup Classic` 等）$\leftrightarrow$ 日本語通称（`ケンタッキーダービー`, `プリークネスステークス`, `ベルモントステークス`, `ブリーダーズカップクラシック`）のマッピング。
+    - 競馬場名: 日英仏対応（Churchill Downs / チャーチルダウンズ, Saratoga / サラトガ, Belmont Park / ベルモントパーク, Del Mar / デルマー, Santa Anita / サンタアニタ, Pimlico / ピムリコ, Keeneland / キーンランド, Gulfstream Park / ガルフストリームパーク 等）。
+    - 抽出・マージモジュール（`scripts/lib/us-races.ts`）の実装とビルドパイプライン（`scripts/parse-races.ts`）への統合（全1161レースへマージ）。
+  - **UI/UX 拡張**:
+    - 主催者フィルターへの「USA (Equibase)」の追加。
+    - 競馬場セレクトへの「アメリカ (USA)」グループ新設。
+    - タイムラインビュー・カレンダービュー・詳細ダイアログでの国コード「US」バッジ表示。
+    - 免責事項ダイアログ（`DisclaimerDialog`）への The Jockey Club / Equibase 出典・非公式性・知的財産権の明記。
+  - **確定発走時刻自動更新 & 過去実績補完**:
+    - `UsRaceTimeFetcher` の実装による出馬表・確定発走時刻の自動取得。
+    - 2026年開催済みの過去アメリカ重賞レースの発走時刻を確定実績値で完全バックフィル（`is_time_confirmed: true`）。
+
+### フェーズ4 (将来拡張スコープ)
 
 - **海外主要レースのさらなる拡張**:
-  - 香港（HKJC）、UAE/ドバイ（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
-  - `OverseasRaceTimeFetcher` の追加による確定発走時刻自動取得。
+  - 香港（HKJC）、オーストラリア（Racing Australia）、UAE/ドバイ（ERA）の重賞データ統合。
+  - 各国公式出馬表フェッチャーの追加による確定発走時刻自動取得。
 - **リアルタイム馬場状態・天候情報の表示**:
   - レース当日の天候（晴・雨等）および馬場状態（良・稍重・重・不良）のリアルタイム取得とバッジ表示。
 - **カレンダー連携（iCalendar / Google Calendar 出力）**:
@@ -183,12 +202,12 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
 
 ### 3.4 国コードバッジ仕様 (Country Code Badges)
 
-海外競馬の統合に伴い、レースの開催国を即座に識別できるよう、タイムライン、カレンダー、および詳細ダイアログに **ISO 2文字国コード（例: `FR`, `GB`, `JP`）** を基盤とした軽量バッジを配置する。
+海外競馬の統合に伴い、レースの開催国を即座に識別できるよう、タイムライン、カレンダー、および詳細ダイアログに **ISO 2文字国コード（例: `FR`, `GB`, `US`, `JP`）** を基盤とした軽量バッジを配置する。
 
 - **仕様原則**:
-  - 今後導入される海外競馬（香港: `HK`、UAE: `AE`、米国: `US` 等）を含め、国旗絵文字ではなくプラットフォーム非依存で一貫した可読性を保つため **2文字の国コードテキスト表記（`FR`, `GB`）** で統一。
-  - セマンティックトークン: フランス競馬向けには洗練されたトリコロール・フレンチブルー（`bg-sky-700` / `text-white`、コントラスト比 4.5:1 以上）、イギリス競馬向けには英国レーシングを象徴するディープネイビー（`bg-slate-800` / `text-white`、コントラスト比 4.5:1 以上）を適用。
-  - 日本国内レース（`JP`）については、過度な視覚的ノイズを抑制するためデフォルトではJRA/NARバッジを優先表示し、海外レース（`FR`, `GB`）において明確な国識別バッジとして強調表示する。
+  - 今後導入される海外競馬（香港: `HK`、UAE: `AE` 等）を含め、国旗絵文字ではなくプラットフォーム非依存で一貫した可読性を保つため **2文字の国コードテキスト表記（`FR`, `GB`, `US`）** で統一。
+  - セマンティックトークン: フランス競馬向けには洗練されたトリコロール・フレンチブルー（`bg-sky-700` / `text-white`、コントラスト比 4.5:1 以上）、イギリス競馬向けには英国レーシングを象徴するディープネイビー（`bg-slate-800` / `text-white`、コントラスト比 4.5:1 以上）、アメリカ競馬向けには米国スターズ＆ストライプスを象徴するクラシックネイビー（`bg-blue-900` / `text-white`、コントラスト比 4.5:1 以上）を適用。
+  - 日本国内レース（`JP`）については、過度な視覚的ノイズを抑制するためデフォルトではJRA/NARバッジを優先表示し、海外レース（`FR`, `GB`, `US`）において明確な国識別バッジとして強調表示する。
 
 ---
 
@@ -451,6 +470,8 @@ flowchart TD
 - **フランス競馬開催日程・競馬場ソース**: [France Galop 公式開催カレンダー 2026](https://billetterie.france-galop.com/app/uploads/2025/12/NUM_Calendrier-parieur-2026-12-12.pdf)（参照元: [France Galop Calendar](https://billetterie.france-galop.com/en/the-calendar/)）
 - **イギリス重賞レース格付け・条件ソース**: IFHA / ICSC パートI リスト (Great Britain)（参照元: [IFHA Resources](https://www.ifhaonline.org/Default.asp?section=Resources&area=8)）
 - **イギリス競馬開催日程・出馬表ソース**: [British Horseracing Authority (BHA)](https://www.britishhorseracing.com/) および [Sporting Life Racing](https://www.sportinglife.com/racing)
+- **アメリカ重賞レース格付け・条件ソース**: IFHA / ICSC パートI リスト (United States of America)（参照元: [IFHA Resources](https://www.ifhaonline.org/Default.asp?section=Resources&area=8)）
+- **アメリカ競馬開催日程・出馬表ソース**: [Equibase](https://www.equibase.com/)（The Jockey Club & Thoroughbred Racetracks of North America 公式データベース）
 - **用語マスターソース**: [海外競馬英和辞典](https://www.jra.go.jp/keiba/overseas/yougo/index.html)
 
 ### 5.2 データパース & 分割ルール
@@ -554,6 +575,7 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
   - NAR 地方重賞例: `2026-nar-local-01`
   - フランスG1例: `2026-france-g1-01`（凱旋門賞等）
   - イギリスG1例: `2026-uk-g1-01`（2000ギニー等）
+  - アメリカG1例: `2026-us-g1-01`（ケンタッキーダービー等）
 
 ```json
 [
@@ -956,7 +978,42 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
         - ボタングループの横間隔をモバイルで `gap-1`（`sm:gap-2`）へ微調整。
         - 各ボタンの水平パディングをモバイルで `px-2`（`sm:px-2.5`）へ縮小。
         - 主催者トリガーボタンの最大幅をモバイルで `max-w-[120px]`（`sm:max-w-[130px]`）へ調整。
-      - 単体テストの拡充: `FilterBar.test.tsx` に短縮表示テキストおよび多言語（日・英・仏）での表示検証テストを追加し、全41スイート・369テスト完全合格。
-33. **Step 33 (Next): 海外主要レース拡張（香港・UAE・米国） & 外部カレンダー連携**
-    - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
+33. **Step 33 (v1.28.0): 海外競馬第3弾・アメリカ競馬（US / Equibase）の統合 (Issue #101, #102, #103, #104)**
+    - **Phase 1: PRD改訂およびスキーマ・型定義拡張 (Issue #101) [完了]**
+      - `src/types/race.ts`: `Organization` 型に `'equibase'` を追加。
+      - `docs/PRD.md`: v1.28.0 仕様策定（一次データソース、タイムゾーン、ID体系等の明文化）。
+    - **Phase 2: アメリカ重賞データ抽出・日英マスタ作成およびパイプライン統合 (Issue #102) [完了]**
+      - `src/data/us_race_master.json`: 米国全408重賞（G1 92競走、G2 133競走、G3 183競走）の日英マスタ作成（ケンタッキーダービー等の三冠、ブリーダーズカップ全競走等を網羅）。
+      - `scripts/lib/us-races.ts`: マスタ読み込み・データ正規化モジュール実装。
+      - `scripts/parse-races.ts`: ビルドパイプライン統合（国内・欧州・米国合算で全1161レース生成）。
+      - 単体テスト（`tests/unit/usRaces.test.ts`）の実装と既存テストの追従。
+    - **Phase 3: アメリカ競馬UI対応（主催者フィルター・主要競馬場・USバッジ・免責事項） (Issue #103) [完了]**
+      - 主催者フィルターへの「アメリカ (Equibase)」追加、モバイルモーダルでの北米地域グルーピング（「米国全重賞」一括選択/解除）対応。
+      - 競馬場フィルターへのアメリカ主要16競馬場（チャーチルダウンズ、サラトガ、ベルモントパーク、デルマー、サンタアニタ等）の追加（日/英/仏3言語完全対応）。
+      - タイムラインビュー、カレンダービュー、詳細ダイアログにおける国コード「US」バッジおよび「EQUIBASE」組織バッジのスタイル適用。
+      - 免責事項ダイアログ（`DisclaimerDialog`）およびフッターへの Equibase / The Jockey Club の出典・非公式性・知的財産権の明記（日/英/仏）。
+      - 接続元地域判定（`src/libs/geolocation.ts`）に米国タイムゾーン（`America/*`, `US/*`）および `en-US` ロケールからの `US` 判定と初期主催者 `['equibase']` マッピングを追加。
+      - 原語判定（`src/libs/raceLanguage.ts`）に `equibase` を追加し、原語を英語として自動判定。
+      - Schema.org JSON-LD（`index.html`）にアメリカ競馬（Equibase）を反映。
+      - 単体・統合テストの拡充（`FilterBar.test.tsx`, `geolocation.test.ts`, `DisclaimerDialog.test.tsx`, `Layout.test.tsx`, `App.test.tsx`, `i18nIntegration.test.tsx` 等）、全42テストファイル・377テスト完全合格。
+    - **Phase 4: 確定発走時刻自動更新パイプラインおよび過去開催実績バックフィル (Issue #104) [完了]**
+      - `scripts/lib/us-syutsuba.ts` の実装:
+        - 米国タイムゾーン（ET, CT, MT, PT）および夏時間（DST: 3月第2日曜日〜11月第1日曜日）の自動判定と UTC ISO 8601 / JST 発走時刻換算。
+        - 競馬場名（主要トラック16場等）に応じたタイムゾーン自動マッピング（`getCourseTimeZone`）。
+        - レース名・競馬場名の表記揺れを吸収する正規化・トークン化マッチングアルゴリズム（`usRaceMatches`, `usCourseMatches`）。
+        - Equibase出馬表データ（`EquibaseRaceItem`）からの確定発走時刻パース処理（`parseEquibaseRacecardsJson`）。
+        - 指数バックオフ付きHTTPリトライ通信（`fetchWithRetry`）。
+      - `scripts/update-race-times.ts` へのプロバイダー統合:
+        - `UsRaceTimeFetcher` の実装と `DEFAULT_FETCHERS` への `equibase` / `us` 登録。
+        - 基準日（JST）から直近7日間の開催予定ウィンドウ算出（`getUsUpcomingWindowRange`）。
+      - 過去開催済み重賞（2026年今日以前の296レース）の確定発走時刻バックフィル:
+        - `src/data/us_race_master.json` の過去レース（ペガサスWC、三冠、メトロポリタンH等）を `is_time_confirmed: true` に更新。
+        - `scripts/parse-races.ts` による再生成で `public/data/races.json` の確定済みフラグを同期反映（408レース中296レース確定済み、112レースが今後の予定）。
+      - バッチスケジュール・ワークフロー連携:
+        - `.github/workflows/update-race-times.yml`: 朝 07:30 JST および夜 21:30 JST の定期バッチにアメリカ競馬の確定・天候監視を統合。
+        - `docs/batch-schedules.md`: アメリカ競馬自動更新仕様、手動実行コマンド（`npm run data:update-times:us`）を明文化。
+      - 単体テスト（`tests/unit/usSyutsuba.test.ts`）の実装:
+        - 夏時間判定、各タイムゾーン換算（EDT/EST/PDT）、レース名・競馬場名マッチング、出馬表パース、`updateRaceTimes` 統合の全15テスト完全合格。
+34. **Step 34 (Next): 海外主要レース拡張（香港・UAE・豪州） & 外部カレンダー連携**
+    - 香港（HKJC）、UAE（ERA）、オーストラリア（Racing Australia）の重賞データ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

@@ -45,15 +45,21 @@ describe('geolocation', () => {
       expect(detectUserRegion({ timeZone: 'Europe/Dublin', language: 'en-GB' })).toBe('GB');
     });
 
+    it('タイムゾーンが America/New_York などの米国タイムゾーンの場合は US を返すこと', () => {
+      expect(detectUserRegion({ timeZone: 'America/New_York' })).toBe('US');
+      expect(detectUserRegion({ timeZone: 'America/Chicago' })).toBe('US');
+      expect(detectUserRegion({ timeZone: 'America/Los_Angeles' })).toBe('US');
+      expect(detectUserRegion({ timeZone: 'US/Pacific' })).toBe('US');
+    });
+
     it('タイムゾーンが存在しない場合、言語設定から推定すること', () => {
       expect(detectUserRegion({ timeZone: '', language: 'ja-JP' })).toBe('JP');
       expect(detectUserRegion({ timeZone: '', language: 'fr-FR' })).toBe('FR');
       expect(detectUserRegion({ timeZone: '', language: 'en-GB' })).toBe('GB');
-      expect(detectUserRegion({ timeZone: '', language: 'en-US' })).toBe('OTHER');
+      expect(detectUserRegion({ timeZone: '', language: 'en-US' })).toBe('US');
     });
 
     it('該当しない地域の場合は OTHER を返すこと', () => {
-      expect(detectUserRegion({ timeZone: 'America/New_York', language: 'en-US' })).toBe('OTHER');
       expect(detectUserRegion({ timeZone: 'Australia/Sydney', language: 'en-AU' })).toBe('OTHER');
       expect(detectUserRegion({ timeZone: 'Asia/Seoul', language: 'ko-KR' })).toBe('OTHER');
     });
@@ -79,6 +85,10 @@ describe('geolocation', () => {
 
     it('GB の場合は [bha] を返すこと', () => {
       expect(getDefaultOrganizationsForRegion('GB')).toEqual(['bha']);
+    });
+
+    it('US の場合は [equibase] を返すこと', () => {
+      expect(getDefaultOrganizationsForRegion('US')).toEqual(['equibase']);
     });
 
     it('OTHER の場合は [] (すべて) を返すこと', () => {
@@ -116,7 +126,8 @@ describe('geolocation', () => {
       expect(getInitialOrganizations({ timeZone: 'Asia/Tokyo' })).toEqual(['jra', 'nar']);
       expect(getInitialOrganizations({ timeZone: 'Europe/London' })).toEqual(['bha']);
       expect(getInitialOrganizations({ timeZone: 'Europe/Paris' })).toEqual(['france_galop']);
-      expect(getInitialOrganizations({ timeZone: 'America/New_York' })).toEqual([]);
+      expect(getInitialOrganizations({ timeZone: 'America/New_York' })).toEqual(['equibase']);
+      expect(getInitialOrganizations({ timeZone: 'Australia/Sydney' })).toEqual([]);
     });
   });
 

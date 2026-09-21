@@ -7,6 +7,7 @@ import {
 } from './lib/nar-schedule';
 import { loadFranceRaceMaster, getFranceRaces } from './lib/france-races';
 import { loadUkRaceMaster, getUkRaces } from './lib/uk-races';
+import { loadUsRaceMaster, getUsRaces } from './lib/us-races';
 
 // --- Type Definitions (Pattern A: Localized Object) ---
 export interface LocalizedString {
@@ -1010,6 +1011,15 @@ function determineNarHandicap(raceName: string, _grade: string, course: string):
     racesOutput.push(uk);
   }
   console.log(`Merged ${ukRaces.length} UK races into races output.`);
+
+  // --- Process US Races ---
+  console.log('Loading and merging US races...');
+  const usMaster = loadUsRaceMaster(rootDir);
+  const usRaces = getUsRaces(usMaster, confirmedTimesMap);
+  for (const us of usRaces) {
+    racesOutput.push(us);
+  }
+  console.log(`Merged ${usRaces.length} US races into races output.`);
 
   // Sort races by date, start_time, and organization
   racesOutput.sort((a, b) =>
