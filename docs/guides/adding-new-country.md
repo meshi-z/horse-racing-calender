@@ -354,13 +354,17 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
    - `getInitialLanguage()` でのブラウザ言語（`navigator.language`）判定の追加。
 3. **新言語UI辞書の新設 (`src/libs/i18n.ts`)**:
    - `translations.{lang}` を定義し、全UI文言（ナビゲーション、ステータス、ダイアログ、フィルター、空状態、免責事項、日付・曜日フォーマット等）の対訳を網羅。
+   - **PWAインストール時アプリ名称（短縮名・正式名）の定義（必須）**:
+     - `app.appName`: ホーム画面アイコン下に表示される短縮アプリ名（例: 日本語なら `重賞カレンダー`、英語なら `Graded Races`、フランス語なら `Courses de Groupe`）。
+     - `app.appFullName`: インストールダイアログやタイトル用の正式アプリ名（例: `Calendrier des Courses de Groupe`）。
+     - これらは `src/libs/pwaMetadata.ts` を通じて iOS ホーム画面用メタタグ（`apple-mobile-web-app-title`）および Web App Manifest（Android Chrome等）へ動的に同期されます。
    - `i18n.test.ts` で既存言語辞書とのキー完全一致（パリティ）を自動検証。
 4. **言語切替UIの選択肢追加 (`src/components/shared/Header.tsx`)**:
    - Shadcn UI `Select` コンポーネントに新言語の選択肢アイテム（例: `<SelectItem value="fr">Français (FR)</SelectItem>`）を追加。
 5. **メタ情報・ロケールの同期 (`index.html`)**:
    - Schema.org JSON-LD の `inLanguage` に新言語を追加、OGP（`og:locale:alternate`）の同期、サイト別名（`alternateName`）の追加。
 6. **テストの拡充**:
-   - `useLanguageStore.test.ts`, `Header.test.tsx`, `i18n.test.ts`, `raceLanguage.test.ts`, `i18nIntegration.test.tsx` の言語切り替えテストを更新。
+   - `useLanguageStore.test.ts`, `Header.test.tsx`, `i18n.test.ts`, `raceLanguage.test.ts`, `pwaMetadata.test.ts`, `i18nIntegration.test.tsx` の言語切り替えテストを更新。
 
 ### 7.2 免責事項・データ出典の追記 (`DisclaimerDialog.tsx` & `i18n.ts`)
 - **非公式ファンサイト注記**: 新規統轄団体（BHA, Equibase等）と本アプリが無関係である旨を追記。
@@ -375,8 +379,12 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
    - `<meta name="keywords">`: 新規国の競馬関連キーワード（国名、統轄団体名等）の追加。
    - **OGP / Twitter Card**: `og:description` や `twitter:description` を更新。
    - **JSON-LD 構造化データ**: Schema.org（`@type: WebApplication`）の `description` や `alternateName` の同期。
-2. **`vite.config.ts` (PWA Manifest)**:
+2. **`vite.config.ts` (PWA Manifest) および動的マニフェスト同期**:
    - `VitePWA` プラグイン内の `manifest.description` を更新。
+   - **PWAインストール時のアプリ名称（`apple-mobile-web-app-title` / Web App Manifest）への新言語追加（必須）**:
+     - 新規言語を追加した際は、`src/libs/i18n.ts` の `app.appName`（短縮名）および `app.appFullName`（正式名）に対訳を必ず登録してください。
+     - アプリケーション起動時および言語切り替え時に `src/libs/pwaMetadata.ts` が自動実行され、iOS Safari 用メタタグ（`apple-mobile-web-app-title`）および Chrome/Android 用 Web App Manifest が現在の選択言語に合わせて動的に書き換えられます。
+     - `tests/unit/pwaMetadata.test.ts` に新言語でのテストケースを追加し、メタタグとマニフェストが正常に反映されることを確認します。
 
 ---
 

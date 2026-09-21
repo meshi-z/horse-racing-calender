@@ -8,6 +8,8 @@ export const translations = {
     app: {
       title: '重賞カレンダー',
       subtitle: 'Graded Races Calendar',
+      appName: '重賞カレンダー',
+      appFullName: '重賞カレンダー - JRA・NAR重賞レース',
     },
     nav: {
       timeline: 'タイムライン',
@@ -153,6 +155,8 @@ export const translations = {
     app: {
       title: 'Graded Races',
       subtitle: 'Graded Races Calendar',
+      appName: 'Graded Races',
+      appFullName: 'Graded Races Calendar',
     },
     nav: {
       timeline: 'Timeline',
@@ -298,6 +302,8 @@ export const translations = {
     app: {
       title: 'Courses de Groupe',
       subtitle: 'Calendrier des Courses de Groupe',
+      appName: 'Courses de Groupe',
+      appFullName: 'Calendrier des Courses de Groupe',
     },
     nav: {
       timeline: 'Chronologie',

@@ -87,6 +87,9 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     // ==========================================
     expect(document.documentElement.lang).toBe("ja");
     expect(document.title).toBe("重賞カレンダー - JRA & NAR 重賞レーススケジュール");
+    expect(
+      document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute("content")
+    ).toBe("重賞カレンダー");
 
     // ヘッダー
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("重賞カレンダー");
@@ -141,6 +144,9 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     // ドキュメントメタの更新
     expect(document.documentElement.lang).toBe("en");
     expect(document.title).toBe("Graded Races - JRA, NAR, France Galop & UK Graded Races Calendar");
+    expect(
+      document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute("content")
+    ).toBe("Graded Races");
 
     // ヘッダーの更新
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Graded Races");
@@ -241,6 +247,9 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
 
     expect(document.documentElement.lang).toBe("ja");
     expect(document.title).toBe("重賞カレンダー - JRA & NAR 重賞レーススケジュール");
+    expect(
+      document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute("content")
+    ).toBe("重賞カレンダー");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("重賞カレンダー");
     expect(screen.getByText("2026年2月")).toBeInTheDocument();
     expect(screen.getByText("月")).toBeInTheDocument();
@@ -256,6 +265,9 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
 
     expect(document.documentElement.lang).toBe("fr");
     expect(document.title).toBe("Courses de Groupe - Calendrier JRA, NAR, France Galop & UK");
+    expect(
+      document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute("content")
+    ).toBe("Courses de Groupe");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Courses de Groupe");
     expect(screen.getByText("février 2026")).toBeInTheDocument();
   });

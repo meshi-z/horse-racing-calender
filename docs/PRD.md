@@ -917,6 +917,17 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - デスクトップ（`sm:` 以上）: 従来の横並びセグメントコントロールを維持し、大画面でのワンクリック操作性を担保。
       - 多言語辞書（ja, en, fr）へのモーダル文言拡充（`i18n.test.ts` によるパリティ検証済み）。
       - 単体テスト（`FilterBar.test.tsx`）にモバイルダイアログ操作の網羅的テストを追加し、全39テストファイル・358テスト完全合格。
+    - **Phase 8: PWAインストール時のアプリ名称およびホーム画面メタタグの多言語対応（i18n連動） (Issue #94) [完了]**
+      - 言語別アプリ名称（短縮名・正式名）の辞書定義（`src/libs/i18n.ts`）:
+        - 日本語（`ja`）: `重賞カレンダー`（短縮名） / `重賞カレンダー - JRA・NAR重賞レース`（正式名）
+        - 英語（`en`）: `Graded Races`（短縮名） / `Graded Races Calendar`（正式名）
+        - フランス語（`fr`）: `Courses de Groupe`（短縮名） / `Calendrier des Courses de Groupe`（正式名）
+      - メタタグ・マニフェスト動的同期ロジックの実装（`src/libs/pwaMetadata.ts`）:
+        - ページ初期化時および言語切替時に、`<meta name="apple-mobile-web-app-title">`、`<meta name="application-name">`、`document.title` を現在の言語に合わせて動的に同期更新。
+        - Web App Manifest（`<link rel="manifest">`）の `name` および `short_name` を選択言語に合わせて動的に再生成・置換し、Android Chrome等のPWAインストールダイアログやホーム画面名に即座に反映。
+      - 海外競馬追加手順書（`docs/guides/adding-new-country.md`）の更新:
+        - 新規言語追加時の必須手順として PWA アプリ名称定義（`app.appName` / `app.appFullName`）および動的同期テストを明記。
+      - 単体テスト（`tests/unit/pwaMetadata.test.ts`）の新設および統合テスト（`tests/integration/i18nIntegration.test.tsx`）の拡充。
 33. **Step 33 (Next): 海外主要レース拡張（香港・UAE・米国） & 外部カレンダー連携**
     - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。
