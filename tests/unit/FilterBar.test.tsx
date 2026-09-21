@@ -354,16 +354,31 @@ describe("FilterBar", () => {
       expect(within(coursePanel).getByText("その他地方 (NAR)")).toBeInTheDocument();
       expect(within(coursePanel).getByText("ばんえい (NAR)")).toBeInTheDocument();
       expect(within(coursePanel).getByText("フランス (France)")).toBeInTheDocument();
+      expect(within(coursePanel).getByText("イギリス (UK)")).toBeInTheDocument();
 
       // フランス競馬場（パリロンシャン）を選択
       const longchampBtn = screen.getByRole("button", { name: "パリロンシャン" });
       fireEvent.click(longchampBtn);
       expect(useRaceStore.getState().filters.courses).toContain("パリロンシャン");
 
+      // イギリス競馬場（アスコット）を選択
+      const ascotBtn = screen.getByRole("button", { name: "アスコット" });
+      fireEvent.click(ascotBtn);
+      expect(useRaceStore.getState().filters.courses).toContain("アスコット");
+
       // 南関競馬（大井）を選択
       const oiBtn = screen.getByRole("button", { name: "大井" });
       fireEvent.click(oiBtn);
       expect(useRaceStore.getState().filters.courses).toContain("大井");
+    });
+
+    it("主催者フィルターでイギリス (UK) を選択できること", () => {
+      render(<FilterBar />);
+      const ukOrgBtn = screen.getByRole("button", { name: "イギリス (UK)" });
+      expect(ukOrgBtn).toBeInTheDocument();
+
+      fireEvent.click(ukOrgBtn);
+      expect(useRaceStore.getState().filters.organization).toBe("bha");
     });
   });
 

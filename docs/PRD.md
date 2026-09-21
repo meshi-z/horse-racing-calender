@@ -3,8 +3,8 @@
 | 項目 | 内容 |
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
-| **作成日** | 2026年9月12日 (最終更新: 2026年9月20日) |
-| **バージョン** | v1.22.0 (フランス語UI対応・言語切替UI拡張およびレース名多言語表示ルールの刷新) |
+| **作成日** | 2026年9月12日 (最終更新: 2026年9月21日) |
+| **バージョン** | v1.23.0 (イギリス競馬 BHA / IFHA Part I 平地重賞統合) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -12,13 +12,13 @@
 
 ## 1. プロジェクト概要
 
-本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、そして海外競馬第1弾としての **フランス競馬（France-Galop / IFHA Part I 重賞: G1, G2, G3）** を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
+本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France-Galop / IFHA Part I 重賞: G1, G2, G3）、そして海外競馬第2弾としての **イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 重賞: G1, G2, G3）** を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
 
 モバイル閲覧時は直近レースを素早く確認できる **「タイムライン形式」**、PC/タブレット閲覧時は月全体のスケジュールを鳥瞰できる **「月間カレンダー形式」** を初期表示とし、PWA（Progressive Web Apps）およびオフライン閲覧に対応することで、競馬場や外出先などの電波状況が不安定な環境でもミリ秒単位でストレスなくアクセスできる体験を提供する。
 
 UIライブラリには **Shadcn UI** (Radix UI + Tailwind CSS) を全面採用。ターフを象徴する公式イメージカラー（`#047B5F`）をベースとした洗練されたデザイン、Radix UI 由来の完全なキーボード操作・WAI-ARIAアクセシビリティ、OS設定連動のダークモード対応、そして多角的なフィルター機能（主催者・国コード・グレード・馬場・競馬場・距離）を両立したユーザー体験を実現している。
 
-v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい競馬対応、v1.18.0 のアコーディオンフィルター、v1.18.1 のNAR英語名整理、v1.18.2 のヘッダー英語・検索例・SEO再整理、v1.19.0 のフランス平地重賞統合、v1.20.0 のNAR確定発走予定時刻自動更新パイプライン拡充、v1.20.1/v1.20.2/v1.21.0 の国内外全過去重賞確定バックフィル、Step 30 の海外競馬追加開発ガイド整備を経て、**v1.22.0 ではフランス競馬統合に連動しサイト全体のフランス語（fr）UI対応を完了。Shadcn UI Select による3言語（JA / EN / FR）切替UIの導入、および「メイン＝選択言語、サブ＝開催国原語（同一時はサブ非表示）」という拡張性の高いレース名多言語表示ルールを確立した**。
+v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい競馬対応、v1.18.0 のアコーディオンフィルター、v1.18.1 のNAR英語名整理、v1.18.2 のヘッダー英語・検索例・SEO再整理、v1.19.0 のフランス平地重賞統合、v1.20.0 のNAR確定発走予定時刻自動更新パイプライン拡充、v1.20.1/v1.20.2/v1.21.0 の国内外全過去重賞確定バックフィル、Step 30 の海外競馬追加開発ガイド整備、v1.22.0 のフランス語UI対応を経て、**v1.23.0 では海外競馬展開の第2弾としてイギリス競馬（BHA / IFHA Part I 重賞）の平地全156重賞を包括統合。主催者「UK」フィルター、競馬場グループ「イギリス」、国コード「GB」バッジ、出馬表・確定時刻自動更新バッチ（UkRaceTimeFetcher）および過去実績バックフィルを完全実装した**。
 
 ---
 
@@ -112,7 +112,25 @@ v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい
   - ダートグレード競走日程表に加え、地方競馬全重賞（南関S1〜S3、各地区地方重賞、ばんえい重賞）の確定発走時刻自動取得・更新の実現。
   - GitHub Actions 定期cronワークフローの拡張（毎日 07:30 JST、平日 12:30 JST、月〜土 17:30 JST のNAR昼間・ナイター対応枠新設）。
 
-### フェーズ4 (将来拡張スコープ: v1.21.0〜)
+- **海外競馬：イギリス競馬（BHA / IFHA Part I 重賞）統合 (v1.23.0 / Issue #83, #84, #85, #86) [完了]**:
+  - **一次ソースからのデータ構築**: IFHA Part I リスト (Great Britain: 格付け・出走資格・距離・馬場) および British Horseracing Authority (BHA) 公式開催日程に基づく平地全156重賞（G1 38レース、G2 47レース、G3 71レース）の構造化。
+  - **データアーキテクチャ拡張**:
+    - `country_code`: 国コード `"GB"` をスキーマに追加。
+    - `organization`: `"bha"` を新設。
+    - タイムゾーン・発走時刻変換: イギリス現地時間（GMT: UTC+0 / 夏時間 BST: UTC+1）から正確に UTC ISO 8601 文字列（`start_time`）へ変換。
+  - **日英（仏）対応マスタ (`src/data/uk_race_master.json`)**:
+    - レース名: 英語正式名（`2000 Guineas Stakes`, `Derby Stakes`, `King George VI and Queen Elizabeth Stakes` 等）$\leftrightarrow$ 日本語通称（`2000ギニー`, `エプソムダービー`, `キングジョージ6世&クイーンエリザベスステークス`）のマッピング。
+    - 競馬場名: 日英仏対応（Ascot / アスコット, Newmarket / ニューマーケット, Epsom / エプソム, York / ヨーク 等）。
+  - **UI/UX 拡張**:
+    - 主催者フィルターへの「UK」の追加（`All` / `JRA` / `NAR` / `France` / `UK`）。
+    - 競馬場セレクトへの「イギリス (UK)」グループ新設。
+    - タイムラインビュー・カレンダービュー・詳細ダイアログでの国コード「GB」バッジ表示。
+    - 免責事項ダイアログ（`DisclaimerDialog`）への BHA 出典・非公式性・知的財産権の明記。
+  - **確定発走時刻自動更新 & 過去実績補完**:
+    - `UkRaceTimeFetcher` の実装による出馬表・確定発走時刻の自動取得。
+    - 2026年開催済みの過去イギリス重賞レースの発走時刻を確定実績値で完全バックフィル（`is_time_confirmed: true`）。
+
+### フェーズ4 (将来拡張スコープ: v1.24.0〜)
 
 - **海外主要レースのさらなる拡張**:
   - 香港（HKJC）、UAE/ドバイ（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
@@ -165,12 +183,12 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
 
 ### 3.4 国コードバッジ仕様 (Country Code Badges)
 
-海外競馬の統合に伴い、レースの開催国を即座に識別できるよう、タイムライン、カレンダー、および詳細ダイアログに **ISO 2文字国コード（例: `FR`, `JP`）** を基盤とした軽量バッジを配置する。
+海外競馬の統合に伴い、レースの開催国を即座に識別できるよう、タイムライン、カレンダー、および詳細ダイアログに **ISO 2文字国コード（例: `FR`, `GB`, `JP`）** を基盤とした軽量バッジを配置する。
 
 - **仕様原則**:
-  - 今後導入される海外競馬（香港: `HK`、UAE: `AE`、米国: `US` 等）を含め、国旗絵文字ではなくプラットフォーム非依存で一貫した可読性を保つため **2文字の国コードテキスト表記（`FR`）** で統一。
-  - セマンティックトークン: フランス競馬向けには洗練されたトリコロール・フレンチブルー（`bg-sky-700` / `text-white`、コントラスト比 4.5:1 以上）を適用。
-  - 日本国内レース（`JP`）については、過度な視覚的ノイズを抑制するためデフォルトではJRA/NARバッジを優先表示し、海外レース（`FR`）において明確な国識別バッジとして強調表示する。
+  - 今後導入される海外競馬（香港: `HK`、UAE: `AE`、米国: `US` 等）を含め、国旗絵文字ではなくプラットフォーム非依存で一貫した可読性を保つため **2文字の国コードテキスト表記（`FR`, `GB`）** で統一。
+  - セマンティックトークン: フランス競馬向けには洗練されたトリコロール・フレンチブルー（`bg-sky-700` / `text-white`、コントラスト比 4.5:1 以上）、イギリス競馬向けには英国レーシングを象徴するディープネイビー（`bg-slate-800` / `text-white`、コントラスト比 4.5:1 以上）を適用。
+  - 日本国内レース（`JP`）については、過度な視覚的ノイズを抑制するためデフォルトではJRA/NARバッジを優先表示し、海外レース（`FR`, `GB`）において明確な国識別バッジとして強調表示する。
 
 ---
 
@@ -411,6 +429,8 @@ flowchart TD
 - **NARダートグレード競走日程・確定時刻ソース**: [NARダートグレード競走年間日程・出馬表](https://www.keiba.go.jp/dirtgraderace/2026/racelist/) (`https://www.keiba.go.jp/dirtgraderace/{YYYY}/racelist/`)
 - **フランス重賞レース格付け・条件ソース**: [IFHA / ICSC パートI リスト (France)](https://www.tjcis.com/pdf/icsc26/ICSC-PartI_France.pdf)（参照元: [IFHA Resources](https://www.ifhaonline.org/Default.asp?section=Resources&area=8)）
 - **フランス競馬開催日程・競馬場ソース**: [France Galop 公式開催カレンダー 2026](https://billetterie.france-galop.com/app/uploads/2025/12/NUM_Calendrier-parieur-2026-12-12.pdf)（参照元: [France Galop Calendar](https://billetterie.france-galop.com/en/the-calendar/)）
+- **イギリス重賞レース格付け・条件ソース**: IFHA / ICSC パートI リスト (Great Britain)（参照元: [IFHA Resources](https://www.ifhaonline.org/Default.asp?section=Resources&area=8)）
+- **イギリス競馬開催日程・出馬表ソース**: [British Horseracing Authority (BHA)](https://www.britishhorseracing.com/) および [Sporting Life Racing](https://www.sportinglife.com/racing)
 - **用語マスターソース**: [海外競馬英和辞典](https://www.jra.go.jp/keiba/overseas/yougo/index.html)
 
 ### 5.2 データパース & 分割ルール
@@ -513,9 +533,38 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
   - NAR 南関重賞例: `2026-nar-s1-01`
   - NAR 地方重賞例: `2026-nar-local-01`
   - フランスG1例: `2026-france-g1-01`（凱旋門賞等）
+  - イギリスG1例: `2026-uk-g1-01`（2000ギニー等）
 
 ```json
 [
+  {
+    "id": "2026-uk-g1-01",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "2000ギニー",
+      "en": "2000 Guineas Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-05-02",
+    "start_time": "2026-05-02T14:35:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-02",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
   {
     "id": "2026-jra-g1-01",
     "organization": "jra",
@@ -813,8 +862,24 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - `src/libs/date.ts`: フランス語の曜日・月名・`formatLocalDate`・`formatYearMonth`、および確定発走予定ステータスバッジ（`Prévu`）の多言語対応。
       - `GradeBadge.tsx`: `local_grade` のフランス語表記（`Régional`）およびアクセシビリティ `aria-label` の多言語対応。
       - `index.html`: `og:locale:alternate`（`fr_FR`）、Schema.org JSON-LD `inLanguage: ["ja", "en", "fr"]`、およびフランス語別名（`Courses de Groupe`）の追加。
-    - **テストと品質保証**:
-      - 単体・結合テスト全36スイート・319件の完全合格、型チェックエラー0件、プロダクションビルド成功。
-32. **Step 32 (Next): 海外主要レース拡張（イギリス・香港・UAE・米国） & 外部カレンダー連携**
-    - 本開発ガイドに基づくイギリス（BHA）、香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
+32. **Step 32 (v1.23.0 / Current): 海外競馬第2弾：イギリス競馬（BHA / IFHA Part I 重賞）統合 (Issue #83, #84, #85, #86)**
+    - **Phase 1: PRD改訂 (v1.23.0) およびイギリス競馬スキーマ・型定義の拡張 (Issue #83) [完了]**
+      - `docs/PRD.md` 改訂、`src/types/race.ts` の型定義拡張（`Organization: 'bha'`, `CountryCode: 'GB'`, `FilterState.organization: 'bha'`）。
+    - **Phase 2: イギリス重賞データ抽出・日英マスタ作成およびパイプライン統合 (Issue #84) [完了]**
+      - `src/data/uk_race_master.json`（全156重賞の日英マスタ、アスコット、エプソム、ニューマーケット等全16競馬場、距離・馬場・AW対応、夏時間BST/GMT自動吸収）の作成。
+      - `scripts/lib/uk-races.ts` の実装および `scripts/parse-races.ts` への統合マージ処理追加（全753レース出力）。
+      - 単体テスト（`tests/unit/ukRaces.test.ts`, `tests/unit/racesData.test.ts`）の拡充と全テスト合格。
+    - **Phase 3: イギリス競馬UI対応（主催者フィルター「UK」、競馬場グループ追加、GB国コードバッジ、多言語化） (Issue #85) [完了]**
+      - `FilterBar`: 主催者フィルターセグメントに「イギリス (UK)」を追加（`bha`）、競馬場グループ「イギリス (UK)」の追加（全16場）。
+      - UIバッジ: 国コード「GB」バッジの実装（タイムラインカード、カレンダービュー、詳細ダイアログ: スカイブルー配色）および主催者「BHA」タグのカラーリング対応。
+      - 多言語化: 日・英・仏の各辞書への UK / BHA 対応（免責事項、データ出典 Sporting Life、フッター注記等）。
+    - **Phase 4: イギリス重賞確定発走予定時刻自動更新バッチ（`UkRaceTimeFetcher`）の実装 & 過去実績補完 (Issue #86) [完了]**
+      - Sporting Life API（`https://www.sportinglife.com/api/horse-racing/racing/racecards/{date}`）からの出馬表プログラム自動取得スクリプト（`scripts/lib/uk-syutsuba.ts`）を実装。
+      - 英国夏時間（BST: UTC+1）／冬時間（GMT: UTC+0）の自動判別（`isBritishSummerTime`）および UTC ISO 8601 文字列・JST表記算出ロジックを実装。
+      - スポンサー冠名や競馬場名照合に対応した堅牢な名寄せ照合エンジン（`ukRaceMatches`, `ukCourseMatches`）を開発。
+      - `scripts/update-race-times.ts` の `DEFAULT_FETCHERS` に `UkRaceTimeFetcher`（`bha`, `uk`）を追加統合し、`npm run data:update-times:uk`（`--org bha`）での単独実行に対応。
+      - 2026年9月21日以前の過去イギリス重賞129レースを実績発走時刻で完全確定化（`is_time_confirmed: true`）。
+      - 単体テスト `tests/unit/ukSyutsuba.test.ts` を新設し、全38スイート・336テスト完全合格。
+33. **Step 33 (Next): 海外主要レース拡張（香港・UAE・米国） & 外部カレンダー連携**
+    - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

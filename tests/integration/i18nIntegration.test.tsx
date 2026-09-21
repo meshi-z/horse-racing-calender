@@ -140,7 +140,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
 
     // ドキュメントメタの更新
     expect(document.documentElement.lang).toBe("en");
-    expect(document.title).toBe("Graded Races - JRA, NAR & France Galop Graded Races Calendar");
+    expect(document.title).toBe("Graded Races - JRA, NAR, France Galop & UK Graded Races Calendar");
 
     // ヘッダーの更新
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Graded Races");
@@ -255,7 +255,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     fireEvent.click(frOption);
 
     expect(document.documentElement.lang).toBe("fr");
-    expect(document.title).toBe("Courses de Groupe - Calendrier JRA, NAR & France Galop");
+    expect(document.title).toBe("Courses de Groupe - Calendrier JRA, NAR, France Galop & UK");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Courses de Groupe");
     expect(screen.getByText("février 2026")).toBeInTheDocument();
   });

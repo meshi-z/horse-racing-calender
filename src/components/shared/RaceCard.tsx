@@ -93,6 +93,8 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                       "text-[10px] px-1.5 py-0 h-4 font-bold tracking-wider",
                       race.country_code === "FR"
                         ? "border-indigo-500/40 text-indigo-700 dark:text-indigo-300 bg-indigo-50/60 dark:bg-indigo-950/40"
+                        : race.country_code === "GB"
+                        ? "border-sky-500/40 text-sky-800 dark:text-sky-300 bg-sky-50/60 dark:bg-sky-950/40"
                         : "border-slate-500/40 text-slate-700 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900/40"
                     )}
                   >
@@ -107,6 +109,8 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                       ? "border-blue-500/40 text-blue-700 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/30"
                       : race.organization === "france_galop"
                       ? "border-indigo-500/40 text-indigo-700 dark:text-indigo-300 bg-indigo-50/50 dark:bg-indigo-950/30"
+                      : race.organization === "bha"
+                      ? "border-sky-500/40 text-sky-800 dark:text-sky-300 bg-sky-50/50 dark:bg-sky-950/30"
                       : "border-emerald-500/40 text-emerald-700 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/30"
                   )}
                 >

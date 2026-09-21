@@ -1349,6 +1349,34 @@
     }
   },
   {
+    "id": "2026-uk-g3-01",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ウィンターダービー",
+      "en": "Winter Derby"
+    },
+    "grade": "G3",
+    "date": "2026-02-21",
+    "start_time": "2026-02-21T14:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-02-21",
+    "course": {
+      "ja": "リングフィールド",
+      "en": "Lingfield"
+    },
+    "distance": 2012,
+    "track_type": "aw",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-jra-g3-15",
     "organization": "jra",
     "country_code": "JP",
@@ -3462,6 +3490,34 @@
     }
   },
   {
+    "id": "2026-uk-g3-03",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ネルグウィンステークス",
+      "en": "Nell Gwyn Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-04-15",
+    "start_time": "2026-04-15T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-15",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-55",
     "organization": "nar",
     "country_code": "JP",
@@ -3511,6 +3567,90 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-02",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "セフトン伯爵ステークス",
+      "en": "Earl of Sefton Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-04-16",
+    "start_time": "2026-04-16T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-16",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1811,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-04",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "アバナントステークス",
+      "en": "Abernant Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-04-16",
+    "start_time": "2026-04-16T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-16",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-05",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "クレイヴンステークス",
+      "en": "Craven Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-04-16",
+    "start_time": "2026-04-16T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-16",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -3595,6 +3735,90 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-06",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "フレッドダーリングステークス",
+      "en": "Fred Darling Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-04-18",
+    "start_time": "2026-04-18T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-18",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-07",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "グリーンハムステークス",
+      "en": "Greenham Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-04-18",
+    "start_time": "2026-04-18T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-18",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-08",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ジョンポーターステークス",
+      "en": "John Porter Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-04-18",
+    "start_time": "2026-04-18T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-18",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -3835,6 +4059,90 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-01",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "サンダウンマイル",
+      "en": "Sandown Mile"
+    },
+    "grade": "G2",
+    "date": "2026-04-24",
+    "start_time": "2026-04-24T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-24",
+    "course": {
+      "ja": "サンダウン",
+      "en": "Sandown"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-09",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ゴードンリチャーズステークス",
+      "en": "Gordon Richards Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-04-24",
+    "start_time": "2026-04-24T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-24",
+    "course": {
+      "ja": "サンダウン",
+      "en": "Sandown"
+    },
+    "distance": 2012,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-10",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "クラシックトライアル",
+      "en": "Sandown Classic Trial"
+    },
+    "grade": "G3",
+    "date": "2026-04-24",
+    "start_time": "2026-04-24T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-24",
+    "course": {
+      "ja": "サンダウン",
+      "en": "Sandown"
+    },
+    "distance": 2012,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -4107,6 +4415,62 @@
     }
   },
   {
+    "id": "2026-uk-g3-11",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "サガロステークス",
+      "en": "Sagaro Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-04-29",
+    "start_time": "2026-04-29T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-29",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 3219,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-12",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "パビリオンステークス",
+      "en": "Pavilion Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-04-29",
+    "start_time": "2026-04-29T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-29",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-nar-s1-03",
     "organization": "nar",
     "country_code": "JP",
@@ -4156,6 +4520,34 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-02",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ジョッキークラブステークス",
+      "en": "Jockey Club Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-05-01",
+    "start_time": "2026-05-01T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-01",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -4268,6 +4660,62 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-01",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "2000ギニー",
+      "en": "2000 Guineas Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-05-02",
+    "start_time": "2026-05-02T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-02",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-13",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "パレスハウスステークス",
+      "en": "Palace House Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-05-02",
+    "start_time": "2026-05-02T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-02",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -4403,6 +4851,62 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-02",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "1000ギニー",
+      "en": "1000 Guineas Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-05-03",
+    "start_time": "2026-05-03T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-03",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-03",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ダリアステークス",
+      "en": "Dahlia Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-05-03",
+    "start_time": "2026-05-03T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-03",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1811,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -4698,6 +5202,90 @@
     }
   },
   {
+    "id": "2026-uk-g3-14",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "チェスターヴェーズ",
+      "en": "Chester Vase"
+    },
+    "grade": "G3",
+    "date": "2026-05-06",
+    "start_time": "2026-05-06T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-06",
+    "course": {
+      "ja": "チェスター",
+      "en": "Chester"
+    },
+    "distance": 2472,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-15",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "オーモンドステークス",
+      "en": "Ormonde Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-05-07",
+    "start_time": "2026-05-07T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-07",
+    "course": {
+      "ja": "チェスター",
+      "en": "Chester"
+    },
+    "distance": 2692,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-04",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ハックスリーステークス",
+      "en": "Huxley Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-05-08",
+    "start_time": "2026-05-08T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-08",
+    "course": {
+      "ja": "チェスター",
+      "en": "Chester"
+    },
+    "distance": 2112,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-jra-g2-19",
     "organization": "jra",
     "country_code": "JP",
@@ -4749,6 +5337,34 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    }
+  },
+  {
+    "id": "2026-uk-g3-16",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "チャートウェルフィリーズステークス",
+      "en": "Chartwell Fillies' Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-05-09",
+    "start_time": "2026-05-09T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-09",
+    "course": {
+      "ja": "リングフィールド",
+      "en": "Lingfield"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -5025,6 +5641,62 @@
     }
   },
   {
+    "id": "2026-uk-g2-05",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ミンスターステークス",
+      "en": "Minster Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-05-13",
+    "start_time": "2026-05-13T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-13",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-17",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ミュジドラステークス",
+      "en": "Musidora Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-05-13",
+    "start_time": "2026-05-13T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-13",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 2112,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-80",
     "organization": "nar",
     "country_code": "JP",
@@ -5103,6 +5775,90 @@
     }
   },
   {
+    "id": "2026-uk-g2-06",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ミドルトンステークス",
+      "en": "Middleton Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-05-14",
+    "start_time": "2026-05-14T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-14",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 2112,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-07",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ダンテステークス",
+      "en": "Dante Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-05-14",
+    "start_time": "2026-05-14T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-14",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 2112,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-08",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ヨークシャーカップ",
+      "en": "Yorkshire Cup"
+    },
+    "grade": "G2",
+    "date": "2026-05-15",
+    "start_time": "2026-05-15T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-15",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 2816,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-jra-jg2-02",
     "organization": "jra",
     "country_code": "JP",
@@ -5154,6 +5910,62 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    }
+  },
+  {
+    "id": "2026-uk-g1-03",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ロッキンジステークス",
+      "en": "Lockinge Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-05-16",
+    "start_time": "2026-05-16T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-16",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-18",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "アストンパークステークス",
+      "en": "Aston Park Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-05-16",
+    "start_time": "2026-05-16T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-16",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -5431,6 +6243,34 @@
     }
   },
   {
+    "id": "2026-uk-g3-19",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ブロンテカップ",
+      "en": "Brontë Cup"
+    },
+    "grade": "G3",
+    "date": "2026-05-23",
+    "start_time": "2026-05-23T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-23",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 2816,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-jra-g1-09",
     "organization": "jra",
     "country_code": "JP",
@@ -5647,6 +6487,62 @@
     }
   },
   {
+    "id": "2026-uk-g3-20",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ヘンリー2世ステークス",
+      "en": "Henry II Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-05-28",
+    "start_time": "2026-05-28T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-28",
+    "course": {
+      "ja": "サンダウン",
+      "en": "Sandown"
+    },
+    "distance": 3219,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-21",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ブリガディアジェラードステークス",
+      "en": "Brigadier Gerard Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-05-28",
+    "start_time": "2026-05-28T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-28",
+    "course": {
+      "ja": "サンダウン",
+      "en": "Sandown"
+    },
+    "distance": 2012,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-jra-g3-31",
     "organization": "jra",
     "country_code": "JP",
@@ -5671,6 +6567,62 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-09",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "サンディレーンステークス",
+      "en": "Sandy Lane Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-05-30",
+    "start_time": "2026-05-30T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-30",
+    "course": {
+      "ja": "ヘイドック",
+      "en": "Haydock"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-10",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "テンプルステークス",
+      "en": "Temple Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-05-30",
+    "start_time": "2026-05-30T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-30",
+    "course": {
+      "ja": "ヘイドック",
+      "en": "Haydock"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -6053,6 +7005,202 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-04",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "エプソムオークス",
+      "en": "Oaks Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-06-05",
+    "start_time": "2026-06-05T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-05",
+    "course": {
+      "ja": "エプソム",
+      "en": "Epsom"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-05",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "コロネーションカップ",
+      "en": "Coronation Cup"
+    },
+    "grade": "G1",
+    "date": "2026-06-05",
+    "start_time": "2026-06-05T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-05",
+    "course": {
+      "ja": "エプソム",
+      "en": "Epsom"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-06",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "エプソムダービー",
+      "en": "Derby Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-06-06",
+    "start_time": "2026-06-06T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-06",
+    "course": {
+      "ja": "エプソム",
+      "en": "Epsom"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-22",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "レスターピゴットステークス",
+      "en": "Lester Piggott Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-06-06",
+    "start_time": "2026-06-06T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-06",
+    "course": {
+      "ja": "ヘイドック",
+      "en": "Haydock"
+    },
+    "distance": 2213,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-23",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ダイオメドステークス",
+      "en": "Diomed Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-06-06",
+    "start_time": "2026-06-06T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-06",
+    "course": {
+      "ja": "エプソム",
+      "en": "Epsom"
+    },
+    "distance": 1710,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-24",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "タッテナムコーナーステークス",
+      "en": "Tattenham Corner Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-06-06",
+    "start_time": "2026-06-06T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-06",
+    "course": {
+      "ja": "エプソム",
+      "en": "Epsom"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-25",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "プリンセスエリザベスステークス",
+      "en": "Princess Elizabeth Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-06-06",
+    "start_time": "2026-06-06T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-06",
+    "course": {
+      "ja": "エプソム",
+      "en": "Epsom"
+    },
+    "distance": 1710,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -6597,6 +7745,118 @@
     }
   },
   {
+    "id": "2026-uk-g1-07",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "クイーンアンステークス",
+      "en": "Queen Anne Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-06-16",
+    "start_time": "2026-06-16T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-16",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-08",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "キングチャールズ3世ステークス",
+      "en": "King Charles III Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-06-16",
+    "start_time": "2026-06-16T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-16",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-09",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "セントジェームズパレスステークス",
+      "en": "St. James's Palace Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-06-16",
+    "start_time": "2026-06-16T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-16",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-11",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "コヴェントリーステークス",
+      "en": "Coventry Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-06-16",
+    "start_time": "2026-06-16T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-16",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-nar-jpn2-06",
     "organization": "nar",
     "country_code": "JP",
@@ -6646,6 +7906,118 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-10",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "プリンスオブウェールズステークス",
+      "en": "Prince of Wales's Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-06-17",
+    "start_time": "2026-06-17T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-17",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 2012,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-12",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "クイーンメアリーステークス",
+      "en": "Queen Mary Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-06-17",
+    "start_time": "2026-06-17T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-17",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-13",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "クイーンズヴェーズ",
+      "en": "Queen's Vase"
+    },
+    "grade": "G2",
+    "date": "2026-06-17",
+    "start_time": "2026-06-17T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-17",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 2816,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-14",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "デュークオブケンブリッジステークス",
+      "en": "Duke of Cambridge Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-06-17",
+    "start_time": "2026-06-17T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-17",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -6727,6 +8099,118 @@
     }
   },
   {
+    "id": "2026-uk-g1-11",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ゴールドカップ",
+      "en": "Gold Cup"
+    },
+    "grade": "G1",
+    "date": "2026-06-18",
+    "start_time": "2026-06-18T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-18",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 4023,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-15",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "リブルズデールステークス",
+      "en": "Ribblesdale Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-06-18",
+    "start_time": "2026-06-18T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-18",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-17",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ノーフォークステークス",
+      "en": "Norfolk Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-06-18",
+    "start_time": "2026-06-18T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-18",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-26",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ハンプトンコートステークス",
+      "en": "Hampton Court Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-06-18",
+    "start_time": "2026-06-18T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-18",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 2012,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-france-g3-27",
     "organization": "france_galop",
     "country_code": "FR",
@@ -6782,6 +8266,202 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-12",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "コモンウェルスカップ",
+      "en": "Commonwealth Cup"
+    },
+    "grade": "G1",
+    "date": "2026-06-19",
+    "start_time": "2026-06-19T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-19",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-13",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "コロネーションステークス",
+      "en": "Coronation Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-06-19",
+    "start_time": "2026-06-19T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-19",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-16",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "キングエドワード7世ステークス",
+      "en": "King Edward VII Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-06-19",
+    "start_time": "2026-06-19T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-19",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-27",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "アルバニーステークス",
+      "en": "Albany Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-06-19",
+    "start_time": "2026-06-19T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-19",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-14",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "クイーンエリザベス2世ジュビリーステークス",
+      "en": "Queen Elizabeth II Jubilee Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-06-20",
+    "start_time": "2026-06-20T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-20",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-18",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ハードウィックステークス",
+      "en": "Hardwicke Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-06-20",
+    "start_time": "2026-06-20T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-20",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-28",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ジャージーステークス",
+      "en": "Jersey Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-06-20",
+    "start_time": "2026-06-20T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-20",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -6966,6 +8646,90 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-29",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ホッピングスステークス",
+      "en": "Hoppings Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-06-26",
+    "start_time": "2026-06-26T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-26",
+    "course": {
+      "ja": "ニューカッスル",
+      "en": "Newcastle"
+    },
+    "distance": 2012,
+    "track_type": "aw",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-30",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "チップチェイスステークス",
+      "en": "Chipchase Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-06-27",
+    "start_time": "2026-06-27T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-27",
+    "course": {
+      "ja": "ニューカッスル",
+      "en": "Newcastle"
+    },
+    "distance": 1207,
+    "track_type": "aw",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-31",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "クライテリオンステークス",
+      "en": "Criterion Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-06-27",
+    "start_time": "2026-06-27T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-27",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -7205,6 +8969,90 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-15",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "エクリプスステークス",
+      "en": "Eclipse Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-07-04",
+    "start_time": "2026-07-04T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-04",
+    "course": {
+      "ja": "サンダウン",
+      "en": "Sandown"
+    },
+    "distance": 2012,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-19",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ランカシャーオークス",
+      "en": "Lancashire Oaks"
+    },
+    "grade": "G2",
+    "date": "2026-07-04",
+    "start_time": "2026-07-04T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-04",
+    "course": {
+      "ja": "ヘイドック",
+      "en": "Haydock"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-32",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "サンダウンスプリントステークス",
+      "en": "Sprint Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-07-04",
+    "start_time": "2026-07-04T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-04",
+    "course": {
+      "ja": "サンダウン",
+      "en": "Sandown"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -7475,6 +9323,90 @@
     }
   },
   {
+    "id": "2026-uk-g2-20",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ジュライステークス",
+      "en": "July Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-07-09",
+    "start_time": "2026-07-09T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-09",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-21",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "プリンセスオブウェールズステークス",
+      "en": "Princess of Wales's Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-07-09",
+    "start_time": "2026-07-09T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-09",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-33",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "バーレーントロフィー",
+      "en": "Bahrain Trophy"
+    },
+    "grade": "G3",
+    "date": "2026-07-09",
+    "start_time": "2026-07-09T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-09",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 2615,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-121",
     "organization": "nar",
     "country_code": "JP",
@@ -7498,6 +9430,202 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-16",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ファルマスステークス",
+      "en": "Falmouth Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-07-10",
+    "start_time": "2026-07-10T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-10",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-22",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ダッチェスオブケンブリッジステークス",
+      "en": "Duchess of Cambridge Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-07-10",
+    "start_time": "2026-07-10T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-10",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-34",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "サマーステークス",
+      "en": "Summer Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-07-10",
+    "start_time": "2026-07-10T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-10",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-17",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ジュライカップ",
+      "en": "July Cup"
+    },
+    "grade": "G1",
+    "date": "2026-07-11",
+    "start_time": "2026-07-11T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-11",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-23",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "サマーマイルステークス",
+      "en": "Summer Mile Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-07-11",
+    "start_time": "2026-07-11T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-11",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-24",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "スーパラティブステークス",
+      "en": "Superlative Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-07-11",
+    "start_time": "2026-07-11T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-11",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-35",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "シルヴァーカップ",
+      "en": "John Smith's Silver Cup Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-07-11",
+    "start_time": "2026-07-11T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-11",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 2816,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -7771,6 +9899,34 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-36",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ハックウッドステークス",
+      "en": "Hackwood Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-07-18",
+    "start_time": "2026-07-18T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-18",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -8178,6 +10334,118 @@
     }
   },
   {
+    "id": "2026-uk-g1-18",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "キングジョージ6世&クイーンエリザベスステークス",
+      "en": "King George VI and Queen Elizabeth Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-07-25",
+    "start_time": "2026-07-25T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-25",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-25",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ヨークステークス",
+      "en": "York Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-07-25",
+    "start_time": "2026-07-25T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-25",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 2112,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-37",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "プリンセスマーガレットステークス",
+      "en": "Princess Margaret Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-07-25",
+    "start_time": "2026-07-25T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-25",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-38",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ヴァリアントステークス",
+      "en": "Valiant Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-07-25",
+    "start_time": "2026-07-25T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-25",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-jra-g3-42",
     "organization": "jra",
     "country_code": "JP",
@@ -8336,6 +10604,90 @@
     }
   },
   {
+    "id": "2026-uk-g1-19",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "グッドウッドカップ",
+      "en": "Goodwood Cup"
+    },
+    "grade": "G1",
+    "date": "2026-07-28",
+    "start_time": "2026-07-28T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-28",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 3219,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-26",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ヴィンテージステークス",
+      "en": "Vintage Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-07-28",
+    "start_time": "2026-07-28T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-28",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-27",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "レノックスステークス",
+      "en": "Lennox Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-07-28",
+    "start_time": "2026-07-28T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-28",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-138",
     "organization": "nar",
     "country_code": "JP",
@@ -8362,6 +10714,90 @@
     }
   },
   {
+    "id": "2026-uk-g1-20",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "サセックスステークス",
+      "en": "Sussex Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-07-29",
+    "start_time": "2026-07-29T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-29",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-39",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "オークツリーステークス",
+      "en": "Oak Tree Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-07-29",
+    "start_time": "2026-07-29T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-29",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-40",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "モールコムステークス",
+      "en": "Molecomb Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-07-29",
+    "start_time": "2026-07-29T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-29",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-139",
     "organization": "nar",
     "country_code": "JP",
@@ -8385,6 +10821,202 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-21",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ナッソーステークス",
+      "en": "Nassau Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-07-30",
+    "start_time": "2026-07-30T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-30",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 2012,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-28",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "リッチモンドステークス",
+      "en": "Richmond Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-07-30",
+    "start_time": "2026-07-30T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-30",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-41",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ゴードンステークス",
+      "en": "Gordon Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-07-30",
+    "start_time": "2026-07-30T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-30",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-29",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "キングジョージステークス",
+      "en": "King George Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-07-31",
+    "start_time": "2026-07-31T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-31",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-42",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "サラブレッドステークス",
+      "en": "Thoroughbred Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-07-31",
+    "start_time": "2026-07-31T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-31",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-43",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "グロリアスステークス",
+      "en": "Glorious Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-07-31",
+    "start_time": "2026-07-31T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-31",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-30",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "リリーラングトリーステークス",
+      "en": "Lillie Langtry Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-08-01",
+    "start_time": "2026-08-01T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-01",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 2816,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -8715,6 +11347,62 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-44",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "スウィートソレラステークス",
+      "en": "Sweet Solera Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-08-08",
+    "start_time": "2026-08-08T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-08",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-45",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ローズオブランカスターステークス",
+      "en": "Rose of Lancaster Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-08-08",
+    "start_time": "2026-08-08T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-08",
+    "course": {
+      "ja": "ヘイドック",
+      "en": "Haydock"
+    },
+    "distance": 2012,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -9123,6 +11811,62 @@
     }
   },
   {
+    "id": "2026-uk-g2-31",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ハンガーフォードステークス",
+      "en": "Hungerford Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-08-15",
+    "start_time": "2026-08-15T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-15",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-46",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ジェフリーフリアステークス",
+      "en": "Geoffrey Freer Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-08-15",
+    "start_time": "2026-08-15T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-15",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 2671,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-france-g3-39",
     "organization": "france_galop",
     "country_code": "FR",
@@ -9426,6 +12170,90 @@
     }
   },
   {
+    "id": "2026-uk-g1-22",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "インターナショナルステークス",
+      "en": "Juddmonte International"
+    },
+    "grade": "G1",
+    "date": "2026-08-19",
+    "start_time": "2026-08-19T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-19",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 2112,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-32",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "グレートヴォルティジュールステークス",
+      "en": "Great Voltigeur Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-08-19",
+    "start_time": "2026-08-19T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-19",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-47",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "エイコムステークス",
+      "en": "Acomb Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-08-19",
+    "start_time": "2026-08-19T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-19",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-151",
     "organization": "nar",
     "country_code": "JP",
@@ -9475,6 +12303,202 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-23",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ヨークシャーオークス",
+      "en": "Yorkshire Oaks"
+    },
+    "grade": "G1",
+    "date": "2026-08-20",
+    "start_time": "2026-08-20T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-20",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-33",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ロウサーステークス",
+      "en": "Lowther Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-08-20",
+    "start_time": "2026-08-20T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-20",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-24",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ナンソープステークス",
+      "en": "Nunthorpe Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-08-21",
+    "start_time": "2026-08-21T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-21",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-34",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ロンズデールカップ",
+      "en": "Lonsdale Cup"
+    },
+    "grade": "G2",
+    "date": "2026-08-21",
+    "start_time": "2026-08-21T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-21",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 3270,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-35",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ジムクラックステークス",
+      "en": "Gimcrack Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-08-21",
+    "start_time": "2026-08-21T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-21",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-25",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "シティオブヨークステークス",
+      "en": "City of York Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-08-22",
+    "start_time": "2026-08-22T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-22",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-48",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ストレンソールステークス",
+      "en": "Strensall Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-08-22",
+    "start_time": "2026-08-22T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-22",
+    "course": {
+      "ja": "ヨーク",
+      "en": "York"
+    },
+    "distance": 1811,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -9804,6 +12828,146 @@
     }
   },
   {
+    "id": "2026-uk-g2-36",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "セレブレーションマイル",
+      "en": "Celebration Mile"
+    },
+    "grade": "G2",
+    "date": "2026-08-29",
+    "start_time": "2026-08-29T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-29",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-49",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "アタランタステークス",
+      "en": "Atalanta Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-08-29",
+    "start_time": "2026-08-29T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-29",
+    "course": {
+      "ja": "サンダウン",
+      "en": "Sandown"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-50",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ソラリオステークス",
+      "en": "Solario Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-08-29",
+    "start_time": "2026-08-29T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-29",
+    "course": {
+      "ja": "サンダウン",
+      "en": "Sandown"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-51",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "プレステージステークス",
+      "en": "Prestige Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-08-29",
+    "start_time": "2026-08-29T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-29",
+    "course": {
+      "ja": "グッドウッド",
+      "en": "Goodwood"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-56",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ウィンターヒルステークス",
+      "en": "Winter Hill Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-08-29",
+    "start_time": "2026-08-29T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-08-29",
+    "course": {
+      "ja": "ウィンザー",
+      "en": "Windsor"
+    },
+    "distance": 2012,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-jra-g3-52",
     "organization": "jra",
     "country_code": "JP",
@@ -10075,6 +13239,34 @@
     }
   },
   {
+    "id": "2026-uk-g3-52",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ディックプールフィリーズステークス",
+      "en": "Dick Poole Fillies' Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-09-03",
+    "start_time": "2026-09-03T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-03",
+    "course": {
+      "ja": "ソールズベリー",
+      "en": "Salisbury"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-france-g3-44",
     "organization": "france_galop",
     "country_code": "FR",
@@ -10184,6 +13376,118 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    }
+  },
+  {
+    "id": "2026-uk-g1-26",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "スプリントカップ",
+      "en": "Sprint Cup"
+    },
+    "grade": "G1",
+    "date": "2026-09-05",
+    "start_time": "2026-09-05T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-05",
+    "course": {
+      "ja": "ヘイドック",
+      "en": "Haydock"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-53",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "スペリオールマイル",
+      "en": "Superior Mile"
+    },
+    "grade": "G3",
+    "date": "2026-09-05",
+    "start_time": "2026-09-05T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-05",
+    "course": {
+      "ja": "ヘイドック",
+      "en": "Haydock"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-54",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "セプテンバーステークス",
+      "en": "September Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-09-05",
+    "start_time": "2026-09-05T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-05",
+    "course": {
+      "ja": "ケンプトン",
+      "en": "Kempton"
+    },
+    "distance": 2414,
+    "track_type": "aw",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-55",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "シレニアステークス",
+      "en": "Sirenia Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-09-05",
+    "start_time": "2026-09-05T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-05",
+    "course": {
+      "ja": "ケンプトン",
+      "en": "Kempton"
+    },
+    "distance": 1207,
+    "track_type": "aw",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -10516,6 +13820,90 @@
     }
   },
   {
+    "id": "2026-uk-g2-37",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "パークヒルステークス",
+      "en": "Park Hill Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-10",
+    "start_time": "2026-09-10T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-10",
+    "course": {
+      "ja": "ドンカスター",
+      "en": "Doncaster"
+    },
+    "distance": 2917,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-38",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "メイヒルステークス",
+      "en": "May Hill Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-10",
+    "start_time": "2026-09-10T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-10",
+    "course": {
+      "ja": "ドンカスター",
+      "en": "Doncaster"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-57",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "セプターステークス",
+      "en": "Sceptre Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-09-10",
+    "start_time": "2026-09-10T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-10",
+    "course": {
+      "ja": "ドンカスター",
+      "en": "Doncaster"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-france-g3-45",
     "organization": "france_galop",
     "country_code": "FR",
@@ -10571,6 +13959,62 @@
     }
   },
   {
+    "id": "2026-uk-g2-39",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "フライングチルダースステークス",
+      "en": "Flying Childers Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-11",
+    "start_time": "2026-09-11T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-11",
+    "course": {
+      "ja": "ドンカスター",
+      "en": "Doncaster"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-40",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ドンカスターカップ",
+      "en": "Doncaster Cup"
+    },
+    "grade": "G2",
+    "date": "2026-09-11",
+    "start_time": "2026-09-11T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-11",
+    "course": {
+      "ja": "ドンカスター",
+      "en": "Doncaster"
+    },
+    "distance": 3621,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-jra-g3-55",
     "organization": "jra",
     "country_code": "JP",
@@ -10595,6 +14039,90 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    }
+  },
+  {
+    "id": "2026-uk-g1-27",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "セントレジャーステークス",
+      "en": "St Leger Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-09-12",
+    "start_time": "2026-09-12T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-12",
+    "course": {
+      "ja": "ドンカスター",
+      "en": "Doncaster"
+    },
+    "distance": 2917,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-41",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "シャンペンステークス",
+      "en": "Champagne Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-12",
+    "start_time": "2026-09-12T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-12",
+    "course": {
+      "ja": "ドンカスター",
+      "en": "Doncaster"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-42",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "パークステークス",
+      "en": "Park Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-12",
+    "start_time": "2026-09-12T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-12",
+    "course": {
+      "ja": "ドンカスター",
+      "en": "Doncaster"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -11087,6 +14615,90 @@
     }
   },
   {
+    "id": "2026-uk-g2-43",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ミルリーフステークス",
+      "en": "Mill Reef Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-19",
+    "start_time": "2026-09-19T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-19",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-58",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ワールドトロフィー",
+      "en": "World Trophy"
+    },
+    "grade": "G3",
+    "date": "2026-09-19",
+    "start_time": "2026-09-19T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-19",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-59",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ファースオブクライドステークス",
+      "en": "Firth of Clyde Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-09-19",
+    "start_time": "2026-09-19T13:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-19",
+    "course": {
+      "ja": "エアー",
+      "en": "Ayr"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-france-g3-52",
     "organization": "france_galop",
     "country_code": "FR",
@@ -11378,6 +14990,34 @@
     }
   },
   {
+    "id": "2026-uk-g3-60",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "サマーヴィルタタソールステークス",
+      "en": "Somerville Tattersall Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-09-24",
+    "start_time": "2026-09-24T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-09-24",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-175",
     "organization": "nar",
     "country_code": "JP",
@@ -11401,6 +15041,90 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-44",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ロックフェルステークス",
+      "en": "Rockfel Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-25",
+    "start_time": "2026-09-25T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-09-25",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g2-45",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ジョエルステークス",
+      "en": "Joel Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-25",
+    "start_time": "2026-09-25T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-09-25",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-61",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "プリンセスロイヤルステークス",
+      "en": "Princess Royal Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-09-25",
+    "start_time": "2026-09-25T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-09-25",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -11428,6 +15152,90 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    }
+  },
+  {
+    "id": "2026-uk-g1-28",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "チェヴァリーパークステークス",
+      "en": "Cheveley Park Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-09-26",
+    "start_time": "2026-09-26T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-09-26",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-29",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ミドルパークステークス",
+      "en": "Middle Park Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-09-26",
+    "start_time": "2026-09-26T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-09-26",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-46",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ロイヤルロッジステークス",
+      "en": "Royal Lodge Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-26",
+    "start_time": "2026-09-26T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-09-26",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -11835,6 +15643,90 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-30",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "サンチャリオットステークス",
+      "en": "Sun Chariot Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-10-03",
+    "start_time": "2026-10-03T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-03",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-62",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "カンバーランドロッジステークス",
+      "en": "Cumberland Lodge Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-03",
+    "start_time": "2026-10-03T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-03",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-63",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ベンゴーフステークス",
+      "en": "Bengough Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-03",
+    "start_time": "2026-10-03T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-03",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -12358,6 +16250,146 @@
     }
   },
   {
+    "id": "2026-uk-g1-31",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "フィリーズマイル",
+      "en": "Fillies' Mile"
+    },
+    "grade": "G1",
+    "date": "2026-10-09",
+    "start_time": "2026-10-09T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-09",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g2-47",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "チャレンジステークス",
+      "en": "Challenge Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-10-09",
+    "start_time": "2026-10-09T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-09",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-64",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "オーソーシャープステークス",
+      "en": "Oh So Sharp Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-09",
+    "start_time": "2026-10-09T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-09",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-65",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "プライドステークス",
+      "en": "Pride Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-09",
+    "start_time": "2026-10-09T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-09",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 2012,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-66",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "コーンウォリスステークス",
+      "en": "Cornwallis Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-09",
+    "start_time": "2026-10-09T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-09",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-jra-g3-57",
     "organization": "jra",
     "country_code": "JP",
@@ -12381,6 +16413,118 @@
     "handicap": {
       "code": "special_weight",
       "ja": "馬齢",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-32",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "デューハーストステークス",
+      "en": "Dewhurst Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-10-10",
+    "start_time": "2026-10-10T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-10",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-67",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ダーリーステークス",
+      "en": "Darley Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-10",
+    "start_time": "2026-10-10T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-10",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1811,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-68",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ゼットランドステークス",
+      "en": "Zetland Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-10",
+    "start_time": "2026-10-10T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-10",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 2012,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-69",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "オータムステークス",
+      "en": "Autumn Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-10",
+    "start_time": "2026-10-10T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-10",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
       "en": "Special Weight"
     }
   },
@@ -12674,6 +16818,146 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-33",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ブリティッシュ・チャンピオンズ・ロングディスタンスカップ",
+      "en": "British Champions Long Distance Cup"
+    },
+    "grade": "G1",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 3219,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-34",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ブリティッシュ・チャンピオンズ・スプリントステークス",
+      "en": "British Champions Sprint Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-35",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ブリティッシュ・チャンピオンズ・フィリーズ&メアズステークス",
+      "en": "British Champions Fillies' and Mares' Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-36",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "クイーンエリザベス2世ステークス",
+      "en": "Queen Elizabeth II Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-37",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "チャンピオンステークス",
+      "en": "Champion Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 2012,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -13076,6 +17360,90 @@
     "handicap": {
       "code": "special_weight",
       "ja": "馬齢",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-38",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "フューチュリティトロフィー",
+      "en": "Futurity Trophy"
+    },
+    "grade": "G1",
+    "date": "2026-10-24",
+    "start_time": "2026-10-24T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-24",
+    "course": {
+      "ja": "ドンカスター",
+      "en": "Doncaster"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-70",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "セントサイモンステークス",
+      "en": "St. Simon Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-24",
+    "start_time": "2026-10-24T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-24",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g3-71",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ホリスヒルステークス",
+      "en": "Horris Hill Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-24",
+    "start_time": "2026-10-24T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-24",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
       "en": "Special Weight"
     }
   },
