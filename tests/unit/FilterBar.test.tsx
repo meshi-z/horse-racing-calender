@@ -397,6 +397,68 @@ describe("FilterBar", () => {
     });
   });
 
+  describe("スマホ画面での開催国・主催者フィルターUI (Issue #92)", () => {
+    it("モバイル用トリガーボタンからダイアログが開き、地域別グルーピング（日本・欧州）が表示されること", () => {
+      useRaceStore.getState().setFilter("organizations", ["jra", "nar"]);
+      render(<FilterBar />);
+
+      const triggerBtn = screen.getByRole("button", { name: "開催国・主催者の選択" });
+      expect(triggerBtn).toBeInTheDocument();
+      expect(triggerBtn).toHaveTextContent("🇯🇵 日本 (2)");
+
+      // ダイアログを開く
+      fireEvent.click(triggerBtn);
+      expect(screen.getByRole("dialog")).toBeInTheDocument();
+      expect(screen.getByText("表示する競馬の開催団体を選択してください（複数選択可）")).toBeInTheDocument();
+      // 日本はすでに全選択されているため「解除」、欧州は未選択のため「欧州全重賞」
+      expect(screen.getByRole("button", { name: "解除" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "欧州全重賞" })).toBeInTheDocument();
+    });
+
+    it("ダイアログ内で日本全重賞の一括解除・一括選択が動作すること", () => {
+      useRaceStore.getState().setFilter("organizations", ["jra", "nar"]);
+      render(<FilterBar />);
+
+      const triggerBtn = screen.getByRole("button", { name: "開催国・主催者の選択" });
+      fireEvent.click(triggerBtn);
+
+      // 解除（日本全重賞がすでに選択されているため「解除」ボタンになっている）
+      const clearJapanBtn = screen.getByRole("button", { name: "解除" });
+      fireEvent.click(clearJapanBtn);
+      expect(useRaceStore.getState().filters.organizations).not.toContain("jra");
+      expect(useRaceStore.getState().filters.organizations).not.toContain("nar");
+
+      // 一括選択
+      const allJapanBtn = screen.getByRole("button", { name: "日本全重賞" });
+      fireEvent.click(allJapanBtn);
+      expect(useRaceStore.getState().filters.organizations).toContain("jra");
+      expect(useRaceStore.getState().filters.organizations).toContain("nar");
+    });
+
+    it("ダイアログ内で欧州全重賞の一括選択が動作すること", () => {
+      useRaceStore.getState().setFilter("organizations", []);
+      render(<FilterBar />);
+
+      const triggerBtn = screen.getByRole("button", { name: "開催国・主催者の選択" });
+      fireEvent.click(triggerBtn);
+
+      const allEuropeBtn = screen.getByRole("button", { name: "欧州全重賞" });
+      fireEvent.click(allEuropeBtn);
+      expect(useRaceStore.getState().filters.organizations).toEqual(["france_galop", "bha"]);
+    });
+
+    it("ダイアログ内の「完了」ボタンでダイアログを閉じられること", () => {
+      render(<FilterBar />);
+
+      const triggerBtn = screen.getByRole("button", { name: "開催国・主催者の選択" });
+      fireEvent.click(triggerBtn);
+      expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+      const doneBtn = screen.getByRole("button", { name: "完了" });
+      fireEvent.click(doneBtn);
+    });
+  });
+
   describe("アコーディオン型折りたたみ/展開機能 (Issue #51)", () => {
     it("初期状態（最上部）では詳細フィルターパネルが展開表示されていること", () => {
       render(<FilterBar />);

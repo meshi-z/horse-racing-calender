@@ -2,8 +2,17 @@ import * as React from "react";
 import { useRaceStore } from "@/store/useRaceStore";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogClose,
+} from "@/components/ui/dialog";
 import type { Grade, TrackType, DistanceCategory, Organization } from "@/types/race";
-import { Search, RotateCcw, X, MapPin, ChevronDown, ChevronUp, SlidersHorizontal } from "lucide-react";
+import { Search, RotateCcw, X, MapPin, ChevronDown, ChevronUp, SlidersHorizontal, Globe, Check } from "lucide-react";
 import { cn } from "@/libs/utils";
 import {
   useTranslation,
@@ -14,6 +23,43 @@ import {
   trackTypeLabels,
   type TranslationKey,
 } from "@/libs/i18n";
+
+export interface OrganizationGroupItem {
+  id: string;
+  labelKey: TranslationKey;
+  allLabelKey: TranslationKey;
+  flag: string;
+  organizations: Organization[];
+  items: {
+    value: Organization;
+    labelKey: TranslationKey;
+  }[];
+}
+
+export const ORGANIZATION_GROUPS: OrganizationGroupItem[] = [
+  {
+    id: "japan",
+    labelKey: "filter.regionJapan",
+    allLabelKey: "filter.selectAllJapan",
+    flag: "🇯🇵",
+    organizations: ["jra", "nar"],
+    items: [
+      { value: "jra", labelKey: "filter.orgJra" },
+      { value: "nar", labelKey: "filter.orgNar" },
+    ],
+  },
+  {
+    id: "europe",
+    labelKey: "filter.regionEurope",
+    allLabelKey: "filter.selectAllEurope",
+    flag: "🇪🇺",
+    organizations: ["france_galop", "bha"],
+    items: [
+      { value: "france_galop", labelKey: "filter.orgFrance" },
+      { value: "bha", labelKey: "filter.orgUk" },
+    ],
+  },
+];
 
 export interface GradeGroupItem {
   id: string;
@@ -82,6 +128,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
   const isManuallyToggledRef = React.useRef(false);
   const [isCourseExpanded, setIsCourseExpanded] = React.useState(false);
+  const [isOrgDialogOpen, setIsOrgDialogOpen] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
   const trackOptions: { label: string; type: TrackType }[] = [
@@ -196,6 +243,45 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     }
   };
 
+  const handleGroupOrgToggle = (groupOrgs: Organization[]) => {
+    const allSelected = groupOrgs.every((org) => filters.organizations.includes(org));
+    if (allSelected) {
+      const next = filters.organizations.filter((o) => !groupOrgs.includes(o));
+      setFilter("organizations", next);
+    } else {
+      const next = Array.from(new Set([...filters.organizations, ...groupOrgs]));
+      setFilter("organizations", next);
+    }
+  };
+
+  const getOrgTriggerLabel = () => {
+    if (filters.organizations.length === 0) {
+      return t("filter.orgTriggerAll");
+    }
+    const isAllJapan =
+      filters.organizations.length === 2 &&
+      filters.organizations.includes("jra") &&
+      filters.organizations.includes("nar");
+    if (isAllJapan) {
+      return `🇯🇵 ${t("filter.regionJapan")} (2)`;
+    }
+    const isAllEurope =
+      filters.organizations.length === 2 &&
+      filters.organizations.includes("france_galop") &&
+      filters.organizations.includes("bha");
+    if (isAllEurope) {
+      return `🇪🇺 ${t("filter.regionEurope")} (2)`;
+    }
+    if (filters.organizations.length === 1) {
+      const org = filters.organizations[0];
+      if (org === "jra") return "🇯🇵 JRA";
+      if (org === "nar") return "🇯🇵 NAR";
+      if (org === "france_galop") return "🇫🇷 France";
+      if (org === "bha") return "🇬🇧 UK";
+    }
+    return `${t("filter.orgSelectTrigger")} (${filters.organizations.length})`;
+  };
+
   const handleGradeToggle = (grade: Grade) => {
     const nextGrades = filters.grades.includes(grade)
       ? filters.grades.filter((g) => g !== grade)
@@ -305,12 +391,136 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
         </div>
 
         {/* コントロール群（主催者・詳細トグル・リセット） */}
-        <div className="flex items-center justify-between sm:justify-start gap-2 shrink-0 flex-wrap">
-          {/* 主催者セグメントコントロール (All / JRA / NAR / France / UK) */}
+        <div className="flex items-center justify-between sm:justify-start gap-1.5 sm:gap-2 shrink-0 w-full sm:w-auto">
+          {/* モバイル向け: 開催国・主催者選択ダイアログ (sm:hidden) */}
+          <div className="sm:hidden">
+            <Dialog open={isOrgDialogOpen} onOpenChange={setIsOrgDialogOpen}>
+              <DialogTrigger asChild>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  aria-label={t("filter.orgSelectModalTitle")}
+                  className={cn(
+                    "h-9 px-2.5 text-xs font-semibold gap-1.5 shrink-0 transition-colors cursor-pointer",
+                    filters.organizations.length > 0
+                      ? "border-primary/50 text-primary bg-primary/5 hover:bg-primary/10"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  <Globe className="h-3.5 w-3.5" />
+                  <span className="truncate max-w-[130px]">{getOrgTriggerLabel()}</span>
+                  <ChevronDown className="h-3 w-3 opacity-60" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-md w-[calc(100vw-32px)] max-h-[85vh] overflow-y-auto p-5">
+                <DialogHeader className="text-left space-y-1">
+                  <DialogTitle className="text-base font-bold flex items-center gap-2">
+                    <Globe className="h-4 w-4 text-primary" />
+                    {t("filter.orgSelectModalTitle")}
+                  </DialogTitle>
+                  <DialogDescription className="text-xs text-muted-foreground">
+                    {t("filter.orgSelectModalDesc")}
+                  </DialogDescription>
+                </DialogHeader>
+
+                {/* クイックアクション: すべて表示 / 全解除 */}
+                <div className="flex items-center justify-between pt-2 pb-1 border-b text-xs">
+                  <span className="font-semibold text-muted-foreground">
+                    {t("filter.orgAll")}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <Button
+                      type="button"
+                      variant={filters.organizations.length === 0 ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setFilter("organizations", [])}
+                      className="h-7 text-xs px-2.5"
+                    >
+                      {t("filter.orgAll")}
+                    </Button>
+                    {filters.organizations.length > 0 && (
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setFilter("organizations", [])}
+                        className="h-7 text-xs px-2 text-muted-foreground hover:text-foreground"
+                      >
+                        {t("filter.clear")}
+                      </Button>
+                    )}
+                  </div>
+                </div>
+
+                {/* 地域別グルーピング */}
+                <div className="flex flex-col gap-3 py-2">
+                  {ORGANIZATION_GROUPS.map((group) => {
+                    const isAllGroupSelected = group.organizations.every((org) =>
+                      filters.organizations.includes(org)
+                    );
+                    return (
+                      <div key={group.id} className="flex flex-col gap-2 rounded-lg border p-3 bg-muted/20">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-sm flex items-center gap-1.5">
+                            <span>{group.flag}</span>
+                            <span>{t(group.labelKey)}</span>
+                          </span>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleGroupOrgToggle(group.organizations)}
+                            className="h-6 text-[11px] px-2 text-primary hover:text-primary hover:bg-primary/10"
+                          >
+                            {isAllGroupSelected ? t("filter.clearGroup") : t(group.allLabelKey)}
+                          </Button>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-1.5 pt-1">
+                          {group.items.map((item) => {
+                            const isSelected = filters.organizations.includes(item.value);
+                            return (
+                              <button
+                                key={item.value}
+                                type="button"
+                                onClick={() => handleOrgToggle(item.value)}
+                                aria-pressed={isSelected}
+                                className={cn(
+                                  "flex items-center justify-between w-full px-3 py-2 rounded-md text-xs font-medium transition-all text-left border cursor-pointer",
+                                  isSelected
+                                    ? "bg-primary text-primary-foreground border-primary shadow-xs"
+                                    : "bg-background text-foreground border-input hover:bg-accent"
+                                )}
+                              >
+                                <span>{t(item.labelKey)}</span>
+                                {isSelected && <Check className="h-3.5 w-3.5 shrink-0" />}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* モーダルフッター */}
+                <div className="flex justify-end pt-2 border-t">
+                  <DialogClose asChild>
+                    <Button type="button" size="sm" className="w-full sm:w-auto px-6">
+                      {t("filter.orgModalDone")}
+                    </Button>
+                  </DialogClose>
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
+
+          {/* デスクトップ向け: 主催者セグメントコントロール (All / JRA / NAR / France / UK) */}
           <div
             role="group"
             aria-label={t("filter.orgLabel")}
-            className="flex items-center rounded-lg border bg-muted/40 p-0.5 shrink-0"
+            className="hidden sm:flex items-center rounded-lg border bg-muted/40 p-0.5 shrink-0"
           >
             {orgOptions.map((opt) => {
               const isSelected =
