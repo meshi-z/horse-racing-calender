@@ -873,8 +873,13 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - `FilterBar`: 主催者フィルターセグメントに「イギリス (UK)」を追加（`bha`）、競馬場グループ「イギリス (UK)」の追加（全16場）。
       - UIバッジ: 国コード「GB」バッジの実装（タイムラインカード、カレンダービュー、詳細ダイアログ: スカイブルー配色）および主催者「BHA」タグのカラーリング対応。
       - 多言語化: 日・英・仏の各辞書への UK / BHA 対応（免責事項、データ出典 Sporting Life、フッター注記等）。
-      - 単体テストの拡充: `FilterBar.test.tsx`, `DisclaimerDialog.test.tsx`, `Layout.test.tsx`, `App.test.tsx`, `i18nIntegration.test.tsx` のテスト更新、全37スイート・326テスト完全合格。
-    - **Phase 4: イギリス重賞確定発走予定時刻自動更新バッチ（`UkRaceTimeFetcher`）の実装 & 過去実績補完 (Issue #86) [進行中]**
+    - **Phase 4: イギリス重賞確定発走予定時刻自動更新バッチ（`UkRaceTimeFetcher`）の実装 & 過去実績補完 (Issue #86) [完了]**
+      - Sporting Life API（`https://www.sportinglife.com/api/horse-racing/racing/racecards/{date}`）からの出馬表プログラム自動取得スクリプト（`scripts/lib/uk-syutsuba.ts`）を実装。
+      - 英国夏時間（BST: UTC+1）／冬時間（GMT: UTC+0）の自動判別（`isBritishSummerTime`）および UTC ISO 8601 文字列・JST表記算出ロジックを実装。
+      - スポンサー冠名や競馬場名照合に対応した堅牢な名寄せ照合エンジン（`ukRaceMatches`, `ukCourseMatches`）を開発。
+      - `scripts/update-race-times.ts` の `DEFAULT_FETCHERS` に `UkRaceTimeFetcher`（`bha`, `uk`）を追加統合し、`npm run data:update-times:uk`（`--org bha`）での単独実行に対応。
+      - 2026年9月21日以前の過去イギリス重賞129レースを実績発走時刻で完全確定化（`is_time_confirmed: true`）。
+      - 単体テスト `tests/unit/ukSyutsuba.test.ts` を新設し、全38スイート・336テスト完全合格。
 33. **Step 33 (Next): 海外主要レース拡張（香港・UAE・米国） & 外部カレンダー連携**
     - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

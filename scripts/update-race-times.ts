@@ -214,12 +214,65 @@ export class FranceRaceTimeFetcher implements RaceTimeFetcher {
 }
 
 /**
- * 登録済みフェッチャープロバイダーのマップ（JRA, NAR, France対応）
+ * 基準日 (YYYY-MM-DD) からイギリスの当週開催期間（基準日〜7日間）の範囲を算出
+ */
+export function getUkUpcomingWindowRange(refDateStr: string, windowDays = 7): { startDate: string; endDate: string } {
+  const [y, m, d] = refDateStr.split('-').map(Number);
+  const ref = new Date(Date.UTC(y, m - 1, d));
+  const end = new Date(ref.getTime() + (windowDays - 1) * 86400000);
+
+  const formatYmd = (dt: Date) => {
+    const yr = dt.getUTCFullYear();
+    const mo = String(dt.getUTCMonth() + 1).padStart(2, '0');
+    const da = String(dt.getUTCDate()).padStart(2, '0');
+    return `${yr}-${mo}-${da}`;
+  };
+
+  return {
+    startDate: formatYmd(ref),
+    endDate: formatYmd(end),
+  };
+}
+
+/**
+ * イギリス競馬（BHA）向けプロバイダー実装
+ */
+export class UkRaceTimeFetcher implements RaceTimeFetcher {
+  readonly organization = 'bha';
+  private fixtures?: Record<string, import('./lib/uk-syutsuba').SportingLifeMeetingItem[]>;
+
+  constructor(options?: { fixtures?: Record<string, import('./lib/uk-syutsuba').SportingLifeMeetingItem[]> }) {
+    this.fixtures = options?.fixtures;
+  }
+
+  getTargetWindowRaces(races: RaceOutput[], refDate: string): RaceOutput[] {
+    const { startDate, endDate } = getUkUpcomingWindowRange(refDate);
+    return races.filter(
+      (r) =>
+        r.organization === this.organization &&
+        ((r.date >= startDate && r.date <= endDate) ||
+          (r.original_date && r.original_date >= startDate && r.original_date <= endDate))
+    );
+  }
+
+  async fetchConfirmedTimes(targetRaces: RaceOutput[]): Promise<ConfirmedRaceTime[]> {
+    const { fetchUkConfirmedRaceTimes } = await import('./lib/uk-syutsuba');
+    return await fetchUkConfirmedRaceTimes({
+      targetRaces,
+      fixtures: this.fixtures,
+    });
+  }
+}
+
+/**
+ * 登録済みフェッチャープロバイダーのマップ（JRA, NAR, France, UK対応）
  */
 export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
   jra: new JraRaceTimeFetcher(),
   nar: new NarRaceTimeFetcher(),
   france_galop: new FranceRaceTimeFetcher(),
+  bha: new UkRaceTimeFetcher(),
+  uk: new UkRaceTimeFetcher(),
 };
 
 export interface UpdateOptions {
