@@ -15,7 +15,7 @@
 
 すべての変更で全項目が必要とは限らないが、省略した項目と理由を報告する。
 
-## Shaden UI changes
+## Shadcn UI changes
 
 Shadcn UIコンポーネントを追加または更新した場合は、次を確認する。
 
