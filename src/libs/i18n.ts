@@ -150,6 +150,15 @@ export const translations = {
       update: '更新する',
       close: '閉じる',
     },
+    pwaPrompt: {
+      title: 'アプリをインストール',
+      androidDesc: 'ホーム画面に追加すると、全画面かつオフラインでも快適にレース日程を確認できます。',
+      iosTitle: 'ホーム画面に追加',
+      iosDesc: 'Safariの共有ボタンをタップし、「ホーム画面に追加」を選択するとアプリとしてご利用いただけます。',
+      installButton: 'インストール',
+      dismiss: '閉じる',
+      dismissAria: 'インストール案内を閉じる',
+    },
   },
   en: {
     app: {
@@ -297,6 +306,15 @@ export const translations = {
       update: 'Update',
       close: 'Close',
     },
+    pwaPrompt: {
+      title: 'Install App',
+      androidDesc: 'Add to home screen for full-screen and fast offline access to race schedules.',
+      iosTitle: 'Add to Home Screen',
+      iosDesc: 'Tap the share button in Safari and select "Add to Home Screen" to install as an app.',
+      installButton: 'Install',
+      dismiss: 'Close',
+      dismissAria: 'Dismiss install prompt',
+    },
   },
   fr: {
     app: {
@@ -443,6 +461,15 @@ export const translations = {
       later: 'Plus tard',
       update: 'Mettre à jour',
       close: 'Fermer',
+    },
+    pwaPrompt: {
+      title: "Installer l'application",
+      androidDesc: "Ajoutez à l'écran d'accueil pour un accès plein écran et hors ligne rapide aux courses.",
+      iosTitle: "Ajouter à l'écran d'accueil",
+      iosDesc: "Appuyez sur le bouton Partager dans Safari et sélectionnez « Sur l'écran d'accueil ».",
+      installButton: 'Installer',
+      dismiss: 'Fermer',
+      dismissAria: "Fermer l'invitation d'installation",
     },
   },
 } as const;
