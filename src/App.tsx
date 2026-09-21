@@ -8,7 +8,7 @@ import { useRaces } from "@/hooks/useRaces";
 import { useViewMode } from "@/hooks/useViewMode";
 import { useRaceStore, selectFilteredRaces } from "@/store/useRaceStore";
 import { useTranslation } from "@/libs/i18n";
-import { updatePwaMetadata, initPwaManifestCache } from "@/libs/pwaMetadata";
+import { updatePwaMetadata } from "@/libs/pwaMetadata";
 import { AlertCircle } from "lucide-react";
 
 export function App() {
@@ -24,10 +24,6 @@ export function App() {
       updatePwaMetadata(language);
     }
   }, [language, t]);
-
-  React.useEffect(() => {
-    void initPwaManifestCache(language);
-  }, []);
 
   return (
     <Layout>

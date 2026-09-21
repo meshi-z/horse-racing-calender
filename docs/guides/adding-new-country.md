@@ -357,7 +357,7 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
    - **PWAインストール時アプリ名称（短縮名・正式名）の定義（必須）**:
      - `app.appName`: ホーム画面アイコン下に表示される短縮アプリ名（例: 日本語なら `重賞カレンダー`、英語なら `Graded Races`、フランス語なら `Courses de Groupe`）。
      - `app.appFullName`: インストールダイアログやタイトル用の正式アプリ名（例: `Calendrier des Courses de Groupe`）。
-     - これらは `src/libs/pwaMetadata.ts` を通じて iOS ホーム画面用メタタグ（`apple-mobile-web-app-title`）および Web App Manifest（Android Chrome等）へ動的に同期されます。
+     - これらは `src/libs/pwaMetadata.ts` を通じて iOS ホーム画面用メタタグ（`apple-mobile-web-app-title`）および Webアプリ名メタタグ（`application-name`）へ動的に同期されます。
    - `i18n.test.ts` で既存言語辞書とのキー完全一致（パリティ）を自動検証。
 4. **言語切替UIの選択肢追加 (`src/components/shared/Header.tsx`)**:
    - Shadcn UI `Select` コンポーネントに新言語の選択肢アイテム（例: `<SelectItem value="fr">Français (FR)</SelectItem>`）を追加。
@@ -379,12 +379,13 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
    - `<meta name="keywords">`: 新規国の競馬関連キーワード（国名、統轄団体名等）の追加。
    - **OGP / Twitter Card**: `og:description` や `twitter:description` を更新。
    - **JSON-LD 構造化データ**: Schema.org（`@type: WebApplication`）の `description` や `alternateName` の同期。
-2. **`vite.config.ts` (PWA Manifest) および動的マニフェスト同期**:
+2. **`vite.config.ts` (PWA Manifest) およびホーム画面メタ情報**:
    - `VitePWA` プラグイン内の `manifest.description` を更新。
-   - **PWAインストール時のアプリ名称（`apple-mobile-web-app-title` / Web App Manifest）への新言語追加（必須）**:
+   - **PWAインストール時のアプリ名称（`apple-mobile-web-app-title` / `application-name`）への新言語追加（必須）**:
      - 新規言語を追加した際は、`src/libs/i18n.ts` の `app.appName`（短縮名）および `app.appFullName`（正式名）に対訳を必ず登録してください。
-     - アプリケーション起動時および言語切り替え時に `src/libs/pwaMetadata.ts` が自動実行され、iOS Safari 用メタタグ（`apple-mobile-web-app-title`）および Chrome/Android 用 Web App Manifest が現在の選択言語に合わせて動的に書き換えられます。
-     - `tests/unit/pwaMetadata.test.ts` に新言語でのテストケースを追加し、メタタグとマニフェストが正常に反映されることを確認します。
+     - アプリケーション起動時および言語切り替え時に `src/libs/pwaMetadata.ts` が自動実行され、iOS Safari 用メタタグ（`apple-mobile-web-app-title`）および `application-name` が現在の選択言語に合わせて動的に同期されます。
+     - なお、Android の WebAPK による余白なし全画面 maskable アイコン描画を保証するため、Web App Manifest ファイル自体はビルド時に静的配信されます。
+     - `tests/unit/pwaMetadata.test.ts` に新言語でのテストケースを追加し、メタタグが正常に反映されることを確認します。
 
 ---
 
