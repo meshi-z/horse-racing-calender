@@ -1,4 +1,9 @@
 import { create } from 'zustand';
+import {
+  getInitialOrganization,
+  saveOrganizationPreference,
+  type OrganizationFilter,
+} from '../libs/geolocation';
 import type { DistanceCategory, FilterState, Race } from '../types/race';
 
 export interface YearMonth {
@@ -23,6 +28,18 @@ export interface RaceState {
   goToCurrentMonth: () => void;
   getFilteredRaces: () => Race[];
 }
+
+export const getInitialFilters = (): FilterState => ({
+  organization: getInitialOrganization(),
+  searchQuery: '',
+  grades: [],
+  trackTypes: [],
+  sexConstraints: [],
+  ageConstraints: [],
+  courses: [],
+  distanceCategories: [],
+  yearMonth: null,
+});
 
 export const initialFilters: FilterState = {
   organization: 'all',
@@ -177,21 +194,25 @@ export function getInitialViewMode(): 'timeline' | 'calendar' {
 
 export const useRaceStore = create<RaceState>((set, get) => ({
   races: [],
-  filters: initialFilters,
+  filters: getInitialFilters(),
   viewMode: getInitialViewMode(),
   currentYearMonth: getInitialYearMonth(),
 
   setRaces: (races: Race[]) => set({ races }),
 
-  setFilter: (key, value) =>
+  setFilter: (key, value) => {
+    if (key === 'organization') {
+      saveOrganizationPreference(value as OrganizationFilter);
+    }
     set((state) => ({
       filters: {
         ...state.filters,
         [key]: value,
       },
-    })),
+    }));
+  },
 
-  resetFilters: () => set({ filters: initialFilters }),
+  resetFilters: () => set({ filters: getInitialFilters() }),
 
   setViewMode: (viewMode) => {
     set({ viewMode });

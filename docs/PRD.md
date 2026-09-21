@@ -258,7 +258,16 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
 ### 4.4 フィルターバー (`FilterBar`)
 
 - **主催者（Organization）フィルター**:
-  - `All`（すべて）/ `JRA`（中央競馬）/ `NAR`（地方競馬）/ `France`（フランス競馬）のセグメントコントロール切替。
+  - `All`（すべて）/ `JRA`（中央競馬）/ `NAR`（地方競馬）/ `France`（フランス競馬）/ `UK`（イギリス競馬）のセグメントコントロール切替。
+  - **接続元地域に応じた初期主催者の自動切り替え & 永続化 (Issue #87)**:
+    - 外部APIへの通信を行わず、クライアント端末のタイムゾーン（`Intl.DateTimeFormat().resolvedOptions().timeZone`）およびブラウザ言語（`navigator.language`）から接続元地域を自動判定。
+    - **初期値マッピング**:
+      - 日本（`Asia/Tokyo` 等）: `JRA`（日本の利用者はJRAへの関心が高く、初期状態で国際混在を避けるため）
+      - フランス（`Europe/Paris` 等）: `France` (`france_galop`)
+      - イギリス（`Europe/London` 等）: `UK` (`bha`)
+      - その他・判定不能地域: `All`（全主催者）
+    - **手動選択の優先保存**:
+      - ユーザーが手動で主催者を切り替えた場合、`localStorage`（キー: `horse_racing_calendar_organization_filter`）に永続化。次回以降のアクセスでは地域自動判定よりも手動保存設定が最優先される。
   - 選択した主催者に連動して、グレードおよび競馬場フィルターの表示選択肢が動的に最適化。
 - **キーワード検索 (`Input`)**:
   - プレースホルダーの多言語化（`ja`「レース名を検索...」↔ `en`「Search race name...」）。
@@ -880,6 +889,11 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - `scripts/update-race-times.ts` の `DEFAULT_FETCHERS` に `UkRaceTimeFetcher`（`bha`, `uk`）を追加統合し、`npm run data:update-times:uk`（`--org bha`）での単独実行に対応。
       - 2026年9月21日以前の過去イギリス重賞129レースを実績発走時刻で完全確定化（`is_time_confirmed: true`）。
       - 単体テスト `tests/unit/ukSyutsuba.test.ts` を新設し、全38スイート・336テスト完全合格。
+    - **Phase 5: 接続元地域に応じた初期主催者の自動切り替え & 設定永続化 (Issue #87) [完了]**
+      - `src/libs/geolocation.ts` の実装: クライアント側のタイムゾーン（`Intl.DateTimeFormat`）およびブラウザ言語（`navigator.language`）に基づく高速・プライバシー配慮型（外部API通信なし）の地域判定ユーティリティ。
+      - 初回アクセス時、日本からのアクセスには `JRA`、フランスからは `France Galop`、イギリスからは `BHA`、その他地域は `All` を自動初期選択。
+      - ユーザーの手動変更時は `localStorage`（`horse_racing_calendar_organization_filter`）に永続化し、次回以降は手動選択を最優先復元。
+      - 単体テスト `tests/unit/geolocation.test.ts` を新設、全39テストファイル・353テスト合格を達成。
 33. **Step 33 (Next): 海外主要レース拡張（香港・UAE・米国） & 外部カレンダー連携**
     - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

@@ -132,8 +132,10 @@ const mockRaces: Race[] = [
 
 describe('useRaceStore & filterRaces', () => {
   beforeEach(() => {
+    localStorage.clear();
     // Storeを初期状態にリセット
     useRaceStore.getState().resetFilters();
+    useRaceStore.getState().setFilter('organization', 'all');
     useRaceStore.getState().setRaces(mockRaces);
     useRaceStore.getState().setViewMode('timeline');
     useRaceStore.getState().setYearMonth({ year: 2026, month: 1 });
@@ -460,5 +462,16 @@ describe('useRaceStore & filterRaces', () => {
       expect(useRaceStore.getState().filters.grades).toEqual([]);
       expect(useRaceStore.getState().filters.distanceCategories).toEqual([]);
     });
+
+    it('主催者フィルタの変更が localStorage に永続化されること', () => {
+      useRaceStore.getState().setFilter('organization', 'france_galop');
+      expect(useRaceStore.getState().filters.organization).toBe('france_galop');
+      expect(localStorage.getItem('horse_racing_calendar_organization_filter')).toBe('france_galop');
+
+      useRaceStore.getState().setFilter('organization', 'bha');
+      expect(useRaceStore.getState().filters.organization).toBe('bha');
+      expect(localStorage.getItem('horse_racing_calendar_organization_filter')).toBe('bha');
+    });
   });
 });
+
