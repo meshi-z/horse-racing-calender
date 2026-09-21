@@ -1,10 +1,9 @@
 import { create } from 'zustand';
 import {
-  getInitialOrganization,
-  saveOrganizationPreference,
-  type OrganizationFilter,
+  getInitialOrganizations,
+  saveOrganizationsPreference,
 } from '../libs/geolocation';
-import type { DistanceCategory, FilterState, Race } from '../types/race';
+import type { DistanceCategory, FilterState, Organization, Race } from '../types/race';
 
 export interface YearMonth {
   year: number;
@@ -30,7 +29,7 @@ export interface RaceState {
 }
 
 export const getInitialFilters = (): FilterState => ({
-  organization: getInitialOrganization(),
+  organizations: getInitialOrganizations(),
   searchQuery: '',
   grades: [],
   trackTypes: [],
@@ -42,7 +41,7 @@ export const getInitialFilters = (): FilterState => ({
 });
 
 export const initialFilters: FilterState = {
-  organization: 'all',
+  organizations: [],
   searchQuery: '',
   grades: [],
   trackTypes: [],
@@ -84,9 +83,9 @@ export const matchDistanceCategory = (distance: number, category: DistanceCatego
  */
 export const filterRaces = (races: Race[], filters: FilterState): Race[] => {
   return races.filter((race) => {
-    // 主催者（JRA / NAR）絞り込み
-    if (filters.organization && filters.organization !== 'all') {
-      if (race.organization !== filters.organization) {
+    // 主催者絞り込み（空配列の場合はすべて表示）
+    if (filters.organizations && filters.organizations.length > 0) {
+      if (!filters.organizations.includes(race.organization)) {
         return false;
       }
     }
@@ -201,8 +200,8 @@ export const useRaceStore = create<RaceState>((set, get) => ({
   setRaces: (races: Race[]) => set({ races }),
 
   setFilter: (key, value) => {
-    if (key === 'organization') {
-      saveOrganizationPreference(value as OrganizationFilter);
+    if (key === 'organizations') {
+      saveOrganizationsPreference(value as Organization[]);
     }
     set((state) => ({
       filters: {

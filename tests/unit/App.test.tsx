@@ -33,7 +33,7 @@ describe("App Integration", () => {
       viewMode: "timeline",
       currentYearMonth: { year: 2026, month: 2 },
       filters: {
-        organization: "all",
+        organizations: [],
         searchQuery: "",
         grades: [],
         trackTypes: [],

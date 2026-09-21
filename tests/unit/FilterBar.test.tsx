@@ -265,28 +265,43 @@ describe("FilterBar", () => {
   });
 
   describe("NAR全重賞・ばんえい競馬・新グレード対応 (Step 20 - Phase 3)", () => {
-    it("主催者セグメントコントロールで JRA / NAR / All を切り替えられること", () => {
+    it("主催者セグメントコントロールで複数選択（JRA + NAR同時選択など）および All が機能すること", () => {
       render(<FilterBar />);
       const jraBtn = screen.getByRole("button", { name: "JRA (中央)" });
       const narBtn = screen.getByRole("button", { name: "地方競馬 (NAR)" });
       const franceBtn = screen.getByRole("button", { name: "フランス (France)" });
       const allBtn = screen.getByRole("button", { name: "すべて" });
 
+      // 初期状態は All または地域初期値。まずは「すべて」を押して空に
+      fireEvent.click(allBtn);
+      expect(useRaceStore.getState().filters.organizations).toEqual([]);
+      expect(allBtn).toHaveAttribute("aria-pressed", "true");
+
       // JRA を選択
       fireEvent.click(jraBtn);
-      expect(useRaceStore.getState().filters.organization).toBe("jra");
+      expect(useRaceStore.getState().filters.organizations).toEqual(["jra"]);
+      expect(jraBtn).toHaveAttribute("aria-pressed", "true");
+      expect(allBtn).toHaveAttribute("aria-pressed", "false");
 
-      // NAR を選択
+      // NAR を追加選択（JRA + NAR の複数選択）
       fireEvent.click(narBtn);
-      expect(useRaceStore.getState().filters.organization).toBe("nar");
+      expect(useRaceStore.getState().filters.organizations).toEqual(["jra", "nar"]);
+      expect(jraBtn).toHaveAttribute("aria-pressed", "true");
+      expect(narBtn).toHaveAttribute("aria-pressed", "true");
 
-      // France を選択
+      // France を追加選択
       fireEvent.click(franceBtn);
-      expect(useRaceStore.getState().filters.organization).toBe("france_galop");
+      expect(useRaceStore.getState().filters.organizations).toEqual(["jra", "nar", "france_galop"]);
 
-      // すべて を選択
+      // JRA をトグル解除
+      fireEvent.click(jraBtn);
+      expect(useRaceStore.getState().filters.organizations).toEqual(["nar", "france_galop"]);
+      expect(jraBtn).toHaveAttribute("aria-pressed", "false");
+
+      // すべて を選択するとクリアされること
       fireEvent.click(allBtn);
-      expect(useRaceStore.getState().filters.organization).toBe("all");
+      expect(useRaceStore.getState().filters.organizations).toEqual([]);
+      expect(allBtn).toHaveAttribute("aria-pressed", "true");
     });
 
     it("ダートグレード(Jpn1)、南関重賞(S1)、地方重賞(local_grade)がトグル選択できること", () => {
@@ -378,7 +393,7 @@ describe("FilterBar", () => {
       expect(ukOrgBtn).toBeInTheDocument();
 
       fireEvent.click(ukOrgBtn);
-      expect(useRaceStore.getState().filters.organization).toBe("bha");
+      expect(useRaceStore.getState().filters.organizations).toContain("bha");
     });
   });
 
