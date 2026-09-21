@@ -179,7 +179,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     filters.distanceCategories.length +
     filters.courses.length;
 
-  const handleOrgSelect = (org: "all" | "jra" | "nar" | "france_galop") => {
+  const handleOrgSelect = (org: "all" | "jra" | "nar" | "france_galop" | "bha") => {
     setFilter("organization", org);
   };
 
@@ -243,11 +243,12 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     setFilter("courses", []);
   };
 
-  const orgOptions: { value: "all" | "jra" | "nar" | "france_galop"; label: string }[] = [
+  const orgOptions: { value: "all" | "jra" | "nar" | "france_galop" | "bha"; label: string }[] = [
     { value: "all", label: t("filter.orgAll") },
     { value: "jra", label: t("filter.orgJra") },
     { value: "nar", label: t("filter.orgNar") },
     { value: "france_galop", label: t("filter.orgFrance") },
+    { value: "bha", label: t("filter.orgUk") },
   ];
 
   return (

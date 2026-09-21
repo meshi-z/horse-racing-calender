@@ -862,8 +862,19 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - `src/libs/date.ts`: フランス語の曜日・月名・`formatLocalDate`・`formatYearMonth`、および確定発走予定ステータスバッジ（`Prévu`）の多言語対応。
       - `GradeBadge.tsx`: `local_grade` のフランス語表記（`Régional`）およびアクセシビリティ `aria-label` の多言語対応。
       - `index.html`: `og:locale:alternate`（`fr_FR`）、Schema.org JSON-LD `inLanguage: ["ja", "en", "fr"]`、およびフランス語別名（`Courses de Groupe`）の追加。
-    - **テストと品質保証**:
-      - 単体・結合テスト全36スイート・319件の完全合格、型チェックエラー0件、プロダクションビルド成功。
-32. **Step 32 (Next): 海外主要レース拡張（イギリス・香港・UAE・米国） & 外部カレンダー連携**
-    - 本開発ガイドに基づくイギリス（BHA）、香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
+32. **Step 32 (v1.23.0 / Current): 海外競馬第2弾：イギリス競馬（BHA / IFHA Part I 重賞）統合 (Issue #83, #84, #85, #86)**
+    - **Phase 1: PRD改訂 (v1.23.0) およびイギリス競馬スキーマ・型定義の拡張 (Issue #83) [完了]**
+      - `docs/PRD.md` 改訂、`src/types/race.ts` の型定義拡張（`Organization: 'bha'`, `CountryCode: 'GB'`, `FilterState.organization: 'bha'`）。
+    - **Phase 2: イギリス重賞データ抽出・日英マスタ作成およびパイプライン統合 (Issue #84) [完了]**
+      - `src/data/uk_race_master.json`（全156重賞の日英マスタ、アスコット、エプソム、ニューマーケット等全16競馬場、距離・馬場・AW対応、夏時間BST/GMT自動吸収）の作成。
+      - `scripts/lib/uk-races.ts` の実装および `scripts/parse-races.ts` への統合マージ処理追加（全753レース出力）。
+      - 単体テスト（`tests/unit/ukRaces.test.ts`, `tests/unit/racesData.test.ts`）の拡充と全テスト合格。
+    - **Phase 3: イギリス競馬UI対応（主催者フィルター「UK」、競馬場グループ追加、GB国コードバッジ、多言語化） (Issue #85) [完了]**
+      - `FilterBar`: 主催者フィルターセグメントに「イギリス (UK)」を追加（`bha`）、競馬場グループ「イギリス (UK)」の追加（全16場）。
+      - UIバッジ: 国コード「GB」バッジの実装（タイムラインカード、カレンダービュー、詳細ダイアログ: スカイブルー配色）および主催者「BHA」タグのカラーリング対応。
+      - 多言語化: 日・英・仏の各辞書への UK / BHA 対応（免責事項、データ出典 Sporting Life、フッター注記等）。
+      - 単体テストの拡充: `FilterBar.test.tsx`, `DisclaimerDialog.test.tsx`, `Layout.test.tsx`, `App.test.tsx`, `i18nIntegration.test.tsx` のテスト更新、全37スイート・326テスト完全合格。
+    - **Phase 4: イギリス重賞確定発走予定時刻自動更新バッチ（`UkRaceTimeFetcher`）の実装 & 過去実績補完 (Issue #86) [進行中]**
+33. **Step 33 (Next): 海外主要レース拡張（香港・UAE・米国） & 外部カレンダー連携**
+    - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

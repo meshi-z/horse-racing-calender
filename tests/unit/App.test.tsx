@@ -120,7 +120,7 @@ describe("App Integration", () => {
     rerender(<App />);
 
     expect(document.documentElement.lang).toBe("en");
-    expect(document.title).toBe("Graded Races - JRA, NAR & France Galop Graded Races Calendar");
+    expect(document.title).toBe("Graded Races - JRA, NAR, France Galop & UK Graded Races Calendar");
     expect(screen.getByText("Matching races: 1")).toBeInTheDocument();
     expect(screen.getByText("View: Timeline")).toBeInTheDocument();
 
@@ -129,7 +129,7 @@ describe("App Integration", () => {
     rerender(<App />);
 
     expect(document.documentElement.lang).toBe("fr");
-    expect(document.title).toBe("Courses de Groupe - Calendrier JRA, NAR & France Galop");
+    expect(document.title).toBe("Courses de Groupe - Calendrier JRA, NAR, France Galop & UK");
     expect(screen.getByText("Courses correspondantes: 1")).toBeInTheDocument();
     expect(screen.getByText("Affichage: Chronologie")).toBeInTheDocument();
   });
