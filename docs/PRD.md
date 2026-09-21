@@ -131,14 +131,15 @@ v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい
     - 2026年開催済みの過去イギリス重賞レースの発走時刻を確定実績値で完全バックフィル（`is_time_confirmed: true`）。
 
 - **海外競馬：アメリカ競馬（Equibase / IFHA Part I 重賞）統合 (v1.28.0 / Issue #101, #102, #103, #104)**:
-  - **一次ソースからのデータ構築**: IFHA Part I リスト (United States of America: 格付け・出走資格・距離・馬場) および Equibase 公式開催日程に基づく主要重賞（G1, G2, G3）の構造化。ケンタッキーダービー、プリークネスS、ベルモントSのアメリカ三冠競走、トラヴァーズS、メトロポリタンH、ホイットニーS、ブリーダーズカップ各競走等を含む。
-  - **データアーキテクチャ拡張**:
+  - **一次ソースからのデータ構築 [完了]**: IFHA Part I リスト (United States of America: 格付け・出走資格・距離・馬場) および Equibase 公式開催日程に基づく平地全408重賞（G1 92、G2 133、G3 183）の構造化。ケンタッキーダービー、プリークネスS、ベルモントSのアメリカ三冠競走、トラヴァーズS、メトロポリタンH、ホイットニーS、ブリーダーズカップ各競走等を含む。
+  - **データアーキテクチャ拡張 [完了]**:
     - `country_code`: 国コード `"US"` をスキーマに完全適用。
     - `organization`: `"equibase"` を新設。
     - タイムゾーン・発走時刻変換: アメリカ各州の競馬場タイムゾーン（東部 EDT/EST: UTC-4/-5、中部 CDT/CST: UTC-5/-6、山岳部 MDT/MST: UTC-6/-7、太平洋 PDT/PST: UTC-7/-8）から夏時間を考慮して正確に UTC ISO 8601 文字列（`start_time`）へ変換。
-  - **日英対応マスタ (`src/data/us_race_master.json`)**:
+  - **日英対応マスタ (`src/data/us_race_master.json`) [完了]**:
     - レース名: 英語正式名（`Kentucky Derby`, `Preakness Stakes`, `Belmont Stakes`, `Breeders' Cup Classic` 等）$\leftrightarrow$ 日本語通称（`ケンタッキーダービー`, `プリークネスステークス`, `ベルモントステークス`, `ブリーダーズカップクラシック`）のマッピング。
     - 競馬場名: 日英仏対応（Churchill Downs / チャーチルダウンズ, Saratoga / サラトガ, Belmont Park / ベルモントパーク, Del Mar / デルマー, Santa Anita / サンタアニタ, Pimlico / ピムリコ, Keeneland / キーンランド, Gulfstream Park / ガルフストリームパーク 等）。
+    - 抽出・マージモジュール（`scripts/lib/us-races.ts`）の実装とビルドパイプライン（`scripts/parse-races.ts`）への統合（全1161レースへマージ）。
   - **UI/UX 拡張**:
     - 主催者フィルターへの「USA (Equibase)」の追加。
     - 競馬場セレクトへの「アメリカ (USA)」グループ新設。
