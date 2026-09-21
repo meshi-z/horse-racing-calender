@@ -53,7 +53,7 @@ export type Race = {
 export type DistanceCategory = 'sprint' | 'mile' | 'intermediate' | 'long';
 
 export type FilterState = {
-  organization: 'all' | 'jra' | 'nar' | 'france_galop' | 'bha';
+  organizations: Organization[];
   searchQuery: string;
   grades: Grade[];
   trackTypes: TrackType[];

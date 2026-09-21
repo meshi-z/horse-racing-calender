@@ -135,7 +135,7 @@ describe('useRaceStore & filterRaces', () => {
     localStorage.clear();
     // Storeを初期状態にリセット
     useRaceStore.getState().resetFilters();
-    useRaceStore.getState().setFilter('organization', 'all');
+    useRaceStore.getState().setFilter('organizations', []);
     useRaceStore.getState().setRaces(mockRaces);
     useRaceStore.getState().setViewMode('timeline');
     useRaceStore.getState().setYearMonth({ year: 2026, month: 1 });
@@ -311,7 +311,7 @@ describe('useRaceStore & filterRaces', () => {
 
     it('filterRaces を直接呼び出してフィルタリングできること', () => {
       const filtered = filterRaces(mockRaces, {
-        organization: 'all',
+        organizations: [],
         searchQuery: '',
         grades: ['J.G1'],
         trackTypes: [],
@@ -325,7 +325,7 @@ describe('useRaceStore & filterRaces', () => {
       expect(filtered[0].id).toBe('2026-jra-jg1-01');
     });
 
-    it('organization フィルター (jra / nar) で正しく絞り込めること', () => {
+    it('organizations フィルターで単一および複数選択（JRA+NARなど）で正しく絞り込めること', () => {
       const narRace = {
         ...mockRaces[0],
         id: '2026-nar-jpn1-01',
@@ -338,19 +338,26 @@ describe('useRaceStore & filterRaces', () => {
         organization: 'france_galop' as const,
         grade: 'G1' as const,
       };
-      const mixedRaces = [...mockRaces, narRace, franceRace];
+      const ukRace = {
+        ...mockRaces[0],
+        id: '2026-uk-g1-01',
+        organization: 'bha' as const,
+        grade: 'G1' as const,
+      };
+      const mixedRaces = [...mockRaces, narRace, franceRace, ukRace];
 
       // JRAのみ
       const jraOnly = filterRaces(mixedRaces, {
         ...initialFilters,
-        organization: 'jra',
+        organizations: ['jra'],
       });
       expect(jraOnly.every((r) => r.organization === 'jra')).toBe(true);
+      expect(jraOnly).toHaveLength(mockRaces.length);
 
       // NARのみ
       const narOnly = filterRaces(mixedRaces, {
         ...initialFilters,
-        organization: 'nar',
+        organizations: ['nar'],
       });
       expect(narOnly).toHaveLength(1);
       expect(narOnly[0].id).toBe('2026-nar-jpn1-01');
@@ -358,15 +365,31 @@ describe('useRaceStore & filterRaces', () => {
       // Franceのみ
       const franceOnly = filterRaces(mixedRaces, {
         ...initialFilters,
-        organization: 'france_galop',
+        organizations: ['france_galop'],
       });
       expect(franceOnly).toHaveLength(1);
       expect(franceOnly[0].id).toBe('2026-france-g1-01');
 
-      // all
+      // JRA + NAR (日本国内重賞の複数選択)
+      const japanRaces = filterRaces(mixedRaces, {
+        ...initialFilters,
+        organizations: ['jra', 'nar'],
+      });
+      expect(japanRaces).toHaveLength(mockRaces.length + 1);
+      expect(japanRaces.every((r) => r.organization === 'jra' || r.organization === 'nar')).toBe(true);
+
+      // France + UK (欧州重賞の複数選択)
+      const europeRaces = filterRaces(mixedRaces, {
+        ...initialFilters,
+        organizations: ['france_galop', 'bha'],
+      });
+      expect(europeRaces).toHaveLength(2);
+      expect(europeRaces.map((r) => r.id)).toEqual(['2026-france-g1-01', '2026-uk-g1-01']);
+
+      // 空配列（すべて / all）
       const allRaces = filterRaces(mixedRaces, {
         ...initialFilters,
-        organization: 'all',
+        organizations: [],
       });
       expect(allRaces).toHaveLength(mixedRaces.length);
     });
@@ -464,14 +487,15 @@ describe('useRaceStore & filterRaces', () => {
     });
 
     it('主催者フィルタの変更が localStorage に永続化されること', () => {
-      useRaceStore.getState().setFilter('organization', 'france_galop');
-      expect(useRaceStore.getState().filters.organization).toBe('france_galop');
-      expect(localStorage.getItem('horse_racing_calendar_organization_filter')).toBe('france_galop');
+      useRaceStore.getState().setFilter('organizations', ['france_galop']);
+      expect(useRaceStore.getState().filters.organizations).toEqual(['france_galop']);
+      expect(localStorage.getItem('horse_racing_calendar_organizations_filter')).toBe(JSON.stringify(['france_galop']));
 
-      useRaceStore.getState().setFilter('organization', 'bha');
-      expect(useRaceStore.getState().filters.organization).toBe('bha');
-      expect(localStorage.getItem('horse_racing_calendar_organization_filter')).toBe('bha');
+      useRaceStore.getState().setFilter('organizations', ['jra', 'nar']);
+      expect(useRaceStore.getState().filters.organizations).toEqual(['jra', 'nar']);
+      expect(localStorage.getItem('horse_racing_calendar_organizations_filter')).toBe(JSON.stringify(['jra', 'nar']));
     });
   });
 });
+
 

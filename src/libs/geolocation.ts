@@ -1,9 +1,9 @@
-import type { FilterState } from '../types/race';
+import type { Organization } from '../types/race';
 
 export type UserRegion = 'JP' | 'FR' | 'GB' | 'OTHER';
-export type OrganizationFilter = FilterState['organization'];
 
-export const ORGANIZATION_STORAGE_KEY = 'horse_racing_calendar_organization_filter';
+export const ORGANIZATIONS_STORAGE_KEY = 'horse_racing_calendar_organizations_filter';
+export const LEGACY_ORGANIZATION_STORAGE_KEY = 'horse_racing_calendar_organization_filter';
 
 export interface GeolocationContext {
   timeZone?: string;
@@ -82,41 +82,65 @@ export function detectUserRegion(context?: GeolocationContext): UserRegion {
 }
 
 /**
- * 推定された地域に応じたデフォルト主催者フィルター値を返す
+ * 推定された地域に応じたデフォルト主催者配列を返す
+ * - JP: ['jra', 'nar'] (日本国内重賞)
+ * - FR: ['france_galop'] (フランス重賞)
+ * - GB: ['bha'] (イギリス重賞)
+ * - OTHER: [] (すべて)
  */
-export function getDefaultOrganizationForRegion(region: UserRegion): OrganizationFilter {
+export function getDefaultOrganizationsForRegion(region: UserRegion): Organization[] {
   switch (region) {
     case 'JP':
-      return 'jra';
+      return ['jra', 'nar'];
     case 'FR':
-      return 'france_galop';
+      return ['france_galop'];
     case 'GB':
-      return 'bha';
+      return ['bha'];
     case 'OTHER':
     default:
-      return 'all';
+      return [];
   }
 }
 
 const VALID_ORGANIZATIONS: ReadonlySet<string> = new Set([
-  'all',
   'jra',
   'nar',
   'france_galop',
   'bha',
+  'overseas',
 ]);
 
 /**
- * 初期主催者フィルターを決定する
- * 1. localStorage に手動設定が保存されている場合は最優先
- * 2. 未設定の場合は端末の地域（タイムゾーン・ロケール）を自動判定して対応する主催者を返す
+ * 初期主催者フィルター配列を決定する
+ * 1. localStorage (ORGANIZATIONS_STORAGE_KEY) に手動設定が保存されている場合は最優先
+ * 2. 旧キー (LEGACY_ORGANIZATION_STORAGE_KEY) が存在する場合はマイグレーションして復元
+ * 3. 未設定の場合は端末の地域（タイムゾーン・ロケール）を自動判定して対応する主催者を返す
  */
-export function getInitialOrganization(context?: GeolocationContext): OrganizationFilter {
+export function getInitialOrganizations(context?: GeolocationContext): Organization[] {
   try {
     if (typeof window !== 'undefined' && window.localStorage) {
-      const stored = window.localStorage.getItem(ORGANIZATION_STORAGE_KEY);
-      if (stored && VALID_ORGANIZATIONS.has(stored)) {
-        return stored as OrganizationFilter;
+      // 1. 新キー (配列JSON)
+      const storedJson = window.localStorage.getItem(ORGANIZATIONS_STORAGE_KEY);
+      if (storedJson !== null) {
+        try {
+          const parsed = JSON.parse(storedJson);
+          if (Array.isArray(parsed) && parsed.every((item) => typeof item === 'string' && VALID_ORGANIZATIONS.has(item))) {
+            return parsed as Organization[];
+          }
+        } catch {
+          // JSONパースエラー時はフォールバック
+        }
+      }
+
+      // 2. 旧キー (単一値文字列) からのマイグレーション
+      const legacyStored = window.localStorage.getItem(LEGACY_ORGANIZATION_STORAGE_KEY);
+      if (legacyStored !== null) {
+        if (legacyStored === 'all') {
+          return [];
+        }
+        if (VALID_ORGANIZATIONS.has(legacyStored)) {
+          return [legacyStored as Organization];
+        }
       }
     }
   } catch {
@@ -124,18 +148,19 @@ export function getInitialOrganization(context?: GeolocationContext): Organizati
   }
 
   const region = detectUserRegion(context);
-  return getDefaultOrganizationForRegion(region);
+  return getDefaultOrganizationsForRegion(region);
 }
 
 /**
- * ユーザーが手動で選択した主催者フィルターを localStorage に保存する
+ * ユーザーが手動で選択した主催者フィルター配列を localStorage に保存する
  */
-export function saveOrganizationPreference(org: OrganizationFilter): void {
+export function saveOrganizationsPreference(orgs: Organization[]): void {
   try {
     if (typeof window !== 'undefined' && window.localStorage) {
-      window.localStorage.setItem(ORGANIZATION_STORAGE_KEY, org);
+      window.localStorage.setItem(ORGANIZATIONS_STORAGE_KEY, JSON.stringify(orgs));
     }
   } catch {
     // ignore
   }
 }
+

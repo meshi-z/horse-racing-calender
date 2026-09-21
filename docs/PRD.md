@@ -257,17 +257,22 @@ Shadcn UI の `Badge` コンポーネントを拡張し、JRA・NAR公式およ�
 
 ### 4.4 フィルターバー (`FilterBar`)
 
-- **主催者（Organization）フィルター**:
-  - `All`（すべて）/ `JRA`（中央競馬）/ `NAR`（地方競馬）/ `France`（フランス競馬）/ `UK`（イギリス競馬）のセグメントコントロール切替。
-  - **接続元地域に応じた初期主催者の自動切り替え & 永続化 (Issue #87)**:
+- **主催者（Organization）フィルター（複数選択対応: Issue #90）**:
+  - `All`（すべて）/ `JRA`（中央競馬）/ `NAR`（地方競馬）/ `France`（フランス競馬）/ `UK`（イギリス競馬）のトグル切り替え（複数同時選択対応）。
+  - **操作性 & インタラクション**:
+    - **「すべて」ボタン**: `organizations` を空配列（`[]`）にリセットし、国内外全レースを表示。
+    - **個別主催者ボタン**: トグル（ON/OFF）切り替えに対応。「JRA + NAR」（国内全重賞）や「France + UK」（欧州重賞）など複数主催者の柔軟な組み合わせが可能。
+    - **「すべて」からの選択遷移**: 「すべて」状態でいずれか（例: JRA）を押すとその主催者のみが選択され、選択中主催者を全解除すると自動的に「すべて」へ復帰。
+    - **アクセシビリティ**: 選択状態は `aria-pressed` によりスクリーンリーダーへ正確に伝達。
+  - **接続元地域に応じた初期主催者の自動切り替え & 永続化 (Issue #87, #90)**:
     - 外部APIへの通信を行わず、クライアント端末のタイムゾーン（`Intl.DateTimeFormat().resolvedOptions().timeZone`）およびブラウザ言語（`navigator.language`）から接続元地域を自動判定。
     - **初期値マッピング**:
-      - 日本（`Asia/Tokyo` 等）: `JRA`（日本の利用者はJRAへの関心が高く、初期状態で国際混在を避けるため）
-      - フランス（`Europe/Paris` 等）: `France` (`france_galop`)
-      - イギリス（`Europe/London` 等）: `UK` (`bha`)
-      - その他・判定不能地域: `All`（全主催者）
-    - **手動選択の優先保存**:
-      - ユーザーが手動で主催者を切り替えた場合、`localStorage`（キー: `horse_racing_calendar_organization_filter`）に永続化。次回以降のアクセスでは地域自動判定よりも手動保存設定が最優先される。
+      - 日本（`Asia/Tokyo` 等）: `JRA + NAR`（`['jra', 'nar']`、国内全重賞）
+      - フランス（`Europe/Paris` 等）: `France` (`['france_galop']`)
+      - イギリス（`Europe/London` 等）: `UK` (`['bha']`)
+      - その他・判定不能地域: `All`（`[]`、全主催者）
+    - **手動選択の優先保存 & マイグレーション**:
+      - ユーザーが手動で主催者を切り替えた場合、`localStorage`（キー: `horse_racing_calendar_organizations_filter`）にJSON配列として永続化。旧キー（`horse_racing_calendar_organization_filter`）の単一値文字列が存在する場合も安全に自動マイグレーション。次回以降のアクセスでは手動保存設定が最優先される。
   - 選択した主催者に連動して、グレードおよび競馬場フィルターの表示選択肢が動的に最適化。
 - **キーワード検索 (`Input`)**:
   - プレースホルダーの多言語化（`ja`「レース名を検索...」↔ `en`「Search race name...」）。
@@ -894,6 +899,12 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - 初回アクセス時、日本からのアクセスには `JRA`、フランスからは `France Galop`、イギリスからは `BHA`、その他地域は `All` を自動初期選択。
       - ユーザーの手動変更時は `localStorage`（`horse_racing_calendar_organization_filter`）に永続化し、次回以降は手動選択を最優先復元。
       - 単体テスト `tests/unit/geolocation.test.ts` を新設、全39テストファイル・353テスト合格を達成。
+    - **Phase 6: 主催者・開催国フィルターの複数選択対応（JRA+NAR同時選択など） (Issue #90) [完了]**
+      - `src/types/race.ts`: `FilterState.organization`（単一値）から `FilterState.organizations: Organization[]`（複数値配列）への完全移行。
+      - `src/libs/geolocation.ts`: 初期主催者マッピングを配列対応（日本アクセス時は `['jra', 'nar']`（国内重賞全件）を初期選択）。`localStorage` 新キー（`horse_racing_calendar_organizations_filter`）への配列JSON保存および旧キーからの安全な自動マイグレーション。
+      - `src/store/useRaceStore.ts`: `filterRaces` による複数主催者絞り込み（`filters.organizations.includes(race.organization)`）および空配列時全件表示の実装。
+      - `src/components/shared/FilterBar.tsx`: 「すべて」全解除ボタンと各主催者（JRA / NAR / France / UK）の個別トグルボタンによる直感的な複数選択UI（`aria-pressed` 対応）。
+      - 単体・統合テストの更新・拡充（`FilterBar.test.tsx`, `useRaceStore.test.ts`, `geolocation.test.ts` 等）、全39テストファイル・354テスト完全合格。
 33. **Step 33 (Next): 海外主要レース拡張（香港・UAE・米国） & 外部カレンダー連携**
     - 香港（HKJC）、UAE（ERA）、米国（ブリーダーズカップ等）の重賞データ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

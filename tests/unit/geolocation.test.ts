@@ -1,10 +1,11 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import {
   detectUserRegion,
-  getDefaultOrganizationForRegion,
-  getInitialOrganization,
-  saveOrganizationPreference,
-  ORGANIZATION_STORAGE_KEY,
+  getDefaultOrganizationsForRegion,
+  getInitialOrganizations,
+  saveOrganizationsPreference,
+  ORGANIZATIONS_STORAGE_KEY,
+  LEGACY_ORGANIZATION_STORAGE_KEY,
 } from '../../src/libs/geolocation';
 
 describe('geolocation', () => {
@@ -67,57 +68,68 @@ describe('geolocation', () => {
     });
   });
 
-  describe('getDefaultOrganizationForRegion', () => {
-    it('JP の場合は jra を返すこと', () => {
-      expect(getDefaultOrganizationForRegion('JP')).toBe('jra');
+  describe('getDefaultOrganizationsForRegion', () => {
+    it('JP の場合は [jra, nar] を返すこと (日本国内重賞)', () => {
+      expect(getDefaultOrganizationsForRegion('JP')).toEqual(['jra', 'nar']);
     });
 
-    it('FR の場合は france_galop を返すこと', () => {
-      expect(getDefaultOrganizationForRegion('FR')).toBe('france_galop');
+    it('FR の場合は [france_galop] を返すこと', () => {
+      expect(getDefaultOrganizationsForRegion('FR')).toEqual(['france_galop']);
     });
 
-    it('GB の場合は bha を返すこと', () => {
-      expect(getDefaultOrganizationForRegion('GB')).toBe('bha');
+    it('GB の場合は [bha] を返すこと', () => {
+      expect(getDefaultOrganizationsForRegion('GB')).toEqual(['bha']);
     });
 
-    it('OTHER の場合は all を返すこと', () => {
-      expect(getDefaultOrganizationForRegion('OTHER')).toBe('all');
+    it('OTHER の場合は [] (すべて) を返すこと', () => {
+      expect(getDefaultOrganizationsForRegion('OTHER')).toEqual([]);
     });
   });
 
-  describe('getInitialOrganization', () => {
-    it('localStorage に有効な設定が保存されている場合はそれを最優先で返すこと', () => {
-      localStorage.setItem(ORGANIZATION_STORAGE_KEY, 'france_galop');
-      expect(getInitialOrganization({ timeZone: 'Asia/Tokyo' })).toBe('france_galop');
+  describe('getInitialOrganizations', () => {
+    it('localStorage に新キーの有効な設定が保存されている場合はそれを最優先で返すこと', () => {
+      localStorage.setItem(ORGANIZATIONS_STORAGE_KEY, JSON.stringify(['france_galop', 'bha']));
+      expect(getInitialOrganizations({ timeZone: 'Asia/Tokyo' })).toEqual(['france_galop', 'bha']);
 
-      localStorage.setItem(ORGANIZATION_STORAGE_KEY, 'bha');
-      expect(getInitialOrganization({ timeZone: 'Asia/Tokyo' })).toBe('bha');
+      localStorage.setItem(ORGANIZATIONS_STORAGE_KEY, JSON.stringify([]));
+      expect(getInitialOrganizations({ timeZone: 'Asia/Tokyo' })).toEqual([]);
+    });
 
-      localStorage.setItem(ORGANIZATION_STORAGE_KEY, 'all');
-      expect(getInitialOrganization({ timeZone: 'Asia/Tokyo' })).toBe('all');
+    it('localStorage に旧キーの設定が存在する場合はマイグレーションして返すこと', () => {
+      localStorage.setItem(LEGACY_ORGANIZATION_STORAGE_KEY, 'france_galop');
+      expect(getInitialOrganizations({ timeZone: 'Asia/Tokyo' })).toEqual(['france_galop']);
+
+      localStorage.setItem(LEGACY_ORGANIZATION_STORAGE_KEY, 'all');
+      expect(getInitialOrganizations({ timeZone: 'Asia/Tokyo' })).toEqual([]);
     });
 
     it('localStorage に無効な値がある場合は地域判定へフォールバックすること', () => {
-      localStorage.setItem(ORGANIZATION_STORAGE_KEY, 'invalid_org');
-      expect(getInitialOrganization({ timeZone: 'Asia/Tokyo' })).toBe('jra');
-      expect(getInitialOrganization({ timeZone: 'Europe/Paris' })).toBe('france_galop');
+      localStorage.setItem(ORGANIZATIONS_STORAGE_KEY, 'invalid_json');
+      expect(getInitialOrganizations({ timeZone: 'Asia/Tokyo' })).toEqual(['jra', 'nar']);
+      expect(getInitialOrganizations({ timeZone: 'Europe/Paris' })).toEqual(['france_galop']);
+
+      localStorage.setItem(ORGANIZATIONS_STORAGE_KEY, JSON.stringify(['invalid_org']));
+      expect(getInitialOrganizations({ timeZone: 'Asia/Tokyo' })).toEqual(['jra', 'nar']);
     });
 
     it('localStorage に何も保存されていない場合は地域判定に従うこと', () => {
-      expect(getInitialOrganization({ timeZone: 'Asia/Tokyo' })).toBe('jra');
-      expect(getInitialOrganization({ timeZone: 'Europe/London' })).toBe('bha');
-      expect(getInitialOrganization({ timeZone: 'Europe/Paris' })).toBe('france_galop');
-      expect(getInitialOrganization({ timeZone: 'America/New_York' })).toBe('all');
+      expect(getInitialOrganizations({ timeZone: 'Asia/Tokyo' })).toEqual(['jra', 'nar']);
+      expect(getInitialOrganizations({ timeZone: 'Europe/London' })).toEqual(['bha']);
+      expect(getInitialOrganizations({ timeZone: 'Europe/Paris' })).toEqual(['france_galop']);
+      expect(getInitialOrganizations({ timeZone: 'America/New_York' })).toEqual([]);
     });
   });
 
-  describe('saveOrganizationPreference', () => {
-    it('選択された主催者を localStorage に保存すること', () => {
-      saveOrganizationPreference('nar');
-      expect(localStorage.getItem(ORGANIZATION_STORAGE_KEY)).toBe('nar');
+  describe('saveOrganizationsPreference', () => {
+    it('選択された主催者配列を localStorage に JSON として保存すること', () => {
+      saveOrganizationsPreference(['nar', 'jra']);
+      expect(localStorage.getItem(ORGANIZATIONS_STORAGE_KEY)).toBe(JSON.stringify(['nar', 'jra']));
 
-      saveOrganizationPreference('france_galop');
-      expect(localStorage.getItem(ORGANIZATION_STORAGE_KEY)).toBe('france_galop');
+      saveOrganizationsPreference(['france_galop']);
+      expect(localStorage.getItem(ORGANIZATIONS_STORAGE_KEY)).toBe(JSON.stringify(['france_galop']));
+
+      saveOrganizationsPreference([]);
+      expect(localStorage.getItem(ORGANIZATIONS_STORAGE_KEY)).toBe(JSON.stringify([]));
     });
   });
 });

@@ -52,7 +52,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
       viewMode: "timeline",
       currentYearMonth: { year: 2026, month: 2 },
       filters: {
-        organization: "all",
+        organizations: [],
         searchQuery: "",
         grades: [],
         trackTypes: [],

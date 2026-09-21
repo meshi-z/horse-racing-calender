@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRaceStore } from "@/store/useRaceStore";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import type { Grade, TrackType, DistanceCategory } from "@/types/race";
+import type { Grade, TrackType, DistanceCategory, Organization } from "@/types/race";
 import { Search, RotateCcw, X, MapPin, ChevronDown, ChevronUp, SlidersHorizontal } from "lucide-react";
 import { cn } from "@/libs/utils";
 import {
@@ -158,13 +158,13 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     filters.courses.length,
     filters.distanceCategories.length,
     filters.grades.length,
-    filters.organization,
+    filters.organizations.length,
     filters.trackTypes.length,
   ]);
 
   const hasActiveFilters =
     filters.searchQuery.trim() !== "" ||
-    filters.organization !== "all" ||
+    filters.organizations.length > 0 ||
     filters.grades.length > 0 ||
     filters.trackTypes.length > 0 ||
     filters.distanceCategories.length > 0 ||
@@ -179,8 +179,21 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     filters.distanceCategories.length +
     filters.courses.length;
 
-  const handleOrgSelect = (org: "all" | "jra" | "nar" | "france_galop" | "bha") => {
-    setFilter("organization", org);
+  const handleOrgToggle = (org: "all" | Organization) => {
+    if (org === "all") {
+      setFilter("organizations", []);
+      return;
+    }
+    if (filters.organizations.length === 0) {
+      setFilter("organizations", [org]);
+      return;
+    }
+    if (filters.organizations.includes(org)) {
+      const next = filters.organizations.filter((o) => o !== org);
+      setFilter("organizations", next);
+    } else {
+      setFilter("organizations", [...filters.organizations, org]);
+    }
   };
 
   const handleGradeToggle = (grade: Grade) => {
@@ -243,7 +256,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     setFilter("courses", []);
   };
 
-  const orgOptions: { value: "all" | "jra" | "nar" | "france_galop" | "bha"; label: string }[] = [
+  const orgOptions: { value: "all" | Organization; label: string }[] = [
     { value: "all", label: t("filter.orgAll") },
     { value: "jra", label: t("filter.orgJra") },
     { value: "nar", label: t("filter.orgNar") },
@@ -293,19 +306,22 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
 
         {/* コントロール群（主催者・詳細トグル・リセット） */}
         <div className="flex items-center justify-between sm:justify-start gap-2 shrink-0 flex-wrap">
-          {/* 主催者セグメントコントロール (All / JRA / NAR) */}
+          {/* 主催者セグメントコントロール (All / JRA / NAR / France / UK) */}
           <div
             role="group"
             aria-label={t("filter.orgLabel")}
             className="flex items-center rounded-lg border bg-muted/40 p-0.5 shrink-0"
           >
             {orgOptions.map((opt) => {
-              const isSelected = filters.organization === opt.value;
+              const isSelected =
+                opt.value === "all"
+                  ? filters.organizations.length === 0
+                  : filters.organizations.includes(opt.value);
               return (
                 <button
                   key={opt.value}
                   type="button"
-                  onClick={() => handleOrgSelect(opt.value)}
+                  onClick={() => handleOrgToggle(opt.value)}
                   aria-pressed={isSelected}
                   className={cn(
                     "rounded-md px-2.5 py-1 text-xs font-semibold transition-all cursor-pointer",
