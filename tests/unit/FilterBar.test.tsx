@@ -564,6 +564,8 @@ describe("FilterBar", () => {
 
       const collapseBtn = screen.getByRole("button", { name: "Collapse filters" });
       expect(collapseBtn).toBeInTheDocument();
+      // 表示テキストは短縮された名詞 "Filters" (Issue #96)
+      expect(collapseBtn).toHaveTextContent("Filters");
 
       // スクロールで折りたたみ
       Object.defineProperty(window, "scrollY", { value: 50, writable: true, configurable: true });
@@ -571,6 +573,31 @@ describe("FilterBar", () => {
 
       const expandBtn = screen.getByRole("button", { name: "Expand filters" });
       expect(expandBtn).toBeInTheDocument();
+      expect(expandBtn).toHaveTextContent("Filters");
+    });
+
+    it("モバイル画面で主催者トリガーの全主催者表示が短縮文言で表示されること (Issue #96)", () => {
+      // 日本語: "全主催者"
+      useLanguageStore.setState({ language: "ja" });
+      useRaceStore.getState().setFilter("organizations", []);
+      const { unmount } = render(<FilterBar />);
+      const triggerBtnJa = screen.getByRole("button", { name: "開催国・主催者の選択" });
+      expect(triggerBtnJa).toHaveTextContent("全主催者");
+      unmount();
+
+      // 英語: "All Orgs"
+      useLanguageStore.setState({ language: "en" });
+      const { unmount: unmountEn } = render(<FilterBar />);
+      const triggerBtnEn = screen.getByRole("button", { name: "Select Countries & Organizations" });
+      expect(triggerBtnEn).toHaveTextContent("All Orgs");
+      unmountEn();
+
+      // フランス語: "Toutes"
+      useLanguageStore.setState({ language: "fr" });
+      render(<FilterBar />);
+      const triggerBtnFr = screen.getByRole("button", { name: "Sélectionner pays et organisateurs" });
+      expect(triggerBtnFr).toHaveTextContent("Toutes");
     });
   });
 });
+

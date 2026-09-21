@@ -391,7 +391,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
         </div>
 
         {/* コントロール群（主催者・詳細トグル・リセット） */}
-        <div className="flex items-center justify-between sm:justify-start gap-1.5 sm:gap-2 shrink-0 w-full sm:w-auto">
+        <div className="flex items-center justify-between sm:justify-start gap-1 sm:gap-2 shrink-0 w-full sm:w-auto">
           {/* モバイル向け: 開催国・主催者選択ダイアログ (sm:hidden) */}
           <div className="sm:hidden">
             <Dialog open={isOrgDialogOpen} onOpenChange={setIsOrgDialogOpen}>
@@ -402,14 +402,14 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
                   size="sm"
                   aria-label={t("filter.orgSelectModalTitle")}
                   className={cn(
-                    "h-9 px-2.5 text-xs font-semibold gap-1.5 shrink-0 transition-colors cursor-pointer",
+                    "h-9 px-2 sm:px-2.5 text-xs font-semibold gap-1 sm:gap-1.5 shrink-0 transition-colors cursor-pointer",
                     filters.organizations.length > 0
                       ? "border-primary/50 text-primary bg-primary/5 hover:bg-primary/10"
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   <Globe className="h-3.5 w-3.5" />
-                  <span className="truncate max-w-[130px]">{getOrgTriggerLabel()}</span>
+                  <span className="truncate max-w-[120px] sm:max-w-[130px]">{getOrgTriggerLabel()}</span>
                   <ChevronDown className="h-3 w-3 opacity-60" />
                 </Button>
               </DialogTrigger>
@@ -547,7 +547,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
             })}
           </div>
 
-          <div className="flex items-center gap-1.5 ml-auto sm:ml-0">
+          <div className="flex items-center gap-1 sm:gap-1.5 ml-auto sm:ml-0">
             {/* 詳細フィルター展開/折りたたみボタン */}
             <Button
               type="button"
@@ -562,7 +562,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
                   : t("filter.collapseFilters")
               }
               className={cn(
-                "shrink-0 gap-1.5 h-9 px-2.5 sm:px-3 text-xs transition-colors cursor-pointer",
+                "shrink-0 gap-1 sm:gap-1.5 h-9 px-2 sm:px-2.5 text-xs transition-colors cursor-pointer",
                 !isCollapsed
                   ? "bg-accent text-accent-foreground border-accent-foreground/20"
                   : activeDetailFiltersCount > 0
@@ -571,9 +571,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
               )}
             >
               <SlidersHorizontal className="h-3.5 w-3.5" />
-              <span>
-                {isCollapsed ? t("filter.expandFilters") : t("filter.collapseFilters")}
-              </span>
+              <span>{t("filter.filterToggle")}</span>
               {activeDetailFiltersCount > 0 && (
                 <span
                   data-testid="filter-badge-count"
@@ -595,7 +593,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
                 variant="outline"
                 size="sm"
                 onClick={resetFilters}
-                className="shrink-0 gap-1.5 h-9 px-2.5 sm:px-3 text-xs text-muted-foreground hover:text-destructive hover:border-destructive transition-colors cursor-pointer"
+                className="shrink-0 gap-1 sm:gap-1.5 h-9 px-2 sm:px-2.5 text-xs text-muted-foreground hover:text-destructive hover:border-destructive transition-colors cursor-pointer"
                 aria-label={t("filter.resetFilterAria")}
               >
                 <RotateCcw className="h-3.5 w-3.5" />
