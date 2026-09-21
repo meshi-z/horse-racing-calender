@@ -7,7 +7,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -48,7 +49,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -89,7 +91,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -130,7 +133,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -171,7 +175,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -212,7 +217,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -253,7 +259,8 @@
     "organization": "jra",
     "course": {
       "ja": "小倉競馬場",
-      "en": "Kokura Racecourse"
+      "en": "Kokura Racecourse",
+      "fr": "Kokura Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -294,7 +301,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -335,7 +343,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -376,7 +385,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -417,7 +427,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -458,7 +469,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -499,7 +511,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -540,7 +553,8 @@
     "organization": "jra",
     "course": {
       "ja": "小倉競馬場",
-      "en": "Kokura Racecourse"
+      "en": "Kokura Racecourse",
+      "fr": "Kokura Hippodrome"
     },
     "default_time_jst": "13:50",
     "sex_constraint": {
@@ -581,7 +595,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -622,7 +637,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -663,7 +679,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -704,7 +721,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -745,7 +763,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -786,7 +805,8 @@
     "organization": "jra",
     "course": {
       "ja": "小倉競馬場",
-      "en": "Kokura Racecourse"
+      "en": "Kokura Racecourse",
+      "fr": "Kokura Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -822,12 +842,14 @@
   "フェブラリーステークス": {
     "name": {
       "ja": "フェブラリーステークス",
-      "en": "February Stakes"
+      "en": "February Stakes",
+      "fr": "February Stakes"
     },
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -868,7 +890,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -909,7 +932,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -950,7 +974,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -991,7 +1016,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -1032,7 +1058,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -1073,7 +1100,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -1114,7 +1142,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "13:50",
     "sex_constraint": {
@@ -1155,7 +1184,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -1196,7 +1226,8 @@
     "organization": "jra",
     "course": {
       "ja": "中京競馬場",
-      "en": "Chukyo Racecourse"
+      "en": "Chukyo Racecourse",
+      "fr": "Chukyo Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -1237,7 +1268,8 @@
     "organization": "jra",
     "course": {
       "ja": "中京競馬場",
-      "en": "Chukyo Racecourse"
+      "en": "Chukyo Racecourse",
+      "fr": "Chukyo Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -1278,7 +1310,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -1319,7 +1352,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -1360,7 +1394,8 @@
     "organization": "jra",
     "course": {
       "ja": "中京競馬場",
-      "en": "Chukyo Racecourse"
+      "en": "Chukyo Racecourse",
+      "fr": "Chukyo Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -1401,7 +1436,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -1442,7 +1478,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -1478,12 +1515,14 @@
   "高松宮記念": {
     "name": {
       "ja": "高松宮記念",
-      "en": "Takamatsunomiya Kinen"
+      "en": "Takamatsunomiya Kinen",
+      "fr": "Takamatsunomiya Kinen"
     },
     "organization": "jra",
     "course": {
       "ja": "中京競馬場",
-      "en": "Chukyo Racecourse"
+      "en": "Chukyo Racecourse",
+      "fr": "Chukyo Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -1524,7 +1563,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -1565,7 +1605,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -1606,7 +1647,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -1642,12 +1684,14 @@
   "大阪杯": {
     "name": {
       "ja": "大阪杯",
-      "en": "Osaka Hai"
+      "en": "Osaka Hai",
+      "fr": "Osaka Hai"
     },
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -1688,7 +1732,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -1729,7 +1774,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -1765,12 +1811,14 @@
   "桜花賞": {
     "name": {
       "ja": "桜花賞",
-      "en": "Oka Sho (Japanese 1000 Guineas)"
+      "en": "Oka Sho (Japanese 1000 Guineas)",
+      "fr": "Oka Sho (1000 Guinées Japonaises)"
     },
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -1811,7 +1859,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -1847,12 +1896,14 @@
   "中山グランドジャンプ": {
     "name": {
       "ja": "中山グランドジャンプ",
-      "en": "Nakayama Grand Jump"
+      "en": "Nakayama Grand Jump",
+      "fr": "Nakayama Grand Jump"
     },
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "14:45",
     "sex_constraint": {
@@ -1888,12 +1939,14 @@
   "皐月賞": {
     "name": {
       "ja": "皐月賞",
-      "en": "Satsuki Sho (Japanese 2000 Guineas)"
+      "en": "Satsuki Sho (Japanese 2000 Guineas)",
+      "fr": "Satsuki Sho (2000 Guinées Japonaises)"
     },
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -1934,7 +1987,8 @@
     "organization": "jra",
     "course": {
       "ja": "福島競馬場",
-      "en": "Fukushima Racecourse"
+      "en": "Fukushima Racecourse",
+      "fr": "Fukushima Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -1975,7 +2029,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2016,7 +2071,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -2057,7 +2113,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2098,7 +2155,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2139,7 +2197,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -2175,12 +2234,14 @@
   "天皇賞(春)": {
     "name": {
       "ja": "天皇賞(春)",
-      "en": "Tenno Sho (Spring)"
+      "en": "Tenno Sho (Spring)",
+      "fr": "Tenno Sho (Printemps)"
     },
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -2221,7 +2282,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2262,7 +2324,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -2303,7 +2366,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2344,7 +2408,8 @@
     "organization": "jra",
     "course": {
       "ja": "新潟競馬場",
-      "en": "Niigata Racecourse"
+      "en": "Niigata Racecourse",
+      "fr": "Niigata Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2385,7 +2450,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "13:50",
     "sex_constraint": {
@@ -2426,7 +2492,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2467,7 +2534,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -2503,12 +2571,14 @@
   "オークス": {
     "name": {
       "ja": "オークス",
-      "en": "Yushun Himba (Japanese Oaks)"
+      "en": "Yushun Himba (Japanese Oaks)",
+      "fr": "Oaks Japonais"
     },
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2549,7 +2619,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -2585,12 +2656,14 @@
   "日本ダービー": {
     "name": {
       "ja": "日本ダービー",
-      "en": "Tokyo Yushun (Japanese Derby)"
+      "en": "Tokyo Yushun (Japanese Derby)",
+      "fr": "Derby Japonais"
     },
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2631,7 +2704,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2667,12 +2741,14 @@
   "安田記念": {
     "name": {
       "ja": "安田記念",
-      "en": "Yasuda Kinen"
+      "en": "Yasuda Kinen",
+      "fr": "Yasuda Kinen"
     },
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2713,7 +2789,8 @@
     "organization": "jra",
     "course": {
       "ja": "函館競馬場",
-      "en": "Hakodate Racecourse"
+      "en": "Hakodate Racecourse",
+      "fr": "Hakodate Hippodrome"
     },
     "default_time_jst": "15:35",
     "sex_constraint": {
@@ -2754,7 +2831,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "13:50",
     "sex_constraint": {
@@ -2790,12 +2868,14 @@
   "宝塚記念": {
     "name": {
       "ja": "宝塚記念",
-      "en": "Takarazuka Kinen"
+      "en": "Takarazuka Kinen",
+      "fr": "Takarazuka Kinen"
     },
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -2836,7 +2916,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2877,7 +2958,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -2918,7 +3000,8 @@
     "organization": "jra",
     "course": {
       "ja": "福島競馬場",
-      "en": "Fukushima Racecourse"
+      "en": "Fukushima Racecourse",
+      "fr": "Fukushima Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -2959,7 +3042,8 @@
     "organization": "jra",
     "course": {
       "ja": "函館競馬場",
-      "en": "Hakodate Racecourse"
+      "en": "Hakodate Racecourse",
+      "fr": "Hakodate Hippodrome"
     },
     "default_time_jst": "15:35",
     "sex_constraint": {
@@ -3000,7 +3084,8 @@
     "organization": "jra",
     "course": {
       "ja": "小倉競馬場",
-      "en": "Kokura Racecourse"
+      "en": "Kokura Racecourse",
+      "fr": "Kokura Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -3041,7 +3126,8 @@
     "organization": "jra",
     "course": {
       "ja": "福島競馬場",
-      "en": "Fukushima Racecourse"
+      "en": "Fukushima Racecourse",
+      "fr": "Fukushima Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -3082,7 +3168,8 @@
     "organization": "jra",
     "course": {
       "ja": "函館競馬場",
-      "en": "Hakodate Racecourse"
+      "en": "Hakodate Racecourse",
+      "fr": "Hakodate Hippodrome"
     },
     "default_time_jst": "15:35",
     "sex_constraint": {
@@ -3123,7 +3210,8 @@
     "organization": "jra",
     "course": {
       "ja": "小倉競馬場",
-      "en": "Kokura Racecourse"
+      "en": "Kokura Racecourse",
+      "fr": "Kokura Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -3164,7 +3252,8 @@
     "organization": "jra",
     "course": {
       "ja": "新潟競馬場",
-      "en": "Niigata Racecourse"
+      "en": "Niigata Racecourse",
+      "fr": "Niigata Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -3205,7 +3294,8 @@
     "organization": "jra",
     "course": {
       "ja": "中京競馬場",
-      "en": "Chukyo Racecourse"
+      "en": "Chukyo Racecourse",
+      "fr": "Chukyo Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -3246,7 +3336,8 @@
     "organization": "jra",
     "course": {
       "ja": "新潟競馬場",
-      "en": "Niigata Racecourse"
+      "en": "Niigata Racecourse",
+      "fr": "Niigata Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -3287,7 +3378,8 @@
     "organization": "jra",
     "course": {
       "ja": "札幌競馬場",
-      "en": "Sapporo Racecourse"
+      "en": "Sapporo Racecourse",
+      "fr": "Sapporo Hippodrome"
     },
     "default_time_jst": "15:35",
     "sex_constraint": {
@@ -3328,7 +3420,8 @@
     "organization": "jra",
     "course": {
       "ja": "札幌競馬場",
-      "en": "Sapporo Racecourse"
+      "en": "Sapporo Racecourse",
+      "fr": "Sapporo Hippodrome"
     },
     "default_time_jst": "15:35",
     "sex_constraint": {
@@ -3369,7 +3462,8 @@
     "organization": "jra",
     "course": {
       "ja": "新潟競馬場",
-      "en": "Niigata Racecourse"
+      "en": "Niigata Racecourse",
+      "fr": "Niigata Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -3410,7 +3504,8 @@
     "organization": "jra",
     "course": {
       "ja": "中京競馬場",
-      "en": "Chukyo Racecourse"
+      "en": "Chukyo Racecourse",
+      "fr": "Chukyo Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -3451,7 +3546,8 @@
     "organization": "jra",
     "course": {
       "ja": "新潟競馬場",
-      "en": "Niigata Racecourse"
+      "en": "Niigata Racecourse",
+      "fr": "Niigata Hippodrome"
     },
     "default_time_jst": "13:50",
     "sex_constraint": {
@@ -3492,7 +3588,8 @@
     "organization": "jra",
     "course": {
       "ja": "中京競馬場",
-      "en": "Chukyo Racecourse"
+      "en": "Chukyo Racecourse",
+      "fr": "Chukyo Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -3533,7 +3630,8 @@
     "organization": "jra",
     "course": {
       "ja": "札幌競馬場",
-      "en": "Sapporo Racecourse"
+      "en": "Sapporo Racecourse",
+      "fr": "Sapporo Hippodrome"
     },
     "default_time_jst": "15:35",
     "sex_constraint": {
@@ -3574,7 +3672,8 @@
     "organization": "jra",
     "course": {
       "ja": "新潟競馬場",
-      "en": "Niigata Racecourse"
+      "en": "Niigata Racecourse",
+      "fr": "Niigata Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -3615,7 +3714,8 @@
     "organization": "jra",
     "course": {
       "ja": "札幌競馬場",
-      "en": "Sapporo Racecourse"
+      "en": "Sapporo Racecourse",
+      "fr": "Sapporo Hippodrome"
     },
     "default_time_jst": "15:35",
     "sex_constraint": {
@@ -3656,7 +3756,8 @@
     "organization": "jra",
     "course": {
       "ja": "新潟競馬場",
-      "en": "Niigata Racecourse"
+      "en": "Niigata Racecourse",
+      "fr": "Niigata Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -3697,7 +3798,8 @@
     "organization": "jra",
     "course": {
       "ja": "中京競馬場",
-      "en": "Chukyo Racecourse"
+      "en": "Chukyo Racecourse",
+      "fr": "Chukyo Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -3738,7 +3840,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -3779,7 +3882,8 @@
     "organization": "jra",
     "course": {
       "ja": "札幌競馬場",
-      "en": "Sapporo Racecourse"
+      "en": "Sapporo Racecourse",
+      "fr": "Sapporo Hippodrome"
     },
     "default_time_jst": "15:35",
     "sex_constraint": {
@@ -3820,7 +3924,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -3861,7 +3966,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -3902,7 +4008,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -3943,7 +4050,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -3984,7 +4092,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -4025,7 +4134,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "13:50",
     "sex_constraint": {
@@ -4066,7 +4176,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -4107,7 +4218,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -4148,7 +4260,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -4184,12 +4297,14 @@
   "スプリンターズステークス": {
     "name": {
       "ja": "スプリンターズステークス",
-      "en": "Sprinters Stakes"
+      "en": "Sprinters Stakes",
+      "fr": "Sprinters Stakes"
     },
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -4230,7 +4345,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -4271,7 +4387,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -4312,7 +4429,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -4353,7 +4471,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -4394,7 +4513,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -4435,7 +4555,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -4476,7 +4597,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "13:50",
     "sex_constraint": {
@@ -4512,12 +4634,14 @@
   "秋華賞": {
     "name": {
       "ja": "秋華賞",
-      "en": "Shuka Sho"
+      "en": "Shuka Sho",
+      "fr": "Shuka Sho"
     },
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -4558,7 +4682,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -4594,12 +4719,14 @@
   "菊花賞": {
     "name": {
       "ja": "菊花賞",
-      "en": "Kikuka Sho (Japanese St. Leger)"
+      "en": "Kikuka Sho (Japanese St. Leger)",
+      "fr": "Kikuka Sho (St. Léger Japonais)"
     },
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -4640,7 +4767,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -4676,12 +4804,14 @@
   "天皇賞(秋)": {
     "name": {
       "ja": "天皇賞(秋)",
-      "en": "Tenno Sho (Autumn)"
+      "en": "Tenno Sho (Autumn)",
+      "fr": "Tenno Sho (Automne)"
     },
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -4722,7 +4852,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -4763,7 +4894,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "13:50",
     "sex_constraint": {
@@ -4804,7 +4936,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -4845,7 +4978,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -4886,7 +5020,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -4927,7 +5062,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -4963,12 +5099,14 @@
   "エリザベス女王杯": {
     "name": {
       "ja": "エリザベス女王杯",
-      "en": "Queen Elizabeth II Cup"
+      "en": "Queen Elizabeth II Cup",
+      "fr": "Queen Elizabeth II Cup"
     },
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -5009,7 +5147,8 @@
     "organization": "jra",
     "course": {
       "ja": "福島競馬場",
-      "en": "Fukushima Racecourse"
+      "en": "Fukushima Racecourse",
+      "fr": "Fukushima Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -5045,12 +5184,14 @@
   "マイルチャンピオンシップ": {
     "name": {
       "ja": "マイルチャンピオンシップ",
-      "en": "Mile Championship"
+      "en": "Mile Championship",
+      "fr": "Mile Championship"
     },
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -5091,7 +5232,8 @@
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -5132,7 +5274,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -5168,12 +5311,14 @@
   "ジャパンカップ": {
     "name": {
       "ja": "ジャパンカップ",
-      "en": "Japan Cup"
+      "en": "Japan Cup",
+      "fr": "Coupe du Japon (Japan Cup)"
     },
     "organization": "jra",
     "course": {
       "ja": "東京競馬場",
-      "en": "Tokyo Racecourse"
+      "en": "Tokyo Racecourse",
+      "fr": "Tokyo Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -5214,7 +5359,8 @@
     "organization": "jra",
     "course": {
       "ja": "京都競馬場",
-      "en": "Kyoto Racecourse"
+      "en": "Kyoto Racecourse",
+      "fr": "Kyoto Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -5255,7 +5401,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -5296,7 +5443,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -5332,12 +5480,14 @@
   "チャンピオンズカップ": {
     "name": {
       "ja": "チャンピオンズカップ",
-      "en": "Champions Cup"
+      "en": "Champions Cup",
+      "fr": "Champions Cup"
     },
     "organization": "jra",
     "course": {
       "ja": "中京競馬場",
-      "en": "Chukyo Racecourse"
+      "en": "Chukyo Racecourse",
+      "fr": "Chukyo Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -5378,7 +5528,8 @@
     "organization": "jra",
     "course": {
       "ja": "中京競馬場",
-      "en": "Chukyo Racecourse"
+      "en": "Chukyo Racecourse",
+      "fr": "Chukyo Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -5414,12 +5565,14 @@
   "阪神ジュベナイルフィリーズ": {
     "name": {
       "ja": "阪神ジュベナイルフィリーズ",
-      "en": "Hanshin Juvenile Fillies"
+      "en": "Hanshin Juvenile Fillies",
+      "fr": "Hanshin Juvenile Fillies"
     },
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -5460,7 +5613,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -5501,7 +5655,8 @@
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -5537,12 +5692,14 @@
   "朝日杯フューチュリティステークス": {
     "name": {
       "ja": "朝日杯フューチュリティステークス",
-      "en": "Asahi Hai Futurity Stakes"
+      "en": "Asahi Hai Futurity Stakes",
+      "fr": "Asahi Hai Futurity Stakes"
     },
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -5578,12 +5735,14 @@
   "ホープフルステークス": {
     "name": {
       "ja": "ホープフルステークス",
-      "en": "Hopeful Stakes"
+      "en": "Hopeful Stakes",
+      "fr": "Hopeful Stakes"
     },
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {
@@ -5624,7 +5783,8 @@
     "organization": "jra",
     "course": {
       "ja": "阪神競馬場",
-      "en": "Hanshin Racecourse"
+      "en": "Hanshin Racecourse",
+      "fr": "Hanshin Hippodrome"
     },
     "default_time_jst": "15:45",
     "sex_constraint": {
@@ -5660,12 +5820,14 @@
   "中山大障害": {
     "name": {
       "ja": "中山大障害",
-      "en": "Nakayama Daishogai"
+      "en": "Nakayama Daishogai",
+      "fr": "Nakayama Daishogai"
     },
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "14:45",
     "sex_constraint": {
@@ -5701,12 +5863,14 @@
   "有馬記念": {
     "name": {
       "ja": "有馬記念",
-      "en": "Arima Kinen (The Grand Prix)"
+      "en": "Arima Kinen (The Grand Prix)",
+      "fr": "Arima Kinen (Grand Prix)"
     },
     "organization": "jra",
     "course": {
       "ja": "中山競馬場",
-      "en": "Nakayama Racecourse"
+      "en": "Nakayama Racecourse",
+      "fr": "Nakayama Hippodrome"
     },
     "default_time_jst": "15:40",
     "sex_constraint": {

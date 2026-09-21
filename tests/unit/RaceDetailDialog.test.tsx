@@ -236,5 +236,35 @@ describe("RaceDetailDialog", () => {
       expect(screen.getByText("凱旋門賞")).toBeInTheDocument();
       expect(screen.getByText("Prix de l'Arc de Triomphe")).toBeInTheDocument();
     });
+
+    it("英語モード時に英語名と原語名が同一ならサブが表示されず主催者がFrance Galopとなること", () => {
+      useLanguageStore.setState({ language: "en" });
+      render(
+        <RaceDetailDialog
+          race={mockFranceRace}
+          open={true}
+          onOpenChange={vi.fn()}
+        />
+      );
+
+      expect(screen.getByText("Prix de l'Arc de Triomphe")).toBeInTheDocument();
+      expect(screen.queryByText("凱旋門賞")).not.toBeInTheDocument();
+      expect(screen.getByText("France Galop")).toBeInTheDocument();
+    });
+
+    it("フランス語モード時に詳細ダイアログが正しく表示されること", () => {
+      useLanguageStore.setState({ language: "fr" });
+      render(
+        <RaceDetailDialog
+          race={mockFranceRace}
+          open={true}
+          onOpenChange={vi.fn()}
+        />
+      );
+
+      expect(screen.getByText("Prix de l'Arc de Triomphe")).toBeInTheDocument();
+      expect(screen.getByText("Hippodrome")).toBeInTheDocument();
+      expect(screen.getByText("Piste & Distance")).toBeInTheDocument();
+    });
   });
 });

@@ -90,7 +90,8 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
 
     // ヘッダー
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("重賞カレンダー");
-    expect(screen.getByRole("button", { name: "英語に切り替え" })).toBeInTheDocument();
+    const langSelectJa = screen.getByRole("combobox", { name: "言語を選択 (日本語)" });
+    expect(langSelectJa).toBeInTheDocument();
 
     // サブヘッダー
     expect(screen.getByText("該当レース: 2 件")).toBeInTheDocument();
@@ -121,10 +122,11 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     ).toBeInTheDocument();
 
     // ==========================================
-    // 2. 英語モードへの切り替え（Headerの言語切替ボタンクリック）
+    // 2. 英語モードへの切り替え（Headerの言語切替Selectクリック）
     // ==========================================
-    const langToggleBtn = screen.getByRole("button", { name: "英語に切り替え" });
-    fireEvent.click(langToggleBtn);
+    fireEvent.click(langSelectJa);
+    const enOption = screen.getByRole("option", { name: /English \(EN\)/ });
+    fireEvent.click(enOption);
 
     // GA4 イベント計測確認
     expect((window as any).gtag).toHaveBeenCalledWith(
@@ -138,11 +140,12 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
 
     // ドキュメントメタの更新
     expect(document.documentElement.lang).toBe("en");
-    expect(document.title).toBe("Graded Races - JRA & NAR Graded Races Calendar");
+    expect(document.title).toBe("Graded Races - JRA, NAR & France Galop Graded Races Calendar");
 
     // ヘッダーの更新
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Graded Races");
-    expect(screen.getByRole("button", { name: "Switch to Japanese" })).toBeInTheDocument();
+    const langSelectEn = screen.getByRole("combobox", { name: "Select language (English)" });
+    expect(langSelectEn).toBeInTheDocument();
 
     // サブヘッダーの更新
     expect(screen.getByText("Matching races: 2")).toBeInTheDocument();
@@ -231,8 +234,10 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     // ==========================================
     // 6. 再び日本語へ切り替えて元に戻ることを確認
     // ==========================================
-    const switchBackBtn = screen.getByRole("button", { name: "Switch to Japanese" });
-    fireEvent.click(switchBackBtn);
+    const langSelectEnForBack = screen.getByRole("combobox", { name: "Select language (English)" });
+    fireEvent.click(langSelectEnForBack);
+    const jaOption = screen.getByRole("option", { name: /日本語 \(JA\)/ });
+    fireEvent.click(jaOption);
 
     expect(document.documentElement.lang).toBe("ja");
     expect(document.title).toBe("重賞カレンダー - JRA & NAR 重賞レーススケジュール");
@@ -240,5 +245,18 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     expect(screen.getByText("2026年2月")).toBeInTheDocument();
     expect(screen.getByText("月")).toBeInTheDocument();
     expect(screen.getByText("フェブラリーステークス")).toBeInTheDocument();
+
+    // ==========================================
+    // 7. フランス語モードへの切り替えを確認
+    // ==========================================
+    const langSelectJaAgain = screen.getByRole("combobox", { name: "言語を選択 (日本語)" });
+    fireEvent.click(langSelectJaAgain);
+    const frOption = screen.getByRole("option", { name: /Français \(FR\)/ });
+    fireEvent.click(frOption);
+
+    expect(document.documentElement.lang).toBe("fr");
+    expect(document.title).toBe("Courses de Groupe - Calendrier JRA, NAR & France Galop");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Courses de Groupe");
+    expect(screen.getByText("février 2026")).toBeInTheDocument();
   });
 });

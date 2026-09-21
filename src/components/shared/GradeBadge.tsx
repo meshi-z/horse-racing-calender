@@ -2,6 +2,7 @@ import * as React from "react";
 import { Badge, type BadgeProps } from "@/components/ui/badge";
 import { cn } from "@/libs/utils";
 import type { Grade } from "@/types/race";
+import type { Language } from "@/store/useLanguageStore";
 import { useTranslation } from "@/libs/i18n";
 
 export interface GradeBadgeProps extends Omit<BadgeProps, "variant"> {
@@ -51,9 +52,11 @@ export function getGradeVariant(grade: Grade): GradeVariant {
   }
 }
 
-export function formatGradeLabel(grade: Grade, lang: "ja" | "en"): string {
+export function formatGradeLabel(grade: Grade, lang: Language): string {
   if (grade === "local_grade") {
-    return lang === "en" ? "Regional" : "地方重賞";
+    if (lang === "en") return "Regional";
+    if (lang === "fr") return "Régional";
+    return "地方重賞";
   }
   return grade;
 }
@@ -64,12 +67,19 @@ export const GradeBadge = React.forwardRef<HTMLDivElement, GradeBadgeProps>(
     const variant = getGradeVariant(grade);
     const label = formatGradeLabel(grade, language);
 
+    const ariaLabel =
+      language === "en"
+        ? `Grade: ${label}`
+        : language === "fr"
+          ? `Groupe : ${label}`
+          : `グレード: ${label}`;
+
     return (
       <Badge
         ref={ref}
         variant={variant}
         className={cn("px-2 py-0.5 text-xs font-bold tracking-wider", className)}
-        aria-label={language === "en" ? `Grade: ${label}` : `グレード: ${label}`}
+        aria-label={ariaLabel}
         {...props}
       >
         {children ?? label}

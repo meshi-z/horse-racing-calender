@@ -257,6 +257,24 @@ describe("RaceCard", () => {
       expect(screen.getByText("Prix de l'Arc de Triomphe")).toBeInTheDocument();
       expect(screen.getByText("パリロンシャン")).toBeInTheDocument();
     });
+
+    it("英語モード時にフランス重賞で英語名とフランス語名が一致する場合、サブ名称が表示されないこと", () => {
+      useLanguageStore.setState({ language: "en" });
+      render(<RaceCard race={mockFranceRace} />);
+
+      expect(screen.getByText("Prix de l'Arc de Triomphe")).toBeInTheDocument();
+      expect(screen.queryByText("凱旋門賞")).not.toBeInTheDocument();
+    });
+
+    it("フランス語モード時にフランス重賞カードが正しく表示されること", () => {
+      useLanguageStore.setState({ language: "fr" });
+      render(<RaceCard race={mockFranceRace} />);
+
+      expect(screen.getByText("Prix de l'Arc de Triomphe")).toBeInTheDocument();
+      expect(screen.getByText("FR")).toBeInTheDocument();
+      expect(screen.getByText("ParisLongchamp")).toBeInTheDocument();
+      expect(screen.getByText("Gazon 2400m")).toBeInTheDocument();
+    });
   });
 });
 
