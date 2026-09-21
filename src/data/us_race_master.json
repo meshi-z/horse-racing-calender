@@ -7073,8 +7073,8 @@
         "en": "Flower Bowl Stakes"
       },
       "grade": "G2",
-      "date": "2026-08-36",
-      "start_time": "2026-08-36T21:30:00.000Z",
+      "date": "2026-09-05",
+      "start_time": "2026-09-05T21:30:00.000Z",
       "is_time_confirmed": true,
       "course": {
         "ja": "サラトガ",
@@ -7983,8 +7983,8 @@
         "en": "Goodwood Stakes"
       },
       "grade": "G1",
-      "date": "2026-09-33",
-      "start_time": "2026-09-33T23:30:00.000Z",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T23:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "サンタアニタ",
@@ -8009,8 +8009,8 @@
         "en": "Joe Hirsch Turf Classic"
       },
       "grade": "G1",
-      "date": "2026-09-33",
-      "start_time": "2026-09-33T21:30:00.000Z",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T21:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "アケダクト",
@@ -8035,8 +8035,8 @@
         "en": "City of Hope Mile Stakes"
       },
       "grade": "G2",
-      "date": "2026-09-33",
-      "start_time": "2026-09-33T23:30:00.000Z",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T23:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "サンタアニタ",
@@ -8061,8 +8061,8 @@
         "en": "Eddie D Stakes"
       },
       "grade": "G2",
-      "date": "2026-09-33",
-      "start_time": "2026-09-33T23:30:00.000Z",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T23:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "サンタアニタ",
@@ -8087,8 +8087,8 @@
         "en": "Gallant Bloom Stakes"
       },
       "grade": "G2",
-      "date": "2026-09-33",
-      "start_time": "2026-09-33T21:30:00.000Z",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T21:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "アケダクト",
@@ -8113,8 +8113,8 @@
         "en": "John Henry Turf Championship Stakes"
       },
       "grade": "G2",
-      "date": "2026-09-33",
-      "start_time": "2026-09-33T23:30:00.000Z",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T23:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "サンタアニタ",
@@ -8139,8 +8139,8 @@
         "en": "Vosburgh Stakes"
       },
       "grade": "G2",
-      "date": "2026-09-33",
-      "start_time": "2026-09-33T21:30:00.000Z",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T21:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "アケダクト",
@@ -8165,8 +8165,8 @@
         "en": "Woodward Stakes"
       },
       "grade": "G2",
-      "date": "2026-09-33",
-      "start_time": "2026-09-33T21:30:00.000Z",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T21:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "アケダクト",
@@ -8191,8 +8191,8 @@
         "en": "Ack Ack Stakes"
       },
       "grade": "G3",
-      "date": "2026-09-33",
-      "start_time": "2026-09-33T21:30:00.000Z",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T21:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "チャーチルダウンズ",
@@ -8217,8 +8217,8 @@
         "en": "Belmont Turf Sprint Stakes"
       },
       "grade": "G3",
-      "date": "2026-09-33",
-      "start_time": "2026-09-33T21:30:00.000Z",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T21:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "アケダクト",
@@ -8243,8 +8243,8 @@
         "en": "John C. Harris Stakes"
       },
       "grade": "G3",
-      "date": "2026-09-33",
-      "start_time": "2026-09-33T23:30:00.000Z",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T23:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "サンタアニタ",
@@ -8269,8 +8269,8 @@
         "en": "Lukas Classic Stakes"
       },
       "grade": "G3",
-      "date": "2026-09-33",
-      "start_time": "2026-09-33T21:30:00.000Z",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T21:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "チャーチルダウンズ",
@@ -9903,8 +9903,8 @@
       "organization": "equibase",
       "country_code": "US",
       "name": {
-        "ja": "Pebblesステークス&lt;/ref>\"}},\"i\":0}}]}'>",
-        "en": "Pebbles Stakes &lt;/ref>\"}},\"i\":0}}]}'>"
+        "ja": "ペブルスステークス",
+        "en": "Pebbles Stakes"
       },
       "grade": "G3",
       "date": "2026-11-22",
@@ -10167,8 +10167,8 @@
         "en": "Hollywood Derby"
       },
       "grade": "G1",
-      "date": "2026-11-35",
-      "start_time": "2026-11-35T00:30:00.000Z",
+      "date": "2026-12-05",
+      "start_time": "2026-12-05T00:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "デルマー",
@@ -10193,8 +10193,8 @@
         "en": "Golden Rod Stakes"
       },
       "grade": "G2",
-      "date": "2026-11-35",
-      "start_time": "2026-11-35T22:30:00.000Z",
+      "date": "2026-12-05",
+      "start_time": "2026-12-05T22:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "チャーチルダウンズ",
@@ -10219,8 +10219,8 @@
         "en": "Kentucky Jockey Club Stakes"
       },
       "grade": "G2",
-      "date": "2026-11-35",
-      "start_time": "2026-11-35T22:30:00.000Z",
+      "date": "2026-12-05",
+      "start_time": "2026-12-05T22:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "チャーチルダウンズ",
@@ -10245,8 +10245,8 @@
         "en": "Seabiscuit Handicap"
       },
       "grade": "G2",
-      "date": "2026-11-35",
-      "start_time": "2026-11-35T00:30:00.000Z",
+      "date": "2026-12-05",
+      "start_time": "2026-12-05T00:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "デルマー",
@@ -10271,8 +10271,8 @@
         "en": "Jimmy Durante Stakes"
       },
       "grade": "G3",
-      "date": "2026-11-35",
-      "start_time": "2026-11-35T00:30:00.000Z",
+      "date": "2026-12-05",
+      "start_time": "2026-12-05T00:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "デルマー",
@@ -10713,8 +10713,8 @@
         "en": "Mr. Prospector Stakes"
       },
       "grade": "G3",
-      "date": "2026-12-33",
-      "start_time": "2026-12-33T22:30:00.000Z",
+      "date": "2026-12-26",
+      "start_time": "2026-12-26T22:30:00.000Z",
       "is_time_confirmed": false,
       "course": {
         "ja": "ガルフストリームパーク",
