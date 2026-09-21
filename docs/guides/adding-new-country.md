@@ -307,11 +307,29 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
 
 ## 7. Step 6: 多言語対応（i18n）& 免責事項の整備
 
-### 7.1 UI辞書の追加 (`src/libs/i18n.ts`)
-日本語（`ja`）および英語（`en`）の双方に以下を追加します:
+### 7.1 多言語対応（i18n）の整備
+
+多言語対応には、「① 既存辞書（ja/en）への競馬用語追加（必須）」と、「② サイト自体のUI言語（第3言語）追加（オプション・発展）」の2段階があります。
+
+#### 7.1.1 既存UI辞書への新国キー追加（必須）
+`src/libs/i18n.ts` の日本語（`ja`）および英語（`en`）の双方に以下を追加します:
 - `filter.org{Country}`: 主催者名（例: `UK (イギリス)` / `UK (BHA)`）
 - `filter.courseGroup{Country}`: 競馬場グループ名
 - 競馬場名の対訳（マスタで定義された表記と同期）
+
+#### 7.1.2 サイトUIの母国語（第3言語）サポート（オプション・発展）
+新設国（例: フランス、香港等）の母国語（フランス語 `fr`、繁体字中国語 `zh-HK` 等）をサイト全体のUI言語として正式サポートする場合は、以下のサイト規模拡張を行います:
+1. **言語ストアの拡張 (`src/store/useLanguageStore.ts`)**:
+   - `Language` 型への新言語追加（例: `'ja' | 'en' | 'fr'`）。
+   - `getInitialLanguage()` でのブラウザ言語（`navigator.language`）判定の追加。
+2. **新言語UI辞書の新設 (`src/libs/i18n.ts`)**:
+   - `translations.{lang}` を定義し、全UI文言（ナビゲーション、ステータス、ダイアログ、フィルター、空状態、免責事項等）の対訳を網羅。
+3. **言語切替UIの刷新 (`src/components/shared/Header.tsx`)**:
+   - 2値トグルボタン（`JA ⇄ EN`）から、3言語以上に対応したドロップダウンメニュー（Shadcn UI `DropdownMenu`）等の選択UIへ改修。
+4. **メタ情報・ロケールの同期 (`index.html`)**:
+   - Schema.org JSON-LD の `inLanguage` に新言語を追加、OGP（`og:locale:alternate`）の同期。
+5. **テストの拡充**:
+   - `useLanguageStore.test.ts`, `Header.test.tsx`, `i18n.test.ts` の言語切り替えテストを更新。
 
 ### 7.2 免責事項・データ出典の追記 (`DisclaimerDialog.tsx` & `i18n.ts`)
 - **非公式ファンサイト注記**: 新規統轄団体（BHA, Equibase等）と本アプリが無関係である旨を追記。
