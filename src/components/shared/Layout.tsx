@@ -2,6 +2,7 @@ import * as React from "react";
 import { Header } from "./Header";
 import { OfflineIndicator } from "./OfflineIndicator";
 import { ReloadPrompt } from "./ReloadPrompt";
+import { PwaInstallPrompt } from "./PwaInstallPrompt";
 import { DisclaimerDialog } from "./DisclaimerDialog";
 import { cn } from "@/libs/utils";
 import { useTranslation } from "@/libs/i18n";
@@ -34,6 +35,7 @@ export function Layout({ children, className }: LayoutProps) {
         </div>
       </footer>
       <ReloadPrompt />
+      <PwaInstallPrompt />
     </div>
   );
 }
