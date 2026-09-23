@@ -22,6 +22,7 @@ import {
   getLocalizedCourseName,
   trackTypeLabels,
   type TranslationKey,
+  type RegionCategory,
 } from "@/libs/i18n";
 
 export interface OrganizationGroupItem {
@@ -139,16 +140,45 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
   const isManuallyToggledRef = React.useRef(false);
   const [isCourseExpanded, setIsCourseExpanded] = React.useState(false);
   const [isOrgDialogOpen, setIsOrgDialogOpen] = React.useState(false);
+  const [selectedRegionTab, setSelectedRegionTab] = React.useState<"all" | RegionCategory>("all");
   const containerRef = React.useRef<HTMLDivElement>(null);
 
-  const trackOptions: { label: string; type: TrackType }[] = [
-    { label: trackTypeLabels[language].turf, type: "turf" },
-    { label: trackTypeLabels[language].dirt, type: "dirt" },
-    { label: trackTypeLabels[language].aw, type: "aw" },
-    { label: trackTypeLabels[language].obstacle, type: "obstacle" },
-    { label: trackTypeLabels[language].banei, type: "banei" },
-  ];
+  // 主催者の選択状態の分析
+  const isAllOrgs = filters.organizations.length === 0;
+  const hasJra = filters.organizations.includes("jra");
+  const hasNar = filters.organizations.includes("nar");
+  const hasOverseas = filters.organizations.some((o) =>
+    ["france_galop", "bha", "equibase"].includes(o)
+  );
+
+  // 主催者選択に応じたグレード表示フラグ
+  const showJraJump = isAllOrgs || hasJra;
+  const showNarGrades = isAllOrgs || hasNar;
+
+  // 主催者選択に応じた馬場種別オプション
+  const trackOptions = React.useMemo(() => {
+    const all = [
+      { label: trackTypeLabels[language].turf, type: "turf" as TrackType, show: true },
+      { label: trackTypeLabels[language].dirt, type: "dirt" as TrackType, show: true },
+      { label: trackTypeLabels[language].aw, type: "aw" as TrackType, show: isAllOrgs || hasOverseas },
+      { label: trackTypeLabels[language].obstacle, type: "obstacle" as TrackType, show: isAllOrgs || hasJra || hasOverseas },
+      { label: trackTypeLabels[language].banei, type: "banei" as TrackType, show: isAllOrgs || hasNar },
+    ];
+    return all.filter((opt) => opt.show);
+  }, [language, isAllOrgs, hasOverseas, hasJra, hasNar]);
+
   const distanceOptions = DISTANCE_OPTIONS_BY_LANG[language];
+
+  // 主催者選択および地域タブに応じた表示対象競馬場グループの動的絞り込み
+  const visibleCourseGroups = React.useMemo(() => {
+    if (!isAllOrgs) {
+      return COURSE_GROUPS.filter((group) => filters.organizations.includes(group.organization));
+    }
+    if (selectedRegionTab === "all") {
+      return COURSE_GROUPS;
+    }
+    return COURSE_GROUPS.filter((group) => group.category === selectedRegionTab);
+  }, [isAllOrgs, filters.organizations, selectedRegionTab]);
 
   // スクロール検知により詳細エリアの自動折りたたみを制御（手動操作時の意図を尊重）
   React.useEffect(() => {
@@ -722,308 +752,401 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
         <div
           id="detailed-filters-panel"
           data-testid="detailed-filters-panel"
-          className="flex flex-col gap-3 animate-in fade-in-50 duration-150"
+          className="flex flex-col gap-3 max-h-[75vh] overflow-y-auto pr-0.5 animate-in fade-in-50 duration-150"
         >
           <div className="flex flex-col gap-2.5 text-xs">
             {/* グレード選択行 */}
             <div className="flex flex-col lg:flex-row lg:items-center gap-2">
-          <div className="flex items-center gap-1.5 flex-wrap">
-            <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
-              {t("filter.gradeLabel")}
-            </span>
-
-            {/* JRA重賞 (G1-G3, J.G1-J.G3) */}
-            <div className="flex items-center gap-1 flex-wrap">
-              {GRADE_OPTIONS.slice(0, 6).map(({ label, grade }) => {
-                const isSelected = filters.grades.includes(grade);
-                return (
-                  <button
-                    key={grade}
-                    type="button"
-                    onClick={() => handleGradeToggle(grade)}
-                    aria-pressed={isSelected}
-                    className={cn(
-                      "rounded-md font-semibold border transition-colors cursor-pointer",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                      "px-2 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
-                      isSelected
-                        ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                        : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
-                    )}
-                  >
-                    {label}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* ダートグレード (Jpn1-Jpn3) */}
-            <div className="flex items-center gap-1 flex-wrap pl-1 border-l border-border/60">
-              {GRADE_OPTIONS.slice(6, 9).map(({ label, grade }) => {
-                const isSelected = filters.grades.includes(grade);
-                return (
-                  <button
-                    key={grade}
-                    type="button"
-                    onClick={() => handleGradeToggle(grade)}
-                    aria-pressed={isSelected}
-                    className={cn(
-                      "rounded-md font-semibold border transition-colors cursor-pointer",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                      "px-2 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
-                      isSelected
-                        ? "bg-amber-600 text-white border-amber-600 shadow-sm dark:bg-amber-500"
-                        : "bg-background text-amber-700 dark:text-amber-400 border-input hover:bg-accent"
-                    )}
-                  >
-                    {label}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* 南関重賞 (S1-S3) */}
-            <div className="flex items-center gap-1 flex-wrap pl-1 border-l border-border/60">
-              {GRADE_OPTIONS.slice(9, 12).map(({ label, grade }) => {
-                const isSelected = filters.grades.includes(grade);
-                return (
-                  <button
-                    key={grade}
-                    type="button"
-                    onClick={() => handleGradeToggle(grade)}
-                    aria-pressed={isSelected}
-                    className={cn(
-                      "rounded-md font-semibold border transition-colors cursor-pointer",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                      "px-2 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
-                      isSelected
-                        ? "bg-cyan-700 text-white border-cyan-700 shadow-sm dark:bg-cyan-600"
-                        : "bg-background text-cyan-700 dark:text-cyan-400 border-input hover:bg-accent"
-                    )}
-                  >
-                    {label}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* 地方重賞 */}
-            <div className="flex items-center gap-1 flex-wrap pl-1 border-l border-border/60">
-              {GRADE_OPTIONS.slice(12, 13).map(({ grade }) => {
-                const isSelected = filters.grades.includes(grade);
-                const displayLabel = language === "en" ? "Regional" : "地方重賞";
-                return (
-                  <button
-                    key={grade}
-                    type="button"
-                    onClick={() => handleGradeToggle(grade)}
-                    aria-pressed={isSelected}
-                    className={cn(
-                      "rounded-md font-semibold border transition-colors cursor-pointer",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                      "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
-                      isSelected
-                        ? "bg-slate-700 text-white border-slate-700 shadow-sm dark:bg-slate-600"
-                        : "bg-background text-slate-700 dark:text-slate-300 border-input hover:bg-accent"
-                    )}
-                  >
-                    {displayLabel}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* クイックトグルボタン（ダートグレード一括 / 南関重賞一括 / 地方重賞一括） */}
-          <div className="flex items-center gap-1.5 flex-wrap text-[11px] text-muted-foreground pl-0 lg:pl-2">
-            <span className="text-[10px] uppercase font-bold text-muted-foreground/70">一括:</span>
-            {GRADE_GROUPS.slice(1).map((grp) => {
-              const allSelected = grp.grades.every((g) => filters.grades.includes(g));
-              const toggleLabel = `${t(grp.labelKey)}${language === "en" ? " All" : "一括"}`;
-              return (
-                <button
-                  key={grp.id}
-                  type="button"
-                  onClick={() => handleGroupToggle(grp.grades)}
-                  aria-label={toggleLabel}
-                  className={cn(
-                    "rounded border px-1.5 py-0.5 transition-colors cursor-pointer",
-                    allSelected
-                      ? "bg-primary/10 border-primary/40 text-primary font-bold"
-                      : "bg-muted/50 border-border hover:bg-muted text-muted-foreground"
-                  )}
-                >
-                  {toggleLabel}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* 馬場種別・距離・競馬場行 */}
-        <div className="flex flex-col sm:flex-row sm:items-center text-xs gap-2 sm:gap-4 flex-wrap pt-1 border-t border-border/40">
-          {/* 馬場種別 */}
-          <div className="flex items-center flex-wrap gap-1.5">
-            <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
-              {t("filter.trackLabel")}
-            </span>
-            {trackOptions.map(({ label, type }) => {
-              const isSelected = filters.trackTypes.includes(type);
-              return (
-                <button
-                  key={type}
-                  type="button"
-                  onClick={() => handleTrackToggle(type)}
-                  aria-pressed={isSelected}
-                  className={cn(
-                    "rounded-md border transition-colors cursor-pointer",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                    "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
-                    isSelected
-                      ? "bg-secondary text-secondary-foreground font-medium border-secondary-foreground/20 shadow-sm"
-                      : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
-                  )}
-                >
-                  {label}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* 距離区分 */}
-          <div className="flex items-center flex-wrap gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
-            <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
-              {t("filter.distanceLabel")}
-            </span>
-            {distanceOptions.map(({ label, category, description }) => {
-              const isSelected = filters.distanceCategories.includes(category);
-              return (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => handleDistanceToggle(category)}
-                  aria-pressed={isSelected}
-                  title={description}
-                  aria-label={t("filter.distanceFilterAria")
-                    .replace("{label}", label)
-                    .replace("{description}", description)}
-                  className={cn(
-                    "rounded-md border transition-colors cursor-pointer",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                    "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
-                    isSelected
-                      ? "bg-primary text-primary-foreground border-primary shadow-sm font-semibold"
-                      : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
-                  )}
-                >
-                  {label}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* 競馬場トグルボタン */}
-          <div className="flex items-center gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
-            <button
-              type="button"
-              onClick={() => setIsCourseExpanded((prev) => !prev)}
-              aria-expanded={isCourseExpanded}
-              aria-label={t("filter.courseExpandAria")}
-              className={cn(
-                "flex items-center gap-1.5 rounded-md border font-semibold transition-colors cursor-pointer",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
-                filters.courses.length > 0
-                  ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                  : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
-              )}
-            >
-              <MapPin className="h-3.5 w-3.5" />
-              <span>{t("filter.courseLabel")}</span>
-              {filters.courses.length > 0 && (
-                <span className="ml-0.5 rounded-full bg-primary-foreground text-primary px-1.5 py-0.2 text-[10px] font-bold">
-                  {filters.courses.length}
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
+                  {t("filter.gradeLabel")}
                 </span>
-              )}
-              <ChevronDown
-                className={cn(
-                  "h-3.5 w-3.5 transition-transform duration-200",
-                  isCourseExpanded && "rotate-180"
-                )}
-              />
-            </button>
-          </div>
-        </div>
-      </div>
 
-      {/* 競馬場選択パネル（展開時: 4グループ表示） */}
-      {isCourseExpanded && (
-        <div
-          data-testid="course-filter-panel"
-          className="flex flex-col gap-3 pt-3 border-t border-border/60 animate-in fade-in-50 duration-150"
-        >
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-muted-foreground font-medium flex items-center gap-1">
-              <MapPin className="h-3 w-3 text-primary" />
-              <span>{t("filter.selectCourses")}</span>
-            </span>
-            {filters.courses.length > 0 && (
-              <button
-                type="button"
-                onClick={handleClearCourses}
-                className="text-[11px] text-muted-foreground hover:text-destructive transition-colors underline underline-offset-2 cursor-pointer"
-              >
-                {t("filter.clearCourses")}
-              </button>
-            )}
-          </div>
+                {/* 国際共通重賞 (G1-G3) */}
+                <div className="flex items-center gap-1 flex-wrap">
+                  {GRADE_OPTIONS.slice(0, 3).map(({ label, grade }) => {
+                    const isSelected = filters.grades.includes(grade);
+                    return (
+                      <button
+                        key={grade}
+                        type="button"
+                        onClick={() => handleGradeToggle(grade)}
+                        aria-pressed={isSelected}
+                        className={cn(
+                          "rounded-md font-semibold border transition-colors cursor-pointer",
+                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                          "px-2 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                          isSelected
+                            ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                            : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
+                        )}
+                      >
+                        {label}
+                      </button>
+                    );
+                  })}
+                </div>
 
-          <div className="space-y-2.5">
-            {COURSE_GROUPS.map((group) => {
-              const groupCourseNames = group.courses.map((c) => c.name);
-              const allSelected = groupCourseNames.every((c) => filters.courses.includes(c));
-
-              return (
-                <div key={group.region} className="space-y-1.5">
-                  <div className="flex items-center justify-between text-[11px] text-muted-foreground font-semibold">
-                    <span>{group.label[language]}</span>
-                    <button
-                      type="button"
-                      onClick={() => handleCourseGroupToggle(groupCourseNames)}
-                      className="text-[10px] text-primary hover:underline cursor-pointer"
-                    >
-                      {allSelected ? t("filter.clearGroup") : t("filter.selectAll")}
-                    </button>
-                  </div>
-                  <div className="flex items-center flex-wrap gap-1.5">
-                    {group.courses.map((c) => {
-                      const isSelected = filters.courses.includes(c.name);
+                {/* JRA障害重賞 (J.G1-J.G3) - JRAまたは全主催者表示時のみ */}
+                {showJraJump && (
+                  <div className="flex items-center gap-1 flex-wrap pl-1 border-l border-border/60">
+                    {GRADE_OPTIONS.slice(3, 6).map(({ label, grade }) => {
+                      const isSelected = filters.grades.includes(grade);
                       return (
                         <button
-                          key={c.name}
+                          key={grade}
                           type="button"
-                          onClick={() => handleCourseToggle(c.name)}
+                          onClick={() => handleGradeToggle(grade)}
                           aria-pressed={isSelected}
                           className={cn(
-                            "rounded-md border transition-colors cursor-pointer",
+                            "rounded-md font-semibold border transition-colors cursor-pointer",
                             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-                            "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                            "px-2 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
                             isSelected
-                              ? "bg-primary text-primary-foreground border-primary shadow-sm font-semibold"
+                              ? "bg-primary text-primary-foreground border-primary shadow-sm"
                               : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
                           )}
                         >
-                          {c.label[language]}
+                          {label}
                         </button>
                       );
                     })}
                   </div>
+                )}
+
+                {/* ダートグレード (Jpn1-Jpn3) - NARまたは全主催者表示時のみ */}
+                {showNarGrades && (
+                  <div className="flex items-center gap-1 flex-wrap pl-1 border-l border-border/60">
+                    {GRADE_OPTIONS.slice(6, 9).map(({ label, grade }) => {
+                      const isSelected = filters.grades.includes(grade);
+                      return (
+                        <button
+                          key={grade}
+                          type="button"
+                          onClick={() => handleGradeToggle(grade)}
+                          aria-pressed={isSelected}
+                          className={cn(
+                            "rounded-md font-semibold border transition-colors cursor-pointer",
+                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                            "px-2 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                            isSelected
+                              ? "bg-amber-600 text-white border-amber-600 shadow-sm dark:bg-amber-500"
+                              : "bg-background text-amber-700 dark:text-amber-400 border-input hover:bg-accent"
+                          )}
+                        >
+                          {label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* 南関重賞 (S1-S3) - NARまたは全主催者表示時のみ */}
+                {showNarGrades && (
+                  <div className="flex items-center gap-1 flex-wrap pl-1 border-l border-border/60">
+                    {GRADE_OPTIONS.slice(9, 12).map(({ label, grade }) => {
+                      const isSelected = filters.grades.includes(grade);
+                      return (
+                        <button
+                          key={grade}
+                          type="button"
+                          onClick={() => handleGradeToggle(grade)}
+                          aria-pressed={isSelected}
+                          className={cn(
+                            "rounded-md font-semibold border transition-colors cursor-pointer",
+                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                            "px-2 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                            isSelected
+                              ? "bg-cyan-700 text-white border-cyan-700 shadow-sm dark:bg-cyan-600"
+                              : "bg-background text-cyan-700 dark:text-cyan-400 border-input hover:bg-accent"
+                          )}
+                        >
+                          {label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* 地方重賞 - NARまたは全主催者表示時のみ */}
+                {showNarGrades && (
+                  <div className="flex items-center gap-1 flex-wrap pl-1 border-l border-border/60">
+                    {GRADE_OPTIONS.slice(12, 13).map(({ grade }) => {
+                      const isSelected = filters.grades.includes(grade);
+                      const displayLabel = language === "en" ? "Regional" : "地方重賞";
+                      return (
+                        <button
+                          key={grade}
+                          type="button"
+                          onClick={() => handleGradeToggle(grade)}
+                          aria-pressed={isSelected}
+                          className={cn(
+                            "rounded-md font-semibold border transition-colors cursor-pointer",
+                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                            "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                            isSelected
+                              ? "bg-slate-700 text-white border-slate-700 shadow-sm dark:bg-slate-600"
+                              : "bg-background text-slate-700 dark:text-slate-300 border-input hover:bg-accent"
+                          )}
+                        >
+                          {displayLabel}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+              {/* クイックトグルボタン（ダートグレード一括 / 南関重賞一括 / 地方重賞一括） - NARまたは全主催者表示時のみ */}
+              {showNarGrades && (
+                <div className="flex items-center gap-1.5 flex-wrap text-[11px] text-muted-foreground pl-0 lg:pl-2">
+                  <span className="text-[10px] uppercase font-bold text-muted-foreground/70">一括:</span>
+                  {GRADE_GROUPS.slice(1).map((grp) => {
+                    const allSelected = grp.grades.every((g) => filters.grades.includes(g));
+                    const toggleLabel = `${t(grp.labelKey)}${language === "en" ? " All" : "一括"}`;
+                    return (
+                      <button
+                        key={grp.id}
+                        type="button"
+                        onClick={() => handleGroupToggle(grp.grades)}
+                        aria-label={toggleLabel}
+                        className={cn(
+                          "rounded border px-1.5 py-0.5 transition-colors cursor-pointer",
+                          allSelected
+                            ? "bg-primary/10 border-primary/40 text-primary font-bold"
+                            : "bg-muted/50 border-border hover:bg-muted text-muted-foreground"
+                        )}
+                      >
+                        {toggleLabel}
+                      </button>
+                    );
+                  })}
                 </div>
-              );
-            })}
+              )}
+            </div>
+
+            {/* 馬場種別・距離・競馬場行 */}
+            <div className="flex flex-col sm:flex-row sm:items-center text-xs gap-2 sm:gap-4 flex-wrap pt-1 border-t border-border/40">
+              {/* 馬場種別 */}
+              <div className="flex items-center flex-wrap gap-1.5">
+                <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
+                  {t("filter.trackLabel")}
+                </span>
+                {trackOptions.map(({ label, type }) => {
+                  const isSelected = filters.trackTypes.includes(type);
+                  return (
+                    <button
+                      key={type}
+                      type="button"
+                      onClick={() => handleTrackToggle(type)}
+                      aria-pressed={isSelected}
+                      className={cn(
+                        "rounded-md border transition-colors cursor-pointer",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                        "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                        isSelected
+                          ? "bg-secondary text-secondary-foreground font-medium border-secondary-foreground/20 shadow-sm"
+                          : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
+                      )}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* 距離区分 */}
+              <div className="flex items-center flex-wrap gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
+                <span className="text-muted-foreground font-medium shrink-0 mr-0.5 text-xs">
+                  {t("filter.distanceLabel")}
+                </span>
+                {distanceOptions.map(({ label, category, description }) => {
+                  const isSelected = filters.distanceCategories.includes(category);
+                  return (
+                    <button
+                      key={category}
+                      type="button"
+                      onClick={() => handleDistanceToggle(category)}
+                      aria-pressed={isSelected}
+                      title={description}
+                      aria-label={t("filter.distanceFilterAria")
+                        .replace("{label}", label)
+                        .replace("{description}", description)}
+                      className={cn(
+                        "rounded-md border transition-colors cursor-pointer",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                        "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                        isSelected
+                          ? "bg-primary text-primary-foreground border-primary shadow-sm font-semibold"
+                          : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
+                      )}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* 競馬場トグルボタン */}
+              <div className="flex items-center gap-1.5 sm:border-l sm:border-border/60 sm:pl-4">
+                <button
+                  type="button"
+                  onClick={() => setIsCourseExpanded((prev) => !prev)}
+                  aria-expanded={isCourseExpanded}
+                  aria-label={t("filter.courseExpandAria")}
+                  className={cn(
+                    "flex items-center gap-1.5 rounded-md border font-semibold transition-colors cursor-pointer",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                    "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                    filters.courses.length > 0
+                      ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                      : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
+                  )}
+                >
+                  <MapPin className="h-3.5 w-3.5" />
+                  <span>{t("filter.courseLabel")}</span>
+                  {filters.courses.length > 0 && (
+                    <span className="ml-0.5 rounded-full bg-primary-foreground text-primary px-1.5 py-0.2 text-[10px] font-bold">
+                      {filters.courses.length}
+                    </span>
+                  )}
+                  <ChevronDown
+                    className={cn(
+                      "h-3.5 w-3.5 transition-transform duration-200",
+                      isCourseExpanded && "rotate-180"
+                    )}
+                  />
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+
+          {/* 競馬場選択パネル（展開時: 動的連動 & 高さ制限 & 内部スクロール） */}
+          {isCourseExpanded && (
+            <div
+              data-testid="course-filter-panel"
+              className="flex flex-col gap-2.5 pt-3 border-t border-border/60 animate-in fade-in-50 duration-150"
+            >
+              <div className="flex items-center justify-between text-xs flex-wrap gap-2">
+                <span className="text-muted-foreground font-medium flex items-center gap-1">
+                  <MapPin className="h-3 w-3 text-primary" />
+                  <span>{t("filter.selectCourses")}</span>
+                </span>
+                {filters.courses.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={handleClearCourses}
+                    className="text-[11px] text-muted-foreground hover:text-destructive transition-colors underline underline-offset-2 cursor-pointer"
+                  >
+                    {t("filter.clearCourses")}
+                  </button>
+                )}
+              </div>
+
+              {/* 全主催者表示時の地域クイック切り替えセレクター */}
+              {isAllOrgs && (
+                <div
+                  data-testid="course-region-tabs"
+                  className="flex items-center gap-1 overflow-x-auto pb-1 text-xs"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setSelectedRegionTab("all")}
+                    className={cn(
+                      "rounded-full px-2.5 py-0.5 text-[11px] font-semibold transition-all shrink-0 cursor-pointer border",
+                      selectedRegionTab === "all"
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-muted/40 text-muted-foreground border-border hover:bg-muted hover:text-foreground"
+                    )}
+                  >
+                    {t("filter.orgAll")}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedRegionTab("japan")}
+                    className={cn(
+                      "rounded-full px-2.5 py-0.5 text-[11px] font-semibold transition-all shrink-0 cursor-pointer border",
+                      selectedRegionTab === "japan"
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-muted/40 text-muted-foreground border-border hover:bg-muted hover:text-foreground"
+                    )}
+                  >
+                    🇯🇵 {t("filter.regionJapan")}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedRegionTab("europe")}
+                    className={cn(
+                      "rounded-full px-2.5 py-0.5 text-[11px] font-semibold transition-all shrink-0 cursor-pointer border",
+                      selectedRegionTab === "europe"
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-muted/40 text-muted-foreground border-border hover:bg-muted hover:text-foreground"
+                    )}
+                  >
+                    🇪🇺 {t("filter.regionEurope")}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedRegionTab("america")}
+                    className={cn(
+                      "rounded-full px-2.5 py-0.5 text-[11px] font-semibold transition-all shrink-0 cursor-pointer border",
+                      selectedRegionTab === "america"
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-muted/40 text-muted-foreground border-border hover:bg-muted hover:text-foreground"
+                    )}
+                  >
+                    🇺🇸 {t("filter.regionAmerica")}
+                  </button>
+                </div>
+              )}
+
+              {/* 競馬場グループ一覧（最大高さ制限 & 内部スクロールで画面溢れを完全防止） */}
+              <div className="space-y-2.5 max-h-60 sm:max-h-80 overflow-y-auto pr-1 overscroll-contain">
+                {visibleCourseGroups.map((group) => {
+                  const groupCourseNames = group.courses.map((c) => c.name);
+                  const allSelected = groupCourseNames.every((c) => filters.courses.includes(c));
+
+                  return (
+                    <div key={group.region} className="space-y-1.5">
+                      <div className="flex items-center justify-between text-[11px] text-muted-foreground font-semibold">
+                        <span>{group.label[language]}</span>
+                        <button
+                          type="button"
+                          onClick={() => handleCourseGroupToggle(groupCourseNames)}
+                          className="text-[10px] text-primary hover:underline cursor-pointer"
+                        >
+                          {allSelected ? t("filter.clearGroup") : t("filter.selectAll")}
+                        </button>
+                      </div>
+                      <div className="flex items-center flex-wrap gap-1.5">
+                        {group.courses.map((c) => {
+                          const isSelected = filters.courses.includes(c.name);
+                          return (
+                            <button
+                              key={c.name}
+                              type="button"
+                              onClick={() => handleCourseToggle(c.name)}
+                              aria-pressed={isSelected}
+                              className={cn(
+                                "rounded-md border transition-colors cursor-pointer",
+                                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+                                "px-2.5 py-1 text-xs min-h-[30px] sm:min-h-[32px]",
+                                isSelected
+                                  ? "bg-primary text-primary-foreground border-primary shadow-sm font-semibold"
+                                  : "bg-background text-muted-foreground border-input hover:bg-accent hover:text-accent-foreground"
+                              )}
+                            >
+                              {c.label[language]}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
       {/* 選択中の競馬場バッジ（折りたたみ時に表示） */}
       {!isCourseExpanded && filters.courses.length > 0 && (

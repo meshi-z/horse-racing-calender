@@ -1,4 +1,5 @@
 import { useLanguageStore, type Language } from '../store/useLanguageStore';
+import type { Organization } from '../types/race';
 
 /**
  * アプリケーション共通のUI翻訳辞書定義
@@ -514,9 +515,12 @@ export const DISTANCE_OPTIONS_BY_LANG: Record<Language, DistanceOption[]> = {
 };
 
 export type CourseRegion = 'jra' | 'nankanto' | 'regional' | 'banei' | 'france' | 'uk' | 'usa';
+export type RegionCategory = 'japan' | 'europe' | 'america';
 
 export interface CourseGroup {
   region: CourseRegion;
+  organization: Organization;
+  category: RegionCategory;
   label: Record<Language, string>;
   courses: {
     name: string; // 照合用キー（日本語名称）
@@ -527,6 +531,8 @@ export interface CourseGroup {
 export const COURSE_GROUPS: CourseGroup[] = [
   {
     region: 'jra',
+    organization: 'jra',
+    category: 'japan',
     label: { ja: '中央競馬 (JRA)', en: 'JRA (Central)', fr: 'JRA (Japon Central)' },
     courses: [
       { name: '札幌', label: { ja: '札幌', en: 'Sapporo', fr: 'Sapporo' } },
@@ -543,6 +549,8 @@ export const COURSE_GROUPS: CourseGroup[] = [
   },
   {
     region: 'nankanto',
+    organization: 'nar',
+    category: 'japan',
     label: { ja: '南関東 (NAR)', en: 'Minami Kanto (NAR)', fr: 'Minami Kanto (NAR)' },
     courses: [
       { name: '浦和', label: { ja: '浦和', en: 'Urawa', fr: 'Urawa' } },
@@ -553,6 +561,8 @@ export const COURSE_GROUPS: CourseGroup[] = [
   },
   {
     region: 'regional',
+    organization: 'nar',
+    category: 'japan',
     label: { ja: 'その他地方 (NAR)', en: 'Regional (NAR)', fr: 'Régional (NAR)' },
     courses: [
       { name: '門別', label: { ja: '門別', en: 'Mombetsu', fr: 'Mombetsu' } },
@@ -569,6 +579,8 @@ export const COURSE_GROUPS: CourseGroup[] = [
   },
   {
     region: 'banei',
+    organization: 'nar',
+    category: 'japan',
     label: { ja: 'ばんえい (NAR)', en: 'Banei (NAR)', fr: 'Banei (NAR)' },
     courses: [
       { name: '帯広', label: { ja: '帯広', en: 'Obihiro', fr: 'Obihiro' } },
@@ -576,6 +588,8 @@ export const COURSE_GROUPS: CourseGroup[] = [
   },
   {
     region: 'france',
+    organization: 'france_galop',
+    category: 'europe',
     label: { ja: 'フランス (France)', en: 'France', fr: 'France Galop' },
     courses: [
       { name: 'パリロンシャン', label: { ja: 'パリロンシャン', en: 'ParisLongchamp', fr: 'ParisLongchamp' } },
@@ -598,6 +612,8 @@ export const COURSE_GROUPS: CourseGroup[] = [
   },
   {
     region: 'uk',
+    organization: 'bha',
+    category: 'europe',
     label: { ja: 'イギリス (UK)', en: 'UK (BHA)', fr: 'Royaume-Uni (BHA)' },
     courses: [
       { name: 'アスコット', label: { ja: 'アスコット', en: 'Ascot', fr: 'Ascot' } },
@@ -620,6 +636,8 @@ export const COURSE_GROUPS: CourseGroup[] = [
   },
   {
     region: 'usa',
+    organization: 'equibase',
+    category: 'america',
     label: { ja: 'アメリカ (USA)', en: 'USA (Equibase)', fr: 'États-Unis (Equibase)' },
     courses: [
       { name: 'チャーチルダウンズ', label: { ja: 'チャーチルダウンズ', en: 'Churchill Downs', fr: 'Churchill Downs' } },

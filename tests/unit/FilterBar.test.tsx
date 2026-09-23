@@ -615,5 +615,144 @@ describe("FilterBar", () => {
       expect(triggerBtnFr).toHaveTextContent("Toutes");
     });
   });
+
+  describe("主催者選択と競馬場・グレード・馬場の動的連動および画面溢れ防止 (Issue #107)", () => {
+    it("主催者（アメリカ）を選択時、競馬場パネルにはアメリカの競馬場のみが表示されること", () => {
+      useRaceStore.getState().setFilter("organizations", ["equibase"]);
+      render(<FilterBar />);
+
+      // 競馬場パネルを展開
+      const courseExpandBtn = screen.getByRole("button", { name: "競馬場フィルターを展開" });
+      fireEvent.click(courseExpandBtn);
+
+      const panel = screen.getByTestId("course-filter-panel");
+      // アメリカ (USA) グループが表示されていること
+      expect(within(panel).getByText("アメリカ (USA)")).toBeInTheDocument();
+      expect(within(panel).getByRole("button", { name: "チャーチルダウンズ" })).toBeInTheDocument();
+
+      // 日本や欧州の競馬場グループは表示されないこと
+      expect(within(panel).queryByText("中央競馬 (JRA)")).not.toBeInTheDocument();
+      expect(within(panel).queryByText("南関東 (NAR)")).not.toBeInTheDocument();
+      expect(within(panel).queryByText("フランス (France)")).not.toBeInTheDocument();
+      expect(within(panel).queryByText("イギリス (UK)")).not.toBeInTheDocument();
+    });
+
+    it("主催者（フランス）を選択時、フランス競馬場のみが表示されること", () => {
+      useRaceStore.getState().setFilter("organizations", ["france_galop"]);
+      render(<FilterBar />);
+
+      const courseExpandBtn = screen.getByRole("button", { name: "競馬場フィルターを展開" });
+      fireEvent.click(courseExpandBtn);
+
+      const panel = screen.getByTestId("course-filter-panel");
+      expect(within(panel).getByText("フランス (France)")).toBeInTheDocument();
+      expect(within(panel).getByRole("button", { name: "パリロンシャン" })).toBeInTheDocument();
+
+      expect(within(panel).queryByText("中央競馬 (JRA)")).not.toBeInTheDocument();
+      expect(within(panel).queryByText("アメリカ (USA)")).not.toBeInTheDocument();
+    });
+
+    it("海外主催者（アメリカ）選択時、日本特有のグレード・一括トグル・ばんえい馬場が非表示となり、G1〜G3とAWが表示されること", () => {
+      useRaceStore.getState().setFilter("organizations", ["equibase"]);
+      render(<FilterBar />);
+
+      // G1, G2, G3 は表示される
+      expect(screen.getByRole("button", { name: "G1" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "G2" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "G3" })).toBeInTheDocument();
+
+      // J.G1, Jpn1, S1, 地方重賞、一括トグルは非表示
+      expect(screen.queryByRole("button", { name: "J.G1" })).not.toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "Jpn1" })).not.toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "S1" })).not.toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "地方重賞" })).not.toBeInTheDocument();
+      expect(screen.queryByText("一括:")).not.toBeInTheDocument();
+
+      // 馬場種別: AWは表示され、ばんえいは非表示
+      expect(screen.getByRole("button", { name: "AW" })).toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "ばんえい" })).not.toBeInTheDocument();
+    });
+
+    it("JRAのみ選択時、G1〜G3およびJ.G1〜J.G3が表示され、Jpn/S1/地方重賞/一括トグル/ばんえい/AWは非表示になること", () => {
+      useRaceStore.getState().setFilter("organizations", ["jra"]);
+      render(<FilterBar />);
+
+      expect(screen.getByRole("button", { name: "G1" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "J.G1" })).toBeInTheDocument();
+
+      expect(screen.queryByRole("button", { name: "Jpn1" })).not.toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "S1" })).not.toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "地方重賞" })).not.toBeInTheDocument();
+      expect(screen.queryByText("一括:")).not.toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "ばんえい" })).not.toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "AW" })).not.toBeInTheDocument();
+    });
+
+    it("NARのみ選択時、Jpn1〜Jpn3、S1〜S3、地方重賞、一括トグル、ばんえいが表示され、J.G1〜J.G3やAWは非表示になること", () => {
+      useRaceStore.getState().setFilter("organizations", ["nar"]);
+      render(<FilterBar />);
+
+      expect(screen.getByRole("button", { name: "G1" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Jpn1" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "S1" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "地方重賞" })).toBeInTheDocument();
+      expect(screen.getByText("一括:")).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "ばんえい" })).toBeInTheDocument();
+
+      expect(screen.queryByRole("button", { name: "J.G1" })).not.toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "AW" })).not.toBeInTheDocument();
+    });
+
+    it("全主催者表示（未選択）時、地域クイックセレクターが表示され、地域タブで競馬場グループが切り替わること", () => {
+      useRaceStore.getState().setFilter("organizations", []);
+      render(<FilterBar />);
+
+      const courseExpandBtn = screen.getByRole("button", { name: "競馬場フィルターを展開" });
+      fireEvent.click(courseExpandBtn);
+
+      const panel = screen.getByTestId("course-filter-panel");
+      // 地域セレクタータブが表示されていること
+      const regionTabs = screen.getByTestId("course-region-tabs");
+      expect(regionTabs).toBeInTheDocument();
+
+      // 初期状態は「すべて」で全7グループ表示
+      expect(within(panel).getByText("中央競馬 (JRA)")).toBeInTheDocument();
+      expect(within(panel).getByText("アメリカ (USA)")).toBeInTheDocument();
+
+      // 「日本」タブをクリック
+      const japanTab = within(regionTabs).getByRole("button", { name: /日本/ });
+      fireEvent.click(japanTab);
+
+      expect(within(panel).getByText("中央競馬 (JRA)")).toBeInTheDocument();
+      expect(within(panel).getByText("南関東 (NAR)")).toBeInTheDocument();
+      expect(within(panel).queryByText("フランス (France)")).not.toBeInTheDocument();
+      expect(within(panel).queryByText("アメリカ (USA)")).not.toBeInTheDocument();
+
+      // 「米国」タブをクリック
+      const americaTab = within(regionTabs).getByRole("button", { name: /アメリカ/ });
+      fireEvent.click(americaTab);
+
+      expect(within(panel).queryByText("中央競馬 (JRA)")).not.toBeInTheDocument();
+      expect(within(panel).getByText("アメリカ (USA)")).toBeInTheDocument();
+    });
+
+    it("競馬場パネルおよび詳細フィルターパネルに高さ制限・内部スクロールクラスが付与されていること", () => {
+      render(<FilterBar />);
+
+      const detailedPanel = screen.getByTestId("detailed-filters-panel");
+      expect(detailedPanel).toHaveClass("max-h-[75vh]");
+      expect(detailedPanel).toHaveClass("overflow-y-auto");
+
+      const courseExpandBtn = screen.getByRole("button", { name: "競馬場フィルターを展開" });
+      fireEvent.click(courseExpandBtn);
+
+      const coursePanel = screen.getByTestId("course-filter-panel");
+      // 内部スクロールコンテナの確認
+      const scrollContainer = coursePanel.querySelector(".overflow-y-auto");
+      expect(scrollContainer).toBeInTheDocument();
+      expect(scrollContainer).toHaveClass("max-h-60");
+    });
+  });
 });
+
 
