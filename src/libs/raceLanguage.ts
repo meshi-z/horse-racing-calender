@@ -1,10 +1,15 @@
 import type { Race, LocalizedText } from '../types/race';
 import type { Language } from '../store/useLanguageStore';
 
+export type RaceOriginLanguage = Language | 'zh';
+
 /**
  * レースの開催国の原語（公用語）コードを判定する
  */
-export function getRaceOriginLanguage(race: Race): Language {
+export function getRaceOriginLanguage(race: Race): RaceOriginLanguage {
+  if (race.country_code === 'HK' || race.organization === 'hkjc') {
+    return 'zh';
+  }
   if (race.country_code === 'FR' || race.organization === 'france_galop') {
     return 'fr';
   }
@@ -20,7 +25,7 @@ export function getRaceOriginLanguage(race: Race): Language {
 /**
  * LocalizedText から指定された言語の値を取得する（未定義時は en -> ja の順でフォールバック）
  */
-export function getLocalizedText(text: LocalizedText, lang: Language): string {
+export function getLocalizedText(text: LocalizedText, lang: Language | 'zh'): string {
   if (text[lang]) {
     return text[lang]!;
   }
