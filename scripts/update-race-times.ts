@@ -15,6 +15,7 @@ export interface RaceOutput {
     ja: string;
     en: string;
     fr?: string;
+    zh?: string;
   };
   grade: string;
   date: string;
@@ -29,7 +30,7 @@ export interface RaceOutput {
   distance: number;
   track_type: 'turf' | 'dirt' | 'obstacle' | 'banei' | 'aw';
   sex_constraint: 'none' | 'filly_and_mare' | 'colt_and_filly';
-  age_constraint: '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up';
+  age_constraint: '2yo' | '3yo' | '4yo' | '3yo_and_up' | '4yo_and_up';
   handicap: {
     code: 'weight_for_age' | 'special_weight' | 'set_weight' | 'handicap';
     ja: string;
@@ -316,7 +317,58 @@ export class UsRaceTimeFetcher implements RaceTimeFetcher {
 }
 
 /**
- * 登録済みフェッチャープロバイダーのマップ（JRA, NAR, France, UK, US対応）
+ * 基準日 (YYYY-MM-DD) から香港の当週開催期間（基準日〜7日間）の範囲を算出
+ */
+export function getHkUpcomingWindowRange(refDateStr: string, windowDays = 7): { startDate: string; endDate: string } {
+  const [y, m, d] = refDateStr.split('-').map(Number);
+  const ref = new Date(Date.UTC(y, m - 1, d));
+  const end = new Date(ref.getTime() + (windowDays - 1) * 86400000);
+
+  const formatYmd = (dt: Date) => {
+    const yr = dt.getUTCFullYear();
+    const mo = String(dt.getUTCMonth() + 1).padStart(2, '0');
+    const da = String(dt.getUTCDate()).padStart(2, '0');
+    return `${yr}-${mo}-${da}`;
+  };
+
+  return {
+    startDate: formatYmd(ref),
+    endDate: formatYmd(end),
+  };
+}
+
+/**
+ * 香港競馬（HKJC）向けプロバイダー実装
+ */
+export class HkRaceTimeFetcher implements RaceTimeFetcher {
+  readonly organization = 'hkjc';
+  private fixtures?: Record<string, import('./lib/hk-syutsuba').HkjcRaceItem[] | string>;
+
+  constructor(options?: { fixtures?: Record<string, import('./lib/hk-syutsuba').HkjcRaceItem[] | string> }) {
+    this.fixtures = options?.fixtures;
+  }
+
+  getTargetWindowRaces(races: RaceOutput[], refDate: string): RaceOutput[] {
+    const { startDate, endDate } = getHkUpcomingWindowRange(refDate);
+    return races.filter(
+      (r) =>
+        r.organization === this.organization &&
+        ((r.date >= startDate && r.date <= endDate) ||
+          (r.original_date && r.original_date >= startDate && r.original_date <= endDate))
+    );
+  }
+
+  async fetchConfirmedTimes(targetRaces: RaceOutput[]): Promise<ConfirmedRaceTime[]> {
+    const { fetchHkConfirmedRaceTimes } = await import('./lib/hk-syutsuba');
+    return await fetchHkConfirmedRaceTimes({
+      targetRaces,
+      fixtures: this.fixtures,
+    });
+  }
+}
+
+/**
+ * 登録済みフェッチャープロバイダーのマップ（JRA, NAR, France, UK, US, HK対応）
  */
 export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
   jra: new JraRaceTimeFetcher(),
@@ -326,6 +378,8 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
   uk: new UkRaceTimeFetcher(),
   equibase: new UsRaceTimeFetcher(),
   us: new UsRaceTimeFetcher(),
+  hkjc: new HkRaceTimeFetcher(),
+  hk: new HkRaceTimeFetcher(),
 };
 
 export interface UpdateOptions {

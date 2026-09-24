@@ -167,9 +167,9 @@ v1.16.0 の多言語（日/英）対応、v1.17.0 のNAR全重賞・ばんえい
      - タイムラインビュー・カレンダービュー・詳細ダイアログでの国コード「HK」バッジ表示（オリエンタルレッド/クリムゾン）。
      - 多言語・原語表記: レース詳細ダイアログおよび一覧での繁体字中文（`race.name.zh`）併記、検索エンジンでの中国語検索対応。
      - 免責事項ダイアログ（`DisclaimerDialog`）およびフッターへの Hong Kong Jockey Club (HKJC / 香港賽馬會) 出典・非公式性・知的財産権の明記（日/英/仏）。
-  - **確定発走時刻自動更新 & 過去実績補完**:
+  - **確定発走時刻自動更新 & 過去実績補完 [完了]**:
     - `HkRaceTimeFetcher` の実装による出馬表・確定発走時刻の自動取得。
-    - 2026年開催済みの過去香港重賞レースの発走時刻を確定実績値で完全バックフィル（`is_time_confirmed: true`）。
+    - 2026年開催済みの過去香港重賞レース（23競走）の発走時刻を確定実績値で完全バックフィル（`is_time_confirmed: true`）。
 
 ### フェーズ4 (将来拡張スコープ)
 
@@ -1085,8 +1085,15 @@ NAR公式および海外公式の格付け表記を以下の基準で分類・�
       - 競馬場フィルターへの香港2競馬場（シャティン / 沙田、ハッピーバレー / 跑馬地）の追加（日/英/仏3言語完全対応）。
       - タイムラインビュー、カレンダービュー、詳細ダイアログにおける国コード「HK」バッジおよび「HKJC」組織バッジのスタイル適用（オリエンタルレッド/クリムゾン）。
       - レース詳細ダイアログおよび一覧での原語（繁体字中国語 `race.name.zh`）併記、検索エンジンでの中国語検索対応。
-      - 免責事項ダイアログ（`DisclaimerDialog`）およびフッターへの HKJC（香港賽馬會）の出典・非公式性・知的財産権の明記（日/英/仏）。
-    - **Phase 4 (Next): 香港重賞確定発走予定時刻自動更新バッチ（`HkRaceTimeFetcher`）の実装 & 過去実績補完 (Issue #112)**
+    - **Phase 4: 香港重賞確定発走予定時刻自動更新バッチ（`HkRaceTimeFetcher`）の実装 & 過去実績補完 (Issue #112) [完了]**
+      - `scripts/lib/hk-syutsuba.ts`: 香港競馬（HKJC）の出馬表パース（英語名、中文名、スポンサー名、エイリアス照合）および香港時間（HKT: UTC+8、夏時間なし）から UTC ISO / JST への時刻変換モジュールの実装。
+      - `scripts/update-race-times.ts`: `HkRaceTimeFetcher` の実装と `DEFAULT_FETCHERS` への `hkjc` / `hk` プロバイダー登録、直近7日間の開催予定ウィンドウ（`getHkUpcomingWindowRange`）の実装。
+      - 過去開催済み香港重賞（2026年今日以前の23レース）の確定発走時刻バックフィル:
+        - `src/data/hk_race_master.json` の過去23レースを `is_time_confirmed: true` に更新。
+        - `scripts/parse-races.ts` による再生成で `public/data/races.json` の確定済みフラグを同期反映（全35レース中23レース確定済み、12レースが今後の予定）。
+      - 単体テスト（`tests/unit/hkSyutsuba.test.ts`）の実装:
+        - 香港時間変換、レース名・競馬場名マッチング、出馬表パース、`updateRaceTimes` 統合の全9テスト完全合格。
+      - `package.json` および `.github/workflows/update-race-times.yml`: `data:update-times:hk` コマンド新設およびバッチ運用仕様（`docs/batch-schedules.md`）の反映。
 35. **Step 35 (Next): 海外主要レース拡張（UAE・豪州等） & 外部カレンダー連携**
     - UAE（ERA）、オーストラリア（Racing Australia）の重賞データ統合。
     - レース当日の天候・馬場状態リアルタイム表示および外部カレンダー（.ics）エクスポート機能の実装。

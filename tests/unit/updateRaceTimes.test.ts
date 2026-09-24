@@ -6,6 +6,8 @@ import {
   updateRaceTimes,
   getJraUpcomingWeekendRange,
   getNarUpcomingWindowRange,
+  getHkUpcomingWindowRange,
+  DEFAULT_FETCHERS,
   RaceTimeFetcher,
   NarRaceTimeFetcher,
   RaceOutput,
@@ -44,6 +46,14 @@ describe('update-race-times script (Provider Architecture)', () => {
       const range = getNarUpcomingWindowRange('2026-09-20', 3);
       expect(range.startDate).toBe('2026-09-20');
       expect(range.endDate).toBe('2026-09-22');
+    });
+  });
+
+  describe('getHkUpcomingWindowRange', () => {
+    it('基準日から7日間の範囲を算出できること', () => {
+      const range = getHkUpcomingWindowRange('2026-09-24');
+      expect(range.startDate).toBe('2026-09-24');
+      expect(range.endDate).toBe('2026-09-30');
     });
   });
 
@@ -453,6 +463,13 @@ describe('update-race-times script (Provider Architecture)', () => {
       const hakusan = saved.find((r) => r.id === '2026-nar-jpn3-05');
       expect(hakusan?.is_time_confirmed).toBe(true);
       expect(hakusan?.start_time).toBe('2026-09-22T09:00:00.000Z');
+    });
+
+    it('DEFAULT_FETCHERS に hkjc および hk プロバイダーが登録されていること', () => {
+      expect(DEFAULT_FETCHERS['hkjc']).toBeDefined();
+      expect(DEFAULT_FETCHERS['hkjc'].organization).toBe('hkjc');
+      expect(DEFAULT_FETCHERS['hk']).toBeDefined();
+      expect(DEFAULT_FETCHERS['hk'].organization).toBe('hkjc');
     });
   });
 });
