@@ -737,25 +737,28 @@ export const sexConstraintLabels: Record<
 
 export const ageConstraintLabels: Record<
   Language,
-  Record<'2yo' | '3yo' | '3yo_and_up' | '4yo_and_up', { short: string; full: string }>
+  Record<'2yo' | '3yo' | '3yo_and_up' | '4yo_and_up' | '4yo', { short: string; full: string }>
 > = {
   ja: {
     '2yo': { short: '2歳', full: '2歳' },
     '3yo': { short: '3歳', full: '3歳' },
     '3yo_and_up': { short: '3歳上', full: '3歳以上' },
     '4yo_and_up': { short: '4歳上', full: '4歳以上' },
+    '4yo': { short: '4歳', full: '4歳' },
   },
   en: {
     '2yo': { short: '2yo', full: '2yo' },
     '3yo': { short: '3yo', full: '3yo' },
     '3yo_and_up': { short: '3yo+', full: '3yo & Up' },
     '4yo_and_up': { short: '4yo+', full: '4yo & Up' },
+    '4yo': { short: '4yo', full: '4yo' },
   },
   fr: {
     '2yo': { short: '2 ans', full: '2 ans' },
     '3yo': { short: '3 ans', full: '3 ans' },
     '3yo_and_up': { short: '3 ans+', full: '3 ans et plus' },
     '4yo_and_up': { short: '4 ans+', full: '4 ans et plus' },
+    '4yo': { short: '4 ans', full: '4 ans' },
   },
 };
 

@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-hk-g3-01",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "華商会チャレンジカップ",
+      "en": "Chinese Club Challenge Cup",
+      "zh": "華商會挑戰盃"
+    },
+    "grade": "G3",
+    "date": "2026-01-01",
+    "start_time": "2026-01-01T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-01-01",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
+    }
+  },
+  {
     "id": "2026-nar-local-01",
     "organization": "nar",
     "country_code": "JP",
@@ -158,6 +188,36 @@
     }
   },
   {
+    "id": "2026-hk-g3-02",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "バウヒニアスプリントトロフィー",
+      "en": "Bauhinia Sprint Trophy",
+      "zh": "洋紫荊短途錦標"
+    },
+    "grade": "G3",
+    "date": "2026-01-04",
+    "start_time": "2026-01-04T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-01-04",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
+    }
+  },
+  {
     "id": "2026-nar-local-04",
     "organization": "nar",
     "country_code": "JP",
@@ -233,6 +293,36 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-hk-g3-03",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "ジャニュアリーカップ",
+      "en": "January Cup",
+      "zh": "一月盃"
+    },
+    "grade": "G3",
+    "date": "2026-01-07",
+    "start_time": "2026-01-07T13:50:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-01-07",
+    "course": {
+      "ja": "ハッピーバレー",
+      "en": "Happy Valley",
+      "zh": "跑馬地"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
@@ -1053,6 +1143,66 @@
     }
   },
   {
+    "id": "2026-hk-g1-01",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "センテナリースプリントカップ",
+      "en": "Centenary Sprint Cup",
+      "zh": "百週年紀念短途盃"
+    },
+    "grade": "G1",
+    "date": "2026-01-25",
+    "start_time": "2026-01-25T07:30:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-01-25",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-hk-g1-02",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "スチュワーズカップ",
+      "en": "Stewards' Cup",
+      "zh": "董事盃"
+    },
+    "grade": "G1",
+    "date": "2026-01-25",
+    "start_time": "2026-01-25T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-01-25",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-nar-local-12",
     "organization": "nar",
     "country_code": "JP",
@@ -1353,6 +1503,36 @@
     }
   },
   {
+    "id": "2026-hk-g1-03",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "香港クラシックマイル",
+      "en": "Hong Kong Classic Mile",
+      "zh": "香港經典一哩賽"
+    },
+    "grade": "G1",
+    "date": "2026-02-01",
+    "start_time": "2026-02-01T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-02-01",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-15",
     "organization": "nar",
     "country_code": "JP",
@@ -1594,6 +1774,36 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-hk-g3-04",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "センテナリーヴァーズ",
+      "en": "Centenary Vase",
+      "zh": "百週年紀念銀瓶"
+    },
+    "grade": "G3",
+    "date": "2026-02-08",
+    "start_time": "2026-02-08T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-02-08",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
@@ -2328,6 +2538,36 @@
     }
   },
   {
+    "id": "2026-hk-g1-04",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "クイーンズシルバージュビリーカップ",
+      "en": "Queen's Silver Jubilee Cup",
+      "zh": "女皇銀禧紀念盃"
+    },
+    "grade": "G1",
+    "date": "2026-02-22",
+    "start_time": "2026-02-22T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-02-22",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-nar-local-25",
     "organization": "nar",
     "country_code": "JP",
@@ -2924,6 +3164,66 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-hk-g1-06",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "香港クラシックカップ",
+      "en": "Hong Kong Classic Cup",
+      "zh": "香港經典盃"
+    },
+    "grade": "G1",
+    "date": "2026-03-01",
+    "start_time": "2026-03-01T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-03-01",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-hk-g1-05",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "香港ゴールドカップ",
+      "en": "Citi Hong Kong Gold Cup",
+      "zh": "花旗銀行香港金盃"
+    },
+    "grade": "G1",
+    "date": "2026-03-01",
+    "start_time": "2026-03-01T08:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-03-01",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -4288,6 +4588,36 @@
     }
   },
   {
+    "id": "2026-hk-g1-07",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "香港ダービー",
+      "en": "BMW Hong Kong Derby",
+      "zh": "寶馬香港打吡大賽"
+    },
+    "grade": "G1",
+    "date": "2026-03-22",
+    "start_time": "2026-03-22T08:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-03-22",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-41",
     "organization": "nar",
     "country_code": "JP",
@@ -5575,6 +5905,66 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-hk-g2-01",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "スプリントカップ",
+      "en": "Sprint Cup",
+      "zh": "短途錦標"
+    },
+    "grade": "G2",
+    "date": "2026-04-06",
+    "start_time": "2026-04-06T07:30:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-04-06",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-hk-g2-02",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "チェアマンズトロフィー",
+      "en": "Chairman's Trophy",
+      "zh": "主席錦標"
+    },
+    "grade": "G2",
+    "date": "2026-04-06",
+    "start_time": "2026-04-06T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-04-06",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -7251,6 +7641,96 @@
     }
   },
   {
+    "id": "2026-hk-g1-08",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "チェアマンズスプリントプライズ",
+      "en": "Chairman's Sprint Prize",
+      "zh": "主席短途獎"
+    },
+    "grade": "G1",
+    "date": "2026-04-26",
+    "start_time": "2026-04-26T06:50:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-04-26",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-hk-g1-09",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "チャンピオンズマイル",
+      "en": "FWD Champions Mile",
+      "zh": "富衛保險冠軍一哩賽"
+    },
+    "grade": "G1",
+    "date": "2026-04-26",
+    "start_time": "2026-04-26T08:00:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-04-26",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-hk-g1-10",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "クイーンエリザベス2世カップ",
+      "en": "FWD QEII Cup",
+      "zh": "富衛保險女皇盃"
+    },
+    "grade": "G1",
+    "date": "2026-04-26",
+    "start_time": "2026-04-26T08:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-04-26",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-nar-local-62",
     "organization": "nar",
     "country_code": "JP",
@@ -8300,6 +8780,36 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-hk-g3-05",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "クイーンマザーメモリアルカップ",
+      "en": "Queen Mother Memorial Cup",
+      "zh": "皇太后紀念盃"
+    },
+    "grade": "G3",
+    "date": "2026-05-03",
+    "start_time": "2026-05-03T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-05-03",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 2400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
@@ -10303,6 +10813,36 @@
     }
   },
   {
+    "id": "2026-hk-g1-11",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "チャンピオンズ&チャターカップ",
+      "en": "Standard Chartered Champions & Chater Cup",
+      "zh": "渣打冠軍暨遮打盃"
+    },
+    "grade": "G1",
+    "date": "2026-05-24",
+    "start_time": "2026-05-24T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-05-24",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 2400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-nar-local-84",
     "organization": "nar",
     "country_code": "JP",
@@ -11022,6 +11562,36 @@
     }
   },
   {
+    "id": "2026-hk-g3-06",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "シャティンヴァーズ",
+      "en": "Sha Tin Vase",
+      "zh": "沙田銀瓶"
+    },
+    "grade": "G3",
+    "date": "2026-05-31",
+    "start_time": "2026-05-31T07:30:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-05-31",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
+    }
+  },
+  {
     "id": "2026-jra-g2-20",
     "organization": "jra",
     "country_code": "JP",
@@ -11042,6 +11612,36 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
+    }
+  },
+  {
+    "id": "2026-hk-g3-07",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "ライオンロックトロフィー",
+      "en": "Lion Rock Trophy",
+      "zh": "獅子山錦標"
+    },
+    "grade": "G3",
+    "date": "2026-05-31",
+    "start_time": "2026-05-31T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-05-31",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "handicap",
       "ja": "ハンデ",
@@ -13696,6 +14296,66 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-hk-g3-08",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "プレミアカップ",
+      "en": "Premier Cup",
+      "zh": "精英盃"
+    },
+    "grade": "G3",
+    "date": "2026-06-21",
+    "start_time": "2026-06-21T07:30:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-06-21",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
+    }
+  },
+  {
+    "id": "2026-hk-g3-09",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "プレミアプレート",
+      "en": "Premier Plate",
+      "zh": "精英碟"
+    },
+    "grade": "G3",
+    "date": "2026-06-21",
+    "start_time": "2026-06-21T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-06-21",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
@@ -21301,6 +21961,36 @@
     }
   },
   {
+    "id": "2026-hk-g3-10",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "行政長官杯",
+      "en": "HKSAR Chief Executive's Cup",
+      "zh": "特區行政長官盃"
+    },
+    "grade": "G3",
+    "date": "2026-09-06",
+    "start_time": "2026-09-06T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-09-06",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
+    }
+  },
+  {
     "id": "2026-nar-local-158",
     "organization": "nar",
     "country_code": "JP",
@@ -23666,29 +24356,33 @@
     }
   },
   {
-    "id": "2026-nar-local-176",
-    "organization": "nar",
-    "country_code": "JP",
+    "id": "2026-hk-g3-11",
+    "organization": "hkjc",
+    "country_code": "HK",
     "name": {
-      "ja": "銀河賞",
-      "en": "Ginga Sho"
+      "ja": "セレブレーションカップ",
+      "en": "Celebration Cup",
+      "zh": "慶典盃"
     },
-    "grade": "local_grade",
+    "grade": "G3",
     "date": "2026-09-27",
-    "start_time": "2026-09-27T10:30:00.000Z",
+    "start_time": "2026-09-27T08:05:00.000Z",
     "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-09-27",
     "course": {
-      "ja": "帯広",
-      "en": "Obihiro"
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
     },
-    "distance": 200,
-    "track_type": "banei",
+    "distance": 1400,
+    "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
+    "age_constraint": "3yo_and_up",
     "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Set Weight"
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
@@ -23713,6 +24407,32 @@
     "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-176",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "銀河賞",
+      "en": "Ginga Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-09-27",
+    "start_time": "2026-09-27T10:30:00.000Z",
+    "is_time_confirmed": false,
+    "course": {
+      "ja": "帯広",
+      "en": "Obihiro"
+    },
+    "distance": 200,
+    "track_type": "banei",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
       "ja": "別定",
       "en": "Set Weight"
     }
@@ -23905,6 +24625,36 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-hk-g3-12",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "ナショナルデーカップ",
+      "en": "National Day Cup",
+      "zh": "國慶盃"
+    },
+    "grade": "G3",
+    "date": "2026-10-01",
+    "start_time": "2026-10-01T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-01",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
@@ -26644,6 +27394,36 @@
     }
   },
   {
+    "id": "2026-hk-g2-03",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "シャティントロフィー",
+      "en": "Sha Tin Trophy",
+      "zh": "沙田錦標"
+    },
+    "grade": "G2",
+    "date": "2026-10-18",
+    "start_time": "2026-10-18T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-18",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
+    }
+  },
+  {
     "id": "2026-nar-local-196",
     "organization": "nar",
     "country_code": "JP",
@@ -27270,6 +28050,36 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-hk-g2-04",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "プレミアボウル",
+      "en": "Premier Bowl",
+      "zh": "精英碗"
+    },
+    "grade": "G2",
+    "date": "2026-10-25",
+    "start_time": "2026-10-25T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-10-25",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
@@ -28826,6 +29636,36 @@
     }
   },
   {
+    "id": "2026-hk-g3-13",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "ササレディースパース",
+      "en": "Sa Sa Ladies' Purse",
+      "zh": "莎莎婦女銀袋"
+    },
+    "grade": "G3",
+    "date": "2026-11-08",
+    "start_time": "2026-11-08T08:05:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-11-08",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
+    }
+  },
+  {
     "id": "2026-nar-local-218",
     "organization": "nar",
     "country_code": "JP",
@@ -29469,6 +30309,96 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-hk-g2-05",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "ジョッキークラブスプリント",
+      "en": "BOCHK Private Wealth Jockey Club Sprint",
+      "zh": "中銀香港私人財富馬會短途錦標"
+    },
+    "grade": "G2",
+    "date": "2026-11-22",
+    "start_time": "2026-11-22T07:10:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-11-22",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-hk-g2-06",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "ジョッキークラブマイル",
+      "en": "BOCHK Private Banking Jockey Club Mile",
+      "zh": "中銀香港私人銀行馬會一哩錦標"
+    },
+    "grade": "G2",
+    "date": "2026-11-22",
+    "start_time": "2026-11-22T07:45:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-11-22",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-hk-g2-07",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "ジョッキークラブカップ",
+      "en": "BOCHK Jockey Club Cup",
+      "zh": "中銀香港馬會盃"
+    },
+    "grade": "G2",
+    "date": "2026-11-22",
+    "start_time": "2026-11-22T08:20:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-11-22",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -30774,6 +31704,36 @@
     }
   },
   {
+    "id": "2026-hk-g1-12",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "香港ヴァーズ",
+      "en": "LONGINES Hong Kong Vase",
+      "zh": "浪琴香港瓶"
+    },
+    "grade": "G1",
+    "date": "2026-12-13",
+    "start_time": "2026-12-13T06:10:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-12-13",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 2400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-jra-g3-67",
     "organization": "jra",
     "country_code": "JP",
@@ -30829,6 +31789,36 @@
     }
   },
   {
+    "id": "2026-hk-g1-13",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "香港スプリント",
+      "en": "LONGINES Hong Kong Sprint",
+      "zh": "浪琴香港短途錦標"
+    },
+    "grade": "G1",
+    "date": "2026-12-13",
+    "start_time": "2026-12-13T06:50:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-12-13",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-nar-local-240",
     "organization": "nar",
     "country_code": "JP",
@@ -30852,6 +31842,66 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-hk-g1-14",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "香港マイル",
+      "en": "LONGINES Hong Kong Mile",
+      "zh": "浪琴香港一哩錦標"
+    },
+    "grade": "G1",
+    "date": "2026-12-13",
+    "start_time": "2026-12-13T08:00:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-12-13",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-hk-g1-15",
+    "organization": "hkjc",
+    "country_code": "HK",
+    "name": {
+      "ja": "香港カップ",
+      "en": "LONGINES Hong Kong Cup",
+      "zh": "浪琴香港盃"
+    },
+    "grade": "G1",
+    "date": "2026-12-13",
+    "start_time": "2026-12-13T08:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-12-13",
+    "course": {
+      "ja": "シャティン",
+      "en": "Sha Tin",
+      "zh": "沙田"
+    },
+    "distance": 2000,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
