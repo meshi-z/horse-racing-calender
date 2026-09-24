@@ -70,6 +70,16 @@ export const ORGANIZATION_GROUPS: OrganizationGroupItem[] = [
       { value: "equibase", labelKey: "filter.orgUsa" },
     ],
   },
+  {
+    id: "asia",
+    labelKey: "filter.regionAsia",
+    allLabelKey: "filter.selectAllAsia",
+    flag: "🇭🇰",
+    organizations: ["hkjc"],
+    items: [
+      { value: "hkjc", labelKey: "filter.orgHk" },
+    ],
+  },
 ];
 
 export interface GradeGroupItem {
@@ -148,7 +158,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
   const hasJra = filters.organizations.includes("jra");
   const hasNar = filters.organizations.includes("nar");
   const hasOverseas = filters.organizations.some((o) =>
-    ["france_galop", "bha", "equibase"].includes(o)
+    ["france_galop", "bha", "equibase", "hkjc"].includes(o)
   );
 
   // 主催者選択に応じたグレード表示フラグ
@@ -318,6 +328,12 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     if (isAllAmerica) {
       return `🇺🇸 ${t("filter.regionAmerica")}`;
     }
+    const isAllAsia =
+      filters.organizations.length === 1 &&
+      filters.organizations.includes("hkjc");
+    if (isAllAsia) {
+      return `🇭🇰 ${t("filter.regionAsia")}`;
+    }
     if (filters.organizations.length === 1) {
       const org = filters.organizations[0];
       if (org === "jra") return "🇯🇵 JRA";
@@ -325,6 +341,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
       if (org === "france_galop") return "🇫🇷 France";
       if (org === "bha") return "🇬🇧 UK";
       if (org === "equibase") return "🇺🇸 USA";
+      if (org === "hkjc") return "🇭🇰 HKJC";
     }
     return `${t("filter.orgSelectTrigger")} (${filters.organizations.length})`;
   };
@@ -396,6 +413,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     { value: "france_galop", label: t("filter.orgFrance") },
     { value: "bha", label: t("filter.orgUk") },
     { value: "equibase", label: t("filter.orgUsa") },
+    { value: "hkjc", label: t("filter.orgHk") },
   ];
 
   return (
@@ -1096,6 +1114,18 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
                     )}
                   >
                     🇺🇸 {t("filter.regionAmerica")}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedRegionTab("asia")}
+                    className={cn(
+                      "rounded-full px-2.5 py-0.5 text-[11px] font-semibold transition-all shrink-0 cursor-pointer border",
+                      selectedRegionTab === "asia"
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-muted/40 text-muted-foreground border-border hover:bg-muted hover:text-foreground"
+                    )}
+                  >
+                    🇭🇰 {t("filter.regionAsia")}
                   </button>
                 </div>
               )}

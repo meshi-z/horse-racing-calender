@@ -85,6 +85,27 @@ describe('raceLanguage utility', () => {
     handicap: { code: 'weight_for_age', ja: '馬齢', en: 'Weight for Age' },
   };
 
+  const sampleHkRace: Race = {
+    id: '2026-hk-qeii-cup',
+    organization: 'hkjc',
+    country_code: 'HK',
+    name: {
+      ja: 'クイーンエリザベス2世カップ',
+      en: 'Queen Elizabeth II Cup',
+      zh: '富衛保險女皇盃',
+    },
+    grade: 'G1',
+    date: '2026-04-26',
+    start_time: '2026-04-26T08:40:00.000Z',
+    is_time_confirmed: true,
+    course: { ja: 'シャティン', en: 'Sha Tin' },
+    distance: 2000,
+    track_type: 'turf',
+    sex_constraint: 'none',
+    age_constraint: '3yo_and_up',
+    handicap: { code: 'weight_for_age', ja: '馬齢', en: 'Weight for Age' },
+  };
+
   describe('getRaceOriginLanguage', () => {
     it('JRA / NAR レースは ja を返すこと', () => {
       expect(getRaceOriginLanguage(sampleJraRace)).toBe('ja');
@@ -96,6 +117,10 @@ describe('raceLanguage utility', () => {
 
     it('イギリスレースは en を返すこと', () => {
       expect(getRaceOriginLanguage(sampleUkRace)).toBe('en');
+    });
+
+    it('香港レースは zh を返すこと', () => {
+      expect(getRaceOriginLanguage(sampleHkRace)).toBe('zh');
     });
   });
 
@@ -179,6 +204,26 @@ describe('raceLanguage utility', () => {
         const { primary, secondary } = getRaceDisplayNames(sampleUkRace, 'fr');
         expect(primary).toBe('King George VI & Queen Elizabeth Stakes');
         expect(secondary).toBeUndefined();
+      });
+    });
+
+    describe('香港レース（原語: zh、QEII世C）', () => {
+      it('日本語UI: メイン日本語、サブ原語繁体字中国語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleHkRace, 'ja');
+        expect(primary).toBe('クイーンエリザベス2世カップ');
+        expect(secondary).toBe('富衛保險女皇盃');
+      });
+
+      it('英語UI: メイン英語、サブ原語繁体字中国語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleHkRace, 'en');
+        expect(primary).toBe('Queen Elizabeth II Cup');
+        expect(secondary).toBe('富衛保險女皇盃');
+      });
+
+      it('フランス語UI: メイン英語フォールバック、サブ原語繁体字中国語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleHkRace, 'fr');
+        expect(primary).toBe('Queen Elizabeth II Cup');
+        expect(secondary).toBe('富衛保險女皇盃');
       });
     });
   });

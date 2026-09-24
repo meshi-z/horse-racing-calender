@@ -734,6 +734,14 @@ describe("FilterBar", () => {
 
       expect(within(panel).queryByText("中央競馬 (JRA)")).not.toBeInTheDocument();
       expect(within(panel).getByText("アメリカ (USA)")).toBeInTheDocument();
+
+      // 「アジア」タブをクリック
+      const asiaTab = within(regionTabs).getByRole("button", { name: /アジア/ });
+      fireEvent.click(asiaTab);
+
+      expect(within(panel).queryByText("中央競馬 (JRA)")).not.toBeInTheDocument();
+      expect(within(panel).queryByText("アメリカ (USA)")).not.toBeInTheDocument();
+      expect(within(panel).getByText("香港 (Hong Kong)")).toBeInTheDocument();
     });
 
     it("競馬場パネルおよび詳細フィルターパネルに高さ制限・内部スクロールクラスが付与されていること", () => {

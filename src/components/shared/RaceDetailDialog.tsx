@@ -62,6 +62,8 @@ export function RaceDetailDialog({
                     ? "border-sky-500/40 text-sky-800 dark:text-sky-300 bg-sky-50/60 dark:bg-sky-950/40"
                     : race.country_code === "US"
                     ? "border-blue-600/40 text-blue-800 dark:text-blue-300 bg-blue-50/60 dark:bg-blue-950/40"
+                    : race.country_code === "HK"
+                    ? "border-red-600/40 text-red-800 dark:text-red-300 bg-red-50/60 dark:bg-red-950/40"
                     : "border-slate-500/40 text-slate-700 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900/40"
                 )}
               >
@@ -80,6 +82,8 @@ export function RaceDetailDialog({
                   ? "border-sky-500/40 text-sky-800 dark:text-sky-300 bg-sky-50/50 dark:bg-sky-950/30"
                   : race.organization === "equibase"
                   ? "border-blue-600/40 text-blue-800 dark:text-blue-300 bg-blue-50/50 dark:bg-blue-950/30"
+                  : race.organization === "hkjc"
+                  ? "border-red-600/40 text-red-800 dark:text-red-300 bg-red-50/50 dark:bg-red-950/30"
                   : "border-emerald-500/40 text-emerald-700 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/30"
               )}
             >
@@ -91,6 +95,8 @@ export function RaceDetailDialog({
                 ? language === "ja" ? "BHA (イギリス)" : language === "fr" ? "BHA (Royaume-Uni)" : "BHA (UK)"
                 : race.organization === "equibase"
                 ? language === "ja" ? "Equibase (アメリカ)" : language === "fr" ? "Equibase (États-Unis)" : "Equibase (USA)"
+                : race.organization === "hkjc"
+                ? language === "ja" ? "HKJC (香港)" : language === "fr" ? "HKJC (Hong Kong)" : "HKJC (Hong Kong)"
                 : language === "en" ? "NAR" : language === "fr" ? "NAR (Japon Régional)" : "地方競馬 (NAR)"}
             </Badge>
           </div>
@@ -106,6 +112,11 @@ export function RaceDetailDialog({
             {race.name.fr && race.name.fr !== primaryName && race.name.fr !== secondaryName && (
               <span className="text-xs text-muted-foreground/80 italic font-serif">
                 原語 (FR): {race.name.fr}
+              </span>
+            )}
+            {race.name.zh && race.name.zh !== primaryName && race.name.zh !== secondaryName && (
+              <span className="text-xs text-muted-foreground/80 font-sans">
+                原語 (ZH): {race.name.zh}
               </span>
             )}
           </div>

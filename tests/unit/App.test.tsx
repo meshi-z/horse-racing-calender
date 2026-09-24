@@ -111,7 +111,7 @@ describe("App Integration", () => {
     const { rerender } = render(<App />);
 
     expect(document.documentElement.lang).toBe("ja");
-    expect(document.title).toBe("重賞カレンダー - JRA, NAR, France Galop, UK & USA 重賞レーススケジュール");
+    expect(document.title).toBe("重賞カレンダー - JRA, NAR, France Galop, UK, USA & HK 重賞レーススケジュール");
     expect(screen.getByText("該当レース: 1 件")).toBeInTheDocument();
     expect(screen.getByText("表示: タイムライン")).toBeInTheDocument();
 
@@ -120,7 +120,7 @@ describe("App Integration", () => {
     rerender(<App />);
 
     expect(document.documentElement.lang).toBe("en");
-    expect(document.title).toBe("Graded Races - JRA, NAR, France Galop, UK & USA Graded Races Calendar");
+    expect(document.title).toBe("Graded Races - JRA, NAR, France Galop, UK, USA & HK Graded Races Calendar");
     expect(screen.getByText("Matching races: 1")).toBeInTheDocument();
     expect(screen.getByText("View: Timeline")).toBeInTheDocument();
 
@@ -129,7 +129,7 @@ describe("App Integration", () => {
     rerender(<App />);
 
     expect(document.documentElement.lang).toBe("fr");
-    expect(document.title).toBe("Courses de Groupe - Calendrier JRA, NAR, France Galop, UK & USA");
+    expect(document.title).toBe("Courses de Groupe - Calendrier JRA, NAR, France Galop, UK, USA & HK");
     expect(screen.getByText("Courses correspondantes: 1")).toBeInTheDocument();
     expect(screen.getByText("Affichage: Chronologie")).toBeInTheDocument();
   });

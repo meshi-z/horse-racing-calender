@@ -8,12 +8,14 @@ import {
 import { loadFranceRaceMaster, getFranceRaces } from './lib/france-races';
 import { loadUkRaceMaster, getUkRaces } from './lib/uk-races';
 import { loadUsRaceMaster, getUsRaces } from './lib/us-races';
+import { loadHkRaceMaster, getHkRaces } from './lib/hk-races';
 
 // --- Type Definitions (Pattern A: Localized Object) ---
 export interface LocalizedString {
   ja: string;
   en: string;
   fr?: string;
+  zh?: string;
 }
 
 export interface HandicapInfo {
@@ -1020,6 +1022,15 @@ function determineNarHandicap(raceName: string, _grade: string, course: string):
     racesOutput.push(us);
   }
   console.log(`Merged ${usRaces.length} US races into races output.`);
+
+  // --- Process HK Races ---
+  console.log('Loading and merging HK races...');
+  const hkMaster = loadHkRaceMaster(rootDir);
+  const hkRaces = getHkRaces(hkMaster, confirmedTimesMap);
+  for (const hk of hkRaces) {
+    racesOutput.push(hk);
+  }
+  console.log(`Merged ${hkRaces.length} HK races into races output.`);
 
   // Sort races by date, start_time, and organization
   racesOutput.sort((a, b) =>

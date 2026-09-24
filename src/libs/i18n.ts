@@ -79,6 +79,7 @@ export const translations = {
       orgFrance: 'フランス (France)',
       orgUk: 'イギリス (UK)',
       orgUsa: 'アメリカ (Equibase)',
+      orgHk: '香港 (HKJC)',
       orgSelectModalTitle: '開催国・主催者の選択',
       orgSelectModalDesc: '表示する競馬の開催団体を選択してください（複数選択可）',
       orgSelectTrigger: '開催国・主催者',
@@ -86,9 +87,11 @@ export const translations = {
       regionJapan: '日本',
       regionEurope: 'ヨーロッパ',
       regionAmerica: 'アメリカ',
+      regionAsia: 'アジア',
       selectAllJapan: '日本全重賞',
       selectAllEurope: '欧州全重賞',
       selectAllAmerica: '米国全重賞',
+      selectAllAsia: 'アジア全重賞',
       orgModalDone: '完了',
       gradeLabel: 'グレード:',
       gradeGroupJra: 'JRA重賞',
@@ -107,7 +110,7 @@ export const translations = {
       clear: 'クリア',
       removeCourseAria: '{course}の絞り込みを解除',
       distanceFilterAria: '距離フィルター: {label}（{description}）',
-      appDocTitle: '重賞カレンダー - JRA, NAR, France Galop, UK & USA 重賞レーススケジュール',
+      appDocTitle: '重賞カレンダー - JRA, NAR, France Galop, UK, USA & HK 重賞レーススケジュール',
       matchedRaces: '該当レース: {count} 件',
       viewModeLabel: '表示: {mode}',
       viewModeTimeline: 'タイムライン',
@@ -125,16 +128,16 @@ export const translations = {
       title: '免責事項・データ出典',
       description: '本アプリの利用に関する規約、データの取り扱い、および免責規定です。',
       fanSiteTitle: '非公式ファンサイトについて',
-      fanSiteBody: '本サービス（重賞カレンダー）は、個人が開発・運営する非公式のファンサイトです。日本中央競馬会（JRA）、地方競馬全国協会（NAR）、フランスギャロ（France Galop）、英国競馬統轄機構（BHA）、全米サラブレッド競馬協会・Equibase（The Jockey Club）、各地方競馬主催者（道営、岩手、南関東4場、金沢、愛知、笠松、兵庫、高知、佐賀、ばんえい帯広）およびその他の関連団体とは一切関係ありません。',
+      fanSiteBody: '本サービス（重賞カレンダー）は、個人が開発・運営する非公式のファンサイトです。日本中央競馬会（JRA）、地方競馬全国協会（NAR）、フランスギャロ（France Galop）、英国競馬統轄機構（BHA）、全米サラブレッド競馬協会・Equibase（The Jockey Club）、香港賽馬會（HKJC）、各地方競馬主催者（道営、岩手、南関東4場、金沢、愛知、笠松、兵庫、高知、佐賀、ばんえい帯広）およびその他の関連団体とは一切関係ありません。',
       dataSourceTitle: 'データの出典',
-      dataSourceBody: '本アプリで掲載しているレース日程、発走予定時刻、出走条件（コース・距離・出走資格・斤量等）のデータは、JRA（日本中央競馬会）公式サイト、NAR（地方競馬全国協会）公式サイト、France Galop（PMU）公式API、英国BHA（Sporting Life等）、および米国公式Equibase（The Jockey Club）で一般公開されている公式情報（カレンダーファイル、重賞一覧、確定出馬表等）を取得・加工して提供しています。',
+      dataSourceBody: '本アプリで掲載しているレース日程、発走予定時刻、出走条件（コース・距離・出走資格・斤量等）のデータは、JRA（日本中央競馬会）公式サイト、NAR（地方競馬全国協会）公式サイト、France Galop（PMU）公式API、英国BHA（Sporting Life等）、米国公式Equibase（The Jockey Club）、および香港HKJC（香港賽馬會）公式発表で一般公開されている公式情報（カレンダーファイル、重賞一覧、確定出馬表等）を取得・加工して提供しています。',
       changesTitle: '開催変更・公式発表確認の推奨と免責事項',
       changesP1: 'レースの日程、発走時刻、出走馬、斤量等の情報は、天候悪化・自然災害や主催者の都合等により、予告なく変更・中止・延期（代替開催・続行競馬等）となる場合があります。',
-      changesP2: '情報の正確性・網羅性には細心の注意を払っておりますが、リアルタイム性や完全性を保証するものではありません。馬券の購入、現地観戦、遠征等の際は、必ず主催者（JRA・NAR・France Galop・BHA・Equibase等）公式発表の最新情報をご確認ください。',
-      changesP2Strong: '馬券の購入、現地観戦、遠征等の際は、必ず主催者（JRA・NAR・France Galop・BHA・Equibase等）公式発表の最新情報をご確認ください。',
+      changesP2: '情報の正確性・網羅性には細心の注意を払っておりますが、リアルタイム性や完全性を保証するものではありません。馬券の購入、現地観戦、遠征等の際は、必ず主催者（JRA・NAR・France Galop・BHA・Equibase・HKJC等）公式発表の最新情報をご確認ください。',
+      changesP2Strong: '馬券の購入、現地観戦、遠征等の際は、必ず主催者（JRA・NAR・France Galop・BHA・Equibase・HKJC等）公式発表の最新情報をご確認ください。',
       changesP3: '本サービスの利用、または利用できなかったことにより生じたあらゆる直接的・間接的な損害・トラブル（馬券投票結果、交通・宿泊費用等を含むがこれらに限定されません）について、本サービスの開発者および運営者は一切の責任を負いません。',
       rightsTitle: '権利・商標の帰属',
-      rightsBody: '本サービスに記載されているレース名、競馬場名、主催団体名等の名称、商標およびロゴ等の知的財産権は、各主催者（JRA、NAR、France Galop、BHA、The Jockey Club / Equibase、各地方競馬主催者等）ならびに各権利者に帰属します。',
+      rightsBody: '本サービスに記載されているレース名、競馬場名、主催団体名等の名称、商標およびロゴ等の知的財産権は、各主催者（JRA、NAR、France Galop、BHA、The Jockey Club / Equibase、HKJC、各地方競馬主催者等）ならびに各権利者に帰属します。',
       analyticsTitle: 'アクセス解析ツール（Google Analytics）について',
       analyticsP1: '本サービスでは、利用状況の把握や機能改善・利便性向上のため、Google社が提供するアクセス解析ツール「Google Analytics（GA4）」を利用しています。',
       analyticsP2: 'Google Analyticsはデータの収集のためにCookie（クッキー）を使用しています。このデータは匿名で収集されており、個人を特定する情報は含まれません。',
@@ -142,7 +145,7 @@ export const translations = {
     },
     footer: {
       copyright: '© 2026 horse-racing-calendar',
-      unofficialNotice: '当サイトは非公式ファンサイトです。レース日程・発走時刻等の最新情報は必ず主催者（JRA・NAR・France Galop・BHA・Equibase等）公式発表をご確認ください。',
+      unofficialNotice: '当サイトは非公式ファンサイトです。レース日程・発走時刻等の最新情報は必ず主催者（JRA・NAR・France Galop・BHA・Equibase・HKJC等）公式発表をご確認ください。',
     },
     offline: {
       status: 'オフライン表示中（キャッシュされたレースデータを表示しています）',
@@ -239,6 +242,7 @@ export const translations = {
       orgFrance: 'France Galop',
       orgUk: 'UK (BHA)',
       orgUsa: 'USA (Equibase)',
+      orgHk: 'Hong Kong (HKJC)',
       orgSelectModalTitle: 'Select Countries & Organizations',
       orgSelectModalDesc: 'Select racing organizations to display (multiple allowed)',
       orgSelectTrigger: 'Organizations',
@@ -246,9 +250,11 @@ export const translations = {
       regionJapan: 'Japan',
       regionEurope: 'Europe',
       regionAmerica: 'America',
+      regionAsia: 'Asia',
       selectAllJapan: 'All Japan',
       selectAllEurope: 'All Europe',
       selectAllAmerica: 'All America',
+      selectAllAsia: 'All Asia',
       orgModalDone: 'Done',
       gradeLabel: 'Grade:',
       gradeGroupJra: 'JRA Grades',
@@ -267,7 +273,7 @@ export const translations = {
       clear: 'Clear',
       removeCourseAria: 'Remove {course} filter',
       distanceFilterAria: 'Distance filter: {label} ({description})',
-      appDocTitle: 'Graded Races - JRA, NAR, France Galop, UK & USA Graded Races Calendar',
+      appDocTitle: 'Graded Races - JRA, NAR, France Galop, UK, USA & HK Graded Races Calendar',
       matchedRaces: 'Matching races: {count}',
       viewModeLabel: 'View: {mode}',
       viewModeTimeline: 'Timeline',
@@ -285,16 +291,16 @@ export const translations = {
       title: 'Disclaimer & Data Sources',
       description: 'Terms of use, data handling, and disclaimer for this application.',
       fanSiteTitle: 'Unofficial Fan Site',
-      fanSiteBody: 'This service (Graded Races Calendar) is an unofficial, personal fan project and has no affiliation with JRA (Japan Racing Association), NAR (National Association of Racing), France Galop, British Horseracing Authority (BHA), The Jockey Club / Equibase, local racing authorities, or any official racing associations.',
+      fanSiteBody: 'This service (Graded Races Calendar) is an unofficial, personal fan project and has no affiliation with JRA (Japan Racing Association), NAR (National Association of Racing), France Galop, British Horseracing Authority (BHA), The Jockey Club / Equibase, Hong Kong Jockey Club (HKJC), local racing authorities, or any official racing associations.',
       dataSourceTitle: 'Data Sources',
-      dataSourceBody: 'Race schedules, post times, and race conditions (course, distance, eligibility, weight, etc.) published on this app are sourced and processed from publicly accessible official information published by JRA, NAR, France Galop (PMU), BHA (Sporting Life), and Equibase (The Jockey Club).',
+      dataSourceBody: 'Race schedules, post times, and race conditions (course, distance, eligibility, weight, etc.) published on this app are sourced and processed from publicly accessible official information published by JRA, NAR, France Galop (PMU), BHA (Sporting Life), Equibase (The Jockey Club), and HKJC (The Hong Kong Jockey Club).',
       changesTitle: 'Schedule Changes & Disclaimer',
       changesP1: 'Race schedules, post times, entries, and weights are subject to change, cancellation, or postponement (e.g. rescheduled races) without notice due to severe weather, contingencies, or organizer reasons.',
-      changesP2: 'While every effort is made to maintain information accuracy, real-time availability and completeness are not guaranteed. Always check official announcements from organizers (JRA, NAR, France Galop, BHA, Equibase).',
-      changesP2Strong: 'Always check official announcements from organizers (JRA, NAR, France Galop, BHA, Equibase).',
+      changesP2: 'While every effort is made to maintain information accuracy, real-time availability and completeness are not guaranteed. Always check official announcements from organizers (JRA, NAR, France Galop, BHA, Equibase, HKJC).',
+      changesP2Strong: 'Always check official announcements from organizers (JRA, NAR, France Galop, BHA, Equibase, HKJC).',
       changesP3: 'The author/operator of this service assumes no responsibility for any direct or indirect damages, issues, or losses (including but not limited to betting outcomes, travel, or accommodation expenses) arising from using or being unable to use this service.',
       rightsTitle: 'Intellectual Property & Trademarks',
-      rightsBody: 'All trademarks, logos, race names, racecourse names, and organization names displayed on this service belong to their respective copyright and trademark owners (JRA, NAR, France Galop, BHA, The Jockey Club / Equibase, etc.).',
+      rightsBody: 'All trademarks, logos, race names, racecourse names, and organization names displayed on this service belong to their respective copyright and trademark owners (JRA, NAR, France Galop, BHA, The Jockey Club / Equibase, HKJC, etc.).',
       analyticsTitle: 'Access Analytics (Google Analytics)',
       analyticsP1: 'This service uses Google Analytics (GA4) provided by Google LLC to understand usage patterns and enhance service quality and user experience.',
       analyticsP2: 'Google Analytics uses cookies to collect data. This data is collected anonymously and does not contain personally identifiable information.',
@@ -302,7 +308,7 @@ export const translations = {
     },
     footer: {
       copyright: '© 2026 horse-racing-calendar',
-      unofficialNotice: 'This is an unofficial fan site. Please always verify the latest race schedules and post times with official organizers (e.g., JRA, NAR, France Galop, BHA, Equibase).',
+      unofficialNotice: 'This is an unofficial fan site. Please always verify the latest race schedules and post times with official organizers (e.g., JRA, NAR, France Galop, BHA, Equibase, HKJC).',
     },
     offline: {
       status: 'Offline Mode (Displaying cached race data)',
@@ -399,6 +405,7 @@ export const translations = {
       orgFrance: 'France Galop',
       orgUk: 'Royaume-Uni (BHA)',
       orgUsa: 'États-Unis (Equibase)',
+      orgHk: 'Hong Kong (HKJC)',
       orgSelectModalTitle: 'Sélectionner pays et organisateurs',
       orgSelectModalDesc: 'Sélectionnez les organisations à afficher (sélection multiple)',
       orgSelectTrigger: 'Organisations',
@@ -406,9 +413,11 @@ export const translations = {
       regionJapan: 'Japon',
       regionEurope: 'Europe',
       regionAmerica: 'Amérique',
+      regionAsia: 'Asie',
       selectAllJapan: 'Tout le Japon',
       selectAllEurope: 'Toute l\'Europe',
       selectAllAmerica: 'Toute l\'Amérique',
+      selectAllAsia: 'Toute l\'Asie',
       orgModalDone: 'Terminé',
       gradeLabel: 'Groupe:',
       gradeGroupJra: 'Groupes JRA',
@@ -427,7 +436,7 @@ export const translations = {
       clear: 'Effacer',
       removeCourseAria: 'Supprimer le filtre {course}',
       distanceFilterAria: 'Filtre de distance: {label} ({description})',
-      appDocTitle: 'Courses de Groupe - Calendrier JRA, NAR, France Galop, UK & USA',
+      appDocTitle: 'Courses de Groupe - Calendrier JRA, NAR, France Galop, UK, USA & HK',
       matchedRaces: 'Courses correspondantes: {count}',
       viewModeLabel: 'Affichage: {mode}',
       viewModeTimeline: 'Chronologie',
@@ -445,16 +454,16 @@ export const translations = {
       title: 'Mentions légales & Sources',
       description: "Conditions d'utilisation, traitement des données et clause de non-responsabilité.",
       fanSiteTitle: 'Site non officiel de fans',
-      fanSiteBody: "Ce service (Calendrier des courses de groupe) est un projet personnel non officiel. Il n'est affilié d'aucune manière à la JRA, à la NAR, à France Galop, à la British Horseracing Authority (BHA), à The Jockey Club / Equibase ou à tout autre organisme de courses officiel.",
+      fanSiteBody: "Ce service (Calendrier des courses de groupe) est un projet personnel non officiel. Il n'est affilié d'aucune manière à la JRA, à la NAR, à France Galop, à la British Horseracing Authority (BHA), à The Jockey Club / Equibase, au Hong Kong Jockey Club (HKJC) ou à tout autre organisme de courses officiel.",
       dataSourceTitle: 'Sources des données',
-      dataSourceBody: 'Les calendriers de courses, horaires de départ et conditions de course publiés proviennent des données publiques officielles publiées par la JRA, la NAR, France Galop (PMU), la BHA (Sporting Life) et Equibase (The Jockey Club).',
+      dataSourceBody: 'Les calendriers de courses, horaires de départ et conditions de course publiés proviennent des données publiques officielles publiées par la JRA, la NAR, France Galop (PMU), la BHA (Sporting Life), Equibase (The Jockey Club) et le HKJC (The Hong Kong Jockey Club).',
       changesTitle: 'Modifications de calendrier & Avertissement',
       changesP1: 'Les horaires, partants et conditions de course peuvent être modifiés, annulés ou reportés sans préavis en raison des conditions météorologiques ou des décisions des organisateurs.',
-      changesP2: "Bien que le plus grand soin soit apporté à l'exactitude des informations, leur temps réel et leur exhaustivité ne sont pas garantis. Veuillez toujours vérifier les annonces officielles des organisateurs (JRA, NAR, France Galop, BHA, Equibase).",
-      changesP2Strong: 'Veuillez toujours vérifier les annonces officielles des organisateurs (JRA, NAR, France Galop, BHA, Equibase).',
+      changesP2: "Bien que le plus grand soin soit apporté à l'exactitude des informations, leur temps réel et leur exhaustivité ne sont pas garantis. Veuillez toujours vérifier les annonces officielles des organisateurs (JRA, NAR, France Galop, BHA, Equibase, HKJC).",
+      changesP2Strong: 'Veuillez toujours vérifier les annonces officielles des organisateurs (JRA, NAR, France Galop, BHA, Equibase, HKJC).',
       changesP3: "L'auteur de ce service décline toute responsabilité pour tout dommage direct ou indirect résultant de l'utilisation de ce service (y compris les résultats de paris, frais de transport, etc.).",
       rightsTitle: 'Propriété intellectuelle et marques',
-      rightsBody: "Les noms de courses, d'hippodromes et d'organisations, ainsi que les marques et logos affichés, appartiennent à leurs titulaires de droits respectifs (JRA, NAR, France Galop, BHA, The Jockey Club / Equibase, etc.).",
+      rightsBody: "Les noms de courses, d'hippodromes et d'organisations, ainsi que les marques et logos affichés, appartiennent à leurs titulaires de droits respectifs (JRA, NAR, France Galop, BHA, The Jockey Club / Equibase, HKJC, etc.).",
       analyticsTitle: "Analyse d'audience (Google Analytics)",
       analyticsP1: 'Ce service utilise Google Analytics (GA4) fourni par Google LLC pour analyser son utilisation et améliorer la qualité du service.',
       analyticsP2: 'Google Analytics utilise des cookies pour collecter des données anonymes ne contenant aucune information personnellement identifiable.',
@@ -462,7 +471,7 @@ export const translations = {
     },
     footer: {
       copyright: '© 2026 horse-racing-calendar',
-      unofficialNotice: 'Ce site est un projet de fans non officiel. Veuillez toujours vous référer aux annonces officielles des organisateurs (JRA, NAR, France Galop, BHA, Equibase) pour les informations les plus récentes.',
+      unofficialNotice: 'Ce site est un projet de fans non officiel. Veuillez toujours vous référer aux annonces officielles des organisateurs (JRA, NAR, France Galop, BHA, Equibase, HKJC) pour les informations les plus récentes.',
     },
     offline: {
       status: 'Mode hors ligne (affichage des données en cache)',
@@ -514,8 +523,8 @@ export const DISTANCE_OPTIONS_BY_LANG: Record<Language, DistanceOption[]> = {
   ],
 };
 
-export type CourseRegion = 'jra' | 'nankanto' | 'regional' | 'banei' | 'france' | 'uk' | 'usa';
-export type RegionCategory = 'japan' | 'europe' | 'america';
+export type CourseRegion = 'jra' | 'nankanto' | 'regional' | 'banei' | 'france' | 'uk' | 'usa' | 'hong_kong';
+export type RegionCategory = 'japan' | 'europe' | 'america' | 'asia';
 
 export interface CourseGroup {
   region: CourseRegion;
@@ -658,6 +667,16 @@ export const COURSE_GROUPS: CourseGroup[] = [
       { name: 'ロスアラミトス', label: { ja: 'ロスアラミトス', en: 'Los Alamitos', fr: 'Los Alamitos' } },
     ],
   },
+  {
+    region: 'hong_kong',
+    organization: 'hkjc',
+    category: 'asia',
+    label: { ja: '香港 (Hong Kong)', en: 'Hong Kong (HKJC)', fr: 'Hong Kong (HKJC)' },
+    courses: [
+      { name: 'シャティン', label: { ja: 'シャティン', en: 'Sha Tin', fr: 'Sha Tin' } },
+      { name: 'ハッピーバレー', label: { ja: 'ハッピーバレー', en: 'Happy Valley', fr: 'Happy Valley' } },
+    ],
+  },
 ];
 
 export interface CourseOption {
@@ -737,25 +756,28 @@ export const sexConstraintLabels: Record<
 
 export const ageConstraintLabels: Record<
   Language,
-  Record<'2yo' | '3yo' | '3yo_and_up' | '4yo_and_up', { short: string; full: string }>
+  Record<'2yo' | '3yo' | '3yo_and_up' | '4yo_and_up' | '4yo', { short: string; full: string }>
 > = {
   ja: {
     '2yo': { short: '2歳', full: '2歳' },
     '3yo': { short: '3歳', full: '3歳' },
     '3yo_and_up': { short: '3歳上', full: '3歳以上' },
     '4yo_and_up': { short: '4歳上', full: '4歳以上' },
+    '4yo': { short: '4歳', full: '4歳' },
   },
   en: {
     '2yo': { short: '2yo', full: '2yo' },
     '3yo': { short: '3yo', full: '3yo' },
     '3yo_and_up': { short: '3yo+', full: '3yo & Up' },
     '4yo_and_up': { short: '4yo+', full: '4yo & Up' },
+    '4yo': { short: '4yo', full: '4yo' },
   },
   fr: {
     '2yo': { short: '2 ans', full: '2 ans' },
     '3yo': { short: '3 ans', full: '3 ans' },
     '3yo_and_up': { short: '3 ans+', full: '3 ans et plus' },
     '4yo_and_up': { short: '4 ans+', full: '4 ans et plus' },
+    '4yo': { short: '4 ans', full: '4 ans' },
   },
 };
 
