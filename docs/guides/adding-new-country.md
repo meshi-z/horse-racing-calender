@@ -56,10 +56,16 @@ flowchart TD
 
 | Phase | 作業内容 | 対象PR・Issue例 |
 | :--- | :--- | :--- |
-| **Phase 1** | PRD改訂、スキーマ定義 (`src/types/race.ts`) | #64 |
-| **Phase 2** | レースマスタ作成、データ抽出、統合ビルドスクリプト組み込み | #65 |
-| **Phase 3** | UI拡張（FilterBar, RaceCard, CalendarView, RaceDetailDialog, i18n） | #66 |
-| **Phase 4** | 確定時刻自動取得フェッチャー (`RaceTimeFetcher`) 実装、Actions統合、過去実績補完 | #73, #77 |
+| **Phase 1** | PRD更新、各国データ仕様書作成 (`docs/specs/data-sources/{country}.md`)、スキーマ定義 (`src/types/race.ts`) | #64, #101, #109 |
+| **Phase 2** | レースマスタ作成、データ抽出、統合ビルドスクリプト組み込み | #65, #102, #110 |
+| **Phase 3** | UI拡張（FilterBar, RaceCard, CalendarView, RaceDetailDialog, i18n） | #66, #103, #111 |
+| **Phase 4** | 確定時刻自動取得フェッチャー (`RaceTimeFetcher`) 実装、Actions統合、過去実績補完 | #73, #86, #104, #112 |
+
+---
+
+> [!IMPORTANT]
+> **ドキュメント分冊化方針（PRD肥大化防止ルール）**:
+> 新規国を追加する際、取得元URL、競馬場コード、出馬表API構造等の詳細な技術仕様（How）は `docs/PRD.md` に直接書き込まず、必ず **`docs/specs/data-sources/{country}.md`** を新規作成してそこに記述してください。`docs/PRD.md` はプロダクト要求（What/Why）およびロードマップのみを簡潔に更新します。
 
 ---
 
@@ -463,6 +469,6 @@ npm run docs:pdf
 | **フランス (France)** | France Galop | `FR` | Longchamp, Chantilly, Deauville, Saint-Cloud | CET (UTC+1) / CEST (UTC+2) | 芝 (Turf), オールウェザー (AW) | **対応済み (v1.19.0)** |
 | **イギリス (UK)** | British Horseracing Authority (BHA) | `GB` | Ascot, Newmarket, Epsom, York, Doncaster, Goodwood | GMT (UTC+0) / BST (UTC+1) | 芝 (Turf), オールウェザー (AW) | **対応済み (v1.23.0)** |
 | **アメリカ (USA)** | The Jockey Club / Equibase | `US` | Churchill Downs, Belmont Park, Saratoga, Santa Anita, Del Mar | ET / CT / MT / PT (夏時間あり) | ダート (Dirt), 芝 (Turf) | **対応済み (v1.28.0)** |
-| **香港 (HK)** | Hong Kong Jockey Club (HKJC) | `HK` | 沙田 (Sha Tin), 快活谷 (Happy Valley) | HKT (UTC+8, 通年固定) | 芝 (Turf), オールウェザー (AW) | 次期候補 |
+| **香港 (HK)** | Hong Kong Jockey Club (HKJC) | `HK` | 沙田 (Sha Tin), 快活谷 (Happy Valley) | HKT (UTC+8, 通年固定) | 芝 (Turf), オールウェザー (AW) | **対応済み (v1.30.0)** |
 | **オーストラリア (AUS)** | Racing Australia | `AU` | Flemington, Randwick, Caulfield, Rosehill, Moonee Valley | AEST (UTC+10) / AEDT (UTC+11) ※南半球 | 芝 (Turf) | 次期候補 |
 | **UAE (ドバイ)** | Emirates Racing Authority (ERA) | `AE` | Meydan, Jebel Ali, Abu Dhabi | GST (UTC+4, 通年固定) | ダート (Dirt), 芝 (Turf) | 次期候補 |
