@@ -1,46 +1,72 @@
 # 香港競馬（HKJC / 香港賽馬會）データ仕様書 (Hong Kong Data Specifications)
 
-本ドキュメントは、香港競馬（The Hong Kong Jockey Club: HKJC / 香港賽馬會 統轄、IFHA Part I平地全31重賞および4歳クラシックシリーズ全35競走）に関するデータ仕様書です。
+本ドキュメントは、香港競馬（The Hong Kong Jockey Club: HKJC / 香港賽馬會統轄、IFHA Part I平地全31重賞および4歳クラシックシリーズ全35競走）に関するデータ仕様書です。
 
 ---
 
-## 1. データソース一覧
+## 1. 基本メタ情報 (Metadata)
 
-| 項目 | ソースURL / 取得先 | 用途 |
+| 項目 | 設定値 / 仕様 | 備考 |
 | :--- | :--- | :--- |
-| **重賞格付け・出走条件** | IFHA Part I Hong Kong リスト | 平地全31重賞（G1 12、G2 7、G3 12）および4歳限定戦の格付け |
-| **公式開催日程 & 出馬表** | [The Hong Kong Jockey Club (HKJC)](https://racing.hkjc.com/) | 香港公式開催カレンダー、出馬表、公式発走時刻 |
-| **日英中マスタ** | `src/data/hk_race_master.json` | 英語正式名、繁体字中文名、日本語通称名、競馬場マスタ |
+| **国コード (`country_code`)** | `"HK"` | ISO 3166-1 alpha-2 |
+| **主催者コード (`organization`)** | `"hkjc"` | `Organization` 型識別子 |
+| **原語・対応言語 (`languages`)** | `ja`, `en`, `fr`, `zh` | 日本語通称、英名、仏名、繁体字中文 |
+| **レースID採番ルール (`id`)** | `{YYYY}-hk-{grade}-{index}` | 例: `2026-hk-g1-01` |
+| **格付け体系 (`grades`)** | `G1`, `G2`, `G3` | 国際G1〜G3および香港G1（4歳クラシック） |
+| **マスタファイルパス** | `src/data/hk_race_master.json` | 日英中対訳マスタ、沙田・跑馬地、推定発走時刻 |
+| **生成・ビルドモジュール** | `scripts/lib/hk-races.ts`, `scripts/parse-races.ts` | IFHA Part I と HKJC公式日程を統合 |
 
 ---
 
-## 2. タイムゾーン仕様
+## 2. データソース一覧 (Data Sources)
 
-- **タイムゾーン**: 香港標準時（HKT: UTC+8、通年固定・夏時間なし）
-- **UTC変換**: `HKT - 8時間 = UTC`（日本標準時 JST より 1時間遅れ: `HKT + 1時間 = JST`）
-- **標準発走時間帯**:
-  - 昼間開催（沙田 / Sha Tin）: 現地 13:00〜18:00（JST 14:00〜19:00 / UTC 05:00〜10:00）
-  - ナイター開催（跑馬地 / Happy Valley）: 現地 18:45〜23:00（JST 19:45〜24:00 / UTC 10:45〜15:00）
-
----
-
-## 3. 競馬場 & スキーマ独自拡張
-
-- **競馬場（全2場）**:
-  - **沙田（Sha Tin / シャティン）**: 芝コースおよびオールウェザー（全天候）コース。主要G1の全舞台。
-  - **跑馬地（Happy Valley / ハッピーバレー）**: 香港島都心部のナイター競馬場。芝コース。
-- **4歳限定戦 (`age_constraint: '4yo'`)**:
-  - 香港クラシックマイル（Hong Kong Classic Mile）
-  - 香港クラシックカップ（Hong Kong Classic Cup）
-  - 香港ダービー（Hong Kong Derby / 香港打吡大賽）
-- **繁体字中文表記 (`LocalizedText.zh`)**:
-  - レース名および競馬場名に繁体字中文（`zh`）を格納。
+| 分類 | ソース元 / URL | 取得形式 | 用途 |
+| :--- | :--- | :--- | :--- |
+| **年間日程 / カレンダー** | [The Hong Kong Jockey Club (HKJC)](https://racing.hkjc.com/) | Web / カレンダー | 年間開催日程、レース一覧 |
+| **格付け・出走条件** | IFHA Part I Hong Kong リスト | PDF | レース格付け、出走条件、斤量、距離、馬場 |
+| **出馬表・確定発走時刻** | HKJC 公式出馬表（Racecards）ページ | HTML スクレイピング | 確定出馬表、公式発走時刻（HKT） |
+| **過去実績補完データ** | `src/data/hk_race_master.json` | JSON | 2026年開催済み全重賞の確定発走時刻バックフィル |
 
 ---
 
-## 4. 確定発走時刻自動取得 (`HkRaceTimeFetcher`)
+## 3. タイムゾーン & 発走時刻仕様 (Timezone & Schedule)
 
+- **現地タイムゾーン**: 香港標準時（HKT: UTC+8）
+- **夏時間（DST）規則**: なし（通年固定）
+- **UTC変換式**: `HKT - 8時間 = UTC`（日本時間 JST 比: `HKT + 1時間 = JST`、日本より1時間遅れ）
+- **標準推定発走時刻（マスタ初期値）**:
+  - 昼間開催（沙田）: 現地 13:00〜18:00（JST 14:00〜19:00 / UTC `05:00`〜`10:00`）
+  - ナイター開催（跑馬地）: 現地 18:45〜23:00（JST 19:45〜24:00 / UTC `10:45`〜`15:00`）
+  - 香港国際競走（香港カップ等）: 現地 16:40 前後（JST 17:40 / UTC `08:40`）
+
+---
+
+## 4. 競馬場 & 馬場種別仕様 (Courses & Tracks)
+
+### 4.1 登録競馬場一覧（全2競馬場）
+| 競馬場名 (日本語) | 英語表記 (`en`) | 繁体字中文 (`zh`) | 原語仏名 (`fr`) | 区分 / 特徴 |
+| :--- | :--- | :--- | :--- | :--- |
+| **シャティン** | Sha Tin | 沙田 | Sha Tin | 新界地区 (主要国際G1の全舞台、AW併設) |
+| **ハッピーバレー** | Happy Valley | 跑馬地 | Happy Valley | 香港島都心部 (水曜ナイター中心) |
+
+### 4.2 馬場種別 (`track_type`) & 特殊競走仕様
+- **採用馬場種別**:
+  - `turf` (芝): 香港平地競走の主流コース
+  - `aw` (オールウェザー): 沙田競馬場の全天候型ダートコース
+- **特殊条件**:
+  - **4歳限定戦 (`age_constraint: '4yo'`)**: 香港クラシックマイル、香港クラシックカップ、香港ダービー（香港打吡大賽）の3競走に適用。
+
+---
+
+## 5. 確定発走時刻自動取得バッチ仕様 (RaceTimeFetcher)
+
+- **プロバイダー名**: `HkRaceTimeFetcher`
 - **実装ファイル**: `scripts/lib/hk-syutsuba.ts`, `scripts/update-race-times.ts`
-- **対象ウィンドウ**: 基準日から直近7日間の開催予定レース
-- **CLI単独実行**: `npm run data:update-times:hk`（`--org hkjc`）
-- **名寄せルール**: `hkRaceMatches` / `hkCourseMatches` により、英語名、中文名、スポンサー冠名、エイリアスを網羅突合。
+- **対象開催ウィンドウ**: 基準日（JST）から直近7日間の開催予定レース（`getHkUpcomingWindowRange`）
+- **CLI実行コマンド**: `npm run data:update-times:hk`（または `--org hkjc`）
+- **定期実行スケジュール**:
+  - 毎日 07:30 JST（香港現地早朝・当日出馬表確定枠）
+  - 毎日 21:30 JST（香港ナイター開催監視枠）
+- **名寄せ・照合アルゴリズム**:
+  - `hkRaceMatches` / `hkCourseMatches` により、英語名、中文名（繁体字）、スポンサー名、エイリアスを複合突合。
+  - 香港時間（HKT: UTC+8）から正確に ISO 8601 UTC 文字列および JST 表記を算出。
