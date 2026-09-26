@@ -6,6 +6,26 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 37: 欧州主要障害重賞（イギリス・アイルランド・フランス）包括統合 (v1.33.0 / Issue #126, #127, #128) [完了]
+- **イギリス主要障害重賞（BHA Jump Pattern 計34競走）の統合 (Issue #126) [完了]**
+  - `src/data/uk_race_master.json`: チェルトナム (`Cheltenham`)、エイントリー (`Aintree`) を競馬場マスタに追加。
+  - チェルトナムフェスティバル全14G1（チェルトナムゴールドC、チャンピオンハードル、クイーンマザーチャンピオンチェイス、ステイヤーズハードル等）、エイントリー・グランドナショナルフェスティバル全9G1および伝統の世界最高峰障害競走グランドナショナル（Premier Handicap / `grade: G3` / 6858m）、ケンプトン・キングジョージ6世チェイス、その他冬期主要G1等計34競走を追加（イギリス重賞合計190競走）。
+  - `docs/specs/data-sources/uk.md` の改訂、`scripts/lib/uk-races.ts` の `track_type: obstacle` および `age_constraint: 4yo` 対応。
+- **アイルランド主要障害重賞（HRI Jump Pattern 計31競走）の統合 (Issue #127) [完了]**
+  - `src/data/ireland_race_master.json`: パンチェスタウン (`Punchestown`)、ゴルウェイ (`Galway`)、リムリック (`Limerick`) を競馬場マスタに追加。
+  - ダブリンレーシングフェスティバル全8G1（アイリッシュゴールドC、アイリッシュチャンピオンハードル、ダブリンチェイス等）、フェアリーハウス・イースターフェスティバル（アイリッシュグランドナショナル / Premier Handicap `grade: G3` / 5834m、ウィローウォームゴールドC等）、パンチェスタウンフェスティバル全12G1（パンチェスタウンゴールドC、チャンピオンチェイス等）、クリスマスG1群等計31競走を追加（アイルランド重賞合計98競走）。
+  - `docs/specs/data-sources/ireland.md` の改訂、`scripts/lib/ireland-races.ts` の `track_type: obstacle` および `age_constraint: 4yo` 対応。
+- **フランス主要障害重賞（France Galop オートゥイユ競馬場全8G1競走）の統合 (Issue #128) [完了]**
+  - `src/data/france_race_master.json`: 障害の聖地オートゥイユ (`Auteuil`) を競馬場マスタに追加。
+  - オートゥイユ競馬場開催の全8G1競走（春のグラン・スティープルチェイス・ド・パリ ウィークエンド: パリ大障害 芝6000m、オートゥイユ大ハードル 芝5100m、フェルディナン・デュフォー賞、アラン・デュ・ブレユ賞、秋の48 Heures de l'Obstacle: ラ・エ・ジュグラ賞 芝5500m、モーリス・ジロワ賞、ルノー・デュ・ヴィヴィエ賞、カンバセレス賞）を追加（フランス重賞合計121競走）。
+  - `docs/specs/data-sources/france.md` の改訂、`scripts/lib/france-races.ts` の `track_type: obstacle` および `age_constraint: 4yo` 対応。
+- **共通パイプライン & UI統合 [完了]**
+  - `scripts/parse-races.ts`: `RaceOutput` の `age_constraint` に `4yo` を追加し、全1,336競走の完全ビルド出力を実現。
+  - 単体・統合テストの網羅的アップデート（全47テストファイル、459テストすべて完全通過）。
+  - `docs/PRD.md`: ロードマップおよびプロダクト概要の更新。
+
+---
+
 ### Step 36: 海外競馬第5弾・アイルランド競馬（HRI / IFHA Part I 重賞）統合 (v1.32.0 / Issue #121, #122, #123, #124) [完了]
 - **Phase 1: PRD改訂・要件定義・TypeScript型定義 (Issue #121) [完了]**
   - データ仕様書 `docs/specs/data-sources/ireland.md` の新規策定（一次データソース、夏時間ルール、競馬場、ID体系）。
