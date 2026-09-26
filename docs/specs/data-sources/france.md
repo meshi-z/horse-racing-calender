@@ -1,6 +1,6 @@
 # フランス競馬（France Galop / PMU）データ仕様書 (France Data Specifications)
 
-本ドキュメントは、フランス競馬（France Galop統轄、IFHA Part I平地全重賞競走: G1, G2, G3）に関するデータ仕様書です。
+本ドキュメントは、フランス競馬（France Galop統轄、IFHA Part I平地全113重賞競走、および主要障害重賞全8G1競走: パリ大障害、オートゥイユ大ハードル、ラ・エ・ジュグラ賞等計121競走）に関するデータ仕様書です。
 
 ---
 
@@ -11,10 +11,10 @@
 | **国コード (`country_code`)** | `"FR"` | ISO 3166-1 alpha-2 |
 | **主催者コード (`organization`)** | `"france_galop"` | `Organization` 型識別子 |
 | **原語・対応言語 (`languages`)** | `ja`, `en`, `fr` | 日本語通称、英名、原語フランス語 |
-| **レースID採番ルール (`id`)** | `{YYYY}-france-{grade}-{index}` | 例: `2026-france-g1-01` |
-| **格付け体系 (`grades`)** | `G1`, `G2`, `G3` | IFHA Part I 平地国際重賞 |
-| **マスタファイルパス** | `src/data/france_race_master.json` | 日仏英対訳マスタ、主要16競馬場、出走条件 |
-| **生成・ビルドモジュール** | `scripts/lib/france-races.ts`, `scripts/parse-races.ts` | IFHA Part I と公式カレンダーPDFを統合 |
+| **レースID採番ルール (`id`)** | `{YYYY}-france-{grade}-{index}` | 例: `2026-france-g1-01`, `2026-france-g1-31` (パリ大障害) |
+| **格付け体系 (`grades`)** | `G1`, `G2`, `G3` | IFHA Part I 平地国際重賞（全113競走）およびFrance Galop 障害G1（全8競走） |
+| **マスタファイルパス** | `src/data/france_race_master.json` | 日仏英対訳マスタ、主要17競馬場、出走条件 |
+| **生成・ビルドモジュール** | `scripts/lib/france-races.ts`, `scripts/parse-races.ts` | IFHA Part I と公式プログラムを統合 |
 
 ---
 
@@ -23,7 +23,8 @@
 | 分類 | ソース元 / URL | 取得形式 | 用途 |
 | :--- | :--- | :--- | :--- |
 | **年間日程 / カレンダー** | France Galop 公式開催カレンダー 2026 PDF | PDF | 年間開催日程、開催競馬場 |
-| **格付け・出走条件** | [IFHA Part I France PDF](https://www.tjcis.com/pdf/icsc26/ICSC-PartI_France.pdf) | PDF | レース格付け、出走条件、距離、馬場種別 |
+| **格付け・出走条件 (平地)** | [IFHA Part I France PDF](https://www.tjcis.com/pdf/icsc26/ICSC-PartI_France.pdf) | PDF | レース格付け、出走条件、距離、馬場種別 |
+| **格付け・出走条件 (障害)** | France Galop 公式プログラム / リスト | Web / PDF | オートゥイユ競馬場障害G1格付け、距離、出走資格 |
 | **出馬表・確定発走時刻** | `https://offline.turfinfo.api.pmu.fr/rest/client/7/programme/{DDMMYYYY}` | REST API (JSON) | PMU公式出馬表プログラム（ミリ秒タイムスタンプ） |
 | **過去実績補完データ** | `src/data/france_race_master.json` | JSON | 2026年開催済み全重賞の確定発走時刻バックフィル |
 
@@ -41,20 +42,21 @@
   - 冬時間（CET）: `CET - 1時間 = UTC`（日本時間 JST 比: `UTC + 9時間 = JST`、時差 8時間）
 - **標準推定発走時刻（マスタ初期値）**:
   - 主要G1（凱旋門賞等）: 現地 16:05（夏時間: UTC `14:05:00.000Z` / JST `23:05`）
-  - 通常重賞競走: 現地 15:00〜16:30 前後
+  - パリ大障害: 現地 16:00（CEST: UTC `14:00:00.000Z` / JST `23:00`）
+  - 通常重賞競走: 現地 14:00〜16:30 前後
 
 ---
 
 ## 4. 競馬場 & 馬場種別仕様 (Courses & Tracks)
 
-### 4.1 登録競馬場一覧（主要16競馬場）
+### 4.1 登録競馬場一覧（主要17競馬場）
 | 競馬場名 (日本語) | 英語表記 (`en`) | 原語表記 (`fr`) | 区分 / 所在地 |
 | :--- | :--- | :--- | :--- |
-| **パリロンシャン** | ParisLongchamp | ParisLongchamp | パリ地区 (主要G1舞台) |
+| **パリロンシャン** | ParisLongchamp | ParisLongchamp | パリ地区 (凱旋門賞等主要平地G1舞台) |
 | **シャンティイ** | Chantilly | Chantilly | パリ近郊 (ジョッケクリブ賞等) |
 | **ドーヴィル** | Deauville | Deauville | ノルマンディー (夏季開催 / PSF併設) |
 | **サンクルー** | Saint-Cloud | Saint-Cloud | パリ近郊 (サンクルー大賞等) |
-| **オートゥイユ** | Auteuil | Auteuil | パリ地区 (障害中心) |
+| **オートゥイユ** | Auteuil | Auteuil | パリ地区 (障害競走の聖地: パリ大障害、オートゥイユ大ハードル、ラ・エ・ジュグラ賞等全8G1) |
 | **フォンテーヌブロー** | Fontainebleau | Fontainebleau | イル・ド・フランス |
 | **コンピエーニュ** | Compiegne | Compiègne | オワーズ県 |
 | **クラファンティーヌ** | Clairefontaine | Clairefontaine | ノルマンディー |
@@ -71,6 +73,9 @@
 - **採用馬場種別**:
   - `turf` (芝): フランス平地重賞の大半（パリロンシャン、シャンティイ等の芝コース）
   - `aw` (オールウェザー / PSF: Piste en Sable Fibré): ドーヴィル、シャンティイ等の全天候型ファイバーサンドコース
+  - `obstacle` (障害): オートゥイユ競馬場を中心とする障害競走（スティープルチェイス、ハードル）
+    - **春のオートゥイユ開催 (5月中旬〜6月上旬)**: パリ大障害 (6000m)、オートゥイユ大ハードル (5100m)、フェルディナン・デュフォー賞 (4歳大障害 4400m)、アラン・デュ・ブレユ賞 (4歳春ハードル 3900m)
+    - **秋の48 Heures de l'Obstacle (11月上旬)**: ラ・エ・ジュグラ賞 (秋大障害 5500m)、モーリス・ジロワ賞 (4歳秋チェイス 4400m)、ルノー・デュ・ヴィヴィエ賞 (4歳秋ハードル 3900m)、カンバセレス賞 (3歳秋ハードル 3600m)
 
 ---
 

@@ -28,9 +28,9 @@ export interface FranceMasterRaceItem {
     en: string;
   };
   distance: number;
-  track_type: 'turf' | 'aw';
+  track_type: 'turf' | 'aw' | 'obstacle';
   sex_constraint: 'none' | 'filly_and_mare' | 'colt_and_filly';
-  age_constraint: '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up';
+  age_constraint: '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up' | '4yo';
   handicap: {
     code: 'weight_for_age' | 'special_weight' | 'set_weight' | 'handicap';
     ja: string;

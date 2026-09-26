@@ -78,7 +78,7 @@ describe('public/data/races.json integrity check', () => {
 
     expect(jraRaces.length).toBe(140);
     expect(narRaces.length).toBe(344);
-    expect(franceRaces.length).toBe(113);
+    expect(franceRaces.length).toBe(121);
 
     // ばんえい競馬の検証
     const baneiRaces = races.filter((r) => r.track_type === 'banei');

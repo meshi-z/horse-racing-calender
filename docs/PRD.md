@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年9月26日) |
-| **バージョン** | v1.34.0 (アイルランド主要障害重賞 HRI Jump Pattern データ抽出・マスタ作成およびパイプライン統合) |
+| **バージョン** | v1.35.0 (フランス主要障害重賞 France Galop オートゥイユ競馬場全8G1 データ抽出・マスタ作成およびパイプライン統合) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -12,7 +12,7 @@
 
 ## 1. プロジェクト概要
 
-本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France Galop / IFHA Part I 重賞: G1, G2, G3）、イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 平地重賞およびBHA Jump Pattern 主要障害重賞: G1, G2, G3）、アメリカ競馬（The Jockey Club / Equibase / IFHA Part I 重賞: G1, G2, G3）、香港競馬（Hong Kong Jockey Club: HKJC / IFHA Part I 重賞: G1, G2, G3）、およびアイルランド競馬（Horse Racing Ireland: HRI / IFHA Part I 平地重賞およびHRI Jump Pattern 主要障害重賞: G1, G2, G3）を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
+本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France Galop / IFHA Part I 平地重賞およびオートゥイユ競馬場主要障害重賞: G1, G2, G3）、イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 平地重賞およびBHA Jump Pattern 主要障害重賞: G1, G2, G3）、アメリカ競馬（The Jockey Club / Equibase / IFHA Part I 重賞: G1, G2, G3）、香港競馬（Hong Kong Jockey Club: HKJC / IFHA Part I 重賞: G1, G2, G3）、およびアイルランド競馬（Horse Racing Ireland: HRI / IFHA Part I 平地重賞およびHRI Jump Pattern 主要障害重賞: G1, G2, G3）を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
 
 モバイル閲覧時は直近レースを素早く確認できる **「タイムライン形式」**、PC/タブレット閲覧時は月全体のスケジュールを鳥瞰できる **「月間カレンダー形式」** を初期表示とし、PWA（Progressive Web Apps）およびオフライン閲覧に対応することで、競馬場や外出先などの電波状況が不安定な環境でもミリ秒単位でストレスなくアクセスできる体験を提供する。
 
@@ -200,16 +200,14 @@ docs/
 
 過去のバージョン完了実績（v1.0.0〜v1.30.0 / Step 1〜34）の詳細は [docs/CHANGELOG.md](file:///c:/Users/meshi/git/horse-racing-calender/docs/CHANGELOG.md) を参照。
 
-### 現在地: Step 38 (アイルランド主要障害重賞 HRI Jump Pattern 統合基盤・パイプライン統合) [完了]
-- アイルランド競馬（Horse Racing Ireland: HRI）の主要障害重賞（HRI Jump Pattern 計31競走: パンチェスタウンフェスティバル全12G1、ダブリンレーシングフェスティバル全8G1、アイリッシュグランドナショナル、クリスマスフェスティバル等）の統合。
-- データ仕様書 `docs/specs/data-sources/ireland.md` の改訂（パンチェスタウン競馬場、ゴルウェイ競馬場、リムリック競馬場、`track_type: obstacle`、Jump Pattern 仕様）。
-- マスタデータ `src/data/ireland_race_master.json` の拡張（31競走追加、計98競走）。
-- 抽出・マージスクリプト `scripts/lib/ireland-races.ts` の障害対応（`track_type: 'turf' | 'aw' | 'obstacle'`）。
-- 単体テスト `tests/unit/irelandRaces.test.ts` の更新・全テスト通過確認。
+### 現在地: Step 39 (フランス主要障害重賞 France Galop オートゥイユ競馬場全8G1 統合基盤・パイプライン統合) [完了]
+- フランス競馬（France Galop）の主要障害重賞（オートゥイユ競馬場 全8G1競走: パリ大障害、オートゥイユ大ハードル、ラ・エ・ジュグラ賞、フェルディナン・デュフォー賞、アラン・デュ・ブレユ賞、モーリス・ジロワ賞、ルノー・デュ・ヴィヴィエ賞、カンバセレス賞）の統合。
+- データ仕様書 `docs/specs/data-sources/france.md` の改訂（オートゥイユ競馬場、`track_type: obstacle`、春のオートゥイユ開催および48 Heures de l'Obstacle 仕様）。
+- マスタデータ `src/data/france_race_master.json` の拡張（8競走追加、計121競走）。
+- 抽出・マージスクリプト `scripts/lib/france-races.ts` の障害対応（`track_type: 'turf' | 'aw' | 'obstacle'`, `age_constraint` に `4yo` を追加）。
+- 単体テスト `tests/unit/franceRaces.test.ts` および `tests/unit/racesData.test.ts` の更新・全テスト通過確認。
 
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
-- **Step 39: フランス主要障害重賞の統合**:
-  - フランス（France Galop: オートゥイユ競馬場 パリ大障害G1、オートゥイユ大ハードルG1、ラエジュグラ賞G1等）
 - **Step 40: 海外主要レースのさらなる拡張**:
   - オーストラリア（Racing Australia / IFHA Part I）、UAE/ドバイ（ERA）等の重賞データ統合。
   - 各国公式出馬表フェッチャーの追加による確定発走時刻自動取得。
