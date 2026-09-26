@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年9月25日) |
-| **バージョン** | v1.31.0 (海外競馬第5弾 アイルランド競馬 HRI / IFHA Part I 統合基盤およびスキーマ・型定義拡張) |
+| **バージョン** | v1.31.0 (海外競馬第5弾 アイルランド競馬 HRI / IFHA Part I データ抽出・日英マスタ作成およびパイプライン統合) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -200,11 +200,13 @@ docs/
 
 過去のバージョン完了実績（v1.0.0〜v1.30.0 / Step 1〜34）の詳細は [docs/CHANGELOG.md](file:///c:/Users/meshi/git/horse-racing-calender/docs/CHANGELOG.md) を参照。
 
-### 現在地: Step 36 (海外競馬第5弾 アイルランド競馬 HRI / IFHA Part I 統合基盤およびスキーマ・型定義拡張) [進行中]
-- アイルランド競馬（Horse Racing Ireland: HRI）の平地国際重賞（IFHA Part I 全67競走）の統合。
+### 現在地: Step 36 (海外競馬第5弾 アイルランド競馬 HRI / IFHA Part I 統合基盤・パイプライン統合) [進行中]
+- アイルランド競馬（Horse Racing Ireland: HRI）の平地国際重賞（IFHA Part I 全67競走: G1 13競走、G2 14競走、G3 40競走）の統合。
 - データ仕様書 `docs/specs/data-sources/ireland.md` の策定。
 - スキーマ・型定義（`CountryCode: 'IE'`, `Organization: 'hri'`）の拡張。
-- 日英仏中レースマスタ作成、確定時刻フェッチャー（Sporting Life連携）およびUI対応を順次展開。
+- 日英仏中レースマスタ（`src/data/ireland_race_master.json`）の作成。
+- 抽出・マージスクリプト（`scripts/lib/ireland-races.ts`）の実装および `scripts/parse-races.ts` へのパイプライン統合（全67競走出力）。
+- 次ステップとしてUI対応（FilterBar、競馬場、IE国コードバッジ、免責事項）および確定発走時刻自動取得バッチを順次展開。
 
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
 - **Step 37: 海外主要レースのさらなる拡張**:

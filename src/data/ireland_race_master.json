@@ -1,0 +1,2204 @@
+{
+  "venues": {
+    "Curragh": {
+      "ja": "カラ",
+      "en": "Curragh",
+      "zh": "卻拉",
+      "fr": "Curragh"
+    },
+    "Leopardstown": {
+      "ja": "レパーズタウン",
+      "en": "Leopardstown",
+      "zh": "李奧帕斯敦",
+      "fr": "Leopardstown"
+    },
+    "Naas": {
+      "ja": "ネース",
+      "en": "Naas",
+      "zh": "奈斯",
+      "fr": "Naas"
+    },
+    "Cork": {
+      "ja": "コーク",
+      "en": "Cork",
+      "zh": "科克",
+      "fr": "Cork"
+    },
+    "Tipperary": {
+      "ja": "ティペラリー",
+      "en": "Tipperary",
+      "zh": "蒂珀雷里",
+      "fr": "Tipperary"
+    },
+    "Dundalk": {
+      "ja": "ダンドーク",
+      "en": "Dundalk",
+      "zh": "鄧多克",
+      "fr": "Dundalk"
+    },
+    "Gowran Park": {
+      "ja": "ガウランパーク",
+      "en": "Gowran Park",
+      "zh": "高蘭公園",
+      "fr": "Gowran Park"
+    },
+    "Fairyhouse": {
+      "ja": "フェアリーハウス",
+      "en": "Fairyhouse",
+      "zh": "費利豪斯",
+      "fr": "Fairyhouse"
+    },
+    "Navan": {
+      "ja": "ナヴァン",
+      "en": "Navan",
+      "zh": "納文",
+      "fr": "Navan"
+    }
+  },
+  "races": [
+    {
+      "id": "2026-ie-g3-01",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "パークエクスプレスステークス",
+        "en": "Park Express Stakes",
+        "zh": "公園特快錦標",
+        "fr": "Park Express Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-03-22",
+      "start_time": "2026-03-22T15:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-03-22",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-02",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "アレッジドステークス",
+        "en": "Alleged Stakes",
+        "zh": "指控錦標",
+        "fr": "Alleged Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-04-06",
+      "start_time": "2026-04-06T14:20:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-06",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-03",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "グラッドネスステークス",
+        "en": "Gladness Stakes",
+        "zh": "歡欣錦標",
+        "fr": "Gladness Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-04-06",
+      "start_time": "2026-04-06T14:55:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-06",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-04",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "バリサックスステークス",
+        "en": "Ballysax Stakes",
+        "zh": "百利斯錦標",
+        "fr": "Ballysax Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-04-12",
+      "start_time": "2026-04-12T13:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-12",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-05",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "レパーズタウン1000ギニートライアル",
+        "en": "Leopardstown 1,000 Guineas Trial Stakes",
+        "zh": "愛爾蘭一千堅尼預賽",
+        "fr": "Leopardstown 1000 Guineas Trial"
+      },
+      "grade": "G3",
+      "date": "2026-04-12",
+      "start_time": "2026-04-12T14:10:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-12",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-06",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "レパーズタウン2000ギニートライアル",
+        "en": "Leopardstown 2,000 Guineas Trial Stakes",
+        "zh": "愛爾蘭二千堅尼預賽",
+        "fr": "Leopardstown 2000 Guineas Trial"
+      },
+      "grade": "G3",
+      "date": "2026-04-12",
+      "start_time": "2026-04-12T14:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-12",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-07",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ビンテージクロップステークス",
+        "en": "Vintage Crop Stakes",
+        "zh": "古典名駒錦標",
+        "fr": "Vintage Crop Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-04-26",
+      "start_time": "2026-04-26T14:40:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-04-26",
+      "course": {
+        "ja": "ナヴァン",
+        "en": "Navan",
+        "zh": "納文",
+        "fr": "Navan"
+      },
+      "distance": 2800,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g2-01",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ムーアズブリッジステークス",
+        "en": "Mooresbridge Stakes",
+        "zh": "莫爾斯橋錦標",
+        "fr": "Mooresbridge Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-05-04",
+      "start_time": "2026-05-04T15:10:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-04",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-08",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "アサシステークス",
+        "en": "Athasi Stakes",
+        "zh": "雅德斯錦標",
+        "fr": "Athasi Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-05-04",
+      "start_time": "2026-05-04T14:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-04",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-09",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "アメジストステークス",
+        "en": "Amethyst Stakes",
+        "zh": "紫晶錦標",
+        "fr": "Amethyst Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-05-10",
+      "start_time": "2026-05-10T13:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-10",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-10",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ダービートライアルステークス",
+        "en": "Derby Trial Stakes",
+        "zh": "愛爾蘭打吡預賽",
+        "fr": "Derby Trial Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-05-10",
+      "start_time": "2026-05-10T14:10:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-10",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-11",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ブルーウィンドステークス",
+        "en": "Blue Wind Stakes",
+        "zh": "藍風錦標",
+        "fr": "Blue Wind Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-05-10",
+      "start_time": "2026-05-10T14:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-10",
+      "course": {
+        "ja": "ネース",
+        "en": "Naas",
+        "zh": "奈斯",
+        "fr": "Naas"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-12",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "フィリーズスプリントステークス",
+        "en": "Fillies' Sprint Stakes",
+        "zh": "雌馬短途錦標",
+        "fr": "Fillies Sprint Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-05-17",
+      "start_time": "2026-05-17T14:30:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-17",
+      "course": {
+        "ja": "ネース",
+        "en": "Naas",
+        "zh": "奈斯",
+        "fr": "Naas"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-13",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ガリニュールステークス",
+        "en": "Gallinule Stakes",
+        "zh": "甘蓮奴錦標",
+        "fr": "Gallinule Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-05-22",
+      "start_time": "2026-05-22T18:05:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-22",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g1-01",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "アイリッシュ2000ギニー",
+        "en": "Irish 2000 Guineas",
+        "zh": "愛爾蘭二千堅尼",
+        "fr": "2000 Guinées Irlandaises"
+      },
+      "grade": "G1",
+      "date": "2026-05-23",
+      "start_time": "2026-05-23T14:40:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-23",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g2-02",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "グリーンランズステークス",
+        "en": "Greenlands Stakes",
+        "zh": "格陵蘭錦標",
+        "fr": "Greenlands Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-05-23",
+      "start_time": "2026-05-23T14:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-23",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-14",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "マーブルヒルステークス",
+        "en": "Marble Hill Stakes",
+        "zh": "理石山錦標",
+        "fr": "Marble Hill Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-05-23",
+      "start_time": "2026-05-23T13:25:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-23",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g1-02",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "タタソールズゴールドカップ",
+        "en": "Tattersalls Gold Cup",
+        "zh": "達德素金盃",
+        "fr": "Tattersalls Gold Cup"
+      },
+      "grade": "G1",
+      "date": "2026-05-24",
+      "start_time": "2026-05-24T13:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-24",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 2100,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g1-03",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "アイリッシュ1000ギニー",
+        "en": "Irish 1000 Guineas",
+        "zh": "愛爾蘭一千堅尼",
+        "fr": "1000 Guinées Irlandaises"
+      },
+      "grade": "G1",
+      "date": "2026-05-24",
+      "start_time": "2026-05-24T14:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-24",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g2-03",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "リッジウッドパールステークス",
+        "en": "Ridgewood Pearl Stakes",
+        "zh": "列治活珍珠錦標",
+        "fr": "Ridgewood Pearl Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-05-24",
+      "start_time": "2026-05-24T14:10:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-05-24",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-15",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "バリーコローラスステークス",
+        "en": "Ballycorus Stakes",
+        "zh": "百利高錦標",
+        "fr": "Ballycorus Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-06-04",
+      "start_time": "2026-06-04T17:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-04",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-16",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "マンスターオークス",
+        "en": "Munster Oaks",
+        "zh": "曼斯特橡樹錦標",
+        "fr": "Munster Oaks"
+      },
+      "grade": "G3",
+      "date": "2026-06-12",
+      "start_time": "2026-06-12T18:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-12",
+      "course": {
+        "ja": "コーク",
+        "en": "Cork",
+        "zh": "科克",
+        "fr": "Cork"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-17",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ノブレスステークス",
+        "en": "Noblesse Stakes",
+        "zh": "貴族錦標",
+        "fr": "Noblesse Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-06-14",
+      "start_time": "2026-06-14T14:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-14",
+      "course": {
+        "ja": "コーク",
+        "en": "Cork",
+        "zh": "科克",
+        "fr": "Cork"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g1-04",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "プリティーポリーステークス",
+        "en": "Pretty Polly Stakes",
+        "zh": "美寶莉錦標",
+        "fr": "Pretty Polly Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-06-27",
+      "start_time": "2026-06-27T14:30:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-27",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g2-04",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "エアリースタッドステークス",
+        "en": "Airlie Stud Stakes",
+        "zh": "艾利育馬場錦標",
+        "fr": "Airlie Stud Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-06-27",
+      "start_time": "2026-06-27T13:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-27",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g1-05",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "アイリッシュダービー",
+        "en": "Irish Derby",
+        "zh": "愛爾蘭打吡",
+        "fr": "Derby d'Irlande"
+      },
+      "grade": "G1",
+      "date": "2026-06-28",
+      "start_time": "2026-06-28T15:05:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-28",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g2-05",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "レイルウェイステークス",
+        "en": "Railway Stakes",
+        "zh": "鐵路錦標",
+        "fr": "Railway Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-06-28",
+      "start_time": "2026-06-28T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-28",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g2-06",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "カラカップ",
+        "en": "Curragh Cup",
+        "zh": "卻拉盃",
+        "fr": "Curragh Cup"
+      },
+      "grade": "G2",
+      "date": "2026-06-28",
+      "start_time": "2026-06-28T14:25:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-06-28",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 2800,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-18",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "スタンエラステークス",
+        "en": "Stanerra Stakes",
+        "zh": "斯坦內拉錦標",
+        "fr": "Stanerra Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-07-09",
+      "start_time": "2026-07-09T18:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-09",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 2800,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-19",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ブラウンズタウンステークス",
+        "en": "Brownstown Stakes",
+        "zh": "布朗斯敦錦標",
+        "fr": "Brownstown Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-07-10",
+      "start_time": "2026-07-10T17:40:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-10",
+      "course": {
+        "ja": "フェアリーハウス",
+        "en": "Fairyhouse",
+        "zh": "費利豪斯",
+        "fr": "Fairyhouse"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g1-06",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "アイリッシュオークス",
+        "en": "Irish Oaks",
+        "zh": "愛爾蘭橡樹大賽",
+        "fr": "Oaks d'Irlande"
+      },
+      "grade": "G1",
+      "date": "2026-07-18",
+      "start_time": "2026-07-18T14:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-18",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g2-07",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "キルボーイエステートステークス",
+        "en": "Kilboy Estate Stakes",
+        "zh": "基爾寶莊園錦標",
+        "fr": "Kilboy Estate Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-07-18",
+      "start_time": "2026-07-18T14:10:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-18",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1800,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g2-08",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "サファイアステークス",
+        "en": "Sapphire Stakes",
+        "zh": "藍寶石錦標",
+        "fr": "Sapphire Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-07-18",
+      "start_time": "2026-07-18T15:20:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-18",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-20",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "アングルシーステークス",
+        "en": "Anglesey Stakes",
+        "zh": "安格西錦標",
+        "fr": "Anglesey Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-07-18",
+      "start_time": "2026-07-18T13:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-18",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g2-09",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ミンストレルステークス",
+        "en": "Minstrel Stakes",
+        "zh": "歌唱家錦標",
+        "fr": "Minstrel Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-07-19",
+      "start_time": "2026-07-19T14:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-19",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-21",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "シルバーフラッシュステークス",
+        "en": "Silver Flash Stakes",
+        "zh": "銀閃錦標",
+        "fr": "Silver Flash Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-07-23",
+      "start_time": "2026-07-23T16:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-23",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-22",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "タイロスステークス",
+        "en": "Tyros Stakes",
+        "zh": "泰羅斯錦標",
+        "fr": "Tyros Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-07-23",
+      "start_time": "2026-07-23T17:20:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-07-23",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-23",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "バリーロアンステークス",
+        "en": "Ballyroan Stakes",
+        "zh": "巴利羅恩錦標",
+        "fr": "Ballyroan Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-08-06",
+      "start_time": "2026-08-06T17:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-06",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-24",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ギブサンクスステークス",
+        "en": "Give Thanks Stakes",
+        "zh": "感恩錦標",
+        "fr": "Give Thanks Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-08-07",
+      "start_time": "2026-08-07T17:40:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-07",
+      "course": {
+        "ja": "コーク",
+        "en": "Cork",
+        "zh": "科克",
+        "fr": "Cork"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g1-07",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "フェニックスステークス",
+        "en": "Phoenix Stakes",
+        "zh": "鳳凰錦標",
+        "fr": "Phoenix Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-08-08",
+      "start_time": "2026-08-08T15:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-08",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-25",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ロイヤルウィップステークス",
+        "en": "Royal Whip Stakes",
+        "zh": "皇家鞭錦標",
+        "fr": "Royal Whip Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-08-08",
+      "start_time": "2026-08-08T14:25:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-08",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-26",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "デズモンドステークス",
+        "en": "Desmond Stakes",
+        "zh": "德斯蒙錦標",
+        "fr": "Desmond Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-08-13",
+      "start_time": "2026-08-13T18:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-13",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-27",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "アイリッシュセントレジャートライアルステークス",
+        "en": "Irish St Leger Trial Stakes",
+        "zh": "愛爾蘭聖烈治預賽",
+        "fr": "Irish St Leger Trial"
+      },
+      "grade": "G3",
+      "date": "2026-08-15",
+      "start_time": "2026-08-15T15:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-15",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 2800,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g2-10",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "デビュタントステークス",
+        "en": "Debutante Stakes",
+        "zh": "初次登場錦標",
+        "fr": "Debutante Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-08-22",
+      "start_time": "2026-08-22T14:40:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-22",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g2-11",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "フューチュリティステークス",
+        "en": "Futurity Stakes",
+        "zh": "未來錦標",
+        "fr": "Futurity Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-08-22",
+      "start_time": "2026-08-22T15:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-22",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-28",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "フェアリーブリッジステークス",
+        "en": "Fairy Bridge Stakes",
+        "zh": "仙橋錦標",
+        "fr": "Fairy Bridge Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-08-28",
+      "start_time": "2026-08-28T16:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-28",
+      "course": {
+        "ja": "ティペラリー",
+        "en": "Tipperary",
+        "zh": "蒂珀雷里",
+        "fr": "Tipperary"
+      },
+      "distance": 1500,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-29",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ラウンドタワーステークス",
+        "en": "Round Tower Stakes",
+        "zh": "圓塔錦標",
+        "fr": "Round Tower Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-08-29",
+      "start_time": "2026-08-29T13:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-29",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-30",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "スノーフェアリーステークス",
+        "en": "Snow Fairy Stakes",
+        "zh": "飛雪仙子錦標",
+        "fr": "Snow Fairy Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-08-29",
+      "start_time": "2026-08-29T14:25:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-29",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1800,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-31",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "フレイムオブタラステークス",
+        "en": "Flame of Tara Stakes",
+        "zh": "泰拉之焰錦標",
+        "fr": "Flame of Tara Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-08-29",
+      "start_time": "2026-08-29T15:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-08-29",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g1-08",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "メイトロンステークス",
+        "en": "Matron Stakes",
+        "zh": "雌馬賽馬會錦標",
+        "fr": "Matron Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-09-12",
+      "start_time": "2026-09-12T13:55:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-12",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g1-09",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "アイリッシュチャンピオンステークス",
+        "en": "Irish Champion Stakes",
+        "zh": "愛爾蘭冠軍錦標",
+        "fr": "Irish Champion Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-09-12",
+      "start_time": "2026-09-12T14:25:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-12",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g2-12",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "チャンピオンズジュベナイルステークス",
+        "en": "Champions Juvenile Stakes",
+        "zh": "冠軍兩歲馬錦標",
+        "fr": "Champions Juvenile Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-09-12",
+      "start_time": "2026-09-12T13:20:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-12",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-32",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ソロナウェイスステークス",
+        "en": "Solonaway Stakes",
+        "zh": "梭隆拿威錦標",
+        "fr": "Solonaway Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-09-12",
+      "start_time": "2026-09-12T14:55:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-12",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-33",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "キルターナンステークス",
+        "en": "Kilternan Stakes",
+        "zh": "基爾特南錦標",
+        "fr": "Kilternan Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-09-12",
+      "start_time": "2026-09-12T15:30:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-12",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g1-10",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "フライングファイブステークス",
+        "en": "Flying Five Stakes",
+        "zh": "飛向五里錦標",
+        "fr": "Flying Five Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-09-13",
+      "start_time": "2026-09-13T13:55:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-13",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g1-11",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "モイグレアスタッドステークス",
+        "en": "Moyglare Stud Stakes",
+        "zh": "莫格雅育馬場錦標",
+        "fr": "Moyglare Stud Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-09-13",
+      "start_time": "2026-09-13T14:25:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-13",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g1-12",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ヴィンセントオブライエンナショナルステークス",
+        "en": "Vincent O'Brien National Stakes",
+        "zh": "國家錦標",
+        "fr": "National Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-09-13",
+      "start_time": "2026-09-13T15:00:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-13",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g1-13",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "アイリッシュセントレジャー",
+        "en": "Irish St Leger",
+        "zh": "愛爾蘭聖烈治大賽",
+        "fr": "St Leger d'Irlande"
+      },
+      "grade": "G1",
+      "date": "2026-09-13",
+      "start_time": "2026-09-13T15:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-13",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 2800,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g2-13",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ブランドフォードステークス",
+        "en": "Blandford Stakes",
+        "zh": "布蘭福錦標",
+        "fr": "Blandford Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-09-13",
+      "start_time": "2026-09-13T13:20:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-13",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-34",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "デニーコーデルラヴァラック＆ランウェイズスタッドステークス",
+        "en": "Denny Cordell Lavarack & Lanwades Stud Stakes",
+        "zh": "高蘭公園錦標",
+        "fr": "Denny Cordell Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-09-19",
+      "start_time": "2026-09-19T14:55:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-19",
+      "course": {
+        "ja": "ガウランパーク",
+        "en": "Gowran Park",
+        "zh": "高蘭公園",
+        "fr": "Gowran Park"
+      },
+      "distance": 1900,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g2-14",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ベレスフォードステークス",
+        "en": "Beresford Stakes",
+        "zh": "貝利斯福錦標",
+        "fr": "Beresford Stakes"
+      },
+      "grade": "G2",
+      "date": "2026-09-26",
+      "start_time": "2026-09-26T13:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-26",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-35",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ルネサンスステークス",
+        "en": "Renaissance Stakes",
+        "zh": "復興錦標",
+        "fr": "Renaissance Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-09-26",
+      "start_time": "2026-09-26T14:10:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-26",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-36",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ウェルドパークステークス",
+        "en": "C.L. & M.F. Weld Park Stakes",
+        "zh": "韋爾德公園錦標",
+        "fr": "Weld Park Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-09-27",
+      "start_time": "2026-09-27T14:40:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-09-27",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-37",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "コンコルドステークス",
+        "en": "Concorde Stakes",
+        "zh": "協和錦標",
+        "fr": "Concorde Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-10-04",
+      "start_time": "2026-10-04T14:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-04",
+      "course": {
+        "ja": "ティペラリー",
+        "en": "Tipperary",
+        "zh": "蒂珀雷里",
+        "fr": "Tipperary"
+      },
+      "distance": 1500,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-38",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "キラヴーランステークス",
+        "en": "Killavullan Stakes",
+        "zh": "奇拉華倫錦標",
+        "fr": "Killavullan Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-10-17",
+      "start_time": "2026-10-17T14:20:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-17",
+      "course": {
+        "ja": "レパーズタウン",
+        "en": "Leopardstown",
+        "zh": "李奧帕斯敦",
+        "fr": "Leopardstown"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-ie-g3-39",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "マーキュリーステークス",
+        "en": "Mercury Stakes",
+        "zh": "水星錦標",
+        "fr": "Mercury Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-10-23",
+      "start_time": "2026-10-23T18:45:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-23",
+      "course": {
+        "ja": "ダンドーク",
+        "en": "Dundalk",
+        "zh": "鄧多克",
+        "fr": "Dundalk"
+      },
+      "distance": 1000,
+      "track_type": "aw",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-ie-g3-40",
+      "organization": "hri",
+      "country_code": "IE",
+      "name": {
+        "ja": "ラフブラウンステークス",
+        "en": "Loughbrown Stakes",
+        "zh": "洛布朗錦標",
+        "fr": "Loughbrown Stakes"
+      },
+      "grade": "G3",
+      "date": "2026-10-25",
+      "start_time": "2026-10-25T15:05:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-10-25",
+      "course": {
+        "ja": "カラ",
+        "en": "Curragh",
+        "zh": "卻拉",
+        "fr": "Curragh"
+      },
+      "distance": 3200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    }
+  ]
+}
