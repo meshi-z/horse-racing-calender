@@ -6,6 +6,18 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 41: 言語切替ボタンタップ時にヘッダーおよび検索・フィルターエリアが消失する不具合の修正 (v1.33.2 / Issue #132) [完了]
+- **`overflow-x: clip` の撤去によるスクロールロック干渉・sticky解除の解消 [完了]**
+  - `src/styles/globals.css` の `html, body { overflow-x: clip; }` および `src/components/shared/Layout.tsx` の最外層 `overflow-x-clip` を完全に削除。
+  - Radix UI Select（言語切替ドロップダウン）展開時に発動するスクロールロック（`body` スタイル変更）と `overflow-x: clip` の干渉による包含ブロック・描画コンテキスト崩壊を防ぎ、ヘッダー（`sticky top-0`）および FilterBar（`sticky top-14`）が画面上から消失する不具合を解消。
+- **安全なコンテナ幅制御の担保 [完了]**
+  - `Layout.tsx` の `<main>` および `FilterBar.tsx` のコンテナに `max-w-full` を付与し、`overflow-x: clip` に頼らずに画面幅内に安全に収容。
+- **仕様書・テスト更新 [完了]**
+  - `docs/PRD.md` の FilterBar レスポンシブ・固定配置仕様を更新。
+  - `tests/unit/Header.test.tsx` に、言語切替ドロップダウン展開時にもヘッダー要素および各機能がDOM上に保持され、消失しないことの検証テストを追加（全47テストファイル・462テストすべて合格、ビルド・型検査も正常完了）。
+
+---
+
 ### Step 40: 複数国選択時のラベル長超過によるリセットボタンはみ出しおよび画面横揺れ・ヘッダー固定解除の解消 (v1.33.1 / Issue #130) [完了]
 - **複数主催者選択時短縮キー（`filter.orgSelectShort`）新設と多言語対応 [完了]**
   - `src/libs/i18n.ts`: 日・英・仏・繁体字中国語4言語に短縮キー `orgSelectShort`（ja: 「地域」, en: "Regions", fr: "Régions", zh: "地區"）を新設。
