@@ -39,6 +39,13 @@ describe('useLanguageStore', () => {
       expect(getInitialLanguage()).toBe('fr');
     });
 
+    it('localStorageに zh が保存されている場合、navigatorにかかわらず zh を返すこと', () => {
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, 'zh');
+      vi.spyOn(navigator, 'language', 'get').mockReturnValue('ja');
+
+      expect(getInitialLanguage()).toBe('zh');
+    });
+
     it('localStorageが未設定かつ navigator.language が ja の場合、ja を返すこと', () => {
       vi.spyOn(navigator, 'language', 'get').mockReturnValue('ja');
       expect(getInitialLanguage()).toBe('ja');
@@ -57,6 +64,16 @@ describe('useLanguageStore', () => {
     it('localStorageが未設定かつ navigator.language が fr-FR の場合、fr を返すこと', () => {
       vi.spyOn(navigator, 'language', 'get').mockReturnValue('fr-FR');
       expect(getInitialLanguage()).toBe('fr');
+    });
+
+    it('localStorageが未設定かつ navigator.language が zh-HK の場合、zh を返すこと', () => {
+      vi.spyOn(navigator, 'language', 'get').mockReturnValue('zh-HK');
+      expect(getInitialLanguage()).toBe('zh');
+    });
+
+    it('localStorageが未設定かつ navigator.language が zh-TW の場合、zh を返すこと', () => {
+      vi.spyOn(navigator, 'language', 'get').mockReturnValue('zh-TW');
+      expect(getInitialLanguage()).toBe('zh');
     });
 
     it('localStorageが未設定かつ navigator.language がその他の言語（例: de-DE）の場合、英語にフォールバックすること', () => {
@@ -86,13 +103,18 @@ describe('useLanguageStore', () => {
       expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe('fr');
       expect(document.documentElement.lang).toBe('fr');
 
+      store.setLanguage('zh');
+      expect(useLanguageStore.getState().language).toBe('zh');
+      expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe('zh');
+      expect(document.documentElement.lang).toBe('zh');
+
       store.setLanguage('ja');
       expect(useLanguageStore.getState().language).toBe('ja');
       expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe('ja');
       expect(document.documentElement.lang).toBe('ja');
     });
 
-    it('toggleLanguage で ja -> en -> fr -> ja がトグル切り替えされること', () => {
+    it('toggleLanguage で ja -> en -> fr -> zh -> ja がトグル切り替えされること', () => {
       const store = useLanguageStore.getState();
       store.setLanguage('ja');
 
@@ -105,6 +127,11 @@ describe('useLanguageStore', () => {
       expect(useLanguageStore.getState().language).toBe('fr');
       expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe('fr');
       expect(document.documentElement.lang).toBe('fr');
+
+      store.toggleLanguage();
+      expect(useLanguageStore.getState().language).toBe('zh');
+      expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe('zh');
+      expect(document.documentElement.lang).toBe('zh');
 
       store.toggleLanguage();
       expect(useLanguageStore.getState().language).toBe('ja');

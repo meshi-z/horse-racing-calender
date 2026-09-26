@@ -7,6 +7,7 @@ import type { Language } from '../store/useLanguageStore';
 const DAY_OF_WEEK_JA = ['日', '月', '火', '水', '木', '金', '土'] as const;
 const DAY_OF_WEEK_EN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
 const DAY_OF_WEEK_FR = ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'] as const;
+const DAY_OF_WEEK_ZH = ['日', '一', '二', '三', '四', '五', '六'] as const;
 
 const MONTH_NAMES_SHORT_EN = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -76,6 +77,11 @@ export function formatLocalDate(dateString: string, lang: Language = 'ja'): stri
       return `${dayOfWeek} ${day} ${monthName} ${year}`;
     }
 
+    if (lang === 'zh') {
+      const dayOfWeek = DAY_OF_WEEK_ZH[date.getDay()];
+      return `${year}年${month}月${day}日(${dayOfWeek})`;
+    }
+
     const dayOfWeek = DAY_OF_WEEK_JA[date.getDay()];
     return `${year}年${month}月${day}日(${dayOfWeek})`;
   } catch {
@@ -88,6 +94,7 @@ export function formatLocalDate(dateString: string, lang: Language = 'ja'): stri
  * - ja: 2026年4月
  * - en: April 2026
  * - fr: avril 2026
+ * - zh: 2026年4月
  */
 export function formatYearMonth(year: number, month: number, lang: Language = 'ja'): string {
   if (lang === 'en') {
@@ -97,6 +104,9 @@ export function formatYearMonth(year: number, month: number, lang: Language = 'j
   if (lang === 'fr') {
     const monthName = MONTH_NAMES_LONG_FR[month - 1] || '';
     return `${monthName} ${year}`;
+  }
+  if (lang === 'zh') {
+    return `${year}年${month}月`;
   }
   return `${year}年${month}月`;
 }
@@ -112,7 +122,7 @@ export interface RaceTimeInfo {
  * レースの発走時刻とステータスを整形して返す
  * - isTimeConfirmed が false（未確定）の場合: time: '', statusLabel: null, isPast: false, isConfirmed: false を返す
  * - isTimeConfirmed が true（確定済み）の場合:
- *   - 発走前: statusLabel は「発走予定」（en: "Scheduled"）
+ *   - 発走前: statusLabel は「発走予定」（en: "Scheduled", fr: "Prévu", zh: "預計開跑"）
  *   - 発走後: statusLabel は null
  *
  * ※後方互換性のため、第2引数に Date が渡された場合（旧シグネチャ: formatRaceTimeDisplay(startTime, now, lang)）も自動判定してサポート
@@ -168,7 +178,15 @@ export function formatRaceTimeDisplay(
 
   return {
     time,
-    statusLabel: isPast ? null : (lang === 'en' ? 'Scheduled' : lang === 'fr' ? 'Prévu' : '発走予定'),
+    statusLabel: isPast
+      ? null
+      : lang === 'en'
+      ? 'Scheduled'
+      : lang === 'fr'
+      ? 'Prévu'
+      : lang === 'zh'
+      ? '預計開跑'
+      : '発走予定',
     isPast,
     isConfirmed: true,
   };
