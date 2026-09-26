@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 import { Header } from "@/components/shared/Header";
 import { THEME_STORAGE_KEY } from "@/hooks/useTheme";
 import { useLanguageStore, LANGUAGE_STORAGE_KEY } from "@/store/useLanguageStore";
@@ -117,5 +117,32 @@ describe("Header", () => {
     expect(langTrigger).toHaveTextContent("ZH");
     expect(screen.getByRole("tab", { name: "時間軸" })).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: "行事曆" })).toBeInTheDocument();
+  });
+
+  it("言語切替ドロップダウンを開いた際もヘッダーが安定して表示・維持されること (Issue #132)", () => {
+    const { container } = render(<Header />);
+
+    const headerEl = container.querySelector("header");
+    expect(headerEl).toBeInTheDocument();
+    expect(headerEl).toHaveClass("sticky");
+    expect(headerEl).toHaveClass("top-0");
+
+    const langTrigger = screen.getByRole("combobox", {
+      name: "言語を選択 (日本語)",
+    });
+
+    // 言語切替セレクターをタップして開く
+    fireEvent.click(langTrigger);
+
+    // ドロップダウン展開中もヘッダー要素および各機能（タブ、タイトル、テーマボタン）がDOM上に存在し、消失していないこと
+    expect(headerEl).toBeInTheDocument();
+    expect(within(headerEl!).getByText("重賞カレンダー")).toBeInTheDocument();
+    expect(within(headerEl!).getByText("Graded Races Calendar")).toBeInTheDocument();
+    expect(within(headerEl!).getByRole("tab", { name: "タイムライン", hidden: true })).toBeInTheDocument();
+    expect(within(headerEl!).getByRole("button", { name: "ダークモードに切り替え", hidden: true })).toBeInTheDocument();
+
+    // 言語オプションが正常に表示されていること
+    expect(screen.getByRole("option", { name: /English \(EN\)/ })).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: /Français \(FR\)/ })).toBeInTheDocument();
   });
 });

@@ -427,7 +427,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
       data-scrolled={isScrolled ? "true" : "false"}
       className={cn(
         "sticky top-14 z-30 transition-shadow duration-200",
-        "flex flex-col rounded-xl border p-3.5 sm:p-4 gap-3",
+        "flex flex-col rounded-xl border p-3.5 sm:p-4 gap-3 max-w-full",
         isScrolled
           ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85 shadow-md border-border/80"
           : "bg-card text-card-foreground shadow-sm border-border",
