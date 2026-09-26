@@ -6,6 +6,23 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 40: 複数国選択時のラベル長超過によるリセットボタンはみ出しおよび画面横揺れ・ヘッダー固定解除の解消 (v1.33.1 / Issue #130) [完了]
+- **複数主催者選択時短縮キー（`filter.orgSelectShort`）新設と多言語対応 [完了]**
+  - `src/libs/i18n.ts`: 日・英・仏・繁体字中国語4言語に短縮キー `orgSelectShort`（ja: 「地域」, en: "Regions", fr: "Régions", zh: "地區"）を新設。
+  - `src/components/shared/FilterBar.tsx`: 2つ以上の複数国選択時は「地域 (2)」「Regions (2)」等の簡潔な表記とし、ボタン幅の肥大化を約70px以上削減。
+  - 欧州3団体全選択時の「🇪🇺 ヨーロッパ (3)」表記およびアイルランド（`hri`）単一選択時（`🇮🇪 Ireland`）の表示をサポート。
+- **モバイルコントロール行のレスポンシブ幅・テキスト折りたたみ最適化 [完了]**
+  - 主催者トリガーボタンのテキスト要素に `max-w-[85px] sm:max-w-[130px]` を適用。
+  - 詳細フィルター展開ボタンおよびリセットボタンにモバイル用 `max-w-[70px] truncate` を付与し、375px 幅や長文言語（仏語 "Réinitialiser" 等）でも1行内に美しく収まるよう調整。
+- **画面横揺れ & sticky 解除防止ガード [完了]**
+  - `src/styles/globals.css` の `html, body` および `src/components/shared/Layout.tsx` に `overflow-x: clip` を適用。
+  - スクロールコンテナを新設しないため、子要素の `position: sticky` を阻害することなく、不意な横揺れや横スクロール発生を安全に防止。
+- **仕様書・テスト更新 [完了]**
+  - `docs/PRD.md` の FilterBar 仕様およびロードマップ（Step 40）を更新。
+  - `tests/unit/FilterBar.test.tsx` に複数主催者選択時の短縮ラベル・幅制御テストを追加（全47テストファイル・461テストすべて合格、ビルド・型検査も正常完了）。
+
+---
+
 ### Step 37: 欧州主要障害重賞（イギリス・アイルランド・フランス）包括統合 (v1.33.0 / Issue #126, #127, #128) [完了]
 - **イギリス主要障害重賞（BHA Jump Pattern 計34競走）の統合 (Issue #126) [完了]**
   - `src/data/uk_race_master.json`: チェルトナム (`Cheltenham`)、エイントリー (`Aintree`) を競馬場マスタに追加。
