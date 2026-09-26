@@ -106,6 +106,28 @@ describe('raceLanguage utility', () => {
     handicap: { code: 'weight_for_age', ja: '馬齢', en: 'Weight for Age' },
   };
 
+  const sampleIrelandRace: Race = {
+    id: '2026-ie-sample-derby',
+    organization: 'hri',
+    country_code: 'IE',
+    name: {
+      ja: 'アイリッシュダービー',
+      en: 'Irish Derby',
+      zh: '愛爾蘭打吡',
+      fr: "Derby d'Irlande",
+    },
+    grade: 'G1',
+    date: '2026-06-28',
+    start_time: '2026-06-28T15:05:00.000Z',
+    is_time_confirmed: true,
+    course: { ja: 'カラ', en: 'Curragh' },
+    distance: 2400,
+    track_type: 'turf',
+    sex_constraint: 'colt_and_filly',
+    age_constraint: '3yo',
+    handicap: { code: 'set_weight', ja: '定量', en: 'Set Weights' },
+  };
+
   describe('getRaceOriginLanguage', () => {
     it('JRA / NAR レースは ja を返すこと', () => {
       expect(getRaceOriginLanguage(sampleJraRace)).toBe('ja');
@@ -121,6 +143,10 @@ describe('raceLanguage utility', () => {
 
     it('香港レースは zh を返すこと', () => {
       expect(getRaceOriginLanguage(sampleHkRace)).toBe('zh');
+    });
+
+    it('アイルランドレースは en を返すこと', () => {
+      expect(getRaceOriginLanguage(sampleIrelandRace)).toBe('en');
     });
   });
 
@@ -248,6 +274,32 @@ describe('raceLanguage utility', () => {
         const { primary, secondary } = getRaceDisplayNames(sampleHkRace, 'zh');
         expect(primary).toBe('富衛保險女皇盃');
         expect(secondary).toBe('Queen Elizabeth II Cup');
+      });
+    });
+
+    describe('アイルランドレース（原語: en、愛ダービー）', () => {
+      it('日本語UI: メイン日本語、サブ原語英語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleIrelandRace, 'ja');
+        expect(primary).toBe('アイリッシュダービー');
+        expect(secondary).toBe('Irish Derby');
+      });
+
+      it('英語UI: 英語レース×英語UIのためサブ非表示', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleIrelandRace, 'en');
+        expect(primary).toBe('Irish Derby');
+        expect(secondary).toBeUndefined();
+      });
+
+      it('フランス語UI: メイン仏語、サブ原語英語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleIrelandRace, 'fr');
+        expect(primary).toBe("Derby d'Irlande");
+        expect(secondary).toBe('Irish Derby');
+      });
+
+      it('繁体字中国語UI: メイン繁体字、サブ原語英語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleIrelandRace, 'zh');
+        expect(primary).toBe('愛爾蘭打吡');
+        expect(secondary).toBe('Irish Derby');
       });
     });
   });

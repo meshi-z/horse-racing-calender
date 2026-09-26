@@ -392,7 +392,7 @@ describe("FilterBar", () => {
       expect(useRaceStore.getState().filters.courses).toContain("チャーチルダウンズ");
     });
 
-    it("主催者フィルターでイギリス (UK) およびアメリカ (Equibase) を選択できること", () => {
+    it("主催者フィルターでイギリス (UK)、アメリカ (Equibase)、アイルランド (HRI) を選択できること", () => {
       render(<FilterBar />);
       const ukOrgBtn = screen.getByRole("button", { name: "イギリス (UK)" });
       expect(ukOrgBtn).toBeInTheDocument();
@@ -405,6 +405,12 @@ describe("FilterBar", () => {
 
       fireEvent.click(usaOrgBtn);
       expect(useRaceStore.getState().filters.organizations).toContain("equibase");
+
+      const ieOrgBtn = screen.getByRole("button", { name: "アイルランド (HRI)" });
+      expect(ieOrgBtn).toBeInTheDocument();
+
+      fireEvent.click(ieOrgBtn);
+      expect(useRaceStore.getState().filters.organizations).toContain("hri");
     });
   });
 
@@ -456,11 +462,11 @@ describe("FilterBar", () => {
 
       const allEuropeBtn = screen.getByRole("button", { name: "欧州全重賞" });
       fireEvent.click(allEuropeBtn);
-      expect(useRaceStore.getState().filters.organizations).toEqual(["france_galop", "bha"]);
+      expect(useRaceStore.getState().filters.organizations).toEqual(["france_galop", "bha", "hri"]);
 
       const allAmericaBtn = screen.getByRole("button", { name: "米国全重賞" });
       fireEvent.click(allAmericaBtn);
-      expect(useRaceStore.getState().filters.organizations).toEqual(["france_galop", "bha", "equibase"]);
+      expect(useRaceStore.getState().filters.organizations).toEqual(["france_galop", "bha", "hri", "equibase"]);
     });
 
     it("ダイアログ内の「完了」ボタンでダイアログを閉じられること", () => {

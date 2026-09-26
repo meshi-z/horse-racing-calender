@@ -54,10 +54,11 @@ export const ORGANIZATION_GROUPS: OrganizationGroupItem[] = [
     labelKey: "filter.regionEurope",
     allLabelKey: "filter.selectAllEurope",
     flag: "🇪🇺",
-    organizations: ["france_galop", "bha"],
+    organizations: ["france_galop", "bha", "hri"],
     items: [
       { value: "france_galop", labelKey: "filter.orgFrance" },
       { value: "bha", labelKey: "filter.orgUk" },
+      { value: "hri", labelKey: "filter.orgIreland" },
     ],
   },
   {
@@ -158,7 +159,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
   const hasJra = filters.organizations.includes("jra");
   const hasNar = filters.organizations.includes("nar");
   const hasOverseas = filters.organizations.some((o) =>
-    ["france_galop", "bha", "equibase", "hkjc"].includes(o)
+    ["france_galop", "bha", "equibase", "hkjc", "hri"].includes(o)
   );
 
   // 主催者選択に応じたグレード表示フラグ
@@ -414,6 +415,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     { value: "bha", label: t("filter.orgUk") },
     { value: "equibase", label: t("filter.orgUsa") },
     { value: "hkjc", label: t("filter.orgHk") },
+    { value: "hri", label: t("filter.orgIreland") },
   ];
 
   return (

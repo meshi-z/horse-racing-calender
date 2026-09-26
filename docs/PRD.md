@@ -202,11 +202,12 @@ docs/
 
 ### 現在地: Step 36 (海外競馬第5弾 アイルランド競馬 HRI / IFHA Part I 統合基盤・パイプライン統合) [進行中]
 - アイルランド競馬（Horse Racing Ireland: HRI）の平地国際重賞（IFHA Part I 全67競走: G1 13競走、G2 14競走、G3 40競走）の統合。
-- データ仕様書 `docs/specs/data-sources/ireland.md` の策定。
-- スキーマ・型定義（`CountryCode: 'IE'`, `Organization: 'hri'`）の拡張。
-- 日英仏中レースマスタ（`src/data/ireland_race_master.json`）の作成。
-- 抽出・マージスクリプト（`scripts/lib/ireland-races.ts`）の実装および `scripts/parse-races.ts` へのパイプライン統合（全67競走出力）。
-- 次ステップとしてUI対応（FilterBar、競馬場、IE国コードバッジ、免責事項）および確定発走時刻自動取得バッチを順次展開。
+- データ仕様書 `docs/specs/data-sources/ireland.md` の策定（Issue #121）。
+- スキーマ・型定義（`CountryCode: 'IE'`, `Organization: 'hri'`）の拡張（Issue #121）。
+- 日英仏中レースマスタ（`src/data/ireland_race_master.json`）の作成（Issue #122）。
+- 抽出・マージスクリプト（`scripts/lib/ireland-races.ts`）の実装および `scripts/parse-races.ts` へのパイプライン統合（全67競走出力、Issue #122）。
+- UI対応（FilterBar主催者・欧州全重賞一括選択、アイルランド競馬場9場グループ、IE国コードバッジ、HRI主催者バッジ、4言語対応の免責事項・フッター・タイトル、Issue #123）。
+- 次ステップとしてSporting Life API経由の確定発走時刻自動取得バッチ（`IeRaceTimeFetcher` / Issue #124）を展開。
 
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
 - **Step 37: 海外主要レースのさらなる拡張**:

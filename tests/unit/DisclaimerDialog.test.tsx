@@ -46,13 +46,13 @@ describe("DisclaimerDialog", () => {
       screen.getByText(/一般公開されている公式情報.*を取得・加工して提供/)
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/必ず主催者（JRA・NAR・France Galop・BHA・Equibase・HKJC等）公式発表の最新情報をご確認ください/)
+      screen.getByText(/必ず主催者（JRA・NAR・France Galop・BHA・Equibase・HKJC・HRI等）公式発表の最新情報をご確認ください/)
     ).toBeInTheDocument();
     expect(
       screen.getByText(/開発者および運営者は一切の責任を負いません/)
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/各主催者（JRA、NAR、France Galop、BHA、The Jockey Club \/ Equibase、HKJC、各地方競馬主催者等）ならびに各権利者に帰属します/)
+      screen.getByText(/各主催者（JRA、NAR、France Galop、BHA、The Jockey Club \/ Equibase、HKJC、HRI、各地方競馬主催者等）ならびに各権利者に帰属します/)
     ).toBeInTheDocument();
     expect(
       screen.getByText(/Google社が提供するアクセス解析ツール「Google Analytics（GA4）」を利用しています/)
@@ -116,10 +116,10 @@ describe("DisclaimerDialog", () => {
 
       // 本文の確認
       expect(screen.getByText(/unofficial, personal fan project and has no affiliation with JRA/)).toBeInTheDocument();
-      expect(screen.getByText(/sourced and processed from publicly accessible official information published by JRA, NAR, France Galop \(PMU\), BHA \(Sporting Life\), Equibase \(The Jockey Club\), and HKJC \(The Hong Kong Jockey Club\)/)).toBeInTheDocument();
-      expect(screen.getByText(/Always check official announcements from organizers \(JRA, NAR, France Galop, BHA, Equibase, HKJC\)/)).toBeInTheDocument();
+      expect(screen.getByText(/sourced and processed from publicly accessible official information published by JRA, NAR, France Galop \(PMU\), BHA \(Sporting Life\), Equibase \(The Jockey Club\), HKJC \(The Hong Kong Jockey Club\), and HRI \(Horse Racing Ireland \/ Sporting Life\)/)).toBeInTheDocument();
+      expect(screen.getByText(/Always check official announcements from organizers \(JRA, NAR, France Galop, BHA, Equibase, HKJC, HRI\)/)).toBeInTheDocument();
       expect(screen.getByText(/assumes no responsibility for any direct or indirect damages/)).toBeInTheDocument();
-      expect(screen.getByText(/belong to their respective copyright and trademark owners \(JRA, NAR, France Galop, BHA, The Jockey Club \/ Equibase, HKJC, etc\.\)/)).toBeInTheDocument();
+      expect(screen.getByText(/belong to their respective copyright and trademark owners \(JRA, NAR, France Galop, BHA, The Jockey Club \/ Equibase, HKJC, HRI, etc\.\)/)).toBeInTheDocument();
       expect(screen.getByText(/Google Analytics \(GA4\) provided by Google LLC/)).toBeInTheDocument();
       expect(screen.getByText(/Google Analytics uses cookies to collect data/)).toBeInTheDocument();
     });

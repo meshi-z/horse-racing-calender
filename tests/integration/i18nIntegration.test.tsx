@@ -86,7 +86,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     // 1. 初期状態（日本語モード）の検証
     // ==========================================
     expect(document.documentElement.lang).toBe("ja");
-    expect(document.title).toBe("重賞カレンダー - JRA, NAR, France Galop, UK, USA & HK 重賞レーススケジュール");
+    expect(document.title).toBe("重賞カレンダー - JRA, NAR, France Galop, UK, USA, HK & Ireland 重賞レーススケジュール");
     expect(
       document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute("content")
     ).toBe("重賞カレンダー");
@@ -143,7 +143,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
 
     // ドキュメントメタの更新
     expect(document.documentElement.lang).toBe("en");
-    expect(document.title).toBe("Graded Races - JRA, NAR, France Galop, UK, USA & HK Graded Races Calendar");
+    expect(document.title).toBe("Graded Races - JRA, NAR, France Galop, UK, USA, HK & Ireland Graded Races Calendar");
     expect(
       document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute("content")
     ).toBe("Graded Races");
@@ -246,7 +246,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     fireEvent.click(jaOption);
 
     expect(document.documentElement.lang).toBe("ja");
-    expect(document.title).toBe("重賞カレンダー - JRA, NAR, France Galop, UK, USA & HK 重賞レーススケジュール");
+    expect(document.title).toBe("重賞カレンダー - JRA, NAR, France Galop, UK, USA, HK & Ireland 重賞レーススケジュール");
     expect(
       document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute("content")
     ).toBe("重賞カレンダー");
@@ -264,7 +264,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     fireEvent.click(frOption);
 
     expect(document.documentElement.lang).toBe("fr");
-    expect(document.title).toBe("Courses de Groupe - Calendrier JRA, NAR, France Galop, UK, USA & HK");
+    expect(document.title).toBe("Courses de Groupe - Calendrier JRA, NAR, France Galop, UK, USA, HK & Irlande");
     expect(
       document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute("content")
     ).toBe("Courses de Groupe");
@@ -280,7 +280,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     fireEvent.click(zhOption);
 
     expect(document.documentElement.lang).toBe("zh");
-    expect(document.title).toBe("分級賽行事曆 - 香港、JRA、NAR、法國、英國、美國重賞賽程");
+    expect(document.title).toBe("分級賽行事曆 - 香港、JRA、NAR、法國、英國、美國、愛爾蘭重賞賽程");
     expect(
       document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute("content")
     ).toBe("分級賽行事曆");
