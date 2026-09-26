@@ -32,7 +32,7 @@ export interface IrelandMasterRaceItem {
     fr?: string;
   };
   distance: number;
-  track_type: 'turf' | 'aw';
+  track_type: 'turf' | 'aw' | 'obstacle';
   sex_constraint: 'none' | 'filly_and_mare' | 'colt_and_filly';
   age_constraint: '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up';
   handicap: {

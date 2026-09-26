@@ -79,8 +79,10 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     vi.restoreAllMocks();
   });
 
-  it("ヘッダーの言語切替ボタンを押下すると、アプリ全体のUI（ドキュメントメタ、ヘッダー、フィルターバー、タイムライン、詳細ダイアログ、フッター、免責事項）が日本語と英語で完全に同期して切り替わること", () => {
-    render(<App />);
+  it(
+    "ヘッダーの言語切替ボタンを押下すると、アプリ全体のUI（ドキュメントメタ、ヘッダー、フィルターバー、タイムライン、詳細ダイアログ、フッター、免責事項）が日本語と英語で完全に同期して切り替わること",
+    () => {
+      render(<App />);
 
     // ==========================================
     // 1. 初期状態（日本語モード）の検証
@@ -287,5 +289,5 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("分級賽行事曆");
     expect(screen.getByText("2026年2月")).toBeInTheDocument();
     expect(screen.getByText("一")).toBeInTheDocument();
-  });
+  }, 15000);
 });

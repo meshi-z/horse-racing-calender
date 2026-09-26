@@ -4,7 +4,7 @@ import { loadIrelandRaceMaster, getIrelandRaces } from '../../scripts/lib/irelan
 describe('Ireland Races Pipeline and Master Data (Issue #122)', () => {
   const rootDir = process.cwd();
 
-  it('ireland_race_master.json が正常にロードでき、主要会場情報と全67の重賞レースが含まれること', () => {
+  it('ireland_race_master.json が正常にロードでき、主要会場情報と全98の重賞レース（平地＋障害）が含まれること', () => {
     const master = loadIrelandRaceMaster(rootDir);
     expect(master.venues).toBeDefined();
     expect(master.venues['Curragh']).toEqual({
@@ -25,19 +25,25 @@ describe('Ireland Races Pipeline and Master Data (Issue #122)', () => {
       zh: '鄧多克',
       fr: 'Dundalk',
     });
+    expect(master.venues['Punchestown']).toEqual({
+      ja: 'パンチェスタウン',
+      en: 'Punchestown',
+      zh: '龐徹斯敦',
+      fr: 'Punchestown',
+    });
 
-    expect(master.races).toHaveLength(67);
+    expect(master.races).toHaveLength(98);
   });
 
-  it('グレード別のレース数が正確であること (G1: 13, G2: 14, G3: 40)', () => {
+  it('グレード別のレース数が正確であること (G1: 43, G2: 14, G3: 41)', () => {
     const master = loadIrelandRaceMaster(rootDir);
     const g1 = master.races.filter((r) => r.grade === 'G1');
     const g2 = master.races.filter((r) => r.grade === 'G2');
     const g3 = master.races.filter((r) => r.grade === 'G3');
 
-    expect(g1).toHaveLength(13);
+    expect(g1).toHaveLength(43);
     expect(g2).toHaveLength(14);
-    expect(g3).toHaveLength(40);
+    expect(g3).toHaveLength(41);
   });
 
   it('全レースが型安全なスキーマ要件を満たしていること', () => {
@@ -57,9 +63,9 @@ describe('Ireland Races Pipeline and Master Data (Issue #122)', () => {
       expect(r.course.ja).toBeTruthy();
       expect(r.course.en).toBeTruthy();
       expect(r.distance).toBeGreaterThan(0);
-      expect(['turf', 'aw']).toContain(r.track_type);
+      expect(['turf', 'aw', 'obstacle']).toContain(r.track_type);
       expect(['none', 'filly_and_mare', 'colt_and_filly']).toContain(r.sex_constraint);
-      expect(['2yo', '3yo', '3yo_and_up', '4yo_and_up']).toContain(r.age_constraint);
+      expect(['2yo', '3yo', '3yo_and_up', '4yo_and_up', '4yo']).toContain(r.age_constraint);
       expect(['weight_for_age', 'special_weight', 'set_weight', 'handicap']).toContain(r.handicap.code);
     }
   });
@@ -113,6 +119,46 @@ describe('Ireland Races Pipeline and Master Data (Issue #122)', () => {
     expect(mercury?.track_type).toBe('aw');
   });
 
+  it('パンチェスタウンゴールドC、アイリッシュグランドナショナル、アイリッシュゴールドC等の主要障害重賞が正しく設定されていること', () => {
+    const master = loadIrelandRaceMaster(rootDir);
+    const races = getIrelandRaces(master, new Map());
+
+    // パンチェスタウンゴールドカップ
+    const punchestownGc = races.find((r) => r.name.en === 'Punchestown Gold Cup');
+    expect(punchestownGc).toBeDefined();
+    expect(punchestownGc?.name.ja).toBe('パンチェスタウンゴールドカップ');
+    expect(punchestownGc?.grade).toBe('G1');
+    expect(punchestownGc?.track_type).toBe('obstacle');
+    expect(punchestownGc?.course.ja).toBe('パンチェスタウン');
+    expect(punchestownGc?.course.en).toBe('Punchestown');
+    expect(punchestownGc?.date).toBe('2026-04-29');
+
+    // アイリッシュゴールドカップ
+    const irishGc = races.find((r) => r.name.en === 'Irish Gold Cup');
+    expect(irishGc).toBeDefined();
+    expect(irishGc?.name.ja).toBe('アイリッシュゴールドカップ');
+    expect(irishGc?.grade).toBe('G1');
+    expect(irishGc?.track_type).toBe('obstacle');
+    expect(irishGc?.course.ja).toBe('レパーズタウン');
+    expect(irishGc?.date).toBe('2026-01-31');
+
+    // アイリッシュチャンピオンハードル
+    const irishChampHurdle = races.find((r) => r.name.en === 'Irish Champion Hurdle');
+    expect(irishChampHurdle).toBeDefined();
+    expect(irishChampHurdle?.grade).toBe('G1');
+    expect(irishChampHurdle?.track_type).toBe('obstacle');
+
+    // アイリッシュグランドナショナル
+    const irishGn = races.find((r) => r.name.en === 'Irish Grand National');
+    expect(irishGn).toBeDefined();
+    expect(irishGn?.name.ja).toBe('アイリッシュグランドナショナル');
+    expect(irishGn?.grade).toBe('G3');
+    expect(irishGn?.track_type).toBe('obstacle');
+    expect(irishGn?.course.ja).toBe('フェアリーハウス');
+    expect(irishGn?.date).toBe('2026-04-06');
+    expect(irishGn?.handicap.code).toBe('handicap');
+  });
+
   it('confirmedTimesMap による確定時刻の上書きが正しく機能すること', () => {
     const master = loadIrelandRaceMaster(rootDir);
     const confirmedTimesMap = new Map([
@@ -132,5 +178,16 @@ describe('Ireland Races Pipeline and Master Data (Issue #122)', () => {
     expect(derby).toBeDefined();
     expect(derby?.start_time).toBe('2026-06-28T15:20:00.000Z');
     expect(derby?.is_time_confirmed).toBe(true);
+  });
+
+  it('public/data/races.json にアイルランド重賞全98競走が含まれていること', () => {
+    const fs = require('node:fs');
+    const path = require('node:path');
+    const racesPath = path.join(rootDir, 'public', 'data', 'races.json');
+    expect(fs.existsSync(racesPath)).toBe(true);
+
+    const allRaces = JSON.parse(fs.readFileSync(racesPath, 'utf8'));
+    const ieRaces = allRaces.filter((r: any) => r.organization === 'hri');
+    expect(ieRaces).toHaveLength(98);
   });
 });
