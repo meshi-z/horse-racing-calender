@@ -865,6 +865,34 @@
     }
   },
   {
+    "id": "2026-uk-g1-39",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "クラレンスハウスチェイス",
+      "en": "Clarence House Chase"
+    },
+    "grade": "G1",
+    "date": "2026-01-24",
+    "start_time": "2026-01-24T15:35:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-01-24",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 3371,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-us-g1-01",
     "organization": "equibase",
     "country_code": "US",
@@ -2074,6 +2102,34 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-40",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "アスコットチェイス",
+      "en": "Ascot Chase"
+    },
+    "grade": "G1",
+    "date": "2026-02-14",
+    "start_time": "2026-02-14T15:35:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-02-14",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 4209,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -3828,6 +3884,118 @@
     }
   },
   {
+    "id": "2026-uk-g1-41",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "スプリームノービスハードル",
+      "en": "Supreme Novices' Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-03-10",
+    "start_time": "2026-03-10T13:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-10",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 3298,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-42",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "アルクルチャレンジトロフィー",
+      "en": "Arkle Challenge Trophy Novices' Chase"
+    },
+    "grade": "G1",
+    "date": "2026-03-10",
+    "start_time": "2026-03-10T14:10:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-10",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 3199,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-43",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "チャンピオンハードル",
+      "en": "Champion Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-03-10",
+    "start_time": "2026-03-10T15:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-10",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 3298,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-44",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "メアズハードル",
+      "en": "David Nicholson Mares' Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-03-10",
+    "start_time": "2026-03-10T16:10:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-10",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 3975,
+    "track_type": "obstacle",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-nar-jpn2-01",
     "organization": "nar",
     "country_code": "JP",
@@ -3847,6 +4015,118 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-45",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ギャラガーズノービスハードル",
+      "en": "Gallagher Novices' Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-03-11",
+    "start_time": "2026-03-11T13:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-11",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 4225,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-46",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ブラウンアドバイザリーノービスチェイス",
+      "en": "Brown Advisory Novices' Chase"
+    },
+    "grade": "G1",
+    "date": "2026-03-11",
+    "start_time": "2026-03-11T14:10:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-11",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 4901,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-47",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "クイーンマザーチャンピオンチェイス",
+      "en": "Queen Mother Champion Chase"
+    },
+    "grade": "G1",
+    "date": "2026-03-11",
+    "start_time": "2026-03-11T15:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-11",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 3199,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-48",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "チャンピオンバンパー",
+      "en": "Champion Bumper"
+    },
+    "grade": "G1",
+    "date": "2026-03-11",
+    "start_time": "2026-03-11T17:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-11",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 3298,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -3929,6 +4209,174 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-49",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ターナーズノービスチェイス",
+      "en": "Turners Novices' Chase"
+    },
+    "grade": "G1",
+    "date": "2026-03-12",
+    "start_time": "2026-03-12T13:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-12",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 3975,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-50",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ライアンエアーチェイス",
+      "en": "Ryanair Chase"
+    },
+    "grade": "G1",
+    "date": "2026-03-12",
+    "start_time": "2026-03-12T14:50:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-12",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 4139,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-51",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ステイヤーズハードル",
+      "en": "Stayers' Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-03-12",
+    "start_time": "2026-03-12T15:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-12",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 4797,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-52",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "トライアンフハードル",
+      "en": "JCB Triumph Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-03-13",
+    "start_time": "2026-03-13T13:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-13",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 3382,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-53",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "アルバートバートレットノービスハードル",
+      "en": "Albert Bartlett Novices' Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-03-13",
+    "start_time": "2026-03-13T14:50:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-13",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 4797,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-54",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "チェルトナムゴールドカップ",
+      "en": "Cheltenham Gold Cup"
+    },
+    "grade": "G1",
+    "date": "2026-03-13",
+    "start_time": "2026-03-13T15:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-03-13",
+    "course": {
+      "ja": "チェルトナム",
+      "en": "Cheltenham"
+    },
+    "distance": 5331,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -6252,6 +6700,202 @@
     }
   },
   {
+    "id": "2026-uk-g1-55",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "マニフェストノービスチェイス",
+      "en": "Manifesto Novices' Chase"
+    },
+    "grade": "G1",
+    "date": "2026-04-09",
+    "start_time": "2026-04-09T12:45:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-09",
+    "course": {
+      "ja": "エイントリー",
+      "en": "Aintree"
+    },
+    "distance": 3975,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-56",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "アニバーサリー4歳ジューベナイルハードル",
+      "en": "Anniversary 4-Y-O Juvenile Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-04-09",
+    "start_time": "2026-04-09T13:20:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-09",
+    "course": {
+      "ja": "エイントリー",
+      "en": "Aintree"
+    },
+    "distance": 3382,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-57",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "エイントリーボウル",
+      "en": "Aintree Bowl Chase"
+    },
+    "grade": "G1",
+    "date": "2026-04-09",
+    "start_time": "2026-04-09T13:55:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-09",
+    "course": {
+      "ja": "エイントリー",
+      "en": "Aintree"
+    },
+    "distance": 5029,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-58",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "エイントリーハードル",
+      "en": "Aintree Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-04-09",
+    "start_time": "2026-04-09T14:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-09",
+    "course": {
+      "ja": "エイントリー",
+      "en": "Aintree"
+    },
+    "distance": 4023,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-59",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ミルドルメイノービスチェイス",
+      "en": "Mildmay Novices' Chase"
+    },
+    "grade": "G1",
+    "date": "2026-04-10",
+    "start_time": "2026-04-10T12:45:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-10",
+    "course": {
+      "ja": "エイントリー",
+      "en": "Aintree"
+    },
+    "distance": 5029,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-60",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "メリングチェイス",
+      "en": "Melling Chase"
+    },
+    "grade": "G1",
+    "date": "2026-04-10",
+    "start_time": "2026-04-10T14:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-10",
+    "course": {
+      "ja": "エイントリー",
+      "en": "Aintree"
+    },
+    "distance": 3975,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-61",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "セフトンノービスハードル",
+      "en": "Sefton Novices' Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-04-10",
+    "start_time": "2026-04-10T15:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-10",
+    "course": {
+      "ja": "エイントリー",
+      "en": "Aintree"
+    },
+    "distance": 4964,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-france-g2-01",
     "organization": "france_galop",
     "country_code": "FR",
@@ -6388,6 +7032,90 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-62",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "マゴノービスチェイス",
+      "en": "Maghull Novices' Chase"
+    },
+    "grade": "G1",
+    "date": "2026-04-11",
+    "start_time": "2026-04-11T12:45:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-11",
+    "course": {
+      "ja": "エイントリー",
+      "en": "Aintree"
+    },
+    "distance": 3199,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-63",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "リバプールハードル",
+      "en": "Liverpool Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-04-11",
+    "start_time": "2026-04-11T14:05:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-11",
+    "course": {
+      "ja": "エイントリー",
+      "en": "Aintree"
+    },
+    "distance": 4964,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-72",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "グランドナショナル",
+      "en": "Grand National"
+    },
+    "grade": "G3",
+    "date": "2026-04-11",
+    "start_time": "2026-04-11T15:00:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-11",
+    "course": {
+      "ja": "エイントリー",
+      "en": "Aintree"
+    },
+    "distance": 6858,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
@@ -7748,6 +8476,34 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-64",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "セレブレーションチェイス",
+      "en": "Celebration Chase"
+    },
+    "grade": "G1",
+    "date": "2026-04-25",
+    "start_time": "2026-04-25T14:35:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-04-25",
+    "course": {
+      "ja": "サンダウン",
+      "en": "Sandown"
+    },
+    "distance": 3199,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -32372,6 +33128,34 @@
     }
   },
   {
+    "id": "2026-uk-g1-65",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ベットフェアチェイス",
+      "en": "Betfair Chase"
+    },
+    "grade": "G1",
+    "date": "2026-11-21",
+    "start_time": "2026-11-21T15:00:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-11-21",
+    "course": {
+      "ja": "ヘイドック",
+      "en": "Haydock"
+    },
+    "distance": 5144,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-us-g3-167",
     "organization": "equibase",
     "country_code": "US",
@@ -32950,6 +33734,34 @@
     }
   },
   {
+    "id": "2026-uk-g1-66",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ファイティングフィフスハードル",
+      "en": "Fighting Fifth Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-11-28",
+    "start_time": "2026-11-28T14:10:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-11-28",
+    "course": {
+      "ja": "ニューカッスル",
+      "en": "Newcastle"
+    },
+    "distance": 3219,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-us-g3-171",
     "organization": "equibase",
     "country_code": "US",
@@ -33434,6 +34246,34 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-67",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ティングルクリークチェイス",
+      "en": "Tingle Creek Chase"
+    },
+    "grade": "G1",
+    "date": "2026-12-05",
+    "start_time": "2026-12-05T15:00:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-12-05",
+    "course": {
+      "ja": "サンダウン",
+      "en": "Sandown"
+    },
+    "distance": 3126,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
@@ -34366,6 +35206,118 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-69",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "カウトスターノービスチェイス",
+      "en": "Kauto Star Novices' Chase"
+    },
+    "grade": "G1",
+    "date": "2026-12-26",
+    "start_time": "2026-12-26T13:20:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-12-26",
+    "course": {
+      "ja": "ケンプトン",
+      "en": "Kempton"
+    },
+    "distance": 4828,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-68",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "フォームビーノービスハードル",
+      "en": "Formby Novices' Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-12-26",
+    "start_time": "2026-12-26T13:40:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-12-26",
+    "course": {
+      "ja": "エイントリー",
+      "en": "Aintree"
+    },
+    "distance": 3382,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-70",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "クリスマスハードル",
+      "en": "Christmas Hurdle"
+    },
+    "grade": "G1",
+    "date": "2026-12-26",
+    "start_time": "2026-12-26T13:55:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-12-26",
+    "course": {
+      "ja": "ケンプトン",
+      "en": "Kempton"
+    },
+    "distance": 3219,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-71",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "キングジョージ6世チェイス",
+      "en": "King George VI Chase"
+    },
+    "grade": "G1",
+    "date": "2026-12-26",
+    "start_time": "2026-12-26T14:30:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-12-26",
+    "course": {
+      "ja": "ケンプトン",
+      "en": "Kempton"
+    },
+    "distance": 4828,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
