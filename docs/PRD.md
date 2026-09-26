@@ -3,8 +3,8 @@
 | 項目 | 内容 |
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
-| **作成日** | 2026年9月12日 (最終更新: 2026年9月25日) |
-| **バージョン** | v1.31.0 (海外競馬第5弾 アイルランド競馬 HRI / IFHA Part I データ抽出・日英マスタ作成およびパイプライン統合) |
+| **作成日** | 2026年9月12日 (最終更新: 2026年9月26日) |
+| **バージョン** | v1.35.0 (フランス主要障害重賞 France Galop オートゥイユ競馬場全8G1 データ抽出・マスタ作成およびパイプライン統合) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -12,7 +12,7 @@
 
 ## 1. プロジェクト概要
 
-本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France Galop / IFHA Part I 重賞: G1, G2, G3）、イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 重賞: G1, G2, G3）、アメリカ競馬（The Jockey Club / Equibase / IFHA Part I 重賞: G1, G2, G3）、香港競馬（Hong Kong Jockey Club: HKJC / IFHA Part I 重賞: G1, G2, G3）、およびアイルランド競馬（Horse Racing Ireland: HRI / IFHA Part I 重賞: G1, G2, G3）を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
+本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France Galop / IFHA Part I 平地重賞およびオートゥイユ競馬場主要障害重賞: G1, G2, G3）、イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 平地重賞およびBHA Jump Pattern 主要障害重賞: G1, G2, G3）、アメリカ競馬（The Jockey Club / Equibase / IFHA Part I 重賞: G1, G2, G3）、香港競馬（Hong Kong Jockey Club: HKJC / IFHA Part I 重賞: G1, G2, G3）、およびアイルランド競馬（Horse Racing Ireland: HRI / IFHA Part I 平地重賞およびHRI Jump Pattern 主要障害重賞: G1, G2, G3）を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
 
 モバイル閲覧時は直近レースを素早く確認できる **「タイムライン形式」**、PC/タブレット閲覧時は月全体のスケジュールを鳥瞰できる **「月間カレンダー形式」** を初期表示とし、PWA（Progressive Web Apps）およびオフライン閲覧に対応することで、競馬場や外出先などの電波状況が不安定な環境でもミリ秒単位でストレスなくアクセスできる体験を提供する。
 
@@ -200,21 +200,18 @@ docs/
 
 過去のバージョン完了実績（v1.0.0〜v1.30.0 / Step 1〜34）の詳細は [docs/CHANGELOG.md](file:///c:/Users/meshi/git/horse-racing-calender/docs/CHANGELOG.md) を参照。
 
-### 現在地: Step 36 (海外競馬第5弾 アイルランド競馬 HRI / IFHA Part I 統合基盤・パイプライン統合) [完了]
-- アイルランド競馬（Horse Racing Ireland: HRI）の平地国際重賞（IFHA Part I 全67競走: G1 13競走、G2 14競走、G3 40競走）の統合。
-- データ仕様書 `docs/specs/data-sources/ireland.md` の策定（Issue #121）。
-- スキーマ・型定義（`CountryCode: 'IE'`, `Organization: 'hri'`）の拡張（Issue #121）。
-- 日英仏中レースマスタ（`src/data/ireland_race_master.json`）の作成（Issue #122）。
-- 抽出・マージスクリプト（`scripts/lib/ireland-races.ts`）の実装および `scripts/parse-races.ts` へのパイプライン統合（全67競走出力、Issue #122）。
-- UI対応（FilterBar主催者・欧州全重賞一括選択、アイルランド競馬場9場グループ、IE国コードバッジ、HRI主催者バッジ、4言語対応の免責事項・フッター・タイトル、Issue #123）。
-- Sporting Life API経由の確定発走時刻自動取得バッチ（`IeRaceTimeFetcher` / `scripts/lib/ie-syutsuba.ts`、Issue #124）の実装・パイプライン統合。
-- 過去競走の発走時刻確定フラグバックフィルおよび定期cronパイプラインへの統合完了。
+### 現在地: Step 39 (フランス主要障害重賞 France Galop オートゥイユ競馬場全8G1 統合基盤・パイプライン統合) [完了]
+- フランス競馬（France Galop）の主要障害重賞（オートゥイユ競馬場 全8G1競走: パリ大障害、オートゥイユ大ハードル、ラ・エ・ジュグラ賞、フェルディナン・デュフォー賞、アラン・デュ・ブレユ賞、モーリス・ジロワ賞、ルノー・デュ・ヴィヴィエ賞、カンバセレス賞）の統合。
+- データ仕様書 `docs/specs/data-sources/france.md` の改訂（オートゥイユ競馬場、`track_type: obstacle`、春のオートゥイユ開催および48 Heures de l'Obstacle 仕様）。
+- マスタデータ `src/data/france_race_master.json` の拡張（8競走追加、計121競走）。
+- 抽出・マージスクリプト `scripts/lib/france-races.ts` の障害対応（`track_type: 'turf' | 'aw' | 'obstacle'`, `age_constraint` に `4yo` を追加）。
+- 単体テスト `tests/unit/franceRaces.test.ts` および `tests/unit/racesData.test.ts` の更新・全テスト通過確認。
 
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
-- **Step 37: 海外主要レースのさらなる拡張**:
+- **Step 40: 海外主要レースのさらなる拡張**:
   - オーストラリア（Racing Australia / IFHA Part I）、UAE/ドバイ（ERA）等の重賞データ統合。
   - 各国公式出馬表フェッチャーの追加による確定発走時刻自動取得。
-- **Step 38: リアルタイム馬場状態・天候情報の表示**:
+- **Step 41: リアルタイム馬場状態・天候情報の表示**:
   - レース当日の天候（晴・雨等）および馬場状態（良・稍重・重・不良）のリアルタイム取得とバッジ表示。
-- **Step 39: カレンダー連携（iCalendar / Google Calendar 出力）**:
+- **Step 42: カレンダー連携（iCalendar / Google Calendar 出力）**:
   - お気に入りレースや特定条件レースをワンクリックで外部カレンダーアプリへ登録できる `.ics` エクスポート機能。

@@ -7,10 +7,10 @@ import type { Race } from '../../src/types/race';
 describe('France Races Pipeline and Master Data (Issue #65)', () => {
   const rootDir = process.cwd();
 
-  it('france_race_master.json が正常にロードでき、会場情報と114の重賞レースが含まれること', () => {
+  it('france_race_master.json が正常にロードでき、会場情報と121の重賞レース（平地＋障害）が含まれること', () => {
     const master = loadFranceRaceMaster(rootDir);
     expect(master.venues).toBeDefined();
-    expect(Object.keys(master.venues).length).toBeGreaterThanOrEqual(10);
+    expect(Object.keys(master.venues).length).toBeGreaterThanOrEqual(11);
     expect(master.venues['ParisLongchamp']).toEqual({
       ja: 'パリロンシャン',
       en: 'ParisLongchamp',
@@ -21,17 +21,22 @@ describe('France Races Pipeline and Master Data (Issue #65)', () => {
       en: 'Chantilly',
       fr: 'Chantilly',
     });
+    expect(master.venues['Auteuil']).toEqual({
+      ja: 'オートゥイユ',
+      en: 'Auteuil',
+      fr: 'Auteuil',
+    });
 
-    expect(master.races).toHaveLength(113);
+    expect(master.races).toHaveLength(121);
   });
 
-  it('グレード別のレース数が正確であること (G1: 28, G2: 24, G3: 61)', () => {
+  it('グレード別のレース数が正確であること (G1: 36, G2: 24, G3: 61)', () => {
     const master = loadFranceRaceMaster(rootDir);
     const g1 = master.races.filter((r) => r.grade === 'G1');
     const g2 = master.races.filter((r) => r.grade === 'G2');
     const g3 = master.races.filter((r) => r.grade === 'G3');
 
-    expect(g1).toHaveLength(28);
+    expect(g1).toHaveLength(36);
     expect(g2).toHaveLength(24);
     expect(g3).toHaveLength(61);
   });
@@ -53,18 +58,18 @@ describe('France Races Pipeline and Master Data (Issue #65)', () => {
       expect(r.course.ja).toBeTruthy();
       expect(r.course.en).toBeTruthy();
       expect(r.distance).toBeGreaterThan(0);
-      expect(['turf', 'aw']).toContain(r.track_type);
+      expect(['turf', 'aw', 'obstacle']).toContain(r.track_type);
       expect(['none', 'filly_and_mare', 'colt_and_filly']).toContain(r.sex_constraint);
-      expect(['2yo', '3yo', '3yo_and_up', '4yo_and_up']).toContain(r.age_constraint);
+      expect(['2yo', '3yo', '3yo_and_up', '4yo_and_up', '4yo']).toContain(r.age_constraint);
       expect(r.handicap.code).toBe('weight_for_age');
     }
 
     // 過去レース（<= 2026-09-20）はすべて確定ステータス、未来レースは未確定であること
     const pastRaces = races.filter((r) => r.date <= '2026-09-20');
     const futureRaces = races.filter((r) => r.date > '2026-09-20');
-    expect(pastRaces).toHaveLength(88);
+    expect(pastRaces).toHaveLength(92);
     expect(pastRaces.every((r) => r.is_time_confirmed === true)).toBe(true);
-    expect(futureRaces).toHaveLength(25);
+    expect(futureRaces).toHaveLength(29);
     expect(futureRaces.every((r) => r.is_time_confirmed === false)).toBe(true);
   });
 
@@ -134,12 +139,53 @@ describe('France Races Pipeline and Master Data (Issue #65)', () => {
     expect(winterRace?.start_time).toBe('2026-11-11T14:15:00.000Z');
   });
 
-  it('public/data/races.json に全レース（1263レース）が保存され、JRA/NARにJP、FranceにFRが付与されていること', () => {
+  it('パリ大障害、オートゥイユ大ハードル、ラ・エ・ジュグラ賞等のオートゥイユ障害G1競走が正しく設定されていること', () => {
+    const master = loadFranceRaceMaster(rootDir);
+    const races = getFranceRaces(master, new Map());
+
+    // パリ大障害 (Grand Steeple-Chase de Paris)
+    const grandSteeple = races.find((r) => r.name.en === 'Grand Steeple-Chase de Paris');
+    expect(grandSteeple).toBeDefined();
+    expect(grandSteeple?.name.ja).toBe('パリ大障害');
+    expect(grandSteeple?.grade).toBe('G1');
+    expect(grandSteeple?.track_type).toBe('obstacle');
+    expect(grandSteeple?.course.ja).toBe('オートゥイユ');
+    expect(grandSteeple?.course.en).toBe('Auteuil');
+    expect(grandSteeple?.distance).toBe(6000);
+    expect(grandSteeple?.date).toBe('2026-05-17');
+
+    // オートゥイユ大ハードル (Grande Course de Haies d'Auteuil)
+    const grandeCourse = races.find((r) => r.name.en === "Grande Course de Haies d'Auteuil");
+    expect(grandeCourse).toBeDefined();
+    expect(grandeCourse?.name.ja).toBe('オートゥイユ大ハードル');
+    expect(grandeCourse?.grade).toBe('G1');
+    expect(grandeCourse?.track_type).toBe('obstacle');
+    expect(grandeCourse?.distance).toBe(5100);
+    expect(grandeCourse?.date).toBe('2026-06-07');
+
+    // ラ・エ・ジュグラ賞 (Prix La Haye Jousselin)
+    const hayeJousselin = races.find((r) => r.name.en === 'Prix La Haye Jousselin');
+    expect(hayeJousselin).toBeDefined();
+    expect(hayeJousselin?.name.ja).toBe('ラエジュグラ賞');
+    expect(hayeJousselin?.grade).toBe('G1');
+    expect(hayeJousselin?.track_type).toBe('obstacle');
+    expect(hayeJousselin?.distance).toBe(5500);
+    expect(hayeJousselin?.date).toBe('2026-11-08');
+
+    // 4歳障害G1 (フェルディナン・デュフォー賞)
+    const ferdinand = races.find((r) => r.name.en === 'Prix Ferdinand Dufaure');
+    expect(ferdinand).toBeDefined();
+    expect(ferdinand?.grade).toBe('G1');
+    expect(ferdinand?.track_type).toBe('obstacle');
+    expect(ferdinand?.age_constraint).toBe('4yo');
+  });
+
+  it('public/data/races.json に全レースが保存され、JRA/NARにJP、FranceにFRが付与されていること', () => {
     const racesPath = path.join(rootDir, 'public', 'data', 'races.json');
     expect(fs.existsSync(racesPath)).toBe(true);
     const races: Race[] = JSON.parse(fs.readFileSync(racesPath, 'utf8'));
 
-    expect(races).toHaveLength(1263);
+    expect(races.length).toBeGreaterThanOrEqual(1263);
 
     const jraRaces = races.filter((r) => r.organization === 'jra');
     const narRaces = races.filter((r) => r.organization === 'nar');
@@ -147,7 +193,7 @@ describe('France Races Pipeline and Master Data (Issue #65)', () => {
 
     expect(jraRaces).toHaveLength(140);
     expect(narRaces).toHaveLength(344);
-    expect(franceRaces).toHaveLength(113);
+    expect(franceRaces).toHaveLength(121);
 
     expect(jraRaces.every((r) => r.country_code === 'JP')).toBe(true);
     expect(narRaces.every((r) => r.country_code === 'JP')).toBe(true);

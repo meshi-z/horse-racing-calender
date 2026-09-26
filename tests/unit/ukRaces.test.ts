@@ -7,10 +7,10 @@ import type { Race } from '../../src/types/race';
 describe('UK Races Pipeline and Master Data (Issue #84)', () => {
   const rootDir = process.cwd();
 
-  it('uk_race_master.json が正常にロードでき、会場情報と156の重賞レースが含まれること', () => {
+  it('uk_race_master.json が正常にロードでき、会場情報と190の重賞レース（平地＋障害）が含まれること', () => {
     const master = loadUkRaceMaster(rootDir);
     expect(master.venues).toBeDefined();
-    expect(Object.keys(master.venues).length).toBeGreaterThanOrEqual(15);
+    expect(Object.keys(master.venues).length).toBeGreaterThanOrEqual(17);
     expect(master.venues['Ascot']).toEqual({
       ja: 'アスコット',
       en: 'Ascot',
@@ -23,19 +23,27 @@ describe('UK Races Pipeline and Master Data (Issue #84)', () => {
       ja: 'エプソム',
       en: 'Epsom',
     });
+    expect(master.venues['Cheltenham']).toEqual({
+      ja: 'チェルトナム',
+      en: 'Cheltenham',
+    });
+    expect(master.venues['Aintree']).toEqual({
+      ja: 'エイントリー',
+      en: 'Aintree'
+    });
 
-    expect(master.races).toHaveLength(156);
+    expect(master.races).toHaveLength(190);
   });
 
-  it('グレード別のレース数が正確であること (G1: 38, G2: 47, G3: 71)', () => {
+  it('グレード別のレース数が正確であること (G1: 71, G2: 47, G3: 72)', () => {
     const master = loadUkRaceMaster(rootDir);
     const g1 = master.races.filter((r) => r.grade === 'G1');
     const g2 = master.races.filter((r) => r.grade === 'G2');
     const g3 = master.races.filter((r) => r.grade === 'G3');
 
-    expect(g1).toHaveLength(38);
+    expect(g1).toHaveLength(71);
     expect(g2).toHaveLength(47);
-    expect(g3).toHaveLength(71);
+    expect(g3).toHaveLength(72);
   });
 
   it('全レースが型安全なスキーマ要件を満たしていること', () => {
@@ -54,9 +62,9 @@ describe('UK Races Pipeline and Master Data (Issue #84)', () => {
       expect(r.course.ja).toBeTruthy();
       expect(r.course.en).toBeTruthy();
       expect(r.distance).toBeGreaterThan(0);
-      expect(['turf', 'aw']).toContain(r.track_type);
+      expect(['turf', 'aw', 'obstacle']).toContain(r.track_type);
       expect(['none', 'filly_and_mare', 'colt_and_filly']).toContain(r.sex_constraint);
-      expect(['2yo', '3yo', '3yo_and_up', '4yo_and_up']).toContain(r.age_constraint);
+      expect(['2yo', '3yo', '3yo_and_up', '4yo_and_up', '4yo']).toContain(r.age_constraint);
       expect(['weight_for_age', 'special_weight', 'set_weight', 'handicap']).toContain(r.handicap.code);
     }
   });
@@ -110,6 +118,53 @@ describe('UK Races Pipeline and Master Data (Issue #84)', () => {
     expect(stLeger?.course.ja).toBe('ドンカスター');
   });
 
+  it('チェルトナムゴールドカップ、グランドナショナル、キングジョージ6世チェイス等の主要障害重賞が正しく設定されていること', () => {
+    const master = loadUkRaceMaster(rootDir);
+    const races = getUkRaces(master, new Map());
+
+    // チェルトナムゴールドカップ
+    const goldCup = races.find((r) => r.name.en === 'Cheltenham Gold Cup');
+    expect(goldCup).toBeDefined();
+    expect(goldCup?.name.ja).toBe('チェルトナムゴールドカップ');
+    expect(goldCup?.grade).toBe('G1');
+    expect(goldCup?.track_type).toBe('obstacle');
+    expect(goldCup?.course.ja).toBe('チェルトナム');
+    expect(goldCup?.course.en).toBe('Cheltenham');
+    expect(goldCup?.date).toBe('2026-03-13');
+    expect(goldCup?.distance).toBe(5331);
+
+    // チャンピオンハードル
+    const champHurdle = races.find((r) => r.name.en === 'Champion Hurdle');
+    expect(champHurdle).toBeDefined();
+    expect(champHurdle?.grade).toBe('G1');
+    expect(champHurdle?.track_type).toBe('obstacle');
+
+    // クイーンマザーチャンピオンチェイス
+    const qmChase = races.find((r) => r.name.en === 'Queen Mother Champion Chase');
+    expect(qmChase).toBeDefined();
+    expect(qmChase?.grade).toBe('G1');
+
+    // グランドナショナル
+    const gn = races.find((r) => r.name.en === 'Grand National');
+    expect(gn).toBeDefined();
+    expect(gn?.name.ja).toBe('グランドナショナル');
+    expect(gn?.grade).toBe('G3');
+    expect(gn?.track_type).toBe('obstacle');
+    expect(gn?.course.ja).toBe('エイントリー');
+    expect(gn?.date).toBe('2026-04-11');
+    expect(gn?.distance).toBe(6858);
+    expect(gn?.handicap.code).toBe('handicap');
+
+    // キングジョージ6世チェイス
+    const kingGeorgeChase = races.find((r) => r.name.en === 'King George VI Chase');
+    expect(kingGeorgeChase).toBeDefined();
+    expect(kingGeorgeChase?.name.ja).toBe('キングジョージ6世チェイス');
+    expect(kingGeorgeChase?.grade).toBe('G1');
+    expect(kingGeorgeChase?.track_type).toBe('obstacle');
+    expect(kingGeorgeChase?.course.ja).toBe('ケンプトン');
+    expect(kingGeorgeChase?.date).toBe('2026-12-26');
+  });
+
   it('confirmedTimesMap による確定時刻・順延情報の上書き保持が機能すること', () => {
     const master = loadUkRaceMaster(rootDir);
     const confirmedMap = new Map();
@@ -135,7 +190,7 @@ describe('UK Races Pipeline and Master Data (Issue #84)', () => {
 
     const allRaces: Race[] = JSON.parse(fs.readFileSync(publicRacesPath, 'utf8'));
     const ukRaces = allRaces.filter((r) => r.organization === 'bha');
-    expect(ukRaces).toHaveLength(156);
+    expect(ukRaces).toHaveLength(190);
 
     // 全レースがソート順を保っていること
     for (let i = 1; i < allRaces.length; i++) {

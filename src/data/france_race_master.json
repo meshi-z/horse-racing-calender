@@ -79,6 +79,11 @@
       "ja": "カーニュ・シュル・メール",
       "en": "Cagnes-sur-Mer",
       "fr": "Cagnes-sur-Mer"
+    },
+    "Auteuil": {
+      "ja": "オートゥイユ",
+      "en": "Auteuil",
+      "fr": "Auteuil"
     }
   },
   "races": [
@@ -3353,6 +3358,246 @@
       "track_type": "turf",
       "sex_constraint": "filly_and_mare",
       "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-29",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "アランデュブレユ賞",
+        "en": "Prix Alain du Breil",
+        "fr": "Prix Alain du Breil - Course de Haies de Printemps des 4 Ans"
+      },
+      "grade": "G1",
+      "date": "2026-05-16",
+      "start_time": "2026-05-16T13:50:00.000Z",
+      "is_time_confirmed": true,
+      "is_rescheduled": false,
+      "original_date": "2026-05-16",
+      "course": {
+        "ja": "オートゥイユ",
+        "en": "Auteuil",
+        "fr": "Auteuil"
+      },
+      "distance": 3900,
+      "track_type": "obstacle",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "4yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-30",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "フェルディナンデュフォー賞",
+        "en": "Prix Ferdinand Dufaure",
+        "fr": "Prix Ferdinand Dufaure"
+      },
+      "grade": "G1",
+      "date": "2026-05-17",
+      "start_time": "2026-05-17T12:35:00.000Z",
+      "is_time_confirmed": true,
+      "is_rescheduled": false,
+      "original_date": "2026-05-17",
+      "course": {
+        "ja": "オートゥイユ",
+        "en": "Auteuil",
+        "fr": "Auteuil"
+      },
+      "distance": 4400,
+      "track_type": "obstacle",
+      "sex_constraint": "none",
+      "age_constraint": "4yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-31",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "パリ大障害",
+        "en": "Grand Steeple-Chase de Paris",
+        "fr": "Grand Steeple-Chase de Paris"
+      },
+      "grade": "G1",
+      "date": "2026-05-17",
+      "start_time": "2026-05-17T14:00:00.000Z",
+      "is_time_confirmed": true,
+      "is_rescheduled": false,
+      "original_date": "2026-05-17",
+      "course": {
+        "ja": "オートゥイユ",
+        "en": "Auteuil",
+        "fr": "Auteuil"
+      },
+      "distance": 6000,
+      "track_type": "obstacle",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-32",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "オートゥイユ大ハードル",
+        "en": "Grande Course de Haies d'Auteuil",
+        "fr": "Grande Course de Haies d'Auteuil"
+      },
+      "grade": "G1",
+      "date": "2026-06-07",
+      "start_time": "2026-06-07T13:50:00.000Z",
+      "is_time_confirmed": true,
+      "is_rescheduled": false,
+      "original_date": "2026-06-07",
+      "course": {
+        "ja": "オートゥイユ",
+        "en": "Auteuil",
+        "fr": "Auteuil"
+      },
+      "distance": 5100,
+      "track_type": "obstacle",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-33",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "カンバセレス賞",
+        "en": "Prix Cambaceres",
+        "fr": "Prix Cambacérès - Grande Course de Haies des 3 Ans"
+      },
+      "grade": "G1",
+      "date": "2026-11-07",
+      "start_time": "2026-11-07T14:15:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-11-07",
+      "course": {
+        "ja": "オートゥイユ",
+        "en": "Auteuil",
+        "fr": "Auteuil"
+      },
+      "distance": 3600,
+      "track_type": "obstacle",
+      "sex_constraint": "colt_and_filly",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-34",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "モーリスジロワ賞",
+        "en": "Prix Maurice Gillois",
+        "fr": "Prix Maurice Gillois - Grand Steeple-Chase des 4 Ans"
+      },
+      "grade": "G1",
+      "date": "2026-11-07",
+      "start_time": "2026-11-07T14:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-11-07",
+      "course": {
+        "ja": "オートゥイユ",
+        "en": "Auteuil",
+        "fr": "Auteuil"
+      },
+      "distance": 4400,
+      "track_type": "obstacle",
+      "sex_constraint": "none",
+      "age_constraint": "4yo",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-35",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ラエジュグラ賞",
+        "en": "Prix La Haye Jousselin",
+        "fr": "Prix La Haye Jousselin"
+      },
+      "grade": "G1",
+      "date": "2026-11-08",
+      "start_time": "2026-11-08T14:50:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-11-08",
+      "course": {
+        "ja": "オートゥイユ",
+        "en": "Auteuil",
+        "fr": "Auteuil"
+      },
+      "distance": 5500,
+      "track_type": "obstacle",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "定量",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-france-g1-36",
+      "organization": "france_galop",
+      "country_code": "FR",
+      "name": {
+        "ja": "ルノーデュヴィヴィエ賞",
+        "en": "Prix Renaud du Vivier",
+        "fr": "Prix Renaud du Vivier - Grande Course de Haies des 4 Ans"
+      },
+      "grade": "G1",
+      "date": "2026-11-08",
+      "start_time": "2026-11-08T13:35:00.000Z",
+      "is_time_confirmed": false,
+      "is_rescheduled": false,
+      "original_date": "2026-11-08",
+      "course": {
+        "ja": "オートゥイユ",
+        "en": "Auteuil",
+        "fr": "Auteuil"
+      },
+      "distance": 3900,
+      "track_type": "obstacle",
+      "sex_constraint": "none",
+      "age_constraint": "4yo",
       "handicap": {
         "code": "weight_for_age",
         "ja": "定量",
