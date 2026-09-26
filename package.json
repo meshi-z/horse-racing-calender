@@ -12,6 +12,7 @@
     "data:update-times:uk": "tsx scripts/update-race-times.ts --org bha",
     "data:update-times:us": "tsx scripts/update-race-times.ts --org equibase",
     "data:update-times:hk": "tsx scripts/update-race-times.ts --org hkjc",
+    "data:update-times:ie": "tsx scripts/update-race-times.ts --org hri",
     "data:backfill-nar": "tsx scripts/backfill-nar-past-times.ts",
     "data:backfill-jra": "tsx scripts/backfill-jra-past-times.ts",
     "icons:generate": "tsx scripts/generate-pwa-icons.ts",

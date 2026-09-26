@@ -368,7 +368,58 @@ export class HkRaceTimeFetcher implements RaceTimeFetcher {
 }
 
 /**
- * 登録済みフェッチャープロバイダーのマップ（JRA, NAR, France, UK, US, HK対応）
+ * 基準日 (YYYY-MM-DD) からアイルランドの当週開催期間（基準日〜7日間）の範囲を算出
+ */
+export function getIeUpcomingWindowRange(refDateStr: string, windowDays = 7): { startDate: string; endDate: string } {
+  const [y, m, d] = refDateStr.split('-').map(Number);
+  const ref = new Date(Date.UTC(y, m - 1, d));
+  const end = new Date(ref.getTime() + (windowDays - 1) * 86400000);
+
+  const formatYmd = (dt: Date) => {
+    const yr = dt.getUTCFullYear();
+    const mo = String(dt.getUTCMonth() + 1).padStart(2, '0');
+    const da = String(dt.getUTCDate()).padStart(2, '0');
+    return `${yr}-${mo}-${da}`;
+  };
+
+  return {
+    startDate: formatYmd(ref),
+    endDate: formatYmd(end),
+  };
+}
+
+/**
+ * アイルランド競馬（HRI）向けプロバイダー実装
+ */
+export class IeRaceTimeFetcher implements RaceTimeFetcher {
+  readonly organization = 'hri';
+  private fixtures?: Record<string, import('./lib/uk-syutsuba').SportingLifeMeetingItem[]>;
+
+  constructor(options?: { fixtures?: Record<string, import('./lib/uk-syutsuba').SportingLifeMeetingItem[]> }) {
+    this.fixtures = options?.fixtures;
+  }
+
+  getTargetWindowRaces(races: RaceOutput[], refDate: string): RaceOutput[] {
+    const { startDate, endDate } = getIeUpcomingWindowRange(refDate);
+    return races.filter(
+      (r) =>
+        r.organization === this.organization &&
+        ((r.date >= startDate && r.date <= endDate) ||
+          (r.original_date && r.original_date >= startDate && r.original_date <= endDate))
+    );
+  }
+
+  async fetchConfirmedTimes(targetRaces: RaceOutput[]): Promise<ConfirmedRaceTime[]> {
+    const { fetchIeConfirmedRaceTimes } = await import('./lib/ie-syutsuba');
+    return await fetchIeConfirmedRaceTimes({
+      targetRaces,
+      fixtures: this.fixtures,
+    });
+  }
+}
+
+/**
+ * 登録済みフェッチャープロバイダーのマップ（JRA, NAR, France, UK, US, HK, Ireland対応）
  */
 export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
   jra: new JraRaceTimeFetcher(),
@@ -380,6 +431,8 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
   us: new UsRaceTimeFetcher(),
   hkjc: new HkRaceTimeFetcher(),
   hk: new HkRaceTimeFetcher(),
+  hri: new IeRaceTimeFetcher(),
+  ie: new IeRaceTimeFetcher(),
 };
 
 export interface UpdateOptions {

@@ -69,7 +69,7 @@
       "grade": "G3",
       "date": "2026-03-22",
       "start_time": "2026-03-22T15:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-03-22",
       "course": {
@@ -101,7 +101,7 @@
       "grade": "G3",
       "date": "2026-04-06",
       "start_time": "2026-04-06T14:20:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-04-06",
       "course": {
@@ -133,7 +133,7 @@
       "grade": "G3",
       "date": "2026-04-06",
       "start_time": "2026-04-06T14:55:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-04-06",
       "course": {
@@ -165,7 +165,7 @@
       "grade": "G3",
       "date": "2026-04-12",
       "start_time": "2026-04-12T13:35:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-04-12",
       "course": {
@@ -197,7 +197,7 @@
       "grade": "G3",
       "date": "2026-04-12",
       "start_time": "2026-04-12T14:10:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-04-12",
       "course": {
@@ -229,7 +229,7 @@
       "grade": "G3",
       "date": "2026-04-12",
       "start_time": "2026-04-12T14:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-04-12",
       "course": {
@@ -261,7 +261,7 @@
       "grade": "G3",
       "date": "2026-04-26",
       "start_time": "2026-04-26T14:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-04-26",
       "course": {
@@ -293,7 +293,7 @@
       "grade": "G2",
       "date": "2026-05-04",
       "start_time": "2026-05-04T15:10:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-04",
       "course": {
@@ -325,7 +325,7 @@
       "grade": "G3",
       "date": "2026-05-04",
       "start_time": "2026-05-04T14:35:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-04",
       "course": {
@@ -357,7 +357,7 @@
       "grade": "G3",
       "date": "2026-05-10",
       "start_time": "2026-05-10T13:35:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-10",
       "course": {
@@ -389,7 +389,7 @@
       "grade": "G3",
       "date": "2026-05-10",
       "start_time": "2026-05-10T14:10:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-10",
       "course": {
@@ -421,7 +421,7 @@
       "grade": "G3",
       "date": "2026-05-10",
       "start_time": "2026-05-10T14:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-10",
       "course": {
@@ -453,7 +453,7 @@
       "grade": "G3",
       "date": "2026-05-17",
       "start_time": "2026-05-17T14:30:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-17",
       "course": {
@@ -485,7 +485,7 @@
       "grade": "G3",
       "date": "2026-05-22",
       "start_time": "2026-05-22T18:05:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-22",
       "course": {
@@ -517,7 +517,7 @@
       "grade": "G1",
       "date": "2026-05-23",
       "start_time": "2026-05-23T14:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-23",
       "course": {
@@ -549,7 +549,7 @@
       "grade": "G2",
       "date": "2026-05-23",
       "start_time": "2026-05-23T14:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-23",
       "course": {
@@ -581,7 +581,7 @@
       "grade": "G3",
       "date": "2026-05-23",
       "start_time": "2026-05-23T13:25:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-23",
       "course": {
@@ -613,7 +613,7 @@
       "grade": "G1",
       "date": "2026-05-24",
       "start_time": "2026-05-24T13:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-24",
       "course": {
@@ -645,7 +645,7 @@
       "grade": "G1",
       "date": "2026-05-24",
       "start_time": "2026-05-24T14:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-24",
       "course": {
@@ -677,7 +677,7 @@
       "grade": "G2",
       "date": "2026-05-24",
       "start_time": "2026-05-24T14:10:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-05-24",
       "course": {
@@ -709,7 +709,7 @@
       "grade": "G3",
       "date": "2026-06-04",
       "start_time": "2026-06-04T17:50:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-06-04",
       "course": {
@@ -741,7 +741,7 @@
       "grade": "G3",
       "date": "2026-06-12",
       "start_time": "2026-06-12T18:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-06-12",
       "course": {
@@ -773,7 +773,7 @@
       "grade": "G3",
       "date": "2026-06-14",
       "start_time": "2026-06-14T14:50:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-06-14",
       "course": {
@@ -805,7 +805,7 @@
       "grade": "G1",
       "date": "2026-06-27",
       "start_time": "2026-06-27T14:30:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-06-27",
       "course": {
@@ -837,7 +837,7 @@
       "grade": "G2",
       "date": "2026-06-27",
       "start_time": "2026-06-27T13:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-06-27",
       "course": {
@@ -869,7 +869,7 @@
       "grade": "G1",
       "date": "2026-06-28",
       "start_time": "2026-06-28T15:05:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-06-28",
       "course": {
@@ -901,7 +901,7 @@
       "grade": "G2",
       "date": "2026-06-28",
       "start_time": "2026-06-28T13:50:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-06-28",
       "course": {
@@ -933,7 +933,7 @@
       "grade": "G2",
       "date": "2026-06-28",
       "start_time": "2026-06-28T14:25:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-06-28",
       "course": {
@@ -965,7 +965,7 @@
       "grade": "G3",
       "date": "2026-07-09",
       "start_time": "2026-07-09T18:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-07-09",
       "course": {
@@ -997,7 +997,7 @@
       "grade": "G3",
       "date": "2026-07-10",
       "start_time": "2026-07-10T17:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-07-10",
       "course": {
@@ -1029,7 +1029,7 @@
       "grade": "G1",
       "date": "2026-07-18",
       "start_time": "2026-07-18T14:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-07-18",
       "course": {
@@ -1061,7 +1061,7 @@
       "grade": "G2",
       "date": "2026-07-18",
       "start_time": "2026-07-18T14:10:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-07-18",
       "course": {
@@ -1093,7 +1093,7 @@
       "grade": "G2",
       "date": "2026-07-18",
       "start_time": "2026-07-18T15:20:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-07-18",
       "course": {
@@ -1125,7 +1125,7 @@
       "grade": "G3",
       "date": "2026-07-18",
       "start_time": "2026-07-18T13:35:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-07-18",
       "course": {
@@ -1157,7 +1157,7 @@
       "grade": "G2",
       "date": "2026-07-19",
       "start_time": "2026-07-19T14:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-07-19",
       "course": {
@@ -1189,7 +1189,7 @@
       "grade": "G3",
       "date": "2026-07-23",
       "start_time": "2026-07-23T16:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-07-23",
       "course": {
@@ -1221,7 +1221,7 @@
       "grade": "G3",
       "date": "2026-07-23",
       "start_time": "2026-07-23T17:20:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-07-23",
       "course": {
@@ -1253,7 +1253,7 @@
       "grade": "G3",
       "date": "2026-08-06",
       "start_time": "2026-08-06T17:50:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-08-06",
       "course": {
@@ -1285,7 +1285,7 @@
       "grade": "G3",
       "date": "2026-08-07",
       "start_time": "2026-08-07T17:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-08-07",
       "course": {
@@ -1317,7 +1317,7 @@
       "grade": "G1",
       "date": "2026-08-08",
       "start_time": "2026-08-08T15:35:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-08-08",
       "course": {
@@ -1349,7 +1349,7 @@
       "grade": "G3",
       "date": "2026-08-08",
       "start_time": "2026-08-08T14:25:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-08-08",
       "course": {
@@ -1381,7 +1381,7 @@
       "grade": "G3",
       "date": "2026-08-13",
       "start_time": "2026-08-13T18:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-08-13",
       "course": {
@@ -1413,7 +1413,7 @@
       "grade": "G3",
       "date": "2026-08-15",
       "start_time": "2026-08-15T15:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-08-15",
       "course": {
@@ -1445,7 +1445,7 @@
       "grade": "G2",
       "date": "2026-08-22",
       "start_time": "2026-08-22T14:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-08-22",
       "course": {
@@ -1477,7 +1477,7 @@
       "grade": "G2",
       "date": "2026-08-22",
       "start_time": "2026-08-22T15:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-08-22",
       "course": {
@@ -1509,7 +1509,7 @@
       "grade": "G3",
       "date": "2026-08-28",
       "start_time": "2026-08-28T16:35:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-08-28",
       "course": {
@@ -1541,7 +1541,7 @@
       "grade": "G3",
       "date": "2026-08-29",
       "start_time": "2026-08-29T13:50:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-08-29",
       "course": {
@@ -1573,7 +1573,7 @@
       "grade": "G3",
       "date": "2026-08-29",
       "start_time": "2026-08-29T14:25:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-08-29",
       "course": {
@@ -1605,7 +1605,7 @@
       "grade": "G3",
       "date": "2026-08-29",
       "start_time": "2026-08-29T15:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-08-29",
       "course": {
@@ -1637,7 +1637,7 @@
       "grade": "G1",
       "date": "2026-09-12",
       "start_time": "2026-09-12T13:55:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-09-12",
       "course": {
@@ -1669,7 +1669,7 @@
       "grade": "G1",
       "date": "2026-09-12",
       "start_time": "2026-09-12T14:25:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-09-12",
       "course": {
@@ -1701,7 +1701,7 @@
       "grade": "G2",
       "date": "2026-09-12",
       "start_time": "2026-09-12T13:20:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-09-12",
       "course": {
@@ -1733,7 +1733,7 @@
       "grade": "G3",
       "date": "2026-09-12",
       "start_time": "2026-09-12T14:55:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-09-12",
       "course": {
@@ -1765,7 +1765,7 @@
       "grade": "G3",
       "date": "2026-09-12",
       "start_time": "2026-09-12T15:30:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-09-12",
       "course": {
@@ -1797,7 +1797,7 @@
       "grade": "G1",
       "date": "2026-09-13",
       "start_time": "2026-09-13T13:55:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-09-13",
       "course": {
@@ -1829,7 +1829,7 @@
       "grade": "G1",
       "date": "2026-09-13",
       "start_time": "2026-09-13T14:25:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-09-13",
       "course": {
@@ -1861,7 +1861,7 @@
       "grade": "G1",
       "date": "2026-09-13",
       "start_time": "2026-09-13T15:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-09-13",
       "course": {
@@ -1893,7 +1893,7 @@
       "grade": "G1",
       "date": "2026-09-13",
       "start_time": "2026-09-13T15:35:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-09-13",
       "course": {
@@ -1925,7 +1925,7 @@
       "grade": "G2",
       "date": "2026-09-13",
       "start_time": "2026-09-13T13:20:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-09-13",
       "course": {
@@ -1957,7 +1957,7 @@
       "grade": "G3",
       "date": "2026-09-19",
       "start_time": "2026-09-19T14:55:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-09-19",
       "course": {
