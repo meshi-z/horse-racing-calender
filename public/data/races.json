@@ -28163,8 +28163,8 @@
     },
     "grade": "local_grade",
     "date": "2026-09-30",
-    "start_time": "2026-09-30T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-09-30T11:30:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "門別",
       "en": "Mombetsu"
@@ -28245,8 +28245,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-01",
-    "start_time": "2026-10-01T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-01T11:30:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "門別",
       "en": "Mombetsu"
