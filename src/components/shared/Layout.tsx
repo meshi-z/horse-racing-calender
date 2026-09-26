@@ -16,10 +16,10 @@ export function Layout({ children, className }: LayoutProps) {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col antialiased overflow-x-clip">
+    <div className="min-h-screen bg-background text-foreground flex flex-col antialiased">
       <Header />
       <OfflineIndicator />
-      <main className={cn("container flex-1 py-6 px-4 sm:px-6 space-y-6", className)}>
+      <main className={cn("container flex-1 py-6 px-4 sm:px-6 space-y-6 max-w-full", className)}>
         {children}
       </main>
       <footer className="border-t py-6 text-center text-xs text-muted-foreground bg-muted/20">
