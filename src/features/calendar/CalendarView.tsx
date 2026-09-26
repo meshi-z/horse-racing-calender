@@ -247,6 +247,8 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                                   ? "text-blue-800 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800"
                                   : race.country_code === "HK"
                                   ? "text-red-800 dark:text-red-300 bg-red-50 dark:bg-red-950/40 border-red-200 dark:border-red-800"
+                                  : race.country_code === "IE"
+                                  ? "text-green-800 dark:text-green-300 bg-green-50 dark:bg-green-950/40 border-green-200 dark:border-green-800"
                                   : "text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800"
                               )}
                             >
