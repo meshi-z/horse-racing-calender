@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年9月25日) |
-| **バージョン** | v1.30.0 (海外競馬第4弾 香港競馬 HKJC / IFHA Part I 統合基盤およびスキーマ・型定義拡張) |
+| **バージョン** | v1.31.0 (海外競馬第5弾 アイルランド競馬 HRI / IFHA Part I 統合基盤およびスキーマ・型定義拡張) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -12,7 +12,7 @@
 
 ## 1. プロジェクト概要
 
-本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France Galop / IFHA Part I 重賞: G1, G2, G3）、イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 重賞: G1, G2, G3）、アメリカ競馬（The Jockey Club / Equibase / IFHA Part I 重賞: G1, G2, G3）、および香港競馬（Hong Kong Jockey Club: HKJC / IFHA Part I 重賞: G1, G2, G3）を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
+本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France Galop / IFHA Part I 重賞: G1, G2, G3）、イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 重賞: G1, G2, G3）、アメリカ競馬（The Jockey Club / Equibase / IFHA Part I 重賞: G1, G2, G3）、香港競馬（Hong Kong Jockey Club: HKJC / IFHA Part I 重賞: G1, G2, G3）、およびアイルランド競馬（Horse Racing Ireland: HRI / IFHA Part I 重賞: G1, G2, G3）を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
 
 モバイル閲覧時は直近レースを素早く確認できる **「タイムライン形式」**、PC/タブレット閲覧時は月全体のスケジュールを鳥瞰できる **「月間カレンダー形式」** を初期表示とし、PWA（Progressive Web Apps）およびオフライン閲覧に対応することで、競馬場や外出先などの電波状況が不安定な環境でもミリ秒単位でストレスなくアクセスできる体験を提供する。
 
@@ -36,7 +36,8 @@ docs/
 │       ├── france.md              # フランス（France Galop / PMU）仕様
 │       ├── uk.md                  # イギリス（BHA / Sporting Life）仕様
 │       ├── us.md                  # アメリカ（Equibase / The Jockey Club）仕様
-│       └── hk.md                  # 香港（HKJC）仕様
+│       ├── hk.md                  # 香港（HKJC）仕様
+│       └── ireland.md             # アイルランド（HRI / Sporting Life）仕様
 ├── guides/
 │   └── adding-new-country.md      # 新国追加の開発・運用手順書
 ├── batch-schedules.md             # 定期cronバッチスケジュール・運用仕様書
@@ -82,6 +83,7 @@ docs/
 | **GB** | `GB` | スカイブルー (`#0284c7`) | BHA (British Horseracing Authority) |
 | **US** | `US` | インディゴネイビー (`#4338ca`) | Equibase / The Jockey Club |
 | **HK** | `HK` | オリエンタルクリムゾン (`#b91c1c`) | HKJC (The Hong Kong Jockey Club / 香港賽馬會) |
+| **IE** | `IE` | クローバーグリーン (`#15803d`) | HRI (Horse Racing Ireland) |
 
 ---
 
@@ -176,6 +178,7 @@ docs/
 - [イギリス競馬（BHA）仕様書](file:///c:/Users/meshi/git/horse-racing-calender/docs/specs/data-sources/uk.md)
 - [アメリカ競馬（Equibase）仕様書](file:///c:/Users/meshi/git/horse-racing-calender/docs/specs/data-sources/us.md)
 - [香港競馬（HKJC）仕様書](file:///c:/Users/meshi/git/horse-racing-calender/docs/specs/data-sources/hk.md)
+- [アイルランド競馬（HRI）仕様書](file:///c:/Users/meshi/git/horse-racing-calender/docs/specs/data-sources/ireland.md)
 
 ---
 
@@ -197,18 +200,17 @@ docs/
 
 過去のバージョン完了実績（v1.0.0〜v1.30.0 / Step 1〜34）の詳細は [docs/CHANGELOG.md](file:///c:/Users/meshi/git/horse-racing-calender/docs/CHANGELOG.md) を参照。
 
-### 現在地: Step 35 (サイトUIの繁体字中国語・zh対応および多言語切替・PWAメタデータの拡張) [完了]
-- 香港競馬統合に伴い、サイト全体の第4言語として繁体字中国語（香港・`zh`）を正式サポート。
-- `useLanguageStore.ts` 4言語拡張（`ja | en | fr | zh`）、ブラウザ初期言語（`zh-HK`, `zh-TW` 等）自動検出。
-- `i18n.ts` に `translations.zh` を新設し、全UI文言・競馬場・馬場・免責事項の香港繁体字対訳を網羅（キー構造パリティ検証済）。
-- 日付フォーマット（`date.ts`）の繁体字最適化（`YYYY年M月D日(曜日)`、`預計開跑`）。
-- PWAメタデータ動的同期（`分級賽行事曆`）、SEO（Schema.org JSON-LD `inLanguage` / OGP `zh_HK`）を同期。
+### 現在地: Step 36 (海外競馬第5弾 アイルランド競馬 HRI / IFHA Part I 統合基盤およびスキーマ・型定義拡張) [進行中]
+- アイルランド競馬（Horse Racing Ireland: HRI）の平地国際重賞（IFHA Part I 全67競走）の統合。
+- データ仕様書 `docs/specs/data-sources/ireland.md` の策定。
+- スキーマ・型定義（`CountryCode: 'IE'`, `Organization: 'hri'`）の拡張。
+- 日英仏中レースマスタ作成、確定時刻フェッチャー（Sporting Life連携）およびUI対応を順次展開。
 
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
-- **Step 36: 海外主要レースのさらなる拡張**:
+- **Step 37: 海外主要レースのさらなる拡張**:
   - オーストラリア（Racing Australia / IFHA Part I）、UAE/ドバイ（ERA）等の重賞データ統合。
   - 各国公式出馬表フェッチャーの追加による確定発走時刻自動取得。
-- **Step 37: リアルタイム馬場状態・天候情報の表示**:
+- **Step 38: リアルタイム馬場状態・天候情報の表示**:
   - レース当日の天候（晴・雨等）および馬場状態（良・稍重・重・不良）のリアルタイム取得とバッジ表示。
-- **Step 38: カレンダー連携（iCalendar / Google Calendar 出力）**:
+- **Step 39: カレンダー連携（iCalendar / Google Calendar 出力）**:
   - お気に入りレースや特定条件レースをワンクリックで外部カレンダーアプリへ登録できる `.ics` エクスポート機能。
