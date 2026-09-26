@@ -6,7 +6,32 @@
 
 ## バージョン履歴 (Version History)
 
-### Step 34: 海外競馬：香港競馬（HKJC / IFHA Part I 重賞）統合 (v1.30.0 / Issue #109, #110, #111, #112) [完了]
+### Step 36: 海外競馬第5弾・アイルランド競馬（HRI / IFHA Part I 重賞）統合 (v1.32.0 / Issue #121, #122, #123, #124) [完了]
+- **Phase 1: PRD改訂・要件定義・TypeScript型定義 (Issue #121) [完了]**
+  - データ仕様書 `docs/specs/data-sources/ireland.md` の新規策定（一次データソース、夏時間ルール、競馬場、ID体系）。
+  - `src/types/race.ts` の型定義拡張（`Organization: 'hri'`, `CountryCode: 'IE'`）。
+  - `docs/PRD.md` へのアイルランド競馬仕様の統合。
+- **Phase 2: アイルランド重賞データ抽出・日英仏中マスタ作成およびパイプライン統合 (Issue #122) [完了]**
+  - `src/data/ireland_race_master.json`: アイルランド平地国際全67重賞（G1: 13競走、G2: 14競走、G3: 40競走）の日英仏中4言語マスタ作成（愛ダービー、愛オークス、愛チャンピオンS等を網羅）。
+  - `scripts/lib/ireland-races.ts`: マスタ読み込み・データ正規化モジュール実装。
+  - `scripts/parse-races.ts`: 年間データビルドパイプラインへの統合（合算で全1263レース生成）。
+  - 単体テスト（`tests/unit/irelandRaces.test.ts`）の実装と既存テストの追従。
+- **Phase 3: アイルランド競馬UI対応（主催者フィルター・主要競馬場・IEバッジ・免責事項） (Issue #123) [完了]**
+  - 主催者フィルターへの「アイルランド (HRI)」追加、モバイルモーダルでの欧州地域グルーピング（「欧州全重賞」一括選択/解除）への統合。
+  - 競馬場フィルターへのアイルランド主要9競馬場（カラ、レパーズタウン、ネース、コーク、ティペラリー、ダンドーク、ゴウランパーク、フェアリーハウス、ナヴァン）の追加（日/英/仏/中4言語完全対応）。
+  - タイムラインビュー、カレンダービュー、詳細ダイアログにおける国コード「IE」バッジおよび「HRI」組織バッジのスタイル適用（アイリッシュグリーン基調）。
+  - 免責事項ダイアログ（`DisclaimerDialog`）、フッター、およびドキュメントタイトルへの HRI（Horse Racing Ireland）の出典・非公式性・知的財産権の明記。
+  - 原語判定（`src/libs/raceLanguage.ts`）に `IE` / `hri` を追加し、原語を英語として自動判定。
+  - 構造化データ（JSON-LD）にアイルランド競馬（HRI）を反映。
+- **Phase 4: アイルランド重賞確定発走予定時刻自動更新バッチ（`IeRaceTimeFetcher`）の実装 & 過去実績補完 (Issue #124) [完了]**
+  - `scripts/lib/ie-syutsuba.ts`: Sporting Life API 出馬表のパース、アイルランド夏時間（IST: UTC+1）および冬時間（GMT: UTC+0）の判定、表記揺れを吸収する名寄せアルゴリズム（`ieRaceMatches`, `ieCourseMatches`）の実装。
+  - `scripts/update-race-times.ts`: `IeRaceTimeFetcher` の実装と `DEFAULT_FETCHERS` への `hri` / `ie` プロバイダー登録、直近7日間の開催予定ウィンドウ（`getIeUpcomingWindowRange`）の実装。
+  - 過去開催済みアイルランド重賞（2026年9月26日以前の60レース）の確定発走時刻バックフィル（`is_time_confirmed: true`）。
+  - 本日（2026-09-26）開催の「ベレスフォードステークス（G2, カラ競馬場）」の確定発走時刻（13:10 UTC / 22:10 JST）への実データ自動更新を確認。
+  - 単体テスト（`tests/unit/irelandSyutsuba.test.ts`）の実装（全9テスト完全合格）。
+  - `package.json` および `docs/batch-schedules.md`: `data:update-times:ie` コマンド新設およびバッチ運用仕様の反映。
+
+---
 - **Phase 1: PRD改訂・要件定義・TypeScript型定義 (Issue #109) [完了]**
   - `docs/PRD.md` 改訂、`src/types/race.ts` の型定義拡張（`Organization: 'hkjc'`, `CountryCode: 'HK'`, `LocalizedText.zh?: string`, `AgeConstraint: '4yo'`）。
 - **Phase 2: 香港重賞データ抽出・日英中マスタ作成およびパイプライン統合 (Issue #110) [完了]**
