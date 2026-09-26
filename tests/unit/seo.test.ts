@@ -50,6 +50,7 @@ describe("SEO and Meta configuration", () => {
     expect(html).toContain('property="og:locale" content="ja_JP"');
     expect(html).toContain('property="og:locale:alternate" content="en_US"');
     expect(html).toContain('property="og:locale:alternate" content="fr_FR"');
+    expect(html).toContain('property="og:locale:alternate" content="zh_HK"');
 
     // Twitter
     expect(html).toContain('name="twitter:card" content="summary"');
@@ -80,10 +81,13 @@ describe("SEO and Meta configuration", () => {
     expect(data.alternateName).toContain("Graded Races Calendar");
     expect(data.alternateName).toContain("JRA & NAR Graded Races Calendar");
     expect(data.alternateName).toContain("Calendrier des Courses de Groupe");
+    expect(data.alternateName).toContain("分級賽行事曆");
+    expect(data.alternateName).toContain("香港・日本・歐美重賞賽程");
     expect(data.description).toContain("JRA（中央競馬）およびNAR（地方競馬・ダートグレード・ばんえい）");
     expect(data.inLanguage).toContain("ja");
     expect(data.inLanguage).toContain("en");
     expect(data.inLanguage).toContain("fr");
+    expect(data.inLanguage).toContain("zh-HK");
     expect(data.applicationCategory).toBe("SportsApplication");
     expect(data.url).toBe("https://meshi-z.github.io/horse-racing-calender/");
   });

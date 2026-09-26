@@ -101,5 +101,21 @@ describe("Header", () => {
     expect(langTrigger).toHaveTextContent("FR");
     expect(screen.getByRole("tab", { name: "Chronologie" })).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: "Calendrier" })).toBeInTheDocument();
+
+    // 繁体字中国語を選択
+    fireEvent.click(langTrigger);
+    const zhOption = screen.getByRole("option", { name: /繁體中文 \(ZH\)/ });
+    fireEvent.click(zhOption);
+
+    expect(trackEventSpy).toHaveBeenCalledWith("language_change", {
+      from: "fr",
+      to: "zh",
+    });
+    expect(useLanguageStore.getState().language).toBe("zh");
+    expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("zh");
+    expect(document.documentElement.lang).toBe("zh");
+    expect(langTrigger).toHaveTextContent("ZH");
+    expect(screen.getByRole("tab", { name: "時間軸" })).toBeInTheDocument();
+    expect(screen.getByRole("tab", { name: "行事曆" })).toBeInTheDocument();
   });
 });

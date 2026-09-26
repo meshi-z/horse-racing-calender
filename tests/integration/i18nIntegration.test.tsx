@@ -270,5 +270,22 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
     ).toBe("Courses de Groupe");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Courses de Groupe");
     expect(screen.getByText("février 2026")).toBeInTheDocument();
+
+    // ==========================================
+    // 8. 繁体字中国語モードへの切り替えを確認
+    // ==========================================
+    const langSelectFr = screen.getByRole("combobox", { name: "Choisir la langue (Français)" });
+    fireEvent.click(langSelectFr);
+    const zhOption = screen.getByRole("option", { name: /繁體中文 \(ZH\)/ });
+    fireEvent.click(zhOption);
+
+    expect(document.documentElement.lang).toBe("zh");
+    expect(document.title).toBe("分級賽行事曆 - 香港、JRA、NAR、法國、英國、美國重賞賽程");
+    expect(
+      document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute("content")
+    ).toBe("分級賽行事曆");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("分級賽行事曆");
+    expect(screen.getByText("2026年2月")).toBeInTheDocument();
+    expect(screen.getByText("一")).toBeInTheDocument();
   });
 });

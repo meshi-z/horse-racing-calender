@@ -42,6 +42,16 @@ describe("src/libs/date.ts", () => {
       const febFormatted = formatLocalDate("2026-02-22", "en");
       expect(febFormatted).toBe("Sun, Feb 22, 2026");
     });
+
+    it("繁体字中国語モード時に 'YYYY年M月D日(曜日)' 形式に変換されること (zh)", () => {
+      // 2026-02-22 は日曜日
+      const formatted = formatLocalDate("2026-02-22", "zh");
+      expect(formatted).toBe("2026年2月22日(日)");
+
+      // 2026-02-23 は月曜日
+      const monFormatted = formatLocalDate("2026-02-23", "zh");
+      expect(monFormatted).toBe("2026年2月23日(一)");
+    });
   });
 
   describe("formatYearMonth", () => {
@@ -54,6 +64,11 @@ describe("src/libs/date.ts", () => {
       expect(formatYearMonth(2026, 4, "en")).toBe("April 2026");
       expect(formatYearMonth(2026, 1, "en")).toBe("January 2026");
       expect(formatYearMonth(2026, 12, "en")).toBe("December 2026");
+    });
+
+    it("繁体字中国語モードで 'YYYY年M月' を返すこと", () => {
+      expect(formatYearMonth(2026, 4, "zh")).toBe("2026年4月");
+      expect(formatYearMonth(2026, 12, "zh")).toBe("2026年12月");
     });
   });
 
@@ -73,6 +88,15 @@ describe("src/libs/date.ts", () => {
       const nowBefore = new Date("2026-02-22T06:30:00.000Z");
       const result = formatRaceTimeDisplay(startTime, nowBefore, "en");
       expect(result.statusLabel).toBe("Scheduled");
+      expect(result.isPast).toBe(false);
+      expect(result.isConfirmed).toBe(true);
+      expect(result.time).toMatch(/^\d{2}:\d{2}$/);
+    });
+
+    it("繁体字中国語モード時に '預計開跑' ステータスを返すこと (zh)", () => {
+      const nowBefore = new Date("2026-02-22T06:30:00.000Z");
+      const result = formatRaceTimeDisplay(startTime, nowBefore, "zh");
+      expect(result.statusLabel).toBe("預計開跑");
       expect(result.isPast).toBe(false);
       expect(result.isConfirmed).toBe(true);
       expect(result.time).toMatch(/^\d{2}:\d{2}$/);

@@ -157,6 +157,12 @@ describe('raceLanguage utility', () => {
         expect(primary).toBe('Arima Kinen');
         expect(secondary).toBe('有馬記念');
       });
+
+      it('繁体字中国語UI: メイン英語フォールバック、サブ日本語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleJraRace, 'zh');
+        expect(primary).toBe('Arima Kinen');
+        expect(secondary).toBe('有馬記念');
+      });
     });
 
     describe('日本レース（原語: ja、fr定義あり: 日本ダービー）', () => {
@@ -185,6 +191,12 @@ describe('raceLanguage utility', () => {
         expect(primary).toBe("Prix de l'Arc de Triomphe");
         expect(secondary).toBeUndefined();
       });
+
+      it('繁体字中国語UI: メインPrix de l\'Arc de Triomphe、サブは同一のため非表示', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleFranceRace, 'zh');
+        expect(primary).toBe("Prix de l'Arc de Triomphe");
+        expect(secondary).toBeUndefined();
+      });
     });
 
     describe('イギリスレース（原語: en、キングジョージ）', () => {
@@ -202,6 +214,12 @@ describe('raceLanguage utility', () => {
 
       it('フランス語UI: メイン英語フォールバック、サブ非表示', () => {
         const { primary, secondary } = getRaceDisplayNames(sampleUkRace, 'fr');
+        expect(primary).toBe('King George VI & Queen Elizabeth Stakes');
+        expect(secondary).toBeUndefined();
+      });
+
+      it('繁体字中国語UI: メイン英語フォールバック、サブ非表示', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleUkRace, 'zh');
         expect(primary).toBe('King George VI & Queen Elizabeth Stakes');
         expect(secondary).toBeUndefined();
       });
@@ -224,6 +242,12 @@ describe('raceLanguage utility', () => {
         const { primary, secondary } = getRaceDisplayNames(sampleHkRace, 'fr');
         expect(primary).toBe('Queen Elizabeth II Cup');
         expect(secondary).toBe('富衛保險女皇盃');
+      });
+
+      it('繁体字中国語UI: メイン原語繁体字中国語、サブ英語', () => {
+        const { primary, secondary } = getRaceDisplayNames(sampleHkRace, 'zh');
+        expect(primary).toBe('富衛保險女皇盃');
+        expect(secondary).toBe('Queen Elizabeth II Cup');
       });
     });
   });

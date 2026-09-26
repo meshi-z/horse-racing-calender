@@ -88,6 +88,8 @@ export function Header({ className, ...props }: HeaderProps) {
                   ? "言語を選択 (日本語)"
                   : language === "fr"
                   ? "Choisir la langue (Français)"
+                  : language === "zh"
+                  ? "選擇語言 (繁體中文)"
                   : "Select language (English)"
               }
             >
@@ -98,6 +100,7 @@ export function Header({ className, ...props }: HeaderProps) {
               <SelectItem value="ja">日本語 (JA)</SelectItem>
               <SelectItem value="en">English (EN)</SelectItem>
               <SelectItem value="fr">Français (FR)</SelectItem>
+              <SelectItem value="zh">繁體中文 (ZH)</SelectItem>
             </SelectContent>
           </Select>
 

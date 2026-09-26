@@ -44,6 +44,16 @@ describe('PWA Metadata i18n synchronization', () => {
     expect(appNameMeta?.getAttribute('content')).toBe('Courses de Groupe');
   });
 
+  it('繁体字中国語(zh)への切り替えでapple-mobile-web-app-titleとapplication-nameが正しく更新されること', () => {
+    updatePwaMetadata('zh');
+
+    const appleTitleMeta = document.querySelector('meta[name="apple-mobile-web-app-title"]');
+    expect(appleTitleMeta?.getAttribute('content')).toBe('分級賽行事曆');
+
+    const appNameMeta = document.querySelector('meta[name="application-name"]');
+    expect(appNameMeta?.getAttribute('content')).toBe('分級賽行事曆');
+  });
+
   it('metaタグが存在しない場合でも動的に生成して設定されること', () => {
     document.head.innerHTML = ''; // 完全に空にする
 

@@ -1,7 +1,7 @@
 import type { Race, LocalizedText } from '../types/race';
 import type { Language } from '../store/useLanguageStore';
 
-export type RaceOriginLanguage = Language | 'zh';
+export type RaceOriginLanguage = Language;
 
 /**
  * レースの開催国の原語（公用語）コードを判定する
@@ -25,7 +25,7 @@ export function getRaceOriginLanguage(race: Race): RaceOriginLanguage {
 /**
  * LocalizedText から指定された言語の値を取得する（未定義時は en -> ja の順でフォールバック）
  */
-export function getLocalizedText(text: LocalizedText, lang: Language | 'zh'): string {
+export function getLocalizedText(text: LocalizedText, lang: Language): string {
   if (text[lang]) {
     return text[lang]!;
   }
