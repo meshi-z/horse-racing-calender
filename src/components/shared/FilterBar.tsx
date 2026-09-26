@@ -317,11 +317,12 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
       return `🇯🇵 ${t("filter.regionJapan")} (2)`;
     }
     const isAllEurope =
-      filters.organizations.length === 2 &&
+      filters.organizations.length === 3 &&
       filters.organizations.includes("france_galop") &&
-      filters.organizations.includes("bha");
+      filters.organizations.includes("bha") &&
+      filters.organizations.includes("hri");
     if (isAllEurope) {
-      return `🇪🇺 ${t("filter.regionEurope")} (2)`;
+      return `🇪🇺 ${t("filter.regionEurope")} (3)`;
     }
     const isAllAmerica =
       filters.organizations.length === 1 &&
@@ -343,8 +344,9 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
       if (org === "bha") return "🇬🇧 UK";
       if (org === "equibase") return "🇺🇸 USA";
       if (org === "hkjc") return "🇭🇰 HKJC";
+      if (org === "hri") return "🇮🇪 Ireland";
     }
-    return `${t("filter.orgSelectTrigger")} (${filters.organizations.length})`;
+    return `${t("filter.orgSelectShort")} (${filters.organizations.length})`;
   };
 
   const handleGradeToggle = (grade: Grade) => {
@@ -459,7 +461,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
         </div>
 
         {/* コントロール群（主催者・詳細トグル・リセット） */}
-        <div className="flex items-center justify-between sm:justify-start gap-1 sm:gap-2 shrink-0 w-full sm:w-auto">
+        <div className="flex items-center justify-between sm:justify-start gap-1 sm:gap-2 shrink-0 w-full sm:w-auto min-w-0">
           {/* モバイル向け: 開催国・主催者選択ダイアログ (sm:hidden) */}
           <div className="sm:hidden">
             <Dialog open={isOrgDialogOpen} onOpenChange={setIsOrgDialogOpen}>
@@ -477,7 +479,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
                   )}
                 >
                   <Globe className="h-3.5 w-3.5" />
-                  <span className="truncate max-w-[120px] sm:max-w-[130px]">{getOrgTriggerLabel()}</span>
+                  <span className="truncate max-w-[85px] sm:max-w-[130px]">{getOrgTriggerLabel()}</span>
                   <ChevronDown className="h-3 w-3 opacity-60" />
                 </Button>
               </DialogTrigger>
@@ -639,7 +641,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
               )}
             >
               <SlidersHorizontal className="h-3.5 w-3.5" />
-              <span>{t("filter.filterToggle")}</span>
+              <span className="truncate max-w-[70px] sm:max-w-none">{t("filter.filterToggle")}</span>
               {activeDetailFiltersCount > 0 && (
                 <span
                   data-testid="filter-badge-count"
@@ -665,7 +667,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
                 aria-label={t("filter.resetFilterAria")}
               >
                 <RotateCcw className="h-3.5 w-3.5" />
-                <span>{t("filter.reset")}</span>
+                <span className="truncate max-w-[70px] sm:max-w-none">{t("filter.reset")}</span>
               </Button>
             )}
           </div>

@@ -620,6 +620,58 @@ describe("FilterBar", () => {
       const triggerBtnFr = screen.getByRole("button", { name: "Sélectionner pays et organisateurs" });
       expect(triggerBtnFr).toHaveTextContent("Toutes");
     });
+
+    it("複数主催者選択時に短縮ラベル（地域 (N)）で表示されボタン幅の肥大化・はみ出しが防止されること (Issue #130)", () => {
+      // 2国選択時（例: JRA + France Galop）
+      useRaceStore.getState().setFilter("organizations", ["jra", "france_galop"]);
+
+      // 日本語: "地域 (2)"
+      useLanguageStore.setState({ language: "ja" });
+      const { unmount: unmountJa } = render(<FilterBar />);
+      const triggerBtnJa = screen.getByRole("button", { name: "開催国・主催者の選択" });
+      expect(triggerBtnJa).toHaveTextContent("地域 (2)");
+      expect(triggerBtnJa.querySelector(".truncate")).toHaveClass("max-w-[85px]");
+      unmountJa();
+
+      // 英語: "Regions (2)"
+      useLanguageStore.setState({ language: "en" });
+      const { unmount: unmountEn } = render(<FilterBar />);
+      const triggerBtnEn = screen.getByRole("button", { name: "Select Countries & Organizations" });
+      expect(triggerBtnEn).toHaveTextContent("Regions (2)");
+      unmountEn();
+
+      // フランス語: "Régions (2)"
+      useLanguageStore.setState({ language: "fr" });
+      const { unmount: unmountFr } = render(<FilterBar />);
+      const triggerBtnFr = screen.getByRole("button", { name: "Sélectionner pays et organisateurs" });
+      expect(triggerBtnFr).toHaveTextContent("Régions (2)");
+      unmountFr();
+
+      // 繁体字中国語: "地區 (2)"
+      useLanguageStore.setState({ language: "zh" });
+      const { unmount: unmountZh } = render(<FilterBar />);
+      const triggerBtnZh = screen.getByRole("button", { name: "選擇舉辦國家・賽馬機構" });
+      expect(triggerBtnZh).toHaveTextContent("地區 (2)");
+      unmountZh();
+    });
+
+    it("欧州全重賞（3団体）選択時に「🇪🇺 ヨーロッパ (3)」と表示され、単一主催者選択時は個別国名が表示されること (Issue #130)", () => {
+      useLanguageStore.setState({ language: "ja" });
+
+      // 欧州3団体（France, UK, Ireland）
+      useRaceStore.getState().setFilter("organizations", ["france_galop", "bha", "hri"]);
+      const { unmount: unmountEurope } = render(<FilterBar />);
+      const triggerEurope = screen.getByRole("button", { name: "開催国・主催者の選択" });
+      expect(triggerEurope).toHaveTextContent("🇪🇺 ヨーロッパ (3)");
+      unmountEurope();
+
+      // アイルランド単一選択 (hri)
+      useRaceStore.getState().setFilter("organizations", ["hri"]);
+      const { unmount: unmountHri } = render(<FilterBar />);
+      const triggerHri = screen.getByRole("button", { name: "開催国・主催者の選択" });
+      expect(triggerHri).toHaveTextContent("🇮🇪 Ireland");
+      unmountHri();
+    });
   });
 
   describe("主催者選択と競馬場・グレード・馬場の動的連動および画面溢れ防止 (Issue #107)", () => {
