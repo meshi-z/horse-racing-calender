@@ -36984,8 +36984,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-01",
-    "start_time": "2026-10-01T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-01T06:55:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "園田",
       "en": "Sonoda"
