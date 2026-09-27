@@ -6,6 +6,23 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 43: 各国・レースの発走予定時刻確定タイミングおよび反映目安を案内するヘルプモーダルの実装 (v1.34.0 / Issue #136) [完了]
+- **発走時刻確定ガイドダイアログ（`ConfirmedTimeHelpDialog`）の実装 [完了]**
+  - Shadcn UI / Radix UI の `Dialog` を採用し、公式確定タイミングおよび本アプリへの反映目安を一覧できるヘルプモーダルを新設。
+  - 全7主催者（JRA, NAR, France Galop, BHA, HRI, Equibase, HKJC）の国コードバッジ、公式発表スケジュール、本アプリ反映目安を一覧化したレスポンシブテーブルを配置。
+  - 定期巡回バッチによる自動反映の仕組みの解説、および天候悪化・馬場状態・主催者都合による直前変更・順延に関する注意喚起アラート（`AlertTriangle`）を併記。
+- **全体 & コンテキスト連動導線の設置 [完了]**
+  - **フッター（全体導線）**: `src/components/shared/Layout.tsx` のフッターリンクエリアに「発走時刻の確定について」ボタンを配備。
+  - **レース詳細ダイアログ（コンテキスト連動導線）**: `src/components/shared/RaceDetailDialog.tsx` において、時刻未定（`is_time_confirmed === false`）の際、「時刻未定」表示の横に「発走時刻はいつ決まる？（ヘルプアイコン付き）」リンクを常設。
+- **4言語（i18n）完全対応 [完了]**
+  - 日本語（`ja`）、英語（`en`）、フランス語（`fr`）、繁体字中国語（`zh`）でダイアログタイトル、概要、全7主催者のスケジュールテキスト、注意事項を完全定義。
+- **テスト拡充 & 仕様書更新 [完了]**
+  - `tests/unit/ConfirmedTimeHelpDialog.test.tsx` を新規作成（開閉、全主催者スケジュール表示、4言語表示、カスタムトリガー動作など6テスト追加）。
+  - `tests/unit/RaceDetailDialog.test.tsx` および `tests/unit/Layout.test.tsx` に導線表示検証を追加（全48テストファイル・472テストすべて合格、ビルド・型検査も正常完了）。
+  - `docs/PRD.md` を v1.34.0 (Step 43) へ更新し、PDF を再生成。
+
+---
+
 ### Step 42: フランス・フォワ賞発走日時是正および米フラワーボウルSの不正start_time解消・海外確定時刻引き継ぎガード導入 (v1.33.3 / Issue #134) [完了]
 - **フランス・フォワ賞（Prix Foy: `2026-france-g2-19`）の実績発走日時の是正 [完了]**
   - `src/data/france_race_master.json` において、`date` を `2026-09-06`、`start_time` を `2026-09-06T15:35:00.000Z`（現地 17:35 CEST / 日本時間 9/7 00:35 JST）、`original_date` を `2026-09-06`、`is_time_confirmed` を `true` に修正。ニエル賞、ヴェルメイユ賞、ムーランドロンシャン賞と同日開催に正常化。
