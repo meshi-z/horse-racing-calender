@@ -1,0 +1,134 @@
+import { cleanNarRaceName } from './nar-syutsuba';
+import { kanaToHepburn, romanizeJapaneseRaceName } from './hepburn';
+import type { RaceWinner } from '../update-race-times';
+
+export interface NarParsedResult {
+  raceName: string;
+  course?: string;
+  raceNo?: number;
+  winner: {
+    horseName: string;
+    horseNumber?: number;
+    jockey?: string;
+    time?: string;
+  };
+}
+
+/**
+ * NAR公式競走成績HTML（RaceMarkTable, 払戻・着順表）から勝ち馬情報をパース
+ */
+export function parseNarRaceResultHtml(html: string): NarParsedResult[] {
+  const results: NarParsedResult[] = [];
+
+  // レース名ブロック (例: <div class="racename">第37回 レディスプレリュード(JpnII)</div> または <td class="racename">...</td>)
+  let defaultRaceName = '';
+  const raceNameMatch =
+    html.match(/<(?:div|h[1-4]|td|span)[^>]*class=["'][^"']*(?:racename|race_name|title)[^"']*["'][^>]*>([\s\S]*?)<\/(?:div|h[1-4]|td|span)>/i) ||
+    html.match(/<caption[^>]*>([\s\S]*?)<\/caption>/i);
+  if (raceNameMatch) {
+    defaultRaceName = cleanNarRaceName(raceNameMatch[1]);
+  }
+
+  // 1着行の抽出
+  // NARの着順表行: <tr> <td>1</td> <td>5</td> <td>5</td> <td class="horse">グランブリッジ</td> <td class="jockey">川田 将雅</td> ... <td>2:14.2</td> </tr>
+  const trMatches = html.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi);
+
+  for (const trMatch of trMatches) {
+    const row = trMatch[1];
+
+    // 着順が 1 または 01
+    const rankMatch =
+      row.match(/<td[^>]*class=["'][^"']*(?:rank|order|place)[^"']*["'][^>]*>\s*(?:1|01)\s*<\/td>/i) ||
+      row.match(/<td[^>]*>\s*(?:1|01)\s*<\/td>/i);
+    if (!rankMatch) continue;
+
+    // 馬番
+    let horseNumber: number | undefined;
+    const numMatch =
+      row.match(/<td[^>]*class=["'][^"']*(?:num|umaban|horse_num)[^"']*["'][^>]*>\s*(\d{1,2})\s*<\/td>/i) ||
+      row.match(/<td[^>]*>\s*(\d{1,2})\s*<\/td>/g);
+    if (numMatch) {
+      if (Array.isArray(numMatch) && numMatch.length >= 3) {
+        // 通常 [0]=着順, [1]=枠番, [2]=馬番
+        const rawNum = numMatch[2].replace(/<[^>]+>/g, '').trim();
+        const parsedNum = parseInt(rawNum, 10);
+        if (!isNaN(parsedNum)) horseNumber = parsedNum;
+      } else if (typeof numMatch[1] === 'string') {
+        horseNumber = parseInt(numMatch[1], 10);
+      }
+    }
+
+    // 馬名
+    let horseName = '';
+    const horseMatch =
+      row.match(/<td[^>]*class=["'][^"']*(?:horse|bamei|horse_name)[^"']*["'][^>]*>[\s\S]*?<a[^>]*>([\s\S]*?)<\/a>/i) ||
+      row.match(/<td[^>]*class=["'][^"']*(?:horse|bamei|horse_name)[^"']*["'][^>]*>([\s\S]*?)<\/td>/i);
+    if (horseMatch) {
+      horseName = horseMatch[1].replace(/<[^>]+>/g, '').trim();
+    }
+
+    // 騎手
+    let jockey: string | undefined;
+    const jockeyMatch =
+      row.match(/<td[^>]*class=["'][^"']*(?:jockey|kishu)[^"']*["'][^>]*>[\s\S]*?<a[^>]*>([\s\S]*?)<\/a>/i) ||
+      row.match(/<td[^>]*class=["'][^"']*(?:jockey|kishu)[^"']*["'][^>]*>([\s\S]*?)<\/td>/i);
+    if (jockeyMatch) {
+      jockey = jockeyMatch[1].replace(/<[^>]+>/g, '').trim();
+    }
+
+    // タイム
+    let time: string | undefined;
+    const timeMatch = row.match(/<td[^>]*class=["'][^"']*(?:time|record)[^"']*["'][^>]*>([\s\S]*?)<\/td>/i) ||
+      row.match(/<td[^>]*>\s*(\d{1,2}:\d{2}\.\d)\s*<\/td>/i);
+    if (timeMatch) {
+      const raw = timeMatch[1].replace(/<[^>]+>/g, '').trim();
+      if (/^\d{1,2}:\d{2}\.\d$/.test(raw)) {
+        time = raw;
+      }
+    }
+
+    if (horseName) {
+      results.push({
+        raceName: defaultRaceName,
+        winner: {
+          horseName,
+          horseNumber,
+          jockey,
+          time,
+        },
+      });
+      break;
+    }
+  }
+
+  return results;
+}
+
+/**
+ * NARパース結果から RaceWinner を構築
+ */
+export function buildNarRaceWinner(parsed: NarParsedResult['winner']): RaceWinner {
+  const jaName = parsed.horseName;
+  const rawEnName = kanaToHepburn(jaName);
+  const enName = rawEnName ? rawEnName.charAt(0).toUpperCase() + rawEnName.slice(1) : jaName;
+
+  let jockeyObj: RaceWinner['jockey'];
+  if (parsed.jockey) {
+    const jaJockey = parsed.jockey.replace(/\s+/g, ' ').trim();
+    const enJockey = romanizeJapaneseRaceName(jaJockey);
+    jockeyObj = {
+      ja: jaJockey,
+      en: enJockey,
+    };
+  }
+
+  return {
+    name: {
+      ja: jaName,
+      en: enName,
+    },
+    jockey: jockeyObj,
+    horse_number: parsed.horseNumber,
+    time: parsed.time,
+  };
+}

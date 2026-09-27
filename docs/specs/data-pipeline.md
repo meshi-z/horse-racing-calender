@@ -153,17 +153,30 @@ export interface RaceTimeFetcher {
    外部ネットワークの一時的タイムアウトや HTTP 429/5xx エラーに対し、最大3回のリトライを実施します。
 
 ### 5.4 レース結果・勝ち馬自動反映パイプライン (`scripts/update-race-results.ts`)
-レース終了後（週末・月曜定期バッチ等）に着順確定結果から勝ち馬情報を収集・反映するパイプラインを提供します。
+レース発走後15分以上経過した当日終了レースおよび直近3日間の未確定過去レースから、各主催者の公式一次情報（Single Source of Truth）を直接パースして勝ち馬情報（馬名・騎手・馬番・走破タイム）を自動反映するパイプラインを提供します。
+
 - **インターフェース**:
   ```typescript
   export interface RaceResultFetcher {
     readonly organization: string;
-    getTargetPastRaces(races: RaceOutput[], refDate: string): RaceOutput[];
+    getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; force?: boolean }): RaceOutput[];
     fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>>;
   }
   ```
-- **実行コマンド**: `npm run data:update-results`（CLI引数: `--date`, `--org`, `--dry-run`, `--force` をサポート）。
-- **反映先**: `public/data/races.json` および `src/data/race_winners.json`（永続マスタ）。
+- **登録プロバイダー**:
+  - `JraRaceResultFetcher`: JRA公式レース結果HTML・特別レース成績から1着馬・馬番・騎手・タイムを抽出。ヘボン式英名自動補完。
+  - `NarRaceResultFetcher`: NAR公式競走成績HTML（RaceMarkTable）から1着馬・馬番・騎手・タイムを抽出。
+  - `FranceRaceResultFetcher`: PMU公式プログラム/着順確定API（`ARRIVEE`）から1着馬・馬番・ドライバー・タイムを抽出。
+  - `UkRaceResultFetcher` / `IeRaceResultFetcher`: Sporting Life API（`results` / `Official`）から1着馬・馬番・騎手・タイムを抽出。
+  - `HkjcRaceResultFetcher`: HKJC公式レースリザルトHTMLから1着馬（英・中・日）・馬番・騎手・タイムを抽出。
+  - `UsRaceResultFetcher`: Equibase公式チャート/リザルトHTMLから1着馬・騎手・タイムを抽出。
+- **当日中・発走直後ターゲット抽出 (`getTargetPastRacesForResults`)**:
+  - `race.start_time`（UTC）と現在時刻を比較し、発走から15分以上経過した未確定レースを即時ターゲットに指定。
+  - 未確定対象レースが0件の場合は即時終了（Early Exit）し、GitHub Actions実行時間と外部負荷を最小化。
+- **二重永続化アーキテクチャ**:
+  - 取得した結果は `public/data/races.json` と `src/data/race_winners.json`（永続マスタ）の両方にアトミックに書き込まれ、年間データの一括再ビルド時（`parse-races.ts`）にも失われません。
+- **実行コマンド**: `npm run data:update-results`（CLI引数: `--date`, `--time`, `--org`, `--dry-run`, `--force` をサポート）。
+- **自動巡回ワークフロー**: `.github/workflows/update-race-results.yml`（土日午後、平日夜、早朝の計8回定期実行）。
 
 ---
 
