@@ -60,6 +60,7 @@ export interface RaceOutput {
   age_constraint: AgeConstraint; // 年齢制限: 'none' | '2yo' | '3yo' | '4yo' | '3yo_and_up' | '4yo_and_up'
   handicap: HandicapInfo;        // 負担重量区分 { code: HandicapType; ja: string; en: string; fr?: string }
   winner?: RaceWinner;           // 勝ち馬・レース結果（着順確定後）
+  official_url?: string;         // 各主催者・出馬表等の公式情報URL
 }
 ```
 

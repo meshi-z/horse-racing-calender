@@ -18,7 +18,8 @@ import {
 import { getRaceDisplayNames } from "@/libs/raceLanguage";
 import type { Race } from "@/types/race";
 import { cn } from "@/libs/utils";
-import { Calendar, Clock, MapPin, AlertTriangle, HelpCircle, Trophy } from "lucide-react";
+import { Calendar, Clock, MapPin, AlertTriangle, HelpCircle, Trophy, ExternalLink } from "lucide-react";
+import { getOfficialRaceUrl, getOfficialSourceLabel } from "@/libs/officialUrl";
 
 export interface RaceDetailDialogProps {
   race: Race | null;
@@ -57,6 +58,9 @@ export function RaceDetailDialog({
   const winnerJockey = race.winner?.jockey
     ? (race.winner.jockey[language] || race.winner.jockey.en || race.winner.jockey.ja)
     : undefined;
+
+  const officialUrl = getOfficialRaceUrl(race, language);
+  const officialSourceLabel = getOfficialSourceLabel(race.organization, language);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -296,6 +300,40 @@ export function RaceDetailDialog({
               </Badge>
             </div>
           </div>
+
+          {/* 主催者公式出馬表・レース情報リンク */}
+          {officialUrl && (
+            <div className="pt-1">
+              <a
+                href={officialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  "flex items-center justify-between w-full px-4 py-3 rounded-lg text-sm font-semibold transition-all group",
+                  "bg-primary/10 text-primary hover:bg-primary/15 dark:bg-primary/20 dark:hover:bg-primary/25",
+                  "border border-primary/25 hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                )}
+                aria-label={t("card.officialLinkAria", { name: primaryName })}
+                data-testid="official-race-link-btn"
+              >
+                <div className="flex flex-col items-start gap-0.5">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <span>{t("dialog.viewOfficialCard")}</span>
+                    <ExternalLink className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                  <span className="text-[11px] font-normal text-muted-foreground">
+                    {officialSourceLabel}
+                  </span>
+                </div>
+                <Badge
+                  variant="outline"
+                  className="text-xs px-2 py-0.5 h-6 font-semibold bg-background/80 dark:bg-background/40 border-primary/30 text-primary shrink-0"
+                >
+                  公式 ↗
+                </Badge>
+              </a>
+            </div>
+          )}
         </div>
       </DialogContent>
     </Dialog>
