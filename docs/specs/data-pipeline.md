@@ -178,6 +178,31 @@ export interface RaceTimeFetcher {
 - **実行コマンド**: `npm run data:update-results`（CLI引数: `--date`, `--time`, `--org`, `--dry-run`, `--force` をサポート）。
 - **自動巡回ワークフロー**: `.github/workflows/update-race-results.yml`（土日午後、平日夜、早朝の計8回定期実行）。
 
+### 5.5 過去全重賞レース結果の包括的バックフィルパイプライン (`scripts/backfill-race-winners.ts`)
+2026年1月1日から現在までに終了したすべての重賞レース（G1, G2, G3, 地方重賞, 海外重賞）を対象に、公式リザルトアーカイブおよび確定マスタから勝ち馬情報を包括的に解決・二重永続化する専用パイプラインを提供します。
+
+- **インターフェース / オプション**:
+  ```typescript
+  export interface BackfillWinnersOptions {
+    racesPath?: string;
+    winnersMasterPath?: string;
+    beforeDate?: string;     // 基準日（これ以前のレースを対象、デフォルト: 2026-09-27）
+    fromDate?: string;       // 開始日（これ以降のレースを対象、デフォルト: 2026-01-01）
+    orgFilter?: string;      // 主催者絞り込み ('jra' | 'nar' | 'france_galop' | 'bha' | 'hri' | 'equibase' | 'hkjc')
+    gradeFilter?: string;    // グレード絞り込み ('G1' | 'G2' | 'G3' 等)
+    dryRun?: boolean;        // 保存をスキップして検証のみ実行
+    force?: boolean;         // 既存の勝者情報が存在しても強制上書き
+    delayMs?: number;        // リクエスト間隔ディレイ
+    limit?: number;          // 処理上限件数
+    providers?: RaceResultFetcher[];
+  }
+  ```
+- **未来レース安全除外ガード**:
+  - `race.date > beforeDate` の未来レース（秋華賞、菊花賞、凱旋門賞、有馬記念等）は厳格に対象外として除外し、勝者未定状態を保護します。
+- **二重永続化**:
+  - 解決された勝者情報は `src/data/race_winners.json`（永続マスタ）および `public/data/races.json` に即座にアトミック同期されます。
+- **実行コマンド**: `npm run data:backfill-results`（CLI引数: `--date`, `--from`, `--org`, `--grade`, `--limit`, `--dry-run`, `--force` をサポート）。
+
 ---
 
 ## 6. 関連ドキュメント

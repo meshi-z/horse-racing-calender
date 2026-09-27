@@ -15,6 +15,7 @@ GitHub Actions で定期稼働するバッチおよびローカル・手動実�
 | **年間データ一括ビルド** | `scripts/parse-races.ts` | 手動実行 (ローカル) | 年間更新時、開催日程・マスタ辞書更新時 | オンデマンド | JRA公式ICS/HTML、NARスケジュールHTML、フランス競馬マスタ、イギリス競馬マスタ、アメリカ競馬マスタ、香港競馬マスタ、アイルランド競馬マスタから全レースデータを統合マージして再生成 | 入力: 各マスタ/公式データ<br>出力: `public/data/races.json` |
 | **PWAアイコン一括生成** | `scripts/generate-pwa-icons.ts` | 手動実行 (ローカル) | アプリアイコン刷新時 | オンデマンド | SVGアセットから各解像度PNGアイコンおよびファビコンを一括生成 | 入力: `src/assets/icon.svg`<br>出力: `public/icons/`, `favicon.svg` |
 | **レース結果・勝ち馬自動更新** | `.github/workflows/update-race-results.yml`<br>`scripts/update-race-results.ts` | GitHub Actions (cron)<br>手動 (`workflow_dispatch`) | **土日昼〜夕**: 15:00, 15:45, 16:15, 17:00<br>**平日〜土曜夜**: 20:30, 21:30, 22:30<br>**毎日朝**: 07:30 | `0 6 * * 0,6`<br>`45 6 * * 0,6`<br>`15 7 * * 0,6`<br>`0 8 * * 0,6`<br>`30 11 * * 1-6`<br>`30 12 * * 1-6`<br>`30 13 * * 1-6`<br>`30 22 * * *` | 直近終了レース（発走後15分以上経過）の公式着順確定リザルトから勝ち馬情報（馬名・騎手・馬番・走破タイム）を自動取得し反映。未確定対象がなければ早期終了 | 入力: 公式リザルト/API<br>出力: `public/data/races.json`, `src/data/race_winners.json` |
+| **過去全重賞結果バックフィル** | `scripts/backfill-race-winners.ts` | 手動実行 (ローカル) | 過去データ一括反映時、マスタ整合性回復時 | オンデマンド | 2026年の終了全重賞（G1, G2, G3, 地方重賞, 海外重賞）の勝ち馬情報（馬名・騎手・馬番・走破タイム）を公式アーカイブおよび確定マスタから包括的にバックフィル | 入力: 公式リザルト/マスタ<br>出力: `public/data/races.json`, `src/data/race_winners.json` |
 | **PRDドキュメントPDF生成** | `scripts/generate-prd-pdf.js` | 手動実行 (ローカル) | PRD改訂時・新機能リリース時 | オンデマンド | Headless Chrome を利用して `docs/PRD.md` から公式仕様書PDFを生成 | 入力: `docs/PRD.md`<br>出力: `docs/Horse_Racing_Calendar_PRD.pdf` |
 
 ---
@@ -131,6 +132,35 @@ npm run data:update-results -- --force
 
 # ドライラン（ファイル保存を行わず更新内容をコンソール確認）
 npm run data:update-results -- --dry-run
+```
+
+---
+
+### 2.6 過去全重賞レース結果バックフィル (`backfill-race-winners.ts`)
+
+#### 概要・設計根拠
+2026年1月1日から現在までに終了したすべての重賞レース（G1, G2, G3, 地方重賞, 海外重賞）を対象に、公式リザルトアーカイブおよび確定マスタから勝ち馬情報（馬名・騎手・馬番・走破タイム）を包括的に解決し、`public/data/races.json` と `src/data/race_winners.json`（永続マスタ）へ二重永続化します。
+
+#### ローカル実行コマンド
+```bash
+# 通常実行（2026年1月1日〜現在までの全未確定過去重賞をバックフィル）
+npm run data:backfill-results
+
+# 基準日を指定して実行（YYYY-MM-DD以前のレースを対象）
+npm run data:backfill-results -- --date 2026-09-27
+
+# 特定の主催者のみを対象に実行（'jra', 'nar', 'france_galop', 'bha', 'hri', 'equibase', 'hkjc'）
+npm run data:backfill-results -- --org jra
+npm run data:backfill-results -- --org nar
+
+# 特定グレードのみを対象に実行（'G1', 'G2', 'G3' 等）
+npm run data:backfill-results -- --grade G2
+
+# 強制上書き実行（すでに勝ち馬が登録されているレースも再更新）
+npm run data:backfill-results -- --force
+
+# ドライラン（ファイル保存を行わず更新内容をコンソール確認）
+npm run data:backfill-results -- --dry-run
 ```
 
 ---

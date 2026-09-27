@@ -1,7 +1,7 @@
 {
   "name": "horse-racing-calendar",
   "private": true,
-  "version": "1.36.1",
+  "version": "1.37.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,6 +14,7 @@
     "data:update-times:hk": "tsx scripts/update-race-times.ts --org hkjc",
     "data:update-times:ie": "tsx scripts/update-race-times.ts --org hri",
     "data:update-results": "tsx scripts/update-race-results.ts",
+    "data:backfill-results": "tsx scripts/backfill-race-winners.ts",
     "data:backfill-nar": "tsx scripts/backfill-nar-past-times.ts",
     "data:backfill-jra": "tsx scripts/backfill-jra-past-times.ts",
     "icons:generate": "tsx scripts/generate-pwa-icons.ts",
