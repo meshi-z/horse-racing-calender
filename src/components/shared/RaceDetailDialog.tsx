@@ -18,7 +18,7 @@ import {
 import { getRaceDisplayNames } from "@/libs/raceLanguage";
 import type { Race } from "@/types/race";
 import { cn } from "@/libs/utils";
-import { Calendar, Clock, MapPin, AlertTriangle, HelpCircle } from "lucide-react";
+import { Calendar, Clock, MapPin, AlertTriangle, HelpCircle, Trophy } from "lucide-react";
 
 export interface RaceDetailDialogProps {
   race: Race | null;
@@ -45,6 +45,18 @@ export function RaceDetailDialog({
   const sexLabel = sexConstraintLabels[language][race.sex_constraint].full;
   const ageLabel = ageConstraintLabels[language][race.age_constraint].full;
   const handicapLabel = race.handicap[language as 'ja' | 'en'] || race.handicap.en;
+
+  const winnerPrimaryName = race.winner
+    ? (race.winner.name[language] || race.winner.name.en || race.winner.name.ja)
+    : "";
+  const winnerSecondaryName = race.winner
+    ? (language === "ja"
+        ? (race.winner.name.en !== winnerPrimaryName ? race.winner.name.en : "")
+        : (race.winner.name.ja !== winnerPrimaryName ? race.winner.name.ja : ""))
+    : "";
+  const winnerJockey = race.winner?.jockey
+    ? (race.winner.jockey[language] || race.winner.jockey.en || race.winner.jockey.ja)
+    : undefined;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -175,6 +187,55 @@ export function RaceDetailDialog({
               </div>
             )}
           </div>
+
+          {/* レース結果 / 優勝馬セクション */}
+          {race.winner && (
+            <div
+              className="rounded-lg border border-amber-300/80 dark:border-amber-800/80 bg-amber-50/50 dark:bg-amber-950/20 p-3.5 space-y-2.5"
+              data-testid="race-winner-section"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-amber-800 dark:text-amber-300">
+                  <Trophy className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                  <span>{t("winner.resultTitle")}</span>
+                </div>
+                {race.winner.horse_number !== undefined && (
+                  <Badge
+                    variant="outline"
+                    className="text-[11px] px-2 py-0 h-5 font-bold border-amber-400/80 text-amber-800 dark:text-amber-300 bg-amber-100/60 dark:bg-amber-900/40"
+                  >
+                    {t("winner.numberFormat", { number: race.winner.horse_number })}
+                  </Badge>
+                )}
+              </div>
+
+              <div className="space-y-0.5">
+                <div className="text-lg font-extrabold text-foreground tracking-tight">
+                  {winnerPrimaryName}
+                </div>
+                {winnerSecondaryName && (
+                  <div className="text-xs text-muted-foreground">{winnerSecondaryName}</div>
+                )}
+              </div>
+
+              {(winnerJockey || race.winner.time) && (
+                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-amber-200/60 dark:border-amber-900/50 text-xs">
+                  {winnerJockey && (
+                    <div>
+                      <span className="text-muted-foreground mr-1.5">{t("winner.jockey")}:</span>
+                      <span className="font-semibold text-foreground">{winnerJockey}</span>
+                    </div>
+                  )}
+                  {race.winner.time && (
+                    <div>
+                      <span className="text-muted-foreground mr-1.5">{t("winner.time")}:</span>
+                      <span className="font-mono font-semibold text-foreground">{race.winner.time}</span>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* 代替開催の案内通知 */}
           {race.is_rescheduled && (

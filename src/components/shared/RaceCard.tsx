@@ -13,7 +13,7 @@ import {
 import { getRaceDisplayNames } from "@/libs/raceLanguage";
 import type { Race } from "@/types/race";
 import { cn } from "@/libs/utils";
-import { Calendar, Clock, MapPin } from "lucide-react";
+import { Calendar, Clock, MapPin, Trophy } from "lucide-react";
 
 export interface RaceCardProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "onSelect"> {
@@ -51,6 +51,10 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
         ? "Voir les détails"
         : "詳細を表示";
 
+    const winnerName = race.winner
+      ? race.winner.name[language] || race.winner.name.en || race.winner.name.ja
+      : null;
+
     const handleClick = () => {
       onSelect?.(race);
       setIsDialogOpen(true);
@@ -70,7 +74,7 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
           role="button"
           tabIndex={0}
           aria-haspopup="dialog"
-          aria-label={`${primaryName}${race.is_rescheduled ? rescheduledTagText : ""} ${viewDetailText}`}
+          aria-label={`${primaryName}${race.is_rescheduled ? rescheduledTagText : ""}${winnerName ? ` (${t("winner.horseName")}: ${winnerName})` : ""} ${viewDetailText}`}
           onClick={handleClick}
           onKeyDown={handleKeyDown}
           className={cn(
@@ -190,6 +194,17 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                 </h4>
                 {secondaryName && (
                   <p className="text-xs text-muted-foreground truncate">{secondaryName}</p>
+                )}
+                {winnerName && (
+                  <div className="flex items-center gap-1.5 mt-1.5" data-testid="race-winner-badge">
+                    <Badge
+                      variant="outline"
+                      className="text-[11px] px-2 py-0.5 font-medium border-amber-400/60 bg-amber-50/70 dark:bg-amber-950/30 text-amber-800 dark:text-amber-300 flex items-center gap-1 shadow-2xs"
+                    >
+                      <Trophy className="h-3 w-3 text-amber-600 dark:text-amber-400 shrink-0" />
+                      <span className="font-semibold">{winnerName}</span>
+                    </Badge>
+                  </div>
                 )}
               </div>
             </div>

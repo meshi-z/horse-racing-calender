@@ -14,6 +14,7 @@ GitHub Actions で定期稼働するバッチおよびローカル・手動実�
 | **自動テスト・デプロイ** | `.github/workflows/deploy.yml` | push to `main`<br>手動 (`workflow_dispatch`) | 随時（PRマージ時、データ更新コミット時） | イベント駆動 | 型検査 (`type-check`)、テスト (`test`)、プロダクションビルド (`build`) を実行し GitHub Pages へ自動配信 | 入力: ソースコード<br>出力: `dist/` (GitHub Pages) |
 | **年間データ一括ビルド** | `scripts/parse-races.ts` | 手動実行 (ローカル) | 年間更新時、開催日程・マスタ辞書更新時 | オンデマンド | JRA公式ICS/HTML、NARスケジュールHTML、フランス競馬マスタ、イギリス競馬マスタ、アメリカ競馬マスタ、香港競馬マスタ、アイルランド競馬マスタから全レースデータを統合マージして再生成 | 入力: 各マスタ/公式データ<br>出力: `public/data/races.json` |
 | **PWAアイコン一括生成** | `scripts/generate-pwa-icons.ts` | 手動実行 (ローカル) | アプリアイコン刷新時 | オンデマンド | SVGアセットから各解像度PNGアイコンおよびファビコンを一括生成 | 入力: `src/assets/icon.svg`<br>出力: `public/icons/`, `favicon.svg` |
+| **レース結果・勝ち馬更新** | `scripts/update-race-results.ts` | 手動実行 (ローカル) / 定期実行 | 毎週月曜朝（08:00 JST等） | オンデマンド | 直近終了レースの着順確定リザルトから勝ち馬情報（馬名・騎手・馬番・タイム）を取得し反映 | 入力: 公式リザルト/マスタ<br>出力: `public/data/races.json`, `src/data/race_winners.json` |
 | **PRDドキュメントPDF生成** | `scripts/generate-prd-pdf.js` | 手動実行 (ローカル) | PRD改訂時・新機能リリース時 | オンデマンド | Headless Chrome を利用して `docs/PRD.md` から公式仕様書PDFを生成 | 入力: `docs/PRD.md`<br>出力: `docs/Horse_Racing_Calendar_PRD.pdf` |
 
 ---
@@ -96,6 +97,26 @@ npm run icons:generate
 
 ```bash
 npm run docs:pdf
+```
+
+---
+
+### 2.5 レース結果・勝ち馬更新パイプライン (`update-race-results.ts`)
+
+週末レース終了後（月曜朝等）に着順確定リザルトから勝ち馬情報（馬名、騎手、馬番、走破タイム）を自動取得・反映し、`public/data/races.json` および `src/data/race_winners.json` に更新を記録します。
+
+```bash
+# 通常実行（直近終了レースの結果を取得・反映）
+npm run data:update-results
+
+# 基準日を指定して実行（YYYY-MM-DD）
+npm run data:update-results -- --date 2026-06-01
+
+# 特定の主催者のみを対象に実行（'jra', 'nar', etc.）
+npm run data:update-results -- --org jra
+
+# ドライラン（ファイル保存を行わず更新内容をコンソール確認）
+npm run data:update-results -- --dry-run
 ```
 
 ---

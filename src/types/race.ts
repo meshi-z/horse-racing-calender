@@ -32,6 +32,13 @@ export type Handicap = {
   en: string;
 };
 
+export interface RaceWinner {
+  name: LocalizedText;        // 勝ち馬名（日・英・仏・中）
+  jockey?: LocalizedText;     // 騎手名（オプション）
+  horse_number?: number;      // 馬番（オプション）
+  time?: string;              // 走破タイム（オプション、例: "2:24.1"）
+}
+
 export type Race = {
   id: string;
   organization: Organization;
@@ -49,6 +56,7 @@ export type Race = {
   sex_constraint: SexConstraint;
   age_constraint: AgeConstraint;
   handicap: Handicap;
+  winner?: RaceWinner;
 };
 
 export type DistanceCategory = 'sprint' | 'mile' | 'intermediate' | 'long';

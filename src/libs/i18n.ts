@@ -49,6 +49,16 @@ export const translations = {
     card: {
       postponedFrom: '当初予定: {date} から順延',
     },
+    winner: {
+      badge: '🏆 {name}',
+      badgeLabel: '勝ち馬: {name}',
+      resultTitle: 'レース結果 / 優勝',
+      horseName: '勝ち馬',
+      jockey: '騎手',
+      horseNumber: '馬番',
+      time: '走破タイム',
+      numberFormat: '{number}番',
+    },
     dialog: {
       course: '開催場',
       trackAndDistance: '馬場・距離',
@@ -273,6 +283,16 @@ export const translations = {
     },
     card: {
       postponedFrom: 'Postponed from {date}',
+    },
+    winner: {
+      badge: '🏆 {name}',
+      badgeLabel: 'Winner: {name}',
+      resultTitle: 'Race Result / Winner',
+      horseName: 'Winner',
+      jockey: 'Jockey',
+      horseNumber: 'Horse No.',
+      time: 'Winning Time',
+      numberFormat: 'No. {number}',
     },
     dialog: {
       course: 'Course',
@@ -499,6 +519,16 @@ export const translations = {
     card: {
       postponedFrom: 'Reporté depuis le {date}',
     },
+    winner: {
+      badge: '🏆 {name}',
+      badgeLabel: 'Vainqueur: {name}',
+      resultTitle: 'Résultat / Vainqueur',
+      horseName: 'Vainqueur',
+      jockey: 'Jockey',
+      horseNumber: 'N°',
+      time: 'Temps',
+      numberFormat: 'N° {number}',
+    },
     dialog: {
       course: 'Hippodrome',
       trackAndDistance: 'Piste & Distance',
@@ -723,6 +753,16 @@ export const translations = {
     },
     card: {
       postponedFrom: '原定日期: {date} 順延',
+    },
+    winner: {
+      badge: '🏆 {name}',
+      badgeLabel: '勝出馬匹: {name}',
+      resultTitle: '賽事結果 / 冠軍',
+      horseName: '頭馬',
+      jockey: '騎師',
+      horseNumber: '馬號',
+      time: '頭馬時間',
+      numberFormat: '{number}號',
     },
     dialog: {
       course: '舉辦場地',

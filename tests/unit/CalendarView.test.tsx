@@ -241,4 +241,32 @@ describe("CalendarView", () => {
       expect(screen.getByText("凱旋門賞")).toBeInTheDocument();
     });
   });
+
+  describe("勝ち馬（winner）表示機能 (Issue #138)", () => {
+    const raceWithWinner: Race = {
+      ...mockRaces[1],
+      winner: {
+        name: {
+          ja: "ペプチドナイル",
+          en: "Peptide Nile",
+        },
+      },
+    };
+
+    it("winnerが存在する場合、カレンダー内のレースアイテムにトロフィーアイコンと勝ち馬名が表示されること", () => {
+      render(<CalendarView races={[raceWithWinner]} />);
+      const winnerElement = screen.getByTestId("calendar-winner");
+      expect(winnerElement).toBeInTheDocument();
+      expect(winnerElement).toHaveTextContent("ペプチドナイル");
+    });
+
+    it("aria-labelに勝ち馬情報が含まれること", () => {
+      render(<CalendarView races={[raceWithWinner]} />);
+      const raceButton = screen.getByRole("button", {
+        name: /フェブラリーステークス.*ペプチドナイル.*詳細を表示/,
+      });
+      expect(raceButton).toBeInTheDocument();
+    });
+  });
 });
+

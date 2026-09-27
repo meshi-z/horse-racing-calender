@@ -273,4 +273,87 @@ describe("RaceDetailDialog", () => {
       expect(screen.getByText("Piste & Distance")).toBeInTheDocument();
     });
   });
+
+  describe("勝ち馬（winner）結果表示機能 (Issue #138)", () => {
+    const raceWithWinner: Race = {
+      ...mockRace,
+      winner: {
+        name: {
+          ja: "ダノンデサイル",
+          en: "Danon Decile",
+          fr: "Danon Decile",
+          zh: "野田分位",
+        },
+        jockey: {
+          ja: "横山典弘",
+          en: "Norihiro Yokoyama",
+          fr: "Norihiro Yokoyama",
+          zh: "橫山典弘",
+        },
+        horse_number: 5,
+        time: "2:24.3",
+      },
+    };
+
+    it("winnerが存在する場合、レース結果/優勝セクションが表示され馬名・騎手・馬番・タイムが表示されること", () => {
+      render(
+        <RaceDetailDialog
+          race={raceWithWinner}
+          open={true}
+          onOpenChange={vi.fn()}
+        />
+      );
+
+      const section = screen.getByTestId("race-winner-section");
+      expect(section).toBeInTheDocument();
+      expect(screen.getByText("レース結果 / 優勝")).toBeInTheDocument();
+      expect(screen.getByText("ダノンデサイル")).toBeInTheDocument();
+      expect(screen.getByText("Danon Decile")).toBeInTheDocument();
+      expect(screen.getByText("5番")).toBeInTheDocument();
+      expect(screen.getByText("横山典弘")).toBeInTheDocument();
+      expect(screen.getByText("2:24.3")).toBeInTheDocument();
+    });
+
+    it("多言語切り替え時にラベルおよび勝ち馬情報が翻訳されること", () => {
+      useLanguageStore.setState({ language: "en" });
+      const { rerender } = render(
+        <RaceDetailDialog
+          race={raceWithWinner}
+          open={true}
+          onOpenChange={vi.fn()}
+        />
+      );
+
+      expect(screen.getByText("Race Result / Winner")).toBeInTheDocument();
+      expect(screen.getByText("No. 5")).toBeInTheDocument();
+      expect(screen.getByText("Norihiro Yokoyama")).toBeInTheDocument();
+
+      useLanguageStore.setState({ language: "zh" });
+      rerender(
+        <RaceDetailDialog
+          race={raceWithWinner}
+          open={true}
+          onOpenChange={vi.fn()}
+        />
+      );
+
+      expect(screen.getByText("賽事結果 / 冠軍")).toBeInTheDocument();
+      expect(screen.getByText("5號")).toBeInTheDocument();
+      expect(screen.getByText("野田分位")).toBeInTheDocument();
+      expect(screen.getByText("橫山典弘")).toBeInTheDocument();
+    });
+
+    it("winnerが存在しない場合はレース結果セクションが表示されないこと", () => {
+      render(
+        <RaceDetailDialog
+          race={mockRace}
+          open={true}
+          onOpenChange={vi.fn()}
+        />
+      );
+
+      expect(screen.queryByTestId("race-winner-section")).not.toBeInTheDocument();
+    });
+  });
 });
+
