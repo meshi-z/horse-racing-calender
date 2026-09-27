@@ -6,6 +6,26 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 45: レース終了後の勝ち馬（優勝馬）表示機能およびリザルト反映パイプラインの実装 (v1.35.0 / Issue #138) [完了]
+- **データスキーマ・型定義の拡張 (`src/types/race.ts`, パイプライン型) [完了]**
+  - `RaceWinner` インターフェースを新設し、`Race` および `RaceOutput` 型に `winner?: RaceWinner;`（馬名、騎手名、馬番、走破タイム）を追加。
+- **勝ち馬データの管理 & パイプライン連携 [完了]**
+  - `src/data/race_winners.json` を新設し、2026年主要重賞（日本ダービー、皐月賞、天皇賞春、宝塚記念、スプリンターズS、ケンタッキーダービー、凱旋門賞等）の実績勝ち馬データを多言語（日・英・仏・中）、騎手、馬番、走破タイムを含めて登録。
+  - `scripts/parse-races.ts` において、`race_winners.json` のマージおよび既存 `races.json` からの勝ち馬データ保持保護ロジック（`extractRaceWinnersMap`）を実装。
+  - レース終了後（月曜バッチ等）に着順確定リザルトから勝ち馬情報を取得・マージ・更新するパイプラインスクリプト (`scripts/update-race-results.ts`) を新設し、`npm run data:update-results` を整備。
+- **UIコンポーネントへの勝ち馬表示 [完了]**
+  - **タイムライン (`RaceCard.tsx`)**: レース終了後、かつ `winner` が存在する場合に「🏆 {馬名}」のコンパクトなアンバー調バッジを表示。
+  - **カレンダー (`CalendarView.tsx`)**: セル内のレースチップ内にトロフィーアイコン付きで勝ち馬名（`🏆 {winnerName}`）を表示。
+  - **レース詳細ダイアログ (`RaceDetailDialog.tsx`)**: 専用の「レース結果 / 優勝 (Race Result / Winner)」セクションを新設し、優勝馬名（第1・第2言語）、馬番（`{number}番` / `No. {number}`）、騎手名、走破タイムを整然と表示。
+- **多言語（i18n）完全対応 [完了]**
+  - 日本語（`ja`）、英語（`en`）、フランス語（`fr`）、繁体字中国語（`zh`）でダイアログタイトル、馬名、騎手、馬番、タイム等のラベルを完全定義。
+- **テスト拡充 & 仕様書更新 [完了]**
+  - `RaceCard.test.tsx`, `CalendarView.test.tsx`, `RaceDetailDialog.test.tsx`, `updateRaceResults.test.ts`, `parseRacesPreserveWinners.test.ts` を追加・拡充（全50テストファイル・489テストすべて合格、ビルド・型検査も正常完了）。
+  - `docs/PRD.md` を v1.35.0 (Step 45) へ更新し、PDF（`docs/Horse_Racing_Calendar_PRD.pdf`）を再生成。
+  - `docs/specs/data-pipeline.md`, `docs/batch-schedules.md` を更新。
+
+---
+
 ### Step 44: タイムラインビュー表示時におけるフッターの画面下部固定表示（Fixed Bottom Bar）の実装 (v1.34.1 / Issue #140) [完了]
 - **画面下部固定フッター（Fixed Bottom Bar）の実装 (`src/components/shared/Layout.tsx`) [完了]**
   - `useViewMode()` を参照し、タイムラインビュー表示時に `fixed bottom-0 left-0 right-0 z-20` で画面最下部に貼り付く固定フッターバーを実装。

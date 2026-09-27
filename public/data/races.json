@@ -28161,6 +28161,22 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "ピューロマジック",
+        "en": "Puro Magic",
+        "fr": "Puro Magic",
+        "zh": "純金魔術"
+      },
+      "jockey": {
+        "ja": "岩田望来",
+        "en": "Mirai Iwata",
+        "fr": "Mirai Iwata",
+        "zh": "岩田望來"
+      },
+      "horse_number": 16,
+      "time": "1:09.2"
     }
   },
   {

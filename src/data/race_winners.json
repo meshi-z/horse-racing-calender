@@ -118,5 +118,11 @@
     "jockey": { "ja": "J.マクドナルド", "en": "James McDonald", "fr": "James McDonald", "zh": "麥道朗" },
     "horse_number": 1,
     "time": "2:01.02"
+  },
+  "2026-jra-g1-13": {
+    "name": { "ja": "ピューロマジック", "en": "Puro Magic", "fr": "Puro Magic", "zh": "純金魔術" },
+    "jockey": { "ja": "岩田望来", "en": "Mirai Iwata", "fr": "Mirai Iwata", "zh": "岩田望來" },
+    "horse_number": 16,
+    "time": "1:09.2"
   }
 }
