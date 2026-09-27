@@ -252,6 +252,37 @@ export class FranceRaceResultFetcher implements RaceResultFetcher {
       }
 
       if (data) {
+        // PMU の日次 programme には participants が直接含まれていない場合があるため、
+        // 該当レースの出走馬詳細エンドポイント (/participants) をフェッチして補完
+        const reunions = (data as any).programme?.reunions || [];
+        for (const race of racesOnDate) {
+          const frName = (race.name as { fr?: string }).fr || '';
+          const enName = race.name?.en || '';
+
+          for (const reunion of reunions) {
+            for (const course of reunion.courses || []) {
+              const matchesFr = frName ? (course.libelle?.includes(frName) || frName.includes(course.libelle)) : false;
+              const matchesEn = enName ? (course.libelle?.includes(enName) || enName.includes(course.libelle)) : false;
+
+              if ((matchesFr || matchesEn) && (!course.participants || course.participants.length === 0)) {
+                if (!this.fixtures && reunion.numOfficiel && course.numOrdre) {
+                  const pUrl = `https://offline.turfinfo.api.pmu.fr/rest/client/7/programme/${ddmmyyyy}/R${reunion.numOfficiel}/C${course.numOrdre}/participants`;
+                  try {
+                    const pRes = await fetchWithRetry(pUrl);
+                    if (pRes.ok) {
+                      const pData = (await pRes.json()) as any;
+                      course.participants = pData.participants || pData;
+                    }
+                  } catch (err) {
+                    console.warn(`[France Results] Failed to fetch participants for ${race.id}: ${(err as Error).message}`);
+                  }
+                }
+                break;
+              }
+            }
+          }
+        }
+
         const parsedMap = parsePmuResultsJson(data, racesOnDate);
         for (const [id, winner] of parsedMap.entries()) {
           results.set(id, winner);
@@ -300,6 +331,18 @@ export class UkRaceResultFetcher implements RaceResultFetcher {
           const res = await fetchWithRetry(url);
           if (res.ok) {
             meetings = (await res.json()) as SportingLifeResultMeetingItem[];
+          } else {
+            // HTML フォールバック
+            const htmlUrl = `https://www.sportinglife.com/racing/results/${dateYmd}`;
+            const htmlRes = await fetchWithRetry(htmlUrl);
+            if (htmlRes.ok) {
+              const htmlText = await htmlRes.text();
+              const nextData = htmlText.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/i);
+              if (nextData) {
+                const json = JSON.parse(nextData[1]);
+                meetings = (json.props?.pageProps?.meetings || []) as SportingLifeResultMeetingItem[];
+              }
+            }
           }
         } catch (e) {
           console.warn(`[UK Results] Failed to fetch Sporting Life results for ${dateYmd}: ${(e as Error).message}`);

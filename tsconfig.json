@@ -25,5 +25,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "scripts", "tests"]
+  "include": ["src", "scripts", "tests"],
+  "exclude": ["scripts/scratch", "scripts/fetch-real-france.ts", "scripts/fetch-real-jra.ts"]
 }
