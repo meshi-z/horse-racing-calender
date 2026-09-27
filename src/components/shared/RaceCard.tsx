@@ -51,9 +51,13 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
         ? "Voir les détails"
         : "詳細を表示";
 
+    // TODO: 緊急対応のため一時的にnull固定
+    const winnerName = null;
+    /*    
     const winnerName = race.winner
       ? race.winner.name[language] || race.winner.name.en || race.winner.name.ja
       : null;
+    */
 
     const handleClick = () => {
       onSelect?.(race);
