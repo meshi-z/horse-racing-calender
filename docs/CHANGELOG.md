@@ -6,6 +6,23 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 42: フランス・フォワ賞発走日時是正および米フラワーボウルSの不正start_time解消・海外確定時刻引き継ぎガード導入 (v1.33.3 / Issue #134) [完了]
+- **フランス・フォワ賞（Prix Foy: `2026-france-g2-19`）の実績発走日時の是正 [完了]**
+  - `src/data/france_race_master.json` において、`date` を `2026-09-06`、`start_time` を `2026-09-06T15:35:00.000Z`（現地 17:35 CEST / 日本時間 9/7 00:35 JST）、`original_date` を `2026-09-06`、`is_time_confirmed` を `true` に修正。ニエル賞、ヴェルメイユ賞、ムーランドロンシャン賞と同日開催に正常化。
+- **米フラワーボウルステークス（Flower Bowl S: `2026-us-g2-89`）の不正日時文字列の是正 [完了]**
+  - `public/data/races.json` に残存していた不正文字列 `2026-08-36T21:30:00.000Z` を正しい発走日時 `2026-09-05T21:30:00.000Z` に修正。
+- **確定時刻引き継ぎパイプラインの恒久ガード実装 [完了]**
+  - `scripts/parse-races.ts`: `extractConfirmedRaceTimesMap` において、`isNaN(new Date(r.start_time).getTime())` となる不正な日時文字列を安全にスキップ・除外するバリデーションを追加。
+  - `scripts/lib/{france-races,us-races,uk-races,hk-races,ireland-races}.ts`: マスタ側の開催日（`r.date`）と既存確定時刻に36時間以上の乖離がある場合、日程変更前の古い確定時刻で誤上書きしない保護ロジックを全海外レースマージ関数に導入。
+- **テスト拡充 & 仕様書更新 [完了]**
+  - `tests/unit/racesData.test.ts`: 全レースの `start_time` が有効な ISO 8601 UTC かつ `!isNaN` であることを検証するテストを追加。
+  - `tests/unit/franceRaces.test.ts`: フォワ賞の日程・発走時刻妥当性および同日開催整合性のテストを追加。
+  - `tests/unit/usRaces.test.ts`: フラワーボウルステークスの日時妥当性テストを追加。
+  - `tests/unit/parseRacesPreserveTimes.test.ts`: 不正日付除外バリデーションのテストを追加（全47テストファイル・465テストすべて合格）。
+  - `docs/PRD.md` を v1.33.3 (Step 42) へ更新し、PDF を再生成。
+
+---
+
 ### Step 41: 言語切替ボタンタップ時にヘッダーおよび検索・フィルターエリアが消失する不具合の修正 (v1.33.2 / Issue #132) [完了]
 - **`overflow-x: clip` の撤去によるスクロールロック干渉・sticky解除の解消 [完了]**
   - `src/styles/globals.css` の `html, body { overflow-x: clip; }` および `src/components/shared/Layout.tsx` の最外層 `overflow-x-clip` を完全に削除。
