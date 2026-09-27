@@ -257,7 +257,7 @@ export function TimelineView({ races, className }: TimelineViewProps) {
         <div
           data-testid="jump-to-today-container"
           className={cn(
-            "fixed bottom-6 right-6 z-30 transition-all duration-300",
+            "fixed bottom-14 sm:bottom-16 right-4 sm:right-6 z-30 transition-all duration-300",
             isTargetVisible
               ? "opacity-0 pointer-events-none translate-y-4 scale-95"
               : "opacity-100 pointer-events-auto translate-y-0 scale-100"
