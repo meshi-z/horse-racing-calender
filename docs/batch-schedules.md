@@ -14,7 +14,7 @@ GitHub Actions で定期稼働するバッチおよびローカル・手動実�
 | **自動テスト・デプロイ** | `.github/workflows/deploy.yml` | push to `main`<br>手動 (`workflow_dispatch`) | 随時（PRマージ時、データ更新コミット時） | イベント駆動 | 型検査 (`type-check`)、テスト (`test`)、プロダクションビルド (`build`) を実行し GitHub Pages へ自動配信 | 入力: ソースコード<br>出力: `dist/` (GitHub Pages) |
 | **年間データ一括ビルド** | `scripts/parse-races.ts` | 手動実行 (ローカル) | 年間更新時、開催日程・マスタ辞書更新時 | オンデマンド | JRA公式ICS/HTML、NARスケジュールHTML、フランス競馬マスタ、イギリス競馬マスタ、アメリカ競馬マスタ、香港競馬マスタ、アイルランド競馬マスタから全レースデータを統合マージして再生成 | 入力: 各マスタ/公式データ<br>出力: `public/data/races.json` |
 | **PWAアイコン一括生成** | `scripts/generate-pwa-icons.ts` | 手動実行 (ローカル) | アプリアイコン刷新時 | オンデマンド | SVGアセットから各解像度PNGアイコンおよびファビコンを一括生成 | 入力: `src/assets/icon.svg`<br>出力: `public/icons/`, `favicon.svg` |
-| **レース結果・勝ち馬更新** | `scripts/update-race-results.ts` | 手動実行 (ローカル) / 定期実行 | 毎週月曜朝（08:00 JST等） | オンデマンド | 直近終了レースの着順確定リザルトから勝ち馬情報（馬名・騎手・馬番・タイム）を取得し反映 | 入力: 公式リザルト/マスタ<br>出力: `public/data/races.json`, `src/data/race_winners.json` |
+| **レース結果・勝ち馬自動更新** | `.github/workflows/update-race-results.yml`<br>`scripts/update-race-results.ts` | GitHub Actions (cron)<br>手動 (`workflow_dispatch`) | **土日昼〜夕**: 15:00, 15:45, 16:15, 17:00<br>**平日〜土曜夜**: 20:30, 21:30, 22:30<br>**毎日朝**: 07:30 | `0 6 * * 0,6`<br>`45 6 * * 0,6`<br>`15 7 * * 0,6`<br>`0 8 * * 0,6`<br>`30 11 * * 1-6`<br>`30 12 * * 1-6`<br>`30 13 * * 1-6`<br>`30 22 * * *` | 直近終了レース（発走後15分以上経過）の公式着順確定リザルトから勝ち馬情報（馬名・騎手・馬番・走破タイム）を自動取得し反映。未確定対象がなければ早期終了 | 入力: 公式リザルト/API<br>出力: `public/data/races.json`, `src/data/race_winners.json` |
 | **PRDドキュメントPDF生成** | `scripts/generate-prd-pdf.js` | 手動実行 (ローカル) | PRD改訂時・新機能リリース時 | オンデマンド | Headless Chrome を利用して `docs/PRD.md` から公式仕様書PDFを生成 | 入力: `docs/PRD.md`<br>出力: `docs/Horse_Racing_Calendar_PRD.pdf` |
 
 ---
@@ -103,17 +103,31 @@ npm run docs:pdf
 
 ### 2.5 レース結果・勝ち馬更新パイプライン (`update-race-results.ts`)
 
-週末レース終了後（月曜朝等）に着順確定リザルトから勝ち馬情報（馬名、騎手、馬番、走破タイム）を自動取得・反映し、`public/data/races.json` および `src/data/race_winners.json` に更新を記録します。
+#### 概要・設計根拠
+- **対象レース**: レース発走予定時刻から15分以上経過した当日終了レース（確定見込み）、および直近3日間の未確定過去レース。すでに勝ち馬情報が登録されているレースは早期終了ガードによりスキップ。
+- **実行スケジュールの根拠**:
+  - **土日昼〜夕方 (15:00, 15:45, 16:15, 17:00 JST)**: JRA重賞（メインレース発走 15:40頃）および香港重賞の発走直後〜表彰式終了のタイミングで高頻度巡回。
+  - **平日〜土曜夜 (20:30, 21:30, 22:30 JST)**: 地方競馬（NAR）のナイターダートグレード競走（発走 20:00〜20:10頃）終了直後および欧州重賞の確定取り込み。
+  - **毎日朝 (07:30 JST)**: 前夜〜早朝に開催されたアメリカ競馬・海外重賞の確定結果を取り込み。
+- **二重永続化アーキテクチャ**:
+  - 取得した結果は `public/data/races.json` だけでなく `src/data/race_winners.json` にも自動マージ・永続化され、年間データの一括再ビルド時（`parse-races.ts`）にも失われません。
 
+#### ローカル実行コマンド
 ```bash
-# 通常実行（直近終了レースの結果を取得・反映）
+# 通常実行（発走済み終了レースの公式結果を取得・反映）
 npm run data:update-results
 
 # 基準日を指定して実行（YYYY-MM-DD）
-npm run data:update-results -- --date 2026-06-01
+npm run data:update-results -- --date 2026-09-27
 
-# 特定の主催者のみを対象に実行（'jra', 'nar', etc.）
+# 基準日時（ISO）を指定して実行
+npm run data:update-results -- --date 2026-09-27 --time 2026-09-27T07:15:00.000Z
+
+# 特定の主催者のみを対象に実行（'jra', 'nar', 'france_galop', 'bha', 'hkjc', 'equibase', etc.）
 npm run data:update-results -- --org jra
+
+# 強制再取得（すでに勝ち馬が登録されているレースも再確認）
+npm run data:update-results -- --force
 
 # ドライラン（ファイル保存を行わず更新内容をコンソール確認）
 npm run data:update-results -- --dry-run
