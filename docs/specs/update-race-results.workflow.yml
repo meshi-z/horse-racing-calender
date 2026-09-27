@@ -1,0 +1,80 @@
+# ==============================================================================
+# GitHub Actions Workflow: Update Race Results (自動レース結果更新パイプライン)
+# 配置先パス: .github/workflows/update-race-results.yml
+# ==============================================================================
+name: Update Race Results
+
+on:
+  schedule:
+    # 週末（土・日）JRA重賞 / 香港重賞開催・発走直後巡回
+    - cron: '0 6 * * 0,6'   # 15:00 JST
+    - cron: '45 6 * * 0,6'  # 15:45 JST (メインレース直後)
+    - cron: '15 7 * * 0,6'  # 16:15 JST (確定・表彰式直後)
+    - cron: '0 8 * * 0,6'   # 17:00 JST (最終レース終了後)
+    # 平日〜土曜夜 NARナイター重賞 / 欧州重賞開催・発走直後巡回
+    - cron: '30 11 * * 1-6' # 20:30 JST (NARダートグレード直後)
+    - cron: '30 12 * * 1-6' # 21:30 JST (NARナイター確定・欧州重賞直後)
+    - cron: '30 13 * * 1-6' # 22:30 JST (欧州重賞・夜間開催巡回)
+    # 毎日朝 07:30 JST (前夜〜早朝のアメリカ競馬・海外重賞確定結果取り込み)
+    - cron: '30 22 * * *'   # 毎日 22:30 UTC = 07:30 JST
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force update even if winners already exist'
+        required: false
+        type: boolean
+        default: false
+      org:
+        description: 'Specific organization filter (jra, nar, france_galop, bha, hri, hkjc, equibase)'
+        required: false
+        type: string
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: 'update-race-results'
+  cancel-in-progress: false
+
+jobs:
+  update-results:
+    name: Fetch & Update Race Results
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run update-race-results script
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            ARGS="$ARGS --force"
+          fi
+          if [ -n "${{ github.event.inputs.org }}" ]; then
+            ARGS="$ARGS --org ${{ github.event.inputs.org }}"
+          fi
+          npm run data:update-results -- $ARGS
+
+      - name: Commit and push changes if any
+        run: |
+          if git diff --quiet public/data/races.json src/data/race_winners.json; then
+            echo "No race result changes detected. Nothing to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add public/data/races.json src/data/race_winners.json
+            git commit -m "chore(data): update official race results and winners" -m "Co-authored-by: Antigravity <antigravity@example.com>"
+            git push origin main
+          fi
