@@ -35,6 +35,13 @@ flowchart TD
 ### 2.1 型定義仕様 (`RaceOutput`)
 
 ```typescript
+export interface RaceWinner {
+  name: LocalizedText;        // 勝ち馬名 { ja: string; en: string; fr?: string; zh?: string }
+  jockey?: LocalizedText;     // 騎手名（オプション）
+  horse_number?: number;      // 馬番（オプション）
+  time?: string;              // 走破タイム（オプション、例: "2:24.1"）
+}
+
 export interface RaceOutput {
   id: string;                    // 一意なレースID: {YYYY}-{org}-{grade_code}-{index}
   organization: Organization;    // 主催団体コード: 'jra' | 'nar' | 'france_galop' | 'bha' | 'equibase' | 'hkjc'
@@ -52,6 +59,7 @@ export interface RaceOutput {
   sex_constraint: SexConstraint; // 性別制限: 'none' | 'filly_and_mare' | 'colt_and_filly'
   age_constraint: AgeConstraint; // 年齢制限: 'none' | '2yo' | '3yo' | '4yo' | '3yo_and_up' | '4yo_and_up'
   handicap: HandicapInfo;        // 負担重量区分 { code: HandicapType; ja: string; en: string; fr?: string }
+  winner?: RaceWinner;           // 勝ち馬・レース結果（着順確定後）
 }
 ```
 
@@ -99,21 +107,23 @@ export interface RaceOutput {
 
 ---
 
-## 4. 確定発走時刻の保護ロジック (`preserveConfirmedRaceTimes`)
+## 4. 確定発走時刻および勝ち馬データの保護ロジック (`preserveConfirmedRaceTimes` / `preserveRaceWinners`)
 
 ### 4.1 課題と目的
-年間のデータ生成スクリプト（`npm run data:build`）を実行すると、一次マスタやカレンダーからデータを再パースするため、運用中に自動取得された「出馬表発表後の確定発走時刻（`is_time_confirmed: true`）」や「天候による代替開催情報（`is_rescheduled: true`）」が初期値へ巻き戻ってしまうリスクがあります。
+年間のデータ生成スクリプト（`npm run data:build`）を実行すると、一次マスタやカレンダーからデータを再パースするため、運用中に自動取得された「出馬表発表後の確定発走時刻（`is_time_confirmed: true`）」や「天候による代替開催情報（`is_rescheduled: true`）」、および「着順確定後の勝ち馬データ（`winner`）」が初期値へ巻き戻ってしまうリスクがあります。
 
 ### 4.2 保持メカニズム
-`scripts/parse-races.ts` は、新規ビルドデータを出力する直前に既存の `public/data/races.json` を読み込み、以下の情報をレースID照合で自動マージ・復元します。
+`scripts/parse-races.ts` は、新規ビルドデータを出力する直前に既存の `public/data/races.json` および `src/data/race_winners.json` を読み込み、以下の情報をレースID照合で自動マージ・復元します。
 1. `is_time_confirmed: true` の場合:
    - 確定発走時刻（`start_time`）および `is_time_confirmed` を復元。
 2. `is_rescheduled: true` の場合:
    - 変更後開催日（`date`）、発走時刻（`start_time`）、`is_rescheduled`、および `original_date` を復元。
+3. `winner` が存在する場合 (`extractRaceWinnersMap`):
+   - 勝ち馬情報（馬名、騎手、馬番、走破タイム）を自動復元・結合。
 
 ---
 
-## 5. 確定時刻自動更新バッチ設計 (`RaceTimeFetcher`)
+## 5. 確定時刻 & レース結果自動更新バッチ設計 (`RaceTimeFetcher` / `RaceResultFetcher`)
 
 ### 5.1 プロバイダーアーキテクチャ (Strategyパターン)
 主催者ごとに異なる出馬表取得元（Webスクレイピング、REST API、HTML）を共通インターフェースでカプセル化しています。
@@ -141,6 +151,19 @@ export interface RaceTimeFetcher {
    各プロバイダーの対象ウィンドウ内に未確定（`is_time_confirmed: false`）レースが存在しない場合、外部へのHTTPリクエストを一切送信せず即座に終了します（サーバー負荷およびCI実行時間の削減）。
 2. **指数バックオフリトライ**:
    外部ネットワークの一時的タイムアウトや HTTP 429/5xx エラーに対し、最大3回のリトライを実施します。
+
+### 5.4 レース結果・勝ち馬自動反映パイプライン (`scripts/update-race-results.ts`)
+レース終了後（週末・月曜定期バッチ等）に着順確定結果から勝ち馬情報を収集・反映するパイプラインを提供します。
+- **インターフェース**:
+  ```typescript
+  export interface RaceResultFetcher {
+    readonly organization: string;
+    getTargetPastRaces(races: RaceOutput[], refDate: string): RaceOutput[];
+    fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>>;
+  }
+  ```
+- **実行コマンド**: `npm run data:update-results`（CLI引数: `--date`, `--org`, `--dry-run`, `--force` をサポート）。
+- **反映先**: `public/data/races.json` および `src/data/race_winners.json`（永続マスタ）。
 
 ---
 

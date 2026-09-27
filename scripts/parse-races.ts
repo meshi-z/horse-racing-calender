@@ -30,6 +30,13 @@ export interface LocalizedConstraint<T extends string> {
   label: LocalizedString;
 }
 
+export interface RaceWinner {
+  name: LocalizedString;
+  jockey?: LocalizedString;
+  horse_number?: number;
+  time?: string;
+}
+
 export interface RaceOutput {
   id: string;
   organization: string;
@@ -47,6 +54,7 @@ export interface RaceOutput {
   sex_constraint: 'none' | 'filly_and_mare' | 'colt_and_filly';
   age_constraint: '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up' | '4yo';
   handicap: HandicapInfo;
+  winner?: RaceWinner;
 }
 
 export interface RaceMasterItem {
@@ -711,6 +719,43 @@ export function extractConfirmedRaceTimesMap(
   return map;
 }
 
+/**
+ * 既存の races.json から勝ち馬（winner）情報を抽出し、
+ * レース特定用キー（ID および "日付_レース名"）から引けるマップを構築する
+ */
+export function extractRaceWinnersMap(
+  existingRaces: Array<{ id: string; name?: { ja?: string }; date?: string; winner?: RaceWinner }>
+): Map<string, RaceWinner> {
+  const map = new Map<string, RaceWinner>();
+  for (const r of existingRaces) {
+    if (r.winner && r.winner.name) {
+      if (r.id) {
+        map.set(r.id, r.winner);
+      }
+      if (r.name?.ja && r.date) {
+        map.set(`${r.date}_${r.name.ja}`, r.winner);
+      }
+    }
+  }
+  return map;
+}
+
+/**
+ * src/data/race_winners.json から勝ち馬マスタをロードする
+ */
+export function loadRaceWinnersMaster(rootDir: string = process.cwd()): Record<string, RaceWinner> {
+  const winnersPath = path.join(rootDir, 'src', 'data', 'race_winners.json');
+  if (fs.existsSync(winnersPath)) {
+    try {
+      const content = fs.readFileSync(winnersPath, 'utf8');
+      return JSON.parse(content) as Record<string, RaceWinner>;
+    } catch (err) {
+      console.warn(`[Warning] Failed to load race_winners.json: ${(err as Error).message}`);
+    }
+  }
+  return {};
+}
+
 async function main() {
   const { year, force } = parseCliArgs();
   console.log(`Building races data for year: ${year} (force: ${force})`);
@@ -727,19 +772,25 @@ async function main() {
   const icsContent = await ensureJraIcs(year, icsPath, { force });
   const htmlContent = await ensureJyusyoHtml(htmlPath, year, force);
 
-  // 既存の races.json がある場合は確定済み発走予定時刻を引き継ぐ
+  // 既存の races.json がある場合は確定済み発走予定時刻および勝ち馬情報を引き継ぐ
   let confirmedTimesMap = new Map<string, { start_time: string; is_time_confirmed: boolean }>();
+  let raceWinnersMap = new Map<string, RaceWinner>();
   if (fs.existsSync(publicOutPath)) {
     try {
       const existingRaces = JSON.parse(fs.readFileSync(publicOutPath, 'utf-8'));
       if (Array.isArray(existingRaces)) {
         confirmedTimesMap = extractConfirmedRaceTimesMap(existingRaces);
-        console.log(`Preserving confirmed race times from existing races.json.`);
+        raceWinnersMap = extractRaceWinnersMap(existingRaces);
+        console.log(`Preserving confirmed race times and winners from existing races.json.`);
       }
     } catch (err) {
-      console.warn(`[Warning] Failed to read existing races.json for confirmed times: ${(err as Error).message}`);
+      console.warn(`[Warning] Failed to read existing races.json: ${(err as Error).message}`);
     }
   }
+
+  // 勝ち馬マスタ (src/data/race_winners.json) の読み込み
+  const raceWinnersMaster = loadRaceWinnersMaster(rootDir);
+  console.log(`Loaded ${Object.keys(raceWinnersMaster).length} winners from race_winners.json.`);
 
   const icsRaces = parseIcs(icsContent);
   const htmlRaces = parseHtml(htmlContent);
@@ -1045,7 +1096,18 @@ function determineNarHandicap(raceName: string, _grade: string, course: string):
   for (const ie of irelandRaces) {
     racesOutput.push(ie);
   }
-  console.log(`Merged ${irelandRaces.length} Ireland races into races output.`);
+  // --- Merge Winners ---
+  let winnerCount = 0;
+  for (const race of racesOutput) {
+    const winnerFromMaster = raceWinnersMaster[race.id];
+    const winnerFromExisting = raceWinnersMap.get(race.id) || (race.name?.ja && race.date ? raceWinnersMap.get(`${race.date}_${race.name.ja}`) : undefined);
+    const winner = winnerFromMaster || winnerFromExisting;
+    if (winner) {
+      race.winner = winner;
+      winnerCount++;
+    }
+  }
+  console.log(`Attached winners to ${winnerCount} races.`);
 
   // Sort races by date, start_time, and organization
   racesOutput.sort((a, b) =>

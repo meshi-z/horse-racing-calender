@@ -7,6 +7,23 @@ import {
   ConfirmedRaceTime,
 } from './lib/jra-syutsuba';
 
+export interface RaceWinner {
+  name: {
+    ja: string;
+    en: string;
+    fr?: string;
+    zh?: string;
+  };
+  jockey?: {
+    ja: string;
+    en: string;
+    fr?: string;
+    zh?: string;
+  };
+  horse_number?: number;
+  time?: string;
+}
+
 export interface RaceOutput {
   id: string;
   organization: string;
@@ -36,6 +53,7 @@ export interface RaceOutput {
     ja: string;
     en: string;
   };
+  winner?: RaceWinner;
 }
 
 /**

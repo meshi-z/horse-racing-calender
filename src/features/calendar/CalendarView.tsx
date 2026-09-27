@@ -13,7 +13,7 @@ import { getLocalizedText } from "@/libs/raceLanguage";
 import { cn } from "@/libs/utils";
 import { useRaceStore } from "@/store/useRaceStore";
 import type { Race } from "@/types/race";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Trophy } from "lucide-react";
 
 export interface CalendarViewProps {
   races: Race[];
@@ -214,6 +214,9 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                         : language === "fr"
                         ? "Voir les détails"
                         : "詳細を表示";
+                    const winnerName = race.winner
+                      ? race.winner.name[language] || race.winner.name.en || race.winner.name.ja
+                      : null;
 
                     return (
                       <button
@@ -222,7 +225,7 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                         onClick={() => handleRaceSelect(race)}
                         onKeyDown={(e) => handleKeyDown(e, race)}
                         aria-haspopup="dialog"
-                        aria-label={`${raceName}${rescheduledTag} ${viewDetailText}`}
+                        aria-label={`${raceName}${rescheduledTag}${winnerName ? ` (${t("winner.horseName")}: ${winnerName})` : ""} ${viewDetailText}`}
                         className={cn(
                           "w-full text-left p-1 sm:p-1.5 rounded border bg-card hover:bg-accent hover:border-primary/50 transition-all",
                           race.is_rescheduled ? "border-amber-400/80 dark:border-amber-700/80 bg-amber-50/20" : "border-border/80",
@@ -290,6 +293,15 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                         <div className="text-[11px] sm:text-xs font-bold leading-tight truncate group-hover:text-primary transition-colors">
                           {raceName}
                         </div>
+                        {winnerName && (
+                          <div
+                            className="flex items-center gap-1 text-[10px] text-amber-700 dark:text-amber-400 font-semibold truncate leading-tight"
+                            data-testid="calendar-winner"
+                          >
+                            <Trophy className="h-2.5 w-2.5 shrink-0 text-amber-600 dark:text-amber-400" />
+                            <span className="truncate">{winnerName}</span>
+                          </div>
+                        )}
                         <div className="text-[10px] text-muted-foreground truncate hidden sm:block">
                           {courseName} · {race.distance}m
                         </div>

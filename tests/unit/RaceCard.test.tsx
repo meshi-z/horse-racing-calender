@@ -276,5 +276,57 @@ describe("RaceCard", () => {
       expect(screen.getByText("Gazon 2400m")).toBeInTheDocument();
     });
   });
+
+  describe("勝ち馬（winner）表示機能 (Issue #138)", () => {
+    const raceWithWinner: Race = {
+      ...mockRace,
+      winner: {
+        name: {
+          ja: "ダノンデサイル",
+          en: "Danon Decile",
+          fr: "Danon Decile",
+          zh: "野田分位",
+        },
+        jockey: {
+          ja: "横山典弘",
+          en: "Norihiro Yokoyama",
+        },
+        horse_number: 5,
+        time: "2:24.3",
+      },
+    };
+
+    it("winnerが存在する場合、トロフィーアイコンと共に勝ち馬名が表示されること", () => {
+      render(<RaceCard race={raceWithWinner} />);
+      const badge = screen.getByTestId("race-winner-badge");
+      expect(badge).toBeInTheDocument();
+      expect(badge).toHaveTextContent("ダノンデサイル");
+    });
+
+    it("多言語切り替え時に勝ち馬名が切り替わること", () => {
+      const { rerender } = render(<RaceCard race={raceWithWinner} />);
+      expect(screen.getByTestId("race-winner-badge")).toHaveTextContent("ダノンデサイル");
+
+      useLanguageStore.setState({ language: "en" });
+      rerender(<RaceCard race={raceWithWinner} />);
+      expect(screen.getByTestId("race-winner-badge")).toHaveTextContent("Danon Decile");
+
+      useLanguageStore.setState({ language: "zh" });
+      rerender(<RaceCard race={raceWithWinner} />);
+      expect(screen.getByTestId("race-winner-badge")).toHaveTextContent("野田分位");
+    });
+
+    it("winnerが存在しない場合は勝ち馬バッジが表示されないこと", () => {
+      render(<RaceCard race={mockRace} />);
+      expect(screen.queryByTestId("race-winner-badge")).not.toBeInTheDocument();
+    });
+
+    it("aria-labelに勝ち馬情報が含まれること", () => {
+      render(<RaceCard race={raceWithWinner} />);
+      const card = screen.getByRole("button", { name: /フェブラリーステークス.*ダノンデサイル.*詳細を表示/ });
+      expect(card).toBeInTheDocument();
+    });
+  });
 });
+
 
