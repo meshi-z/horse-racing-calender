@@ -267,6 +267,9 @@ describe("TimelineView", () => {
 
       // 表示クラス（opacity-100）に切り替わること
       expect(container).toHaveClass("opacity-100");
+      // 下部固定フッターとの被りを防止する位置クラス（bottom-14 sm:bottom-16）を持つこと (Issue #140)
+      expect(container).toHaveClass("bottom-14");
+      expect(container).toHaveClass("sm:bottom-16");
     });
   });
 
