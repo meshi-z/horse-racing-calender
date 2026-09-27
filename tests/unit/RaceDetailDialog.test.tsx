@@ -279,19 +279,19 @@ describe("RaceDetailDialog", () => {
       ...mockRace,
       winner: {
         name: {
-          ja: "ダノンデサイル",
-          en: "Danon Decile",
-          fr: "Danon Decile",
-          zh: "野田分位",
+          ja: "ロブチェン",
+          en: "Lovcen",
+          fr: "Lovcen",
+          zh: "洛夫琴",
         },
         jockey: {
-          ja: "横山典弘",
-          en: "Norihiro Yokoyama",
-          fr: "Norihiro Yokoyama",
-          zh: "橫山典弘",
+          ja: "松山弘平",
+          en: "Kohei Matsuyama",
+          fr: "Kohei Matsuyama",
+          zh: "松山弘平",
         },
-        horse_number: 5,
-        time: "2:24.3",
+        horse_number: 17,
+        time: "2:22.7",
       },
     };
 
@@ -307,11 +307,11 @@ describe("RaceDetailDialog", () => {
       const section = screen.getByTestId("race-winner-section");
       expect(section).toBeInTheDocument();
       expect(screen.getByText("レース結果 / 優勝")).toBeInTheDocument();
-      expect(screen.getByText("ダノンデサイル")).toBeInTheDocument();
-      expect(screen.getByText("Danon Decile")).toBeInTheDocument();
-      expect(screen.getByText("5番")).toBeInTheDocument();
-      expect(screen.getByText("横山典弘")).toBeInTheDocument();
-      expect(screen.getByText("2:24.3")).toBeInTheDocument();
+      expect(screen.getByText("ロブチェン")).toBeInTheDocument();
+      expect(screen.getByText("Lovcen")).toBeInTheDocument();
+      expect(screen.getByText("17番")).toBeInTheDocument();
+      expect(screen.getByText("松山弘平")).toBeInTheDocument();
+      expect(screen.getByText("2:22.7")).toBeInTheDocument();
     });
 
     it("多言語切り替え時にラベルおよび勝ち馬情報が翻訳されること", () => {
@@ -325,8 +325,8 @@ describe("RaceDetailDialog", () => {
       );
 
       expect(screen.getByText("Race Result / Winner")).toBeInTheDocument();
-      expect(screen.getByText("No. 5")).toBeInTheDocument();
-      expect(screen.getByText("Norihiro Yokoyama")).toBeInTheDocument();
+      expect(screen.getByText("No. 17")).toBeInTheDocument();
+      expect(screen.getByText("Kohei Matsuyama")).toBeInTheDocument();
 
       useLanguageStore.setState({ language: "zh" });
       rerender(
@@ -338,9 +338,9 @@ describe("RaceDetailDialog", () => {
       );
 
       expect(screen.getByText("賽事結果 / 冠軍")).toBeInTheDocument();
-      expect(screen.getByText("5號")).toBeInTheDocument();
-      expect(screen.getByText("野田分位")).toBeInTheDocument();
-      expect(screen.getByText("橫山典弘")).toBeInTheDocument();
+      expect(screen.getByText("17號")).toBeInTheDocument();
+      expect(screen.getByText("洛夫琴")).toBeInTheDocument();
+      expect(screen.getByText("松山弘平")).toBeInTheDocument();
     });
 
     it("winnerが存在しない場合はレース結果セクションが表示されないこと", () => {

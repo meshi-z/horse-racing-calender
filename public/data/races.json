@@ -2834,19 +2834,17 @@
     },
     "winner": {
       "name": {
-        "ja": "ペプチドナイル",
-        "en": "Peptide Nile",
-        "fr": "Peptide Nile",
-        "zh": "Peptide Nile"
+        "ja": "コスタノヴァ",
+        "en": "Costa Nova",
+        "fr": "Costa Nova",
+        "zh": "海岸之星"
       },
       "jockey": {
-        "ja": "藤岡佑介",
-        "en": "Yusuke Fujioka",
-        "fr": "Yusuke Fujioka",
-        "zh": "藤岡佑介"
-      },
-      "horse_number": 9,
-      "time": "1:35.7"
+        "ja": "C.ルメール",
+        "en": "C. Lemaire",
+        "fr": "C. Lemaire",
+        "zh": "李慕華"
+      }
     }
   },
   {
@@ -5845,19 +5843,18 @@
     },
     "winner": {
       "name": {
-        "ja": "マッドクール",
-        "en": "Mad Cool",
-        "fr": "Mad Cool",
-        "zh": "消暑樂"
+        "ja": "サトノレーヴ",
+        "en": "Satono Reve",
+        "fr": "Satono Reve",
+        "zh": "里見夢境"
       },
       "jockey": {
-        "ja": "坂井瑠星",
-        "en": "Ryusei Sakai",
-        "fr": "Ryusei Sakai",
-        "zh": "坂井瑠星"
+        "ja": "C.ルメール",
+        "en": "C. Lemaire",
+        "fr": "C. Lemaire",
+        "zh": "李慕華"
       },
-      "horse_number": 2,
-      "time": "1:08.9"
+      "horse_number": 2
     }
   },
   {
@@ -6550,19 +6547,17 @@
     },
     "winner": {
       "name": {
-        "ja": "ベラジオオペラ",
-        "en": "Bellagio Opera",
-        "fr": "Bellagio Opera",
-        "zh": "寶徠歌劇"
+        "ja": "クロワデュノール",
+        "en": "Croix du Nord",
+        "fr": "Croix du Nord",
+        "zh": "北十字星"
       },
       "jockey": {
-        "ja": "横山和生",
-        "en": "Kazuo Yokoyama",
-        "fr": "Kazuo Yokoyama",
-        "zh": "橫山和生"
-      },
-      "horse_number": 11,
-      "time": "1:58.2"
+        "ja": "北村友一",
+        "en": "Yuichi Kitamura",
+        "fr": "Yuichi Kitamura",
+        "zh": "北村友一"
+      }
     }
   },
   {
@@ -7052,19 +7047,17 @@
     },
     "winner": {
       "name": {
-        "ja": "ライトウォーリア",
-        "en": "Light Warrior",
-        "fr": "Light Warrior",
-        "zh": "光之戰士"
+        "ja": "カゼノランナー",
+        "en": "Kaze no Runner",
+        "fr": "Kaze no Runner",
+        "zh": "風之跑手"
       },
       "jockey": {
-        "ja": "吉原寛人",
-        "en": "Hiroto Yoshihara",
-        "fr": "Hiroto Yoshihara",
-        "zh": "吉原寬人"
-      },
-      "horse_number": 1,
-      "time": "2:15.5"
+        "ja": "西村淳也",
+        "en": "Atsuya Nishimura",
+        "fr": "Atsuya Nishimura",
+        "zh": "西村淳也"
+      }
     }
   },
   {
@@ -7653,19 +7646,18 @@
     },
     "winner": {
       "name": {
-        "ja": "ステレンボッシュ",
-        "en": "Stellenbosch",
-        "fr": "Stellenbosch",
-        "zh": "斯泰倫博斯"
+        "ja": "スターアニス",
+        "en": "Star Anise",
+        "fr": "Star Anise",
+        "zh": "八角"
       },
       "jockey": {
-        "ja": "J.モレイラ",
-        "en": "Joao Moreira",
-        "fr": "Joao Moreira",
-        "zh": "莫雷拉"
+        "ja": "松山弘平",
+        "en": "Kohei Matsuyama",
+        "fr": "Kohei Matsuyama",
+        "zh": "松山弘平"
       },
-      "horse_number": 12,
-      "time": "1:32.2"
+      "time": "1:31.5"
     }
   },
   {
@@ -8283,6 +8275,20 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "エコロデュエル",
+        "en": "Ecoro Duel",
+        "fr": "Ecoro Duel",
+        "zh": "傲視決鬥"
+      },
+      "jockey": {
+        "ja": "草野太郎",
+        "en": "Taro Kusano",
+        "fr": "Taro Kusano",
+        "zh": "草野太郎"
+      }
     }
   },
   {
@@ -8537,19 +8543,19 @@
     },
     "winner": {
       "name": {
-        "ja": "ジャスティンミラノ",
-        "en": "Justin Milano",
-        "fr": "Justin Milano",
-        "zh": "駿天宮"
+        "ja": "ロブチェン",
+        "en": "Lovcen",
+        "fr": "Lovcen",
+        "zh": "洛夫琴"
       },
       "jockey": {
-        "ja": "戸崎圭太",
-        "en": "Keita Tosaki",
-        "fr": "Keita Tosaki",
-        "zh": "戶崎圭太"
+        "ja": "松山弘平",
+        "en": "Kohei Matsuyama",
+        "fr": "Kohei Matsuyama",
+        "zh": "松山弘平"
       },
-      "horse_number": 13,
-      "time": "1:57.1"
+      "horse_number": 4,
+      "time": "1:56.5"
     }
   },
   {
@@ -9428,6 +9434,20 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "フィンガー",
+        "en": "Finger",
+        "fr": "Finger",
+        "zh": "指向標"
+      },
+      "jockey": {
+        "ja": "戸崎圭太",
+        "en": "Keita Tosaki",
+        "fr": "Keita Tosaki",
+        "zh": "戶崎圭太"
+      }
     }
   },
   {
@@ -10509,19 +10529,17 @@
     },
     "winner": {
       "name": {
-        "ja": "ミスティックダン",
-        "en": "Mystik Dan",
-        "fr": "Mystik Dan",
-        "zh": "神秘丹"
+        "ja": "ゴールデンテンポ",
+        "en": "Golden Tempo",
+        "fr": "Golden Tempo",
+        "zh": "金節拍"
       },
       "jockey": {
-        "ja": "B.ヘルナンデスJr.",
-        "en": "Brian Hernandez Jr.",
-        "fr": "Brian Hernandez Jr.",
-        "zh": "何輝安"
-      },
-      "horse_number": 3,
-      "time": "2:03.34"
+        "ja": "J.オルティス",
+        "en": "Jose Ortiz",
+        "fr": "Jose Ortiz",
+        "zh": "奧狄斯"
+      }
     }
   },
   {
@@ -10581,19 +10599,17 @@
     },
     "winner": {
       "name": {
-        "ja": "テーオーロイヤル",
-        "en": "T O Royal",
-        "fr": "T O Royal",
-        "zh": "帝王皇家"
+        "ja": "クロワデュノール",
+        "en": "Croix du Nord",
+        "fr": "Croix du Nord",
+        "zh": "北十字星"
       },
       "jockey": {
-        "ja": "菱田裕二",
-        "en": "Yuji Hishida",
-        "fr": "Yuji Hishida",
-        "zh": "菱田裕二"
-      },
-      "horse_number": 14,
-      "time": "3:14.2"
+        "ja": "北村友一",
+        "en": "Yuichi Kitamura",
+        "fr": "Yuichi Kitamura",
+        "zh": "北村友一"
+      }
     }
   },
   {
@@ -11123,19 +11139,17 @@
     },
     "winner": {
       "name": {
-        "ja": "シャマル",
-        "en": "Shamal",
-        "fr": "Shamal",
-        "zh": "夏瑪風"
+        "ja": "ウィルソンテソーロ",
+        "en": "Wilson Tesoro",
+        "fr": "Wilson Tesoro",
+        "zh": "盈寶奇嶽"
       },
       "jockey": {
-        "ja": "川須栄彦",
-        "en": "Haruhiko Kawasu",
-        "fr": "Haruhiko Kawasu",
-        "zh": "川須榮彥"
-      },
-      "horse_number": 6,
-      "time": "1:39.0"
+        "ja": "川田将雅",
+        "en": "Yuga Kawada",
+        "fr": "Yuga Kawada",
+        "zh": "川田將雅"
+      }
     }
   },
   {
@@ -11551,19 +11565,17 @@
     },
     "winner": {
       "name": {
-        "ja": "ジャンタルマンタル",
-        "en": "Jantar Mantar",
-        "fr": "Jantar Mantar",
-        "zh": "簡達超凡"
+        "ja": "ロデオドライブ",
+        "en": "Rodeo Drive",
+        "fr": "Rodeo Drive",
+        "zh": "羅迪歐大道"
       },
       "jockey": {
-        "ja": "川田将雅",
-        "en": "Yuga Kawada",
-        "fr": "Yuga Kawada",
-        "zh": "川田將雅"
-      },
-      "horse_number": 16,
-      "time": "1:32.4"
+        "ja": "D.レーン",
+        "en": "Damian Lane",
+        "fr": "Damian Lane",
+        "zh": "薛恩"
+      }
     }
   },
   {
@@ -12545,19 +12557,18 @@
     },
     "winner": {
       "name": {
-        "ja": "テンハッピーローズ",
-        "en": "Ten Happy Rose",
-        "fr": "Ten Happy Rose",
-        "zh": "十倍開心"
+        "ja": "エンブロイダリー",
+        "en": "Embroidery",
+        "fr": "Embroidery",
+        "zh": "刺繡"
       },
       "jockey": {
-        "ja": "津村明秀",
-        "en": "Akihide Tsumura",
-        "fr": "Akihide Tsumura",
-        "zh": "津村明秀"
+        "ja": "C.ルメール",
+        "en": "C. Lemaire",
+        "fr": "C. Lemaire",
+        "zh": "李慕華"
       },
-      "horse_number": 9,
-      "time": "1:31.8"
+      "time": "1:30.9"
     }
   },
   {
@@ -13082,19 +13093,17 @@
     },
     "winner": {
       "name": {
-        "ja": "チェルヴィニア",
-        "en": "Cervinia",
-        "fr": "Cervinia",
-        "zh": "雪嶺峰"
+        "ja": "ジュウリョクピエロ",
+        "en": "Juryoku Pierrot",
+        "fr": "Juryoku Pierrot",
+        "zh": "重力小丑"
       },
       "jockey": {
-        "ja": "C.ルメール",
-        "en": "C. Lemaire",
-        "fr": "C. Lemaire",
-        "zh": "李慕華"
-      },
-      "horse_number": 12,
-      "time": "2:24.0"
+        "ja": "今村聖奈",
+        "en": "Seina Imamura",
+        "fr": "Seina Imamura",
+        "zh": "今村聖奈"
+      }
     }
   },
   {
@@ -13943,19 +13952,19 @@
     },
     "winner": {
       "name": {
-        "ja": "ダノンデサイル",
-        "en": "Danon Decile",
-        "fr": "Danon Decile",
-        "zh": "野田分位"
+        "ja": "ロブチェン",
+        "en": "Lovcen",
+        "fr": "Lovcen",
+        "zh": "洛夫琴"
       },
       "jockey": {
-        "ja": "横山典弘",
-        "en": "Norihiro Yokoyama",
-        "fr": "Norihiro Yokoyama",
-        "zh": "橫山典弘"
+        "ja": "松山弘平",
+        "en": "Kohei Matsuyama",
+        "fr": "Kohei Matsuyama",
+        "zh": "松山弘平"
       },
-      "horse_number": 5,
-      "time": "2:24.3"
+      "horse_number": 17,
+      "time": "2:22.7"
     }
   },
   {
@@ -15105,19 +15114,17 @@
     },
     "winner": {
       "name": {
-        "ja": "ロマンチックウォリアー",
-        "en": "Romantic Warrior",
-        "fr": "Romantic Warrior",
-        "zh": "浪漫勇士"
+        "ja": "シックスペンス",
+        "en": "Sixpence",
+        "fr": "Sixpence",
+        "zh": "六便士"
       },
       "jockey": {
-        "ja": "J.マクドナルド",
-        "en": "James McDonald",
-        "fr": "James McDonald",
-        "zh": "麥道朗"
-      },
-      "horse_number": 7,
-      "time": "1:32.3"
+        "ja": "武豊",
+        "en": "Yutaka Take",
+        "fr": "Yutaka Take",
+        "zh": "武豐"
+      }
     }
   },
   {
@@ -15396,19 +15403,17 @@
     },
     "winner": {
       "name": {
-        "ja": "ラムジェット",
-        "en": "Ramjet",
-        "fr": "Ramjet",
-        "zh": "衝壓引擎"
+        "ja": "フィンガー",
+        "en": "Finger",
+        "fr": "Finger",
+        "zh": "指向標"
       },
       "jockey": {
-        "ja": "三浦皇成",
-        "en": "Kosei Miura",
-        "fr": "Kosei Miura",
-        "zh": "三浦皇成"
-      },
-      "horse_number": 14,
-      "time": "2:06.1"
+        "ja": "戸崎圭太",
+        "en": "Keita Tosaki",
+        "fr": "Keita Tosaki",
+        "zh": "戶崎圭太"
+      }
     }
   },
   {
@@ -15746,19 +15751,17 @@
     },
     "winner": {
       "name": {
-        "ja": "ブローザホーン",
-        "en": "Blow the Horn",
-        "fr": "Blow the Horn",
-        "zh": "吹號者"
+        "ja": "メイショウタバル",
+        "en": "Meisho Tabaru",
+        "fr": "Meisho Tabaru",
+        "zh": "名將田原"
       },
       "jockey": {
-        "ja": "菅原明良",
-        "en": "Akira Sugawara",
-        "fr": "Akira Sugawara",
-        "zh": "菅原明良"
-      },
-      "horse_number": 12,
-      "time": "2:12.0"
+        "ja": "武豊",
+        "en": "Yutaka Take",
+        "fr": "Yutaka Take",
+        "zh": "武豐"
+      }
     }
   },
   {
@@ -17710,19 +17713,17 @@
     },
     "winner": {
       "name": {
-        "ja": "キングズソード",
-        "en": "King's Sword",
-        "fr": "King's Sword",
-        "zh": "王者寶劍"
+        "ja": "ミッキーファイト",
+        "en": "Mikki Fight",
+        "fr": "Mikki Fight",
+        "zh": "覓奇奮鬥"
       },
       "jockey": {
-        "ja": "藤岡佑介",
-        "en": "Yusuke Fujioka",
-        "fr": "Yusuke Fujioka",
-        "zh": "藤岡佑介"
-      },
-      "horse_number": 8,
-      "time": "2:06.9"
+        "ja": "戸崎圭太",
+        "en": "Keita Tosaki",
+        "fr": "Keita Tosaki",
+        "zh": "戶崎圭太"
+      }
     }
   },
   {
@@ -29599,22 +29600,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    },
-    "winner": {
-      "name": {
-        "ja": "ブルーストッキング",
-        "en": "Bluestocking",
-        "fr": "Bluestocking",
-        "zh": "藍絲襪"
-      },
-      "jockey": {
-        "ja": "R.ライアン",
-        "en": "Rossa Ryan",
-        "fr": "Rossa Ryan",
-        "zh": "黎應揚"
-      },
-      "horse_number": 3,
-      "time": "2:31.58"
     }
   },
   {
@@ -36960,22 +36945,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    },
-    "winner": {
-      "name": {
-        "ja": "ドウデュース",
-        "en": "Do Deuce",
-        "fr": "Do Deuce",
-        "zh": "勝局在望"
-      },
-      "jockey": {
-        "ja": "武豊",
-        "en": "Yutaka Take",
-        "fr": "Yutaka Take",
-        "zh": "武豐"
-      },
-      "horse_number": 5,
-      "time": "2:30.9"
     }
   },
   {
