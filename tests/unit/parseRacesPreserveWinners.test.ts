@@ -9,10 +9,10 @@ describe('parse-races race winner preservation', () => {
         name: { ja: '日本ダービー' },
         date: '2026-05-31',
         winner: {
-          name: { ja: 'ダノンデサイル', en: 'Danon Decile' },
-          jockey: { ja: '横山典弘', en: 'Norihiro Yokoyama' },
-          horse_number: 5,
-          time: '2:24.3',
+          name: { ja: 'ロブチェン', en: 'Lovcen' },
+          jockey: { ja: '松山弘平', en: 'Kohei Matsuyama' },
+          horse_number: 17,
+          time: '2:22.7',
         },
       },
       {
@@ -31,9 +31,9 @@ describe('parse-races race winner preservation', () => {
 
     // 日本ダービー（winner あり）はIDでも 日付_レース名 でも取得可能
     expect(map.has('2026-jra-g1-10')).toBe(true);
-    expect(map.get('2026-jra-g1-10')?.name.ja).toBe('ダノンデサイル');
+    expect(map.get('2026-jra-g1-10')?.name.ja).toBe('ロブチェン');
     expect(map.has('2026-05-31_日本ダービー')).toBe(true);
-    expect(map.get('2026-05-31_日本ダービー')?.name.ja).toBe('ダノンデサイル');
+    expect(map.get('2026-05-31_日本ダービー')?.name.ja).toBe('ロブチェン');
   });
 
   it('winner が空オブジェクトまたは name を持たない場合は除外されること', () => {

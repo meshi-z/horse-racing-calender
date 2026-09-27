@@ -282,17 +282,17 @@ describe("RaceCard", () => {
       ...mockRace,
       winner: {
         name: {
-          ja: "ダノンデサイル",
-          en: "Danon Decile",
-          fr: "Danon Decile",
-          zh: "野田分位",
+          ja: "ロブチェン",
+          en: "Lovcen",
+          fr: "Lovcen",
+          zh: "洛夫琴",
         },
         jockey: {
-          ja: "横山典弘",
-          en: "Norihiro Yokoyama",
+          ja: "松山弘平",
+          en: "Kohei Matsuyama",
         },
-        horse_number: 5,
-        time: "2:24.3",
+        horse_number: 17,
+        time: "2:22.7",
       },
     };
 
@@ -300,20 +300,20 @@ describe("RaceCard", () => {
       render(<RaceCard race={raceWithWinner} />);
       const badge = screen.getByTestId("race-winner-badge");
       expect(badge).toBeInTheDocument();
-      expect(badge).toHaveTextContent("ダノンデサイル");
+      expect(badge).toHaveTextContent("ロブチェン");
     });
 
     it("多言語切り替え時に勝ち馬名が切り替わること", () => {
       const { rerender } = render(<RaceCard race={raceWithWinner} />);
-      expect(screen.getByTestId("race-winner-badge")).toHaveTextContent("ダノンデサイル");
+      expect(screen.getByTestId("race-winner-badge")).toHaveTextContent("ロブチェン");
 
       useLanguageStore.setState({ language: "en" });
       rerender(<RaceCard race={raceWithWinner} />);
-      expect(screen.getByTestId("race-winner-badge")).toHaveTextContent("Danon Decile");
+      expect(screen.getByTestId("race-winner-badge")).toHaveTextContent("Lovcen");
 
       useLanguageStore.setState({ language: "zh" });
       rerender(<RaceCard race={raceWithWinner} />);
-      expect(screen.getByTestId("race-winner-badge")).toHaveTextContent("野田分位");
+      expect(screen.getByTestId("race-winner-badge")).toHaveTextContent("洛夫琴");
     });
 
     it("winnerが存在しない場合は勝ち馬バッジが表示されないこと", () => {
@@ -323,7 +323,7 @@ describe("RaceCard", () => {
 
     it("aria-labelに勝ち馬情報が含まれること", () => {
       render(<RaceCard race={raceWithWinner} />);
-      const card = screen.getByRole("button", { name: /フェブラリーステークス.*ダノンデサイル.*詳細を表示/ });
+      const card = screen.getByRole("button", { name: /フェブラリーステークス.*ロブチェン.*詳細を表示/ });
       expect(card).toBeInTheDocument();
     });
   });
