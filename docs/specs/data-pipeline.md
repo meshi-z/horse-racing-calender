@@ -166,10 +166,10 @@ export interface RaceTimeFetcher {
 - **登録プロバイダー**:
   - `JraRaceResultFetcher`: JRA公式レース結果HTML・特別レース成績から1着馬・馬番・騎手・タイムを抽出。ヘボン式英名自動補完。
   - `NarRaceResultFetcher`: NAR公式競走成績HTML（RaceMarkTable）から1着馬・馬番・騎手・タイムを抽出。
-  - `FranceRaceResultFetcher`: PMU公式プログラム/着順確定API（`ARRIVEE`）から1着馬・馬番・ドライバー・タイムを抽出。
-  - `UkRaceResultFetcher` / `IeRaceResultFetcher`: Sporting Life API（`results` / `Official`）から1着馬・馬番・騎手・タイムを抽出。
-  - `HkjcRaceResultFetcher`: HKJC公式レースリザルトHTMLから1着馬（英・中・日）・馬番・騎手・タイムを抽出。
-  - `UsRaceResultFetcher`: Equibase公式チャート/リザルトHTMLから1着馬・騎手・タイムを抽出。
+  - `FranceRaceResultFetcher`: PMU公式プログラム/着順確定API（`ARRIVEE`）から1着馬・馬番・ドライバー・タイムを抽出。`ordreArrivee` の同着二重配列アンラップ対応および `/participants` エンドポイントによる出走馬情報動的フォールバック補完。
+  - `UkRaceResultFetcher` / `IeRaceResultFetcher`: Sporting Life API / HTML結果ページ（`__NEXT_DATA__`）から1着馬・馬番・騎手・タイムを抽出。`rides` 未取得時は `top_horses` からの勝者自動フォールバック。
+  - `HkjcRaceResultFetcher`: HKJC公式レースリザルトHTMLから1着馬（英・中・日）・馬番・騎手・タイムを抽出。HTMLエンティティデコード対応。
+  - `UsRaceResultFetcher`: Equibase公式チャート/リザルトHTMLおよびSporting Life米国枠から1着馬・騎手・タイムを抽出。
 - **当日中・発走直後ターゲット抽出 (`getTargetPastRacesForResults`)**:
   - `race.start_time`（UTC）と現在時刻を比較し、発走から15分以上経過した未確定レースを即時ターゲットに指定。
   - 未確定対象レースが0件の場合は即時終了（Early Exit）し、GitHub Actions実行時間と外部負荷を最小化。

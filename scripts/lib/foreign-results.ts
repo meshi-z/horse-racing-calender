@@ -11,6 +11,7 @@ export interface PmuParticipantItem {
   nom: string;
   driver?: string;
   place?: number;
+  ordreArrivee?: number;
   statut?: string;
   tempsObtenu?: string; // 例: 2'25"12
 }
@@ -19,7 +20,7 @@ export interface PmuCourseResultItem {
   numOrdre: number;
   libelle: string;
   statutCourant?: string; // 'ARRIVEE', 'FIN_COURSE', etc.
-  ordreArrivee?: number[]; // [12, 5, 8]
+  ordreArrivee?: any; // [12, 5, 8] または [[5], [10]]
   participants?: PmuParticipantItem[];
   heureDepart?: number;
 }
@@ -68,13 +69,14 @@ export function parsePmuResultsJson(
 
     if (!isArrivee) continue;
 
-    // 1着馬の特定
-    const winningNum = matchedCourse.ordreArrivee?.[0];
+    // 1着馬の特定 (ordreArrivee は [[5], [10]] のような二重配列の場合がある)
+    const raw1st = matchedCourse.ordreArrivee?.[0];
+    const winningNum = Array.isArray(raw1st) ? raw1st[0] : raw1st;
     const participants = matchedCourse.participants || [];
 
     const winningHorse =
-      (winningNum ? participants.find((p) => p.numPmu === winningNum) : null) ||
-      participants.find((p) => p.place === 1);
+      (winningNum !== undefined ? participants.find((p) => p.numPmu === winningNum) : null) ||
+      participants.find((p) => p.place === 1 || p.ordreArrivee === 1);
 
     if (winningHorse && winningHorse.nom) {
       // タイム表記の整形: 2'25"12 -> 2:25.12
@@ -138,8 +140,10 @@ export interface SportingLifeResultRaceItem {
   date: string;
   time?: string;
   race_stage?: string; // 'Official', 'WeighedIn', etc.
+  winning_time?: string;
   rides?: SportingLifeRideItem[];
   results?: SportingLifeRideItem[];
+  top_horses?: Array<{ name: string; position: number }>;
 }
 
 export interface SportingLifeResultMeetingItem {
@@ -191,7 +195,7 @@ export function parseSportingLifeResultsJson(
       const horseNumber = winnerRide.cloth_number ?? winnerRide.saddle_cloth_number;
       const horseName = winnerRide.horse_name.trim();
       const jockey = winnerRide.jockey_name ? winnerRide.jockey_name.trim() : undefined;
-      const time = winnerRide.official_winning_time;
+      const time = winnerRide.official_winning_time || matchedRace.winning_time;
 
       resultMap.set(targetRace.id, {
         name: {
@@ -207,6 +211,18 @@ export function parseSportingLifeResultsJson(
         horse_number: horseNumber,
         time: time,
       });
+    } else if (matchedRace.top_horses && matchedRace.top_horses.length > 0) {
+      const top1 = matchedRace.top_horses.find((h: any) => h.position === 1) || matchedRace.top_horses[0];
+      if (top1 && top1.name) {
+        const horseName = top1.name.trim();
+        resultMap.set(targetRace.id, {
+          name: {
+            ja: targetRace.winner?.name?.ja || horseName,
+            en: horseName,
+          },
+          time: matchedRace.winning_time,
+        });
+      }
     }
   }
 

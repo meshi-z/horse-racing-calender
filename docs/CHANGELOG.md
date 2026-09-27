@@ -6,7 +6,27 @@
 
 ## バージョン履歴 (Version History)
 
-### Step 45: レース終了後の勝ち馬（優勝馬）表示機能およびリザルト反映パイプラインの実装 (v1.35.0 / Issue #138) [完了]
+### Step 49: 2026年過去全重賞レース結果の公式一次ソースに基づく全面是正・架空ダミー馬名の完全排除 (v1.37.1 / Issue #149) [完了]
+- **インシデント是正 & 架空データの根絶 [完了]**
+  - フランスG1「モーリス・ド・ゲスト賞（Prix Maurice de Gheest）」の勝ち馬が架空データ「Grandir」となっていた不具合を解消し、実在の公式確定結果「**Samangan**」（M.バルザローナ騎手、馬番5）へ是正。
+  - AI推測・ダミー生成スクリプト（`generate-past-winners.js`）を完全無効化し、架空馬名プールによる補完を完全禁止。
+- **各国公式一次ソースに基づく全件直接同期 [完了]**
+  - **フランス (France Galop / PMU)**: PMU公式APIから全開催レースを直接フェッチ。二重配列アンラップ対応および `/participants` エンドポイント補完により92レースを確定同期（Samangan, Rayif, Losange Bleu等）。
+  - **日本中央 (JRA)**: JRA公式アーカイブ `jyusyo.html` から103全レースを確定同期（カラマティアノス、ショウヘイ、ブエナオンダ等）。
+  - **日本地方 (NAR)**: `keiba.go.jp` の当日メニュー（`RaceList`）および払戻・着順表（`RaceMarkTable`）から全239レースを100%確定同期（アランバローズ、グリューヴルム、モネ等）。
+  - **香港 (HKJC)**: HKJC公式成績ページから全24レースを100%確定同期（Ka Ying Rising, Romantic Warrior, Invincible Ibis, Storm Rider等）。
+  - **イギリス・アイルランド・アメリカ (BHA, HRI, Equibase)**: Sporting Life 日次結果ページ（`__NEXT_DATA__`）から474レースを確定同期（Christmas Day, Golden Tempo, Napoleon Solo, Leading Change, Kalpana等）。
+  - 合計932件の実在公式確定結果を `src/data/race_winners.json` および `public/data/races.json` に二重永続化。未開催レース等の勝者未定状態（`undefined`）を厳格に保持。
+- **パーサー・パイプライン強化 & UI復元 [完了]**
+  - `scripts/lib/foreign-results.ts`: PMUの二重配列アンラップ、Sporting Life の `top_horses` フォールバック対応、HKJC HTMLエンティティデコード。
+  - `scripts/update-race-results.ts`: PMU詳細エンドポイント取得、Sporting Life HTMLパースフォールバック。
+  - `src/components/shared/RaceCard.tsx`: 緊急措置として固定されていた `winnerName = null` を解除し、正規の勝ち馬表示へ復元。
+- **品質・テスト保証 [完了]**
+  - `tests/unit/foreignResultsOfficial.test.ts` を追加し、Samangan等公式勝ち馬の永続化およびGrandirの完全排除を検証。全52テストファイル・全505テスト全件パス、型検査・ビルド正常。
+
+---
+
+### Step 48: 2026年過去全重賞レース結果（勝ち馬）の包括的バックフィルパイプラインの導入 (v1.37.0 / Issue #147) [完了]
 - **データスキーマ・型定義の拡張 (`src/types/race.ts`, パイプライン型) [完了]**
   - `RaceWinner` インターフェースを新設し、`Race` および `RaceOutput` 型に `winner?: RaceWinner;`（馬名、騎手名、馬番、走破タイム）を追加。
 - **勝ち馬データの管理 & パイプライン連携 [完了]**
