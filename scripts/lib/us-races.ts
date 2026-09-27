@@ -68,13 +68,19 @@ export function getUsRaces(
 
     const confirmedInfo = confirmedTimesMap.get(r.id) || confirmedTimesMap.get(`${r.date}_${r.name.ja}`);
     if (confirmedInfo) {
-      startTime = confirmedInfo.start_time;
-      isTimeConfirmed = confirmedInfo.is_time_confirmed;
-      if (confirmedInfo.is_rescheduled !== undefined) {
-        isRescheduled = confirmedInfo.is_rescheduled;
-      }
-      if (confirmedInfo.original_date) {
-        originalDate = confirmedInfo.original_date;
+      const confirmedTime = new Date(confirmedInfo.start_time);
+      const masterDate = new Date(`${r.date}T12:00:00Z`);
+      const isDateCompatible = !isNaN(confirmedTime.getTime()) && Math.abs(confirmedTime.getTime() - masterDate.getTime()) <= 36 * 60 * 60 * 1000;
+
+      if (isDateCompatible || confirmedInfo.is_rescheduled) {
+        startTime = confirmedInfo.start_time;
+        isTimeConfirmed = confirmedInfo.is_time_confirmed;
+        if (confirmedInfo.is_rescheduled !== undefined) {
+          isRescheduled = confirmedInfo.is_rescheduled;
+        }
+        if (confirmedInfo.original_date) {
+          originalDate = confirmedInfo.original_date;
+        }
       }
     }
 

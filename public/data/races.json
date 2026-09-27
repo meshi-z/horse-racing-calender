@@ -24591,34 +24591,6 @@
     }
   },
   {
-    "id": "2026-us-g2-89",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "フラワーボウルステークス",
-      "en": "Flower Bowl Stakes"
-    },
-    "grade": "G2",
-    "date": "2026-09-05",
-    "start_time": "2026-08-36T21:30:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-09-05",
-    "course": {
-      "ja": "サラトガ",
-      "en": "Saratoga"
-    },
-    "distance": 2213,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
     "id": "2026-jra-g3-54",
     "organization": "jra",
     "country_code": "JP",
@@ -24778,6 +24750,34 @@
     "track_type": "aw",
     "sex_constraint": "none",
     "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-us-g2-89",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "フラワーボウルステークス",
+      "en": "Flower Bowl Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-05",
+    "start_time": "2026-09-05T21:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-05",
+    "course": {
+      "ja": "サラトガ",
+      "en": "Saratoga"
+    },
+    "distance": 2213,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "special_weight",
       "ja": "別定",
@@ -25337,6 +25337,35 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-france-g2-19",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "フォワ賞",
+      "en": "Prix Foy",
+      "fr": "Prix Foy"
+    },
+    "grade": "G2",
+    "date": "2026-09-06",
+    "start_time": "2026-09-06T15:35:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-06",
+    "course": {
+      "ja": "パリロンシャン",
+      "en": "ParisLongchamp"
+    },
+    "distance": 2400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "weight_for_age",
       "ja": "定量",
@@ -26138,35 +26167,6 @@
     "handicap": {
       "code": "weight_for_age",
       "ja": "馬齢",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g2-19",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "フォワ賞",
-      "en": "Prix Foy",
-      "fr": "Prix Foy"
-    },
-    "grade": "G2",
-    "date": "2026-09-12",
-    "start_time": "2026-09-12T18:10:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-09-12",
-    "course": {
-      "ja": "パリロンシャン",
-      "en": "ParisLongchamp"
-    },
-    "distance": 2400,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
       "en": "Weight for Age"
     }
   },

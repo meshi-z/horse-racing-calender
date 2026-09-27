@@ -690,11 +690,16 @@ async function ensureJyusyoHtml(filePath: string, year: number, force: boolean =
  */
 export function extractConfirmedRaceTimesMap(
   existingRaces: Array<{ id: string; name?: { ja?: string }; date: string; start_time: string; is_time_confirmed?: boolean }>
-): Map<string, { start_time: string; is_time_confirmed: boolean }> {
-  const map = new Map<string, { start_time: string; is_time_confirmed: boolean }>();
+): Map<string, { start_time: string; is_time_confirmed: boolean; date?: string }> {
+  const map = new Map<string, { start_time: string; is_time_confirmed: boolean; date?: string }>();
   for (const r of existingRaces) {
-    if (r.is_time_confirmed) {
-      const val = { start_time: r.start_time, is_time_confirmed: true };
+    if (r.is_time_confirmed && r.start_time) {
+      const parsed = new Date(r.start_time);
+      if (isNaN(parsed.getTime())) {
+        console.warn(`[Warning] Skipping invalid start_time in existing races: id=${r.id}, start_time=${r.start_time}`);
+        continue;
+      }
+      const val = { start_time: r.start_time, is_time_confirmed: true, date: r.date };
       if (r.id) {
         map.set(r.id, val);
       }

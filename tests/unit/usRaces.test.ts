@@ -153,4 +153,27 @@ describe('US Races Pipeline and Master Data (Issue #102)', () => {
       expect(curr.date >= prev.date).toBe(true);
     }
   });
+
+  it('フラワーボウルステークス（Flower Bowl S / 2026-us-g2-89）の start_time が有効な日付（2026-09-05T21:30:00.000Z）であること (Issue #134)', () => {
+    const master = loadUsRaceMaster(rootDir);
+    const races = getUsRaces(master, new Map());
+
+    const fb = races.find((r) => r.id === '2026-us-g2-89');
+    expect(fb).toBeDefined();
+    expect(fb?.name.ja).toBe('フラワーボウルステークス');
+    expect(fb?.name.en).toBe('Flower Bowl Stakes');
+    expect(fb?.date).toBe('2026-09-05');
+    expect(fb?.start_time).toBe('2026-09-05T21:30:00.000Z');
+    expect(isNaN(new Date(fb?.start_time || '').getTime())).toBe(false);
+
+    // public/data/races.json 内の実データも検証
+    const publicRacesPath = path.join(rootDir, 'public', 'data', 'races.json');
+    const allRaces: Race[] = JSON.parse(fs.readFileSync(publicRacesPath, 'utf8'));
+    const publicFb = allRaces.find((r) => r.id === '2026-us-g2-89');
+    expect(publicFb).toBeDefined();
+    expect(publicFb?.date).toBe('2026-09-05');
+    expect(publicFb?.start_time).toBe('2026-09-05T21:30:00.000Z');
+    expect(isNaN(new Date(publicFb?.start_time || '').getTime())).toBe(false);
+  });
 });
+

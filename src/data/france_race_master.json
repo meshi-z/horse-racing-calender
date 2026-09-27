@@ -2446,11 +2446,11 @@
         "fr": "Prix Foy"
       },
       "grade": "G2",
-      "date": "2026-09-12",
-      "start_time": "2026-09-12T18:10:00.000Z",
+      "date": "2026-09-06",
+      "start_time": "2026-09-06T15:35:00.000Z",
       "is_time_confirmed": true,
       "is_rescheduled": false,
-      "original_date": "2026-09-12",
+      "original_date": "2026-09-06",
       "course": {
         "ja": "パリロンシャン",
         "en": "ParisLongchamp"

@@ -38,16 +38,43 @@ describe('parse-races confirmed race time preservation', () => {
     expect(map.get('2026-jra-jg3-04')).toEqual({
       start_time: '2026-09-19T02:20:00.000Z',
       is_time_confirmed: true,
+      date: '2026-09-19',
     });
     expect(map.has('2026-09-19_阪神ジャンプステークス')).toBe(true);
     expect(map.get('2026-09-19_阪神ジャンプステークス')).toEqual({
       start_time: '2026-09-19T02:20:00.000Z',
       is_time_confirmed: true,
+      date: '2026-09-19',
     });
 
     // 産経賞オールカマーも同様
     expect(map.has('2026-jra-g2-26')).toBe(true);
     expect(map.get('2026-jra-g2-26')?.start_time).toBe('2026-09-20T06:45:00.000Z');
+    expect(map.get('2026-jra-g2-26')?.date).toBe('2026-09-20');
+  });
+
+  it('不正な start_time (NaN) を持つレースは除外されること (Issue #134)', () => {
+    const invalidRaces = [
+      {
+        id: '2026-us-g2-89',
+        name: { ja: 'フラワーボウルステークス' },
+        date: '2026-09-05',
+        start_time: '2026-08-36T21:30:00.000Z',
+        is_time_confirmed: true,
+      },
+      {
+        id: '2026-us-g1-01',
+        name: { ja: 'ペガサスワールドカップ' },
+        date: '2026-01-24',
+        start_time: '2026-01-24T22:40:00.000Z',
+        is_time_confirmed: true,
+      },
+    ];
+
+    const map = extractConfirmedRaceTimesMap(invalidRaces);
+    expect(map.has('2026-us-g2-89')).toBe(false);
+    expect(map.has('2026-09-05_フラワーボウルステークス')).toBe(false);
+    expect(map.has('2026-us-g1-01')).toBe(true);
   });
 
   it('空配列または確定済みレースが存在しない場合は空のマップを返すこと', () => {
