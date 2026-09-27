@@ -199,4 +199,28 @@ describe('France Races Pipeline and Master Data (Issue #65)', () => {
     expect(narRaces.every((r) => r.country_code === 'JP')).toBe(true);
     expect(franceRaces.every((r) => r.country_code === 'FR')).toBe(true);
   });
+
+  it('フォワ賞（Prix Foy）の日程・発走時刻が 2026-09-06 17:35 CEST (15:35 UTC) に正しく設定されていること (Issue #134)', () => {
+    const master = loadFranceRaceMaster(rootDir);
+    const races = getFranceRaces(master, new Map());
+
+    const foy = races.find((r) => r.id === '2026-france-g2-19');
+    expect(foy).toBeDefined();
+    expect(foy?.name.ja).toBe('フォワ賞');
+    expect(foy?.name.en).toBe('Prix Foy');
+    expect(foy?.grade).toBe('G2');
+    expect(foy?.date).toBe('2026-09-06');
+    expect(foy?.start_time).toBe('2026-09-06T15:35:00.000Z');
+    expect(foy?.is_time_confirmed).toBe(true);
+    expect(foy?.course.ja).toBe('パリロンシャン');
+
+    // ニエル賞・ヴェルメイユ賞・ムーランドロンシャン賞と同日開催であること
+    const niel = races.find((r) => r.name.en === 'Prix Niel');
+    const vermeille = races.find((r) => r.name.en === 'Prix Vermeille');
+    const moulin = races.find((r) => r.name.en === 'Prix du Moulin de Longchamp');
+    expect(niel?.date).toBe('2026-09-06');
+    expect(vermeille?.date).toBe('2026-09-06');
+    expect(moulin?.date).toBe('2026-09-06');
+  });
 });
+

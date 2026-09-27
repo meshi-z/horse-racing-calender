@@ -42,6 +42,8 @@ describe('public/data/races.json integrity check', () => {
       expect(dateObj.getUTCDate()).toBe(d);
 
       expect(typeof race.start_time).toBe('string');
+      expect(race.start_time).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.000Z$/);
+      expect(isNaN(new Date(race.start_time).getTime())).toBe(false);
       expect(typeof race.is_time_confirmed).toBe('boolean');
       expect(typeof race.course.ja).toBe('string');
       expect(typeof race.course.en).toBe('string');
