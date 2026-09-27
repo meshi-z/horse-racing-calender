@@ -23,6 +23,11 @@ describe("Layout", () => {
       screen.getByRole("button", { name: "免責事項・データ出典" })
     ).toBeInTheDocument();
 
+    // 発走時刻確定ガイドボタン
+    expect(
+      screen.getByRole("button", { name: "発走時刻の確定について" })
+    ).toBeInTheDocument();
+
     // 非公式注記
     expect(
       screen.getByText(
@@ -44,6 +49,9 @@ describe("Layout", () => {
       screen.getByRole("button", { name: "Disclaimer & Data Sources" })
     ).toBeInTheDocument();
     expect(
+      screen.getByRole("button", { name: "About Post Time Confirmation" })
+    ).toBeInTheDocument();
+    expect(
       screen.getByText(
         /This is an unofficial fan site. Please always verify the latest race schedules and post times/
       )
@@ -63,8 +71,33 @@ describe("Layout", () => {
       screen.getByRole("button", { name: "Mentions légales & Sources" })
     ).toBeInTheDocument();
     expect(
+      screen.getByRole("button", { name: "À propos des horaires de départ" })
+    ).toBeInTheDocument();
+    expect(
       screen.getByText(
         /Ce site est un projet de fans non officiel/
+      )
+    ).toBeInTheDocument();
+  });
+
+  it("繁体字中国語モードでフッターの導線と非公式注記が中国語で表示されること", () => {
+    useLanguageStore.setState({ language: "zh" });
+
+    render(
+      <Layout>
+        <div>內容</div>
+      </Layout>
+    );
+
+    expect(
+      screen.getByRole("button", { name: "免責聲明・資料來源" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "關於開跑時間確定日程" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /本網站為非官方愛好者網站/
       )
     ).toBeInTheDocument();
   });

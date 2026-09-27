@@ -4,6 +4,7 @@ import { OfflineIndicator } from "./OfflineIndicator";
 import { ReloadPrompt } from "./ReloadPrompt";
 import { PwaInstallPrompt } from "./PwaInstallPrompt";
 import { DisclaimerDialog } from "./DisclaimerDialog";
+import { ConfirmedTimeHelpDialog } from "./ConfirmedTimeHelpDialog";
 import { cn } from "@/libs/utils";
 import { useTranslation } from "@/libs/i18n";
 
@@ -26,6 +27,8 @@ export function Layout({ children, className }: LayoutProps) {
         <div className="container px-4 sm:px-6 flex flex-col items-center gap-2">
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
             <span>{t("footer.copyright")}</span>
+            <span aria-hidden="true" className="text-muted-foreground/40">•</span>
+            <ConfirmedTimeHelpDialog />
             <span aria-hidden="true" className="text-muted-foreground/40">•</span>
             <DisclaimerDialog />
           </div>
