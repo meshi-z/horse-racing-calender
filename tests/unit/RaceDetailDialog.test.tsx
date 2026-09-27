@@ -35,7 +35,7 @@ describe("RaceDetailDialog", () => {
     useLanguageStore.setState({ language: "ja" });
   });
 
-  it("発走時刻前かつ確定済みのレースにおいて、'発走予定' バッジが表示されること", () => {
+  it("発走時刻前かつ確定済みのレースにおいて、'発走予定' バッジが表示され '発走時刻はいつ決まる？' は表示されないこと", () => {
     const upcomingRace: Race = {
       ...mockRace,
       start_time: "2099-12-31T06:40:00.000Z",
@@ -50,9 +50,12 @@ describe("RaceDetailDialog", () => {
     );
     expect(screen.getByText("発走予定")).toBeInTheDocument();
     expect(screen.queryByText("発走確定")).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: "発走時刻はいつ決まる？" })
+    ).not.toBeInTheDocument();
   });
 
-  it("発走時刻が未確定のレースにおいて、'時刻未定' が表示され '発走予定' バッジが表示されないこと (Issue #56)", () => {
+  it("発走時刻が未確定のレースにおいて、'時刻未定' と '発走時刻はいつ決まる？' リンクが表示されること (Issue #56, #136)", () => {
     const unconfirmedRace: Race = {
       ...mockRace,
       is_time_confirmed: false,
@@ -66,6 +69,9 @@ describe("RaceDetailDialog", () => {
     );
     expect(screen.getByText("時刻未定")).toBeInTheDocument();
     expect(screen.queryByText("発走予定")).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "発走時刻はいつ決まる？" })
+    ).toBeInTheDocument();
   });
 
   it("発走時刻を経過したレースにおいて、'発走予定' バッジが表示されないこと", () => {

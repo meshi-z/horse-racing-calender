@@ -6,6 +6,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { GradeBadge } from "./GradeBadge";
+import { ConfirmedTimeHelpDialog } from "./ConfirmedTimeHelpDialog";
 import { Badge } from "@/components/ui/badge";
 import { formatLocalDate, formatRaceTimeDisplay } from "@/libs/date";
 import {
@@ -17,7 +18,7 @@ import {
 import { getRaceDisplayNames } from "@/libs/raceLanguage";
 import type { Race } from "@/types/race";
 import { cn } from "@/libs/utils";
-import { Calendar, Clock, MapPin, AlertTriangle } from "lucide-react";
+import { Calendar, Clock, MapPin, AlertTriangle, HelpCircle } from "lucide-react";
 
 export interface RaceDetailDialogProps {
   race: Race | null;
@@ -157,9 +158,20 @@ export function RaceDetailDialog({
                 )}
               </div>
             ) : (
-              <div className="flex items-center gap-1.5 text-muted-foreground">
-                <Clock className="h-4 w-4" />
-                <span className="font-medium text-xs sm:text-sm">{t("status.timeTbd")}</span>
+              <div className="flex items-center gap-2 flex-wrap justify-end">
+                <div className="flex items-center gap-1.5 text-muted-foreground">
+                  <Clock className="h-4 w-4" />
+                  <span className="font-medium text-xs sm:text-sm">{t("status.timeTbd")}</span>
+                </div>
+                <ConfirmedTimeHelpDialog>
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline underline-offset-2 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring rounded-sm font-normal cursor-pointer"
+                  >
+                    <HelpCircle className="h-3 w-3 shrink-0" />
+                    <span>{t("confirmedTimeHelp.triggerShort")}</span>
+                  </button>
+                </ConfirmedTimeHelpDialog>
               </div>
             )}
           </div>
