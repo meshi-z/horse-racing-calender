@@ -6,6 +6,23 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 44: タイムラインビュー表示時におけるフッターの画面下部固定表示（Fixed Bottom Bar）の実装 (v1.34.1 / Issue #140) [完了]
+- **画面下部固定フッター（Fixed Bottom Bar）の実装 (`src/components/shared/Layout.tsx`) [完了]**
+  - `useViewMode()` を参照し、タイムラインビュー表示時に `fixed bottom-0 left-0 right-0 z-20` で画面最下部に貼り付く固定フッターバーを実装。
+  - 透過ブラー背景（`bg-background/90 supports-[backdrop-filter]:bg-background/80 backdrop-blur border-t shadow-xs`）を適用し、1行で「コピーライト」「発走時刻の確定について（`ConfirmedTimeHelpDialog`）」「免責事項・データ出典（`DisclaimerDialog`）」をコンパクトに配置。
+  - カレンダービュー表示時は月別グリッドの特性に合わせ、従来のページ最下部静的フッターとして自然に表示。
+- **最下部レースカードの被り防止（ボトム余白確保） [完了]**
+  - タイムライン表示時、`<main>` コンテナに `pb-16`（64px）のボトムパディングを確保し、最後のレースカードやコンテンツが固定バーで隠れないよう配慮。
+  - タイムライン最下部には非公式注記テキストを配置。
+- **「今日へ戻る」フローティングボタンとの位置調和 (`src/features/timeline/TimelineView.tsx`) [完了]**
+  - ジャンプボタンのボトム配置を従来の `bottom-6`（24px）から `bottom-14 sm:bottom-16 right-4 sm:right-6` へ調整し、固定フッターバーの直上に適度な余白を保って配置。
+- **テスト拡充 & 仕様書更新 [完了]**
+  - `tests/unit/Layout.test.tsx`: タイムラインモード時に固定フッターが表示され `pb-16` が付与されること、カレンダーモード時に従来の静的フッターが表示されること、4言語表示の検証を網羅。
+  - `tests/unit/TimelineView.test.tsx`: ジャンプボタンのコンテナが `bottom-14 sm:bottom-16` を持つことの検証を追加（全48テストファイル・473テストすべて合格、ビルド・型検査も正常完了）。
+  - `docs/PRD.md` を v1.34.1 (Step 44) へ更新し、PDF を再生成。
+
+---
+
 ### Step 43: 各国・レースの発走予定時刻確定タイミングおよび反映目安を案内するヘルプモーダルの実装 (v1.34.0 / Issue #136) [完了]
 - **発走時刻確定ガイドダイアログ（`ConfirmedTimeHelpDialog`）の実装 [完了]**
   - Shadcn UI / Radix UI の `Dialog` を採用し、公式確定タイミングおよび本アプリへの反映目安を一覧できるヘルプモーダルを新設。
