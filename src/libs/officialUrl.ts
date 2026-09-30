@@ -2,6 +2,12 @@ import type { Race, Organization } from '../types/race';
 import type { Language } from '../store/useLanguageStore';
 
 /**
+ * 公式出馬表・レース情報外部リンク機能の有効化フラグ (Feature Flag)
+ * 仕様見直し・改修期間中のため一時的に無効化 (false) (Issue #155)
+ */
+export const ENABLE_OFFICIAL_LINKS = false;
+
+/**
  * 主催者ごとのデフォルト公式情報・出馬表URLマッピング
  */
 export const DEFAULT_OFFICIAL_URLS: Record<Organization, Record<Language, string>> = {

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
-import { DEFAULT_OFFICIAL_URLS } from '@/libs/officialUrl';
+import { ENABLE_OFFICIAL_LINKS } from '@/libs/officialUrl';
 import { RaceDetailDialog } from '@/components/shared/RaceDetailDialog';
 import { RaceCard } from '@/components/shared/RaceCard';
 import { useLanguageStore } from '@/store/useLanguageStore';
@@ -34,8 +34,9 @@ const mockBaseRace: Race = {
   },
 };
 
-describe('UI Integration: Official race link in RaceDetailDialog', () => {
-  it('公式リンクボタンが正しくレンダリングされ、属性（target, rel）が設定されていること', () => {
+describe('UI Integration: Official race link temporary disabling (Issue #155)', () => {
+  it('ENABLE_OFFICIAL_LINKS が false のとき、RaceDetailDialog に公式リンクボタンが表示されないこと', () => {
+    expect(ENABLE_OFFICIAL_LINKS).toBe(false);
     useLanguageStore.getState().setLanguage('ja');
     const raceWithUrl: Race = {
       ...mockBaseRace,
@@ -50,29 +51,29 @@ describe('UI Integration: Official race link in RaceDetailDialog', () => {
       />
     );
 
-    const linkBtn = screen.getByTestId('official-race-link-btn');
-    expect(linkBtn).toBeInTheDocument();
-    expect(linkBtn).toHaveAttribute('href', 'https://www.jra.go.jp/keiba/thisweek/2026/0222_1/');
-    expect(linkBtn).toHaveAttribute('target', '_blank');
-    expect(linkBtn).toHaveAttribute('rel', 'noopener noreferrer');
-    expect(linkBtn).toHaveAttribute('aria-label');
+    const linkBtn = screen.queryByTestId('official-race-link-btn');
+    expect(linkBtn).not.toBeInTheDocument();
   });
-});
 
-describe('UI Integration: Official race link icon in RaceCard', () => {
-  it('レースカード上に外部リンクアイコンボタンが存在し、クリック時にイベント伝播が抑止されること', () => {
+  it('ENABLE_OFFICIAL_LINKS が false のとき、RaceCard 上に外部リンクアイコンボタンが表示されないこと', () => {
+    expect(ENABLE_OFFICIAL_LINKS).toBe(false);
     useLanguageStore.getState().setLanguage('ja');
     const onSelectMock = vi.fn();
     render(<RaceCard race={mockBaseRace} onSelect={onSelectMock} />);
 
-    const linkIcon = screen.getByTestId('race-card-official-link');
-    expect(linkIcon).toBeInTheDocument();
-    expect(linkIcon).toHaveAttribute('target', '_blank');
-    expect(linkIcon).toHaveAttribute('rel', 'noopener noreferrer');
-    expect(linkIcon).toHaveAttribute('href', DEFAULT_OFFICIAL_URLS.jra.ja);
+    const linkIcon = screen.queryByTestId('race-card-official-link');
+    expect(linkIcon).not.toBeInTheDocument();
+  });
 
-    // リンクアイコンをクリックした際、カード全体の onSelect が呼ばれないこと（stopPropagationの検証）
-    fireEvent.click(linkIcon);
-    expect(onSelectMock).not.toHaveBeenCalled();
+  it('外部リンク非表示時も、カード全体のクリックイベントや詳細ダイアログ展開が正常に機能すること', () => {
+    const onSelectMock = vi.fn();
+    render(<RaceCard race={mockBaseRace} onSelect={onSelectMock} />);
+
+    const card = screen.getByRole('button', { name: /フェブラリーステークス/ });
+    expect(card).toBeInTheDocument();
+
+    fireEvent.click(card);
+    expect(onSelectMock).toHaveBeenCalledTimes(1);
+    expect(onSelectMock).toHaveBeenCalledWith(mockBaseRace);
   });
 });
