@@ -6,7 +6,7 @@
 
 ## バージョン履歴 (Version History)
 
-### Step 50: 各国・レースの公式情報ページ（出馬表等）への外部リンク機能の実装 (v1.38.0 / Issue #137) [完了]
+### Step 51: 各国・レースの公式情報ページ（出馬表等）への外部リンク機能の実装 (v1.38.0 / Issue #137) [完了]
 - **データスキーマ・型定義の拡張 (`src/types/race.ts`, `scripts/update-race-times.ts`) [完了]**
   - `Race` 型および `RaceOutput` 型に `official_url?: string` を新設。
   - 発走予定時刻更新パイプライン（`update-race-times.ts`）において、スクレイピング時に各主催者の出馬表ページURLが取得された場合に `race.official_url` へ自動代入・反映。
@@ -20,6 +20,20 @@
   - 日本語（`ja`）、英語（`en`）、フランス語（`fr`）、繁体字中国語（`zh`）の4言語すべてでボタン文言、アクセシビリティ用ARIA属性（`aria-label`）、公式ソース名をローカライズ。
 - **テスト自動化 & 品質検証 [完了]**
   - 単体テスト `tests/unit/officialUrl.test.ts` および UI統合テスト `tests/unit/officialUrl.test.tsx` を追加し、全54テストファイル・510テスト全件パスを達成。型検査（`tsc --noEmit`）・本番ビルド（`vite build`）エラーゼロ。
+
+---
+
+### Step 50: 実績データ登録時におけるAI推測補完・架空データ生成の禁止規約策定（公式一次ソース準拠および未取得時空値原則の徹底） (v1.37.2 / Issue #153) [完了]
+- **プロジェクト規約の強化 (`.agents/rules/00-project.md`) [完了]**
+  - `Data accuracy & Single Source of Truth` セクションを強化。
+  - AIの推測補完・架空データ生成の厳禁、公式一次ソースの必須化、対象年度（西暦）の厳格な一致照合、および未取得時・未確定時の空値原則（Null Value Principle: `undefined` / 空のまま保持しダミースクリプト等の作成を禁止）を明文化。
+- **データパイプライン技術仕様書の整備 (`docs/specs/data-pipeline.md`) [完了]**
+  - 「5.6 データ完全性・一次ソース準拠および空値フォールバック規約 (Data Integrity & Fallback Policy)」を策定。
+  - 取得失敗時・未開催レースにおける安全な空値フォールバック、およびパーサー障害発生時の調査・是正フローを規定。
+- **プロダクト要求仕様書（PRD）の更新 (`docs/PRD.md`) [完了]**
+  - v1.37.2 / Step 50 として開発履歴を反映し、データ信頼性ガバナンス体制を最新化。
+
+---
 
 ---
 

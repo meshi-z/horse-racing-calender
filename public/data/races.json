@@ -36984,8 +36984,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-01",
-    "start_time": "2026-10-01T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-01T06:55:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "園田",
       "en": "Sonoda"
@@ -37348,8 +37348,8 @@
     },
     "grade": "G3",
     "date": "2026-10-03",
-    "start_time": "2026-10-03T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-03T12:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-03",
     "course": {
@@ -37376,8 +37376,8 @@
     },
     "grade": "G3",
     "date": "2026-10-03",
-    "start_time": "2026-10-03T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-03T13:00:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-03",
     "course": {
