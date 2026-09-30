@@ -6,6 +6,23 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 51: 各国・レースの公式情報ページ（出馬表等）への外部リンク機能の実装 (v1.38.0 / Issue #137) [完了]
+- **データスキーマ・型定義の拡張 (`src/types/race.ts`, `scripts/update-race-times.ts`) [完了]**
+  - `Race` 型および `RaceOutput` 型に `official_url?: string` を新設。
+  - 発走予定時刻更新パイプライン（`update-race-times.ts`）において、スクレイピング時に各主催者の出馬表ページURLが取得された場合に `race.official_url` へ自動代入・反映。
+- **公式URL連携・フォールバックヘルパーの実装 (`src/libs/officialUrl.ts`) [完了]**
+  - `getOfficialRaceUrl(race, language)`: 個別レースの `official_url` を最優先とし、未設定時も主催者・国・言語に応じた最適な公式出馬表・ポータルURLへシームレスにフォールバック（JRA, NAR, France Galop, BHA, Equibase, HKJC, HRI対応）。
+  - `getOfficialSourceLabel(organization, language)`: 各主催者ごとの公式ソース表記（例:「JRA 公式サイト」「France Galop Officiel」「Sporting Life / BHA 公式出馬表」「HKJC 香港賽馬會官方排位表」など）を提供。
+- **UIコンポーネントへの外部リンクボタン実装 [完了]**
+  - **レース詳細ダイアログ (`RaceDetailDialog.tsx`)**: 出走条件セクション直下に、視認性の高い「公式出馬表・レース情報を見る ↗」リンクボタンを設置。主催者公式ソース名を併記し、タップで新規タブ（`target="_blank"`, `rel="noopener noreferrer"`）にて安全に遷移可能に。
+  - **レースカード (`RaceCard.tsx`)**: カード上部の発走予定・時刻表示横に、コンパクトな外部リンクアイコンボタン（`ExternalLink`）を配備。`e.stopPropagation()` によりカードクリック（詳細ダイアログ展開）を阻害せず、即座に公式サイトを開くことが可能。
+- **多言語（i18n）完全対応 [完了]**
+  - 日本語（`ja`）、英語（`en`）、フランス語（`fr`）、繁体字中国語（`zh`）の4言語すべてでボタン文言、アクセシビリティ用ARIA属性（`aria-label`）、公式ソース名をローカライズ。
+- **テスト自動化 & 品質検証 [完了]**
+  - 単体テスト `tests/unit/officialUrl.test.ts` および UI統合テスト `tests/unit/officialUrl.test.tsx` を追加し、全54テストファイル・510テスト全件パスを達成。型検査（`tsc --noEmit`）・本番ビルド（`vite build`）エラーゼロ。
+
+---
+
 ### Step 50: 実績データ登録時におけるAI推測補完・架空データ生成の禁止規約策定（公式一次ソース準拠および未取得時空値原則の徹底） (v1.37.2 / Issue #153) [完了]
 - **プロジェクト規約の強化 (`.agents/rules/00-project.md`) [完了]**
   - `Data accuracy & Single Source of Truth` セクションを強化。
@@ -15,6 +32,8 @@
   - 取得失敗時・未開催レースにおける安全な空値フォールバック、およびパーサー障害発生時の調査・是正フローを規定。
 - **プロダクト要求仕様書（PRD）の更新 (`docs/PRD.md`) [完了]**
   - v1.37.2 / Step 50 として開発履歴を反映し、データ信頼性ガバナンス体制を最新化。
+
+---
 
 ---
 

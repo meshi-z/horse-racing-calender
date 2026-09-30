@@ -13,7 +13,8 @@ import {
 import { getRaceDisplayNames } from "@/libs/raceLanguage";
 import type { Race } from "@/types/race";
 import { cn } from "@/libs/utils";
-import { Calendar, Clock, MapPin, Trophy } from "lucide-react";
+import { Calendar, Clock, MapPin, Trophy, ExternalLink } from "lucide-react";
+import { getOfficialRaceUrl, getOfficialSourceLabel } from "@/libs/officialUrl";
 
 export interface RaceCardProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "onSelect"> {
@@ -54,6 +55,9 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
     const winnerName = race.winner
       ? race.winner.name[language] || race.winner.name.en || race.winner.name.ja
       : null;
+
+    const officialUrl = getOfficialRaceUrl(race, language);
+    const officialSourceLabel = getOfficialSourceLabel(race.organization, language);
 
     const handleClick = () => {
       onSelect?.(race);
@@ -151,25 +155,42 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                   </Badge>
                 )}
               </div>
-              {timeInfo.isConfirmed ? (
-                <div className="flex items-center gap-1.5">
-                  <Clock className="h-3.5 w-3.5" />
-                  <span className="font-semibold text-foreground">{timeInfo.time}</span>
-                  {timeInfo.statusLabel && (
-                    <Badge
-                      variant="outline"
-                      className="text-[10px] px-1.5 py-0 h-4"
-                    >
-                      {timeInfo.statusLabel}
-                    </Badge>
-                  )}
-                </div>
-              ) : (
-                <div className="flex items-center gap-1.5 text-muted-foreground">
-                  <Clock className="h-3.5 w-3.5" />
-                  <span className="font-medium text-[11px]">{t("status.timeTbd")}</span>
-                </div>
-              )}
+              <div className="flex items-center gap-2">
+                {timeInfo.isConfirmed ? (
+                  <div className="flex items-center gap-1.5">
+                    <Clock className="h-3.5 w-3.5" />
+                    <span className="font-semibold text-foreground">{timeInfo.time}</span>
+                    {timeInfo.statusLabel && (
+                      <Badge
+                        variant="outline"
+                        className="text-[10px] px-1.5 py-0 h-4"
+                      >
+                        {timeInfo.statusLabel}
+                      </Badge>
+                    )}
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-1.5 text-muted-foreground">
+                    <Clock className="h-3.5 w-3.5" />
+                    <span className="font-medium text-[11px]">{t("status.timeTbd")}</span>
+                  </div>
+                )}
+                {officialUrl && (
+                  <a
+                    href={officialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    onKeyDown={(e) => e.stopPropagation()}
+                    className="inline-flex items-center justify-center p-1 rounded-md text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                    aria-label={t("card.officialLinkAria", { name: primaryName })}
+                    title={officialSourceLabel}
+                    data-testid="race-card-official-link"
+                  >
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                )}
+              </div>
             </div>
 
             {/* 代替開催時の元日程案内 */}

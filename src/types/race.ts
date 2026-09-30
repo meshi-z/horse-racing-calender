@@ -57,6 +57,7 @@ export type Race = {
   age_constraint: AgeConstraint;
   handicap: Handicap;
   winner?: RaceWinner;
+  official_url?: string; // 各競馬主催者・出馬表等の公式URL
 };
 
 export type DistanceCategory = 'sprint' | 'mile' | 'intermediate' | 'long';

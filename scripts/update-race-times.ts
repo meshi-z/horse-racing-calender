@@ -54,6 +54,7 @@ export interface RaceOutput {
     en: string;
   };
   winner?: RaceWinner;
+  official_url?: string;
 }
 
 /**
@@ -607,6 +608,9 @@ export async function updateRaceTimes(options: UpdateOptions = {}): Promise<Upda
 
           race.start_time = newUtcTime;
           race.is_time_confirmed = true;
+          if (match.sourceUrl) {
+            race.official_url = match.sourceUrl;
+          }
 
           updatedRaces.push({
             id: race.id,

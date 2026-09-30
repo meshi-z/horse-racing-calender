@@ -48,6 +48,7 @@ export const translations = {
     },
     card: {
       postponedFrom: '当初予定: {date} から順延',
+      officialLinkAria: '{name}の公式出馬表・レース情報を新しいタブで開く',
     },
     winner: {
       badge: '🏆 {name}',
@@ -67,6 +68,8 @@ export const translations = {
       rescheduledTitle: '悪天候等による代替開催（日程変更）',
       rescheduledNoticeWithDate: '当初開催予定日：{date} より変更されました。',
       rescheduledNotice: '当初の予定日程から変更されました。',
+      viewOfficialCard: '公式出馬表・レース情報を見る',
+      officialSource: '主催者公式情報',
     },
     calendar: {
       prevMonth: '前月へ',
@@ -283,6 +286,7 @@ export const translations = {
     },
     card: {
       postponedFrom: 'Postponed from {date}',
+      officialLinkAria: 'Open official race info for {name} in a new tab',
     },
     winner: {
       badge: '🏆 {name}',
@@ -302,6 +306,8 @@ export const translations = {
       rescheduledTitle: 'Rescheduled Race (Date Postponed)',
       rescheduledNoticeWithDate: 'Postponed from original scheduled date: {date}.',
       rescheduledNotice: 'Schedule was changed from the original date.',
+      viewOfficialCard: 'View Official Race Card & Info',
+      officialSource: 'Official Organizer Source',
     },
     calendar: {
       prevMonth: 'Previous month',
@@ -518,6 +524,7 @@ export const translations = {
     },
     card: {
       postponedFrom: 'Reporté depuis le {date}',
+      officialLinkAria: 'Ouvrir les informations officielles de {name} dans un nouvel onglet',
     },
     winner: {
       badge: '🏆 {name}',
@@ -537,6 +544,8 @@ export const translations = {
       rescheduledTitle: 'Course reportée (changement de date)',
       rescheduledNoticeWithDate: 'Reporté de la date initialement prévue: {date}.',
       rescheduledNotice: 'La date a été modifiée par rapport au calendrier initial.',
+      viewOfficialCard: 'Partants & infos officielles',
+      officialSource: 'Source officielle organisateur',
     },
     calendar: {
       prevMonth: 'Mois précédent',
@@ -753,6 +762,7 @@ export const translations = {
     },
     card: {
       postponedFrom: '原定日期: {date} 順延',
+      officialLinkAria: '在新分頁開啟 {name} 的官方排位表與賽事資訊',
     },
     winner: {
       badge: '🏆 {name}',
@@ -772,6 +782,8 @@ export const translations = {
       rescheduledTitle: '因惡劣天氣等因素之補賽（賽期變更）',
       rescheduledNoticeWithDate: '已由原定舉辦日期 {date} 變更。',
       rescheduledNotice: '已由原定賽期變更。',
+      viewOfficialCard: '查看官方排位表・賽事資訊',
+      officialSource: '主辦方官方資訊',
     },
     calendar: {
       prevMonth: '上個月',
