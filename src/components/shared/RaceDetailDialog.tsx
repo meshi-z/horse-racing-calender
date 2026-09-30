@@ -19,7 +19,7 @@ import { getRaceDisplayNames } from "@/libs/raceLanguage";
 import type { Race } from "@/types/race";
 import { cn } from "@/libs/utils";
 import { Calendar, Clock, MapPin, AlertTriangle, HelpCircle, Trophy, ExternalLink } from "lucide-react";
-import { getOfficialRaceUrl, getOfficialSourceLabel } from "@/libs/officialUrl";
+import { getOfficialRaceUrl, getOfficialSourceLabel, ENABLE_OFFICIAL_LINKS } from "@/libs/officialUrl";
 
 export interface RaceDetailDialogProps {
   race: Race | null;
@@ -301,8 +301,8 @@ export function RaceDetailDialog({
             </div>
           </div>
 
-          {/* 主催者公式出馬表・レース情報リンク */}
-          {officialUrl && (
+          {/* 主催者公式出馬表・レース情報リンク (仕様見直し・改修期間中は一時非表示: Issue #155) */}
+          {ENABLE_OFFICIAL_LINKS && officialUrl && (
             <div className="pt-1">
               <a
                 href={officialUrl}

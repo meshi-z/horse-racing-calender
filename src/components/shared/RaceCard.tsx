@@ -14,7 +14,7 @@ import { getRaceDisplayNames } from "@/libs/raceLanguage";
 import type { Race } from "@/types/race";
 import { cn } from "@/libs/utils";
 import { Calendar, Clock, MapPin, Trophy, ExternalLink } from "lucide-react";
-import { getOfficialRaceUrl, getOfficialSourceLabel } from "@/libs/officialUrl";
+import { getOfficialRaceUrl, getOfficialSourceLabel, ENABLE_OFFICIAL_LINKS } from "@/libs/officialUrl";
 
 export interface RaceCardProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "onSelect"> {
@@ -175,7 +175,7 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                     <span className="font-medium text-[11px]">{t("status.timeTbd")}</span>
                   </div>
                 )}
-                {officialUrl && (
+                {ENABLE_OFFICIAL_LINKS && officialUrl && (
                   <a
                     href={officialUrl}
                     target="_blank"
