@@ -32,11 +32,18 @@ export type Handicap = {
   en: string;
 };
 
+export type LocalizedWinnerName = {
+  ja: string;
+  en?: string;
+  fr?: string;
+  zh?: string;
+};
+
 export interface RaceWinner {
-  name: LocalizedText;        // 勝ち馬名（日・英・仏・中）
-  jockey?: LocalizedText;     // 騎手名（オプション）
-  horse_number?: number;      // 馬番（オプション）
-  time?: string;              // 走破タイム（オプション、例: "2:24.1"）
+  name: LocalizedWinnerName;        // 勝ち馬名（日・英・仏・中、空値原則に基づき日以外は未設定可）
+  jockey?: LocalizedWinnerName;     // 騎手名（オプション、空値原則に基づき日以外は未設定可）
+  horse_number?: number;            // 馬番（オプション）
+  time?: string;                    // 走破タイム（オプション、例: "2:24.1"）
 }
 
 export type Race = {

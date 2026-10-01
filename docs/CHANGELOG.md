@@ -6,6 +6,22 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 53: 過去勝ち馬多言語データの是正および空値原則（Null Value Principle）の完全徹底 (v1.38.2 / Issue #160) [完了]
+- **インシデント是正・不整合データの完全排除 (`src/data/race_winners.json`, `public/data/races.json`) [完了]**
+  - NAR（地方競馬・ばんえい競馬）全239レースの勝ち馬データに残存していた、旧ダミー生成スクリプト由来の架空英語馬名および騎手名（銀河賞「スターイチバン」に "Notturno" / "Seiji Yamazaki" が割り当てられていた等、50種類のダミープール使い回し）を完全削除。
+  - JRA（中央競馬）全103レースの機械的ローマ字（`buenaonda` 等）および英語騎手名フィールドへの漢字混入を完全削除。
+  - 公式一次ソース（`keiba.go.jp`, `jra.go.jp`）に存在しない英語馬名・騎手名について、**空値原則（Null Value Principle）**に基づき「未設定（undefined）」を徹底。
+- **UIフォールバックによる正しい多言語表示 [完了]**
+  - フロントエンド（`RaceCard.tsx` / `RaceDetailDialog.tsx`）の `name[lang] || name.ja` フォールバック設計により、英語表示時でもカタカナ馬名・漢字騎手名が正しく表示され、架空の別馬が表示される致命的バグを解消。
+- **データパイプラインおよびパーサーの根本是正 (`scripts/lib/nar-results.ts`, `scripts/lib/jra-results.ts`) [完了]**
+  - `kanaToHepburn` / `romanizeJapaneseRaceName` による機械的ヘボン式ローマ字推測生成ロジックを完全撤廃。公式一次ソースに英名が存在しない場合は推測せず未設定として構築。
+  - 型定義の適正化 (`src/types/race.ts`, `scripts/parse-races.ts`, `scripts/update-race-times.ts`): `RaceWinner` の `name` / `jockey` において `en?: string` を許容する `LocalizedWinnerName` を導入し、空値原則との整合性を担保。
+- **回帰防止テスト新設 & 品質検証 [完了]**
+  - `tests/unit/dataIntegrity.test.ts` を追加し、NAR/JRAの空値原則遵守、銀河賞の正常化、同一英語名の複数日本語馬名への重複割り当て禁止、不正文字列・漢字混入排除、マスターデータと配信データの完全同期を自動検証。
+  - 全55テストファイル・517テスト全件パス、型検査（`tsc --noEmit`）および本番ビルド（`vite build`）正常完了。
+
+---
+
 ### Step 52: 公式サイトへの外部リンク表示の一時的な無効化（UI非表示対応） (v1.38.1 / Issue #155) [完了]
 - **機能フラグによる安全な非表示制御 (`src/libs/officialUrl.ts`) [完了]**
   - `ENABLE_OFFICIAL_LINKS = false` フラグを導入し、仕様見直し・本格改修期間中の一時的なUI非表示措置を実施。

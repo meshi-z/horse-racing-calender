@@ -10,13 +10,13 @@ import {
 export interface RaceWinner {
   name: {
     ja: string;
-    en: string;
+    en?: string;
     fr?: string;
     zh?: string;
   };
   jockey?: {
     ja: string;
-    en: string;
+    en?: string;
     fr?: string;
     zh?: string;
   };
