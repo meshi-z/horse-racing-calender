@@ -31,11 +31,13 @@
     "winner": {
       "name": {
         "ja": "ストームライダー",
-        "en": "Storm Rider"
+        "en": "Storm Rider",
+        "zh": "風雲武士"
       },
       "jockey": {
         "ja": "K Teetan",
-        "en": "K Teetan"
+        "en": "K Teetan",
+        "zh": "田泰安"
       },
       "horse_number": 11,
       "time": "1:20.62"
@@ -287,11 +289,13 @@
     "winner": {
       "name": {
         "ja": "ステラエクスプレス",
-        "en": "Stellar Express"
+        "en": "Stellar Express",
+        "zh": "星際快車"
       },
       "jockey": {
         "ja": "A Atzeni",
-        "en": "A Atzeni"
+        "en": "A Atzeni",
+        "zh": "艾兆禮"
       },
       "horse_number": 10,
       "time": "0:55.85"
@@ -437,11 +441,13 @@
     "winner": {
       "name": {
         "ja": "スピードドラゴン",
-        "en": "Speed Dragon"
+        "en": "Speed Dragon",
+        "zh": "勁速威龍"
       },
       "jockey": {
         "ja": "L.ヒューイットソン",
-        "en": "Lyle Hewitson"
+        "en": "Lyle Hewitson",
+        "zh": "希威森"
       },
       "horse_number": 8,
       "time": "1:48.00"
@@ -1558,11 +1564,13 @@
     "winner": {
       "name": {
         "ja": "カーインライジング",
-        "en": "Ka Ying Rising"
+        "en": "Ka Ying Rising",
+        "zh": "嘉應高昇"
       },
       "jockey": {
         "ja": "Z Purton",
-        "en": "Z Purton"
+        "en": "Z Purton",
+        "zh": "潘頓"
       },
       "horse_number": 1,
       "time": "1:07.66"
@@ -1600,11 +1608,13 @@
     "winner": {
       "name": {
         "ja": "ロマンチックウォリアー",
-        "en": "Romantic Warrior"
+        "en": "Romantic Warrior",
+        "zh": "浪漫勇士"
       },
       "jockey": {
         "ja": "J Mcdonald",
-        "en": "J Mcdonald"
+        "en": "J Mcdonald",
+        "zh": "麥道朗"
       },
       "horse_number": 1,
       "time": "1:32.60"
@@ -2150,11 +2160,13 @@
     "winner": {
       "name": {
         "ja": "リトルパラダイス",
-        "en": "Little Paradise"
+        "en": "Little Paradise",
+        "zh": "小鳥天堂"
       },
       "jockey": {
         "ja": "C Y Ho",
-        "en": "C Y Ho"
+        "en": "C Y Ho",
+        "zh": "何澤堯"
       },
       "horse_number": 2,
       "time": "1:33.31"
@@ -2652,11 +2664,13 @@
     "winner": {
       "name": {
         "ja": "ナンバーズ",
-        "en": "Numbers"
+        "en": "Numbers",
+        "zh": "數字天文"
       },
       "jockey": {
         "ja": "K C Leung",
-        "en": "K C Leung"
+        "en": "K C Leung",
+        "zh": "梁家俊"
       },
       "horse_number": 7,
       "time": "1:46.36"
@@ -3689,11 +3703,13 @@
     "winner": {
       "name": {
         "ja": "カーインライジング",
-        "en": "Ka Ying Rising"
+        "en": "Ka Ying Rising",
+        "zh": "嘉應高昇"
       },
       "jockey": {
         "ja": "Z Purton",
-        "en": "Z Purton"
+        "en": "Z Purton",
+        "zh": "潘頓"
       },
       "horse_number": 1,
       "time": "1:19.36"
@@ -4508,11 +4524,13 @@
     "winner": {
       "name": {
         "ja": "ストーミーグローブ",
-        "en": "Stormy Grove"
+        "en": "Stormy Grove",
+        "zh": "紫荊盛勢"
       },
       "jockey": {
         "ja": "H Bentley",
-        "en": "H Bentley"
+        "en": "H Bentley",
+        "zh": "班德禮"
       },
       "horse_number": 14,
       "time": "1:46.62"
@@ -4550,11 +4568,13 @@
     "winner": {
       "name": {
         "ja": "ロマンチックウォリアー",
-        "en": "Romantic Warrior"
+        "en": "Romantic Warrior",
+        "zh": "浪漫勇士"
       },
       "jockey": {
         "ja": "J Mcdonald",
-        "en": "J Mcdonald"
+        "en": "J Mcdonald",
+        "zh": "麥道朗"
       },
       "horse_number": 1,
       "time": "1:59.77"
@@ -6833,11 +6853,13 @@
     "winner": {
       "name": {
         "ja": "インビンシブルアイビス",
-        "en": "Invincible Ibis"
+        "en": "Invincible Ibis",
+        "zh": "駿步騰飛"
       },
       "jockey": {
         "ja": "H Bowman",
-        "en": "H Bowman"
+        "en": "H Bowman",
+        "zh": "布文"
       },
       "horse_number": 5,
       "time": "1:59.43"
@@ -8661,11 +8683,13 @@
     "winner": {
       "name": {
         "ja": "カーインライジング",
-        "en": "Ka Ying Rising"
+        "en": "Ka Ying Rising",
+        "zh": "嘉應高昇"
       },
       "jockey": {
         "ja": "Z Purton",
-        "en": "Z Purton"
+        "en": "Z Purton",
+        "zh": "潘頓"
       },
       "horse_number": 1,
       "time": "1:07.12"
@@ -8703,11 +8727,13 @@
     "winner": {
       "name": {
         "ja": "ラッキースワイネス",
-        "en": "Lucky Sweynesse"
+        "en": "Lucky Sweynesse",
+        "zh": "金鑽貴人"
       },
       "jockey": {
         "ja": "K C Leung",
-        "en": "K C Leung"
+        "en": "K C Leung",
+        "zh": "梁家俊"
       },
       "horse_number": 3,
       "time": "1:33.65"
@@ -11525,11 +11551,13 @@
     "winner": {
       "name": {
         "ja": "カーインライジング",
-        "en": "Ka Ying Rising"
+        "en": "Ka Ying Rising",
+        "zh": "嘉應高昇"
       },
       "jockey": {
         "ja": "Z Purton",
-        "en": "Z Purton"
+        "en": "Z Purton",
+        "zh": "潘頓"
       },
       "horse_number": 1,
       "time": "1:07.10"
@@ -11567,11 +11595,13 @@
     "winner": {
       "name": {
         "ja": "マイウィッシュ",
-        "en": "My Wish"
+        "en": "My Wish",
+        "zh": "祝願"
       },
       "jockey": {
         "ja": "H Bowman",
-        "en": "H Bowman"
+        "en": "H Bowman",
+        "zh": "布文"
       },
       "horse_number": 5,
       "time": "1:32.37"
@@ -11609,11 +11639,13 @@
     "winner": {
       "name": {
         "ja": "ロマンチックウォリアー",
-        "en": "Romantic Warrior"
+        "en": "Romantic Warrior",
+        "zh": "浪漫勇士"
       },
       "jockey": {
         "ja": "J Mcdonald",
-        "en": "J Mcdonald"
+        "en": "J Mcdonald",
+        "zh": "麥道朗"
       },
       "horse_number": 2,
       "time": "2:00.64"
@@ -13458,11 +13490,13 @@
     "winner": {
       "name": {
         "ja": "ロマンチックトール",
-        "en": "Romantic Thor"
+        "en": "Romantic Thor",
+        "zh": "浪漫戰神"
       },
       "jockey": {
         "ja": "M F Poon",
-        "en": "M F Poon"
+        "en": "M F Poon",
+        "zh": "潘明輝"
       },
       "horse_number": 7,
       "time": "2:30.76"
@@ -16638,11 +16672,13 @@
     "winner": {
       "name": {
         "ja": "ロマンチックウォリアー",
-        "en": "Romantic Warrior"
+        "en": "Romantic Warrior",
+        "zh": "浪漫勇士"
       },
       "jockey": {
         "ja": "J Mcdonald",
-        "en": "J Mcdonald"
+        "en": "J Mcdonald",
+        "zh": "麥道朗"
       },
       "horse_number": 1,
       "time": "2:26.67"
@@ -17699,11 +17735,13 @@
     "winner": {
       "name": {
         "ja": "ライジングワールド",
-        "en": "Rising World"
+        "en": "Rising World",
+        "zh": "共建世界"
       },
       "jockey": {
         "ja": "Z Purton",
-        "en": "Z Purton"
+        "en": "Z Purton",
+        "zh": "潘頓"
       },
       "horse_number": 12,
       "time": "1:09.74"
@@ -17776,11 +17814,13 @@
     "winner": {
       "name": {
         "ja": "ライトイヤーズチャーム",
-        "en": "Light Years Charm"
+        "en": "Light Years Charm",
+        "zh": "光年魅力"
       },
       "jockey": {
         "ja": "C L Chau",
-        "en": "C L Chau"
+        "en": "C L Chau",
+        "zh": "周俊樂"
       },
       "horse_number": 5,
       "time": "1:33.58"
@@ -21415,11 +21455,13 @@
     "winner": {
       "name": {
         "ja": "リトルパラダイス",
-        "en": "Little Paradise"
+        "en": "Little Paradise",
+        "zh": "小鳥天堂"
       },
       "jockey": {
         "ja": "Z Purton",
-        "en": "Z Purton"
+        "en": "Z Purton",
+        "zh": "潘頓"
       },
       "horse_number": 6,
       "time": "1:20.38"
@@ -21457,11 +21499,13 @@
     "winner": {
       "name": {
         "ja": "ビューティージョイ",
-        "en": "Beauty Joy"
+        "en": "Beauty Joy",
+        "zh": "美麗同享"
       },
       "jockey": {
         "ja": "J Moreira",
-        "en": "J Moreira"
+        "en": "J Moreira",
+        "zh": "莫雷拉"
       },
       "horse_number": 5,
       "time": "1:47.96"
@@ -32306,11 +32350,13 @@
     "winner": {
       "name": {
         "ja": "カーインライジング",
-        "en": "Ka Ying Rising"
+        "en": "Ka Ying Rising",
+        "zh": "嘉應高昇"
       },
       "jockey": {
         "ja": "Z Purton",
-        "en": "Z Purton"
+        "en": "Z Purton",
+        "zh": "潘頓"
       },
       "horse_number": 1,
       "time": "1:06.11"
@@ -35884,11 +35930,13 @@
     "winner": {
       "name": {
         "ja": "インビンシブルアイビス",
-        "en": "Invincible Ibis"
+        "en": "Invincible Ibis",
+        "zh": "駿步騰飛"
       },
       "jockey": {
         "ja": "L Ferraris",
-        "en": "L Ferraris"
+        "en": "L Ferraris",
+        "zh": "霍宏聲"
       },
       "horse_number": 3,
       "time": "1:20.84"

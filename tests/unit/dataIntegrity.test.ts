@@ -99,11 +99,58 @@ describe('Data Integrity & Multilingual Winners Audit (Issue #160)', () => {
         expect(race.winner, `races.json race ${race.id} missing winner`).toBeDefined();
         expect(race.winner.name.ja).toBe(masterWinner.name.ja);
         expect(race.winner.name.en).toBe(masterWinner.name.en);
+        expect(race.winner.name.zh).toBe(masterWinner.name.zh);
         if (masterWinner.jockey) {
           expect(race.winner.jockey?.ja).toBe(masterWinner.jockey.ja);
           expect(race.winner.jockey?.en).toBe(masterWinner.jockey.en);
+          expect(race.winner.jockey?.zh).toBe(masterWinner.jockey.zh);
         }
       }
+    }
+  });
+
+  it('香港競馬（HKJC）全24レースの勝者データに公式中文（繁体字・zh）馬名および騎手名が正しく設定されていること (Issue #161)', () => {
+    const hkWinnerIds = Object.keys(winners).filter((id) => id.startsWith('2026-hk-'));
+    expect(hkWinnerIds.length).toBe(24);
+
+    for (const id of hkWinnerIds) {
+      const winner = winners[id];
+      expect(winner.name.zh, `HK race ${id} missing name.zh`).toBeDefined();
+      expect(winner.name.zh.length).toBeGreaterThan(0);
+      expect(winner.jockey?.zh, `HK race ${id} missing jockey.zh`).toBeDefined();
+      expect(winner.jockey?.zh.length).toBeGreaterThan(0);
+
+      // races.json 側も検証
+      const race = races.find((r) => r.id === id);
+      expect(race?.winner?.name?.zh, `races.json HK race ${id} missing name.zh`).toBe(winner.name.zh);
+      expect(race?.winner?.jockey?.zh, `races.json HK race ${id} missing jockey.zh`).toBe(winner.jockey?.zh);
+    }
+
+    // 代表的な実在G1馬の中文名ピンポイント検証
+    expect(winners['2026-hk-g1-01'].name.zh).toBe('嘉應高昇');
+    expect(winners['2026-hk-g1-01'].jockey.zh).toBe('潘頓');
+    expect(winners['2026-hk-g1-02'].name.zh).toBe('浪漫勇士');
+    expect(winners['2026-hk-g1-02'].jockey.zh).toBe('麥道朗');
+    expect(winners['2026-hk-g1-07'].name.zh).toBe('駿步騰飛');
+    expect(winners['2026-hk-g1-07'].jockey.zh).toBe('布文');
+    expect(winners['2026-hk-g2-02'].name.zh).toBe('金鑽貴人');
+    expect(winners['2026-hk-g2-02'].jockey.zh).toBe('梁家俊');
+    expect(winners['2026-hk-g3-09'].name.zh).toBe('美麗同享');
+    expect(winners['2026-hk-g3-09'].jockey.zh).toBe('莫雷拉');
+  });
+
+  it('中間ファイル（src/data/france_real_winners.json 等）に架空ダミー馬名の残骸が存在せず、マスターデータと一致していること (Issue #161)', () => {
+    const franceRealWinnersPath = path.resolve('src/data/france_real_winners.json');
+    if (fs.existsSync(franceRealWinnersPath)) {
+      const franceReal = JSON.parse(fs.readFileSync(franceRealWinnersPath, 'utf-8'));
+      const rawContent = JSON.stringify(franceReal);
+      expect(rawContent.includes('ボリショイ')).toBe(false);
+      expect(rawContent.includes('ドゥリダ')).toBe(false);
+      expect(rawContent.includes('プシュケ')).toBe(false);
+      expect(rawContent.includes('ハヤザーク')).toBe(false);
+
+      // 実在馬名の存在を確認
+      expect(franceReal['2026-france-g1-12']?.name?.en).toBe('Samangan');
     }
   });
 });
