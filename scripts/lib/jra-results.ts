@@ -1,5 +1,4 @@
 import { cleanRaceName } from './jra-syutsuba';
-import { kanaToHepburn, romanizeJapaneseRaceName } from './hepburn';
 import type { RaceWinner } from '../update-race-times';
 
 export interface ParsedRaceResult {
@@ -161,26 +160,22 @@ export function parseJraRaceResultHtml(html: string): ParsedRaceResult[] {
 
 /**
  * パースされた勝者情報から多言語対応の RaceWinner オブジェクトを構築
+ * 一次ソース原則および空値原則（Null Value Principle）に基づき、
+ * 公式一次ソースに存在しない英語馬名・騎手名は推測生成せず未設定とする。
  */
 export function buildJraRaceWinner(parsed: ParsedRaceResult['winner']): RaceWinner {
   const jaName = parsed.horseName;
-  const rawEnName = kanaToHepburn(jaName);
-  const enName = rawEnName ? rawEnName.charAt(0).toUpperCase() + rawEnName.slice(1) : jaName;
 
   let jockeyObj: RaceWinner['jockey'];
   if (parsed.jockey) {
-    const jaJockey = parsed.jockey.replace(/\s+/g, ' ').trim();
-    const enJockey = romanizeJapaneseRaceName(jaJockey);
     jockeyObj = {
-      ja: jaJockey,
-      en: enJockey,
+      ja: parsed.jockey.replace(/\s+/g, ' ').trim(),
     };
   }
 
   return {
     name: {
       ja: jaName,
-      en: enName,
     },
     jockey: jockeyObj,
     horse_number: parsed.horseNumber,

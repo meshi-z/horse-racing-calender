@@ -150,8 +150,9 @@ describe('update-race-results', () => {
 
       const winnerObj = buildJraRaceWinner(parsed[0].winner);
       expect(winnerObj.name.ja).toBe('ピューロマジック');
-      expect(winnerObj.name.en).toBe('Pyuromajikku');
+      expect(winnerObj.name.en).toBeUndefined();
       expect(winnerObj.jockey?.ja).toBe('岩田 望来');
+      expect(winnerObj.jockey?.en).toBeUndefined();
       expect(winnerObj.horse_number).toBe(16);
       expect(winnerObj.time).toBe('1:09.2');
     });
@@ -183,7 +184,9 @@ describe('update-race-results', () => {
 
       const winnerObj = buildNarRaceWinner(parsed[0].winner);
       expect(winnerObj.name.ja).toBe('グランブリッジ');
-      expect(winnerObj.name.en).toBe('Guramburijji');
+      expect(winnerObj.name.en).toBeUndefined();
+      expect(winnerObj.jockey?.ja).toBe('川田 将雅');
+      expect(winnerObj.jockey?.en).toBeUndefined();
       expect(winnerObj.horse_number).toBe(5);
       expect(winnerObj.time).toBe('2:14.2');
     });

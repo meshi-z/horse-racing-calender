@@ -30,9 +30,16 @@ export interface LocalizedConstraint<T extends string> {
   label: LocalizedString;
 }
 
+export interface LocalizedWinnerName {
+  ja: string;
+  en?: string;
+  fr?: string;
+  zh?: string;
+}
+
 export interface RaceWinner {
-  name: LocalizedString;
-  jockey?: LocalizedString;
+  name: LocalizedWinnerName;
+  jockey?: LocalizedWinnerName;
   horse_number?: number;
   time?: string;
 }
