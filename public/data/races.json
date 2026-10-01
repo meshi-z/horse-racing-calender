@@ -36626,8 +36626,8 @@
     },
     "grade": "G2",
     "date": "2026-10-03",
-    "start_time": "2026-10-03T12:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-03T11:23:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-03",
     "course": {
@@ -36642,7 +36642,8 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "official_url": "https://www.pmu.fr/turf/"
   },
   {
     "id": "2026-france-g1-18",
@@ -36655,8 +36656,8 @@
     },
     "grade": "G1",
     "date": "2026-10-03",
-    "start_time": "2026-10-03T12:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-03T15:00:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-03",
     "course": {
@@ -36671,7 +36672,8 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "official_url": "https://www.pmu.fr/turf/"
   },
   {
     "id": "2026-france-g1-19",
@@ -36684,8 +36686,8 @@
     },
     "grade": "G1",
     "date": "2026-10-03",
-    "start_time": "2026-10-03T13:20:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-03T14:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-03",
     "course": {
@@ -36700,7 +36702,8 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "official_url": "https://www.pmu.fr/turf/"
   },
   {
     "id": "2026-uk-g3-62",
@@ -36769,8 +36772,8 @@
     },
     "grade": "G2",
     "date": "2026-10-03",
-    "start_time": "2026-10-03T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-03T15:35:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-03",
     "course": {
@@ -36785,7 +36788,8 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "official_url": "https://www.pmu.fr/turf/"
   },
   {
     "id": "2026-france-g2-22",
@@ -36798,8 +36802,8 @@
     },
     "grade": "G2",
     "date": "2026-10-03",
-    "start_time": "2026-10-03T14:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-03T11:58:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-03",
     "course": {
@@ -36814,7 +36818,8 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "official_url": "https://www.pmu.fr/turf/"
   },
   {
     "id": "2026-us-g1-64",
@@ -37244,8 +37249,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-04",
-    "start_time": "2026-10-04T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-04T09:05:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "金沢",
       "en": "Kanazawa"
@@ -37258,7 +37263,8 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
-    }
+    },
+    "official_url": "https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/DebaTable?k_raceDate=2026%2F10%2F04&amp;k_raceNo=9&amp;k_babaCode=22"
   },
   {
     "id": "2026-france-g1-24",
@@ -37616,8 +37622,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-06",
-    "start_time": "2026-10-06T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-06T09:00:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "金沢",
       "en": "Kanazawa"
@@ -37630,7 +37636,8 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
-    }
+    },
+    "official_url": "https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/DebaTable?k_raceDate=2026%2F10%2F06&amp;k_raceNo=10&amp;k_babaCode=22"
   },
   {
     "id": "2026-nar-jpn2-09",
