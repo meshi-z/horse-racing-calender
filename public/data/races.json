@@ -37798,8 +37798,8 @@
     },
     "grade": "G2",
     "date": "2026-10-04",
-    "start_time": "2026-10-04T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-04T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
@@ -37813,7 +37813,8 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
-    }
+    },
+    "official_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0105202604021120261004/C5"
   },
   {
     "id": "2026-jra-g2-28",
@@ -37825,8 +37826,8 @@
     },
     "grade": "G2",
     "date": "2026-10-04",
-    "start_time": "2026-10-04T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-04T06:30:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto",
@@ -37840,7 +37841,8 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
-    }
+    },
+    "official_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604021120261004/A3"
   },
   {
     "id": "2026-nar-local-183",
