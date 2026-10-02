@@ -37812,8 +37812,8 @@
     },
     "grade": "G1",
     "date": "2026-10-09",
-    "start_time": "2026-10-09T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-09T12:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-09",
     "course": {
@@ -37828,7 +37828,8 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "official_url": "https://www.sportinglife.com/racing/racecards/2026-10-09"
   },
   {
     "id": "2026-uk-g2-47",
