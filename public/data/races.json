@@ -37278,8 +37278,8 @@
     },
     "grade": "G1",
     "date": "2026-10-04",
-    "start_time": "2026-10-04T11:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-04T11:31:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-04",
     "course": {
@@ -37294,7 +37294,8 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "official_url": "https://www.pmu.fr/turf/"
   },
   {
     "id": "2026-france-g1-20",
@@ -37307,8 +37308,8 @@
     },
     "grade": "G1",
     "date": "2026-10-04",
-    "start_time": "2026-10-04T12:20:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-04T12:47:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-04",
     "course": {
@@ -37323,7 +37324,8 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "official_url": "https://www.pmu.fr/turf/"
   },
   {
     "id": "2026-france-g1-22",
@@ -37336,8 +37338,8 @@
     },
     "grade": "G1",
     "date": "2026-10-04",
-    "start_time": "2026-10-04T12:55:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-04T12:09:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-04",
     "course": {
@@ -37352,7 +37354,8 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "official_url": "https://www.pmu.fr/turf/"
   },
   {
     "id": "2026-france-g1-25",
@@ -37366,7 +37369,7 @@
     "grade": "G1",
     "date": "2026-10-04",
     "start_time": "2026-10-04T14:05:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-04",
     "course": {
@@ -37381,7 +37384,8 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "official_url": "https://www.pmu.fr/turf/"
   },
   {
     "id": "2026-ie-g3-37",
@@ -37427,7 +37431,7 @@
     "grade": "G1",
     "date": "2026-10-04",
     "start_time": "2026-10-04T14:50:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-04",
     "course": {
@@ -37442,7 +37446,8 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "official_url": "https://www.pmu.fr/turf/"
   },
   {
     "id": "2026-france-g1-23",
@@ -37455,8 +37460,8 @@
     },
     "grade": "G1",
     "date": "2026-10-04",
-    "start_time": "2026-10-04T15:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-04T15:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-04",
     "course": {
@@ -37471,7 +37476,8 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "official_url": "https://www.pmu.fr/turf/"
   },
   {
     "id": "2026-us-g1-66",
