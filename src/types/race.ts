@@ -65,6 +65,7 @@ export type Race = {
   handicap: Handicap;
   winner?: RaceWinner;
   official_url?: string; // 各競馬主催者・出馬表等の公式URL
+  race_number?: number; // 当日のレース番号（例: 11R -> 11）
 };
 
 export type DistanceCategory = 'sprint' | 'mile' | 'intermediate' | 'long';
