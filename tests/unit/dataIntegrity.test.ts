@@ -202,4 +202,28 @@ describe('Data Integrity & Multilingual Winners Audit (Issue #160)', () => {
       expect(winners['2026-us-g3-113']).toBeUndefined();
     });
   });
+
+  describe('日本テレビ盃（2026-nar-jpn2-08）の公式確定結果および空値原則検証 (Issue #167)', () => {
+    it('日本テレビ盃の勝ち馬（ミッキーファイト）、騎手、着順、タイムが正確に登録され、英語名は未設定であること', () => {
+      const winner = winners['2026-nar-jpn2-08'];
+      expect(winner).toBeDefined();
+      expect(winner.name.ja).toBe('ミッキーファイト');
+      expect(winner.name.en, 'NAR winner must not have fabricated en name').toBeUndefined();
+      expect(winner.jockey?.ja).toBe('戸崎圭太');
+      expect(winner.jockey?.en).toBeUndefined();
+      expect(winner.horse_number).toBe(7);
+      expect(winner.time).toBe('1:52.1');
+
+      // races.json 側も検証
+      const race = races.find((r) => r.id === '2026-nar-jpn2-08');
+      expect(race).toBeDefined();
+      expect(race?.winner).toBeDefined();
+      expect(race?.winner?.name.ja).toBe('ミッキーファイト');
+      expect(race?.winner?.name.en).toBeUndefined();
+      expect(race?.winner?.jockey?.ja).toBe('戸崎圭太');
+      expect(race?.winner?.jockey?.en).toBeUndefined();
+      expect(race?.winner?.horse_number).toBe(7);
+      expect(race?.winner?.time).toBe('1:52.1');
+    });
+  });
 });

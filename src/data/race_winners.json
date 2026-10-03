@@ -8219,5 +8219,25 @@
       "ja": "ゼニヤッタステークス",
       "en": "Super Corredora"
     }
+  },
+  "2026-nar-jpn2-08": {
+    "name": {
+      "ja": "ミッキーファイト"
+    },
+    "jockey": {
+      "ja": "戸崎圭太"
+    },
+    "horse_number": 7,
+    "time": "1:52.1"
+  },
+  "2026-nar-local-180": {
+    "name": {
+      "ja": "イケメンモンスター"
+    },
+    "jockey": {
+      "ja": "石川倭"
+    },
+    "horse_number": 7,
+    "time": "1:56.4"
   }
 }
