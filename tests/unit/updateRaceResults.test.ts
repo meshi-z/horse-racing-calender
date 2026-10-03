@@ -556,5 +556,68 @@ describe('update-race-results', () => {
       const updated = result.updatedRaces[0].winner;
       expect(updated.name.en).toBe('The Puma');
     });
+
+    it('JRA G1レース確定時に公式リザルトURLが official_url に設定されること (Issue #159)', async () => {
+      const g1Race: RaceOutput = {
+        id: '2026-jra-g1-05',
+        organization: 'jra',
+        name: { ja: '皐月賞', en: 'Satsuki Sho' },
+        grade: 'G1',
+        date: '2026-04-19',
+        start_time: '2026-04-19T06:40:00.000Z',
+        is_time_confirmed: true,
+        course: { ja: '中山', en: 'Nakayama' },
+        distance: 2000,
+        track_type: 'turf',
+        sex_constraint: 'colt_and_filly',
+        age_constraint: '3yo',
+        handicap: { code: 'weight_for_age', ja: '定量', en: 'Weight for Age' },
+      };
+
+      fs.writeFileSync(tmpRacesPath, JSON.stringify([g1Race], null, 2), 'utf8');
+
+      const satsukiHtml = `
+        <div class="result_block">
+          <h2 class="title">第86回 皐月賞</h2>
+          <table class="race_table">
+            <tbody>
+              <tr>
+                <td class="order">1</td>
+                <td class="num">12</td>
+                <td class="horse"><a href="/horse/789">ジャスティンパレス</a></td>
+                <td class="jockey"><a href="/jockey/101">川田 将雅</a></td>
+                <td class="time">1:59.8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+
+      const fetcher = new JraRaceResultFetcher({
+        fixtures: {
+          '2026-jra-g1-05': satsukiHtml,
+        },
+      });
+
+      const tmpOfficialResultsPath = path.join(tmpDir, 'official_results_urls.json');
+
+      const result = await updateRaceResults({
+        racesPath: tmpRacesPath,
+        winnersMasterPath: tmpWinnersMasterPath,
+        officialResultsMasterPath: tmpOfficialResultsPath,
+        refDate: '2026-04-19',
+        refTimeIso: '2026-04-19T07:15:00.000Z',
+        providers: [fetcher],
+      });
+
+      expect(result.updatedCount).toBe(1);
+
+      const savedRaces: RaceOutput[] = JSON.parse(fs.readFileSync(tmpRacesPath, 'utf8'));
+      expect(savedRaces[0].official_url).toBe('https://www.jra.go.jp/datafile/seiseki/g1/satsuki/result/satsuki2026.html');
+
+      // official_results_urls マスタにも保存されていること
+      const savedMaster = JSON.parse(fs.readFileSync(tmpOfficialResultsPath, 'utf8'));
+      expect(savedMaster['2026-jra-g1-05']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/satsuki/result/satsuki2026.html');
+    });
   });
 });

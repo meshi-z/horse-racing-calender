@@ -55,6 +55,7 @@ export interface RaceOutput {
   };
   winner?: RaceWinner;
   official_url?: string;
+  race_number?: number;
 }
 
 /**
@@ -548,7 +549,7 @@ export async function updateRaceTimes(options: UpdateOptions = {}): Promise<Upda
       confirmedTimes = await fetcher.fetchConfirmedTimes(targetWindowRaces);
     }
 
-    if (confirmedTimes.length === 0) {
+    if (!confirmedTimes || confirmedTimes.length === 0) {
       console.log(`[Update Race Times][${org}] No confirmed race times retrieved.`);
       orgResults[org] = {
         targetCount: targetWindowRaces.length,
@@ -595,10 +596,13 @@ export async function updateRaceTimes(options: UpdateOptions = {}): Promise<Upda
         const newUtcTime = match.utcIso || toIsoUtc(targetDate, match.timeJst);
         const isTimeChanged = race.start_time !== newUtcTime;
         const wasNotConfirmed = !race.is_time_confirmed;
+        const isAlreadyFinished = !!race.winner;
+        const isUrlMissing = !!match.sourceUrl && !race.official_url && !isAlreadyFinished;
 
-        if (isTimeChanged || wasNotConfirmed || isDateChanged) {
+        if (isTimeChanged || wasNotConfirmed || isDateChanged || isUrlMissing) {
           const oldTime = race.start_time;
           const oldDate = race.date;
+          const oldUrl = race.official_url;
 
           if (isDateChanged) {
             race.original_date = race.original_date || oldDate;
@@ -608,8 +612,17 @@ export async function updateRaceTimes(options: UpdateOptions = {}): Promise<Upda
 
           race.start_time = newUtcTime;
           race.is_time_confirmed = true;
+
+          // 出馬表URL自動設定 & 巻き戻り防止保護ロジック (Issue #158)
+          let urlLog = '';
           if (match.sourceUrl) {
-            race.official_url = match.sourceUrl;
+            if (isAlreadyFinished) {
+              // 既に結果が確定している過去レース（winner保持）は出馬表URLで上書き（巻き戻し）しない
+              urlLog = `\n  - Official URL: preserved (already finished with winner, skipped overwrite)`;
+            } else {
+              race.official_url = match.sourceUrl;
+              urlLog = `\n  - Official URL: ${match.sourceUrl}` + (oldUrl && oldUrl !== match.sourceUrl ? ` (updated from: ${oldUrl})` : ' (newly set)');
+            }
           }
 
           updatedRaces.push({
@@ -627,7 +640,8 @@ export async function updateRaceTimes(options: UpdateOptions = {}): Promise<Upda
             `[Update Race Times][${org}] UPDATED: [${race.date}] ${race.name.ja} (${race.id})` +
               (isDateChanged ? `\n  - Rescheduled from: ${race.original_date} -> ${race.date}` : '') +
               `\n  - Old Time: ${oldTime} (confirmed: ${wasNotConfirmed ? 'false' : 'true'})` +
-              `\n  - New Time: ${newUtcTime} (confirmed: true, ${match.timeJst} JST)`
+              `\n  - New Time: ${newUtcTime} (confirmed: true, ${match.timeJst} JST)` +
+              urlLog
           );
         }
       }

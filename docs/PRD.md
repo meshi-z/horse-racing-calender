@@ -486,13 +486,59 @@ docs/
   - `tests/unit/pwaMetadata.test.ts` に初期言語判定スクリプトのシミュレーションテストを追加。
   - 全57テストファイル・542テスト全件パス、型チェック・プロダクションビルド成功。
 
+### 過去のステップ: Step 59 (公式サイトリンク改善 Phase 1: 未定時非表示制御の導入とNAR/HKJC動的URL先行解決) (Issue #157) [完了]
+- **未定時非表示制御の導入 (`src/libs/officialUrl.ts`)**:
+  - 主催者トップポータルへの一律フォールバック（`DEFAULT_OFFICIAL_URLS`）を全廃。
+  - レース予定も結果も未確定で `official_url` が存在しないレースでは `getOfficialRaceUrl` が `null` を返却し、UI上でリンクアイコン・ボタンを安全に非表示化。
+- **NAR（地方競馬）および HKJC（香港競馬）の動的URL先行解決**:
+  - URL構造が規則的な主催者について、レースデータ（日付・競馬場・レース番号）から公式出馬表・結果URLを動的に解決するヘルパーを実装。
+  - **NAR**:
+    - 全国15場馬場コード（帯広 `3`, 門別 `36`, 大井 `20`, 川崎 `21` 等）を特定。
+    - レース確定時（`winner` 保持）は確定着順表（`RaceMarkTable`）、未確定時は出馬表（`DebaTable`）を動的生成。
+  - **HKJC**:
+    - 競馬場コード（沙田 `ST`, ハッピーバレー `HV`）を特定。
+    - レース確定時は公式レース結果（`LocalResults.aspx`）、未確定時は公式排位表（`RaceCard.aspx`）を動的生成。中文（`zh` / `Chinese`）および英・日・仏（`English`）に対応。
+- **UI導線の再有効化 (`ENABLE_OFFICIAL_LINKS = true`)**:
+  - `RaceCard.tsx`（ヘッダー右上の外部リンクアイコン）および `RaceDetailDialog.tsx`（「公式出馬表・レース情報を見る ↗」ボタン）を再有効化。
+  - URLが存在するレースのみ表示され、未定レースでは完全に非表示となることを保証。
+- **テスト自動化**:
+  - `tests/unit/officialUrl.test.ts` および `tests/unit/officialUrl.test.tsx` を刷新。
+  - 未定レースでの非表示制御、NAR/HKJCでの状態別動的URL解決、カードクリックとの共存を検証。全57テストファイル・553テスト全件パス、プロダクションビルド成功。
+
+### 過去のステップ: Step 60 (公式サイトリンク改善 Phase 2: 出馬表・発走確定時刻取得パイプライン連動による予定URL自動付与) (Issue #158) [完了]
+- **発走確定時刻取得スクリプト連動による予定URL自動設定 (`scripts/update-race-times.ts`)**:
+  - 各競馬主催者（JRA, Sporting Life / BHA, PMU / France Galop, Equibase, HRI 等）の発走確定時刻フェッチャーが返却する公式出馬表・レース詳細URL（`ConfirmedRaceTime.sourceUrl`）を、未確定レースの発走予定時刻確定時に `race.official_url` へ自動保存・反映。
+  - PMU（フランス競馬）において、Reunion番号・Course番号に基づいた個別レース出馬表URL（`https://www.pmu.fr/turf/{DDMMYYYY}/R{reunion}/C{course}`）の動的構築を導入。
+  - HKJC（香港競馬）において、競馬場コード（`Racecourse=ST|HV`）およびレース番号（`RaceNo=R`）を付与した公式排位表URLの動的構築を導入。
+- **結果確定済み過去レースのURL巻き戻り防止（保護ロジック）**:
+  - すでにレースが終了し着順・勝ち馬（`race.winner`）が確定している過去レースに対し、時刻更新バッチが出馬表URLで上書き（ロールバック）しないガード条件を実装。
+  - 既に時刻確定済みだが `official_url` が未設定の開催予定レースに対しても、時刻変動の有無にかかわらず公式出馬表URLを安全に新規付与。
+- **パイプラインログ出力の強化**:
+  - 出馬表URLの新規付与、更新、および結果確定済みレースにおける巻き戻しスキップ（`preserved (already finished with winner)`）状況をパイプライン実行ログへ明示的に出力。
+- **テスト自動化**:
+  - `tests/unit/updateRaceTimesUrl.test.ts` を新設。
+  - 時刻確定時の公式出馬表URL自動付与、確定済み過去レースの巻き戻り防止ガード、および時刻同一時のURL新規付与を検証。全58テストファイル・556テスト全件パス、プロダクションビルド成功。
+
+### 過去のステップ: Step 61 (公式サイトリンク改善 Phase 3: レース結果確定パイプライン連動によるリザルトURL上書きおよび過去実績バックフィル) (Issue #159) [完了]
+- **レース結果確定パイプライン連動 (`scripts/update-race-results.ts`)**:
+  - 各競馬主催者結果フェッチャー（JRA, NAR, France Galop / PMU, Sporting Life / BHA, HRI, HKJC, Equibase / US）に `RaceResultRecord`（`winner` と `resultUrl`）を導入。
+  - レース終了・着順確定時に、出馬表URLを確定公式結果URL（`resultUrl`）で自動上書き更新するパイプラインを構築。
+  - `src/data/official_results_urls.json` を新設し、公式結果URLの永続化マスタとして連携。
+- **確定済み過去実績バックフィル (`scripts/backfill-official-result-urls.ts`)**:
+  - 一次ソース原則・空値原則（Null Value Principle, Issue #153）に基づき、公式一次ソースで実在確認（HTTP 200 OK）された公式結果URL（2026年JRA G1全13レース）を `public/data/races.json` へ安全にバックフィル。
+  - 一次ソースで直接確認できないレースデータは、架空URLによる推測補完を行わず未設定（undefined）のまま保持することを徹底。
+- **テスト自動化**:
+  - `tests/unit/backfillOfficialResultUrls.test.ts` を新設し、実在検証済み公式URLのバックフィル、未検証レースの空値維持、dry-run、および冪等性を自動検証。
+  - `tests/unit/updateRaceResults.test.ts` にレース結果確定時の `official_url` 自動付与およびマスタ同期テストを追加。
+  - 全59テストファイル・560テスト全件パス、型チェック・プロダクションビルド成功。
+
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
-- **Step 59: アイルランド競馬の未登録勝ち馬データ即効性是正 (Issue #165)**:
+- **Step 62: アイルランド競馬の未登録勝ち馬データ即効性是正 (Issue #165)**:
   - HRI / Sporting Life の未登録アイルランド重賞に対する名寄せ強化・即効性同期。
-- **Step 60: 海外主要レースのさらなる拡張**:
+- **Step 63: 海外主要レースのさらなる拡張**:
   - オーストラリア（Racing Australia / IFHA Part I）、UAE/ドバイ（ERA）等の重賞データ統合。
   - 各国公式出馬表フェッチャーの追加による確定発走時刻自動取得。
-- **Step 61: リアルタイム馬場状態・天候情報の表示**:
+- **Step 64: リアルタイム馬場状態・天候情報の表示**:
   - レース当日の天候（晴・雨等）および馬場状態（良・稍重・重・不良）のリアルタイム取得とバッジ表示。
-- **Step 62: カレンダー連携（iCalendar / Google Calendar 出力）**:
+- **Step 65: カレンダー連携（iCalendar / Google Calendar 出力）**:
   - お気に入りレースや特定条件レースをワンクリックで外部カレンダーアプリへ登録できる `.ics` エクスポート機能。
