@@ -168,6 +168,7 @@ export function parsePmuProgrammeJson(
 
   for (const targetRace of targetRaces) {
     let matchedCourse: PmuCourseItem | null = null;
+    let matchedReunion: PmuReunionItem | null = null;
 
     const frName = (targetRace.name as { fr?: string }).fr || '';
     const enName = targetRace.name.en || '';
@@ -182,6 +183,7 @@ export function parsePmuProgrammeJson(
 
         if (matchesFr || matchesEn) {
           matchedCourse = course;
+          matchedReunion = reunion;
           break;
         }
       }
@@ -190,6 +192,12 @@ export function parsePmuProgrammeJson(
 
     if (matchedCourse && matchedCourse.heureDepart) {
       const { utcIso, timeJst, rawTime } = parsePmuTimestampToIsoAndJst(matchedCourse.heureDepart);
+      const [y, m, d] = targetDateYmd.split('-');
+      const dmy = `${d}${m}${y}`;
+      const sourceUrl = matchedReunion?.numOfficiel
+        ? `https://www.pmu.fr/turf/${dmy}/R${matchedReunion.numOfficiel}/C${matchedCourse.numOrdre}`
+        : 'https://www.pmu.fr/turf/';
+
       confirmed.push({
         raceName: jaName,
         date: targetDateYmd,
@@ -197,7 +205,7 @@ export function parsePmuProgrammeJson(
         rawTime,
         raceId: targetRace.id,
         utcIso,
-        sourceUrl: `https://www.pmu.fr/turf/`,
+        sourceUrl,
       });
     }
   }

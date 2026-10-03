@@ -273,6 +273,13 @@ export function parseHkjcRacecards(
 
     if (matched && matched.time) {
       const { utcIso, timeJst, rawTime } = parseHkTimeToIsoAndJst(targetDateYmd, matched.time);
+      const isHappyValley =
+        (targetCourse + (matched.course || '')).toLowerCase().includes('happy valley') ||
+        targetCourse.includes('跑馬地') ||
+        targetCourse.includes('ハッピーバレー');
+      const courseCode = isHappyValley ? 'HV' : 'ST';
+      const raceNoParam = matched.raceNo ? `&RaceNo=${matched.raceNo}` : '';
+
       confirmed.push({
         raceName: jaName,
         date: targetDateYmd,
@@ -280,7 +287,7 @@ export function parseHkjcRacecards(
         rawTime,
         raceId: targetRace.id,
         utcIso,
-        sourceUrl: `https://racing.hkjc.com/racing/information/English/Racing/RaceCard.aspx?RaceDate=${targetDateYmd.replace(/-/g, '/')}`,
+        sourceUrl: `https://racing.hkjc.com/racing/information/English/Racing/RaceCard.aspx?RaceDate=${targetDateYmd.replace(/-/g, '/')}&Racecourse=${courseCode}${raceNoParam}`,
       });
     }
   }

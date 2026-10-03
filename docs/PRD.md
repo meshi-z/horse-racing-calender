@@ -505,9 +505,21 @@ docs/
   - `tests/unit/officialUrl.test.ts` および `tests/unit/officialUrl.test.tsx` を刷新。
   - 未定レースでの非表示制御、NAR/HKJCでの状態別動的URL解決、カードクリックとの共存を検証。全57テストファイル・553テスト全件パス、プロダクションビルド成功。
 
+### 過去のステップ: Step 60 (公式サイトリンク改善 Phase 2: 出馬表・発走確定時刻取得パイプライン連動による予定URL自動付与) (Issue #158) [完了]
+- **発走確定時刻取得スクリプト連動による予定URL自動設定 (`scripts/update-race-times.ts`)**:
+  - 各競馬主催者（JRA, Sporting Life / BHA, PMU / France Galop, Equibase, HRI 等）の発走確定時刻フェッチャーが返却する公式出馬表・レース詳細URL（`ConfirmedRaceTime.sourceUrl`）を、未確定レースの発走予定時刻確定時に `race.official_url` へ自動保存・反映。
+  - PMU（フランス競馬）において、Reunion番号・Course番号に基づいた個別レース出馬表URL（`https://www.pmu.fr/turf/{DDMMYYYY}/R{reunion}/C{course}`）の動的構築を導入。
+  - HKJC（香港競馬）において、競馬場コード（`Racecourse=ST|HV`）およびレース番号（`RaceNo=R`）を付与した公式排位表URLの動的構築を導入。
+- **結果確定済み過去レースのURL巻き戻り防止（保護ロジック）**:
+  - すでにレースが終了し着順・勝ち馬（`race.winner`）が確定している過去レースに対し、時刻更新バッチが出馬表URLで上書き（ロールバック）しないガード条件を実装。
+  - 既に時刻確定済みだが `official_url` が未設定の開催予定レースに対しても、時刻変動の有無にかかわらず公式出馬表URLを安全に新規付与。
+- **パイプラインログ出力の強化**:
+  - 出馬表URLの新規付与、更新、および結果確定済みレースにおける巻き戻しスキップ（`preserved (already finished with winner)`）状況をパイプライン実行ログへ明示的に出力。
+- **テスト自動化**:
+  - `tests/unit/updateRaceTimesUrl.test.ts` を新設。
+  - 時刻確定時の公式出馬表URL自動付与、確定済み過去レースの巻き戻り防止ガード、および時刻同一時のURL新規付与を検証。全58テストファイル・556テスト全件パス、プロダクションビルド成功。
+
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
-- **Step 60: 公式サイトリンク改善 Phase 2: 出馬表・発走確定時刻取得パイプライン連動による予定URL自動付与 (Issue #158)**:
-  - JRA, BHA, PMU, Equibase, HRI 等の発走確定時刻取得時に公式出馬表URLを自動保存・巻き戻り防止ガード。
 - **Step 61: 公式サイトリンク改善 Phase 3: レース結果確定パイプライン連動によるリザルトURL上書きおよび過去実績バックフィル (Issue #159)**:
   - 各国レース結果確定パイプライン連動および過去重賞結果URLの公式一次ソース準拠バックフィル。
 - **Step 62: アイルランド競馬の未登録勝ち馬データ即効性是正 (Issue #165)**:
