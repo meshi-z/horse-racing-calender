@@ -26,6 +26,13 @@ const UK_STOP_WORDS = new Set([
   'HORSE',
   'RACE',
   'HANDICAP',
+  'EBF',
+  'IRISH',
+  'EUROPEAN',
+  'BREEDERS',
+  'FUND',
+  'STALLION',
+  'FARMS',
 ]);
 
 /**
@@ -168,6 +175,18 @@ export function ukRaceMatches(targetName: string, candidateName: string): boolea
   // スポンサー変更・別名（エイリアス）チェック
   const UK_RACE_ALIASES: Record<string, string[]> = {
     'WELD PARK': ['DARLEY FILLIES', 'WELD'],
+    'RIDGEWOOD PEARL': ['LANWADES STUD', 'LANWADES'],
+    'BLUE WIND': ['JANNAH ROSE', 'MUTAMAKINA'],
+    'KILBOY ESTATE': ['MEADOW COURT', 'RATHBRIDE'],
+    'CHAMPIONS JUVENILE': ['GOLDEN FLEECE'],
+    'FLAME OF TARA': ['NEWTOWNANNER STUD', 'NEWTOWNANNER'],
+    'FAIRY BRIDGE': ['LITTLE BIG BEAR'],
+    '1 000 GUINEAS TRIAL': ['PRIORY BELLE'],
+    '2 000 GUINEAS TRIAL': ['RED ROCKS'],
+    'PUNCHESTOWN CHAMPION HURDLE': ['BOODLES CHAMPION HURDLE', 'BOODLES'],
+    'SPRING JUVENILE': ['GANNON', 'GANNONS'],
+    'CHAMPION FOUR YEAR OLD': ['BALLYMORE CHAMPION FOUR YEAR OLD'],
+    'PUNCHESTOWN CHAMPION CHASE': ['WILLIAM HILL CHAMPION CHASE', 'BARBERSTOWN CASTLE CHAMPION CHASE'],
   };
   for (const [key, aliases] of Object.entries(UK_RACE_ALIASES)) {
     const keyTokens = tokenizeEnglish(key);

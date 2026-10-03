@@ -183,4 +183,45 @@ describe('Official Race Results Integrity Tests', () => {
     expect(winner?.name.en).toBe('Christmas Day');
     expect(winner?.time).toBe('2m 43.75s');
   });
+
+  it('guarantees 100% winner registration and reschedule integrity for past Irish pattern races (#165)', () => {
+    const racesPath = path.resolve(process.cwd(), 'public/data/races.json');
+    const races: RaceOutput[] = JSON.parse(fs.readFileSync(racesPath, 'utf8'));
+
+    const pastIrishRaces = races.filter(
+      (r) => r.organization === 'hri' && r.date <= '2026-10-03'
+    );
+
+    // 1. 全86レースに勝者が登録されていること
+    expect(pastIrishRaces.length).toBe(86);
+    const missing = pastIrishRaces.filter((r) => !r.winner || !r.winner.name?.en);
+    expect(missing.length).toBe(0);
+
+    // 2. 順延・日程変更レースの検証（Irish Gold Cup: 01-31 -> 02-02, Fact To File）
+    const goldCup = pastIrishRaces.find((r) => r.id === '2026-ie-g1-17');
+    expect(goldCup).toBeDefined();
+    expect(goldCup?.date).toBe('2026-02-02');
+    expect(goldCup?.is_rescheduled).toBe(true);
+    expect(goldCup?.original_date).toBe('2026-01-31');
+    expect(goldCup?.winner?.name.en).toBe('Fact To File');
+
+    // 3. 競馬場移転レースの検証（Fairy Bridge Stakes: Tipperary -> Cork, Magny Cours）
+    const fairyBridge = pastIrishRaces.find((r) => r.id === '2026-ie-g3-28');
+    expect(fairyBridge).toBeDefined();
+    expect(fairyBridge?.course.en).toBe('Cork');
+    expect(fairyBridge?.date).toBe('2026-08-30');
+    expect(fairyBridge?.winner?.name.en).toBe('Magny Cours');
+
+    // 4. スポンサー冠名・別名レースの検証（Ridgewood Pearl Stakes / Lanwades Stud Stakes: City Of Memphis）
+    const ridgewoodPearl = pastIrishRaces.find((r) => r.id === '2026-ie-g2-03');
+    expect(ridgewoodPearl).toBeDefined();
+    expect(ridgewoodPearl?.winner?.name.en).toBe('City Of Memphis');
+
+    // 5. Vintage Crop Stakes: 2026-04-25, Scandinavia
+    const vintageCrop = pastIrishRaces.find((r) => r.id === '2026-ie-g3-07');
+    expect(vintageCrop).toBeDefined();
+    expect(vintageCrop?.date).toBe('2026-04-25');
+    expect(vintageCrop?.winner?.name.en).toBe('Scandinavia');
+  });
 });
+

@@ -106,6 +106,43 @@ describe('UK Syutsuba utility', () => {
         )
       ).toBe(false);
     });
+
+    it('アイルランド重賞のスポンサー名・別名が正しく照合できること (#165)', () => {
+      // Ridgewood Pearl Stakes -> Lanwades Stud Stakes
+      expect(
+        ukRaceMatches('Ridgewood Pearl Stakes', "Lanwades Stud Stakes (Fillies' And Mares' Group 2)")
+      ).toBe(true);
+
+      // Blue Wind Stakes -> Al Shira'aa Racing Irish EBF Jannah Rose Stakes
+      expect(
+        ukRaceMatches('Blue Wind Stakes', "Al Shira'aa Racing Irish EBF Jannah Rose Stakes (Fillies' Group 3)")
+      ).toBe(true);
+
+      // Leopardstown 1,000 Guineas Trial Stakes -> Ballylinch Stud Priory Belle Stakes
+      expect(
+        ukRaceMatches('Leopardstown 1,000 Guineas Trial Stakes', "Ballylinch Stud Priory Belle Stakes (Fillies' Group 3)")
+      ).toBe(true);
+
+      // Leopardstown 2,000 Guineas Trial Stakes -> Ballylinch Stud Red Rocks Stakes
+      expect(
+        ukRaceMatches('Leopardstown 2,000 Guineas Trial Stakes', "Ballylinch Stud Red Rocks Stakes (Group 3) (Colts & Geldings)")
+      ).toBe(true);
+
+      // Champions Juvenile Stakes -> HKJC World Pool Golden Fleece Stakes
+      expect(
+        ukRaceMatches('Champions Juvenile Stakes', "HKJC World Pool Golden Fleece Stakes (Group 1)")
+      ).toBe(true);
+
+      // Spring Juvenile Hurdle -> Gannon's City Recovery & Recycling Services Juvenile Hurdle
+      expect(
+        ukRaceMatches('Spring Juvenile Hurdle', "Gannon's City Recovery & Recycling Services Juvenile Hurdle (Grade 1)")
+      ).toBe(true);
+
+      // Punchestown Champion Hurdle -> Boodles Champion Hurdle
+      expect(
+        ukRaceMatches('Punchestown Champion Hurdle', "Boodles Champion Hurdle (Grade 1)")
+      ).toBe(true);
+    });
   });
 
   describe('ukCourseMatches', () => {
