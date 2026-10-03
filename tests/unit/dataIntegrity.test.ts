@@ -109,9 +109,9 @@ describe('Data Integrity & Multilingual Winners Audit (Issue #160)', () => {
     }
   });
 
-  it('香港競馬（HKJC）全24レースの勝者データに公式中文（繁体字・zh）馬名および騎手名が正しく設定されていること (Issue #161)', () => {
+  it('香港競馬（HKJC）全25レースの勝者データに公式中文（繁体字・zh）馬名および騎手名が正しく設定されていること (Issue #161, #167)', () => {
     const hkWinnerIds = Object.keys(winners).filter((id) => id.startsWith('2026-hk-'));
-    expect(hkWinnerIds.length).toBe(24);
+    expect(hkWinnerIds.length).toBe(25);
 
     for (const id of hkWinnerIds) {
       const winner = winners[id];
@@ -126,8 +126,10 @@ describe('Data Integrity & Multilingual Winners Audit (Issue #160)', () => {
       expect(race?.winner?.jockey?.zh, `races.json HK race ${id} missing jockey.zh`).toBe(winner.jockey?.zh);
     }
 
-    // 代表的な実在G1馬の中文名ピンポイント検証
+    // 代表的な実在G1馬および最新重賞の中文名ピンポイント検証
     expect(winners['2026-hk-g1-01'].name.zh).toBe('嘉應高昇');
+    expect(winners['2026-hk-g3-12'].name.zh).toBe('顏色之皇');
+    expect(winners['2026-hk-g3-12'].jockey?.zh).toBe('潘頓');
     expect(winners['2026-hk-g1-01'].jockey.zh).toBe('潘頓');
     expect(winners['2026-hk-g1-02'].name.zh).toBe('浪漫勇士');
     expect(winners['2026-hk-g1-02'].jockey.zh).toBe('麥道朗');

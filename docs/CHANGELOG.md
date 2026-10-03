@@ -6,6 +6,26 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 56: 9/26〜10/02終了レース結果一括反映・パイプライン堅牢化・空値原則遵守 (v1.38.5) [完了]
+- **9/26〜10/02終了全10レースの公式確定結果一括反映 (`public/data/races.json`, `src/data/race_winners.json`) [完了]**
+  - **NAR**: 姫山菊花賞（オマツリオトコ/吉原寛人/10番/1:51.4）、マリーンカップ（ロンギングフォユー/荻野極/1番/1:53.1）、ネクストスター門別（クラプロスパー/山本聡哉/5番/1:13.3）
+  - **フランス**: コンデ賞（Just Yet/C.SOUMILLON/6番/2:13.35、10/02代替開催）
+  - **アイルランド**: ルネサンスステークス（Soul Love/1:14.09、09/27代替開催）、ウェルドパークステークス（Curracloe/1:28.3）
+  - **香港**: ナショナルデーカップ（COLOURFUL KING/顏色之皇/Z Purton/潘頓/4番/0:55.72）
+  - **アメリカ**: アルシバイアディーズステークス（Emphatic/1:43.4）、Jessamineステークス（Serenas Ghost/1:45.57）、Phoenixステークス（Nakatomi/1:09.93）
+- **結果更新パイプラインの恒久的な堅牢化 (`scripts/update-race-results.ts`, `scripts/lib/`) [完了]**
+  - `scripts/update-race-results.ts`: `--days <N>` 引数による過去遡及実行に対応。
+  - `HkjcRaceResultFetcher`: レース名から RaceNo を動的検出し、繁体字（`zh`）および英語（`en`）の双方を公式から完全取得。
+  - `UsRaceResultFetcher`: Sporting Life API 404 時の HTML `__NEXT_DATA__` フォールバックを配備。
+  - `FranceRaceResultFetcher`: PMU URL を `online.turfinfo.api.pmu.fr` に統一し、`frenchRaceMatches` を導入。
+  - `NarRaceResultFetcher`: 騎手名略記辞書の拡充（山本聡哉、吉原寛人）および着順表の枠番・馬番分離の適正化。
+- **空値原則（Null Value Principle）と日程変更の適正保護 [完了]**
+  - フランスギャロ秋季番組再編により11月へ移動した「トマ・ブリョン賞」、および10/03夜間発走予定の米国3重賞（Matron S, Futurity S, Pilgrim S）について、勝者を推測補完せず未確定のまま保護し、日程変更フラグを更新。
+- **テスト・品質検証 [完了]**
+  - `tests/unit/dataIntegrity.test.ts` に香港25重賞の全件中文検証およびナショナルデーカップのピンポイント検証を追加。全55テストファイル・全525テスト全件パス、型検査・プロダクションビルド成功。
+
+---
+
 ### Step 55: 全主催者レース結果ライブフェッチ完全対応・GitHub Actions自動更新バッチ配備・日本テレビ盃確定 (v1.38.4 / Issue #167) [完了]
 - **NAR（地方競馬・ばんえい）レース結果ライブフェッチの実装 (`scripts/update-race-results.ts`, `scripts/lib/nar-results.ts`, `scripts/lib/nar-syutsuba.ts`) [完了]**
   - `RaceList`（当日メニュー出馬表）から競馬場コード（`NAR_BABA_CODES`）を用いて対象レースの `k_raceNo` を自動特定し、確定着順表（`RaceMarkTable`）を動的取得するライブフェッチパイプラインを確立。

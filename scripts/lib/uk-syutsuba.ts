@@ -165,6 +165,22 @@ export function ukRaceMatches(targetName: string, candidateName: string): boolea
     return true;
   }
 
+  // スポンサー変更・別名（エイリアス）チェック
+  const UK_RACE_ALIASES: Record<string, string[]> = {
+    'WELD PARK': ['DARLEY FILLIES', 'WELD'],
+  };
+  for (const [key, aliases] of Object.entries(UK_RACE_ALIASES)) {
+    const keyTokens = tokenizeEnglish(key);
+    if (keyTokens.every((t) => targetTokens.includes(t))) {
+      for (const alias of aliases) {
+        const aliasTokens = tokenizeEnglish(alias);
+        if (aliasTokens.every((t) => candidateSet.has(t))) {
+          return true;
+        }
+      }
+    }
+  }
+
   return false;
 }
 

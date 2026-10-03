@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { RaceOutput, RaceWinner } from './parse-races';
 import { fetchWithRetry, raceNameMatches } from './lib/jra-syutsuba';
+import { frenchRaceMatches } from './lib/france-syutsuba';
 import { parseJraRaceResultHtml, buildJraRaceWinner } from './lib/jra-results';
 import { parseNarRaceResultHtml, buildNarRaceWinner } from './lib/nar-results';
 import { NAR_BABA_CODES, cleanNarRaceName } from './lib/nar-syutsuba';
@@ -24,7 +25,7 @@ export interface RaceResultFetcher {
   /**
    * 基準日をもとに、結果取得対象となる過去レース（発走済み終了レース）を抽出
    */
-  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; force?: boolean }): RaceOutput[];
+  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; daysAgo?: number; force?: boolean }): RaceOutput[];
   /**
    * 対象レースの着順確定結果（勝ち馬情報）を取得
    */
@@ -114,7 +115,7 @@ export class JraRaceResultFetcher implements RaceResultFetcher {
     this.fixtures = options?.fixtures;
   }
 
-  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; force?: boolean }): RaceOutput[] {
+  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; daysAgo?: number; force?: boolean }): RaceOutput[] {
     const targets = getTargetPastRacesForResults(races, refDate, options);
     return targets.filter((r) => r.organization === this.organization);
   }
@@ -171,7 +172,7 @@ export class NarRaceResultFetcher implements RaceResultFetcher {
     this.fixtures = options?.fixtures;
   }
 
-  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; force?: boolean }): RaceOutput[] {
+  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; daysAgo?: number; force?: boolean }): RaceOutput[] {
     const targets = getTargetPastRacesForResults(races, refDate, options);
     return targets.filter((r) => r.organization === this.organization);
   }
@@ -260,7 +261,7 @@ export class FranceRaceResultFetcher implements RaceResultFetcher {
     this.fixtures = options?.fixtures;
   }
 
-  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; force?: boolean }): RaceOutput[] {
+  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; daysAgo?: number; force?: boolean }): RaceOutput[] {
     const targets = getTargetPastRacesForResults(races, refDate, options);
     return targets.filter((r) => r.organization === this.organization);
   }
@@ -285,7 +286,7 @@ export class FranceRaceResultFetcher implements RaceResultFetcher {
       if (this.fixtures && this.fixtures[ddmmyyyy]) {
         data = this.fixtures[ddmmyyyy];
       } else {
-        const url = `https://offline.turfinfo.api.pmu.fr/rest/client/7/programme/${ddmmyyyy}`;
+        const url = `https://online.turfinfo.api.pmu.fr/rest/client/7/programme/${ddmmyyyy}`;
         try {
           const res = await fetchWithRetry(url);
           if (res.ok) {
@@ -306,12 +307,12 @@ export class FranceRaceResultFetcher implements RaceResultFetcher {
 
           for (const reunion of reunions) {
             for (const course of reunion.courses || []) {
-              const matchesFr = frName ? (course.libelle?.includes(frName) || frName.includes(course.libelle)) : false;
-              const matchesEn = enName ? (course.libelle?.includes(enName) || enName.includes(course.libelle)) : false;
+              const matchesFr = frName ? frenchRaceMatches(frName, course.libelle) : false;
+              const matchesEn = enName ? frenchRaceMatches(enName, course.libelle) : false;
 
               if ((matchesFr || matchesEn) && (!course.participants || course.participants.length === 0)) {
                 if (!this.fixtures && reunion.numOfficiel && course.numOrdre) {
-                  const pUrl = `https://offline.turfinfo.api.pmu.fr/rest/client/7/programme/${ddmmyyyy}/R${reunion.numOfficiel}/C${course.numOrdre}/participants`;
+                  const pUrl = `https://online.turfinfo.api.pmu.fr/rest/client/7/programme/${ddmmyyyy}/R${reunion.numOfficiel}/C${course.numOrdre}/participants`;
                   try {
                     const pRes = await fetchWithRetry(pUrl);
                     if (pRes.ok) {
@@ -350,7 +351,7 @@ export class UkRaceResultFetcher implements RaceResultFetcher {
     this.fixtures = options?.fixtures;
   }
 
-  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; force?: boolean }): RaceOutput[] {
+  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; daysAgo?: number; force?: boolean }): RaceOutput[] {
     const targets = getTargetPastRacesForResults(races, refDate, options);
     return targets.filter((r) => r.organization === this.organization || r.organization === 'uk');
   }
@@ -417,7 +418,7 @@ export class IeRaceResultFetcher implements RaceResultFetcher {
     this.fixtures = options?.fixtures;
   }
 
-  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; force?: boolean }): RaceOutput[] {
+  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; daysAgo?: number; force?: boolean }): RaceOutput[] {
     const targets = getTargetPastRacesForResults(races, refDate, options);
     return targets.filter((r) => r.organization === this.organization);
   }
@@ -439,7 +440,7 @@ export class HkjcRaceResultFetcher implements RaceResultFetcher {
     this.fixtures = options?.fixtures;
   }
 
-  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; force?: boolean }): RaceOutput[] {
+  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; daysAgo?: number; force?: boolean }): RaceOutput[] {
     const targets = getTargetPastRacesForResults(races, refDate, options);
     return targets.filter((r) => r.organization === this.organization);
   }
@@ -449,39 +450,88 @@ export class HkjcRaceResultFetcher implements RaceResultFetcher {
     if (targetRaces.length === 0) return results;
 
     for (const target of targetRaces) {
-      let html: string | null = null;
+      let htmlEn: string | null = null;
+      let htmlZh: string | null = null;
+
       if (this.fixtures && this.fixtures[target.id]) {
-        html = this.fixtures[target.id];
+        htmlEn = this.fixtures[target.id];
       } else if (this.fixtures && this.fixtures[target.date]) {
-        html = this.fixtures[target.date];
+        htmlEn = this.fixtures[target.date];
       } else {
         // HKJC公式サイトからライブフェッチ
         try {
           const urlDate = target.date.replace(/-/g, '/');
-          const url = `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}`;
-          const res = await fetchWithRetry(url);
+          const indexUrl = `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}`;
+          const res = await fetchWithRetry(indexUrl);
           if (res.ok) {
-            html = await res.text();
+            const indexHtml = await res.text();
+            // 対象レースの RaceNo を探索
+            const raceNoMatches = Array.from(indexHtml.matchAll(/RaceNo=(\d+)/gi)).map((m) => m[1]);
+            const uniqueRaceNos = Array.from(new Set(raceNoMatches));
+
+            const targetEn = (target.name.en || '').toUpperCase();
+            let matchedRaceNo: string | null = null;
+
+            // 各 RaceNo のページを走査してレース名を照合（またはインデックスページ自体をチェック）
+            for (const rNo of uniqueRaceNos) {
+              const raceUrl = `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}&RaceNo=${rNo}`;
+              const raceRes = await fetchWithRetry(raceUrl);
+              if (raceRes.ok) {
+                const raceHtml = await raceRes.text();
+                const upperHtml = raceHtml.toUpperCase();
+                if (targetEn && (upperHtml.includes(targetEn) || raceNameMatches(targetEn, upperHtml))) {
+                  matchedRaceNo = rNo;
+                  htmlEn = raceHtml;
+                  break;
+                }
+              }
+            }
+
+            // 見つからない場合はインデックスHTMLをフォールバックとして使用
+            if (!htmlEn) {
+              htmlEn = indexHtml;
+            }
+
+            // 中文ページの取得（RaceNo指定）
+            const zhRaceNoParam = matchedRaceNo ? `&RaceNo=${matchedRaceNo}` : '';
+            const zhUrl = `https://racing.hkjc.com/racing/information/Chinese/Racing/LocalResults.aspx?RaceDate=${urlDate}${zhRaceNoParam}`;
+            const zhRes = await fetchWithRetry(zhUrl);
+            if (zhRes.ok) {
+              htmlZh = await zhRes.text();
+            }
           }
         } catch (e) {
           console.warn(`[HKJC Results] Failed to live-fetch results for ${target.name.en || target.name.ja} (${target.date}): ${(e as Error).message}`);
         }
       }
 
-      if (html) {
-        const parsedList = parseHkjcResultHtml(html);
+      if (htmlEn) {
+        const parsedList = parseHkjcResultHtml(htmlEn);
         if (parsedList.length > 0) {
           const first = parsedList[0].winner;
+
+          // 中文ページから繁体字馬名・騎手名を取得
+          let zhHorseName: string | undefined = (target.name as any).zh;
+          let zhJockey: string | undefined;
+          if (htmlZh) {
+            const parsedZhList = parseHkjcResultHtml(htmlZh);
+            if (parsedZhList.length > 0 && parsedZhList[0].winner) {
+              zhHorseName = parsedZhList[0].winner.horseNameEn || zhHorseName;
+              zhJockey = parsedZhList[0].winner.jockey;
+            }
+          }
+
           results.set(target.id, {
             name: {
               ja: target.winner?.name?.ja || first.horseNameEn,
               en: first.horseNameEn,
-              zh: first.horseNameZh || (target.name as any).zh,
+              zh: zhHorseName,
             },
             jockey: first.jockey
               ? {
                   ja: target.winner?.jockey?.ja || first.jockey,
                   en: first.jockey,
+                  zh: zhJockey,
                 }
               : undefined,
             horse_number: first.horseNumber,
@@ -506,7 +556,7 @@ export class UsRaceResultFetcher implements RaceResultFetcher {
     this.fixtures = options?.fixtures;
   }
 
-  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; force?: boolean }): RaceOutput[] {
+  getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; daysAgo?: number; force?: boolean }): RaceOutput[] {
     const targets = getTargetPastRacesForResults(races, refDate, options);
     return targets.filter((r) => r.organization === this.organization || r.organization === 'us');
   }
@@ -549,7 +599,7 @@ export class UsRaceResultFetcher implements RaceResultFetcher {
       return results;
     }
 
-    // 2. ライブフェッチ: Sporting Life Results API (当日および翌日+1日のUTCクロス照合)
+    // 2. ライブフェッチ: Sporting Life Results (API & HTML __NEXT_DATA__ フォールバック, 当日および翌日+1日のUTCクロス照合)
     const dates = new Set<string>();
     for (const r of targetRaces) {
       dates.add(r.date);
@@ -566,6 +616,19 @@ export class UsRaceResultFetcher implements RaceResultFetcher {
         if (res.ok) {
           const meetings = (await res.json()) as SportingLifeResultMeetingItem[];
           allMeetings.push(...meetings);
+        } else {
+          // HTML __NEXT_DATA__ フォールバック
+          const htmlUrl = `https://www.sportinglife.com/racing/results/${d}`;
+          const htmlRes = await fetchWithRetry(htmlUrl);
+          if (htmlRes.ok) {
+            const htmlText = await htmlRes.text();
+            const nextData = htmlText.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/i);
+            if (nextData) {
+              const json = JSON.parse(nextData[1]);
+              const meetings = (json.props?.pageProps?.meetings || []) as SportingLifeResultMeetingItem[];
+              allMeetings.push(...meetings);
+            }
+          }
         }
       } catch (e) {
         console.warn(`[US Results] Failed to live-fetch results for ${d}: ${(e as Error).message}`);
@@ -604,12 +667,14 @@ export const DEFAULT_RESULT_FETCHERS: Record<string, RaceResultFetcher> = {
 export function parseArgs(argv: string[] = process.argv.slice(2)): {
   refDate: string;
   refTimeIso?: string;
+  daysAgo?: number;
   orgFilter?: string;
   dryRun: boolean;
   force: boolean;
 } {
   let refDate = new Date().toISOString().slice(0, 10);
   let refTimeIso: string | undefined;
+  let daysAgo: number | undefined;
   let orgFilter: string | undefined;
   let dryRun = false;
   let force = false;
@@ -620,6 +685,8 @@ export function parseArgs(argv: string[] = process.argv.slice(2)): {
       refDate = argv[++i];
     } else if (arg === '--time' && argv[i + 1]) {
       refTimeIso = argv[++i];
+    } else if (arg === '--days' && argv[i + 1]) {
+      daysAgo = parseInt(argv[++i], 10);
     } else if (arg === '--org' && argv[i + 1]) {
       orgFilter = argv[++i].toLowerCase();
     } else if (arg === '--dry-run') {
@@ -629,7 +696,7 @@ export function parseArgs(argv: string[] = process.argv.slice(2)): {
     }
   }
 
-  return { refDate, refTimeIso, orgFilter, dryRun, force };
+  return { refDate, refTimeIso, daysAgo, orgFilter, dryRun, force };
 }
 
 /**
@@ -640,6 +707,7 @@ export async function updateRaceResults(options: {
   winnersMasterPath: string;
   refDate: string;
   refTimeIso?: string;
+  daysAgo?: number;
   orgFilter?: string;
   dryRun?: boolean;
   force?: boolean;
@@ -654,6 +722,7 @@ export async function updateRaceResults(options: {
     winnersMasterPath,
     refDate,
     refTimeIso,
+    daysAgo,
     orgFilter,
     dryRun = false,
     force = false,
@@ -687,7 +756,7 @@ export async function updateRaceResults(options: {
       continue;
     }
 
-    const targets = provider.getTargetPastRaces(races, refDate, { refTimeIso, force });
+    const targets = provider.getTargetPastRaces(races, refDate, { refTimeIso, daysAgo, force });
     totalTargets += targets.length;
 
     if (targets.length === 0) {
@@ -730,8 +799,8 @@ export async function updateRaceResults(options: {
 }
 
 async function main() {
-  const { refDate, refTimeIso, orgFilter, dryRun, force } = parseArgs();
-  console.log(`Starting race results update for refDate: ${refDate} (org: ${orgFilter || 'all'}, force: ${force}, dryRun: ${dryRun})`);
+  const { refDate, refTimeIso, daysAgo, orgFilter, dryRun, force } = parseArgs();
+  console.log(`Starting race results update for refDate: ${refDate} (org: ${orgFilter || 'all'}, daysAgo: ${daysAgo ?? 3}, force: ${force}, dryRun: ${dryRun})`);
 
   const rootDir = process.cwd();
   const racesPath = path.join(rootDir, 'public', 'data', 'races.json');
@@ -742,6 +811,7 @@ async function main() {
     winnersMasterPath,
     refDate,
     refTimeIso,
+    daysAgo,
     orgFilter,
     dryRun,
     force,
