@@ -140,7 +140,9 @@ describe('Ireland Races Pipeline and Master Data (Issue #122)', () => {
     expect(irishGc?.grade).toBe('G1');
     expect(irishGc?.track_type).toBe('obstacle');
     expect(irishGc?.course.ja).toBe('レパーズタウン');
-    expect(irishGc?.date).toBe('2026-01-31');
+    expect(irishGc?.date).toBe('2026-02-02');
+    expect(irishGc?.is_rescheduled).toBe(true);
+    expect(irishGc?.original_date).toBe('2026-01-31');
 
     // アイリッシュチャンピオンハードル
     const irishChampHurdle = races.find((r) => r.name.en === 'Irish Champion Hurdle');

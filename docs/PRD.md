@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年10月3日) |
-| **バージョン** | v1.40.0 (タイムラインビュー仮想スクロール・遅延マウント導入によるDOM数97.9%削減と描画最適化) |
+| **バージョン** | v1.41.1 (アイルランド競馬の未登録勝ち馬データ即効性是正・実開催日・移転・別名照合エンジン強化) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -607,9 +607,20 @@ docs/
   - 大規模データセット時のプレースホルダー化、IntersectionObserver による画面進入時のマウント・離脱時のアンマウント動作を自動検証。
   - 全1,336レース実データを用いたDOMノード数ベンチマークテストを配備。全60テストファイル・568テスト全件パス、プロダクションビルド成功。
 
+### 過去のステップ: Step 67 (アイルランド競馬の未登録勝ち馬データ即効性是正・実開催日・移転・別名照合エンジン強化) (Issue #165) [完了]
+- **アイルランド重賞34レースの勝者データ100%同期 (`src/data/race_winners.json`, `public/data/races.json`)**:
+  - 2026年アイルランド（HRI）過去開催（<= 2026-10-03）の全86レース中、未登録だった34レースの勝者名および勝ちタイムをSporting Life / HRI公式実績から100%特定し反映。
+  - 公式カタカナが存在する競走馬（トゥルーラヴ、スカンジナビア、サングッデス等）は既存マスターと統一し、JRA-VAN等公式カナが存在しない馬は空値原則（Null Value Principle）に従い英字名を維持。
+- **天候順延・カレンダー変更・競馬場移転のマスター是正 (`src/data/ireland_race_master.json`, `public/data/races.json`)**:
+  - ダブリンレーシングフェスティバル等の悪天候順延（01-31 -> 02-02）、カラ競馬場の復活祭前後の開催日変更等、計23レースの実際の日程乖離を是正し、`is_rescheduled: true`, `original_date` を設定。
+  - ティペラリー競馬場の改修に伴う移転（Fairy Bridge Stakes: ティペラリー -> コーク）、スタネラS（レパーズタウン -> フェアリーハウス）、ブラウンズタウンS（フェアリーハウス -> レパーズタウン）の会場入れ替えを反映。
+- **Sporting Life 名寄せ照合エンジンの拡充 (`scripts/lib/uk-syutsuba.ts`)**:
+  - `UK_STOP_WORDS` に `EBF`, `IRISH`, `EUROPEAN`, `BREEDERS`, `FUND`, `STALLION`, `FARMS` 等の共通協賛団体語句を追加。
+  - `UK_RACE_ALIASES` に冠スポンサー名変更・別名マッピング（`Lanwades Stud S` = `Ridgewood Pearl S`、`Jannah Rose S` = `Blue Wind S`、`Golden Fleece S` = `Champions Juvenile S`、`Priory Belle S` = `1,000 Guineas Trial`、`Red Rocks S` = `2,000 Guineas Trial`、`Boodles Champion Hurdle` = `Punchestown Champion Hurdle` 等）を拡充。
+- **データ整合性テストの拡充 (`tests/unit/foreignResultsOfficial.test.ts`, `tests/unit/ukSyutsuba.test.ts`)**:
+  - アイルランド過去全86重賞の勝者登録100%保証、順延・移転レースの属性保証、名寄せエンジンのエイリアスマッチングテストを追加。全60テストファイル・570テスト全件パス。
+
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
-- **Step 67: アイルランド競馬の未登録勝ち馬データ即効性是正 (Issue #165)**:
-  - HRI / Sporting Life の未登録アイルランド重賞に対する名寄せ強化・即効性同期。
 - **Step 68: 海外主要レースのさらなる拡張**:
   - オーストラリア（Racing Australia / IFHA Part I）、UAE/ドバイ（ERA）等の重賞データ統合。
   - 各国公式出馬表フェッチャーの追加による確定発走時刻自動取得。

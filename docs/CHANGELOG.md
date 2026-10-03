@@ -6,6 +6,23 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 62: アイルランド競馬の未登録勝ち馬データ即効性是正・実開催日・移転・別名照合エンジン強化 (v1.41.1 / Issue #165) [完了]
+- **アイルランド重賞34レースの勝者データ100%同期 (`src/data/race_winners.json`, `public/data/races.json`) [完了]**
+  - 2026年アイルランド（HRI）過去開催（<= 2026-10-03）の全86レース中、未登録だった34レースの勝者名および勝ちタイムをSporting Life / HRI公式実績から100%特定し反映。
+  - 過去開催分の勝者登録率は **100%（86/86レース）** を達成。
+  - 公式カタカナが存在する競走馬（トゥルーラヴ、スカンジナビア、サングッデス等）は既存マスターと統一し、JRA-VAN等公式カナが存在しない馬は空値原則（Null Value Principle）に従い英字名を維持。
+- **天候順延・カレンダー変更・競馬場移転のマスター是正 (`src/data/ireland_race_master.json`, `public/data/races.json`) [完了]**
+  - ダブリンレーシングフェスティバル等の悪天候順延（01-31 -> 02-02）、カラ競馬場の復活祭前後の開催日変更等、計23レースの実際の日程乖離を是正し、`is_rescheduled: true`, `original_date` を設定。
+  - ティペラリー競馬場の改修に伴う移転（Fairy Bridge Stakes: ティペラリー -> コーク）、スタネラS（レパーズタウン -> フェアリーハウス）、ブラウンズタウンS（フェアリーハウス -> レパーズタウン）の会場入れ替えを反映。
+  - 日程変更後の全レースを `date`, `start_time`, `id` 昇順にソートし整合性を保護。
+- **Sporting Life 名寄せ照合エンジンの拡充 (`scripts/lib/uk-syutsuba.ts`) [完了]**
+  - `UK_STOP_WORDS` に `EBF`, `IRISH`, `EUROPEAN`, `BREEDERS`, `FUND`, `STALLION`, `FARMS` 等の共通協賛団体語句を追加。
+  - `UK_RACE_ALIASES` に冠スポンサー名変更・別名マッピング（`Lanwades Stud S` = `Ridgewood Pearl S`、`Jannah Rose S` = `Blue Wind S`、`Golden Fleece S` = `Champions Juvenile S`、`Priory Belle S` = `1,000 Guineas Trial`、`Red Rocks S` = `2,000 Guineas Trial`、`Boodles Champion Hurdle` = `Punchestown Champion Hurdle`、`Gannon's Juvenile Hurdle` = `Spring Juvenile Hurdle` 等）を拡充。
+- **データ整合性テストの拡充 (`tests/unit/foreignResultsOfficial.test.ts`, `tests/unit/ukSyutsuba.test.ts`) [完了]**
+  - アイルランド過去全86重賞の勝者登録100%保証、順延・移転レースの属性保証、名寄せエンジンのエイリアスマッチングテストを追加。全60テストファイル・570テスト全件パス。
+
+---
+
 ### Step 61: タイムラインビューの仮想スクロール（遅延描画）導入・DOM数97.9%削減 (v1.40.0 / Issue #180) [完了]
 - **タイムラインビューの遅延マウント・Windowing機構の実装 (`src/features/timeline/TimelineView.tsx`) [完了]**
   - 全1,336件（約150開催日分）のレースカード一括マウントによる描画負荷（約33,000〜60,000 DOMノード）を解消するため、日付セクション単位の遅延描画コンポーネント（`TimelineDateSection`）を新設。
