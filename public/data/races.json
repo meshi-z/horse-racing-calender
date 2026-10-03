@@ -37269,6 +37269,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Caballo De Mar",
+        "en": "Caballo De Mar",
+        "fr": "Caballo De Mar"
+      },
+      "jockey": {
+        "ja": "O.murphy",
+        "en": "O.murphy",
+        "fr": "O.murphy"
+      },
+      "horse_number": 7
     }
   },
   {
@@ -37298,6 +37311,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Qirat",
+        "en": "Qirat",
+        "fr": "Qirat"
+      },
+      "jockey": {
+        "ja": "S.de Sousa",
+        "en": "S.de Sousa",
+        "fr": "S.de Sousa"
+      },
+      "horse_number": 3
     }
   },
   {
@@ -38503,8 +38529,8 @@
     },
     "grade": "G1",
     "date": "2026-10-10",
-    "start_time": "2026-10-10T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-10T12:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-10",
     "course": {
@@ -38531,8 +38557,8 @@
     },
     "grade": "G3",
     "date": "2026-10-10",
-    "start_time": "2026-10-10T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-10T12:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-10",
     "course": {
