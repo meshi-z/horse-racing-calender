@@ -8344,5 +8344,18 @@
       "fr": "E.verhestraeten"
     },
     "horse_number": 5
+  },
+  "2026-france-g2-22": {
+    "name": {
+      "ja": "Wimbledon Hawkeye",
+      "en": "Wimbledon Hawkeye",
+      "fr": "Wimbledon Hawkeye"
+    },
+    "jockey": {
+      "ja": "C.soumillon",
+      "en": "C.soumillon",
+      "fr": "C.soumillon"
+    },
+    "horse_number": 3
   }
 }

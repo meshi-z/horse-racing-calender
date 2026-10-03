@@ -36844,6 +36844,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Wimbledon Hawkeye",
+        "en": "Wimbledon Hawkeye",
+        "fr": "Wimbledon Hawkeye"
+      },
+      "jockey": {
+        "ja": "C.soumillon",
+        "en": "C.soumillon",
+        "fr": "C.soumillon"
+      },
+      "horse_number": 3
     }
   },
   {
