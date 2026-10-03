@@ -179,23 +179,14 @@ export function resolveHkjcOfficialUrl(race: Race, language: Language = 'ja'): s
 
 /**
  * レースの公式出馬表・レース情報URLを取得する
- * 1. レース固有の official_url があればそれを最優先
- * 2. なければ規則的URLを持つ団体（NAR, HKJC）について動的にURLを解決
- * 3. いずれも解決できない未定レースは null を返し、UI側で非表示とする（Issue #157）
+ * 1. 一次ソース検証済みの official_url が存在する場合のみそれを返却
+ * 2. 存在しないレース（未定・未検証レース）は null を返し、UI側で非表示とする (Issue #157, #176)
+ * ※ デッドリンクや誤リンクを防止するため、不確実な動的推測生成は行わない
  */
-export function getOfficialRaceUrl(race: Race, language: Language = 'ja'): string | null {
+export function getOfficialRaceUrl(race: Race, _language: Language = 'ja'): string | null {
   if (race.official_url && race.official_url.trim() !== '') {
     return race.official_url;
   }
-
-  if (race.organization === 'nar') {
-    return resolveNarOfficialUrl(race);
-  }
-
-  if (race.organization === 'hkjc') {
-    return resolveHkjcOfficialUrl(race, language);
-  }
-
   return null;
 }
 

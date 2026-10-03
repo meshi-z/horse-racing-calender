@@ -965,8 +965,9 @@ export async function updateRaceResults(options: {
         target.winner = winner;
         winnersMaster[target.id] = winner;
 
-        // 公式リザルトURLの反映 (Issue #159)
-        const officialUrl = record?.resultUrl || officialResultsMaster[target.id] || JRA_G1_RESULT_URLS[target.id];
+        // 公式リザルトURLの反映 (Issue #159, #176)
+        // デッドリンク・誤リンク防止のため、実在検証済み公式マスタにのみ限定
+        const officialUrl = officialResultsMaster[target.id] || JRA_G1_RESULT_URLS[target.id];
         if (officialUrl) {
           target.official_url = officialUrl;
           if (officialResultsMasterPath) {

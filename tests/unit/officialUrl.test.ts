@@ -75,7 +75,7 @@ describe('officialUrl utility functions (Issue #157)', () => {
       expect(getNarBabaCode(undefined, 'Unknown')).toBeNull();
     });
 
-    it('未確定（出走予定）レースでは DebaTable の出馬表URLを生成すること', () => {
+    it('未確定（出走予定）レースでは getOfficialRaceUrl は null を返し、resolveNarOfficialUrl は出馬表URLを生成すること', () => {
       const narRace: Race = {
         ...mockBaseRace,
         organization: 'nar',
@@ -83,12 +83,13 @@ describe('officialUrl utility functions (Issue #157)', () => {
         date: '2026-06-24',
         race_number: 11,
       };
-      const url = getOfficialRaceUrl(narRace, 'ja');
-      expect(url).toBe('https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/DebaTable?k_raceDate=2026%2F06%2F24&k_raceNo=11&k_babaCode=20');
-      expect(resolveNarOfficialUrl(narRace)).toBe(url);
+      // デッドリンク防止のため、未検証レースでは getOfficialRaceUrl は null
+      expect(getOfficialRaceUrl(narRace, 'ja')).toBeNull();
+      // ヘルパー単体は生成可能
+      expect(resolveNarOfficialUrl(narRace)).toBe('https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/DebaTable?k_raceDate=2026%2F06%2F24&k_raceNo=11&k_babaCode=20');
     });
 
-    it('確定（結果あり）レースでは RaceMarkTable の結果URLを生成すること', () => {
+    it('確定（結果あり）レースでも official_url 未設定時は getOfficialRaceUrl は null を返すこと', () => {
       const finishedNarRace: Race = {
         ...mockBaseRace,
         organization: 'nar',
@@ -98,8 +99,8 @@ describe('officialUrl utility functions (Issue #157)', () => {
           name: { ja: 'カジノフォンテン', en: 'Casino Fountain' },
         },
       };
-      const url = getOfficialRaceUrl(finishedNarRace, 'ja');
-      expect(url).toBe('https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/RaceMarkTable?k_raceDate=2026%2F04%2F08&k_babaCode=21');
+      expect(getOfficialRaceUrl(finishedNarRace, 'ja')).toBeNull();
+      expect(resolveNarOfficialUrl(finishedNarRace)).toBe('https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/RaceMarkTable?k_raceDate=2026%2F04%2F08&k_babaCode=21');
     });
   });
 
@@ -113,7 +114,7 @@ describe('officialUrl utility functions (Issue #157)', () => {
       expect(getHkjcCourseCode('中山')).toBeNull();
     });
 
-    it('未確定（出走予定）レースでは RaceCard.aspx の出馬表URLを言語別で生成すること', () => {
+    it('未確定（出走予定）レースでは getOfficialRaceUrl は null を返し、resolveHkjcOfficialUrl は排位表URLを言語別で生成すること', () => {
       const hkRace: Race = {
         ...mockBaseRace,
         organization: 'hkjc',
@@ -122,16 +123,15 @@ describe('officialUrl utility functions (Issue #157)', () => {
         date: '2026-01-01',
         race_number: 8,
       };
-      const urlZh = getOfficialRaceUrl(hkRace, 'zh');
-      expect(urlZh).toBe('https://racing.hkjc.com/racing/information/Chinese/Racing/RaceCard.aspx?RaceDate=2026%2F01%2F01&Racecourse=ST&RaceNo=8');
-      expect(resolveHkjcOfficialUrl(hkRace, 'zh')).toBe(urlZh);
+      // デッドリンク防止のため、未検証レースでは getOfficialRaceUrl は null
+      expect(getOfficialRaceUrl(hkRace, 'zh')).toBeNull();
+      expect(getOfficialRaceUrl(hkRace, 'en')).toBeNull();
 
-      const urlEn = getOfficialRaceUrl(hkRace, 'en');
-      expect(urlEn).toBe('https://racing.hkjc.com/racing/information/English/Racing/RaceCard.aspx?RaceDate=2026%2F01%2F01&Racecourse=ST&RaceNo=8');
-      expect(resolveHkjcOfficialUrl(hkRace, 'en')).toBe(urlEn);
+      expect(resolveHkjcOfficialUrl(hkRace, 'zh')).toBe('https://racing.hkjc.com/racing/information/Chinese/Racing/RaceCard.aspx?RaceDate=2026%2F01%2F01&Racecourse=ST&RaceNo=8');
+      expect(resolveHkjcOfficialUrl(hkRace, 'en')).toBe('https://racing.hkjc.com/racing/information/English/Racing/RaceCard.aspx?RaceDate=2026%2F01%2F01&Racecourse=ST&RaceNo=8');
     });
 
-    it('確定（結果あり）レースでは LocalResults.aspx の結果URLを生成すること', () => {
+    it('確定（結果あり）レースでも official_url 未設定時は getOfficialRaceUrl は null を返すこと', () => {
       const finishedHkRace: Race = {
         ...mockBaseRace,
         organization: 'hkjc',
@@ -143,8 +143,8 @@ describe('officialUrl utility functions (Issue #157)', () => {
           name: { ja: 'ロマンチックウォリアー', en: 'Romantic Warrior', zh: '浪漫勇士' },
         },
       };
-      const urlEn = getOfficialRaceUrl(finishedHkRace, 'en');
-      expect(urlEn).toBe('https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=2026%2F01%2F14&Racecourse=HV&RaceNo=7');
+      expect(getOfficialRaceUrl(finishedHkRace, 'en')).toBeNull();
+      expect(resolveHkjcOfficialUrl(finishedHkRace, 'en')).toBe('https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=2026%2F01%2F14&Racecourse=HV&RaceNo=7');
     });
   });
 

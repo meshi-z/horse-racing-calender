@@ -92,8 +92,8 @@ describe('UI Integration: Official race link Phase 1 (Issue #157)', () => {
     });
   });
 
-  describe('URL解決可能レースのリンク表示と遷移導線', () => {
-    it('NARレース（動的解決可能）では、RaceDetailDialog に公式出馬表リンクボタンが表示され正しいURLを持つこと', () => {
+  describe('確度の高い検証済みレースのリンク表示と未検証レースの非表示', () => {
+    it('NAR等の未検証レースでは、RaceDetailDialog に公式リンクボタンが表示されないこと (Issue #176)', () => {
       useLanguageStore.getState().setLanguage('ja');
       render(
         <RaceDetailDialog
@@ -103,33 +103,29 @@ describe('UI Integration: Official race link Phase 1 (Issue #157)', () => {
         />
       );
 
-      const linkBtn = screen.getByTestId('official-race-link-btn');
-      expect(linkBtn).toBeInTheDocument();
-      expect(linkBtn).toHaveAttribute('href', 'https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/DebaTable?k_raceDate=2026%2F06%2F24&k_raceNo=11&k_babaCode=20');
-      expect(linkBtn).toHaveAttribute('target', '_blank');
-      expect(linkBtn).toHaveAttribute('rel', 'noopener noreferrer');
+      const linkBtn = screen.queryByTestId('official-race-link-btn');
+      expect(linkBtn).not.toBeInTheDocument();
     });
 
-    it('NARレースでは、RaceCard 上に外部リンクアイコンボタンが表示され正しいURLを持つこと', () => {
+    it('NAR等の未検証レースでは、RaceCard 上に外部リンクアイコンボタンが表示されないこと (Issue #176)', () => {
       useLanguageStore.getState().setLanguage('ja');
       const onSelectMock = vi.fn();
       render(<RaceCard race={mockNarRace} onSelect={onSelectMock} />);
 
-      const linkIcon = screen.getByTestId('race-card-official-link');
-      expect(linkIcon).toBeInTheDocument();
-      expect(linkIcon).toHaveAttribute('href', 'https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/DebaTable?k_raceDate=2026%2F06%2F24&k_raceNo=11&k_babaCode=20');
+      const linkIcon = screen.queryByTestId('race-card-official-link');
+      expect(linkIcon).not.toBeInTheDocument();
     });
 
-    it('official_url が直接設定されているレースでは、そのURLでボタンが表示されること', () => {
+    it('JRA G1など verified な official_url が設定されているレースでは、リンクボタンおよびアイコンが表示されること', () => {
       useLanguageStore.getState().setLanguage('ja');
-      const raceWithExplicitUrl: Race = {
+      const raceWithVerifiedUrl: Race = {
         ...mockUnconfirmedRace,
-        official_url: 'https://www.jra.go.jp/keiba/thisweek/2026/0222_1/',
+        official_url: 'https://www.jra.go.jp/datafile/seiseki/g1/feb/result/feb2026.html',
       };
 
       render(
         <RaceDetailDialog
-          race={raceWithExplicitUrl}
+          race={raceWithVerifiedUrl}
           open={true}
           onOpenChange={() => {}}
         />
@@ -137,7 +133,23 @@ describe('UI Integration: Official race link Phase 1 (Issue #157)', () => {
 
       const linkBtn = screen.getByTestId('official-race-link-btn');
       expect(linkBtn).toBeInTheDocument();
-      expect(linkBtn).toHaveAttribute('href', 'https://www.jra.go.jp/keiba/thisweek/2026/0222_1/');
+      expect(linkBtn).toHaveAttribute('href', 'https://www.jra.go.jp/datafile/seiseki/g1/feb/result/feb2026.html');
+      expect(linkBtn).toHaveAttribute('target', '_blank');
+      expect(linkBtn).toHaveAttribute('rel', 'noopener noreferrer');
+    });
+
+    it('verified な official_url があるレースでは、RaceCard 上にアイコンが表示されること', () => {
+      useLanguageStore.getState().setLanguage('ja');
+      const onSelectMock = vi.fn();
+      const raceWithVerifiedUrl: Race = {
+        ...mockUnconfirmedRace,
+        official_url: 'https://www.jra.go.jp/datafile/seiseki/g1/feb/result/feb2026.html',
+      };
+      render(<RaceCard race={raceWithVerifiedUrl} onSelect={onSelectMock} />);
+
+      const linkIcon = screen.getByTestId('race-card-official-link');
+      expect(linkIcon).toBeInTheDocument();
+      expect(linkIcon).toHaveAttribute('href', 'https://www.jra.go.jp/datafile/seiseki/g1/feb/result/feb2026.html');
     });
   });
 
