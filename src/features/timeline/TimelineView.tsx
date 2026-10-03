@@ -54,6 +54,151 @@ function groupRacesByDate(races: Race[], lang: Language): GroupedRaces[] {
   return result;
 }
 
+interface TimelineDateSectionProps {
+  date: string;
+  formattedDate: string;
+  dateRaces: Race[];
+  isToday: boolean;
+  isTargetDate: boolean;
+  isLazyEnabled: boolean;
+  todayBadgeText: string;
+  racesCountText: string;
+}
+
+/**
+ * 日付ごとのレースセクションコンポーネント (Issue #180: 遅延描画・Windowing対応)
+ * 画面外のセクションはカード本体をアンマウントして高さを保持し、DOMノード数を大幅に削減する。
+ */
+export const TimelineDateSection = React.memo(function TimelineDateSection({
+  date,
+  formattedDate,
+  dateRaces,
+  isToday,
+  isTargetDate,
+  isLazyEnabled,
+  todayBadgeText,
+  racesCountText,
+}: TimelineDateSectionProps) {
+  const sectionRef = React.useRef<HTMLElement>(null);
+  const measuredHeightRef = React.useRef<number | null>(null);
+
+  // 初回マウント時、遅延無効時・ターゲット日付・または IntersectionObserver 非対応時は即時描画
+  const [isVisible, setIsVisible] = React.useState(
+    () => !isLazyEnabled || isTargetDate || typeof IntersectionObserver === "undefined"
+  );
+
+  // 1カードあたりの推定高さ: デスクトップ2列(md:grid-cols-2)で約150px、ヘッダー約45px
+  const estimatedCardsHeight = React.useMemo(() => {
+    const rows = Math.max(1, Math.ceil(dateRaces.length / 2));
+    return rows * 150;
+  }, [dateRaces.length]);
+
+  const totalEstimatedHeight = measuredHeightRef.current ?? (estimatedCardsHeight + 50);
+
+  React.useEffect(() => {
+    if (!isLazyEnabled || typeof IntersectionObserver === "undefined") {
+      return;
+    }
+
+    const element = sectionRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          // 画面外へ出た際に実測高さを記録してアンマウント
+          if (element.offsetHeight > 0) {
+            measuredHeightRef.current = element.offsetHeight;
+          }
+          setIsVisible(false);
+        }
+      },
+      {
+        rootMargin: "800px 0px 800px 0px",
+        threshold: 0,
+      }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [isLazyEnabled]);
+
+  return (
+    <section
+      ref={sectionRef}
+      id={`section-date-${date}`}
+      aria-labelledby={`heading-date-${date}`}
+      aria-label={!isVisible ? formattedDate : undefined}
+      style={{
+        scrollMarginTop: "calc(3.5rem + var(--filterbar-height, 0px) + 0.75rem)",
+        minHeight: isVisible ? undefined : `${totalEstimatedHeight}px`,
+      }}
+      className="scroll-mt-16 sm:scroll-mt-20 space-y-3"
+    >
+      {isVisible ? (
+        <>
+          {/* 日付ヘッダー */}
+          <div
+            style={{
+              top: "calc(3.5rem + var(--filterbar-height, 0px))",
+            }}
+            className={cn(
+              "sticky z-20 -mx-4 px-4 py-2 backdrop-blur border-b",
+              isToday
+                ? "bg-primary/[0.08] supports-[backdrop-filter]:bg-primary/[0.06] border-primary/30 dark:bg-primary/[0.12] dark:supports-[backdrop-filter]:bg-primary/[0.10]"
+                : "bg-background/90 supports-[backdrop-filter]:bg-background/70 border-border/40"
+            )}
+          >
+            <div className="flex items-center gap-2">
+              <span
+                className={cn(
+                  "rounded-full transition-all",
+                  isToday
+                    ? "h-2.5 w-2.5 bg-primary ring-4 ring-primary/25"
+                    : "h-2 w-2 bg-primary"
+                )}
+                aria-hidden="true"
+              />
+              <h3
+                id={`heading-date-${date}`}
+                className={cn(
+                  "text-sm sm:text-base font-bold tracking-tight flex items-center gap-2",
+                  isToday ? "text-primary dark:text-primary" : "text-foreground"
+                )}
+              >
+                <span>{formattedDate}</span>
+                {isToday && (
+                  <span className="text-[10px] font-bold bg-primary text-primary-foreground px-2 py-0.5 rounded-full leading-none shadow-2xs">
+                    {todayBadgeText}
+                  </span>
+                )}
+              </h3>
+              <span className="text-xs text-muted-foreground font-normal">
+                ({racesCountText})
+              </span>
+            </div>
+          </div>
+
+          {/* その日のレースカード一覧 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {dateRaces.map((race) => (
+              <RaceCard key={race.id} race={race} isToday={isToday} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div
+          data-testid={`timeline-placeholder-${date}`}
+          style={{ minHeight: `${totalEstimatedHeight}px` }}
+          aria-hidden="true"
+        />
+      )}
+    </section>
+  );
+});
+
 /**
  * タイムラインビューコンポーネント (PRD 4.1, 4.2 準拠)
  * モバイル閲覧を主眼とし、開催日ごとにグループ化した時系列リストを表示する。
@@ -70,6 +215,7 @@ export function TimelineView({ races, className }: TimelineViewProps) {
   const targetDate = React.useMemo(() => findUpcomingOrLatestDate(dates, todayStr), [dates, todayStr]);
 
   const [isTargetVisible, setIsTargetVisible] = React.useState(true);
+  const isLazyEnabled = groupedRaces.length > 5;
 
   // タイムラインビュー表示時に今日または直近・次のレースへ自動スクロール (Issue #6)
   React.useEffect(() => {
@@ -189,66 +335,20 @@ export function TimelineView({ races, className }: TimelineViewProps) {
     >
       {groupedRaces.map(({ date, formattedDate, races: dateRaces }) => {
         const isToday = date === todayStr;
+        const isTargetDate = date === targetDate;
 
         return (
-          <section
+          <TimelineDateSection
             key={date}
-            id={`section-date-${date}`}
-            aria-labelledby={`heading-date-${date}`}
-            style={{
-              scrollMarginTop: "calc(3.5rem + var(--filterbar-height, 0px) + 0.75rem)",
-            }}
-            className="scroll-mt-16 sm:scroll-mt-20 space-y-3"
-          >
-            {/* 日付ヘッダー */}
-            <div
-              style={{
-                top: "calc(3.5rem + var(--filterbar-height, 0px))",
-              }}
-              className={cn(
-                "sticky z-20 -mx-4 px-4 py-2 backdrop-blur border-b",
-                isToday
-                  ? "bg-primary/[0.08] supports-[backdrop-filter]:bg-primary/[0.06] border-primary/30 dark:bg-primary/[0.12] dark:supports-[backdrop-filter]:bg-primary/[0.10]"
-                  : "bg-background/90 supports-[backdrop-filter]:bg-background/70 border-border/40"
-              )}
-            >
-              <div className="flex items-center gap-2">
-                <span
-                  className={cn(
-                    "rounded-full transition-all",
-                    isToday
-                      ? "h-2.5 w-2.5 bg-primary ring-4 ring-primary/25"
-                      : "h-2 w-2 bg-primary"
-                  )}
-                  aria-hidden="true"
-                />
-                <h3
-                  id={`heading-date-${date}`}
-                  className={cn(
-                    "text-sm sm:text-base font-bold tracking-tight flex items-center gap-2",
-                    isToday ? "text-primary dark:text-primary" : "text-foreground"
-                  )}
-                >
-                  <span>{formattedDate}</span>
-                  {isToday && (
-                    <span className="text-[10px] font-bold bg-primary text-primary-foreground px-2 py-0.5 rounded-full leading-none shadow-2xs">
-                      {t("timeline.todayBadge")}
-                    </span>
-                  )}
-                </h3>
-                <span className="text-xs text-muted-foreground font-normal">
-                  ({t("timeline.racesCount", { count: dateRaces.length })})
-                </span>
-              </div>
-            </div>
-
-            {/* その日のレースカード一覧 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {dateRaces.map((race) => (
-                <RaceCard key={race.id} race={race} isToday={isToday} />
-              ))}
-            </div>
-          </section>
+            date={date}
+            formattedDate={formattedDate}
+            dateRaces={dateRaces}
+            isToday={isToday}
+            isTargetDate={isTargetDate}
+            isLazyEnabled={isLazyEnabled}
+            todayBadgeText={t("timeline.todayBadge")}
+            racesCountText={t("timeline.racesCount", { count: dateRaces.length })}
+          />
         );
       })}
 
