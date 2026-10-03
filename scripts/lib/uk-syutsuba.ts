@@ -12,6 +12,9 @@ const UK_STOP_WORDS = new Set([
   'A',
   'AN',
   'FOR',
+  'BY',
+  'PRESENTED',
+  'SPONSORED',
   'STAKES',
   'CUP',
   'TROPHY',
@@ -22,6 +25,7 @@ const UK_STOP_WORDS = new Set([
   'COLTS',
   'HORSE',
   'RACE',
+  'HANDICAP',
 ]);
 
 /**
@@ -130,6 +134,10 @@ export function parseUkTimeToIsoAndJst(
  */
 export function tokenizeEnglish(str: string): string[] {
   return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // アクセント記号（ñ -> n, é -> e 等）を除去
+    .replace(/\([^)]*\)/g, ' ') // 括弧内注記を除去
+    .replace(/['’]/g, '') // アポストロフィを除去
     .toUpperCase()
     .replace(/[^A-Z0-9]/g, ' ')
     .split(/\s+/)

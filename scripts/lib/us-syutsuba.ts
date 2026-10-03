@@ -14,12 +14,17 @@ const US_STOP_WORDS = new Set([
   'A',
   'AN',
   'FOR',
+  'BY',
+  'PRESENTED',
+  'SPONSORED',
   'STAKES',
   'CUP',
   'TROPHY',
   'GRADE',
   'GROUP',
   'RACE',
+  'HANDICAP',
+  'MEMORIAL',
 ]);
 
 export const US_COURSE_TIMEZONES: Record<string, UsTimeZone> = {
@@ -245,6 +250,10 @@ export function parseUsTimeToIsoAndJst(
  */
 export function tokenizeEnglish(str: string): string[] {
   return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // アクセント記号（ñ -> n, é -> e 等）を除去
+    .replace(/\([^)]*\)/g, ' ') // (Oaklawn Park) 等の括弧内注記を除去
+    .replace(/['’]/g, '') // アポストロフィを除去 (Kelly's -> Kellys)
     .toUpperCase()
     .replace(/[^A-Z0-9]/g, ' ')
     .split(/\s+/)

@@ -1117,6 +1117,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ラカナダステークス",
+        "en": "Nafisa"
+      }
     }
   },
   {
@@ -2630,6 +2636,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ナイトロジェン",
+        "en": "Nitrogen"
+      }
     }
   },
   {
@@ -15727,34 +15739,6 @@
     }
   },
   {
-    "id": "2026-us-g2-46",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "Mano'Warステークス",
-      "en": "Man o' War Stakes"
-    },
-    "grade": "G2",
-    "date": "2026-05-16",
-    "start_time": "2026-05-16T21:30:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-05-16",
-    "course": {
-      "ja": "アケダクト",
-      "en": "Aqueduct"
-    },
-    "distance": 2213,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
     "id": "2026-us-g3-73",
     "organization": "equibase",
     "country_code": "US",
@@ -17011,6 +16995,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "スティーブセクストンマイルステークス",
+        "en": "Heroic Move"
+      }
     }
   },
   {
@@ -18177,34 +18167,6 @@
         "en": "Stronghold"
       },
       "time": "1m 21.36s"
-    }
-  },
-  {
-    "id": "2026-us-g1-24",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "デルマーオークス",
-      "en": "Del Mar Oaks"
-    },
-    "grade": "G1",
-    "date": "2026-06-01",
-    "start_time": "2026-06-01T23:30:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-06-01",
-    "course": {
-      "ja": "デルマー",
-      "en": "Del Mar"
-    },
-    "distance": 1811,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
     }
   },
   {
@@ -22005,6 +21967,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ケリーズランディングステークス",
+        "en": "Closethegame Sugar"
+      }
     }
   },
   {
@@ -22401,6 +22369,44 @@
     }
   },
   {
+    "id": "2026-us-g3-102",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "Manilaステークス",
+      "en": "Manila Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-06-29",
+    "start_time": "2026-06-29T21:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-03",
+    "course": {
+      "ja": "サラトガ",
+      "en": "Saratoga"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "マニラステークス",
+        "en": "Neat"
+      },
+      "jockey": {
+        "ja": "J.アルバラード",
+        "en": "Junior Alvarado"
+      }
+    }
+  },
+  {
     "id": "2026-nar-local-114",
     "organization": "nar",
     "country_code": "JP",
@@ -22506,34 +22512,6 @@
       },
       "horse_number": 6,
       "time": "2:02.8"
-    }
-  },
-  {
-    "id": "2026-us-g3-102",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "Manilaステークス",
-      "en": "Manila Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-07-03",
-    "start_time": "2026-07-03T21:30:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-07-03",
-    "course": {
-      "ja": "サラトガ",
-      "en": "Saratoga"
-    },
-    "distance": 1609,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
     }
   },
   {
@@ -23529,34 +23507,6 @@
     }
   },
   {
-    "id": "2026-us-g2-59",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "Brooklynステークス",
-      "en": "Brooklyn Stakes"
-    },
-    "grade": "G2",
-    "date": "2026-07-10",
-    "start_time": "2026-07-10T21:30:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-07-10",
-    "course": {
-      "ja": "アケダクト",
-      "en": "Aqueduct"
-    },
-    "distance": 2213,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
     "id": "2026-us-g3-105",
     "organization": "equibase",
     "country_code": "US",
@@ -23897,6 +23847,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Navajo Warrior",
+        "en": "Navajo Warrior"
+      },
+      "jockey": {
+        "ja": "M.ハズバンズ",
+        "en": "Micah J. Husbands"
+      }
     }
   },
   {
@@ -28839,6 +28799,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Survie",
+        "en": "Survie"
+      }
     }
   },
   {
@@ -29854,6 +29820,44 @@
         "en": "And One More Time"
       },
       "time": "1m 40.8s"
+    }
+  },
+  {
+    "id": "2026-us-g1-24",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "デルマーオークス",
+      "en": "Del Mar Oaks"
+    },
+    "grade": "G1",
+    "date": "2026-08-22",
+    "start_time": "2026-08-22T23:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-06-01",
+    "course": {
+      "ja": "デルマー",
+      "en": "Del Mar"
+    },
+    "distance": 1811,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "タムタム",
+        "en": "Tam Tam"
+      },
+      "jockey": {
+        "ja": "J.アルバラード",
+        "en": "Junior Alvarado"
+      }
     }
   },
   {
@@ -31198,6 +31202,12 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "トーリーパインズステークス",
+        "en": "Rabeeba"
+      }
     }
   },
   {
@@ -31903,34 +31913,6 @@
         "en": "Moonrise"
       },
       "time": "1m 12s"
-    }
-  },
-  {
-    "id": "2026-us-g2-89",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "フラワーボウルステークス",
-      "en": "Flower Bowl Stakes"
-    },
-    "grade": "G2",
-    "date": "2026-09-05",
-    "start_time": "2026-09-05T21:30:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-09-05",
-    "course": {
-      "ja": "サラトガ",
-      "en": "Saratoga"
-    },
-    "distance": 2213,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
     }
   },
   {
@@ -32863,34 +32845,6 @@
     }
   },
   {
-    "id": "2026-us-g2-96",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "LocustGroveステークス",
-      "en": "Locust Grove Stakes"
-    },
-    "grade": "G2",
-    "date": "2026-09-07",
-    "start_time": "2026-09-07T21:30:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-09-07",
-    "course": {
-      "ja": "チャーチルダウンズ",
-      "en": "Churchill Downs"
-    },
-    "distance": 1710,
-    "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
     "id": "2026-us-g3-131",
     "organization": "equibase",
     "country_code": "US",
@@ -33709,6 +33663,44 @@
         "en": "Arabian Crown"
       },
       "time": "2m 32.31s"
+    }
+  },
+  {
+    "id": "2026-us-g2-96",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "LocustGroveステークス",
+      "en": "Locust Grove Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-09-12",
+    "start_time": "2026-09-12T21:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-07",
+    "course": {
+      "ja": "チャーチルダウンズ",
+      "en": "Churchill Downs"
+    },
+    "distance": 1710,
+    "track_type": "dirt",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Splendora",
+        "en": "Splendora"
+      },
+      "jockey": {
+        "ja": "F.プラ",
+        "en": "Flavien Prat"
+      }
     }
   },
   {
@@ -34932,6 +34924,16 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Bodacious Bay",
+        "en": "Bodacious Bay"
+      },
+      "jockey": {
+        "ja": "M.ハズバンズ",
+        "en": "Micah J. Husbands"
+      }
     }
   },
   {
@@ -34960,6 +34962,16 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "The Puma",
+        "en": "The Puma"
+      },
+      "jockey": {
+        "ja": "J.カステリャーノ",
+        "en": "Javier Castellano"
+      }
     }
   },
   {
@@ -34988,6 +35000,16 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "ストラダーレ",
+        "en": "Stradale"
+      },
+      "jockey": {
+        "ja": "J.オルティス",
+        "en": "Jose L. Ortiz"
+      }
     }
   },
   {
@@ -35835,34 +35857,6 @@
     }
   },
   {
-    "id": "2026-us-g3-137",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "ウィンターMemoriesステークス",
-      "en": "Winter Memories Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-09-26",
-    "start_time": "2026-09-26T21:30:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-09-26",
-    "course": {
-      "ja": "アケダクト",
-      "en": "Aqueduct"
-    },
-    "distance": 1609,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
     "id": "2026-jra-g1-13",
     "organization": "jra",
     "country_code": "JP",
@@ -36119,34 +36113,6 @@
     }
   },
   {
-    "id": "2026-us-g3-138",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "デラウェアハンデキャップ",
-      "en": "Delaware Handicap"
-    },
-    "grade": "G3",
-    "date": "2026-09-27",
-    "start_time": "2026-09-27T21:30:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-09-27",
-    "course": {
-      "ja": "デラウェアパーク",
-      "en": "Delaware Park"
-    },
-    "distance": 1811,
-    "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "handicap",
-      "ja": "ハンデ",
-      "en": "Handicap"
-    }
-  },
-  {
     "id": "2026-us-g3-139",
     "organization": "equibase",
     "country_code": "US",
@@ -36172,6 +36138,12 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Silent Tactic",
+        "en": "Silent Tactic"
+      }
     }
   },
   {
@@ -36200,6 +36172,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Listenupshance",
+        "en": "Listenupshance"
+      }
     }
   },
   {
@@ -36228,6 +36206,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ゼニヤッタステークス",
+        "en": "Super Corredora"
+      }
     }
   },
   {
@@ -36276,6 +36260,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "2yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-182",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "姫山菊花賞",
+      "en": "Himeyama Kikuka Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-10-01",
+    "start_time": "2026-10-01T06:55:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "園田",
+      "en": "Sonoda"
+    },
+    "distance": 1700,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -36339,32 +36349,6 @@
     }
   },
   {
-    "id": "2026-nar-local-182",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "姫山菊花賞",
-      "en": "Himeyama Kikuka Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-10-01",
-    "start_time": "2026-10-01T06:55:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "園田",
-      "en": "Sonoda"
-    },
-    "distance": 1700,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-181",
     "organization": "nar",
     "country_code": "JP",
@@ -36388,6 +36372,82 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-us-g2-89",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "フラワーボウルステークス",
+      "en": "Flower Bowl Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-10-01",
+    "start_time": "2026-10-01T21:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-09-05",
+    "course": {
+      "ja": "サラトガ",
+      "en": "Saratoga"
+    },
+    "distance": 2213,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "キャシーマリッサ",
+        "en": "Kathynmarissa"
+      },
+      "jockey": {
+        "ja": "J.オルティス",
+        "en": "Jose Ortiz"
+      }
+    }
+  },
+  {
+    "id": "2026-us-g3-137",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "ウィンターMemoriesステークス",
+      "en": "Winter Memories Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-01",
+    "start_time": "2026-10-01T21:30:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-09-26",
+    "course": {
+      "ja": "アケダクト",
+      "en": "Aqueduct"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "ウィンターメモリーズステークス",
+        "en": "Shelzawa"
+      },
+      "jockey": {
+        "ja": "F.プラ",
+        "en": "Flavien Prat"
+      }
     }
   },
   {
@@ -36645,6 +36705,34 @@
     }
   },
   {
+    "id": "2026-uk-g3-62",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "カンバーランドロッジステークス",
+      "en": "Cumberland Lodge Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-03",
+    "start_time": "2026-10-03T12:25:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-03",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-france-g1-18",
     "organization": "france_galop",
     "country_code": "FR",
@@ -36674,6 +36762,34 @@
     }
   },
   {
+    "id": "2026-uk-g3-63",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ベンゴーフステークス",
+      "en": "Bengough Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-03",
+    "start_time": "2026-10-03T13:00:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-03",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1207,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-france-g1-19",
     "organization": "france_galop",
     "country_code": "FR",
@@ -36700,62 +36816,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-uk-g3-62",
-    "organization": "bha",
-    "country_code": "GB",
-    "name": {
-      "ja": "カンバーランドロッジステークス",
-      "en": "Cumberland Lodge Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-10-03",
-    "start_time": "2026-10-03T12:25:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-03",
-    "course": {
-      "ja": "アスコット",
-      "en": "Ascot"
-    },
-    "distance": 2414,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
-    "id": "2026-uk-g3-63",
-    "organization": "bha",
-    "country_code": "GB",
-    "name": {
-      "ja": "ベンゴーフステークス",
-      "en": "Bengough Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-10-03",
-    "start_time": "2026-10-03T13:00:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-03",
-    "course": {
-      "ja": "アスコット",
-      "en": "Ascot"
-    },
-    "distance": 1207,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
     }
   },
   {
@@ -36814,6 +36874,34 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-us-g3-138",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "デラウェアハンデキャップ",
+      "en": "Delaware Handicap"
+    },
+    "grade": "G3",
+    "date": "2026-10-03",
+    "start_time": "2026-10-03T21:30:00.000Z",
+    "is_time_confirmed": false,
+    "is_rescheduled": false,
+    "original_date": "2026-09-27",
+    "course": {
+      "ja": "デラウェアパーク",
+      "en": "Delaware Park"
+    },
+    "distance": 1811,
+    "track_type": "dirt",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
@@ -37153,34 +37241,6 @@
     }
   },
   {
-    "id": "2026-jra-g2-29",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "毎日王冠",
-      "en": "Mainichi Okan"
-    },
-    "grade": "G2",
-    "date": "2026-10-04",
-    "start_time": "2026-10-04T06:45:00.000Z",
-    "is_time_confirmed": true,
-    "course": {
-      "ja": "東京",
-      "en": "Tokyo",
-      "fr": "Tokyo"
-    },
-    "distance": 1800,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    },
-    "official_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0105202604021120261004/C5"
-  },
-  {
     "id": "2026-jra-g2-28",
     "organization": "jra",
     "country_code": "JP",
@@ -37207,6 +37267,34 @@
       "en": "Set Weight"
     },
     "official_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0108202604021120261004/A3"
+  },
+  {
+    "id": "2026-jra-g2-29",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "毎日王冠",
+      "en": "Mainichi Okan"
+    },
+    "grade": "G2",
+    "date": "2026-10-04",
+    "start_time": "2026-10-04T06:45:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "東京",
+      "en": "Tokyo",
+      "fr": "Tokyo"
+    },
+    "distance": 1800,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    },
+    "official_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0105202604021120261004/C5"
   },
   {
     "id": "2026-nar-local-183",
@@ -42763,6 +42851,34 @@
     }
   },
   {
+    "id": "2026-us-g2-46",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "Mano'Warステークス",
+      "en": "Man o' War Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-11-28",
+    "start_time": "2026-11-28T21:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-05-16",
+    "course": {
+      "ja": "アケダクト",
+      "en": "Aqueduct"
+    },
+    "distance": 2213,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-us-g3-171",
     "organization": "equibase",
     "country_code": "US",
@@ -43365,6 +43481,34 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-us-g2-59",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "Brooklynステークス",
+      "en": "Brooklyn Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-12-05",
+    "start_time": "2026-12-05T21:30:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-07-10",
+    "course": {
+      "ja": "アケダクト",
+      "en": "Aqueduct"
+    },
+    "distance": 2213,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
