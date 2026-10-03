@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年10月3日) |
-| **バージョン** | v1.39.0 (ページ強制再読込・ヘッダーリロード＆軽量アクセシブルトースト通知配備) |
+| **バージョン** | v1.39.1 (PWAマニフェスト英語デフォルト化＆端末言語連動・日英仏中多言語ローカライズ) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -472,13 +472,27 @@ docs/
   - `tests/unit/Header.test.tsx` にリロードボタンの表示・クリック・ローディング中スピンアニメーション・`disabled` 制御・多言語ARIAラベルテストを追加。
   - 全56テストファイル・535テスト全件パス、型チェック・プロダクションビルド成功。
 
+### 過去のステップ: Step 58 (PWAマニフェスト英語デフォルト化＆端末言語連動・日英仏中多言語ローカライズ) (v1.39.1 / Issue #172) [完了]
+- **Web App Manifest（`manifest.webmanifest`）のデフォルト英語化 & 多言語ローカライズ**:
+  - グローバル標準仕様に準拠し、`vite.config.ts` のマニフェスト基底言語を英語（`lang: 'en'`, `name: 'Graded Races - Horse Racing Calendar'`, `short_name: 'Graded Races'`）に刷新。
+  - W3C標準の `translations`（`ja`, `fr`, `zh`）および互換用 `short_name_localized`, `name_localized`, `description_localized` を配備。日本語端末では「重賞カレンダー」、フランス語端末では「Courses de Groupe」、中国語端末では「分級賽行事曆」としてインストール可能に整備。
+- **初期HTML（`index.html`）の端末言語連動インラインスクリプト配備**:
+  - iOS Safari等でReact起動前に「ホーム画面に追加」を実行した場合でも端末言語に応じたアプリアイコン名となるよう、`<head>` 内に端末言語判定スクリプトを配備。
+  - `navigator.language` および `localStorage.getItem('language')` に基づき、`apple-mobile-web-app-title` および `application-name` を即時設定。
+- **アプリ内メタ同期（`src/libs/pwaMetadata.ts`）との完全整合**:
+  - 手動言語切替（JA/EN/FR/ZH）時にも、`updatePwaMetadata(language)` により各メタタグが完全に同期されることを維持。
+- **テスト・品質検証**:
+  - `tests/unit/manifest.test.ts` を新設し、基底言語および多言語ローカライズ設定、生成マニフェストの構造を自動検証。
+  - `tests/unit/pwaMetadata.test.ts` に初期言語判定スクリプトのシミュレーションテストを追加。
+  - 全57テストファイル・542テスト全件パス、型チェック・プロダクションビルド成功。
+
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
-- **Step 58: アイルランド競馬の未登録勝ち馬データ即効性是正 (Issue #165)**:
+- **Step 59: アイルランド競馬の未登録勝ち馬データ即効性是正 (Issue #165)**:
   - HRI / Sporting Life の未登録アイルランド重賞に対する名寄せ強化・即効性同期。
-- **Step 59: 海外主要レースのさらなる拡張**:
+- **Step 60: 海外主要レースのさらなる拡張**:
   - オーストラリア（Racing Australia / IFHA Part I）、UAE/ドバイ（ERA）等の重賞データ統合。
   - 各国公式出馬表フェッチャーの追加による確定発走時刻自動取得。
-- **Step 60: リアルタイム馬場状態・天候情報の表示**:
+- **Step 61: リアルタイム馬場状態・天候情報の表示**:
   - レース当日の天候（晴・雨等）および馬場状態（良・稍重・重・不良）のリアルタイム取得とバッジ表示。
-- **Step 61: カレンダー連携（iCalendar / Google Calendar 出力）**:
+- **Step 62: カレンダー連携（iCalendar / Google Calendar 出力）**:
   - お気に入りレースや特定条件レースをワンクリックで外部カレンダーアプリへ登録できる `.ics` エクスポート機能。

@@ -35,7 +35,8 @@
     <!-- PWA / Apple Mobile Web -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="重賞カレンダー" />
+    <meta name="apple-mobile-web-app-title" content="Graded Races" />
+    <meta name="application-name" content="Graded Races" />
 
     <!-- Structured Data (Schema.org JSON-LD) -->
     <script type="application/ld+json">
@@ -75,6 +76,32 @@
             document.documentElement.classList.add('dark');
           } else {
             document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- PWA App Name Language Initialization (Syncs apple-mobile-web-app-title before React mounts) -->
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('language');
+          var lang = (stored || navigator.language || '').toLowerCase();
+          var title = 'Graded Races';
+          if (lang.indexOf('ja') === 0) {
+            title = '重賞カレンダー';
+          } else if (lang.indexOf('fr') === 0) {
+            title = 'Courses de Groupe';
+          } else if (lang.indexOf('zh') === 0) {
+            title = '分級賽行事曆';
+          }
+          var appleTitleMeta = document.querySelector('meta[name="apple-mobile-web-app-title"]');
+          if (appleTitleMeta) {
+            appleTitleMeta.setAttribute('content', title);
+          }
+          var appNameMeta = document.querySelector('meta[name="application-name"]');
+          if (appNameMeta) {
+            appNameMeta.setAttribute('content', title);
           }
         } catch (e) {}
       })();

@@ -6,6 +6,22 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 58: PWAマニフェスト英語デフォルト化＆端末言語連動・日英仏中多言語ローカライズ (v1.39.1 / Issue #172) [完了]
+- **Web App Manifest（`manifest.webmanifest`）のデフォルト英語化 & 多言語ローカライズ (`vite.config.ts`) [完了]**
+  - グローバル標準仕様に準拠し、`vite.config.ts` のマニフェスト基底言語を英語（`lang: 'en'`, `name: 'Graded Races - Horse Racing Calendar'`, `short_name: 'Graded Races'`）に刷新。
+  - W3C標準の `translations`（`ja`, `fr`, `zh`）および互換用 `short_name_localized`, `name_localized`, `description_localized` を配備。日本語端末では「重賞カレンダー」、フランス語端末では「Courses de Groupe」、中国語端末では「分級賽行事曆」としてインストール可能に整備。
+- **初期HTML（`index.html`）の端末言語連動インラインスクリプト配備 (`index.html`) [完了]**
+  - iOS Safari等でReact起動前に「ホーム画面に追加」を実行した場合でも端末言語に応じたアプリアイコン名となるよう、`<head>` 内に端末言語判定スクリプトを配備。
+  - `navigator.language` および `localStorage.getItem('language')` に基づき、`apple-mobile-web-app-title` および `application-name` を即時設定。
+- **アプリ内メタ同期（`src/libs/pwaMetadata.ts`）との完全整合 [完了]**
+  - 手動言語切替（JA/EN/FR/ZH）時にも、`updatePwaMetadata(language)` により各メタタグが完全に同期されることを維持。
+- **テスト・品質検証 [完了]**
+  - `tests/unit/manifest.test.ts` を新設し、基底言語および多言語ローカライズ設定、生成マニフェストの構造を自動検証。
+  - `tests/unit/pwaMetadata.test.ts` に初期言語判定スクリプトのシミュレーションテストを追加。
+  - 全57テストファイル・542テスト全件パス、型検査・プロダクションビルド成功。
+
+---
+
 ### Step 57: ページ強制再読込機能・ヘッダーリロード＆軽量アクセシブルトースト通知 (v1.39.0 / Issue #166) [完了]
 - **ページ強制再読込（SPAリフレッシュ）機能の実装 (`src/components/shared/Header.tsx`, `src/hooks/useRaces.ts`) [完了]**
   - PWAスタンドアロン表示時、ブラウザの更新ボタンやアドレスバーがないため、最新データ確認にトップまでスクロールしてpull-to-refreshするか再起動が必要だった操作課題を解消。

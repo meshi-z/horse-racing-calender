@@ -30,9 +30,42 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'icons/*.png', 'icons/*.svg', 'robots.txt', 'sitemap.xml'],
       manifest: {
-        name: '重賞カレンダー - JRA重賞レーススケジュール',
-        short_name: '重賞カレンダー',
-        description: 'JRA重賞レースのスケジュールを閲覧・管理するオフライン対応カレンダー',
+        lang: 'en',
+        name: 'Graded Races - Horse Racing Calendar',
+        short_name: 'Graded Races',
+        description: 'Comprehensive schedule and offline-capable calendar for graded horse races worldwide.',
+        short_name_localized: {
+          ja: '重賞カレンダー',
+          fr: 'Courses de Groupe',
+          zh: '分級賽行事曆',
+        },
+        name_localized: {
+          ja: '重賞カレンダー - 中央・地方・海外重賞レーススケジュール',
+          fr: 'Courses de Groupe - Calendrier Hippique International',
+          zh: '分級賽行事曆 - 香港・日本・歐美賽馬賽程',
+        },
+        description_localized: {
+          ja: 'JRA（中央競馬）、NAR（地方競馬）、および海外主要競馬の重賞レーススケジュールを閲覧・管理するオフライン対応カレンダー',
+          fr: 'Calendrier hors-ligne complet des courses de groupe internationales (France, Royaume-Uni, Irlande, etc.).',
+          zh: '提供香港、日本、歐洲及美國主要分級賽（重賞）賽程、排位及賽果的離線行事曆。',
+        },
+        translations: {
+          ja: {
+            name: '重賞カレンダー - 中央・地方・海外重賞レーススケジュール',
+            short_name: '重賞カレンダー',
+            description: 'JRA（中央競馬）、NAR（地方競馬）、および海外主要競馬の重賞レーススケジュールを閲覧・管理するオフライン対応カレンダー',
+          },
+          fr: {
+            name: 'Courses de Groupe - Calendrier Hippique International',
+            short_name: 'Courses de Groupe',
+            description: 'Calendrier hors-ligne complet des courses de groupe internationales (France, Royaume-Uni, Irlande, etc.).',
+          },
+          zh: {
+            name: '分級賽行事曆 - 香港・日本・歐美賽馬賽程',
+            short_name: '分級賽行事曆',
+            description: '提供香港、日本、歐洲及美國主要分級賽（重賞）賽程、排位及賽果的離線行事曆。',
+          },
+        },
         theme_color: '#047B5F',
         background_color: '#FFFFFF',
         display: 'standalone',
