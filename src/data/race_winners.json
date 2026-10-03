@@ -8331,5 +8331,18 @@
       "en": "Nakatomi"
     },
     "time": "1m 9.93s"
+  },
+  "2026-france-g2-20": {
+    "name": {
+      "ja": "Jabracadabra",
+      "en": "Jabracadabra",
+      "fr": "Jabracadabra"
+    },
+    "jockey": {
+      "ja": "E.verhestraeten",
+      "en": "E.verhestraeten",
+      "fr": "E.verhestraeten"
+    },
+    "horse_number": 5
   }
 }

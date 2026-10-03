@@ -36773,6 +36773,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Jabracadabra",
+        "en": "Jabracadabra",
+        "fr": "Jabracadabra"
+      },
+      "jockey": {
+        "ja": "E.verhestraeten",
+        "en": "E.verhestraeten",
+        "fr": "E.verhestraeten"
+      },
+      "horse_number": 5
     }
   },
   {
