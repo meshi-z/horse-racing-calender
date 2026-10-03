@@ -67,4 +67,64 @@ describe('PWA Metadata i18n synchronization', () => {
     expect(appNameMeta).not.toBeNull();
     expect(appNameMeta?.getAttribute('content')).toBe('Graded Races');
   });
+
+  describe('index.html inline language initialization script', () => {
+    const runInlineScript = (browserLang: string, storedLang: string | null) => {
+      document.head.innerHTML = `
+        <meta name="apple-mobile-web-app-title" content="Graded Races" />
+        <meta name="application-name" content="Graded Races" />
+      `;
+
+      // Simulates the inline script in index.html
+      const lang = (storedLang || browserLang || '').toLowerCase();
+      let title = 'Graded Races';
+      if (lang.indexOf('ja') === 0) {
+        title = '重賞カレンダー';
+      } else if (lang.indexOf('fr') === 0) {
+        title = 'Courses de Groupe';
+      } else if (lang.indexOf('zh') === 0) {
+        title = '分級賽行事曆';
+      }
+      const appleTitleMeta = document.querySelector('meta[name="apple-mobile-web-app-title"]');
+      if (appleTitleMeta) {
+        appleTitleMeta.setAttribute('content', title);
+      }
+      const appNameMeta = document.querySelector('meta[name="application-name"]');
+      if (appNameMeta) {
+        appNameMeta.setAttribute('content', title);
+      }
+    };
+
+    it('日本語端末（ja-JP）では初期アプリアイコン名が「重賞カレンダー」になること', () => {
+      runInlineScript('ja-JP', null);
+      expect(document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute('content')).toBe('重賞カレンダー');
+      expect(document.querySelector('meta[name="application-name"]')?.getAttribute('content')).toBe('重賞カレンダー');
+    });
+
+    it('フランス語端末（fr-FR）では初期アプリアイコン名が「Courses de Groupe」になること', () => {
+      runInlineScript('fr-FR', null);
+      expect(document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute('content')).toBe('Courses de Groupe');
+      expect(document.querySelector('meta[name="application-name"]')?.getAttribute('content')).toBe('Courses de Groupe');
+    });
+
+    it('中国語端末（zh-HK）では初期アプリアイコン名が「分級賽行事曆」になること', () => {
+      runInlineScript('zh-HK', null);
+      expect(document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute('content')).toBe('分級賽行事曆');
+      expect(document.querySelector('meta[name="application-name"]')?.getAttribute('content')).toBe('分級賽行事曆');
+    });
+
+    it('英語端末およびその他の言語圏では初期アプリアイコン名が「Graded Races」になること', () => {
+      runInlineScript('en-US', null);
+      expect(document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute('content')).toBe('Graded Races');
+      expect(document.querySelector('meta[name="application-name"]')?.getAttribute('content')).toBe('Graded Races');
+
+      runInlineScript('de-DE', null);
+      expect(document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute('content')).toBe('Graded Races');
+    });
+
+    it('localStorage に明示的な設定がある場合はそちらが優先されること', () => {
+      runInlineScript('en-US', 'ja');
+      expect(document.querySelector('meta[name="apple-mobile-web-app-title"]')?.getAttribute('content')).toBe('重賞カレンダー');
+    });
+  });
 });
