@@ -25,12 +25,14 @@ export async function fetchWithRetry(
   url: string,
   init?: RequestInit,
   maxRetries = 3,
-  baseDelayMs = 1000
+  baseDelayMs = 1000,
+  timeoutMs = 15000
 ): Promise<Response> {
   let lastError: unknown;
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      const res = await fetch(url, init);
+      const signal = init?.signal || (AbortSignal.timeout ? AbortSignal.timeout(timeoutMs) : undefined);
+      const res = await fetch(url, { ...init, signal });
       if (res.ok) {
         return res;
       }
@@ -44,7 +46,7 @@ export async function fetchWithRetry(
       lastError = err;
       if (attempt < maxRetries) {
         const delay = baseDelayMs * Math.pow(2, attempt - 1);
-        console.warn(`[JRA Syutsuba] Fetch error for ${url} (attempt ${attempt}/${maxRetries}): ${(err as Error).message}. Retrying in ${delay}ms...`);
+        console.warn(`[Fetch] Error for ${url} (attempt ${attempt}/${maxRetries}): ${(err as Error).message}. Retrying in ${delay}ms...`);
         await new Promise((resolve) => setTimeout(resolve, delay));
       }
     }

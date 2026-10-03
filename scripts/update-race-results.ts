@@ -461,44 +461,93 @@ export class HkjcRaceResultFetcher implements RaceResultFetcher {
         // HKJC公式サイトからライブフェッチ
         try {
           const urlDate = target.date.replace(/-/g, '/');
-          const indexUrl = `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}`;
-          const res = await fetchWithRetry(indexUrl);
-          if (res.ok) {
-            const indexHtml = await res.text();
-            // 対象レースの RaceNo を探索
-            const raceNoMatches = Array.from(indexHtml.matchAll(/RaceNo=(\d+)/gi)).map((m) => m[1]);
-            const uniqueRaceNos = Array.from(new Set(raceNoMatches));
 
-            const targetEn = (target.name.en || '').toUpperCase();
-            let matchedRaceNo: string | null = null;
-
-            // 各 RaceNo のページを走査してレース名を照合（またはインデックスページ自体をチェック）
-            for (const rNo of uniqueRaceNos) {
-              const raceUrl = `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}&RaceNo=${rNo}`;
-              const raceRes = await fetchWithRetry(raceUrl);
-              if (raceRes.ok) {
-                const raceHtml = await raceRes.text();
-                const upperHtml = raceHtml.toUpperCase();
-                if (targetEn && (upperHtml.includes(targetEn) || raceNameMatches(targetEn, upperHtml))) {
-                  matchedRaceNo = rNo;
-                  htmlEn = raceHtml;
-                  break;
+          // Sporting Life の当日ミーティング情報から RaceNo を事前推定（超高速ピンポイントフェッチ）
+          let guessedRaceNo: string | null = null;
+          try {
+            const slUrl = `https://www.sportinglife.com/racing/results/${target.date}`;
+            const slRes = await fetchWithRetry(slUrl, undefined, 1, 500, 8000);
+            if (slRes.ok) {
+              const slHtml = await slRes.text();
+              const nextData = slHtml.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/i);
+              if (nextData) {
+                const json = JSON.parse(nextData[1]);
+                const hkMeeting = (json.props?.pageProps?.meetings || []).find(
+                  (m: any) => m.meeting_summary?.course?.name === 'Sha Tin' || m.meeting_summary?.course?.name === 'Happy Valley'
+                );
+                if (hkMeeting) {
+                  for (let idx = 0; idx < (hkMeeting.races || []).length; idx++) {
+                    const rc = hkMeeting.races[idx];
+                    const targetEn = (target.name.en || '').toUpperCase();
+                    if (targetEn && ukRaceMatches(targetEn, rc.name || '')) {
+                      guessedRaceNo = String(idx + 1);
+                      break;
+                    }
+                  }
                 }
               }
             }
+          } catch {
+            // Sporting Life pre-check fails silently
+          }
 
-            // 見つからない場合はインデックスHTMLをフォールバックとして使用
-            if (!htmlEn) {
-              htmlEn = indexHtml;
+          let matchedRaceNo = guessedRaceNo;
+
+          if (matchedRaceNo) {
+            // ピンポイントで該当 RaceNo の英語・中文ページのみを取得
+            const raceUrl = `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}&RaceNo=${matchedRaceNo}`;
+            const raceRes = await fetchWithRetry(raceUrl, undefined, 2, 500, 10000);
+            if (raceRes.ok) {
+              htmlEn = await raceRes.text();
             }
+          } else {
+            // インデックスページを取得
+            const indexUrl = `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}`;
+            const res = await fetchWithRetry(indexUrl, undefined, 2, 500, 10000);
+            if (res.ok) {
+              const indexHtml = await res.text();
+              const targetEn = (target.name.en || '').toUpperCase();
 
-            // 中文ページの取得（RaceNo指定）
-            const zhRaceNoParam = matchedRaceNo ? `&RaceNo=${matchedRaceNo}` : '';
-            const zhUrl = `https://racing.hkjc.com/racing/information/Chinese/Racing/LocalResults.aspx?RaceDate=${urlDate}${zhRaceNoParam}`;
-            const zhRes = await fetchWithRetry(zhUrl);
+              // インデックスページ自体に対象レース情報が含まれているか確認
+              if (targetEn && (indexHtml.toUpperCase().includes(targetEn) || raceNameMatches(targetEn, indexHtml.toUpperCase()))) {
+                htmlEn = indexHtml;
+              } else {
+                // 重賞が開催されやすい代表的なレース番号（Race 7, 8, 9, 3, 4）のみに絞り込んで確認
+                const priorityRaceNos = ['7', '8', '9', '10', '3', '4', '2', '5', '6', '1', '11'];
+                for (const rNo of priorityRaceNos) {
+                  const raceUrl = `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}&RaceNo=${rNo}`;
+                  try {
+                    const raceRes = await fetchWithRetry(raceUrl, undefined, 1, 300, 5000);
+                    if (raceRes.ok) {
+                      const raceHtml = await raceRes.text();
+                      const upperHtml = raceHtml.toUpperCase();
+                      if (targetEn && (upperHtml.includes(targetEn) || raceNameMatches(targetEn, upperHtml))) {
+                        matchedRaceNo = rNo;
+                        htmlEn = raceHtml;
+                        break;
+                      }
+                    }
+                  } catch {
+                    // 個別レースタイムアウト時は即次へ
+                  }
+                }
+                if (!htmlEn) {
+                  htmlEn = indexHtml;
+                }
+              }
+            }
+          }
+
+          // 中文ページの取得（RaceNo指定）
+          const zhRaceNoParam = matchedRaceNo ? `&RaceNo=${matchedRaceNo}` : '';
+          const zhUrl = `https://racing.hkjc.com/racing/information/Chinese/Racing/LocalResults.aspx?RaceDate=${urlDate}${zhRaceNoParam}`;
+          try {
+            const zhRes = await fetchWithRetry(zhUrl, undefined, 1, 500, 8000);
             if (zhRes.ok) {
               htmlZh = await zhRes.text();
             }
+          } catch {
+            // 中文取得失敗時は英語フォールバック
           }
         } catch (e) {
           console.warn(`[HKJC Results] Failed to live-fetch results for ${target.name.en || target.name.ja} (${target.date}): ${(e as Error).message}`);
