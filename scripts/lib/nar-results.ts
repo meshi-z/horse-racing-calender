@@ -49,19 +49,21 @@ export function parseNarRaceResultHtml(html: string): NarParsedResult[] {
       row.match(/<td[^>]*>\s*(?:1|01)\s*<\/td>/i);
     if (!rankMatch) continue;
 
-    // 馬番
+    // 馬番 (NAR公式テーブル構造: [0]=着順, [1]=枠番, [2]=馬番)
     let horseNumber: number | undefined;
-    const numMatch =
-      row.match(/<td[^>]*class=["'][^"']*(?:num|umaban|horse_num)[^"']*["'][^>]*>\s*(\d{1,2})\s*<\/td>/i) ||
-      row.match(/<td[^>]*>\s*(\d{1,2})\s*<\/td>/g);
-    if (numMatch) {
-      if (Array.isArray(numMatch) && numMatch.length >= 3) {
-        // 通常 [0]=着順, [1]=枠番, [2]=馬番
-        const rawNum = numMatch[2].replace(/<[^>]+>/g, '').trim();
-        const parsedNum = parseInt(rawNum, 10);
-        if (!isNaN(parsedNum)) horseNumber = parsedNum;
-      } else if (typeof numMatch[1] === 'string') {
-        horseNumber = parseInt(numMatch[1], 10);
+    const tdCells = Array.from(row.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)).map((m) =>
+      m[1].replace(/<[^>]+>/g, '').trim()
+    );
+    if (tdCells.length >= 3) {
+      const parsedNum = parseInt(tdCells[2], 10);
+      if (!isNaN(parsedNum)) {
+        horseNumber = parsedNum;
+      }
+    }
+    if (horseNumber === undefined) {
+      const explicitNum = row.match(/<td[^>]*class=["'][^"']*(?:num|umaban|horse_num)[^"']*["'][^>]*>\s*(\d{1,2})\s*<\/td>/i);
+      if (explicitNum) {
+        horseNumber = parseInt(explicitNum[1], 10);
       }
     }
 
@@ -87,8 +89,15 @@ export function parseNarRaceResultHtml(html: string): NarParsedResult[] {
         .replace(/\s+/g, ' ')
         .trim();
       if (rawJockey) {
-        // NAR特有の騎手略記（例: 戸崎圭 -> 戸崎圭太）の正規化
-        if (rawJockey === '戸崎圭') rawJockey = '戸崎圭太';
+        // NAR特有の騎手略記（例: 戸崎圭 -> 戸崎圭太, 山本聡 -> 山本聡哉, 吉原寛 -> 吉原寛人）の正規化
+        const JOCKEY_EXPANSIONS: Record<string, string> = {
+          戸崎圭: '戸崎圭太',
+          山本聡: '山本聡哉',
+          吉原寛: '吉原寛人',
+        };
+        if (JOCKEY_EXPANSIONS[rawJockey]) {
+          rawJockey = JOCKEY_EXPANSIONS[rawJockey];
+        }
         jockey = rawJockey;
       }
     }

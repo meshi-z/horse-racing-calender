@@ -62,10 +62,14 @@ export function parsePmuResultsJson(
 
     if (!matchedCourse) continue;
 
-    // 着順確定チェック (statutCourant === 'ARRIVEE' または ordreArrivee が存在)
+    // 着順確定チェック (statutCourant === 'ARRIVEE' / 'FIN_COURSE' または ordreArrivee / participants に1着が存在)
     const isArrivee =
       matchedCourse.statutCourant === 'ARRIVEE' ||
-      (matchedCourse.ordreArrivee && matchedCourse.ordreArrivee.length > 0);
+      matchedCourse.statutCourant === 'FIN_COURSE' ||
+      (matchedCourse as any).statut === 'ARRIVEE_DEFINITIVE_COMPLETE' ||
+      (matchedCourse as any).statut === 'FIN_COURSE' ||
+      (matchedCourse.ordreArrivee && matchedCourse.ordreArrivee.length > 0) ||
+      (matchedCourse.participants && matchedCourse.participants.some((p) => p.place === 1 || p.ordreArrivee === 1));
 
     if (!isArrivee) continue;
 
@@ -281,11 +285,20 @@ export function parseHkjcResultHtml(html: string): HkjcParsedResult[] {
       }
 
       if (horseName) {
+        const cleanHorseName = horseName
+          .replace(/&nbsp;/gi, ' ')
+          .replace(/\s*\([A-Z0-9]+\)\s*$/, '')
+          .replace(/\s+/g, ' ')
+          .trim();
+        const cleanJockey = jockey
+          ? jockey.replace(/&nbsp;/gi, ' ').replace(/\s+/g, ' ').trim()
+          : undefined;
+
         results.push({
           winner: {
-            horseNameEn: horseName,
+            horseNameEn: cleanHorseName,
             horseNumber: !isNaN(horseNumber) ? horseNumber : undefined,
-            jockey,
+            jockey: cleanJockey,
             time,
           },
         });
