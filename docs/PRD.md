@@ -563,13 +563,27 @@ docs/
 - **今後の展望・運用方針**:
   - 国内外のG1競走をはじめ、恒久的に壊れない公式一次ソースの個別レース結果URLが確認できたものから、順次検証済みマスタへ慎重に追加・拡充する方針を確立。
 
+### 過去のステップ: Step 64 (JRA G1公式結果URLのデッドリンク是正・公式リプレイ一覧スラッグ整合化) (Issue #182) [完了]
+- **JRA G1公式結果URLのデッドリンク是正 (`src/data/official_results_urls.json`, `scripts/update-race-results.ts`, `public/data/races.json`)**:
+  - JRA公式G1一覧ディレクトリ（`https://www.jra.go.jp/datafile/seiseki/replay/g1.html`）と突合調査を実施。
+  - スラッグ名の相違によりHTTP 403/404となっていた4件のURLを、JRA公式の実在URLへ是正：
+    - NHKマイルカップ: `nhk` -> **`nmc`** (`https://www.jra.go.jp/datafile/seiseki/g1/nmc/result/nmc2026.html`)
+    - ヴィクトリアマイル: `vm` -> **`victoria`** (`https://www.jra.go.jp/datafile/seiseki/g1/victoria/result/victoria2026.html`)
+    - 宝塚記念: `takarazuka` -> **`takara`** (`https://www.jra.go.jp/datafile/seiseki/g1/takara/result/takara2026.html`)
+    - スプリンターズステークス: `sprinters` -> **`sprint`** (`https://www.jra.go.jp/datafile/seiseki/g1/sprint/result/sprint2026.html`)
+  - 中山グランドジャンプ（J.G1）の公式結果URL（**`ngj`**）を追加。
+  - `scripts/backfill-official-result-urls.ts` を実行し、`public/data/races.json` の該当レースURLをHTTP 200 OKの正式URLへバックフィル。
+- **データ完全性テスト新設 (`tests/unit/backfillOfficialResultUrls.test.ts`)**:
+  - 実本番マスタ `src/data/official_results_urls.json` の登録スラッグがJRA公式仕様に準拠し、旧スラッグ（`nhk`, `vm`, `takarazuka`, `sprinters`）を一切含まないことを自動検証するテストを追加。
+  - 全59テストファイル・565テスト全件パス、プロダクションビルド成功。
+
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
-- **Step 64: アイルランド競馬の未登録勝ち馬データ即効性是正 (Issue #165)**:
+- **Step 65: アイルランド競馬の未登録勝ち馬データ即効性是正 (Issue #165)**:
   - HRI / Sporting Life の未登録アイルランド重賞に対する名寄せ強化・即効性同期。
-- **Step 65: 海外主要レースのさらなる拡張**:
+- **Step 66: 海外主要レースのさらなる拡張**:
   - オーストラリア（Racing Australia / IFHA Part I）、UAE/ドバイ（ERA）等の重賞データ統合。
   - 各国公式出馬表フェッチャーの追加による確定発走時刻自動取得。
-- **Step 66: リアルタイム馬場状態・天候情報の表示**:
+- **Step 67: リアルタイム馬場状態・天候情報の表示**:
   - レース当日の天候（晴・雨等）および馬場状態（良・稍重・重・不良）のリアルタイム取得とバッジ表示。
-- **Step 67: カレンダー連携（iCalendar / Google Calendar 出力）**:
+- **Step 68: カレンダー連携（iCalendar / Google Calendar 出力）**:
   - お気に入りレースや特定条件レースをワンクリックで外部カレンダーアプリへ登録できる `.ics` エクスポート機能。

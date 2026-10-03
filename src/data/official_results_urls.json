@@ -3,13 +3,14 @@
   "2026-jra-g1-02": "https://www.jra.go.jp/datafile/seiseki/g1/takamatsu/result/takamatsu2026.html",
   "2026-jra-g1-03": "https://www.jra.go.jp/datafile/seiseki/g1/osaka/result/osaka2026.html",
   "2026-jra-g1-04": "https://www.jra.go.jp/datafile/seiseki/g1/ouka/result/ouka2026.html",
+  "2026-jra-jg1-01": "https://www.jra.go.jp/datafile/seiseki/g1/ngj/result/ngj2026.html",
   "2026-jra-g1-05": "https://www.jra.go.jp/datafile/seiseki/g1/satsuki/result/satsuki2026.html",
   "2026-jra-g1-06": "https://www.jra.go.jp/datafile/seiseki/g1/haruten/result/haruten2026.html",
-  "2026-jra-g1-07": "https://www.jra.go.jp/datafile/seiseki/g1/nhk/result/nhk2026.html",
-  "2026-jra-g1-08": "https://www.jra.go.jp/datafile/seiseki/g1/vm/result/vm2026.html",
+  "2026-jra-g1-07": "https://www.jra.go.jp/datafile/seiseki/g1/nmc/result/nmc2026.html",
+  "2026-jra-g1-08": "https://www.jra.go.jp/datafile/seiseki/g1/victoria/result/victoria2026.html",
   "2026-jra-g1-09": "https://www.jra.go.jp/datafile/seiseki/g1/oaks/result/oaks2026.html",
   "2026-jra-g1-10": "https://www.jra.go.jp/datafile/seiseki/g1/derby/result/derby2026.html",
   "2026-jra-g1-11": "https://www.jra.go.jp/datafile/seiseki/g1/yasuda/result/yasuda2026.html",
-  "2026-jra-g1-12": "https://www.jra.go.jp/datafile/seiseki/g1/takarazuka/result/takarazuka2026.html",
-  "2026-jra-g1-13": "https://www.jra.go.jp/datafile/seiseki/g1/sprinters/result/sprinters2026.html"
+  "2026-jra-g1-12": "https://www.jra.go.jp/datafile/seiseki/g1/takara/result/takara2026.html",
+  "2026-jra-g1-13": "https://www.jra.go.jp/datafile/seiseki/g1/sprint/result/sprint2026.html"
 }

@@ -147,4 +147,23 @@ describe('backfillOfficialResultUrls', () => {
     expect(savedRaces[0].official_url).toBe('https://www.jra.go.jp/datafile/seiseki/g1/feb/result/feb2026.html');
     expect(savedRaces[2].official_url).toBeUndefined();
   });
+
+  it('実本番マスタ (src/data/official_results_urls.json) のJRA G1スラッグが公式仕様に準拠しデッドリンクを含まないこと (Issue #182)', () => {
+    const prodMasterPath = path.join(process.cwd(), 'src', 'data', 'official_results_urls.json');
+    const master: Record<string, string> = JSON.parse(fs.readFileSync(prodMasterPath, 'utf8'));
+
+    // 404/403となる旧スラッグが含まれていないこと
+    const urls = Object.values(master);
+    expect(urls.some((u) => u.includes('/nhk/'))).toBe(false);
+    expect(urls.some((u) => u.includes('/vm/'))).toBe(false);
+    expect(urls.some((u) => u.includes('/takarazuka/'))).toBe(false);
+    expect(urls.some((u) => u.includes('/sprinters/'))).toBe(false);
+
+    // 正しい公式スラッグが登録されていること
+    expect(master['2026-jra-g1-07']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/nmc/result/nmc2026.html');
+    expect(master['2026-jra-g1-08']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/victoria/result/victoria2026.html');
+    expect(master['2026-jra-g1-12']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/takara/result/takara2026.html');
+    expect(master['2026-jra-g1-13']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/sprint/result/sprint2026.html');
+    expect(master['2026-jra-jg1-01']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/ngj/result/ngj2026.html');
+  });
 });
