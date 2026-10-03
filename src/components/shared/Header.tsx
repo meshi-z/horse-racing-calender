@@ -4,6 +4,8 @@ import { useTheme } from "@/hooks/useTheme";
 import { useTranslation } from "@/libs/i18n";
 import type { Language } from "@/store/useLanguageStore";
 import { trackEvent } from "@/libs/analytics";
+import { forceRefreshRaces } from "@/hooks/useRaces";
+import { showToast } from "@/store/useToastStore";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +14,7 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
-import { Calendar, Languages, ListFilter, Moon, Sun } from "lucide-react";
+import { Calendar, Languages, ListFilter, Moon, RotateCw, Sun } from "lucide-react";
 import { cn } from "@/libs/utils";
 
 export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
@@ -21,12 +23,31 @@ export function Header({ className, ...props }: HeaderProps) {
   const { viewMode, setViewMode } = useViewMode();
   const { resolvedTheme, toggleTheme } = useTheme();
   const { language, setLanguage, t } = useTranslation();
+  const [isRefreshing, setIsRefreshing] = React.useState(false);
 
   const handleLanguageChange = (newLanguage: Language) => {
     if (newLanguage === language) return;
     const oldLanguage = language;
     setLanguage(newLanguage);
     trackEvent("language_change", { from: oldLanguage, to: newLanguage });
+  };
+
+  const handleRefresh = async () => {
+    if (isRefreshing) return;
+    setIsRefreshing(true);
+    trackEvent("force_refresh_races");
+    try {
+      const success = await forceRefreshRaces();
+      if (success) {
+        showToast(t("nav.refreshSuccess"), "success");
+      } else {
+        showToast(t("nav.refreshError"), "error");
+      }
+    } catch {
+      showToast(t("nav.refreshError"), "error");
+    } finally {
+      setIsRefreshing(false);
+    }
   };
 
   return (
@@ -103,6 +124,20 @@ export function Header({ className, ...props }: HeaderProps) {
               <SelectItem value="zh">繁體中文 (ZH)</SelectItem>
             </SelectContent>
           </Select>
+
+          {/* 強制データ再取得ボタン */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            onClick={handleRefresh}
+            disabled={isRefreshing}
+            aria-label={t("nav.refresh")}
+            title={t("nav.refresh")}
+            aria-busy={isRefreshing}
+          >
+            <RotateCw className={cn("h-4 w-4", isRefreshing && "animate-spin")} />
+          </Button>
 
           {/* テーマ切替 */}
           <Button

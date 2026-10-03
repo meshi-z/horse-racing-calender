@@ -68,6 +68,7 @@ describe("i18n 全体結合テスト (Full i18n Integration Test)", () => {
       isLoading: false,
       error: null,
       races: mockRaces,
+      refreshRaces: vi.fn().mockResolvedValue(true),
     });
 
     originalGtag = (window as any).gtag;

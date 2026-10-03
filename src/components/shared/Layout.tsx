@@ -5,6 +5,7 @@ import { ReloadPrompt } from "./ReloadPrompt";
 import { PwaInstallPrompt } from "./PwaInstallPrompt";
 import { DisclaimerDialog } from "./DisclaimerDialog";
 import { ConfirmedTimeHelpDialog } from "./ConfirmedTimeHelpDialog";
+import { Toaster } from "@/components/ui/toast";
 import { useViewMode } from "@/hooks/useViewMode";
 import { cn } from "@/libs/utils";
 import { useTranslation } from "@/libs/i18n";
@@ -65,6 +66,7 @@ export function Layout({ children, className }: LayoutProps) {
       )}
       <ReloadPrompt />
       <PwaInstallPrompt />
+      <Toaster />
     </div>
   );
 }

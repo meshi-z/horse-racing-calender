@@ -51,6 +51,7 @@ describe("App Integration", () => {
       isLoading: true,
       error: null,
       races: [],
+      refreshRaces: vi.fn().mockResolvedValue(true),
     });
 
     render(<App />);
@@ -63,6 +64,7 @@ describe("App Integration", () => {
       isLoading: false,
       error: new Error("ネットワークエラー"),
       races: [],
+      refreshRaces: vi.fn().mockResolvedValue(true),
     });
 
     render(<App />);
@@ -76,6 +78,7 @@ describe("App Integration", () => {
       isLoading: false,
       error: null,
       races: mockRaces,
+      refreshRaces: vi.fn().mockResolvedValue(true),
     });
     useRaceStore.setState({ viewMode: "timeline" });
 
@@ -90,6 +93,7 @@ describe("App Integration", () => {
       isLoading: false,
       error: null,
       races: mockRaces,
+      refreshRaces: vi.fn().mockResolvedValue(true),
     });
     useRaceStore.setState({ viewMode: "calendar" });
 
@@ -104,6 +108,7 @@ describe("App Integration", () => {
       isLoading: false,
       error: null,
       races: mockRaces,
+      refreshRaces: vi.fn().mockResolvedValue(true),
     });
 
     // 日本語モード

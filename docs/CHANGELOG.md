@@ -6,6 +6,26 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 57: ページ強制再読込機能・ヘッダーリロード＆軽量アクセシブルトースト通知 (v1.39.0 / Issue #166) [完了]
+- **ページ強制再読込（SPAリフレッシュ）機能の実装 (`src/components/shared/Header.tsx`, `src/hooks/useRaces.ts`) [完了]**
+  - PWAスタンドアロン表示時、ブラウザの更新ボタンやアドレスバーがないため、最新データ確認にトップまでスクロールしてpull-to-refreshするか再起動が必要だった操作課題を解消。
+  - 常時画面最上部に固定（`sticky top-0 z-40`）されているヘッダー右上にリロードボタン（`RotateCw` アイコン）を配備。言語切替セレクターとテーマ切替ボタンの間に配置。
+  - 白画面のブラウザハードリロードを避け、`races.json?t=${Date.now()}`（`cache: 'reload'`）をネットワーク直行でフェッチし、`useRaceStore` の状態を即時更新。スクロール位置や適用中のフィルター状態を完全に維持。
+  - バックグラウンドで `navigator.serviceWorker.getRegistration().then(reg => reg?.update())` も呼び出し、PWA Service Worker の更新チェックも連動。
+- **軽量・セマンティックなアクセシブルトースト通知 (`src/components/ui/toast.tsx`, `src/store/useToastStore.ts`, `src/components/shared/Layout.tsx`) [完了]**
+  - 外部の肥大化したnpmパッケージを追加せず、Shadcn UI / Tailwind CSS セマンティックトークン（`bg-card`, `text-card-foreground`, `border`, `shadow-lg`）に準拠した通知基盤を構築。
+  - `role="status"` および `aria-live="polite"` に準拠し、スクリーンリーダー対応および手動「閉じる」操作、3秒後の自動フェードアウトをサポート。
+  - 画面下部中央（固定フッターやスマホ操作を阻害しない位置）に控えめにポップアップ表示。
+- **4言語多言語対応 (`src/libs/i18n.ts`) [完了]**
+  - 日・英・仏・中の全4言語でリロードボタンのツールチップ・ARIAラベル、および完了・失敗トースト通知文言を完全定義。
+- **テスト・品質検証 [完了]**
+  - `tests/unit/useRaces.test.ts` に `forceRefreshRaces` および hook `refreshRaces` のフェッチ・Store更新・SW更新・エラー処理テストを追加。
+  - `tests/unit/toast.test.tsx` にトースト通知の表示・自動消去・手動消去テストを追加。
+  - `tests/unit/Header.test.tsx` にリロードボタンの表示・クリック・ローディング中スピンアニメーション・`disabled` 制御・多言語ARIAラベルテストを追加。
+  - 全56テストファイル・535テスト全件パス、型検査・プロダクションビルド成功。
+
+---
+
 ### Step 56: 9/26〜10/02終了レース結果一括反映・パイプライン堅牢化・空値原則遵守 (v1.38.5) [完了]
 - **9/26〜10/02終了全10レースの公式確定結果一括反映 (`public/data/races.json`, `src/data/race_winners.json`) [完了]**
   - **NAR**: 姫山菊花賞（オマツリオトコ/吉原寛人/10番/1:51.4）、マリーンカップ（ロンギングフォユー/荻野極/1番/1:53.1）、ネクストスター門別（クラプロスパー/山本聡哉/5番/1:13.3）

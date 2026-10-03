@@ -11,13 +11,40 @@ export interface UseRacesResult {
   isLoading: boolean;
   error: Error | null;
   races: Race[];
+  refreshRaces: () => Promise<boolean>;
 }
 
 const baseUrl = import.meta.env.BASE_URL ?? '/';
 const normalizedBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
-const DEFAULT_DATA_URL = `${normalizedBase}data/races.json`;
+export const DEFAULT_DATA_URL = `${normalizedBase}data/races.json`;
 
 export const BROADCAST_CHANNEL_NAME = 'races-data-updates';
+
+/**
+ * キャッシュをバイパスして最新の races.json を強制フェッチし、Store を即座に更新する
+ * 併せて Service Worker の更新チェックもトリガーする
+ */
+export async function forceRefreshRaces(dataUrl = DEFAULT_DATA_URL): Promise<boolean> {
+  try {
+    const separator = dataUrl.includes('?') ? '&' : '?';
+    const response = await fetch(`${dataUrl}${separator}t=${Date.now()}`, {
+      cache: 'reload',
+    });
+    if (response.ok) {
+      const data = (await response.json()) as Race[];
+      useRaceStore.getState().setRaces(data);
+      if (typeof navigator !== 'undefined' && Boolean(navigator.serviceWorker)) {
+        void navigator.serviceWorker.getRegistration().then((reg) => {
+          void reg?.update();
+        });
+      }
+      return true;
+    }
+  } catch (err) {
+    console.error('Failed to force refresh races:', err);
+  }
+  return false;
+}
 
 /**
  * races.json からレースデータを非同期取得し、Store に格納する Custom Hook
@@ -120,7 +147,7 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
       }
     };
 
-    if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+    if (typeof navigator !== 'undefined' && Boolean(navigator.serviceWorker)) {
       navigator.serviceWorker.addEventListener('message', handleSwMessage);
     }
 
@@ -129,7 +156,7 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
       if (
         document.visibilityState === 'visible' &&
         typeof navigator !== 'undefined' &&
-        'serviceWorker' in navigator
+        Boolean(navigator.serviceWorker)
       ) {
         void navigator.serviceWorker.getRegistration().then((registration) => {
           void registration?.update();
@@ -147,7 +174,7 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
       if (broadcastChannel) {
         broadcastChannel.close();
       }
-      if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+      if (typeof navigator !== 'undefined' && Boolean(navigator.serviceWorker)) {
         navigator.serviceWorker.removeEventListener('message', handleSwMessage);
       }
       if (typeof document !== 'undefined') {
@@ -156,9 +183,14 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
     };
   }, [dataUrl, forceRefresh, setRaces, races.length]);
 
+  const refreshRaces = async (): Promise<boolean> => {
+    return forceRefreshRaces(dataUrl);
+  };
+
   return {
     isLoading,
     error,
     races,
+    refreshRaces,
   };
 }
