@@ -37156,6 +37156,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Al Aasy",
+        "en": "Al Aasy"
+      },
+      "time": "2m 34.97s"
     }
   },
   {
@@ -37184,6 +37191,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Hidden Force",
+        "en": "Hidden Force"
+      },
+      "time": "1m 12.55s"
     }
   },
   {
@@ -37213,6 +37227,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Fairy Glen",
+        "en": "Fairy Glen",
+        "fr": "Fairy Glen"
+      },
+      "jockey": {
+        "ja": "M.barzalona",
+        "en": "M.barzalona",
+        "fr": "M.barzalona"
+      },
+      "horse_number": 1
     }
   },
   {
