@@ -519,9 +519,20 @@ docs/
   - `tests/unit/updateRaceTimesUrl.test.ts` を新設。
   - 時刻確定時の公式出馬表URL自動付与、確定済み過去レースの巻き戻り防止ガード、および時刻同一時のURL新規付与を検証。全58テストファイル・556テスト全件パス、プロダクションビルド成功。
 
+### 過去のステップ: Step 61 (公式サイトリンク改善 Phase 3: レース結果確定パイプライン連動によるリザルトURL上書きおよび過去実績バックフィル) (Issue #159) [完了]
+- **レース結果確定パイプライン連動 (`scripts/update-race-results.ts`)**:
+  - 各競馬主催者結果フェッチャー（JRA, NAR, France Galop / PMU, Sporting Life / BHA, HRI, HKJC, Equibase / US）に `RaceResultRecord`（`winner` と `resultUrl`）を導入。
+  - レース終了・着順確定時に、出馬表URLを確定公式結果URL（`resultUrl`）で自動上書き更新するパイプラインを構築。
+  - `src/data/official_results_urls.json` を新設し、公式結果URLの永続化マスタとして連携。
+- **確定済み過去実績バックフィル (`scripts/backfill-official-result-urls.ts`)**:
+  - 一次ソース原則・空値原則（Null Value Principle, Issue #153）に基づき、公式一次ソースで実在確認（HTTP 200 OK）された公式結果URL（2026年JRA G1全13レース）を `public/data/races.json` へ安全にバックフィル。
+  - 一次ソースで直接確認できないレースデータは、架空URLによる推測補完を行わず未設定（undefined）のまま保持することを徹底。
+- **テスト自動化**:
+  - `tests/unit/backfillOfficialResultUrls.test.ts` を新設し、実在検証済み公式URLのバックフィル、未検証レースの空値維持、dry-run、および冪等性を自動検証。
+  - `tests/unit/updateRaceResults.test.ts` にレース結果確定時の `official_url` 自動付与およびマスタ同期テストを追加。
+  - 全59テストファイル・560テスト全件パス、型チェック・プロダクションビルド成功。
+
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
-- **Step 61: 公式サイトリンク改善 Phase 3: レース結果確定パイプライン連動によるリザルトURL上書きおよび過去実績バックフィル (Issue #159)**:
-  - 各国レース結果確定パイプライン連動および過去重賞結果URLの公式一次ソース準拠バックフィル。
 - **Step 62: アイルランド競馬の未登録勝ち馬データ即効性是正 (Issue #165)**:
   - HRI / Sporting Life の未登録アイルランド重賞に対する名寄せ強化・即効性同期。
 - **Step 63: 海外主要レースのさらなる拡張**:

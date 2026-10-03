@@ -18,6 +18,30 @@ import {
 
 export type { RaceOutput, RaceWinner };
 
+export interface RaceResultRecord {
+  winner: RaceWinner;
+  resultUrl?: string;
+}
+
+/**
+ * JRA G1公式レース結果アーカイブ実在URLマッピング (一次ソース検証済み)
+ */
+export const JRA_G1_RESULT_URLS: Record<string, string> = {
+  '2026-jra-g1-01': 'https://www.jra.go.jp/datafile/seiseki/g1/feb/result/feb2026.html',
+  '2026-jra-g1-02': 'https://www.jra.go.jp/datafile/seiseki/g1/takamatsu/result/takamatsu2026.html',
+  '2026-jra-g1-03': 'https://www.jra.go.jp/datafile/seiseki/g1/osaka/result/osaka2026.html',
+  '2026-jra-g1-04': 'https://www.jra.go.jp/datafile/seiseki/g1/ouka/result/ouka2026.html',
+  '2026-jra-g1-05': 'https://www.jra.go.jp/datafile/seiseki/g1/satsuki/result/satsuki2026.html',
+  '2026-jra-g1-06': 'https://www.jra.go.jp/datafile/seiseki/g1/haruten/result/haruten2026.html',
+  '2026-jra-g1-07': 'https://www.jra.go.jp/datafile/seiseki/g1/nhk/result/nhk2026.html',
+  '2026-jra-g1-08': 'https://www.jra.go.jp/datafile/seiseki/g1/vm/result/vm2026.html',
+  '2026-jra-g1-09': 'https://www.jra.go.jp/datafile/seiseki/g1/oaks/result/oaks2026.html',
+  '2026-jra-g1-10': 'https://www.jra.go.jp/datafile/seiseki/g1/derby/result/derby2026.html',
+  '2026-jra-g1-11': 'https://www.jra.go.jp/datafile/seiseki/g1/yasuda/result/yasuda2026.html',
+  '2026-jra-g1-12': 'https://www.jra.go.jp/datafile/seiseki/g1/takarazuka/result/takarazuka2026.html',
+  '2026-jra-g1-13': 'https://www.jra.go.jp/datafile/seiseki/g1/sprinters/result/sprinters2026.html',
+};
+
 /**
  * 各競馬主催者ごとのレースリザルト（勝ち馬・着順）取得プロバイダー
  */
@@ -31,6 +55,10 @@ export interface RaceResultFetcher {
    * 対象レースの着順確定結果（勝ち馬情報）を取得
    */
   fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>>;
+  /**
+   * 対象レースの着順確定結果および公式結果URLを取得 (Issue #159)
+   */
+  fetchResultRecords?(targetRaces: RaceOutput[]): Promise<Map<string, RaceResultRecord>>;
 }
 
 /**
@@ -121,12 +149,13 @@ export class JraRaceResultFetcher implements RaceResultFetcher {
     return targets.filter((r) => r.organization === this.organization);
   }
 
-  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
-    const results = new Map<string, RaceWinner>();
+  async fetchResultRecords(targetRaces: RaceOutput[]): Promise<Map<string, RaceResultRecord>> {
+    const results = new Map<string, RaceResultRecord>();
     if (targetRaces.length === 0) return results;
 
     for (const target of targetRaces) {
       let html: string | null = null;
+      let resultUrl: string | undefined = JRA_G1_RESULT_URLS[target.id];
 
       if (this.fixtures && this.fixtures[target.id]) {
         html = this.fixtures[target.id];
@@ -134,12 +163,14 @@ export class JraRaceResultFetcher implements RaceResultFetcher {
         html = this.fixtures[target.date];
       } else {
         // JRA公式サイトの結果URL等から取得を試行
-        // 例: 当週結果ページや特別レース成績ページ
         try {
           const url = `https://www.jra.go.jp/keiba/thisweek/`;
           const res = await fetchWithRetry(url);
           if (res.ok) {
             html = await res.text();
+            if (!resultUrl) {
+              resultUrl = url;
+            }
           }
         } catch (e) {
           console.warn(`[JRA Results] Failed to fetch live results for ${target.name.ja}: ${(e as Error).message}`);
@@ -151,7 +182,7 @@ export class JraRaceResultFetcher implements RaceResultFetcher {
         for (const item of parsedList) {
           if (raceNameMatches(target.name.ja, item.raceName) || !item.raceName) {
             const winner = buildJraRaceWinner(item.winner);
-            results.set(target.id, winner);
+            results.set(target.id, { winner, resultUrl });
             break;
           }
         }
@@ -159,6 +190,15 @@ export class JraRaceResultFetcher implements RaceResultFetcher {
     }
 
     return results;
+  }
+
+  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
+    const records = await this.fetchResultRecords(targetRaces);
+    const winners = new Map<string, RaceWinner>();
+    for (const [id, rec] of records.entries()) {
+      winners.set(id, rec.winner);
+    }
+    return winners;
   }
 }
 
@@ -178,12 +218,13 @@ export class NarRaceResultFetcher implements RaceResultFetcher {
     return targets.filter((r) => r.organization === this.organization);
   }
 
-  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
-    const results = new Map<string, RaceWinner>();
+  async fetchResultRecords(targetRaces: RaceOutput[]): Promise<Map<string, RaceResultRecord>> {
+    const results = new Map<string, RaceResultRecord>();
     if (targetRaces.length === 0) return results;
 
     for (const target of targetRaces) {
       let html: string | null = null;
+      let resultUrl: string | undefined;
 
       if (this.fixtures && this.fixtures[target.id]) {
         html = this.fixtures[target.id];
@@ -227,6 +268,7 @@ export class NarRaceResultFetcher implements RaceResultFetcher {
               const markRes = await fetchWithRetry(markUrl);
               if (markRes.ok) {
                 html = await markRes.text();
+                resultUrl = markUrl;
               }
             }
           }
@@ -240,7 +282,7 @@ export class NarRaceResultFetcher implements RaceResultFetcher {
         for (const item of parsedList) {
           if (raceNameMatches(target.name.ja, item.raceName) || !item.raceName || item.raceName.includes(target.name.ja) || target.name.ja.includes(item.raceName)) {
             const winner = buildNarRaceWinner(item.winner);
-            results.set(target.id, winner);
+            results.set(target.id, { winner, resultUrl });
             break;
           }
         }
@@ -248,6 +290,15 @@ export class NarRaceResultFetcher implements RaceResultFetcher {
     }
 
     return results;
+  }
+
+  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
+    const records = await this.fetchResultRecords(targetRaces);
+    const winners = new Map<string, RaceWinner>();
+    for (const [id, rec] of records.entries()) {
+      winners.set(id, rec.winner);
+    }
+    return winners;
   }
 }
 
@@ -267,8 +318,8 @@ export class FranceRaceResultFetcher implements RaceResultFetcher {
     return targets.filter((r) => r.organization === this.organization);
   }
 
-  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
-    const results = new Map<string, RaceWinner>();
+  async fetchResultRecords(targetRaces: RaceOutput[]): Promise<Map<string, RaceResultRecord>> {
+    const results = new Map<string, RaceResultRecord>();
     if (targetRaces.length === 0) return results;
 
     // 日付ごとにグループ化
@@ -299,8 +350,6 @@ export class FranceRaceResultFetcher implements RaceResultFetcher {
       }
 
       if (data) {
-        // PMU の日次 programme には participants が直接含まれていない場合があるため、
-        // 該当レースの出走馬詳細エンドポイント (/participants) をフェッチして補完
         const reunions = (data as any).programme?.reunions || [];
         for (const race of racesOnDate) {
           const frName = (race.name as { fr?: string }).fr || '';
@@ -332,12 +381,37 @@ export class FranceRaceResultFetcher implements RaceResultFetcher {
 
         const parsedMap = parsePmuResultsJson(data, racesOnDate);
         for (const [id, winner] of parsedMap.entries()) {
-          results.set(id, winner);
+          const race = racesOnDate.find((r) => r.id === id);
+          let resultUrl = 'https://www.pmu.fr/turf/';
+          if (race) {
+            const frName = (race.name as { fr?: string }).fr || '';
+            const enName = race.name?.en || '';
+            for (const reunion of reunions) {
+              for (const course of reunion.courses || []) {
+                const matchesFr = frName ? frenchRaceMatches(frName, course.libelle) : false;
+                const matchesEn = enName ? frenchRaceMatches(enName, course.libelle) : false;
+                if ((matchesFr || matchesEn) && reunion.numOfficiel && course.numOrdre) {
+                  resultUrl = `https://www.pmu.fr/turf/${ddmmyyyy}/r${reunion.numOfficiel}/c${course.numOrdre}/`;
+                  break;
+                }
+              }
+            }
+          }
+          results.set(id, { winner, resultUrl });
         }
       }
     }
 
     return results;
+  }
+
+  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
+    const records = await this.fetchResultRecords(targetRaces);
+    const winners = new Map<string, RaceWinner>();
+    for (const [id, rec] of records.entries()) {
+      winners.set(id, rec.winner);
+    }
+    return winners;
   }
 }
 
@@ -357,8 +431,8 @@ export class UkRaceResultFetcher implements RaceResultFetcher {
     return targets.filter((r) => r.organization === this.organization || r.organization === 'uk');
   }
 
-  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
-    const results = new Map<string, RaceWinner>();
+  async fetchResultRecords(targetRaces: RaceOutput[]): Promise<Map<string, RaceResultRecord>> {
+    const results = new Map<string, RaceResultRecord>();
     if (targetRaces.length === 0) return results;
 
     const dateMap = new Map<string, RaceOutput[]>();
@@ -398,13 +472,23 @@ export class UkRaceResultFetcher implements RaceResultFetcher {
 
       if (meetings) {
         const parsedMap = parseSportingLifeResultsJson(meetings, racesOnDate);
+        const resultUrl = `https://www.sportinglife.com/racing/results/${dateYmd}`;
         for (const [id, winner] of parsedMap.entries()) {
-          results.set(id, winner);
+          results.set(id, { winner, resultUrl });
         }
       }
     }
 
     return results;
+  }
+
+  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
+    const records = await this.fetchResultRecords(targetRaces);
+    const winners = new Map<string, RaceWinner>();
+    for (const [id, rec] of records.entries()) {
+      winners.set(id, rec.winner);
+    }
+    return winners;
   }
 }
 
@@ -422,6 +506,11 @@ export class IeRaceResultFetcher implements RaceResultFetcher {
   getTargetPastRaces(races: RaceOutput[], refDate: string, options?: { refTimeIso?: string; daysAgo?: number; force?: boolean }): RaceOutput[] {
     const targets = getTargetPastRacesForResults(races, refDate, options);
     return targets.filter((r) => r.organization === this.organization);
+  }
+
+  async fetchResultRecords(targetRaces: RaceOutput[]): Promise<Map<string, RaceResultRecord>> {
+    const ukFetcher = new UkRaceResultFetcher({ fixtures: this.fixtures });
+    return await ukFetcher.fetchResultRecords(targetRaces);
   }
 
   async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
@@ -446,13 +535,14 @@ export class HkjcRaceResultFetcher implements RaceResultFetcher {
     return targets.filter((r) => r.organization === this.organization);
   }
 
-  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
-    const results = new Map<string, RaceWinner>();
+  async fetchResultRecords(targetRaces: RaceOutput[]): Promise<Map<string, RaceResultRecord>> {
+    const results = new Map<string, RaceResultRecord>();
     if (targetRaces.length === 0) return results;
 
     for (const target of targetRaces) {
       let htmlEn: string | null = null;
       let htmlZh: string | null = null;
+      let matchedRaceNo: string | null = null;
 
       if (this.fixtures && this.fixtures[target.id]) {
         htmlEn = this.fixtures[target.id];
@@ -492,7 +582,7 @@ export class HkjcRaceResultFetcher implements RaceResultFetcher {
             // Sporting Life pre-check fails silently
           }
 
-          let matchedRaceNo = guessedRaceNo;
+          matchedRaceNo = guessedRaceNo;
 
           if (matchedRaceNo) {
             // ピンポイントで該当 RaceNo の英語・中文ページのみを取得
@@ -571,7 +661,7 @@ export class HkjcRaceResultFetcher implements RaceResultFetcher {
             }
           }
 
-          results.set(target.id, {
+          const winner: RaceWinner = {
             name: {
               ja: target.winner?.name?.ja || first.horseNameEn,
               en: first.horseNameEn,
@@ -586,12 +676,29 @@ export class HkjcRaceResultFetcher implements RaceResultFetcher {
               : undefined,
             horse_number: first.horseNumber,
             time: first.time,
-          });
+          };
+
+          const urlDate = target.date.replace(/-/g, '/');
+          const rNo = matchedRaceNo || (target as any).race_number;
+          const resultUrl = rNo
+            ? `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}&RaceNo=${rNo}`
+            : `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}`;
+
+          results.set(target.id, { winner, resultUrl });
         }
       }
     }
 
     return results;
+  }
+
+  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
+    const records = await this.fetchResultRecords(targetRaces);
+    const winners = new Map<string, RaceWinner>();
+    for (const [id, rec] of records.entries()) {
+      winners.set(id, rec.winner);
+    }
+    return winners;
   }
 }
 
@@ -611,8 +718,8 @@ export class UsRaceResultFetcher implements RaceResultFetcher {
     return targets.filter((r) => r.organization === this.organization || r.organization === 'us');
   }
 
-  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
-    const results = new Map<string, RaceWinner>();
+  async fetchResultRecords(targetRaces: RaceOutput[]): Promise<Map<string, RaceResultRecord>> {
+    const results = new Map<string, RaceResultRecord>();
     if (targetRaces.length === 0) return results;
 
     // 1. fixtures があれば優先処理
@@ -630,18 +737,20 @@ export class UsRaceResultFetcher implements RaceResultFetcher {
           if (parsedList.length > 0) {
             const first = parsedList[0].winner;
             results.set(target.id, {
-              name: {
-                ja: target.winner?.name?.ja || first.horseName,
-                en: first.horseName,
+              winner: {
+                name: {
+                  ja: target.winner?.name?.ja || first.horseName,
+                  en: first.horseName,
+                },
+                jockey: first.jockey
+                  ? {
+                      ja: target.winner?.jockey?.ja || first.jockey,
+                      en: first.jockey,
+                    }
+                  : undefined,
+                horse_number: first.horseNumber,
+                time: first.time,
               },
-              jockey: first.jockey
-                ? {
-                    ja: target.winner?.jockey?.ja || first.jockey,
-                    en: first.jockey,
-                  }
-                : undefined,
-              horse_number: first.horseNumber,
-              time: first.time,
             });
           }
         }
@@ -688,11 +797,22 @@ export class UsRaceResultFetcher implements RaceResultFetcher {
     if (allMeetings.length > 0) {
       const parsedMap = parseSportingLifeResultsJson(allMeetings, targetRaces);
       for (const [id, winner] of parsedMap.entries()) {
-        results.set(id, winner);
+        const target = targetRaces.find((r) => r.id === id);
+        const resultUrl = target ? `https://www.sportinglife.com/racing/results/${target.date}` : undefined;
+        results.set(id, { winner, resultUrl });
       }
     }
 
     return results;
+  }
+
+  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
+    const records = await this.fetchResultRecords(targetRaces);
+    const winners = new Map<string, RaceWinner>();
+    for (const [id, rec] of records.entries()) {
+      winners.set(id, rec.winner);
+    }
+    return winners;
   }
 }
 
@@ -755,6 +875,7 @@ export function parseArgs(argv: string[] = process.argv.slice(2)): {
 export async function updateRaceResults(options: {
   racesPath: string;
   winnersMasterPath: string;
+  officialResultsMasterPath?: string;
   refDate: string;
   refTimeIso?: string;
   daysAgo?: number;
@@ -770,6 +891,7 @@ export async function updateRaceResults(options: {
   const {
     racesPath,
     winnersMasterPath,
+    officialResultsMasterPath,
     refDate,
     refTimeIso,
     daysAgo,
@@ -797,6 +919,16 @@ export async function updateRaceResults(options: {
     }
   }
 
+  // 既存の official_results_urls マスタを読み込み (Issue #159)
+  let officialResultsMaster: Record<string, string> = {};
+  if (officialResultsMasterPath && fs.existsSync(officialResultsMasterPath)) {
+    try {
+      officialResultsMaster = JSON.parse(fs.readFileSync(officialResultsMasterPath, 'utf8'));
+    } catch (e) {
+      console.warn(`[Warning] Could not parse official results master: ${(e as Error).message}`);
+    }
+  }
+
   let totalTargets = 0;
   let updatedCount = 0;
   const updatedRaces: Array<{ id: string; name: string; winner: RaceWinner }> = [];
@@ -816,16 +948,32 @@ export async function updateRaceResults(options: {
     console.log(`\n--- Checking results for organization: [${provider.organization.toUpperCase()}] ---`);
     console.log(`[Update Race Results][${provider.organization}] Found ${targets.length} target race(s) in active post-race window.`);
 
-    const fetchedResults = await provider.fetchResults(targets);
+    const fetchedRecords = provider.fetchResultRecords
+      ? await provider.fetchResultRecords(targets)
+      : null;
+    const fetchedResults = fetchedRecords
+      ? new Map([...fetchedRecords.entries()].map(([k, v]) => [k, v.winner]))
+      : await provider.fetchResults(targets);
 
     for (const target of targets) {
       // 1. 公式フェッチャーから取得した結果
       // 2. 静的マスタ (race_winners.json) に登録済みの結果
-      const winner = fetchedResults.get(target.id) || winnersMaster[target.id];
+      const record = fetchedRecords?.get(target.id);
+      const winner = record?.winner || fetchedResults.get(target.id) || winnersMaster[target.id];
 
       if (winner && (!target.winner || force)) {
         target.winner = winner;
         winnersMaster[target.id] = winner;
+
+        // 公式リザルトURLの反映 (Issue #159)
+        const officialUrl = record?.resultUrl || officialResultsMaster[target.id] || JRA_G1_RESULT_URLS[target.id];
+        if (officialUrl) {
+          target.official_url = officialUrl;
+          if (officialResultsMasterPath) {
+            officialResultsMaster[target.id] = officialUrl;
+          }
+        }
+
         updatedCount++;
         updatedRaces.push({ id: target.id, name: target.name.ja, winner });
         console.log(`[Update Race Results][${target.organization}] UPDATED: [${target.date}] ${target.name.ja} (${target.id}) -> Winner: ${winner.name.ja} (${winner.name.en})`);
@@ -840,6 +988,9 @@ export async function updateRaceResults(options: {
   if (updatedCount > 0 && !dryRun) {
     fs.writeFileSync(racesPath, JSON.stringify(races, null, 2), 'utf8');
     fs.writeFileSync(winnersMasterPath, JSON.stringify(winnersMaster, null, 2), 'utf8');
+    if (officialResultsMasterPath && Object.keys(officialResultsMaster).length > 0) {
+      fs.writeFileSync(officialResultsMasterPath, JSON.stringify(officialResultsMaster, null, 2), 'utf8');
+    }
     console.log(`\n[Update Race Results] Successfully saved ${updatedCount} updated winner(s) to ${racesPath} and ${winnersMasterPath}`);
   } else if (dryRun) {
     console.log(`\n[Update Race Results] Dry-run mode: No files were modified.`);
@@ -855,10 +1006,12 @@ async function main() {
   const rootDir = process.cwd();
   const racesPath = path.join(rootDir, 'public', 'data', 'races.json');
   const winnersMasterPath = path.join(rootDir, 'src', 'data', 'race_winners.json');
+  const officialResultsMasterPath = path.join(rootDir, 'src', 'data', 'official_results_urls.json');
 
   const result = await updateRaceResults({
     racesPath,
     winnersMasterPath,
+    officialResultsMasterPath,
     refDate,
     refTimeIso,
     daysAgo,

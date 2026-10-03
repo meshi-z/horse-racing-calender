@@ -62,6 +62,8 @@ export interface RaceOutput {
   age_constraint: '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up' | '4yo';
   handicap: HandicapInfo;
   winner?: RaceWinner;
+  official_url?: string;
+  race_number?: number;
 }
 
 export interface RaceMasterItem {
