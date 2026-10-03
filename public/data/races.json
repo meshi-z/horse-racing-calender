@@ -37990,8 +37990,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-08",
-    "start_time": "2026-10-08T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-08T11:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "門別",
       "en": "Mombetsu"
@@ -38042,7 +38042,7 @@
     },
     "grade": "G1",
     "date": "2026-10-09",
-    "start_time": "2026-10-09T12:25:00.000Z",
+    "start_time": "2026-10-09T12:57:00.000Z",
     "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-09",
@@ -38098,8 +38098,8 @@
     },
     "grade": "G3",
     "date": "2026-10-09",
-    "start_time": "2026-10-09T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-09T11:50:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-09",
     "course": {
@@ -38126,8 +38126,8 @@
     },
     "grade": "G3",
     "date": "2026-10-09",
-    "start_time": "2026-10-09T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-09T14:45:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-09",
     "course": {
@@ -38154,8 +38154,8 @@
     },
     "grade": "G3",
     "date": "2026-10-09",
-    "start_time": "2026-10-09T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-09T11:15:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-09",
     "course": {
