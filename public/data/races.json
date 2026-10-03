@@ -36885,6 +36885,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Blue Bolt",
+        "en": "Blue Bolt"
+      },
+      "time": "1m 34.6s"
     }
   },
   {
