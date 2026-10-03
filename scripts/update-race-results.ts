@@ -3,6 +3,7 @@ import path from 'node:path';
 import type { RaceOutput, RaceWinner } from './parse-races';
 import { fetchWithRetry, raceNameMatches } from './lib/jra-syutsuba';
 import { frenchRaceMatches } from './lib/france-syutsuba';
+import { ukRaceMatches } from './lib/uk-syutsuba';
 import { parseJraRaceResultHtml, buildJraRaceWinner } from './lib/jra-results';
 import { parseNarRaceResultHtml, buildNarRaceWinner } from './lib/nar-results';
 import { NAR_BABA_CODES, cleanNarRaceName } from './lib/nar-syutsuba';
