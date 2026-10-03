@@ -37269,6 +37269,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Caballo De Mar",
+        "en": "Caballo De Mar",
+        "fr": "Caballo De Mar"
+      },
+      "jockey": {
+        "ja": "O.murphy",
+        "en": "O.murphy",
+        "fr": "O.murphy"
+      },
+      "horse_number": 7
     }
   },
   {
@@ -37298,6 +37311,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Qirat",
+        "en": "Qirat",
+        "fr": "Qirat"
+      },
+      "jockey": {
+        "ja": "S.de Sousa",
+        "en": "S.de Sousa",
+        "fr": "S.de Sousa"
+      },
+      "horse_number": 3
     }
   },
   {

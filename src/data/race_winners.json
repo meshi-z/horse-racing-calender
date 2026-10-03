@@ -8629,5 +8629,31 @@
       "en": "Darkness Falls"
     },
     "time": "1m 51.73s"
+  },
+  "2026-france-g1-18": {
+    "name": {
+      "ja": "Caballo De Mar",
+      "en": "Caballo De Mar",
+      "fr": "Caballo De Mar"
+    },
+    "jockey": {
+      "ja": "O.murphy",
+      "en": "O.murphy",
+      "fr": "O.murphy"
+    },
+    "horse_number": 7
+  },
+  "2026-france-g2-21": {
+    "name": {
+      "ja": "Qirat",
+      "en": "Qirat",
+      "fr": "Qirat"
+    },
+    "jockey": {
+      "ja": "S.de Sousa",
+      "en": "S.de Sousa",
+      "fr": "S.de Sousa"
+    },
+    "horse_number": 3
   }
 }
