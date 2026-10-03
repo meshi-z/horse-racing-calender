@@ -19,13 +19,21 @@ export interface NarParsedResult {
 export function parseNarRaceResultHtml(html: string): NarParsedResult[] {
   const results: NarParsedResult[] = [];
 
-  // レース名ブロック (例: <div class="racename">第37回 レディスプレリュード(JpnII)</div> または <td class="racename">...</td>)
+  // レース名ブロック
+  // パターンA (推奨): <section class="raceTitle"><h3>第７３回 日本テレビ盃...</h3></section>
   let defaultRaceName = '';
-  const raceNameMatch =
-    html.match(/<(?:div|h[1-4]|td|span)[^>]*class=["'][^"']*(?:racename|race_name|title)[^"']*["'][^>]*>([\s\S]*?)<\/(?:div|h[1-4]|td|span)>/i) ||
-    html.match(/<caption[^>]*>([\s\S]*?)<\/caption>/i);
-  if (raceNameMatch) {
-    defaultRaceName = cleanNarRaceName(raceNameMatch[1]);
+  const raceTitleSecMatch = html.match(/<section[^>]*class=["'][^"']*raceTitle[^"']*["'][^>]*>[\s\S]*?<h[1-4][^>]*>([\s\S]*?)<\/h[1-4]>/i);
+  if (raceTitleSecMatch) {
+    defaultRaceName = cleanNarRaceName(raceTitleSecMatch[1]);
+  }
+
+  if (!defaultRaceName) {
+    const raceNameMatch =
+      html.match(/<(?:div|h[1-4]|td|span)[^>]*class=["'][^"']*(?:racename|race_name)[^"']*["'][^>]*>([\s\S]*?)<\/(?:div|h[1-4]|td|span)>/i) ||
+      html.match(/<caption[^>]*>([\s\S]*?)<\/caption>/i);
+    if (raceNameMatch) {
+      defaultRaceName = cleanNarRaceName(raceNameMatch[1]);
+    }
   }
 
   // 1着行の抽出
@@ -69,10 +77,20 @@ export function parseNarRaceResultHtml(html: string): NarParsedResult[] {
     // 騎手
     let jockey: string | undefined;
     const jockeyMatch =
-      row.match(/<td[^>]*class=["'][^"']*(?:jockey|kishu)[^"']*["'][^>]*>[\s\S]*?<a[^>]*>([\s\S]*?)<\/a>/i) ||
       row.match(/<td[^>]*class=["'][^"']*(?:jockey|kishu)[^"']*["'][^>]*>([\s\S]*?)<\/td>/i);
     if (jockeyMatch) {
-      jockey = jockeyMatch[1].replace(/<[^>]+>/g, '').trim();
+      // <span>（JRA）</span> 等の所属タグや不要タグを除去
+      let rawJockey = jockeyMatch[1]
+        .replace(/<span[^>]*>[\s\S]*?<\/span>/gi, '')
+        .replace(/<[^>]+>/g, '')
+        .replace(/[（\(][^）\)]*[）\)]/g, '') // （JRA）や（船橋）等を除去
+        .replace(/\s+/g, ' ')
+        .trim();
+      if (rawJockey) {
+        // NAR特有の騎手略記（例: 戸崎圭 -> 戸崎圭太）の正規化
+        if (rawJockey === '戸崎圭') rawJockey = '戸崎圭太';
+        jockey = rawJockey;
+      }
     }
 
     // タイム

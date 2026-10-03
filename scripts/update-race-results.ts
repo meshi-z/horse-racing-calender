@@ -4,6 +4,7 @@ import type { RaceOutput, RaceWinner } from './parse-races';
 import { fetchWithRetry, raceNameMatches } from './lib/jra-syutsuba';
 import { parseJraRaceResultHtml, buildJraRaceWinner } from './lib/jra-results';
 import { parseNarRaceResultHtml, buildNarRaceWinner } from './lib/nar-results';
+import { NAR_BABA_CODES, cleanNarRaceName } from './lib/nar-syutsuba';
 import {
   parsePmuResultsJson,
   parseSportingLifeResultsJson,
@@ -186,12 +187,56 @@ export class NarRaceResultFetcher implements RaceResultFetcher {
         html = this.fixtures[target.id];
       } else if (this.fixtures && this.fixtures[target.date]) {
         html = this.fixtures[target.date];
+      } else {
+        // NAR公式サイト (keiba.go.jp) からライブフェッチ
+        try {
+          const courseJa = target.course?.ja || '';
+          const babaCode = NAR_BABA_CODES[courseJa];
+          if (!babaCode) {
+            console.warn(`[NAR Results] Unknown baba code for course "${courseJa}" (race: ${target.name.ja})`);
+            continue;
+          }
+
+          const [y, m, d] = target.date.split('-');
+          const formattedDate = `${y}%2f${m}%2f${d}`;
+          const raceListUrl = `https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/RaceList?k_raceDate=${formattedDate}&k_babaCode=${babaCode}`;
+          const listRes = await fetchWithRetry(raceListUrl);
+          if (listRes.ok) {
+            const listHtml = await listRes.text();
+            // 出馬表から対象レースの k_raceNo を抽出
+            const linkMatches = listHtml.matchAll(/(?:DebaTable|RaceMarkTable)\?[^\s"'>]*k_raceNo=(\d+)[^\s"'>]*[>][\s\S]*?<\/a>/gi);
+            let matchedRaceNo: string | null = null;
+
+            for (const match of linkMatches) {
+              const raceNo = match[1];
+              const fullAnchor = match[0];
+              const textMatch = fullAnchor.match(/>([^<]+)<\/a>/);
+              if (textMatch) {
+                const cleanedName = cleanNarRaceName(textMatch[1]);
+                if (raceNameMatches(target.name.ja, cleanedName) || cleanedName.includes(target.name.ja) || target.name.ja.includes(cleanedName)) {
+                  matchedRaceNo = raceNo;
+                  break;
+                }
+              }
+            }
+
+            if (matchedRaceNo) {
+              const markUrl = `https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/RaceMarkTable?k_raceDate=${formattedDate}&k_raceNo=${matchedRaceNo}&k_babaCode=${babaCode}`;
+              const markRes = await fetchWithRetry(markUrl);
+              if (markRes.ok) {
+                html = await markRes.text();
+              }
+            }
+          }
+        } catch (e) {
+          console.warn(`[NAR Results] Failed to live-fetch results for ${target.name.ja} (${target.date}): ${(e as Error).message}`);
+        }
       }
 
       if (html) {
         const parsedList = parseNarRaceResultHtml(html);
         for (const item of parsedList) {
-          if (raceNameMatches(target.name.ja, item.raceName) || !item.raceName) {
+          if (raceNameMatches(target.name.ja, item.raceName) || !item.raceName || item.raceName.includes(target.name.ja) || target.name.ja.includes(item.raceName)) {
             const winner = buildNarRaceWinner(item.winner);
             results.set(target.id, winner);
             break;
@@ -409,6 +454,18 @@ export class HkjcRaceResultFetcher implements RaceResultFetcher {
         html = this.fixtures[target.id];
       } else if (this.fixtures && this.fixtures[target.date]) {
         html = this.fixtures[target.date];
+      } else {
+        // HKJC公式サイトからライブフェッチ
+        try {
+          const urlDate = target.date.replace(/-/g, '/');
+          const url = `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}`;
+          const res = await fetchWithRetry(url);
+          if (res.ok) {
+            html = await res.text();
+          }
+        } catch (e) {
+          console.warn(`[HKJC Results] Failed to live-fetch results for ${target.name.en || target.name.ja} (${target.date}): ${(e as Error).message}`);
+        }
       }
 
       if (html) {
@@ -419,7 +476,7 @@ export class HkjcRaceResultFetcher implements RaceResultFetcher {
             name: {
               ja: target.winner?.name?.ja || first.horseNameEn,
               en: first.horseNameEn,
-              zh: first.horseNameZh,
+              zh: first.horseNameZh || (target.name as any).zh,
             },
             jockey: first.jockey
               ? {
@@ -439,7 +496,7 @@ export class HkjcRaceResultFetcher implements RaceResultFetcher {
 }
 
 /**
- * アメリカ競馬（Equibase）用 レース結果取得プロバイダー
+ * アメリカ競馬（Equibase / Sporting Life）用 レース結果取得プロバイダー
  */
 export class UsRaceResultFetcher implements RaceResultFetcher {
   readonly organization = 'equibase';
@@ -458,33 +515,67 @@ export class UsRaceResultFetcher implements RaceResultFetcher {
     const results = new Map<string, RaceWinner>();
     if (targetRaces.length === 0) return results;
 
-    for (const target of targetRaces) {
-      let html: string | null = null;
-      if (this.fixtures && this.fixtures[target.id]) {
-        html = this.fixtures[target.id];
-      } else if (this.fixtures && this.fixtures[target.date]) {
-        html = this.fixtures[target.date];
-      }
-
-      if (html) {
-        const parsedList = parseEquibaseResultHtml(html);
-        if (parsedList.length > 0) {
-          const first = parsedList[0].winner;
-          results.set(target.id, {
-            name: {
-              ja: target.winner?.name?.ja || first.horseName,
-              en: first.horseName,
-            },
-            jockey: first.jockey
-              ? {
-                  ja: target.winner?.jockey?.ja || first.jockey,
-                  en: first.jockey,
-                }
-              : undefined,
-            horse_number: first.horseNumber,
-            time: first.time,
-          });
+    // 1. fixtures があれば優先処理
+    if (this.fixtures) {
+      for (const target of targetRaces) {
+        let html: string | null = null;
+        if (this.fixtures[target.id]) {
+          html = this.fixtures[target.id];
+        } else if (this.fixtures[target.date]) {
+          html = this.fixtures[target.date];
         }
+
+        if (html) {
+          const parsedList = parseEquibaseResultHtml(html);
+          if (parsedList.length > 0) {
+            const first = parsedList[0].winner;
+            results.set(target.id, {
+              name: {
+                ja: target.winner?.name?.ja || first.horseName,
+                en: first.horseName,
+              },
+              jockey: first.jockey
+                ? {
+                    ja: target.winner?.jockey?.ja || first.jockey,
+                    en: first.jockey,
+                  }
+                : undefined,
+              horse_number: first.horseNumber,
+              time: first.time,
+            });
+          }
+        }
+      }
+      return results;
+    }
+
+    // 2. ライブフェッチ: Sporting Life Results API (当日および翌日+1日のUTCクロス照合)
+    const dates = new Set<string>();
+    for (const r of targetRaces) {
+      dates.add(r.date);
+      const [y, m, d] = r.date.split('-').map(Number);
+      const nextDay = new Date(Date.UTC(y, m - 1, d + 1));
+      dates.add(nextDay.toISOString().slice(0, 10));
+    }
+
+    const allMeetings: SportingLifeResultMeetingItem[] = [];
+    for (const d of dates) {
+      try {
+        const url = `https://www.sportinglife.com/api/horse-racing/racing/results/${d}`;
+        const res = await fetchWithRetry(url);
+        if (res.ok) {
+          const meetings = (await res.json()) as SportingLifeResultMeetingItem[];
+          allMeetings.push(...meetings);
+        }
+      } catch (e) {
+        console.warn(`[US Results] Failed to live-fetch results for ${d}: ${(e as Error).message}`);
+      }
+    }
+
+    if (allMeetings.length > 0) {
+      const parsedMap = parseSportingLifeResultsJson(allMeetings, targetRaces);
+      for (const [id, winner] of parsedMap.entries()) {
+        results.set(id, winner);
       }
     }
 

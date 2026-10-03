@@ -389,5 +389,172 @@ describe('update-race-results', () => {
       expect(savedWinners['2026-jra-g1-sprinters'].name.ja).toBe('ピューロマジック');
       expect(savedWinners['2026-jra-g1-sprinters'].horse_number).toBe(16);
     });
+
+    it('NarRaceResultFetcher経由で公式リザルトを取得し、空値原則（Null Value Principle）が適用されること (Issue #167)', async () => {
+      const narRace: RaceOutput = {
+        id: '2026-nar-jpn2-08',
+        organization: 'nar',
+        country_code: 'JP',
+        name: { ja: '日本テレビ盃', en: 'Nippon TV Hai' },
+        grade: 'Jpn2',
+        date: '2026-09-30',
+        start_time: '2026-09-30T11:05:00.000Z',
+        is_time_confirmed: true,
+        course: { ja: '船橋', en: 'Funabashi' },
+        distance: 1800,
+        track_type: 'dirt',
+        sex_constraint: 'none',
+        age_constraint: '3yo_and_up',
+        handicap: { code: 'set_weight', ja: '別定', en: 'Set Weight' },
+      };
+
+      fs.writeFileSync(tmpRacesPath, JSON.stringify([narRace], null, 2), 'utf8');
+
+      const narFixtureHtml = `
+        <section class="raceTitle">
+          <h3>第７３回 日本テレビ盃（指定交流）JpnII３上オープン</h3>
+        </section>
+        <table>
+          <tr>
+            <td class="order">1</td>
+            <td class="num">7</td>
+            <td class="horse">ミッキーファイト</td>
+            <td class="jockey">戸崎圭<span>（JRA）</span></td>
+            <td class="time">1:52.1</td>
+          </tr>
+        </table>
+      `;
+
+      const { NarRaceResultFetcher } = await import('../../scripts/update-race-results');
+      const fetcher = new NarRaceResultFetcher({
+        fixtures: {
+          '2026-nar-jpn2-08': narFixtureHtml,
+        },
+      });
+
+      const result = await updateRaceResults({
+        racesPath: tmpRacesPath,
+        winnersMasterPath: tmpWinnersMasterPath,
+        refDate: '2026-09-30',
+        refTimeIso: '2026-09-30T11:30:00.000Z',
+        providers: [fetcher],
+      });
+
+      expect(result.updatedCount).toBe(1);
+      const updated = result.updatedRaces[0].winner;
+      expect(updated.name.ja).toBe('ミッキーファイト');
+      expect(updated.name.en).toBeUndefined(); // 空値原則 (Null Value Principle)
+      expect(updated.jockey?.ja).toBe('戸崎圭太'); // 所属タグ除去 & 正規化
+      expect(updated.jockey?.en).toBeUndefined();
+      expect(updated.horse_number).toBe(7);
+      expect(updated.time).toBe('1:52.1');
+    });
+
+    it('HkjcRaceResultFetcher経由で香港公式リザルトを取得し、中国語(zh)馬名および英語(en)馬名が保存されること (Issue #167)', async () => {
+      const hkRace: RaceOutput = {
+        id: '2026-hk-g1-01',
+        organization: 'hkjc',
+        country_code: 'HK',
+        name: { ja: '香港スプリント', en: 'Hong Kong Sprint', zh: '香港短途錦標' } as any,
+        grade: 'G1',
+        date: '2026-12-13',
+        start_time: '2026-12-13T06:40:00.000Z',
+        is_time_confirmed: true,
+        course: { ja: '沙田', en: 'Sha Tin' },
+        distance: 1200,
+        track_type: 'turf',
+        sex_constraint: 'none',
+        age_constraint: '3yo_and_up',
+        handicap: { code: 'weight_for_age', ja: '定量', en: 'Weight for Age' },
+      };
+
+      fs.writeFileSync(tmpRacesPath, JSON.stringify([hkRace], null, 2), 'utf8');
+
+      const hkFixtureHtml = `
+        <table class="table_bd">
+          <tr>
+            <td>01</td>
+            <td>1</td>
+            <td>Ka Ying Rising</td>
+            <td>Z Purton</td>
+            <td>126</td>
+            <td>1:08.50</td>
+          </tr>
+        </table>
+      `;
+
+      const { HkjcRaceResultFetcher } = await import('../../scripts/update-race-results');
+      const fetcher = new HkjcRaceResultFetcher({
+        fixtures: {
+          '2026-hk-g1-01': hkFixtureHtml,
+        },
+      });
+
+      const result = await updateRaceResults({
+        racesPath: tmpRacesPath,
+        winnersMasterPath: tmpWinnersMasterPath,
+        refDate: '2026-12-13',
+        refTimeIso: '2026-12-13T07:15:00.000Z',
+        providers: [fetcher],
+      });
+
+      expect(result.updatedCount).toBe(1);
+      const updated = result.updatedRaces[0].winner;
+      expect(updated.name.en).toBe('Ka Ying Rising');
+      expect(updated.name.zh).toBe('香港短途錦標');
+      expect(updated.jockey?.en).toBe('Z Purton');
+      expect(updated.horse_number).toBe(1);
+      expect(updated.time).toBe('1:08.50');
+    });
+
+    it('UsRaceResultFetcher経由で米国公式リザルトを取得し、保存されること (Issue #167)', async () => {
+      const usRace: RaceOutput = {
+        id: '2026-us-g1-62',
+        organization: 'equibase',
+        country_code: 'US',
+        name: { ja: 'ペンシルベニアダービー', en: 'Pennsylvania Derby' },
+        grade: 'G1',
+        date: '2026-09-19',
+        start_time: '2026-09-19T22:10:00.000Z',
+        is_time_confirmed: true,
+        course: { ja: 'パークスレーシング', en: 'Parx Racing' },
+        distance: 1800,
+        track_type: 'dirt',
+        sex_constraint: 'none',
+        age_constraint: '3yo',
+        handicap: { code: 'weight_for_age', ja: '定量', en: 'Weight for Age' },
+      };
+
+      fs.writeFileSync(tmpRacesPath, JSON.stringify([usRace], null, 2), 'utf8');
+
+      const usFixtureHtml = `
+        <table>
+          <tr>
+            <td>1st</td>
+            <td>The Puma</td>
+            <td>J. Castellano</td>
+          </tr>
+        </table>
+      `;
+
+      const { UsRaceResultFetcher } = await import('../../scripts/update-race-results');
+      const fetcher = new UsRaceResultFetcher({
+        fixtures: {
+          '2026-us-g1-62': usFixtureHtml,
+        },
+      });
+
+      const result = await updateRaceResults({
+        racesPath: tmpRacesPath,
+        winnersMasterPath: tmpWinnersMasterPath,
+        refDate: '2026-09-19',
+        refTimeIso: '2026-09-19T23:00:00.000Z',
+        providers: [fetcher],
+      });
+
+      expect(result.updatedCount).toBe(1);
+      const updated = result.updatedRaces[0].winner;
+      expect(updated.name.en).toBe('The Puma');
+    });
   });
 });

@@ -6,6 +6,25 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 55: 全主催者レース結果ライブフェッチ完全対応・GitHub Actions自動更新バッチ配備・日本テレビ盃確定 (v1.38.4 / Issue #167) [完了]
+- **NAR（地方競馬・ばんえい）レース結果ライブフェッチの実装 (`scripts/update-race-results.ts`, `scripts/lib/nar-results.ts`, `scripts/lib/nar-syutsuba.ts`) [完了]**
+  - `RaceList`（当日メニュー出馬表）から競馬場コード（`NAR_BABA_CODES`）を用いて対象レースの `k_raceNo` を自動特定し、確定着順表（`RaceMarkTable`）を動的取得するライブフェッチパイプラインを確立。
+  - レース名および騎手名パースの堅牢化（`<section class="raceTitle"><h3>...</h3>` 優先抽出によるサイトロゴ誤検出防止、所属タグ `<span>（JRA）</span>` や空白のクレンジング、騎手略記の正規化）。
+  - 公式に英名が存在しないため、空値原則（Null Value Principle）に基づき推測英名は一切付与せず日本語のみを登録。
+- **アメリカ・香港競馬を含む全主催者ライブフェッチの完全稼働 (`scripts/update-race-results.ts`) [完了]**
+  - **アメリカ競馬 (`UsRaceResultFetcher`)**: Sporting Life Results API（北米主要トラック対応）へのライブフェッチを実装（西海岸等のUTC翌日クロス照合対応）。
+  - **香港競馬 (`HkjcRaceResultFetcher`)**: HKJC公式ローカルリザルトページへのライブフェッチを実装し、繁体字（`zh`）および英語（`en`）の双方を動的解決。
+  - **JRA・欧州（仏・英・愛）**: JRA特別レース結果、PMU REST API（`/programme` & `/participants`）、Sporting Life Results API とのライブ連携を維持・担保。
+- **日本テレビ盃（Jpn2）および直近地方重賞の公式確定データ反映 (`public/data/races.json`, `src/data/race_winners.json`) [完了]**
+  - 2026-09-30 船橋・第11R 日本テレビ盃（ミッキーファイト / 戸崎圭太 / 7番 / 1:52.1）および門別・サンライズカップ（イケメンモンスター / 石川倭 / 7番 / 1:56.4）を公式確定リザルトから取得し、二重永続化。
+- **GitHub Actions 自動結果更新ワークフローの新設 (`.github/workflows/update-race-results.yml`) [完了]**
+  - `docs/batch-schedules.md` の仕様に準拠し、凱旋門賞（10月第1日曜・日本時間 23:05発走）直後の即時確定取り込み（23:30 JST）および遅延バックアップ（24:00 JST）を含む夜間毎日実行スケジュールを配備。
+  - 差分発生時に `public/data/races.json` と `src/data/race_winners.json` を二重コミット＆プッシュし、GitHub Pages への自動デプロイと連動。
+- **テスト・品質検証 [完了]**
+  - 全主催者のプロバイダー統合テストおよび日本テレビ盃のデータ整合性テストを追加。全55テストファイル・525テスト全件パス、プロダクションビルド正常完了。
+
+---
+
 ### Step 54: アメリカ競馬の未登録勝ち馬データ即効性是正・正規化強化・空値原則徹底 (v1.38.3 / Issue #164) [完了]
 - **アメリカ競馬（Equibase / Sporting Life）勝ち馬データの即効性是正 (`public/data/races.json`, `src/data/race_winners.json`, `src/data/us_race_master.json`) [完了]**
   - 未登録だった米国重賞レース群に対し、公式一次ソース（Equibase, BloodHorse, Sporting Life）と徹底的な突合・照合を実施。
