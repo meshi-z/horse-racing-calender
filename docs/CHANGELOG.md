@@ -6,6 +6,23 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 60: 非機能要件仕様書（NFR）の策定および性能指標（INP/DOMノード数/バンドルサイズ目標）の明確化 (v1.39.3 / Issue #179) [完了]
+- **非機能要件仕様書（NFR）の新設 (`docs/non-functional-requirements.md`) [完了]**
+  - 対象レース数の数千件規模への拡大（新国UAE・豪・サウジ、2027年番組等）を見据え、パフォーマンス基準の正本（Single Source of Truth）を策定。
+  - 4つの性能指標（SLO / KPI）を明確化：
+    - **操作応答性 (INP)**: フィルター切り替え応答 100ms 未満（目標 16ms〜50ms / 60fps）、表示モード切り替え 150ms 未満、詳細ダイアログ表示遅延 100ms 未満。
+    - **クライアント描画負荷 (DOM / メモリ)**: 同時展開DOMノード数常時 1,500 ノード以下（仮想スクロール導入基準）、モバイルJSヒープ 50MB 以下。
+    - **ロード性能 (Core Web Vitals)**: LCP 2.5秒 未満 (Fast 3G/Slow 4G)、INP 200ms 未満、CLS 0.1 未満、初期データ転送量 gzip 100KB 未満（生JSON 1MB 未満、年度別Sharding前提）。
+    - **バンドルサイズ**: メインJSチャンク 350KB 未満 (gzip 100KB 未満)、カレンダー等の `React.lazy` 動的インポート適用基準。
+- **パフォーマンス計測手法および将来受入基準の確立 [完了]**
+  - Chrome DevTools (CPU 4x slowdown / Fast 3G スロットリング条件)、Lighthouse CLI、Viteバンドル解析の手順を標準化。
+  - タイムライン仮想スクロールおよびデータSharding（年度別分割）タスクの明確な受入基準として定義。
+- **プロジェクト規約・ドキュメント体系との整合 [完了]**
+  - `.agents/rules/30-performance.md` の正本参照先として完全整合。
+  - `AGENTS.md`、`docs/PRD.md`、`package.json`（v1.39.3）を更新。
+
+---
+
 ### Step 59: アメリカ重賞7レースの勝ち馬名誤登録是正・空値原則徹底・バリデーションテスト新設 (v1.39.2 / Issue #174) [完了]
 - **アメリカ重賞7レースの勝ち馬名・日本語表記誤登録是正 (`src/data/race_winners.json`, `public/data/races.json`) [完了]**
   - ウィンターメモリーズステークス（`2026-us-g3-137`）において、勝ち馬の日本語名にレース名が誤って登録されていた不具合（Issue #174）を修正し、公式勝ち馬「Shelzawa」に修正。

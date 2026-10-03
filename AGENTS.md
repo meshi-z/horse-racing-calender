@@ -19,6 +19,7 @@
 | ├─ アメリカ競馬（Equibase） | `docs/specs/data-sources/us.md` | IFHA Part I、Equibase出馬表、北米4タイムゾーン（ET/CT/MT/PT）、DST |
 | └─ 香港競馬（HKJC） | `docs/specs/data-sources/hk.md` | IFHA Part I、HKJC出馬表、香港時間（HKT）、4歳クラシック、中文（`zh`） |
 | **新国の追加手順** | **`docs/guides/adding-new-country.md`** | 新規国・地域の競馬を追加する際の標準開発・運用手順書 |
+| **非機能要件・パフォーマンス仕様** | **`docs/non-functional-requirements.md`** | 性能指標（INP/DOMノード数/バンドルサイズ目標）、計測条件、運用ガイドライン |
 | **定期バッチ運用・スケジュール** | **`docs/batch-schedules.md`** | GitHub Actions 定期cronバッチ一覧、CLIフラグ、トラブルシューティング |
 | **過去の変更履歴・開発実績** | **`docs/CHANGELOG.md`** | 過去の全バージョン・ステップ（Step 1〜34）の完了履歴 |
 
@@ -76,4 +77,5 @@ Co-authored-by: Antigravity <antigravity@example.com>
 
 - **`.agents/rules/20-security.md`**: セキュリティ要件。
 - **`.agents/rules/30-performance.md`**: パフォーマンス要件。
+- **`docs/non-functional-requirements.md`**: 非機能要件仕様書（NFR正本：性能指標、Core Web Vitals、計測手順）。
 - **`.agents/rules/40-definition-of-done.md`**: タスクの完了定義 (Definition of Done)。
