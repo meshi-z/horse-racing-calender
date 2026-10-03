@@ -112,4 +112,39 @@ describe('backfillOfficialResultUrls', () => {
 
     expect(result2.backfilledCount).toBe(0);
   });
+
+  it('未検証・不確実な official_url が残っている場合はクリーンアップして削除すること (Issue #176)', () => {
+    const racesWithUnverifiedUrl: RaceOutput[] = [
+      ...mockRaces,
+      {
+        id: '2026-france-g1-18',
+        organization: 'france_galop',
+        name: { ja: 'カドラン賞', en: 'Prix du Cadran' },
+        grade: 'G1',
+        date: '2026-10-03',
+        start_time: '2026-10-03T14:00:00.000Z',
+        is_time_confirmed: true,
+        course: { ja: 'パリロンシャン', en: 'ParisLongchamp' },
+        distance: 4000,
+        track_type: 'turf',
+        sex_constraint: 'none',
+        age_constraint: '4yo_and_up',
+        handicap: { code: 'weight_for_age', ja: '定量', en: 'Weight for Age' },
+        official_url: 'https://www.pmu.fr/turf/', // 未検証URL
+      },
+    ];
+
+    fs.writeFileSync(tmpRacesPath, JSON.stringify(racesWithUnverifiedUrl, null, 2), 'utf8');
+
+    const result = backfillOfficialResultUrls({
+      racesPath: tmpRacesPath,
+      officialResultsPath: tmpOfficialResultsPath,
+    });
+
+    expect(result.backfilledCount).toBe(2);
+
+    const savedRaces: RaceOutput[] = JSON.parse(fs.readFileSync(tmpRacesPath, 'utf8'));
+    expect(savedRaces[0].official_url).toBe('https://www.jra.go.jp/datafile/seiseki/g1/feb/result/feb2026.html');
+    expect(savedRaces[2].official_url).toBeUndefined();
+  });
 });

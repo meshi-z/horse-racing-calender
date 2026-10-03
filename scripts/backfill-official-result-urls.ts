@@ -50,6 +50,14 @@ export function backfillOfficialResultUrls(options: BackfillOptions = {}): Backf
           officialUrl: verifiedUrl,
         });
       }
+    } else if (race.official_url) {
+      // 未検証・不確実なURLをクリーンアップして空値（undefined）に戻す (Issue #176)
+      delete race.official_url;
+      updatedRaces.push({
+        id: race.id,
+        name: race.name.ja,
+        officialUrl: '(removed)',
+      });
     }
   }
 

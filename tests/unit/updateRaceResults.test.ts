@@ -619,5 +619,67 @@ describe('update-race-results', () => {
       const savedMaster = JSON.parse(fs.readFileSync(tmpOfficialResultsPath, 'utf8'));
       expect(savedMaster['2026-jra-g1-05']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/satsuki/result/satsuki2026.html');
     });
+
+    it('マスタに未登録の一般重賞（G2/G3等）は結果確定時も official_url は undefined を保持すること (Issue #176)', async () => {
+      const g2Race: RaceOutput = {
+        id: '2026-jra-g2-04',
+        organization: 'jra',
+        name: { ja: '京都記念', en: 'Kyoto Kinen' },
+        grade: 'G2',
+        date: '2026-02-15',
+        start_time: '2026-02-15T06:35:00.000Z',
+        is_time_confirmed: true,
+        course: { ja: '京都', en: 'Kyoto' },
+        distance: 2200,
+        track_type: 'turf',
+        sex_constraint: 'none',
+        age_constraint: '4yo_and_up',
+        handicap: { code: 'set_weight', ja: '別定', en: 'Special Weight' },
+      };
+
+      fs.writeFileSync(tmpRacesPath, JSON.stringify([g2Race], null, 2), 'utf8');
+
+      const kyotoHtml = `
+        <div class="result_block">
+          <h2 class="title">第119回 京都記念</h2>
+          <table class="race_table">
+            <tbody>
+              <tr>
+                <td class="order">1</td>
+                <td class="num">3</td>
+                <td class="horse"><a href="/horse/333">プラダリア</a></td>
+                <td class="jockey"><a href="/jockey/222">池添 謙一</a></td>
+                <td class="time">2:12.1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+
+      const fetcher = new JraRaceResultFetcher({
+        fixtures: {
+          '2026-jra-g2-04': kyotoHtml,
+        },
+      });
+
+      const tmpOfficialResultsPath = path.join(tmpDir, 'official_results_urls.json');
+      fs.writeFileSync(tmpOfficialResultsPath, JSON.stringify({}, null, 2), 'utf8');
+
+      const result = await updateRaceResults({
+        racesPath: tmpRacesPath,
+        winnersMasterPath: tmpWinnersMasterPath,
+        officialResultsMasterPath: tmpOfficialResultsPath,
+        refDate: '2026-02-15',
+        refTimeIso: '2026-02-15T07:15:00.000Z',
+        providers: [fetcher],
+      });
+
+      expect(result.updatedCount).toBe(1);
+
+      const savedRaces: RaceOutput[] = JSON.parse(fs.readFileSync(tmpRacesPath, 'utf8'));
+      expect(savedRaces[0].winner?.name.ja).toBe('プラダリア');
+      // デッドリンク防止のため、未検証レースは official_url が付与されない
+      expect(savedRaces[0].official_url).toBeUndefined();
+    });
   });
 });
