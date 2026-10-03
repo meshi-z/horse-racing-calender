@@ -228,4 +228,60 @@ describe('Data Integrity & Multilingual Winners Audit (Issue #160)', () => {
       expect(race?.winner?.time).toBe('1:52.1');
     });
   });
+
+  describe('勝ち馬名へのレース名誤混入防止・アメリカ重賞勝者是正検証 (Issue #174)', () => {
+    it('ウィンターMemoriesステークスを含む7レースの勝ち馬名（ja/en）が正しく是正されていること', () => {
+      const targetExpectations: Record<string, { ja: string; en: string }> = {
+        '2026-us-g3-09': { ja: 'Nafisa', en: 'Nafisa' },
+        '2026-us-g3-77': { ja: 'Heroic Move', en: 'Heroic Move' },
+        '2026-us-g3-99': { ja: 'Closethegame Sugar', en: 'Closethegame Sugar' },
+        '2026-us-g3-102': { ja: 'Neat', en: 'Neat' },
+        '2026-us-g3-124': { ja: 'Rabeeba', en: 'Rabeeba' },
+        '2026-us-g2-101': { ja: 'Super Corredora', en: 'Super Corredora' },
+        '2026-us-g3-137': { ja: 'Shelzawa', en: 'Shelzawa' },
+      };
+
+      for (const [id, expected] of Object.entries(targetExpectations)) {
+        // race_winners.json の検証
+        const winner = winners[id];
+        expect(winner, `Winner for ${id} in race_winners.json must exist`).toBeDefined();
+        expect(winner.name.ja, `Winner ja for ${id} must match`).toBe(expected.ja);
+        expect(winner.name.en, `Winner en for ${id} must match`).toBe(expected.en);
+
+        // races.json の検証
+        const race = races.find((r) => r.id === id);
+        expect(race, `Race ${id} in races.json must exist`).toBeDefined();
+        expect(race?.winner, `Race ${id} winner in races.json must exist`).toBeDefined();
+        expect(race?.winner?.name.ja, `Race ${id} winner ja must match`).toBe(expected.ja);
+        expect(race?.winner?.name.en, `Race ${id} winner en must match`).toBe(expected.en);
+      }
+    });
+
+    it('全レースの勝ち馬名に「ステークス」「記念」「トロフィー」「大賞典」等のレース名接尾辞が誤混入していないこと', () => {
+      const forbiddenSuffixes = ['ステークス', '記念', 'トロフィー', '大賞典'];
+
+      // race_winners.json の全件点検
+      for (const [id, winner] of Object.entries(winners)) {
+        for (const suffix of forbiddenSuffixes) {
+          expect(
+            winner.name?.ja?.includes(suffix),
+            `Winner ${id} in race_winners.json contains race suffix "${suffix}": "${winner.name?.ja}"`
+          ).toBeFalsy();
+        }
+      }
+
+      // races.json の全件点検
+      for (const race of races) {
+        if (race.winner) {
+          for (const suffix of forbiddenSuffixes) {
+            expect(
+              race.winner.name?.ja?.includes(suffix),
+              `Race ${race.id} winner in races.json contains race suffix "${suffix}": "${race.winner.name?.ja}"`
+            ).toBeFalsy();
+          }
+        }
+      }
+    });
+  });
 });
+
