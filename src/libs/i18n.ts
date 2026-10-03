@@ -21,6 +21,9 @@ export const translations = {
       switchLanguageToZh: '繁体字中国語に切り替え',
       switchToDark: 'ダークモードに切り替え',
       switchToLight: 'ライトモードに切り替え',
+      refresh: '最新のデータに更新',
+      refreshSuccess: 'レースデータを最新に更新しました',
+      refreshError: 'データの更新に失敗しました（オフライン）',
     },
     status: {
       scheduled: '発走予定',
@@ -259,6 +262,9 @@ export const translations = {
       switchLanguageToZh: 'Switch to Traditional Chinese',
       switchToDark: 'Switch to dark mode',
       switchToLight: 'Switch to light mode',
+      refresh: 'Refresh data',
+      refreshSuccess: 'Race data updated to latest',
+      refreshError: 'Failed to refresh data (offline)',
     },
     status: {
       scheduled: 'Scheduled',
@@ -497,6 +503,9 @@ export const translations = {
       switchLanguageToZh: 'Passer en chinois traditionnel',
       switchToDark: 'Passer en mode sombre',
       switchToLight: 'Passer en mode clair',
+      refresh: 'Actualiser les données',
+      refreshSuccess: 'Données des courses actualisées',
+      refreshError: "Échec de l'actualisation (hors ligne)",
     },
     status: {
       scheduled: 'Prévu',
@@ -735,6 +744,9 @@ export const translations = {
       switchLanguageToZh: '切換至繁體中文',
       switchToDark: '切換至深色模式',
       switchToLight: '切換至淺色模式',
+      refresh: '重新載入資料',
+      refreshSuccess: '賽事資料已更新至最新',
+      refreshError: '更新資料失敗（離線中）',
     },
     status: {
       scheduled: '預計開跑',

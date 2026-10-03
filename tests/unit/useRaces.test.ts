@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { renderHook, waitFor } from '@testing-library/react';
+import { renderHook, waitFor, act } from '@testing-library/react';
 import { useRaces } from '@/hooks/useRaces';
 import { useRaceStore } from '@/store/useRaceStore';
 import type { Race } from '@/types/race';
@@ -22,6 +22,7 @@ const mockRace: Race = {
 
 describe('useRaces hook', () => {
   const originalFetch = globalThis.fetch;
+  const originalServiceWorker = (globalThis.navigator as any).serviceWorker;
 
   beforeEach(() => {
     useRaceStore.setState({ races: [] });
@@ -30,6 +31,15 @@ describe('useRaces hook', () => {
 
   afterEach(() => {
     globalThis.fetch = originalFetch;
+    if (originalServiceWorker === undefined) {
+      delete (globalThis.navigator as any).serviceWorker;
+    } else {
+      Object.defineProperty(globalThis.navigator, 'serviceWorker', {
+        value: originalServiceWorker,
+        writable: true,
+        configurable: true,
+      });
+    }
   });
 
   it('デフォルトで BASE_URL に応じた races.json をフェッチすること', async () => {
@@ -197,6 +207,73 @@ describe('useRaces hook', () => {
 
     await waitFor(() => {
       expect(useRaceStore.getState().races[0]?.name.ja).toBe('更新後データ');
+    });
+  });
+
+  describe('forceRefreshRaces & refreshRaces', () => {
+    it('forceRefreshRaces は cache: "reload" と timestamp クエリを付与してフェッチし、Store と SW を更新して true を返すこと', async () => {
+      const refreshedRace = { ...mockRace, name: { ja: '最新再取得レース', en: 'Refreshed Race' } };
+      const fetchMock = vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => [refreshedRace],
+      });
+      globalThis.fetch = fetchMock;
+
+      const mockSwUpdate = vi.fn().mockResolvedValue(undefined);
+      const mockServiceWorker = {
+        getRegistration: vi.fn().mockResolvedValue({ update: mockSwUpdate }),
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+      };
+      Object.defineProperty(globalThis.navigator, 'serviceWorker', {
+        value: mockServiceWorker,
+        writable: true,
+        configurable: true,
+      });
+
+      const { forceRefreshRaces } = await import('@/hooks/useRaces');
+      const result = await forceRefreshRaces();
+
+      expect(result).toBe(true);
+      expect(fetchMock).toHaveBeenCalledWith(
+        expect.stringMatching(/\/data\/races\.json\?t=\d+/),
+        { cache: 'reload' }
+      );
+      expect(useRaceStore.getState().races[0]?.name.ja).toBe('最新再取得レース');
+      expect(mockServiceWorker.getRegistration).toHaveBeenCalled();
+      expect(mockSwUpdate).toHaveBeenCalled();
+    });
+
+    it('ネットワークエラー時に forceRefreshRaces は false を返し例外を握り潰すこと', async () => {
+      const fetchMock = vi.fn().mockRejectedValue(new Error('Network failure'));
+      globalThis.fetch = fetchMock;
+
+      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+      const { forceRefreshRaces } = await import('@/hooks/useRaces');
+      const result = await forceRefreshRaces();
+
+      expect(result).toBe(false);
+      expect(consoleErrorSpy).toHaveBeenCalled();
+      consoleErrorSpy.mockRestore();
+    });
+
+    it('useRaces hook の refreshRaces を呼び出すと forceRefreshRaces が実行されること', async () => {
+      const refreshedRace = { ...mockRace, name: { ja: 'フック経由更新', en: 'Via Hook' } };
+      const fetchMock = vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => [refreshedRace],
+      });
+      globalThis.fetch = fetchMock;
+
+      const { result } = renderHook(() => useRaces());
+      await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+      let refreshSuccess = false;
+      await act(async () => {
+        refreshSuccess = await result.current.refreshRaces();
+      });
+      expect(refreshSuccess).toBe(true);
+      expect(useRaceStore.getState().races[0]?.name.ja).toBe('フック経由更新');
     });
   });
 });

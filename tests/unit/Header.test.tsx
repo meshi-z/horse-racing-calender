@@ -1,9 +1,11 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
-import { render, screen, fireEvent, within } from "@testing-library/react";
+import { render, screen, fireEvent, within, act } from "@testing-library/react";
 import { Header } from "@/components/shared/Header";
 import { THEME_STORAGE_KEY } from "@/hooks/useTheme";
 import { useLanguageStore, LANGUAGE_STORAGE_KEY } from "@/store/useLanguageStore";
 import * as analytics from "@/libs/analytics";
+import * as useRacesModule from "@/hooks/useRaces";
+import * as toastModule from "@/store/useToastStore";
 
 describe("Header", () => {
   beforeEach(() => {
@@ -144,5 +146,91 @@ describe("Header", () => {
     // 言語オプションが正常に表示されていること
     expect(screen.getByRole("option", { name: /English \(EN\)/ })).toBeInTheDocument();
     expect(screen.getByRole("option", { name: /Français \(FR\)/ })).toBeInTheDocument();
+  });
+
+  it("強制更新（リロード）ボタンが表示され、クリック時にデータ更新処理・アニメーション・トースト通知が連動すること", async () => {
+    let resolveRefresh: (val: boolean) => void = () => {};
+    const refreshPromise = new Promise<boolean>((resolve) => {
+      resolveRefresh = resolve;
+    });
+
+    const forceRefreshSpy = vi
+      .spyOn(useRacesModule, "forceRefreshRaces")
+      .mockReturnValue(refreshPromise);
+    const showToastSpy = vi
+      .spyOn(toastModule, "showToast")
+      .mockImplementation(() => "toast-id");
+    const trackEventSpy = vi
+      .spyOn(analytics, "trackEvent")
+      .mockImplementation(() => {});
+
+    render(<Header />);
+
+    const refreshButton = screen.getByRole("button", {
+      name: "最新のデータに更新",
+    });
+    expect(refreshButton).toBeInTheDocument();
+    expect(refreshButton).not.toBeDisabled();
+    expect(refreshButton).toHaveAttribute("aria-busy", "false");
+
+    // クリック実行
+    await act(async () => {
+      fireEvent.click(refreshButton);
+    });
+
+    expect(trackEventSpy).toHaveBeenCalledWith("force_refresh_races");
+    expect(forceRefreshSpy).toHaveBeenCalledTimes(1);
+
+    // 処理中は disabled かつ aria-busy="true" で回転アニメーションが付与されること
+    expect(refreshButton).toBeDisabled();
+    expect(refreshButton).toHaveAttribute("aria-busy", "true");
+    const svgIcon = refreshButton.querySelector("svg");
+    expect(svgIcon).toHaveClass("animate-spin");
+
+    // 成功で完了させる
+    await act(async () => {
+      resolveRefresh(true);
+    });
+
+    await vi.waitFor(() => {
+      expect(refreshButton).not.toBeDisabled();
+    });
+
+    expect(refreshButton).toHaveAttribute("aria-busy", "false");
+    expect(svgIcon).not.toHaveClass("animate-spin");
+    expect(showToastSpy).toHaveBeenCalledWith("レースデータを最新に更新しました", "success");
+  });
+
+  it("強制更新が失敗した場合はエラーメッセージのトーストが通知されること", async () => {
+    vi.spyOn(useRacesModule, "forceRefreshRaces").mockResolvedValue(false);
+    const showToastSpy = vi
+      .spyOn(toastModule, "showToast")
+      .mockImplementation(() => "toast-id");
+
+    render(<Header />);
+
+    const refreshButton = screen.getByRole("button", {
+      name: "最新のデータに更新",
+    });
+
+    await act(async () => {
+      fireEvent.click(refreshButton);
+    });
+
+    await vi.waitFor(() => {
+      expect(showToastSpy).toHaveBeenCalledWith(
+        "データの更新に失敗しました（オフライン）",
+        "error"
+      );
+    });
+  });
+
+  it("言語が英語のときはリロードボタンのラベルが 'Refresh data' になること", () => {
+    useLanguageStore.setState({ language: "en" });
+    render(<Header />);
+
+    expect(
+      screen.getByRole("button", { name: "Refresh data" })
+    ).toBeInTheDocument();
   });
 });
