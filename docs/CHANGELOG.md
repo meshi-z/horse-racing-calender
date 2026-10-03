@@ -6,6 +6,26 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 63: 言語別URLパス導入・ルート英語デフォルトOGP・言語切替URL同期 (v1.42.0 / Issue #187) [完了]
+- **静的HTML・OGPメタタグの多言語自動出力 (`vite.config.ts`, `index.html`) [完了]**
+  - グローバル標準およびIssue #172（PWA英語デフォルト化）に合わせて、ルート（`/`）の静的HTMLを英語デフォルト（`<html lang="en">`、`Graded Races Calendar | Schedule of World Graded Races`、`og:locale="en_US"`）に設定。
+  - Viteビルド時プラグイン（`generateLocalizedHtmlPlugin`）を開発し、各言語専用の静的HTML（`dist/ja/index.html`、`dist/en/index.html`、`dist/fr/index.html`、`dist/zh/index.html`、`dist/404.html`）を自動生成。
+  - 日本語（`/ja/`）、英語（`/en/`）、フランス語（`/fr/`）、繁体字中国語（`/zh/`）の各専用OGP/Twitterカードタグ・言語属性・canonicalタグを静的埋め込み。
+- **アクセス時の言語判定優先順位ルールの確立 (`src/store/useLanguageStore.ts`) [完了]**
+  - 第1優先（最優先）: URLパス（`/ja/`, `/en/`, `/fr/`, `/zh/`）。SNS共有や外部リンク経由の言語指定を100%尊重。
+  - 第2優先: 手動選択履歴（`localStorage`）。ルートアクセス時に過去の手動選択を復元。
+  - 第3優先: 端末ブラウザ設定（`navigator.language`）。ルートへの初回訪問時に端末言語で自動判定。
+  - 第4優先: 英語デフォルト（`en`）。
+- **言語切り替え時のURL同期 (`history.replaceState`) [完了]**
+  - アプリ内の言語セレクター（JA/EN/FR/ZH）で言語を切り替えた際、画面のリロードなしでアドレスバーのURLパス（`/ja/` 等）を即座に同期（クエリ・ハッシュ保持）。
+  - ブラウザの「戻る」「進む」（`popstate` イベント）をリスンし、履歴遷移時もストアの言語を自動追従。
+- **シェア用URL生成ユーティリティ (`src/libs/share.ts`) [完了]**
+  - 現在の言語パス（`/ja/`, `/en/` 等）を付与した共有用URLを取得する共通関数を配備。
+- **テスト・品質検証 [完了]**
+  - `tests/unit/useLanguageStore.test.ts`、`tests/unit/share.test.ts`、`tests/unit/localizedHtml.test.ts`、`tests/unit/seo.test.ts` を配備・更新。全62テストファイル・587テスト全件パス、型検査・プロダクションビルド成功。
+
+---
+
 ### Step 62: アイルランド競馬の未登録勝ち馬データ即効性是正・実開催日・移転・別名照合エンジン強化 (v1.41.1 / Issue #165) [完了]
 - **アイルランド重賞34レースの勝者データ100%同期 (`src/data/race_winners.json`, `public/data/races.json`) [完了]**
   - 2026年アイルランド（HRI）過去開催（<= 2026-10-03）の全86レース中、未登録だった34レースの勝者名および勝ちタイムをSporting Life / HRI公式実績から100%特定し反映。

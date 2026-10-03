@@ -7,15 +7,131 @@ import fs from 'fs';
 const rawBase = process.env.BASE_URL || '/';
 const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 
-function copyIndexTo404Plugin(): Plugin {
+interface LanguageMeta {
+  lang: string;
+  title: string;
+  description: string;
+  ogTitle: string;
+  ogDescription: string;
+  ogLocale: string;
+  twitterTitle: string;
+  twitterDescription: string;
+}
+
+const LOCALIZED_METAS: Record<'ja' | 'en' | 'fr' | 'zh', LanguageMeta> = {
+  ja: {
+    lang: 'ja',
+    title: '重賞カレンダー | 中央・地方・海外重賞レーススケジュール',
+    description: 'JRA（中央競馬）、NAR（地方競馬・ばんえい）、および海外主要重賞の日程・確定発走時刻を網羅したオフライン対応カレンダー。',
+    ogTitle: '重賞カレンダー | 中央・地方・海外重賞レーススケジュール',
+    ogDescription: 'JRA（中央競馬）、NAR（地方競馬・ばんえい）、および海外主要重賞の日程・確定発走時刻を網羅したオフライン対応カレンダー。',
+    ogLocale: 'ja_JP',
+    twitterTitle: '重賞カレンダー | 中央・地方・海外重賞レーススケジュール',
+    twitterDescription: 'JRA（中央競馬）、NAR（地方競馬・ばんえい）、および海外主要重賞の日程・確定発走時刻を網羅したオフライン対応カレンダー。',
+  },
+  en: {
+    lang: 'en',
+    title: 'Graded Races Calendar | Schedule of World Graded Races',
+    description: 'Comprehensive schedule and confirmed race times for graded horse racing worldwide.',
+    ogTitle: 'Graded Races Calendar | Schedule of World Graded Races',
+    ogDescription: 'Comprehensive schedule and confirmed race times for graded horse racing worldwide.',
+    ogLocale: 'en_US',
+    twitterTitle: 'Graded Races Calendar | Schedule of World Graded Races',
+    twitterDescription: 'Comprehensive schedule and confirmed race times for graded horse racing worldwide.',
+  },
+  fr: {
+    lang: 'fr',
+    title: 'Courses de Groupe | Calendrier Hippique International',
+    description: 'Calendrier complet des courses de groupe en France, Royaume-Uni, États-Unis, Japon et Hong Kong.',
+    ogTitle: 'Courses de Groupe | Calendrier Hippique International',
+    ogDescription: 'Calendrier complet des courses de groupe en France, Royaume-Uni, États-Unis, Japon et Hong Kong.',
+    ogLocale: 'fr_FR',
+    twitterTitle: 'Courses de Groupe | Calendrier Hippique International',
+    twitterDescription: 'Calendrier complet des courses de groupe en France, Royaume-Uni, États-Unis, Japon et Hong Kong.',
+  },
+  zh: {
+    lang: 'zh-HK',
+    title: '分級賽行事曆 | 香港・日本・歐美賽馬賽程',
+    description: '全面收錄香港賽馬會、日本中央及地方、歐美各國一級賽等分級賽賽程與開跑時間。',
+    ogTitle: '分級賽行事曆 | 香港・日本・歐美賽馬賽程',
+    ogDescription: '全面收錄香港賽馬會、日本中央及地方、歐美各國一級賽等分級賽賽程與開跑時間。',
+    ogLocale: 'zh_HK',
+    twitterTitle: '分級賽行事曆 | 香港・日本・歐美賽馬賽程',
+    twitterDescription: '全面收錄香港賽馬會、日本中央及地方、歐美各國一級賽等分級賽賽程與開跑時間。',
+  },
+};
+
+function generateLocalizedHtmlPlugin(): Plugin {
   return {
-    name: 'copy-index-to-404',
+    name: 'generate-localized-html',
     closeBundle() {
       const distDir = path.resolve(import.meta.dirname, 'dist');
       const indexPath = path.join(distDir, 'index.html');
       const notFoundPath = path.join(distDir, '404.html');
-      if (fs.existsSync(indexPath)) {
-        fs.copyFileSync(indexPath, notFoundPath);
+
+      if (!fs.existsSync(indexPath)) return;
+
+      // 404.html for GitHub Pages fallback
+      fs.copyFileSync(indexPath, notFoundPath);
+
+      const htmlContent = fs.readFileSync(indexPath, 'utf-8');
+
+      for (const [langKey, meta] of Object.entries(LOCALIZED_METAS) as [keyof typeof LOCALIZED_METAS, LanguageMeta][]) {
+        let localizedHtml = htmlContent;
+
+        // 1. html lang
+        localizedHtml = localizedHtml.replace(/<html\s+lang="[^"]*"/i, `<html lang="${meta.lang}"`);
+
+        // 2. title
+        localizedHtml = localizedHtml.replace(/<title>[\s\S]*?<\/title>/i, `<title>${meta.title}</title>`);
+
+        // 3. meta description
+        localizedHtml = localizedHtml.replace(
+          /<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i,
+          `<meta name="description" content="${meta.description}" />`
+        );
+
+        // 4. canonical & og:url
+        const canonicalUrl = `https://meshi-z.github.io/horse-racing-calender/${langKey}/`;
+        localizedHtml = localizedHtml.replace(
+          /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i,
+          `<link rel="canonical" href="${canonicalUrl}" />`
+        );
+        localizedHtml = localizedHtml.replace(
+          /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/i,
+          `<meta property="og:url" content="${canonicalUrl}" />`
+        );
+
+        // 5. og:title, og:description, og:locale
+        localizedHtml = localizedHtml.replace(
+          /<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/i,
+          `<meta property="og:title" content="${meta.ogTitle}" />`
+        );
+        localizedHtml = localizedHtml.replace(
+          /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/i,
+          `<meta property="og:description" content="${meta.ogDescription}" />`
+        );
+        localizedHtml = localizedHtml.replace(
+          /<meta\s+property="og:locale"\s+content="[^"]*"\s*\/?>/i,
+          `<meta property="og:locale" content="${meta.ogLocale}" />`
+        );
+
+        // 6. twitter:title, twitter:description
+        localizedHtml = localizedHtml.replace(
+          /<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/i,
+          `<meta name="twitter:title" content="${meta.twitterTitle}" />`
+        );
+        localizedHtml = localizedHtml.replace(
+          /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/i,
+          `<meta name="twitter:description" content="${meta.twitterDescription}" />`
+        );
+
+        // Output to dist/${langKey}/index.html
+        const langDir = path.join(distDir, langKey);
+        if (!fs.existsSync(langDir)) {
+          fs.mkdirSync(langDir, { recursive: true });
+        }
+        fs.writeFileSync(path.join(langDir, 'index.html'), localizedHtml, 'utf-8');
       }
     },
   };
@@ -25,7 +141,7 @@ export default defineConfig({
   base,
   plugins: [
     react(),
-    copyIndexTo404Plugin(),
+    generateLocalizedHtmlPlugin(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'icons/*.png', 'icons/*.svg', 'robots.txt', 'sitemap.xml'],
