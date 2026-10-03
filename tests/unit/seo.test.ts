@@ -11,26 +11,24 @@ describe("SEO and Meta configuration", () => {
   it("index.html に必須の基本メタタグが含まれていること", () => {
     const html = fs.readFileSync(indexHtmlPath, "utf-8");
 
-    // Title
-    expect(html).toContain("<title>重賞カレンダー | JRA & NAR Graded Races Calendar</title>");
+    // Title (Root is English default)
+    expect(html).toContain("<title>Graded Races Calendar | Schedule of World Graded Races</title>");
 
     // Canonical URL
     expect(html).toContain(
       '<link rel="canonical" href="https://meshi-z.github.io/horse-racing-calender/" />'
     );
 
-    // Description (日英キーワード含有)
+    // Description (English default)
     expect(html).toContain('name="description"');
-    expect(html).toContain("JRA（中央競馬）およびNAR（地方競馬・ダートグレード・ばんえい）の全重賞レース日程");
-    expect(html).toContain("Comprehensive schedule and confirmed race times for JRA & NAR graded horse racing in Japan");
+    expect(html).toContain("Comprehensive schedule and confirmed race times for graded horse racing worldwide.");
 
     // Keywords
     expect(html).toContain('name="keywords"');
-    expect(html).toContain("JRA, NAR, 地方競馬, ダートグレード");
-    expect(html).toContain("horse racing, Japan, race calendar, graded races");
+    expect(html).toContain("horse racing, race calendar, graded races");
   });
 
-  it("index.html にOGPタグおよびTwitter Cardが設定されていること", () => {
+  it("index.html に英語デフォルトOGPタグおよびTwitter Cardが設定されていること", () => {
     const html = fs.readFileSync(indexHtmlPath, "utf-8");
 
     // OGP
@@ -39,26 +37,26 @@ describe("SEO and Meta configuration", () => {
       'property="og:url" content="https://meshi-z.github.io/horse-racing-calender/"'
     );
     expect(html).toContain(
-      'property="og:title" content="重賞カレンダー | JRA & NAR Graded Races Calendar"'
+      'property="og:title" content="Graded Races Calendar | Schedule of World Graded Races"'
     );
     expect(html).toContain(
-      'property="og:description" content="JRA（中央競馬）およびNAR（地方競馬）の全重賞レース日程・確定発走時刻・出走条件をタイムラインと月間カレンダーで確認できるオフライン対応Webアプリ。"'
+      'property="og:description" content="Comprehensive schedule and confirmed race times for graded horse racing worldwide."'
     );
     expect(html).toContain(
       'property="og:image" content="https://meshi-z.github.io/horse-racing-calender/icons/icon-512.png"'
     );
-    expect(html).toContain('property="og:locale" content="ja_JP"');
-    expect(html).toContain('property="og:locale:alternate" content="en_US"');
+    expect(html).toContain('property="og:locale" content="en_US"');
+    expect(html).toContain('property="og:locale:alternate" content="ja_JP"');
     expect(html).toContain('property="og:locale:alternate" content="fr_FR"');
     expect(html).toContain('property="og:locale:alternate" content="zh_HK"');
 
     // Twitter
     expect(html).toContain('name="twitter:card" content="summary"');
     expect(html).toContain(
-      'name="twitter:title" content="重賞カレンダー | JRA & NAR Graded Races Calendar"'
+      'name="twitter:title" content="Graded Races Calendar | Schedule of World Graded Races"'
     );
     expect(html).toContain(
-      'name="twitter:description" content="JRA（中央競馬）およびNAR（地方競馬）の全重賞レース日程・確定発走時刻・出走条件をタイムラインと月間カレンダーで確認できるオフライン対応Webアプリ。"'
+      'name="twitter:description" content="Comprehensive schedule and confirmed race times for graded horse racing worldwide."'
     );
     expect(html).toContain(
       'name="twitter:image" content="https://meshi-z.github.io/horse-racing-calender/icons/icon-512.png"'

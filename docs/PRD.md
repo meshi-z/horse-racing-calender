@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年10月3日) |
-| **バージョン** | v1.41.1 (アイルランド競馬の未登録勝ち馬データ即効性是正・実開催日・移転・別名照合エンジン強化) |
+| **バージョン** | v1.42.0 (言語別URLパス導入・ルート英語デフォルトOGP・言語切替URL同期) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -620,11 +620,29 @@ docs/
 - **データ整合性テストの拡充 (`tests/unit/foreignResultsOfficial.test.ts`, `tests/unit/ukSyutsuba.test.ts`)**:
   - アイルランド過去全86重賞の勝者登録100%保証、順延・移転レースの属性保証、名寄せエンジンのエイリアスマッチングテストを追加。全60テストファイル・570テスト全件パス。
 
+### 過去のステップ: Step 68 (言語別URLパス導入・ルート英語デフォルトOGP・言語切替URL同期) (Issue #187) [完了]
+- **静的HTML・OGPタグの多言語出力 (`vite.config.ts`, `index.html`)**:
+  - ルート（`/`）の静的HTMLを英語デフォルト（`<html lang="en">`、`Graded Races Calendar | Schedule of World Graded Races`、`og:locale="en_US"`）に設定し、Issue #172（PWA英語デフォルト化）と整合。
+  - Viteビルド時（`generateLocalizedHtmlPlugin`）に、各言語専用の静的HTML（`dist/ja/index.html`、`dist/en/index.html`、`dist/fr/index.html`、`dist/zh/index.html`、`dist/404.html`）を自動生成。
+  - 日本語（`/ja/`）、英語（`/en/`）、フランス語（`/fr/`）、繁体字中国語（`/zh/`）の各専用OGP/Twitterカードタグ・言語属性・canonicalタグを静的出力。
+- **アクセス時の言語判定優先順位ルールの確立 (`src/store/useLanguageStore.ts`)**:
+  - 第1優先（最優先）: URLパス（`/ja/`, `/en/`, `/fr/`, `/zh/`）。SNS共有や外部リンク経由の言語指定を100%尊重。
+  - 第2優先: 手動選択履歴（`localStorage`）。ルートアクセス時に過去の手動選択を復元。
+  - 第3優先: 端末ブラウザ設定（`navigator.language`）。ルートへの初回訪問時に端末言語で自動判定。
+  - 第4優先: 英語デフォルト（`en`）。
+- **言語切り替え時のURL同期 (`history.replaceState`)**:
+  - アプリ内の言語セレクター（JA/EN/FR/ZH）で言語を切り替えた際、画面のリロードなしでアドレスバーのURLパス（`/ja/` 等）を即座に同期（クエリ・ハッシュ保持）。
+  - ブラウザの「戻る」「進む」（`popstate` イベント）をリスンし、履歴遷移時もストアの言語を自動追従。
+- **シェア用URL生成ユーティリティ (`src/libs/share.ts`)**:
+  - 現在の言語パス（`/ja/`, `/en/` 等）を付与した共有用URLを取得する共通関数を配備。
+- **テスト・品質検証**:
+  - `tests/unit/useLanguageStore.test.ts`、`tests/unit/share.test.ts`、`tests/unit/localizedHtml.test.ts`、`tests/unit/seo.test.ts` を配備・更新。全62テストファイル・587テスト全件パス。
+
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
-- **Step 68: 海外主要レースのさらなる拡張**:
+- **Step 69: 海外主要レースのさらなる拡張**:
   - オーストラリア（Racing Australia / IFHA Part I）、UAE/ドバイ（ERA）等の重賞データ統合。
   - 各国公式出馬表フェッチャーの追加による確定発走時刻自動取得。
-- **Step 69: リアルタイム馬場状態・天候情報の表示**:
+- **Step 70: リアルタイム馬場状態・天候情報の表示**:
   - レース当日の天候（晴・雨等）および馬場状態（良・稍重・重・不良）のリアルタイム取得とバッジ表示。
-- **Step 70: カレンダー連携（iCalendar / Google Calendar 出力）**:
+- **Step 71: カレンダー連携（iCalendar / Google Calendar 出力）**:
   - お気に入りレースや特定条件レースをワンクリックで外部カレンダーアプリへ登録できる `.ics` エクスポート機能。

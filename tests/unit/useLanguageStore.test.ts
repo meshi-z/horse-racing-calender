@@ -2,6 +2,8 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import {
   useLanguageStore,
   getInitialLanguage,
+  getLanguageFromPath,
+  updateUrlPathForLanguage,
   LANGUAGE_STORAGE_KEY,
 } from '@/store/useLanguageStore';
 
@@ -138,5 +140,83 @@ describe('useLanguageStore', () => {
       expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe('ja');
       expect(document.documentElement.lang).toBe('ja');
     });
+
+    it('setLanguage で history.replaceState が呼ばれ URL パスが同期されること', () => {
+      const replaceStateSpy = vi.spyOn(window.history, 'replaceState');
+      const store = useLanguageStore.getState();
+
+      store.setLanguage('en');
+      expect(replaceStateSpy).toHaveBeenCalled();
+      const lastCall = replaceStateSpy.mock.calls[replaceStateSpy.mock.calls.length - 1];
+      expect(lastCall[2]).toContain('/en/');
+    });
+
+    it('syncUrl: false を指定した場合は history.replaceState が呼ばれないこと', () => {
+      const replaceStateSpy = vi.spyOn(window.history, 'replaceState');
+      const store = useLanguageStore.getState();
+
+      store.setLanguage('fr', { syncUrl: false });
+      expect(replaceStateSpy).not.toHaveBeenCalled();
+      expect(useLanguageStore.getState().language).toBe('fr');
+    });
+  });
+
+  describe('getLanguageFromPath & updateUrlPathForLanguage', () => {
+    it('パス名から各言語を正確に判定できること', () => {
+      expect(getLanguageFromPath('/ja/')).toBe('ja');
+      expect(getLanguageFromPath('/ja')).toBe('ja');
+      expect(getLanguageFromPath('/en/')).toBe('en');
+      expect(getLanguageFromPath('/fr/')).toBe('fr');
+      expect(getLanguageFromPath('/zh/')).toBe('zh');
+      expect(getLanguageFromPath('/')).toBeNull();
+      expect(getLanguageFromPath('/unknown/')).toBeNull();
+    });
+
+    it('サブディレクトリ base (/horse-racing-calender/) がある場合も正確に判定できること', () => {
+      const base = '/horse-racing-calender/';
+      expect(getLanguageFromPath('/horse-racing-calender/ja/', base)).toBe('ja');
+      expect(getLanguageFromPath('/horse-racing-calender/en/', base)).toBe('en');
+      expect(getLanguageFromPath('/horse-racing-calender/fr/', base)).toBe('fr');
+      expect(getLanguageFromPath('/horse-racing-calender/zh/', base)).toBe('zh');
+      expect(getLanguageFromPath('/horse-racing-calender/', base)).toBeNull();
+    });
+
+    it('updateUrlPathForLanguage で指定した言語のパスに URL が更新されること', () => {
+      const replaceStateSpy = vi.spyOn(window.history, 'replaceState');
+      vi.spyOn(window, 'location', 'get').mockReturnValue({
+        ...window.location,
+        pathname: '/ja/',
+        search: '?filter=g1',
+        hash: '#top',
+      });
+
+      updateUrlPathForLanguage('fr', '/');
+      expect(replaceStateSpy).toHaveBeenCalledWith(window.history.state, '', '/fr/?filter=g1#top');
+    });
+
+    it('URL パス（/ja/, /en/, /fr/, /zh/）が存在する場合、localStorage や navigator に優先すること (第1優先ルール)', () => {
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, 'en');
+      vi.spyOn(navigator, 'language', 'get').mockReturnValue('en-US');
+      // window.location.pathname をモック
+      vi.spyOn(window, 'location', 'get').mockReturnValue({
+        ...window.location,
+        pathname: '/fr/',
+      });
+
+      expect(getInitialLanguage()).toBe('fr');
+    });
+
+    it('popstate イベント時にパスの言語とストアが同期されること', () => {
+      useLanguageStore.setState({ language: 'ja' });
+
+      vi.spyOn(window, 'location', 'get').mockReturnValue({
+        ...window.location,
+        pathname: '/en/',
+      });
+
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      expect(useLanguageStore.getState().language).toBe('en');
+    });
   });
 });
+
