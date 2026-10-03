@@ -6,6 +6,22 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 54: アメリカ競馬の未登録勝ち馬データ即効性是正・正規化強化・空値原則徹底 (v1.38.3 / Issue #164) [完了]
+- **アメリカ競馬（Equibase / Sporting Life）勝ち馬データの即効性是正 (`public/data/races.json`, `src/data/race_winners.json`, `src/data/us_race_master.json`) [完了]**
+  - 未登録だった米国重賞レース群に対し、公式一次ソース（Equibase, BloodHorse, Sporting Life）と徹底的な突合・照合を実施。
+  - 実在確認が取れた18レースの勝ち馬（The Puma, Bodacious Bay, Tam Tam, Survie, Nafisa, Rabeeba, Neat, Kathynmarissa等）および騎手・タイム・着順データを `public/data/races.json` および `src/data/race_winners.json` へ正式反映。
+- **タイムゾーン差およびレース名名寄せの強化 (`scripts/lib/us-syutsuba.ts`, `scripts/lib/uk-syutsuba.ts`) [完了]**
+  - 米国西海岸（PT/MT）夜間発走レースがSporting Life等のUTC基準APIで翌日（+1日）日付に登録される仕様に配慮したクロス検索・照合の確立。
+  - `tokenizeEnglish` の強化: Unicode正規化（NFD分解によるアクセント記号 `ñ` 等のストリップ処理）、括弧書き注記（競馬場名等）の除去、アポストロフィ除去、スポンサー冠名除外（`PRESENTED`, `BY`, `SPONSORED`）を実装。
+- **空値原則（Null Value Principle）の厳格遵守と未開催レースの保護 [完了]**
+  - NYRA日程変更により秋・冬へ移動したレース（`2026-us-g2-46` Man o' War S: 2026-11-28, `2026-us-g2-59` Brooklyn S: 2026-12-05）および発走直前延期レース（`2026-us-g3-138` Delaware H）、2026年中止レース（`2026-us-g3-113` Cougar II S）について、勝者を推測補完せず「未設定（undefined/空欄）」として厳格に保護。
+- **回帰防止テスト新設 & 品質検証 [完了]**
+  - `tests/unit/dataIntegrity.test.ts` に米国実在勝ち馬登録および未開催レースの空値保護に関する検証ケースを追加。
+  - `tests/unit/usRaces.test.ts` における Flower Bowl Stakes の実施行日（2026-10-01）アサーションを更新。
+  - 全55テストファイル・521テスト全件パス、型検査（`tsc --noEmit`）および本番ビルド（`vite build`）正常完了。
+
+---
+
 ### Step 53: 過去勝ち馬多言語データの是正・空値原則徹底および香港中文データの完全付与 (v1.38.2 / Issue #160, #161) [完了]
 - **インシデント是正・不整合データの完全排除 (`src/data/race_winners.json`, `public/data/races.json`) [完了]**
   - NAR（地方競馬・ばんえい競馬）全239レースの勝ち馬データに残存していた、旧ダミー生成スクリプト由来の架空英語馬名および騎手名（銀河賞「スターイチバン」に "Notturno" / "Seiji Yamazaki" が割り当てられていた等、50種類のダミープール使い回し）を完全削除。

@@ -153,4 +153,53 @@ describe('Data Integrity & Multilingual Winners Audit (Issue #160)', () => {
       expect(franceReal['2026-france-g1-12']?.name?.en).toBe('Samangan');
     }
   });
+
+  describe('アメリカ競馬（Equibase / Sporting Life）の勝ち馬データ真正性および空値原則検証 (Issue #164)', () => {
+    it('公式一次ソースで確認された実在勝ち馬が正しく登録されていること', () => {
+      // G1
+      expect(winners['2026-us-g1-24']?.name?.en).toBe('Tam Tam');
+      expect(winners['2026-us-g1-47']?.name?.en).toBe('Survie');
+      expect(winners['2026-us-g1-61']?.name?.en).toBe('Bodacious Bay');
+      expect(winners['2026-us-g1-62']?.name?.en).toBe('The Puma');
+
+      // G2
+      expect(winners['2026-us-g2-89']?.name?.en).toBe('Kathynmarissa');
+      expect(winners['2026-us-g2-96']?.name?.en).toBe('Splendora');
+      expect(winners['2026-us-g2-98']?.name?.en).toBe('Stradale');
+      expect(winners['2026-us-g2-100']?.name?.en).toBe('Listenupshance');
+      expect(winners['2026-us-g2-101']?.name?.en).toBe('Super Corredora');
+
+      // G3
+      expect(winners['2026-us-g3-09']?.name?.en).toBe('Nafisa');
+      expect(winners['2026-us-g3-17']?.name?.en).toBe('Nitrogen');
+      expect(winners['2026-us-g3-77']?.name?.en).toBe('Heroic Move');
+      expect(winners['2026-us-g3-99']?.name?.en).toBe('Closethegame Sugar');
+      expect(winners['2026-us-g3-102']?.name?.en).toBe('Neat');
+      expect(winners['2026-us-g3-108']?.name?.en).toBe('Navajo Warrior');
+      expect(winners['2026-us-g3-124']?.name?.en).toBe('Rabeeba');
+      expect(winners['2026-us-g3-137']?.name?.en).toBe('Shelzawa');
+      expect(winners['2026-us-g3-139']?.name?.en).toBe('Silent Tactic');
+    });
+
+    it('日程変更・未開催レースにおいて空値原則（Null Value Principle）が厳格に守られ、winnerが未設定であること', () => {
+      // 2026年秋・冬へ開催日程が変更されたレース
+      const manOWar = races.find((r) => r.id === '2026-us-g2-46');
+      expect(manOWar?.winner, 'Man o\' War S must have no winner (scheduled for 2026-11-28)').toBeUndefined();
+      expect(winners['2026-us-g2-46']).toBeUndefined();
+
+      const brooklyn = races.find((r) => r.id === '2026-us-g2-59');
+      expect(brooklyn?.winner, 'Brooklyn S must have no winner (scheduled for 2026-12-05)').toBeUndefined();
+      expect(winners['2026-us-g2-59']).toBeUndefined();
+
+      // 開催延期レース（Delaware H: 2026-10-03 発走前）
+      const delawareH = races.find((r) => r.id === '2026-us-g3-138');
+      expect(delawareH?.winner, 'Delaware H must have no winner before running').toBeUndefined();
+      expect(winners['2026-us-g3-138']).toBeUndefined();
+
+      // 2026年不開催（Cougar II S）
+      const cougarII = races.find((r) => r.id === '2026-us-g3-113');
+      expect(cougarII?.winner, 'Cougar II S was not run in 2026 and must have no winner').toBeUndefined();
+      expect(winners['2026-us-g3-113']).toBeUndefined();
+    });
+  });
 });

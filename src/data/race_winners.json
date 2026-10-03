@@ -8075,5 +8075,149 @@
     "jockey": {
       "ja": "川田将雅"
     }
+  },
+  "2026-us-g3-09": {
+    "name": {
+      "ja": "ラカナダステークス",
+      "en": "Nafisa"
+    }
+  },
+  "2026-us-g3-17": {
+    "name": {
+      "ja": "ナイトロジェン",
+      "en": "Nitrogen"
+    }
+  },
+  "2026-us-g3-77": {
+    "name": {
+      "ja": "スティーブセクストンマイルステークス",
+      "en": "Heroic Move"
+    }
+  },
+  "2026-us-g1-24": {
+    "name": {
+      "ja": "タムタム",
+      "en": "Tam Tam"
+    },
+    "jockey": {
+      "ja": "J.アルバラード",
+      "en": "Junior Alvarado"
+    }
+  },
+  "2026-us-g3-99": {
+    "name": {
+      "ja": "ケリーズランディングステークス",
+      "en": "Closethegame Sugar"
+    }
+  },
+  "2026-us-g3-102": {
+    "name": {
+      "ja": "マニラステークス",
+      "en": "Neat"
+    },
+    "jockey": {
+      "ja": "J.アルバラード",
+      "en": "Junior Alvarado"
+    }
+  },
+  "2026-us-g3-108": {
+    "name": {
+      "ja": "Navajo Warrior",
+      "en": "Navajo Warrior"
+    },
+    "jockey": {
+      "ja": "M.ハズバンズ",
+      "en": "Micah J. Husbands"
+    }
+  },
+  "2026-us-g1-47": {
+    "name": {
+      "ja": "Survie",
+      "en": "Survie"
+    }
+  },
+  "2026-us-g3-124": {
+    "name": {
+      "ja": "トーリーパインズステークス",
+      "en": "Rabeeba"
+    }
+  },
+  "2026-us-g2-89": {
+    "name": {
+      "ja": "キャシーマリッサ",
+      "en": "Kathynmarissa"
+    },
+    "jockey": {
+      "ja": "J.オルティス",
+      "en": "Jose Ortiz"
+    }
+  },
+  "2026-us-g2-96": {
+    "name": {
+      "ja": "Splendora",
+      "en": "Splendora"
+    },
+    "jockey": {
+      "ja": "F.プラ",
+      "en": "Flavien Prat"
+    }
+  },
+  "2026-us-g1-61": {
+    "name": {
+      "ja": "Bodacious Bay",
+      "en": "Bodacious Bay"
+    },
+    "jockey": {
+      "ja": "M.ハズバンズ",
+      "en": "Micah J. Husbands"
+    }
+  },
+  "2026-us-g1-62": {
+    "name": {
+      "ja": "The Puma",
+      "en": "The Puma"
+    },
+    "jockey": {
+      "ja": "J.カステリャーノ",
+      "en": "Javier Castellano"
+    }
+  },
+  "2026-us-g2-98": {
+    "name": {
+      "ja": "ストラダーレ",
+      "en": "Stradale"
+    },
+    "jockey": {
+      "ja": "J.オルティス",
+      "en": "Jose L. Ortiz"
+    }
+  },
+  "2026-us-g3-137": {
+    "name": {
+      "ja": "ウィンターメモリーズステークス",
+      "en": "Shelzawa"
+    },
+    "jockey": {
+      "ja": "F.プラ",
+      "en": "Flavien Prat"
+    }
+  },
+  "2026-us-g3-139": {
+    "name": {
+      "ja": "Silent Tactic",
+      "en": "Silent Tactic"
+    }
+  },
+  "2026-us-g2-100": {
+    "name": {
+      "ja": "Listenupshance",
+      "en": "Listenupshance"
+    }
+  },
+  "2026-us-g2-101": {
+    "name": {
+      "ja": "ゼニヤッタステークス",
+      "en": "Super Corredora"
+    }
   }
 }
