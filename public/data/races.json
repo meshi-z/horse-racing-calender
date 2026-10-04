@@ -37761,6 +37761,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "クリームパン"
+      },
+      "jockey": {
+        "ja": "加藤翔"
+      },
+      "horse_number": 6,
+      "time": "1:37.8"
     }
   },
   {
@@ -37787,6 +37797,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "リケアサンバ"
+      },
+      "jockey": {
+        "ja": "山本聡哉"
+      },
+      "horse_number": 1,
+      "time": "1:39.1"
     }
   },
   {

@@ -8662,5 +8662,25 @@
       "en": "Regaled"
     },
     "time": "1m 50.48s"
+  },
+  "2026-nar-local-184": {
+    "name": {
+      "ja": "クリームパン"
+    },
+    "jockey": {
+      "ja": "加藤翔"
+    },
+    "horse_number": 6,
+    "time": "1:37.8"
+  },
+  "2026-nar-local-183": {
+    "name": {
+      "ja": "リケアサンバ"
+    },
+    "jockey": {
+      "ja": "山本聡哉"
+    },
+    "horse_number": 1,
+    "time": "1:39.1"
   }
 }
