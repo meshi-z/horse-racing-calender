@@ -40020,6 +40020,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "クリームパン"
+      },
+      "jockey": {
+        "ja": "加藤翔"
+      },
+      "horse_number": 6,
+      "time": "1:37.8"
     }
   },
   {
@@ -40046,6 +40056,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "リケアサンバ"
+      },
+      "jockey": {
+        "ja": "山本聡哉"
+      },
+      "horse_number": 1,
+      "time": "1:39.1"
     }
   },
   {
@@ -40075,6 +40095,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Green Empress",
+        "en": "Green Empress",
+        "fr": "Green Empress"
+      },
+      "jockey": {
+        "ja": "C.soumillon",
+        "en": "C.soumillon",
+        "fr": "C.soumillon"
+      },
+      "horse_number": 8
     }
   },
   {
@@ -40104,6 +40137,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Amusingly",
+        "en": "Amusingly",
+        "fr": "Amusingly"
+      },
+      "jockey": {
+        "ja": "C.keane",
+        "en": "C.keane",
+        "fr": "C.keane"
+      },
+      "horse_number": 10
     }
   },
   {
@@ -40133,6 +40179,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Miss Yechance",
+        "en": "Miss Yechance",
+        "fr": "Miss Yechance"
+      },
+      "jockey": {
+        "ja": "J.nicholls",
+        "en": "J.nicholls",
+        "fr": "J.nicholls"
+      },
+      "horse_number": 9
     }
   },
   {
