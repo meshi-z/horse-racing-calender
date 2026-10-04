@@ -440,7 +440,58 @@ export class IeRaceTimeFetcher implements RaceTimeFetcher {
 }
 
 /**
- * 登録済みフェッチャープロバイダーのマップ（JRA, NAR, France, UK, US, HK, Ireland対応）
+ * 基準日 (YYYY-MM-DD) からオーストラリアの当週開催期間（基準日〜14日間）の範囲を算出
+ */
+export function getAustraliaUpcomingWindowRange(refDateStr: string, windowDays = 14): { startDate: string; endDate: string } {
+  const [y, m, d] = refDateStr.split('-').map(Number);
+  const ref = new Date(Date.UTC(y, m - 1, d));
+  const end = new Date(ref.getTime() + (windowDays - 1) * 86400000);
+
+  const formatYmd = (dt: Date) => {
+    const yr = dt.getUTCFullYear();
+    const mo = String(dt.getUTCMonth() + 1).padStart(2, '0');
+    const da = String(dt.getUTCDate()).padStart(2, '0');
+    return `${yr}-${mo}-${da}`;
+  };
+
+  return {
+    startDate: formatYmd(ref),
+    endDate: formatYmd(end),
+  };
+}
+
+/**
+ * オーストラリア競馬（Racing Australia）向けプロバイダー実装
+ */
+export class AustraliaRaceTimeFetcher implements RaceTimeFetcher {
+  readonly organization = 'racing_australia';
+  private fixtures?: Record<string, import('./lib/australia-syutsuba').AustraliaMeetingFixture>;
+
+  constructor(options?: { fixtures?: Record<string, import('./lib/australia-syutsuba').AustraliaMeetingFixture> }) {
+    this.fixtures = options?.fixtures;
+  }
+
+  getTargetWindowRaces(races: RaceOutput[], refDate: string): RaceOutput[] {
+    const { startDate, endDate } = getAustraliaUpcomingWindowRange(refDate);
+    return races.filter(
+      (r) =>
+        r.organization === this.organization &&
+        ((r.date >= startDate && r.date <= endDate) ||
+          (r.original_date && r.original_date >= startDate && r.original_date <= endDate))
+    );
+  }
+
+  async fetchConfirmedTimes(targetRaces: RaceOutput[]): Promise<ConfirmedRaceTime[]> {
+    const { fetchAustraliaConfirmedRaceTimes } = await import('./lib/australia-syutsuba');
+    return await fetchAustraliaConfirmedRaceTimes({
+      targetRaces,
+      fixtures: this.fixtures,
+    });
+  }
+}
+
+/**
+ * 登録済みフェッチャープロバイダーのマップ（JRA, NAR, France, UK, US, HK, Ireland, Australia対応）
  */
 export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
   jra: new JraRaceTimeFetcher(),
@@ -454,6 +505,9 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
   hk: new HkRaceTimeFetcher(),
   hri: new IeRaceTimeFetcher(),
   ie: new IeRaceTimeFetcher(),
+  racing_australia: new AustraliaRaceTimeFetcher(),
+  australia: new AustraliaRaceTimeFetcher(),
+  au: new AustraliaRaceTimeFetcher(),
 };
 
 export interface UpdateOptions {

@@ -69,7 +69,7 @@
       "grade": "G1",
       "date": "2026-02-07",
       "start_time": "2026-02-07T05:10:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "コーフィールド",
         "en": "Caulfield",
@@ -99,7 +99,7 @@
       "grade": "G1",
       "date": "2026-02-14",
       "start_time": "2026-02-14T05:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "フレミントン",
         "en": "Flemington",
@@ -129,7 +129,7 @@
       "grade": "G1",
       "date": "2026-02-21",
       "start_time": "2026-02-21T04:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "コーフィールド",
         "en": "Caulfield",
@@ -159,7 +159,7 @@
       "grade": "G1",
       "date": "2026-02-21",
       "start_time": "2026-02-21T05:20:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "コーフィールド",
         "en": "Caulfield",
@@ -189,7 +189,7 @@
       "grade": "G1",
       "date": "2026-02-21",
       "start_time": "2026-02-21T06:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "コーフィールド",
         "en": "Caulfield",
@@ -219,7 +219,7 @@
       "grade": "G1",
       "date": "2026-02-28",
       "start_time": "2026-02-28T05:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -249,7 +249,7 @@
       "grade": "G1",
       "date": "2026-02-28",
       "start_time": "2026-02-28T04:20:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -279,7 +279,7 @@
       "grade": "G1",
       "date": "2026-02-28",
       "start_time": "2026-02-28T05:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "フレミントン",
         "en": "Flemington",
@@ -309,7 +309,7 @@
       "grade": "G1",
       "date": "2026-03-07",
       "start_time": "2026-03-07T05:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -339,7 +339,7 @@
       "grade": "G1",
       "date": "2026-03-07",
       "start_time": "2026-03-07T04:20:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -369,7 +369,7 @@
       "grade": "G1",
       "date": "2026-03-07",
       "start_time": "2026-03-07T05:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "フレミントン",
         "en": "Flemington",
@@ -399,7 +399,7 @@
       "grade": "G1",
       "date": "2026-03-14",
       "start_time": "2026-03-14T05:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ローズヒルガーデンズ",
         "en": "Rosehill Gardens",
@@ -429,7 +429,7 @@
       "grade": "G1",
       "date": "2026-03-21",
       "start_time": "2026-03-21T05:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ローズヒルガーデンズ",
         "en": "Rosehill Gardens",
@@ -459,7 +459,7 @@
       "grade": "G1",
       "date": "2026-03-21",
       "start_time": "2026-03-21T04:25:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ローズヒルガーデンズ",
         "en": "Rosehill Gardens",
@@ -489,7 +489,7 @@
       "grade": "G1",
       "date": "2026-03-21",
       "start_time": "2026-03-21T03:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ローズヒルガーデンズ",
         "en": "Rosehill Gardens",
@@ -519,7 +519,7 @@
       "grade": "G1",
       "date": "2026-03-21",
       "start_time": "2026-03-21T05:05:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ローズヒルガーデンズ",
         "en": "Rosehill Gardens",
@@ -549,7 +549,7 @@
       "grade": "G1",
       "date": "2026-03-21",
       "start_time": "2026-03-21T03:10:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ローズヒルガーデンズ",
         "en": "Rosehill Gardens",
@@ -579,7 +579,7 @@
       "grade": "G1",
       "date": "2026-03-20",
       "start_time": "2026-03-20T10:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ムーニーバレー",
         "en": "Moonee Valley",
@@ -609,7 +609,7 @@
       "grade": "G1",
       "date": "2026-03-28",
       "start_time": "2026-03-28T05:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "フレミントン",
         "en": "Flemington",
@@ -639,7 +639,7 @@
       "grade": "G1",
       "date": "2026-03-28",
       "start_time": "2026-03-28T05:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ローズヒルガーデンズ",
         "en": "Rosehill Gardens",
@@ -669,7 +669,7 @@
       "grade": "G1",
       "date": "2026-03-28",
       "start_time": "2026-03-28T04:20:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ローズヒルガーデンズ",
         "en": "Rosehill Gardens",
@@ -699,7 +699,7 @@
       "grade": "G1",
       "date": "2026-04-04",
       "start_time": "2026-04-04T05:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -729,7 +729,7 @@
       "grade": "G1",
       "date": "2026-04-04",
       "start_time": "2026-04-04T04:35:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -759,7 +759,7 @@
       "grade": "G1",
       "date": "2026-04-04",
       "start_time": "2026-04-04T03:55:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -789,7 +789,7 @@
       "grade": "G1",
       "date": "2026-04-04",
       "start_time": "2026-04-04T03:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -819,7 +819,7 @@
       "grade": "G1",
       "date": "2026-04-11",
       "start_time": "2026-04-11T05:55:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -849,7 +849,7 @@
       "grade": "G1",
       "date": "2026-04-11",
       "start_time": "2026-04-11T05:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -879,7 +879,7 @@
       "grade": "G1",
       "date": "2026-04-11",
       "start_time": "2026-04-11T04:35:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -909,7 +909,7 @@
       "grade": "G1",
       "date": "2026-04-11",
       "start_time": "2026-04-11T06:35:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -939,7 +939,7 @@
       "grade": "G1",
       "date": "2026-04-18",
       "start_time": "2026-04-18T05:50:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -969,7 +969,7 @@
       "grade": "G1",
       "date": "2026-04-18",
       "start_time": "2026-04-18T05:10:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -999,7 +999,7 @@
       "grade": "G1",
       "date": "2026-04-25",
       "start_time": "2026-04-25T06:25:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "モーフェットビル",
         "en": "Morphettville",
@@ -1029,7 +1029,7 @@
       "grade": "G1",
       "date": "2026-04-25",
       "start_time": "2026-04-25T05:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "モーフェットビル",
         "en": "Morphettville",
@@ -1059,7 +1059,7 @@
       "grade": "G1",
       "date": "2026-05-02",
       "start_time": "2026-05-02T06:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "モーフェットビル",
         "en": "Morphettville",
@@ -1089,7 +1089,7 @@
       "grade": "G1",
       "date": "2026-05-09",
       "start_time": "2026-05-09T05:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ドゥームベン",
         "en": "Doomben",
@@ -1119,7 +1119,7 @@
       "grade": "G1",
       "date": "2026-05-09",
       "start_time": "2026-05-09T06:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "モーフェットビル",
         "en": "Morphettville",
@@ -1149,7 +1149,7 @@
       "grade": "G1",
       "date": "2026-05-16",
       "start_time": "2026-05-16T05:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ドゥームベン",
         "en": "Doomben",
@@ -1179,7 +1179,7 @@
       "grade": "G1",
       "date": "2026-05-23",
       "start_time": "2026-05-23T05:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "イーグルファーム",
         "en": "Eagle Farm",
@@ -1209,7 +1209,7 @@
       "grade": "G1",
       "date": "2026-05-30",
       "start_time": "2026-05-30T05:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "イーグルファーム",
         "en": "Eagle Farm",
@@ -1239,7 +1239,7 @@
       "grade": "G1",
       "date": "2026-06-06",
       "start_time": "2026-06-06T05:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "イーグルファーム",
         "en": "Eagle Farm",
@@ -1269,7 +1269,7 @@
       "grade": "G1",
       "date": "2026-06-06",
       "start_time": "2026-06-06T05:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "イーグルファーム",
         "en": "Eagle Farm",
@@ -1299,7 +1299,7 @@
       "grade": "G1",
       "date": "2026-06-06",
       "start_time": "2026-06-06T04:20:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "イーグルファーム",
         "en": "Eagle Farm",
@@ -1329,7 +1329,7 @@
       "grade": "G1",
       "date": "2026-06-20",
       "start_time": "2026-06-20T05:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "イーグルファーム",
         "en": "Eagle Farm",
@@ -1359,7 +1359,7 @@
       "grade": "G1",
       "date": "2026-08-22",
       "start_time": "2026-08-22T05:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -1389,7 +1389,7 @@
       "grade": "G1",
       "date": "2026-08-29",
       "start_time": "2026-08-29T06:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "コーフィールド",
         "en": "Caulfield",
@@ -1419,7 +1419,7 @@
       "grade": "G1",
       "date": "2026-09-05",
       "start_time": "2026-09-05T06:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ムーニーバレー",
         "en": "Moonee Valley",
@@ -1449,7 +1449,7 @@
       "grade": "G1",
       "date": "2026-09-12",
       "start_time": "2026-09-12T06:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "フレミントン",
         "en": "Flemington",
@@ -1479,7 +1479,7 @@
       "grade": "G1",
       "date": "2026-09-19",
       "start_time": "2026-09-19T06:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "コーフィールド",
         "en": "Caulfield",
@@ -1509,7 +1509,7 @@
       "grade": "G1",
       "date": "2026-09-25",
       "start_time": "2026-09-25T11:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ムーニーバレー",
         "en": "Moonee Valley",
@@ -1539,7 +1539,7 @@
       "grade": "G1",
       "date": "2026-09-26",
       "start_time": "2026-09-26T06:00:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ローズヒルガーデンズ",
         "en": "Rosehill Gardens",
@@ -1569,7 +1569,7 @@
       "grade": "G1",
       "date": "2026-10-03",
       "start_time": "2026-10-03T06:05:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -1599,7 +1599,7 @@
       "grade": "G1",
       "date": "2026-10-03",
       "start_time": "2026-10-03T06:45:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -1629,7 +1629,7 @@
       "grade": "G1",
       "date": "2026-10-03",
       "start_time": "2026-10-03T05:25:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -1659,7 +1659,7 @@
       "grade": "G1",
       "date": "2026-10-03",
       "start_time": "2026-10-03T06:25:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "フレミントン",
         "en": "Flemington",

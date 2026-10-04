@@ -673,8 +673,16 @@ docs/
   - 南半球タイムゾーン（AEST: UTC+10 / AEDT: UTC+11）の夏時間切替に対応したデータ変換モジュール `scripts/lib/australia-races.ts` を実装。
   - `scripts/parse-races.ts`（`npm run data:build`）に統合マージし、全74レースを `public/data/races.json` および年度別 shard へ正常出力。
   - 単体テスト `tests/unit/australiaRaces.test.ts` およびデータ整合性テスト `tests/unit/racesData.test.ts` を配備・全件パス。
-- **Step 70-3 (発走予定時刻自動更新バッチ実装および過去発走時刻バックフィル) (Issue #194)**:
-  - `AustraliaRaceTimeFetcher` の実装、GitHub Actions 連携、開催済み過去レースの発走時刻バックフィル。
+- **Step 70-3 (発走予定時刻自動更新バッチ実装および過去発走時刻バックフィル) (Issue #194) [完了]**:
+  - オーストラリア専用出馬表パーサーおよび確定時刻取得モジュール `scripts/lib/australia-syutsuba.ts` を実装。
+  - 南半球夏時間（AEDT: UTC+11 / AEST: UTC+10）の正確な動的オフセット判定（`isAedt`）および州別タイムゾーン（NSW/VIC: AEDT/AEST, QLD: AEST, WA: AWST, SA: ACDT/ACST）に対応。
+  - イギリス・アイルランド用ストップワードとの競合（Cup や Guineas の欠落による誤照合）を回避するオーストラリア専用トークナイザー `tokenizeAustralia` を構築。
+  - `scripts/update-race-times.ts` に `AustraliaRaceTimeFetcher` を組み込み、デフォルトフェッチャーとして統合。
+  - `package.json` に `"data:update-times:au"` スクリプトを追加し、個別実行および `--dry-run` に対応。
+  - `.github/workflows/update-race-times.yml` にオーストラリア開催枠（毎週土曜 00:30 UTC = 09:30 JST）を追加。
+  - `src/data/australia_race_master.json` の開催済み過去全レース（2026-10-03以前の全45レース）の発走確定時刻（現地時間およびUTC）をバックフィルし、`is_time_confirmed: true` を設定。
+  - 公式リンク方針（Issue #190）を遵守し、出馬表URLの一時的な推測付与を排除し空値（`undefined`）を保持。
+  - 単体・統合テスト `tests/unit/australiaSyutsuba.test.ts` を配備し、全65テストファイル・604テスト全件パスを達成。
 - **Step 70-4 (レース結果・勝ち馬自動取得バッチ実装および過去勝ち馬バックフィル) (Issue #195)**:
   - `AustraliaRaceResultFetcher` の実装、GitHub Actions 連携、開催済み過去レースの勝ち馬バックフィル。
 - **Step 70-5 (オーストラリア競馬UI対応) (Issue #196)**:
