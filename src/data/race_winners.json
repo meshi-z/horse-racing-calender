@@ -8708,5 +8708,18 @@
       "fr": "C.keane"
     },
     "horse_number": 10
+  },
+  "2026-france-g1-20": {
+    "name": {
+      "ja": "Miss Yechance",
+      "en": "Miss Yechance",
+      "fr": "Miss Yechance"
+    },
+    "jockey": {
+      "ja": "J.nicholls",
+      "en": "J.nicholls",
+      "fr": "J.nicholls"
+    },
+    "horse_number": 9
   }
 }

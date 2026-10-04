@@ -37920,6 +37920,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Miss Yechance",
+        "en": "Miss Yechance",
+        "fr": "Miss Yechance"
+      },
+      "jockey": {
+        "ja": "J.nicholls",
+        "en": "J.nicholls",
+        "fr": "J.nicholls"
+      },
+      "horse_number": 9
     }
   },
   {
