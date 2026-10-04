@@ -37464,6 +37464,13 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Regaled",
+        "en": "Regaled"
+      },
+      "time": "1m 50.48s"
     }
   },
   {
