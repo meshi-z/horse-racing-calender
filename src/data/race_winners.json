@@ -8682,5 +8682,31 @@
     },
     "horse_number": 1,
     "time": "1:39.1"
+  },
+  "2026-france-g1-24": {
+    "name": {
+      "ja": "Green Empress",
+      "en": "Green Empress",
+      "fr": "Green Empress"
+    },
+    "jockey": {
+      "ja": "C.soumillon",
+      "en": "C.soumillon",
+      "fr": "C.soumillon"
+    },
+    "horse_number": 8
+  },
+  "2026-france-g1-22": {
+    "name": {
+      "ja": "Amusingly",
+      "en": "Amusingly",
+      "fr": "Amusingly"
+    },
+    "jockey": {
+      "ja": "C.keane",
+      "en": "C.keane",
+      "fr": "C.keane"
+    },
+    "horse_number": 10
   }
 }

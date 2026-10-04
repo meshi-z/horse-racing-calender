@@ -37836,6 +37836,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Green Empress",
+        "en": "Green Empress",
+        "fr": "Green Empress"
+      },
+      "jockey": {
+        "ja": "C.soumillon",
+        "en": "C.soumillon",
+        "fr": "C.soumillon"
+      },
+      "horse_number": 8
     }
   },
   {
@@ -37865,6 +37878,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Amusingly",
+        "en": "Amusingly",
+        "fr": "Amusingly"
+      },
+      "jockey": {
+        "ja": "C.keane",
+        "en": "C.keane",
+        "fr": "C.keane"
+      },
+      "horse_number": 10
     }
   },
   {
