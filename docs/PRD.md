@@ -3,8 +3,8 @@
 | 項目 | 内容 |
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
-| **作成日** | 2026年9月12日 (最終更新: 2026年10月3日) |
-| **バージョン** | v1.42.0 (言語別URLパス導入・ルート英語デフォルトOGP・言語切替URL同期) |
+| **作成日** | 2026年9月12日 (最終更新: 2026年10月4日) |
+| **バージョン** | v1.43.0 (年度別データ分割Shardingアーキテクチャ・オンデマンド読み込み・2027年以降および新国拡張対応) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -638,11 +638,25 @@ docs/
 - **テスト・品質検証**:
   - `tests/unit/useLanguageStore.test.ts`、`tests/unit/share.test.ts`、`tests/unit/localizedHtml.test.ts`、`tests/unit/seo.test.ts` を配備・更新。全62テストファイル・587テスト全件パス。
 
+### 過去のステップ: Step 69 (年度別データ分割（Sharding）アーキテクチャの導入・オンデマンド読み込み) (Issue #181) [完了]
+- **年度別データ分割（Sharding）パイプラインの導入 (`scripts/lib/race-sharding.ts`, `scripts/parse-races.ts`, `scripts/update-race-times.ts`, `scripts/update-race-results.ts`)**:
+  - レースデータを西暦年度ごとに分割出力する `syncShardedRaceFiles` を配備。
+  - 出力ファイル群: `public/data/races-YYYY.json`（年度別データ）、`public/data/index.json`（提供年度・総件数等のメタデータ）、および完全な後方互換性を担保する結合版 `public/data/races.json`。
+  - データ生成（`data:build`）、発走時刻更新（`data:update-times`）、結果更新（`data:update-results`）の全パイプラインで自動同期実行。
+- **クライアント側オンデマンド読み込み & キャッシュ最適化 (`src/hooks/useRaces.ts`, `src/store/useRaceStore.ts`, `vite.config.ts`)**:
+  - 初回アクセス時は現在表示年度（例: 2026年）の shard のみを読み込むことで初期転送量とパース負荷を最小化（将来の2027年以降番組追加や新国追加時も初期転送量100KB前後を維持）。
+  - カレンダーやタイムラインの年送り操作で未取得年度（`loadedYears` 外）に遷移した際、バックグラウンドで該当年度 shard を非同期取得し、`addRacesForYear` で重複排除・日付時刻順ソートを行ってシームレスにマージ。
+  - 該当年度 shard が存在しない場合の結合版 `races.json` への安全なフォールバックを実装。
+  - Service Worker（Workbox）ランタイムキャッシュパターンを `/\/data\/(races(-[0-9]{4})?|index)\.json$/` に拡張し、BroadcastChannel によるバックグラウンド自動同期をサポート。
+- **テスト・品質検証 (`tests/unit/raceSharding.test.ts`, `tests/unit/useRaces.test.ts`, `tests/unit/useRaceStore.test.ts`)**:
+  - 分割・インデックス出力・ソート順整合性の単体テスト、オンデマンドフェッチ・フォールバック・ストアマージテストを配備。
+  - 全63テストファイル・594テスト全件パス、TypeScript型チェック（tsc --noEmit）パス、プロダクションビルド成功。
+
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
-- **Step 69: 海外主要レースのさらなる拡張**:
-  - オーストラリア（Racing Australia / IFHA Part I）、UAE/ドバイ（ERA）等の重賞データ統合。
+- **Step 70: 海外主要レースのさらなる拡張**:
+  - オーストラリア（Racing Australia / IFHA Part I）、UAE/ドバイ（ERA）、サウジアラビア（JCSA）等の重賞データ統合。
   - 各国公式出馬表フェッチャーの追加による確定発走時刻自動取得。
-- **Step 70: リアルタイム馬場状態・天候情報の表示**:
+- **Step 71: リアルタイム馬場状態・天候情報の表示**:
   - レース当日の天候（晴・雨等）および馬場状態（良・稍重・重・不良）のリアルタイム取得とバッジ表示。
-- **Step 71: カレンダー連携（iCalendar / Google Calendar 出力）**:
+- **Step 72: カレンダー連携（iCalendar / Google Calendar 出力）**:
   - お気に入りレースや特定条件レースをワンクリックで外部カレンダーアプリへ登録できる `.ics` エクスポート機能。

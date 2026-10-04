@@ -1,0 +1,7 @@
+test(integrity): update Delaware H test to reflect confirmed winner Regaled
+
+- Delaware H (2026-us-g3-138) was run on 2026-10-03 and won by Regaled
+- Merge latest official result from origin/main and sync sharded files
+- Update dataIntegrity.test.ts assertion to verify confirmed winner
+
+Co-authored-by: Antigravity <antigravity@example.com>

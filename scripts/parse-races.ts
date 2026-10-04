@@ -10,6 +10,7 @@ import { loadUkRaceMaster, getUkRaces } from './lib/uk-races';
 import { loadUsRaceMaster, getUsRaces } from './lib/us-races';
 import { loadHkRaceMaster, getHkRaces } from './lib/hk-races';
 import { loadIrelandRaceMaster, getIrelandRaces } from './lib/ireland-races';
+import { syncShardedRaceFiles } from './lib/race-sharding';
 
 // --- Type Definitions (Pattern A: Localized Object) ---
 export interface LocalizedString {
@@ -1125,10 +1126,10 @@ function determineNarHandicap(raceName: string, _grade: string, course: string):
     a.organization.localeCompare(b.organization)
   );
 
-  // Write output files
+  // Write output files (sharded + index + combined races.json)
   fs.mkdirSync(path.dirname(publicOutPath), { recursive: true });
-  fs.writeFileSync(publicOutPath, JSON.stringify(racesOutput, null, 2), 'utf-8');
-  console.log(`Saved ${racesOutput.length} races to ${publicOutPath}`);
+  syncShardedRaceFiles(racesOutput, path.dirname(publicOutPath));
+  console.log(`Saved ${racesOutput.length} races to ${publicOutPath} (and sharded files)`);
 
   fs.mkdirSync(path.dirname(masterOutPath), { recursive: true });
   fs.writeFileSync(masterOutPath, JSON.stringify(raceMaster, null, 2), 'utf-8');

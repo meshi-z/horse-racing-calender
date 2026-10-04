@@ -76,6 +76,34 @@ export interface RaceOutput {
   - アメリカG1例: `2026-us-g1-01`（ケンタッキーダービー等）
   - 香港G1例: `2026-hk-g1-01`（香港カップ等）
 
+### 2.3 年度別データ分割（Sharding）アーキテクチャ (Issue #181)
+
+2027年以降の次年度番組追加や、UAE・サウジアラビア・オーストラリアなど新国・新規主催者の拡充に伴うレースデータ総数の増大に対応するため、年度別データ分割（Sharding）アーキテクチャを採用しています。これにより、初回起動時のデータ転送量を最小限（100KB前後）に抑えつつ、オフライン機能や高速ナビゲーションを維持します。
+
+#### ファイル構成仕様 (`public/data/`)
+
+| ファイル名 | 用途・内容 | 特徴・互換性 |
+| :--- | :--- | :--- |
+| **`races-YYYY.json`** | 単一年度（西暦YYYY年）に属するレースデータ配列 | 年単位で分割された軽量ファイル。初期読み込みおよびオンデマンド読み込みの対象 |
+| **`index.json`** | データインデックス・メタデータ | 提供年度リスト（`years`）、デフォルト年度（`defaultYear`）、総レース数（`totalRaces`）、年度別レース数（`yearCounts`）、生成日時（`generatedAt`）を保持 |
+| **`races.json`** | 全年度のレースを日付・時刻順に統合した結合データ | **完全な後方互換性**を担保。既存のテスト、外部スクリプト、旧バージョンクライアント向けに常時同期生成 |
+
+#### パイプライン同期モジュール (`scripts/lib/race-sharding.ts`)
+
+データ分割と同期は共通ユーティリティ関数 `syncShardedRaceFiles(races, dataDir)` によってアトミックに実行されます。
+以下のパイプライン実行時に自動呼び出しされ、結合版と年度別 Shard の乖離を防ぎます:
+1. `npm run data:build` (`scripts/parse-races.ts`): 全レースパース完了時に出力
+2. `npm run data:update-times` (`scripts/update-race-times.ts`): 確定発走時刻更新時に出力
+3. `npm run data:update-results` (`scripts/update-race-results.ts`): レース結果（勝者・公式URL）反映時に出力
+
+#### クライアント側オンデマンド読み込み (`useRaces.ts` & `useRaceStore.ts`)
+
+- **初期ロード**: アプリ起動時は表示対象年度（通常はカレント年 `2026`）の `races-YYYY.json` のみをフェッチし、初期転送コストを大幅に削減。
+- **オンデマンド取得**: カレンダーやタイムラインの年送り操作で未取得年度（`loadedYears` に存在しない年）に遷移した際、バックグラウンドで該当年の `races-YYYY.json` を非同期フェッチ。
+- **シームレスマージ**: `useRaceStore.getState().addRacesForYear(year, races)` により、レースID重複排除および日付・時刻順ソートを自動適用して既存データにマージ。画面の再描画によるチラつきやレイアウトシフトを防止。
+- **堅牢なフォールバック**: Sharding ファイルが存在しない場合（404等）は即座に従来の結合版 `races.json` へフォールバック。
+- **PWA & キャッシュ更新**: Service Worker（Workbox）は `/\/data\/(races(-[0-9]{4})?|index)\.json$/` を一括して `StaleWhileRevalidate` キャッシュ管理し、BroadcastChannel を通じてバックグラウンド更新を自動同期。
+
 ---
 
 ## 3. レース属性の標準化ルール

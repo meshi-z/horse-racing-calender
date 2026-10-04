@@ -495,6 +495,40 @@ describe('useRaceStore & filterRaces', () => {
       expect(useRaceStore.getState().filters.organizations).toEqual(['jra', 'nar']);
       expect(localStorage.getItem('horse_racing_calendar_organizations_filter')).toBe(JSON.stringify(['jra', 'nar']));
     });
+
+    it('setRaces で races と loadedYears が更新されること', () => {
+      useRaceStore.getState().setRaces(mockRaces);
+      expect(useRaceStore.getState().races).toHaveLength(mockRaces.length);
+      expect(useRaceStore.getState().loadedYears).toEqual([2026]);
+    });
+
+    it('addRacesForYear で別年度のレースが重複排除・ソートされてマージされること', () => {
+      useRaceStore.getState().setRaces([mockRaces[0]]); // 2026-01-04
+      expect(useRaceStore.getState().loadedYears).toEqual([2026]);
+
+      const race2027: Race = {
+        ...mockRaces[0],
+        id: '2027-jra-g3-01',
+        date: '2027-01-05',
+        start_time: '2027-01-05T06:45:00.000Z',
+      };
+
+      useRaceStore.getState().addRacesForYear(2027, [race2027]);
+      const state = useRaceStore.getState();
+      expect(state.loadedYears).toEqual([2026, 2027]);
+      expect(state.races).toHaveLength(2);
+      expect(state.races[0].id).toBe('2026-jra-g3-01');
+      expect(state.races[1].id).toBe('2027-jra-g3-01');
+
+      // 重複IDがある場合は最新データで上書きされること
+      const updatedRace2027: Race = {
+        ...race2027,
+        grade: 'G2',
+      };
+      useRaceStore.getState().addRacesForYear(2027, [updatedRace2027]);
+      expect(useRaceStore.getState().races).toHaveLength(2);
+      expect(useRaceStore.getState().races[1].grade).toBe('G2');
+    });
   });
 });
 

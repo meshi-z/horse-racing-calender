@@ -15,6 +15,7 @@ import {
   type PmuProgrammeResultResponse,
   type SportingLifeResultMeetingItem,
 } from './lib/foreign-results';
+import { syncShardedRaceFiles } from './lib/race-sharding';
 
 export type { RaceOutput, RaceWinner };
 
@@ -989,11 +990,12 @@ export async function updateRaceResults(options: {
 
   if (updatedCount > 0 && !dryRun) {
     fs.writeFileSync(racesPath, JSON.stringify(races, null, 2), 'utf8');
+    syncShardedRaceFiles(races, path.dirname(racesPath));
     fs.writeFileSync(winnersMasterPath, JSON.stringify(winnersMaster, null, 2), 'utf8');
     if (officialResultsMasterPath && Object.keys(officialResultsMaster).length > 0) {
       fs.writeFileSync(officialResultsMasterPath, JSON.stringify(officialResultsMaster, null, 2), 'utf8');
     }
-    console.log(`\n[Update Race Results] Successfully saved ${updatedCount} updated winner(s) to ${racesPath} and ${winnersMasterPath}`);
+    console.log(`\n[Update Race Results] Successfully saved ${updatedCount} updated winner(s) to ${racesPath} and ${winnersMasterPath} (and synced shards)`);
   } else if (dryRun) {
     console.log(`\n[Update Race Results] Dry-run mode: No files were modified.`);
   }
