@@ -12,7 +12,7 @@
 
 ## 1. プロジェクト概要
 
-本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France Galop / IFHA Part I 平地重賞およびオートゥイユ競馬場主要障害重賞: G1, G2, G3）、イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 平地重賞およびBHA Jump Pattern 主要障害重賞: G1, G2, G3）、アメリカ競馬（The Jockey Club / Equibase / IFHA Part I 重賞: G1, G2, G3）、香港競馬（Hong Kong Jockey Club: HKJC / IFHA Part I 重賞: G1, G2, G3）、およびアイルランド競馬（Horse Racing Ireland: HRI / IFHA Part I 平地重賞およびHRI Jump Pattern 主要障害重賞: G1, G2, G3）を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
+本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France Galop / IFHA Part I 平地重賞およびオートゥイユ競馬場主要障害重賞: G1, G2, G3）、イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 平地重賞およびBHA Jump Pattern 主要障害重賞: G1, G2, G3）、アメリカ競馬（The Jockey Club / Equibase / IFHA Part I 重賞: G1, G2, G3）、香港競馬（Hong Kong Jockey Club: HKJC / IFHA Part I 重賞: G1, G2, G3）、アイルランド競馬（Horse Racing Ireland: HRI / IFHA Part I 平地重賞およびHRI Jump Pattern 主要障害重賞: G1, G2, G3）、およびオーストラリア競馬（Racing Australia / IFHA Part I 重賞および主要競走: G1, G2, G3, ジ・エベレスト、メルボルンカップ等）を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
 
 モバイル閲覧時は直近レースを素早く確認できる **「タイムライン形式」**、PC/タブレット閲覧時は月全体のスケジュールを鳥瞰できる **「月間カレンダー形式」** を初期表示とし、PWA（Progressive Web Apps）およびオフライン閲覧に対応することで、競馬場や外出先などの電波状況が不安定な環境でもミリ秒単位でストレスなくアクセスできる体験を提供する。
 
@@ -38,7 +38,8 @@ docs/
 │       ├── uk.md                  # イギリス（BHA / Sporting Life）仕様
 │       ├── us.md                  # アメリカ（Equibase / The Jockey Club）仕様
 │       ├── hk.md                  # 香港（HKJC）仕様
-│       └── ireland.md             # アイルランド（HRI / Sporting Life）仕様
+│       ├── ireland.md             # アイルランド（HRI / Sporting Life）仕様
+│       └── australia.md           # オーストラリア（Racing Australia）仕様
 ├── guides/
 │   └── adding-new-country.md      # 新国追加の開発・運用手順書
 ├── batch-schedules.md             # 定期cronバッチスケジュール・運用仕様書
@@ -85,6 +86,7 @@ docs/
 | **US** | `US` | インディゴネイビー (`#4338ca`) | Equibase / The Jockey Club |
 | **HK** | `HK` | オリエンタルクリムゾン (`#b91c1c`) | HKJC (The Hong Kong Jockey Club / 香港賽馬會) |
 | **IE** | `IE` | クローバーグリーン (`#15803d`) | HRI (Horse Racing Ireland) |
+| **AU** | `AU` | オーストラリアンゴールド (`#d97706`) | Racing Australia |
 
 ---
 
@@ -658,9 +660,27 @@ docs/
   - 分割・インデックス出力・ソート順整合性の単体テスト、オンデマンドフェッチ・フォールバック・ストアマージテストを配備。
   - 全63テストファイル・594テスト全件パス、TypeScript型チェック（tsc --noEmit）パス、プロダクションビルド成功。
 
+### 進行中のステップ: Step 70 (オーストラリア競馬（Racing Australia）の包括的統合) (Issue #192〜#197)
+- **Step 70-1 (データ仕様策定・PRD改訂・スキーマ拡張) (Issue #192) [完了]**:
+  - 一次データソース選定（IFHA Part I Australia 2026 リスト、Racing Australia 公式カレンダー）。
+  - オーストラリア競馬データ仕様書（`docs/specs/data-sources/australia.md`）の作成（AEST/AEDT 南半球夏時間規則、競馬場一覧、出馬表・リザルト仕様）。
+  - 新国追加ガイド（`docs/guides/adding-new-country.md`）の更新（RaceResultFetcher / リザルト自動化手順の明記、Issue #190準拠の公式URL方針明記、候補国表の更新）。
+  - TypeScript 型定義（`src/types/race.ts`）の拡張（`Organization` に `'racing_australia'` を追加）。
+  - 公式リンク方針の確定: Issue #190 に準拠し、オーストラリア競馬の各レースには推測URLを付与せず未設定（`undefined`）を保持。
+- **Step 70-2 (オーストラリア重賞データ抽出・マスタ作成およびパイプライン統合) (Issue #193)**:
+  - 2026年オーストラリア主要重賞（ジ・エベレスト、メルボルンカップ、コックスプレート等）の日英対応マスタ作成および統合ビルド組み込み。
+- **Step 70-3 (発走予定時刻自動更新バッチ実装および過去発走時刻バックフィル) (Issue #194)**:
+  - `AustraliaRaceTimeFetcher` の実装、GitHub Actions 連携、開催済み過去レースの発走時刻バックフィル。
+- **Step 70-4 (レース結果・勝ち馬自動取得バッチ実装および過去勝ち馬バックフィル) (Issue #195)**:
+  - `AustraliaRaceResultFetcher` の実装、GitHub Actions 連携、開催済み過去レースの勝ち馬バックフィル。
+- **Step 70-5 (オーストラリア競馬UI対応) (Issue #196)**:
+  - 主催者フィルター「豪州 (Racing Australia)」、競馬場グループ、国コードバッジ「AU」、免責事項ダイアログ等のフロントエンドUI拡張。
+- **Step 70-6 (多言語辞書（日英仏中）対応およびローカライズ整備) (Issue #197)**:
+  - `src/libs/i18n.ts` への日英仏中対訳追加、辞書パリティテスト通過。
+
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
 - **Step 71: 海外主要レースのさらなる拡張**:
-  - オーストラリア（Racing Australia / IFHA Part I）、UAE/ドバイ（ERA）、サウジアラビア（JCSA）等の重賞データ統合。
+  - UAE/ドバイ（ERA）、サウジアラビア（JCSA）等の重賞データ統合。
   - 各国公式出馬表フェッチャーの追加による確定発走時刻自動取得。
 - **Step 72: リアルタイム馬場状態・天候情報の表示**:
   - レース当日の天候（晴・雨等）および馬場状態（良・稍重・重・不良）のリアルタイム取得とバッジ表示。

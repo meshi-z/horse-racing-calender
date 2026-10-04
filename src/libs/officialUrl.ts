@@ -53,6 +53,12 @@ export const OFFICIAL_SOURCE_NAMES: Record<Organization, Record<Language, string
     fr: 'Horse Racing Ireland (HRI)',
     zh: '愛爾蘭賽馬會 (HRI)',
   },
+  racing_australia: {
+    ja: 'Racing Australia 公式サイト',
+    en: 'Racing Australia Official',
+    fr: 'Site officiel Racing Australia',
+    zh: '澳洲賽馬會 (Racing Australia)',
+  },
   overseas: {
     ja: 'IFHA 公式情報',
     en: 'IFHA Official Info',

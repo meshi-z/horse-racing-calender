@@ -17,7 +17,9 @@
 | ├─ フランス競馬（France Galop） | `docs/specs/data-sources/france.md` | IFHA Part I、PMU出馬表API、CET/CEST（夏時間）、PSF（AW） |
 | ├─ イギリス競馬（BHA） | `docs/specs/data-sources/uk.md` | IFHA Part I、Sporting Life出馬表API、GMT/BST（英国夏時間） |
 | ├─ アメリカ競馬（Equibase） | `docs/specs/data-sources/us.md` | IFHA Part I、Equibase出馬表、北米4タイムゾーン（ET/CT/MT/PT）、DST |
-| └─ 香港競馬（HKJC） | `docs/specs/data-sources/hk.md` | IFHA Part I、HKJC出馬表、香港時間（HKT）、4歳クラシック、中文（`zh`） |
+| ├─ 香港競馬（HKJC） | `docs/specs/data-sources/hk.md` | IFHA Part I、HKJC出馬表、香港時間（HKT）、4歳クラシック、中文（`zh`） |
+| ├─ アイルランド競馬（HRI） | `docs/specs/data-sources/ireland.md` | IFHA Part I、HRI Jump Pattern、Sporting Life出馬表API、GMT/IST |
+| └─ オーストラリア競馬（Racing Australia） | `docs/specs/data-sources/australia.md` | IFHA Part I、Racing Australia出馬表/リザルト、AEST/AEDT（南半球夏時間） |
 | **新国の追加手順** | **`docs/guides/adding-new-country.md`** | 新規国・地域の競馬を追加する際の標準開発・運用手順書 |
 | **非機能要件・パフォーマンス仕様** | **`docs/non-functional-requirements.md`** | 性能指標（INP/DOMノード数/バンドルサイズ目標）、計測条件、運用ガイドライン |
 | **定期バッチ運用・スケジュール** | **`docs/batch-schedules.md`** | GitHub Actions 定期cronバッチ一覧、CLIフラグ、トラブルシューティング |

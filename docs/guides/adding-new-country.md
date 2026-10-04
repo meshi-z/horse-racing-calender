@@ -14,11 +14,12 @@
 3. [Step 2: スキーマ・型定義の拡張 (`src/types/race.ts`)](#3-step-2-スキーマ型定義の拡張-srctypesracets)
 4. [Step 3: レースマスタ作成 & パイプライン統合](#4-step-3-レースマスタ作成--パイプライン統合)
 5. [Step 4: 確定発走時刻自動取得バッチ（`RaceTimeFetcher`）の実装](#5-step-4-確定発走時刻自動取得バッチracetimefetcherの実装)
-6. [Step 5: フロントエンド & デザインシステム対応](#6-step-5-フロントエンド--デザインシステム対応)
-7. [Step 6: 多言語対応（i18n）& 免責事項の整備](#7-step-6-多言語対応i18n--免責事項の整備)
-8. [Step 7: テスト・品質検証 & リリース](#8-step-7-テスト品質検証--リリース)
-9. [実践ケーススタディ（フランス競馬追加のTips & 注意点）](#9-実践ケーススタディフランス競馬追加のtips--注意点)
-10. [次期展開候補国クイックリファレンス](#10-次期展開候補国クイックリファレンス)
+6. [Step 5: レース結果・勝ち馬自動取得バッチ（`RaceResultFetcher`）の実装](#6-step-5-レース結果勝ち馬自動取得バッチraceresultfetcherの実装)
+7. [Step 6: フロントエンド & デザインシステム対応](#7-step-6-フロントエンド--デザインシステム対応)
+8. [Step 7: 多言語対応（i18n）& 免責事項の整備](#8-step-7-多言語対応i18n--免責事項の整備)
+9. [Step 8: テスト・品質検証 & リリース](#9-step-8-テスト品質検証--リリース)
+10. [実践ケーススタディ（フランス競馬追加のTips & 注意点）](#10-実践ケーススタディフランス競馬追加のtips--注意点)
+11. [次期展開候補国クイックリファレンス](#11-次期展開候補国クイックリファレンス)
 
 ---
 
@@ -57,10 +58,11 @@ flowchart TD
 
 | Phase | 作業内容 | 対象PR・Issue例 |
 | :--- | :--- | :--- |
-| **Phase 1** | PRD更新、各国データ仕様書作成 (`docs/specs/data-sources/{country}.md`)、スキーマ定義 (`src/types/race.ts`) | #64, #101, #109 |
-| **Phase 2** | レースマスタ作成、データ抽出、統合ビルドスクリプト組み込み | #65, #102, #110 |
-| **Phase 3** | UI拡張（FilterBar, RaceCard, CalendarView, RaceDetailDialog, i18n） | #66, #103, #111 |
-| **Phase 4** | 確定時刻自動取得フェッチャー (`RaceTimeFetcher`) 実装、Actions統合、過去実績補完 | #73, #86, #104, #112 |
+| **Phase 1** | PRD更新、各国データ仕様書作成 (`docs/specs/data-sources/{country}.md`)、スキーマ定義 (`src/types/race.ts`) | #64, #101, #109, #121, #192 |
+| **Phase 2** | レースマスタ作成、データ抽出、統合ビルドスクリプト組み込み | #65, #102, #110, #122, #193 |
+| **Phase 3** | 確定時刻自動取得フェッチャー (`RaceTimeFetcher`) 実装、Actions統合、過去実績補完 | #73, #86, #104, #112, #124, #194 |
+| **Phase 4** | レース結果・勝ち馬自動取得フェッチャー (`RaceResultFetcher`) 実装、Actions統合、過去勝ち馬バックフィル | #138, #147, #159, #195 |
+| **Phase 5** | UI拡張（FilterBar, RaceCard, CalendarView, RaceDetailDialog, i18n, 免責事項） | #66, #103, #111, #123, #196, #197 |
 
 ---
 
@@ -356,7 +358,55 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
 
 ---
 
-## 6. Step 5: フロントエンド & デザインシステム対応
+## 6. Step 5: レース結果・勝ち馬自動取得バッチ（`RaceResultFetcher`）の実装
+
+レース終了後に公式リザルトから確定着順、勝ち馬（馬名・騎手・走破タイム・馬番）を自動取得し、`public/data/races.json` に反映するフェッチャーを構築します。
+
+> [!IMPORTANT]
+> **公式サイトリンク（`official_url`）に関する運用方針 (Issue #190)**:
+> 過去の動的URL推測生成（日付や競馬場、レース番号からの組み立て等）はデッドリンクや別レース誤リンク事故を引き起こすリスクがあるため、**確度が100%担保・検証されたレース（JRA G1確定結果マスタ等）以外への公式リンク作成は完全廃止** されました。
+> 新規国のレースにおいても、恒久的かつ100%正確なリンク生成が担保できない場合は `official_url` を付与せず、未設定（`undefined`）のまま保持してください（空値原則・Null Value Principle）。UI上ではリンクボタン・アイコンが安全に非表示となります。
+
+### 6.1 リザルト取得クライアントの実装 (`scripts/lib/{country}-results.ts`)
+- 公式結果APIやリザルトページから、対象日の確定結果を取得します。
+- 一次ソース原則・空値原則（Null Value Principle）に基づき、架空データや推測による補完を一切排除し、公式発表値のみを抽出します。
+- レース結果取得の責務は勝ち馬データ（`RaceWinner`: 馬名・騎手・タイム・馬番）の確定に専念させます。
+
+### 6.2 プロバイダーの実装と登録 (`scripts/update-race-results.ts`)
+
+```typescript
+export class CountryRaceResultFetcher implements RaceResultFetcher {
+  readonly organization = 'country_org';
+
+  getTargetPastRaces(races: RaceOutput[], refDate: string): RaceOutput[] {
+    // 直近1〜3日以内の発走済みレースを抽出
+    const { startDate, endDate } = getPastWindowRange(refDate, 3);
+    return races.filter(
+      (r) => r.organization === this.organization && r.date >= startDate && r.date <= endDate
+    );
+  }
+
+  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
+    return await fetchCountryResults(targetRaces);
+  }
+}
+
+// DEFAULT_RESULT_FETCHERS に登録
+export const DEFAULT_RESULT_FETCHERS: Record<string, RaceResultFetcher> = {
+  // ...
+  country_org: new CountryRaceResultFetcher(),
+};
+```
+
+### 6.3 GitHub Actions ワークフローへのスケジュール追加 (`.github/workflows/update-race-results.yml`)
+対象国のレース終了時間帯に合わせて、cron スケジュールを追加します。
+
+### 6.4 過去開催済みレースの勝ち馬バックフィル
+年度途中の追加時、既開催レースの勝ち馬情報（馬名、騎手、タイム、公式URL）を公式アーカイブから精査し、`src/data/{country}_race_master.json` に正確に埋め込みます。
+
+---
+
+## 7. Step 6: フロントエンド & デザインシステム対応
 
 ### 6.1 `FilterBar.tsx` の拡張
 1. **主催者セグメントコントロール**:
@@ -410,7 +460,7 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
 
 ---
 
-## 7. Step 6: 多言語対応（i18n）& 免責事項の整備
+## 8. Step 7: 多言語対応（i18n）& 免責事項の整備
 
 ### 7.1 多言語対応（i18n）の整備
 
@@ -470,9 +520,9 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
 
 ---
 
-## 8. Step 7: テスト・品質検証 & リリース
+## 9. Step 8: テスト・品質検証 & リリース
 
-### 8.1 必要な単体テスト一覧
+### 9.1 必要な単体テスト一覧
 新規追加時は、既存のテストスイートに影響を与えないよう、以下の単体テストを必ず作成・拡充します。
 
 1. **マスタ・データ整合性テスト (`tests/unit/{country}Races.test.ts`)**:
@@ -492,7 +542,7 @@ export const DEFAULT_FETCHERS: Record<string, RaceTimeFetcher> = {
 5. **SEO・メタ設定テスト (`tests/unit/seo.test.ts`)**:
    - `index.html` の meta タグや JSON-LD、OGP を更新した場合は、本テストの期待値も同期して更新すること。
 
-### 8.2 品質チェックリスト
+### 9.2 品質チェックリスト
 作業完了時は、リポジトリ規約に基づき以下のコマンドをすべてパスすることを確認します。
 
 ```bash
@@ -511,7 +561,7 @@ npm run docs:pdf
 
 ---
 
-## 9. 実践ケーススタディ（フランス競馬追加のTips & 注意点）
+## 10. 実践ケーススタディ（フランス競馬追加のTips & 注意点）
 
 フランス競馬（France Galop）を追加した際に実際に直面した課題と解決策です。次回以降の追加時に参考にしてください。
 
@@ -535,7 +585,7 @@ npm run docs:pdf
 
 ---
 
-## 10. 次期展開候補国クイックリファレンス
+## 11. 次期展開候補国クイックリファレンス
 
 今後の機能拡張（ロードマップ）で予定されている主要国の基本情報です。
 
@@ -545,5 +595,6 @@ npm run docs:pdf
 | **イギリス (UK)** | British Horseracing Authority (BHA) | `GB` | Ascot, Newmarket, Epsom, York, Doncaster, Goodwood | GMT (UTC+0) / BST (UTC+1) | 芝 (Turf), オールウェザー (AW) | **対応済み (v1.23.0)** |
 | **アメリカ (USA)** | The Jockey Club / Equibase | `US` | Churchill Downs, Belmont Park, Saratoga, Santa Anita, Del Mar | ET / CT / MT / PT (夏時間あり) | ダート (Dirt), 芝 (Turf) | **対応済み (v1.28.0)** |
 | **香港 (HK)** | Hong Kong Jockey Club (HKJC) | `HK` | 沙田 (Sha Tin), 快活谷 (Happy Valley) | HKT (UTC+8, 通年固定) | 芝 (Turf), オールウェザー (AW) | **対応済み (v1.30.0)** |
-| **オーストラリア (AUS)** | Racing Australia | `AU` | Flemington, Randwick, Caulfield, Rosehill, Moonee Valley | AEST (UTC+10) / AEDT (UTC+11) ※南半球 | 芝 (Turf) | 次期候補 |
+| **アイルランド (Ireland)** | Horse Racing Ireland (HRI) | `IE` | Curragh, Leopardstown, Punchestown, Fairyhouse | GMT (UTC+0) / IST (UTC+1) | 芝 (Turf), 障害 (Obstacle) | **対応済み (v1.33.0)** |
+| **オーストラリア (AUS)** | Racing Australia | `AU` | Flemington, Randwick, Caulfield, Rosehill, Moonee Valley | AEST (UTC+10) / AEDT (UTC+11) ※南半球 | 芝 (Turf) | **対応中 (v1.44.0)** |
 | **UAE (ドバイ)** | Emirates Racing Authority (ERA) | `AE` | Meydan, Jebel Ali, Abu Dhabi | GST (UTC+4, 通年固定) | ダート (Dirt), 芝 (Turf) | 次期候補 |
