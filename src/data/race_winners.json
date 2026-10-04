@@ -8721,5 +8721,44 @@
       "fr": "J.nicholls"
     },
     "horse_number": 9
+  },
+  "2026-france-g1-25": {
+    "name": {
+      "ja": "Daryz",
+      "en": "Daryz",
+      "fr": "Daryz"
+    },
+    "jockey": {
+      "ja": "M.barzalona",
+      "en": "M.barzalona",
+      "fr": "M.barzalona"
+    },
+    "horse_number": 1
+  },
+  "2026-france-g1-21": {
+    "name": {
+      "ja": "Miss Scott",
+      "en": "Miss Scott",
+      "fr": "Miss Scott"
+    },
+    "jockey": {
+      "ja": "C.soumillon",
+      "en": "C.soumillon",
+      "fr": "C.soumillon"
+    },
+    "horse_number": 9
+  },
+  "2026-france-g1-23": {
+    "name": {
+      "ja": "True Love",
+      "en": "True Love",
+      "fr": "True Love"
+    },
+    "jockey": {
+      "ja": "Rl.moore",
+      "en": "Rl.moore",
+      "fr": "Rl.moore"
+    },
+    "horse_number": 8
   }
 }
