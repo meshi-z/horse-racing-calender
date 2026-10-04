@@ -10,6 +10,7 @@ import { loadUkRaceMaster, getUkRaces } from './lib/uk-races';
 import { loadUsRaceMaster, getUsRaces } from './lib/us-races';
 import { loadHkRaceMaster, getHkRaces } from './lib/hk-races';
 import { loadIrelandRaceMaster, getIrelandRaces } from './lib/ireland-races';
+import { loadAustraliaRaceMaster, getAustraliaRaces } from './lib/australia-races';
 import { syncShardedRaceFiles } from './lib/race-sharding';
 
 // --- Type Definitions (Pattern A: Localized Object) ---
@@ -1106,6 +1107,17 @@ function determineNarHandicap(raceName: string, _grade: string, course: string):
   for (const ie of irelandRaces) {
     racesOutput.push(ie);
   }
+  console.log(`Merged ${irelandRaces.length} Ireland races into races output.`);
+
+  // --- Process Australia Races ---
+  console.log('Loading and merging Australia races...');
+  const australiaMaster = loadAustraliaRaceMaster(rootDir);
+  const australiaRaces = getAustraliaRaces(australiaMaster, confirmedTimesMap);
+  for (const au of australiaRaces) {
+    racesOutput.push(au);
+  }
+  console.log(`Merged ${australiaRaces.length} Australia races into races output.`);
+
   // --- Merge Winners ---
   let winnerCount = 0;
   for (const race of racesOutput) {

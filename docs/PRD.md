@@ -667,8 +667,12 @@ docs/
   - 新国追加ガイド（`docs/guides/adding-new-country.md`）の更新（RaceResultFetcher / リザルト自動化手順の明記、Issue #190準拠の公式URL方針明記、候補国表の更新）。
   - TypeScript 型定義（`src/types/race.ts`）の拡張（`Organization` に `'racing_australia'` を追加）。
   - 公式リンク方針の確定: Issue #190 に準拠し、オーストラリア競馬の各レースには推測URLを付与せず未設定（`undefined`）を保持。
-- **Step 70-2 (オーストラリア重賞データ抽出・マスタ作成およびパイプライン統合) (Issue #193)**:
-  - 2026年オーストラリア主要重賞（ジ・エベレスト、メルボルンカップ、コックスプレート等）の日英対応マスタ作成および統合ビルド組み込み。
+- **Step 70-2 (オーストラリア重賞データ抽出・マスタ作成およびパイプライン統合) (Issue #193) [完了]**:
+  - 2026年オーストラリアの全G1および主要重要競走（ジ・エベレスト、メルボルンカップ、コックスプレート、コーフィールドカップ、ゴールデンスリッパー等計74レース）をIFHA Part Iリストおよび公式スケジュールから構造化。
+  - 日英仏中4言語レース名および主要競馬場（フレミントン、ランドウィック、コーフィールド、ローズヒル、ムーニーバレー、イーグルファーム、ドゥームベン、モーフェットビル、アスコット）の日英仏中辞書を定義した `src/data/australia_race_master.json` を配備。
+  - 南半球タイムゾーン（AEST: UTC+10 / AEDT: UTC+11）の夏時間切替に対応したデータ変換モジュール `scripts/lib/australia-races.ts` を実装。
+  - `scripts/parse-races.ts`（`npm run data:build`）に統合マージし、全74レースを `public/data/races.json` および年度別 shard へ正常出力。
+  - 単体テスト `tests/unit/australiaRaces.test.ts` およびデータ整合性テスト `tests/unit/racesData.test.ts` を配備・全件パス。
 - **Step 70-3 (発走予定時刻自動更新バッチ実装および過去発走時刻バックフィル) (Issue #194)**:
   - `AustraliaRaceTimeFetcher` の実装、GitHub Actions 連携、開催済み過去レースの発走時刻バックフィル。
 - **Step 70-4 (レース結果・勝ち馬自動取得バッチ実装および過去勝ち馬バックフィル) (Issue #195)**:

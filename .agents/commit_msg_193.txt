@@ -1,0 +1,10 @@
+feat: extract Australia races data, create master and integrate pipeline (#193)
+
+- 2026年オーストラリアの全G1および主要重要競走（ジ・エベレスト、メルボルンカップ、コックスプレート、コーフィールドカップ、ゴールデンスリッパー等計74レース）のマスタデータを作成
+- 日英仏中4言語レース名および主要競馬場（フレミントン、ランドウィック、コーフィールド、ローズヒル、ムーニーバレー、イーグルファーム、ドゥームベン、モーフェットビル、アスコット）の辞書を定義した src/data/australia_race_master.json を配備
+- 南半球夏時間切替（AEST: UTC+10 / AEDT: UTC+11）に対応した scripts/lib/australia-races.ts を実装
+- scripts/parse-races.ts に組み込み、public/data/races.json および年度別 shard に全74レースを統合
+- 単体テスト tests/unit/australiaRaces.test.ts を新規作成し、tests/unit/racesData.test.ts を更新
+- docs/PRD.md の Step 70-2 を完了に更新
+
+Co-authored-by: Antigravity <antigravity@example.com>
