@@ -193,15 +193,17 @@ describe('Data Integrity & Multilingual Winners Audit (Issue #160)', () => {
       expect(brooklyn?.winner, 'Brooklyn S must have no winner (scheduled for 2026-12-05)').toBeUndefined();
       expect(winners['2026-us-g2-59']).toBeUndefined();
 
-      // 開催延期レース（Delaware H: 2026-10-03 発走前）
-      const delawareH = races.find((r) => r.id === '2026-us-g3-138');
-      expect(delawareH?.winner, 'Delaware H must have no winner before running').toBeUndefined();
-      expect(winners['2026-us-g3-138']).toBeUndefined();
-
       // 2026年不開催（Cougar II S）
       const cougarII = races.find((r) => r.id === '2026-us-g3-113');
       expect(cougarII?.winner, 'Cougar II S was not run in 2026 and must have no winner').toBeUndefined();
       expect(winners['2026-us-g3-113']).toBeUndefined();
+    });
+
+    it('開催完了したDelaware H（2026-us-g3-138: 2026-10-03開催）の公式確定結果が正確に登録されていること', () => {
+      const delawareH = races.find((r) => r.id === '2026-us-g3-138');
+      expect(delawareH?.winner, 'Delaware H must have confirmed winner').toBeDefined();
+      expect(delawareH?.winner?.name.en).toBe('Regaled');
+      expect(winners['2026-us-g3-138']?.name?.en).toBe('Regaled');
     });
   });
 
