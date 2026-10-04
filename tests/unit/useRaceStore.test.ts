@@ -529,6 +529,75 @@ describe('useRaceStore & filterRaces', () => {
       expect(useRaceStore.getState().races).toHaveLength(2);
       expect(useRaceStore.getState().races[1].grade).toBe('G2');
     });
+
+    it('オーストラリア重賞の日本語・英語・中国語名およびコースでの絞り込みが機能すること', () => {
+      const auRace: Race = {
+        id: '2026-au-the-everest',
+        organization: 'racing_australia',
+        name: {
+          ja: 'ジ・エベレスト',
+          en: 'The Everest',
+          fr: 'The Everest',
+          zh: '珠穆朗瑪峰錦標',
+        },
+        grade: 'G1',
+        date: '2026-10-17',
+        start_time: '2026-10-17T05:15:00.000Z',
+        is_time_confirmed: true,
+        course: {
+          ja: 'ロイヤルランドウィック',
+          en: 'Royal Randwick',
+          fr: 'Royal Randwick',
+          zh: '皇家蘭域',
+        },
+        distance: 1200,
+        track_type: 'turf',
+        sex_constraint: 'none',
+        age_constraint: '3yo_and_up',
+        handicap: {
+          code: 'weight_for_age',
+          ja: '定量',
+          en: 'Weight for Age',
+        },
+      };
+
+      const testRaces = [...mockRaces, auRace];
+
+      // 日本語名で検索
+      let filtered = filterRaces(testRaces, { ...initialFilters, searchQuery: 'エベレスト' });
+      expect(filtered).toHaveLength(1);
+      expect(filtered[0].id).toBe('2026-au-the-everest');
+
+      // 英語名で検索
+      filtered = filterRaces(testRaces, { ...initialFilters, searchQuery: 'everest' });
+      expect(filtered).toHaveLength(1);
+      expect(filtered[0].id).toBe('2026-au-the-everest');
+
+      // 中国語名で検索
+      filtered = filterRaces(testRaces, { ...initialFilters, searchQuery: '珠穆朗瑪峰' });
+      expect(filtered).toHaveLength(1);
+      expect(filtered[0].id).toBe('2026-au-the-everest');
+
+      // 主催者フィルタ
+      filtered = filterRaces(testRaces, { ...initialFilters, organizations: ['racing_australia'] });
+      expect(filtered).toHaveLength(1);
+      expect(filtered[0].id).toBe('2026-au-the-everest');
+
+      // 競馬場フィルタ (日本語コース名)
+      filtered = filterRaces(testRaces, { ...initialFilters, courses: ['ロイヤルランドウィック'] });
+      expect(filtered).toHaveLength(1);
+      expect(filtered[0].id).toBe('2026-au-the-everest');
+
+      // 競馬場フィルタ (英語コース名)
+      filtered = filterRaces(testRaces, { ...initialFilters, courses: ['Royal Randwick'] });
+      expect(filtered).toHaveLength(1);
+      expect(filtered[0].id).toBe('2026-au-the-everest');
+
+      // 競馬場フィルタ (中国語コース名)
+      filtered = filterRaces(testRaces, { ...initialFilters, courses: ['皇家蘭域'] });
+      expect(filtered).toHaveLength(1);
+      expect(filtered[0].id).toBe('2026-au-the-everest');
+    });
   });
 });
 

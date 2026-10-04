@@ -660,7 +660,7 @@ docs/
   - 分割・インデックス出力・ソート順整合性の単体テスト、オンデマンドフェッチ・フォールバック・ストアマージテストを配備。
   - 全63テストファイル・594テスト全件パス、TypeScript型チェック（tsc --noEmit）パス、プロダクションビルド成功。
 
-### 進行中のステップ: Step 70 (オーストラリア競馬（Racing Australia）の包括的統合) (Issue #192〜#197)
+### 過去のステップ: Step 70 (オーストラリア競馬（Racing Australia）の包括的統合) (Issue #192〜#197) [完了]
 - **Step 70-1 (データ仕様策定・PRD改訂・スキーマ拡張) (Issue #192) [完了]**:
   - 一次データソース選定（IFHA Part I Australia 2026 リスト、Racing Australia 公式カレンダー）。
   - オーストラリア競馬データ仕様書（`docs/specs/data-sources/australia.md`）の作成（AEST/AEDT 南半球夏時間規則、競馬場一覧、出馬表・リザルト仕様）。
@@ -703,8 +703,12 @@ docs/
   - 地域判定・初期主催者選定ユーティリティ（`src/libs/geolocation.ts`）にオーストラリア（AU、`Australia/*`、`en-AU`）自動判定を追加。
   - レース原語判定（`src/libs/raceLanguage.ts`）に `AU` / `racing_australia`（英語原語）を追加。
   - 単体・統合・UIテスト（`tests/unit/FilterBar.test.tsx`, `tests/unit/RaceCard.test.tsx`, `tests/unit/RaceDetailDialog.test.tsx`, `tests/unit/ConfirmedTimeHelpDialog.test.tsx`, `tests/unit/geolocation.test.ts`, `tests/unit/DisclaimerDialog.test.tsx`, `tests/unit/Layout.test.tsx` 等）を配備・更新し、全66テストファイル・616テスト全件パス。
-- **Step 70-6 (多言語辞書（日英仏中）対応およびローカライズ整備) (Issue #197)**:
-  - `src/libs/i18n.ts` への日英仏中対訳追加、辞書パリティテスト通過。
+- **Step 70-6 (多言語辞書（日英仏中）対応およびローカライズ整備) (Issue #197) [完了]**:
+  - `src/libs/i18n.ts` にオーストラリア主催者（`filter.orgAustralia`）、地域（`filter.regionOceania`、`filter.selectAllOceania`）、発走確定スケジュール、免責事項・フッター文言の日英仏中4言語完全対訳を配備。
+  - 競馬場名変換ヘルパー（`getLocalizedCourseName`）に豪州9競馬場（フレミントン、ランドウィック、コーフィールド、ローズヒル、ムーニーバレー、イーグルファーム、ドゥームベン、モーフェットビル、アスコット (豪)）の4言語相互変換ロジックを統合。
+  - `src/store/useRaceStore.ts` の `filterRaces` において、日本語名・英語名・フランス語名・繁体字中国語名（例: "The Everest" / "ジ・エベレスト" / "珠穆朗瑪峰錦標"）のいずれの入力に対しても即座にヒットする多言語検索処理を強化。
+  - 英語圏レースの表示ルール（英語UI時は原語である英語名をメイン表示しサブ表記なしでスマートに表示）の動作を検証。
+  - 辞書パリティテスト（`tests/unit/i18n.test.ts`）、検索フィルタテスト（`tests/unit/useRaceStore.test.ts`）、UI多言語レンダリングテスト（`tests/unit/RaceCard.test.tsx`）を配備・更新し、全66テストファイル・622テスト全件パス。
 
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
 - **Step 71: 海外主要レースのさらなる拡張**:
