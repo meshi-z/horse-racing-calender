@@ -166,4 +166,17 @@ describe('backfillOfficialResultUrls', () => {
     expect(master['2026-jra-g1-13']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/sprint/result/sprint2026.html');
     expect(master['2026-jra-jg1-01']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/ngj/result/ngj2026.html');
   });
+
+  it('update-race-results の JRA_G1_RESULT_URLS が年間全26レース（秋G1を含む）を網羅していること (Issue #190)', async () => {
+    const { JRA_G1_RESULT_URLS } = await import('../../scripts/update-race-results');
+    expect(Object.keys(JRA_G1_RESULT_URLS).length).toBe(26);
+
+    // 秋の主要G1が正しい公式スラッグで事前定義されていること
+    expect(JRA_G1_RESULT_URLS['2026-jra-g1-14']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/shuka/result/shuka2026.html');
+    expect(JRA_G1_RESULT_URLS['2026-jra-g1-15']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/kikka/result/kikka2026.html');
+    expect(JRA_G1_RESULT_URLS['2026-jra-g1-16']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/akiten/result/akiten2026.html');
+    expect(JRA_G1_RESULT_URLS['2026-jra-g1-19']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/jc/result/jc2026.html');
+    expect(JRA_G1_RESULT_URLS['2026-jra-jg1-02']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/daishogai/result/daishogai2026.html');
+    expect(JRA_G1_RESULT_URLS['2026-jra-g1-24']).toBe('https://www.jra.go.jp/datafile/seiseki/g1/arima/result/arima2026.html');
+  });
 });

@@ -150,9 +150,11 @@ export async function backfillRaceWinners(
   const updatedRaces: Array<{ id: string; name: string; org: string; date: string; winner: RaceWinner }> = [];
 
   // 各プロバイダーからフェッチを試行（ライブまたはフィクスチャ）
-  const providers = options.providers || Object.values(DEFAULT_RESULT_FETCHERS).filter(
-    (v, idx, arr) => arr.findIndex((t) => t.organization === v.organization) === idx
-  );
+  const providers = options.providers !== undefined
+    ? options.providers
+    : Object.values(DEFAULT_RESULT_FETCHERS).filter(
+        (v, idx, arr) => arr.findIndex((t) => t.organization === v.organization) === idx
+      );
 
   // プロバイダーごとにターゲットをグループ化
   for (const provider of providers) {

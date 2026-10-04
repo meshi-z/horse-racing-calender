@@ -3,7 +3,7 @@ import type { Language } from '../store/useLanguageStore';
 
 /**
  * 公式出馬表・レース情報外部リンク機能の有効化フラグ (Feature Flag)
- * Phase 1改修（未定時非表示制御 & NAR/HKJC動的URL解決）により再有効化 (Issue #157)
+ * 実在検証済みの公式URL（JRA G1確定結果等）のみにリンクを表示する (Issue #157, #176, #190)
  */
 export const ENABLE_OFFICIAL_LINKS = true;
 
@@ -62,126 +62,10 @@ export const OFFICIAL_SOURCE_NAMES: Record<Organization, Record<Language, string
 };
 
 /**
- * NAR地方競馬 全国15場・馬場コードマッピング
- */
-export const NAR_BABA_CODES: Record<string, string> = {
-  '帯広': '3',
-  '門別': '36',
-  '盛岡': '10',
-  '水沢': '11',
-  '浦和': '18',
-  '船橋': '19',
-  '大井': '20',
-  '川崎': '21',
-  '金沢': '22',
-  '笠松': '23',
-  '名古屋': '24',
-  '園田': '27',
-  '姫路': '28',
-  '高知': '31',
-  '佐賀': '32',
-};
-
-const NAR_BABA_EN_CODES: Record<string, string> = {
-  obihiro: '3',
-  mombetsu: '36',
-  morioka: '10',
-  mizusawa: '11',
-  urawa: '18',
-  funabashi: '19',
-  oi: '20',
-  kawasaki: '21',
-  kanazawa: '22',
-  kasamatsu: '23',
-  nagoya: '24',
-  sonoda: '27',
-  himeji: '28',
-  kochi: '31',
-  saga: '32',
-};
-
-/**
- * コース情報からNAR馬場コード（k_babaCode）を解決する
- */
-export function getNarBabaCode(courseNameJa?: string, courseNameEn?: string): string | null {
-  if (courseNameJa) {
-    for (const [name, code] of Object.entries(NAR_BABA_CODES)) {
-      if (courseNameJa.includes(name)) return code;
-    }
-  }
-  if (courseNameEn) {
-    const lower = courseNameEn.toLowerCase();
-    for (const [name, code] of Object.entries(NAR_BABA_EN_CODES)) {
-      if (lower.includes(name)) return code;
-    }
-  }
-  return null;
-}
-
-/**
- * NAR（地方競馬）の公式出馬表・レース結果URLを動的に解決する
- */
-export function resolveNarOfficialUrl(race: Race): string | null {
-  const babaCode = getNarBabaCode(race.course?.ja, race.course?.en);
-  if (!babaCode || !race.date) return null;
-
-  const raceDate = race.date.replace(/-/g, '/');
-  const isFinished = !!race.winner;
-  const baseUrl = isFinished
-    ? 'https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/RaceMarkTable'
-    : 'https://www.keiba.go.jp/KeibaWeb/TodayRaceInfo/DebaTable';
-
-  const params = new URLSearchParams();
-  params.set('k_raceDate', raceDate);
-  if (race.race_number) {
-    params.set('k_raceNo', String(race.race_number));
-  }
-  params.set('k_babaCode', babaCode);
-
-  return `${baseUrl}?${params.toString()}`;
-}
-
-/**
- * コース情報からHKJC競馬場コード（ST / HV）を解決する
- */
-export function getHkjcCourseCode(courseJa?: string, courseEn?: string, courseZh?: string): 'ST' | 'HV' | null {
-  const combined = `${courseJa || ''} ${courseEn || ''} ${courseZh || ''}`.toLowerCase();
-  if (combined.includes('沙田') || combined.includes('シャティン') || combined.includes('sha tin') || combined.includes('st')) {
-    return 'ST';
-  }
-  if (combined.includes('跑馬地') || combined.includes('ハッピーバレー') || combined.includes('happy valley') || combined.includes('hv')) {
-    return 'HV';
-  }
-  return null;
-}
-
-/**
- * HKJC（香港競馬）の公式出馬表・レース結果URLを動的に解決する
- */
-export function resolveHkjcOfficialUrl(race: Race, language: Language = 'ja'): string | null {
-  const courseCode = getHkjcCourseCode(race.course?.ja, race.course?.en, race.course?.zh);
-  if (!courseCode || !race.date) return null;
-
-  const raceDate = race.date.replace(/-/g, '/');
-  const isFinished = !!race.winner;
-  const langParam = language === 'zh' ? 'Chinese' : 'English';
-  const scriptName = isFinished ? 'LocalResults.aspx' : 'RaceCard.aspx';
-
-  const params = new URLSearchParams();
-  params.set('RaceDate', raceDate);
-  params.set('Racecourse', courseCode);
-  if (race.race_number) {
-    params.set('RaceNo', String(race.race_number));
-  }
-
-  return `https://racing.hkjc.com/racing/information/${langParam}/Racing/${scriptName}?${params.toString()}`;
-}
-
-/**
  * レースの公式出馬表・レース情報URLを取得する
  * 1. 一次ソース検証済みの official_url が存在する場合のみそれを返却
- * 2. 存在しないレース（未定・未検証レース）は null を返し、UI側で非表示とする (Issue #157, #176)
- * ※ デッドリンクや誤リンクを防止するため、不確実な動的推測生成は行わない
+ * 2. 存在しないレース（未定・未検証レース）は null を返し、UI側で非表示とする (Issue #157, #176, #190)
+ * ※ デッドリンクや誤リンクを防止するため、不確実な動的推測生成は一切行わない
  */
 export function getOfficialRaceUrl(race: Race, _language: Language = 'ja'): string | null {
   if (race.official_url && race.official_url.trim() !== '') {

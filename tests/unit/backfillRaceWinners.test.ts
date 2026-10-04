@@ -196,6 +196,7 @@ describe('backfill-race-winners pipeline', () => {
         racesPath: testRacesPath,
         winnersMasterPath: testWinnersPath,
         beforeDate: '2026-09-27',
+        providers: [], // 単体テストでは外部ネットワークアクセスを行わずマスターから直接解決
       });
 
       expect(result.updatedCount).toBeGreaterThanOrEqual(1);
@@ -207,7 +208,7 @@ describe('backfill-race-winners pipeline', () => {
       // Future race must NOT have winner
       const shukaSho = updatedRaces.find((r) => r.id === '2026-jra-g1-14');
       expect(shukaSho?.winner).toBeUndefined();
-    });
+    }, 10000);
 
     it('respects dryRun without writing files', async () => {
       const result = await backfillRaceWinners({
@@ -215,6 +216,7 @@ describe('backfill-race-winners pipeline', () => {
         winnersMasterPath: testWinnersPath,
         beforeDate: '2026-09-27',
         dryRun: true,
+        providers: [], // 単体テストでは外部ネットワークアクセスを行わずマスターから直接解決
       });
 
       expect(result.updatedCount).toBeGreaterThanOrEqual(1);
@@ -222,6 +224,6 @@ describe('backfill-race-winners pipeline', () => {
       const unupdatedRaces: RaceOutput[] = JSON.parse(fs.readFileSync(testRacesPath, 'utf8'));
       const kyotoKimpai = unupdatedRaces.find((r) => r.id === '2026-jra-g3-01');
       expect(kyotoKimpai?.winner).toBeUndefined();
-    });
+    }, 10000);
   });
 });

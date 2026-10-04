@@ -21,13 +21,14 @@ export type { RaceOutput, RaceWinner };
 
 export interface RaceResultRecord {
   winner: RaceWinner;
-  resultUrl?: string;
 }
 
 /**
  * JRA G1公式レース結果アーカイブ実在URLマッピング (一次ソース検証済み)
+ * JRA公式G1一覧（https://www.jra.go.jp/datafile/seiseki/replay/g1.html）の実在スラッグに基づき全26レースを定義
  */
 export const JRA_G1_RESULT_URLS: Record<string, string> = {
+  // 2026年春〜初秋（14レース）
   '2026-jra-g1-01': 'https://www.jra.go.jp/datafile/seiseki/g1/feb/result/feb2026.html',
   '2026-jra-g1-02': 'https://www.jra.go.jp/datafile/seiseki/g1/takamatsu/result/takamatsu2026.html',
   '2026-jra-g1-03': 'https://www.jra.go.jp/datafile/seiseki/g1/osaka/result/osaka2026.html',
@@ -42,6 +43,19 @@ export const JRA_G1_RESULT_URLS: Record<string, string> = {
   '2026-jra-g1-11': 'https://www.jra.go.jp/datafile/seiseki/g1/yasuda/result/yasuda2026.html',
   '2026-jra-g1-12': 'https://www.jra.go.jp/datafile/seiseki/g1/takara/result/takara2026.html',
   '2026-jra-g1-13': 'https://www.jra.go.jp/datafile/seiseki/g1/sprint/result/sprint2026.html',
+  // 2026年秋〜冬（12レース: 公式リプレイ一覧 g1.html の実在スラッグで事前定義）
+  '2026-jra-g1-14': 'https://www.jra.go.jp/datafile/seiseki/g1/shuka/result/shuka2026.html',
+  '2026-jra-g1-15': 'https://www.jra.go.jp/datafile/seiseki/g1/kikka/result/kikka2026.html',
+  '2026-jra-g1-16': 'https://www.jra.go.jp/datafile/seiseki/g1/akiten/result/akiten2026.html',
+  '2026-jra-g1-17': 'https://www.jra.go.jp/datafile/seiseki/g1/eliza/result/eliza2026.html',
+  '2026-jra-g1-18': 'https://www.jra.go.jp/datafile/seiseki/g1/mile/result/mile2026.html',
+  '2026-jra-g1-19': 'https://www.jra.go.jp/datafile/seiseki/g1/jc/result/jc2026.html',
+  '2026-jra-g1-20': 'https://www.jra.go.jp/datafile/seiseki/g1/jcd/result/jcd2026.html',
+  '2026-jra-g1-21': 'https://www.jra.go.jp/datafile/seiseki/g1/hjf/result/hjf2026.html',
+  '2026-jra-g1-22': 'https://www.jra.go.jp/datafile/seiseki/g1/afs/result/afs2026.html',
+  '2026-jra-jg1-02': 'https://www.jra.go.jp/datafile/seiseki/g1/daishogai/result/daishogai2026.html',
+  '2026-jra-g1-23': 'https://www.jra.go.jp/datafile/seiseki/g1/hopeful/result/hopeful2026.html',
+  '2026-jra-g1-24': 'https://www.jra.go.jp/datafile/seiseki/g1/arima/result/arima2026.html',
 };
 
 /**
@@ -157,7 +171,6 @@ export class JraRaceResultFetcher implements RaceResultFetcher {
 
     for (const target of targetRaces) {
       let html: string | null = null;
-      let resultUrl: string | undefined = JRA_G1_RESULT_URLS[target.id];
 
       if (this.fixtures && this.fixtures[target.id]) {
         html = this.fixtures[target.id];
@@ -170,9 +183,6 @@ export class JraRaceResultFetcher implements RaceResultFetcher {
           const res = await fetchWithRetry(url);
           if (res.ok) {
             html = await res.text();
-            if (!resultUrl) {
-              resultUrl = url;
-            }
           }
         } catch (e) {
           console.warn(`[JRA Results] Failed to fetch live results for ${target.name.ja}: ${(e as Error).message}`);
@@ -184,7 +194,7 @@ export class JraRaceResultFetcher implements RaceResultFetcher {
         for (const item of parsedList) {
           if (raceNameMatches(target.name.ja, item.raceName) || !item.raceName) {
             const winner = buildJraRaceWinner(item.winner);
-            results.set(target.id, { winner, resultUrl });
+            results.set(target.id, { winner });
             break;
           }
         }
@@ -226,7 +236,6 @@ export class NarRaceResultFetcher implements RaceResultFetcher {
 
     for (const target of targetRaces) {
       let html: string | null = null;
-      let resultUrl: string | undefined;
 
       if (this.fixtures && this.fixtures[target.id]) {
         html = this.fixtures[target.id];
@@ -270,7 +279,6 @@ export class NarRaceResultFetcher implements RaceResultFetcher {
               const markRes = await fetchWithRetry(markUrl);
               if (markRes.ok) {
                 html = await markRes.text();
-                resultUrl = markUrl;
               }
             }
           }
@@ -284,7 +292,7 @@ export class NarRaceResultFetcher implements RaceResultFetcher {
         for (const item of parsedList) {
           if (raceNameMatches(target.name.ja, item.raceName) || !item.raceName || item.raceName.includes(target.name.ja) || target.name.ja.includes(item.raceName)) {
             const winner = buildNarRaceWinner(item.winner);
-            results.set(target.id, { winner, resultUrl });
+            results.set(target.id, { winner });
             break;
           }
         }
@@ -383,23 +391,7 @@ export class FranceRaceResultFetcher implements RaceResultFetcher {
 
         const parsedMap = parsePmuResultsJson(data, racesOnDate);
         for (const [id, winner] of parsedMap.entries()) {
-          const race = racesOnDate.find((r) => r.id === id);
-          let resultUrl = 'https://www.pmu.fr/turf/';
-          if (race) {
-            const frName = (race.name as { fr?: string }).fr || '';
-            const enName = race.name?.en || '';
-            for (const reunion of reunions) {
-              for (const course of reunion.courses || []) {
-                const matchesFr = frName ? frenchRaceMatches(frName, course.libelle) : false;
-                const matchesEn = enName ? frenchRaceMatches(enName, course.libelle) : false;
-                if ((matchesFr || matchesEn) && reunion.numOfficiel && course.numOrdre) {
-                  resultUrl = `https://www.pmu.fr/turf/${ddmmyyyy}/r${reunion.numOfficiel}/c${course.numOrdre}/`;
-                  break;
-                }
-              }
-            }
-          }
-          results.set(id, { winner, resultUrl });
+          results.set(id, { winner });
         }
       }
     }
@@ -474,9 +466,8 @@ export class UkRaceResultFetcher implements RaceResultFetcher {
 
       if (meetings) {
         const parsedMap = parseSportingLifeResultsJson(meetings, racesOnDate);
-        const resultUrl = `https://www.sportinglife.com/racing/results/${dateYmd}`;
         for (const [id, winner] of parsedMap.entries()) {
-          results.set(id, { winner, resultUrl });
+          results.set(id, { winner });
         }
       }
     }
@@ -680,13 +671,7 @@ export class HkjcRaceResultFetcher implements RaceResultFetcher {
             time: first.time,
           };
 
-          const urlDate = target.date.replace(/-/g, '/');
-          const rNo = matchedRaceNo || (target as any).race_number;
-          const resultUrl = rNo
-            ? `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}&RaceNo=${rNo}`
-            : `https://racing.hkjc.com/racing/information/English/Racing/LocalResults.aspx?RaceDate=${urlDate}`;
-
-          results.set(target.id, { winner, resultUrl });
+          results.set(target.id, { winner });
         }
       }
     }
@@ -799,9 +784,7 @@ export class UsRaceResultFetcher implements RaceResultFetcher {
     if (allMeetings.length > 0) {
       const parsedMap = parseSportingLifeResultsJson(allMeetings, targetRaces);
       for (const [id, winner] of parsedMap.entries()) {
-        const target = targetRaces.find((r) => r.id === id);
-        const resultUrl = target ? `https://www.sportinglife.com/racing/results/${target.date}` : undefined;
-        results.set(id, { winner, resultUrl });
+        results.set(id, { winner });
       }
     }
 
