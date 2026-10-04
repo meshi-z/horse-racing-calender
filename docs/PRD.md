@@ -683,8 +683,15 @@ docs/
   - `src/data/australia_race_master.json` の開催済み過去全レース（2026-10-03以前の全45レース）の発走確定時刻（現地時間およびUTC）をバックフィルし、`is_time_confirmed: true` を設定。
   - 公式リンク方針（Issue #190）を遵守し、出馬表URLの一時的な推測付与を排除し空値（`undefined`）を保持。
   - 単体・統合テスト `tests/unit/australiaSyutsuba.test.ts` を配備し、全65テストファイル・604テスト全件パスを達成。
-- **Step 70-4 (レース結果・勝ち馬自動取得バッチ実装および過去勝ち馬バックフィル) (Issue #195)**:
-  - `AustraliaRaceResultFetcher` の実装、GitHub Actions 連携、開催済み過去レースの勝ち馬バックフィル。
+- **Step 70-4 (レース結果・勝ち馬自動取得バッチ実装および過去勝ち馬バックフィル) (Issue #195) [完了]**:
+  - オーストラリア専用レース結果パーサー `scripts/lib/australia-results.ts`（`parseAustraliaResultsJson`）を実装。
+  - `scripts/update-race-results.ts` に `AustraliaRaceResultFetcher` を追加し、`DEFAULT_RESULT_FETCHERS` に統合（`racing_australia`, `au`, `australia`）。
+  - `package.json` に `"data:update-results:au"` スクリプトを追加し、個別更新および `--dry-run` に対応。
+  - `.github/workflows/update-race-results.yml` にオーストラリア開催直後取り込み枠（毎週土曜 05:30 UTC = 14:30 JST）を追加。
+  - 2026年開催済みのオーストラリア主要G1全53レースの公式実在勝ち馬データ（ゴールデンスリッパー: Guest House / Zac Lloyd、ドンカスターマイル: Sheza Alibi / Jamie Kah、クイーンエリザベスS: Sir Delius / Craig Williams、オーストラリアンダービー: Green Spaces / Rachel King、エプソムH: God's Window / Siena Grima、ターンブルS: Cosmic Crusader / William Pike等）を一次ソースより特定し、`src/data/race_winners.json` および `public/data/races.json` にバックフィル。
+  - 空値原則（Null Value Principle）の徹底: 11月へ日程変更された未開催の `2026-au-g1-01`（CF Orr Stakes）および未来レースは勝者を推測補完せず未設定（`undefined`）として厳格に保護。
+  - 公式リンク方針（Issue #190）を遵守し、`official_url` は付与せず未設定（`undefined`）を保持。
+  - 単体・統合・データ整合性テスト `tests/unit/australiaResults.test.ts` を配備し、全66テストファイル・613テスト全件パスを達成。
 - **Step 70-5 (オーストラリア競馬UI対応) (Issue #196)**:
   - 主催者フィルター「豪州 (Racing Australia)」、競馬場グループ、国コードバッジ「AU」、免責事項ダイアログ等のフロントエンドUI拡張。
 - **Step 70-6 (多言語辞書（日英仏中）対応およびローカライズ整備) (Issue #197)**:

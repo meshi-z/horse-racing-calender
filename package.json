@@ -15,6 +15,7 @@
     "data:update-times:ie": "tsx scripts/update-race-times.ts --org hri",
     "data:update-times:au": "tsx scripts/update-race-times.ts --org racing_australia",
     "data:update-results": "tsx scripts/update-race-results.ts",
+    "data:update-results:au": "tsx scripts/update-race-results.ts --org racing_australia",
     "data:backfill-results": "tsx scripts/backfill-race-winners.ts",
     "data:backfill-nar": "tsx scripts/backfill-nar-past-times.ts",
     "data:backfill-jra": "tsx scripts/backfill-jra-past-times.ts",

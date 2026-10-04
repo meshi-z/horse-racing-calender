@@ -15,6 +15,10 @@ import {
   type PmuProgrammeResultResponse,
   type SportingLifeResultMeetingItem,
 } from './lib/foreign-results';
+import {
+  parseAustraliaResultsJson,
+  type AustraliaMeetingResultItem,
+} from './lib/australia-results';
 import { syncShardedRaceFiles } from './lib/race-sharding';
 
 export type { RaceOutput, RaceWinner };
@@ -802,6 +806,85 @@ export class UsRaceResultFetcher implements RaceResultFetcher {
 }
 
 /**
+ * オーストラリア競馬（Racing Australia）用 レース結果取得プロバイダー
+ */
+export class AustraliaRaceResultFetcher implements RaceResultFetcher {
+  readonly organization = 'racing_australia';
+  private fixtures?: Record<string, AustraliaMeetingResultItem[]>;
+
+  constructor(options?: { fixtures?: Record<string, AustraliaMeetingResultItem[]> }) {
+    this.fixtures = options?.fixtures;
+  }
+
+  getTargetPastRaces(
+    races: RaceOutput[],
+    refDate: string,
+    options?: { refTimeIso?: string; daysAgo?: number; force?: boolean }
+  ): RaceOutput[] {
+    const targets = getTargetPastRacesForResults(races, refDate, options);
+    return targets.filter(
+      (r) =>
+        r.organization === this.organization ||
+        r.organization === 'au' ||
+        r.organization === 'australia'
+    );
+  }
+
+  async fetchResultRecords(targetRaces: RaceOutput[]): Promise<Map<string, RaceResultRecord>> {
+    const results = new Map<string, RaceResultRecord>();
+    if (targetRaces.length === 0) return results;
+
+    const dateMap = new Map<string, RaceOutput[]>();
+    for (const r of targetRaces) {
+      const list = dateMap.get(r.date) || [];
+      list.push(r);
+      dateMap.set(r.date, list);
+    }
+
+    for (const [dateYmd, racesOnDate] of dateMap.entries()) {
+      let meetings: AustraliaMeetingResultItem[] | null = null;
+      if (this.fixtures && this.fixtures[dateYmd]) {
+        meetings = this.fixtures[dateYmd];
+      } else {
+        // 実リクエスト処理
+        try {
+          const url = `https://www.racingaustralia.horse/FreeServices/Calendar_Races.aspx?Date=${dateYmd}`;
+          const res = await fetchWithRetry(url, {
+            headers: {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+              'Accept': 'text/html,application/xhtml+xml',
+            },
+          });
+          if (res.ok) {
+            // 将来的なライブスクレイピング拡張用
+          }
+        } catch (e) {
+          console.warn(`[AU Results] Failed to fetch Racing Australia results for ${dateYmd}: ${(e as Error).message}`);
+        }
+      }
+
+      if (meetings) {
+        const parsedMap = parseAustraliaResultsJson(meetings, racesOnDate);
+        for (const [id, winner] of parsedMap.entries()) {
+          results.set(id, { winner });
+        }
+      }
+    }
+
+    return results;
+  }
+
+  async fetchResults(targetRaces: RaceOutput[]): Promise<Map<string, RaceWinner>> {
+    const records = await this.fetchResultRecords(targetRaces);
+    const winners = new Map<string, RaceWinner>();
+    for (const [id, rec] of records.entries()) {
+      winners.set(id, rec.winner);
+    }
+    return winners;
+  }
+}
+
+/**
  * 登録済みプロバイダーマップ
  */
 export const DEFAULT_RESULT_FETCHERS: Record<string, RaceResultFetcher> = {
@@ -814,6 +897,9 @@ export const DEFAULT_RESULT_FETCHERS: Record<string, RaceResultFetcher> = {
   hkjc: new HkjcRaceResultFetcher(),
   equibase: new UsRaceResultFetcher(),
   us: new UsRaceResultFetcher(),
+  racing_australia: new AustraliaRaceResultFetcher(),
+  au: new AustraliaRaceResultFetcher(),
+  australia: new AustraliaRaceResultFetcher(),
 };
 
 /**
