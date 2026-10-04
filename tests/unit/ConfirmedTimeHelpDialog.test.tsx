@@ -34,7 +34,7 @@ describe("ConfirmedTimeHelpDialog", () => {
       screen.getByText(/公式発表前のレースは「時刻未定（TBD）」と表示されます/)
     ).toBeInTheDocument();
 
-    // 全7主催者が表内に含まれること
+    // 全8主催者が表内に含まれること
     expect(screen.getByText("JRA（中央競馬）")).toBeInTheDocument();
     expect(screen.getByText("NAR（地方競馬・ばんえい）")).toBeInTheDocument();
     expect(screen.getByText("France Galop")).toBeInTheDocument();
@@ -42,13 +42,14 @@ describe("ConfirmedTimeHelpDialog", () => {
     expect(screen.getByText("HRI（アイルランド競馬協会）")).toBeInTheDocument();
     expect(screen.getByText("Equibase / The Jockey Club")).toBeInTheDocument();
     expect(screen.getByText("HKJC（香港賽馬會）")).toBeInTheDocument();
+    expect(screen.getByText("Racing Australia")).toBeInTheDocument();
 
     // 反映目安テキストの確認
     expect(screen.getByText("金曜昼およびレース前日")).toBeInTheDocument();
     expect(screen.getByText("レース前々日夜〜前日朝")).toBeInTheDocument();
     expect(screen.getByText("レース2日前夜〜前日")).toBeInTheDocument();
     expect(screen.getAllByText("レース2日前の深夜〜前日朝")).toHaveLength(2); // BHA & HRI
-    expect(screen.getByText("レース2日前〜前日")).toBeInTheDocument();
+    expect(screen.getAllByText("レース2日前〜前日")).toHaveLength(2); // US & Australia
     expect(screen.getByText("レース2日前の午後")).toBeInTheDocument();
 
     // 注意事項セクション

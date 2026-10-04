@@ -19,7 +19,7 @@ export interface ConfirmedTimeHelpDialogProps {
 }
 
 interface ScheduleRow {
-  key: "jra" | "nar" | "france" | "uk" | "ireland" | "us" | "hk";
+  key: "jra" | "nar" | "france" | "uk" | "ireland" | "us" | "hk" | "australia";
   countryCode: string;
   countryBadgeClass: string;
   orgBadgeClass: string;
@@ -67,6 +67,12 @@ const SCHEDULE_CONFIG: ScheduleRow[] = [
     countryCode: "HK",
     countryBadgeClass: "border-red-600/40 text-red-800 dark:text-red-300 bg-red-50/60 dark:bg-red-950/40",
     orgBadgeClass: "border-red-600/40 text-red-800 dark:text-red-300 bg-red-50/50 dark:bg-red-950/30",
+  },
+  {
+    key: "australia",
+    countryCode: "AU",
+    countryBadgeClass: "border-amber-600/40 text-amber-800 dark:text-amber-300 bg-amber-50/60 dark:bg-amber-950/40",
+    orgBadgeClass: "border-amber-600/40 text-amber-800 dark:text-amber-300 bg-amber-50/50 dark:bg-amber-950/30",
   },
 ];
 

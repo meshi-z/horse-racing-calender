@@ -137,6 +137,27 @@ describe("RaceCard", () => {
     expect(card).toBeInTheDocument();
   });
 
+  it("オーストラリア競馬のレースで AU 国コードと RACING AUSTRALIA 主催者バッジが表示されること", () => {
+    const auRace: Race = {
+      ...mockRace,
+      id: "2026-au-melbourne-cup",
+      organization: "racing_australia",
+      country_code: "AU",
+      name: {
+        ja: "メルボルンカップ",
+        en: "Melbourne Cup",
+      },
+      course: {
+        ja: "フレミントン",
+        en: "Flemington",
+      },
+    };
+    render(<RaceCard race={auRace} />);
+    expect(screen.getByText("AU")).toBeInTheDocument();
+    expect(screen.getByText("RACING AUSTRALIA")).toBeInTheDocument();
+    expect(screen.getByText("メルボルンカップ")).toBeInTheDocument();
+  });
+
   it("isToday=true の場合、カードにハイライトスタイル（ring-2等）と'本日開催'バッジが表示されること", () => {
     render(<RaceCard race={mockRace} isToday={true} />);
 

@@ -692,8 +692,17 @@ docs/
   - 空値原則（Null Value Principle）の徹底: 11月へ日程変更された未開催の `2026-au-g1-01`（CF Orr Stakes）および未来レースは勝者を推測補完せず未設定（`undefined`）として厳格に保護。
   - 公式リンク方針（Issue #190）を遵守し、`official_url` は付与せず未設定（`undefined`）を保持。
   - 単体・統合・データ整合性テスト `tests/unit/australiaResults.test.ts` を配備し、全66テストファイル・613テスト全件パスを達成。
-- **Step 70-5 (オーストラリア競馬UI対応) (Issue #196)**:
-  - 主催者フィルター「豪州 (Racing Australia)」、競馬場グループ、国コードバッジ「AU」、免責事項ダイアログ等のフロントエンドUI拡張。
+- **Step 70-5 (オーストラリア競馬UI対応) (Issue #196) [完了]**:
+  - 主催者フィルターモーダル（`FilterBar`）に「オセアニア（🇦🇺 Oceania）」地域グループおよび「オーストラリア (Racing Australia)」チェック項目を追加。
+  - デスクトップ用主催者セグメントコントロール（`orgOptions`）に「オーストラリア (Racing Australia)」を追加。
+  - 競馬場フィルターパネルに「🇦🇺 オセアニア」クイック切替タブを追加し、豪州9競馬場（フレミントン、ランドウィック、コーフィールド、ローズヒル、ムーニーバレー、イーグルファーム、ドゥームベン、モーフェットビル、アスコット (豪)）の選択・一括操作に対応。
+  - レースカード（`RaceCard`）および詳細モーダル（`RaceDetailDialog`）に「AU」国コードバッジ（アンバー色系）および「RACING AUSTRALIA」主催者バッジ・表記を配備。
+  - カレンダーグリッド（`CalendarView`）のレースチップに「AU」国コードバッジおよび「AUS」主催者ラベルを統合。
+  - 発走時刻確定ガイドダイアログ（`ConfirmedTimeHelpDialog`）にオーストラリア（Racing Australia）の公式発表・反映目安スケジュールを追加。
+  - 免責事項ダイアログ（`DisclaimerDialog`）および静的フッターに Racing Australia の出典表記・権利表記を追加。
+  - 地域判定・初期主催者選定ユーティリティ（`src/libs/geolocation.ts`）にオーストラリア（AU、`Australia/*`、`en-AU`）自動判定を追加。
+  - レース原語判定（`src/libs/raceLanguage.ts`）に `AU` / `racing_australia`（英語原語）を追加。
+  - 単体・統合・UIテスト（`tests/unit/FilterBar.test.tsx`, `tests/unit/RaceCard.test.tsx`, `tests/unit/RaceDetailDialog.test.tsx`, `tests/unit/ConfirmedTimeHelpDialog.test.tsx`, `tests/unit/geolocation.test.ts`, `tests/unit/DisclaimerDialog.test.tsx`, `tests/unit/Layout.test.tsx` 等）を配備・更新し、全66テストファイル・616テスト全件パス。
 - **Step 70-6 (多言語辞書（日英仏中）対応およびローカライズ整備) (Issue #197)**:
   - `src/libs/i18n.ts` への日英仏中対訳追加、辞書パリティテスト通過。
 

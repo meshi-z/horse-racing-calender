@@ -1,6 +1,6 @@
 import type { Organization } from '../types/race';
 
-export type UserRegion = 'JP' | 'FR' | 'GB' | 'US' | 'OTHER';
+export type UserRegion = 'JP' | 'FR' | 'GB' | 'US' | 'AU' | 'OTHER';
 
 export const ORGANIZATIONS_STORAGE_KEY = 'horse_racing_calendar_organizations_filter';
 export const LEGACY_ORGANIZATION_STORAGE_KEY = 'horse_racing_calendar_organization_filter';
@@ -105,6 +105,18 @@ export function detectUserRegion(context?: GeolocationContext): UserRegion {
       return 'US';
     }
 
+    // 5. オーストラリア (AU) 判定
+    if (timeZone) {
+      if (timeZone.startsWith('Australia/')) {
+        return 'AU';
+      }
+      if (langLower === 'en-au' || langLower.startsWith('en-au-')) {
+        return 'AU';
+      }
+    } else if (langLower === 'en-au' || langLower.startsWith('en-au-')) {
+      return 'AU';
+    }
+
     return 'OTHER';
   } catch {
     return 'OTHER';
@@ -117,6 +129,7 @@ export function detectUserRegion(context?: GeolocationContext): UserRegion {
  * - FR: ['france_galop'] (フランス重賞)
  * - GB: ['bha'] (イギリス重賞)
  * - US: ['equibase'] (アメリカ重賞)
+ * - AU: ['racing_australia'] (豪州重賞)
  * - OTHER: [] (すべて)
  */
 export function getDefaultOrganizationsForRegion(region: UserRegion): Organization[] {
@@ -129,6 +142,8 @@ export function getDefaultOrganizationsForRegion(region: UserRegion): Organizati
       return ['bha'];
     case 'US':
       return ['equibase'];
+    case 'AU':
+      return ['racing_australia'];
     case 'OTHER':
     default:
       return [];
@@ -141,6 +156,9 @@ const VALID_ORGANIZATIONS: ReadonlySet<string> = new Set([
   'france_galop',
   'bha',
   'equibase',
+  'hkjc',
+  'hri',
+  'racing_australia',
   'overseas',
 ]);
 

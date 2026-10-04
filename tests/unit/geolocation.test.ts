@@ -59,9 +59,15 @@ describe('geolocation', () => {
       expect(detectUserRegion({ timeZone: '', language: 'en-US' })).toBe('US');
     });
 
+    it('オーストラリア (AU) のタイムゾーンまたは言語を判定できること', () => {
+      expect(detectUserRegion({ timeZone: 'Australia/Sydney' })).toBe('AU');
+      expect(detectUserRegion({ timeZone: 'Australia/Melbourne' })).toBe('AU');
+      expect(detectUserRegion({ timeZone: '', language: 'en-AU' })).toBe('AU');
+    });
+
     it('該当しない地域の場合は OTHER を返すこと', () => {
-      expect(detectUserRegion({ timeZone: 'Australia/Sydney', language: 'en-AU' })).toBe('OTHER');
       expect(detectUserRegion({ timeZone: 'Asia/Seoul', language: 'ko-KR' })).toBe('OTHER');
+      expect(detectUserRegion({ timeZone: 'America/Sao_Paulo', language: 'pt-BR' })).toBe('OTHER');
     });
 
     it('エラーが発生した場合は OTHER にフォールバックすること', () => {
@@ -89,6 +95,10 @@ describe('geolocation', () => {
 
     it('US の場合は [equibase] を返すこと', () => {
       expect(getDefaultOrganizationsForRegion('US')).toEqual(['equibase']);
+    });
+
+    it('AU の場合は [racing_australia] を返すこと', () => {
+      expect(getDefaultOrganizationsForRegion('AU')).toEqual(['racing_australia']);
     });
 
     it('OTHER の場合は [] (すべて) を返すこと', () => {
@@ -127,7 +137,8 @@ describe('geolocation', () => {
       expect(getInitialOrganizations({ timeZone: 'Europe/London' })).toEqual(['bha']);
       expect(getInitialOrganizations({ timeZone: 'Europe/Paris' })).toEqual(['france_galop']);
       expect(getInitialOrganizations({ timeZone: 'America/New_York' })).toEqual(['equibase']);
-      expect(getInitialOrganizations({ timeZone: 'Australia/Sydney' })).toEqual([]);
+      expect(getInitialOrganizations({ timeZone: 'Australia/Sydney' })).toEqual(['racing_australia']);
+      expect(getInitialOrganizations({ timeZone: 'Asia/Seoul' })).toEqual([]);
     });
   });
 
