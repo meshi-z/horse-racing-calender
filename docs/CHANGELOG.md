@@ -6,6 +6,25 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 64: 2027年番組追加および新国拡張を見据えた年度別データ分割（Sharding）アーキテクチャの導入 (v1.43.0 / Issue #181) [完了]
+- **年度別データ分割（Sharding）パイプラインの実装 (`scripts/lib/race-sharding.ts`, `scripts/parse-races.ts`, `scripts/update-race-times.ts`, `scripts/update-race-results.ts`) [完了]**
+  - レースデータを西暦年度ごとに自動分割し、年度別JSON（`public/data/races-YYYY.json`）、インデックスメタデータ（`public/data/index.json`）、および結合版（`public/data/races.json`）をアトミックに同期書き出しする `syncShardedRaceFiles` を配備。
+  - レースデータビルド（`data:build`）、発走時刻更新（`data:update-times`）、レース結果更新（`data:update-results`）の全パイプラインから自動呼び出しを行い、結合版と年度別 Shard のデータ完全性を常時100%同期。
+  - 既存のテストスイートや旧バージョンクライアント向けに結合版 `races.json` の出力を維持し、完全な後方互換性を保証。
+- **クライアント側オンデマンド読み込み & シームレスマージ (`src/hooks/useRaces.ts`, `src/store/useRaceStore.ts`) [完了]**
+  - アプリ起動時は表示対象年度（通常はカレント年 `2026`）の `races-YYYY.json` のみをフェッチし、初期データ転送量を最小限に抑制（今後の2027年以降番組追加やUAE/サウジ/豪州等新国追加時も初期転送量100KB前後を維持）。
+  - カレンダーやタイムラインの年送り・月送り操作で未取得年度（`loadedYears` 外）に遷移した際、バックグラウンドで該当年の `races-YYYY.json` をオンデマンド取得。
+  - `useRaceStore.getState().addRacesForYear(year, races)` により、レースID重複排除および日付・時刻順ソートを自動適用して既存データにマージ。画面のチラつきやレイアウトシフトを完全防止。
+  - 該当年度 shard が存在しない場合（404等）は即座に従来の結合版 `races.json` へ安全にフォールバック。
+- **PWA Workbox ランタイムキャッシュ & 自動更新最適化 (`vite.config.ts`) [完了]**
+  - Service Worker のキャッシュパターンを `/\/data\/(races(-[0-9]{4})?|index)\.json$/` に更新し、年度別 Shard およびインデックスファイルを `StaleWhileRevalidate` でキャッシュ管理。
+  - BroadcastChannel によるバックグラウンドキャッシュ更新検知に対応。
+- **テスト・品質検証 [完了]**
+  - `tests/unit/raceSharding.test.ts`、`tests/unit/useRaces.test.ts`、`tests/unit/useRaceStore.test.ts` を配備・更新。
+  - 全63テストファイル・594テスト全件パス、TypeScript型チェック（tsc --noEmit）パス、プロダクションビルド成功。
+
+---
+
 ### Step 63: 言語別URLパス導入・ルート英語デフォルトOGP・言語切替URL同期 (v1.42.0 / Issue #187) [完了]
 - **静的HTML・OGPメタタグの多言語自動出力 (`vite.config.ts`, `index.html`) [完了]**
   - グローバル標準およびIssue #172（PWA英語デフォルト化）に合わせて、ルート（`/`）の静的HTMLを英語デフォルト（`<html lang="en">`、`Graded Races Calendar | Schedule of World Graded Races`、`og:locale="en_US"`）に設定。

@@ -6,6 +6,7 @@ import {
   toIsoUtc,
   ConfirmedRaceTime,
 } from './lib/jra-syutsuba';
+import { syncShardedRaceFiles } from './lib/race-sharding';
 
 export interface RaceWinner {
   name: {
@@ -644,7 +645,8 @@ export async function updateRaceTimes(options: UpdateOptions = {}): Promise<Upda
       console.log(`\n[Update Race Times] Dry-run mode: ${updatedRaces.length} race(s) would be updated, but not written to file.`);
     } else {
       fs.writeFileSync(filePath, JSON.stringify(races, null, 2) + '\n', 'utf-8');
-      console.log(`\n[Update Race Times] Successfully written ${updatedRaces.length} updated race(s) to ${filePath}`);
+      syncShardedRaceFiles(races, path.dirname(filePath));
+      console.log(`\n[Update Race Times] Successfully written ${updatedRaces.length} updated race(s) to ${filePath} and synced shards`);
     }
   } else {
     console.log('\n[Update Race Times] No race updates needed. All matching races already up-to-date.');

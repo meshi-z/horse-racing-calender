@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { renderHook, waitFor, act } from '@testing-library/react';
-import { useRaces } from '@/hooks/useRaces';
+import { useRaces, getYearDataUrl } from '@/hooks/useRaces';
 import { useRaceStore } from '@/store/useRaceStore';
 import type { Race } from '@/types/race';
 
@@ -25,7 +25,11 @@ describe('useRaces hook', () => {
   const originalServiceWorker = (globalThis.navigator as any).serviceWorker;
 
   beforeEach(() => {
-    useRaceStore.setState({ races: [] });
+    useRaceStore.setState({
+      races: [],
+      loadedYears: [],
+      currentYearMonth: { year: 2026, month: 1 },
+    });
     vi.restoreAllMocks();
   });
 
@@ -42,7 +46,12 @@ describe('useRaces hook', () => {
     }
   });
 
-  it('デフォルトで BASE_URL に応じた races.json をフェッチすること', async () => {
+  it('getYearDataUrl が BASE_URL に基づく正しい年度別 URL を生成すること', () => {
+    const url = getYearDataUrl(2027);
+    expect(url).toBe(`${import.meta.env.BASE_URL}data/races-2027.json`);
+  });
+
+  it('デフォルトで現在の年度に対応する Shard (races-2026.json) をフェッチすること', async () => {
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
       json: async () => [mockRace],
@@ -57,13 +66,49 @@ describe('useRaces hook', () => {
       expect(result.current.isLoading).toBe(false);
     });
 
-    const expectedUrl = `${import.meta.env.BASE_URL}data/races.json`;
+    const expectedUrl = `${import.meta.env.BASE_URL}data/races-2026.json`;
     expect(fetchMock).toHaveBeenCalledWith(expectedUrl, expect.any(Object));
+    expect(result.current.races).toEqual([mockRace]);
+    expect(result.current.error).toBeNull();
+    expect(useRaceStore.getState().loadedYears).toEqual([2026]);
+  });
+
+  it('Shard が 404 の場合は結合版 races.json へフォールバックすること', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 404,
+        statusText: 'Not Found',
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => [mockRace],
+      });
+    globalThis.fetch = fetchMock;
+
+    const { result } = renderHook(() => useRaces());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenNthCalledWith(
+      1,
+      `${import.meta.env.BASE_URL}data/races-2026.json`,
+      expect.any(Object)
+    );
+    expect(fetchMock).toHaveBeenNthCalledWith(
+      2,
+      `${import.meta.env.BASE_URL}data/races.json`,
+      expect.any(Object)
+    );
     expect(result.current.races).toEqual([mockRace]);
     expect(result.current.error).toBeNull();
   });
 
-  it('フェッチ失敗時にエラー状態が設定されること', async () => {
+  it('Shard およびフォールバックの両方が失敗した場合はエラー状態になること', async () => {
     const fetchMock = vi.fn().mockResolvedValue({
       ok: false,
       status: 404,
@@ -81,7 +126,7 @@ describe('useRaces hook', () => {
     expect(result.current.error?.message).toContain('Failed to fetch races: 404 Not Found');
   });
 
-  it('カスタム dataUrl オプションを指定した場合はその URL がフェッチされること', async () => {
+  it('カスタム dataUrl オプションを指定した場合はその URL が直接フェッチされること', async () => {
     const customUrl = '/custom/races.json';
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
@@ -97,6 +142,48 @@ describe('useRaces hook', () => {
 
     expect(fetchMock).toHaveBeenCalledWith(customUrl, expect.any(Object));
     expect(result.current.races).toEqual([mockRace]);
+  });
+
+  it('年度が切り替わった際に未読み込み年度の Shard をオンデマンドフェッチしてマージすること', async () => {
+    const race2027: Race = {
+      ...mockRace,
+      id: '2027-jra-g1-01',
+      date: '2027-02-21',
+    };
+
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => [mockRace],
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => [race2027],
+      });
+    globalThis.fetch = fetchMock;
+
+    const { result } = renderHook(() => useRaces());
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+    expect(result.current.races).toEqual([mockRace]);
+
+    // 2027 年に月送り
+    act(() => {
+      useRaceStore.getState().setYearMonth({ year: 2027, month: 1 });
+    });
+
+    await waitFor(() => {
+      expect(useRaceStore.getState().loadedYears).toContain(2027);
+    });
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      `${import.meta.env.BASE_URL}data/races-2027.json`,
+      expect.any(Object)
+    );
+    expect(useRaceStore.getState().races).toHaveLength(2);
   });
 
   it('BroadcastChannel から CACHE_UPDATED を受信した際に自動で最新データが再フェッチされ Store に反映されること', async () => {
@@ -144,7 +231,7 @@ describe('useRaces hook', () => {
         meta: 'workbox-broadcast-update',
         payload: {
           cacheName: 'races-data-cache',
-          updatedURL: '/data/races.json',
+          updatedURL: '/data/races-2026.json',
         },
       },
     });
@@ -236,7 +323,7 @@ describe('useRaces hook', () => {
 
       expect(result).toBe(true);
       expect(fetchMock).toHaveBeenCalledWith(
-        expect.stringMatching(/\/data\/races\.json\?t=\d+/),
+        expect.stringMatching(/\/data\/races(-2026)?\.json\?t=\d+/),
         { cache: 'reload' }
       );
       expect(useRaceStore.getState().races[0]?.name.ja).toBe('最新再取得レース');

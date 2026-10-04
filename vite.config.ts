@@ -218,12 +218,12 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         runtimeCaching: [
           {
-            urlPattern: /\/data\/races\.json$/,
+            urlPattern: /\/data\/(races(-[0-9]{4})?|index)\.json$/,
             handler: 'StaleWhileRevalidate',
             options: {
               cacheName: 'races-data-cache',
               expiration: {
-                maxEntries: 10,
+                maxEntries: 20,
                 maxAgeSeconds: 60 * 60 * 24 * 7, // 7 days
               },
               cacheableResponse: {

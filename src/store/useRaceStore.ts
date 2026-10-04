@@ -12,12 +12,14 @@ export interface YearMonth {
 
 export interface RaceState {
   races: Race[];
+  loadedYears: number[];
   filters: FilterState;
   viewMode: 'timeline' | 'calendar';
   currentYearMonth: YearMonth;
 
   // Actions
   setRaces: (races: Race[]) => void;
+  addRacesForYear: (year: number, races: Race[]) => void;
   setFilter: <K extends keyof FilterState>(key: K, value: FilterState[K]) => void;
   resetFilters: () => void;
   setViewMode: (mode: 'timeline' | 'calendar') => void;
@@ -194,11 +196,47 @@ export function getInitialViewMode(): 'timeline' | 'calendar' {
 
 export const useRaceStore = create<RaceState>((set, get) => ({
   races: [],
+  loadedYears: [],
   filters: getInitialFilters(),
   viewMode: getInitialViewMode(),
   currentYearMonth: getInitialYearMonth(),
 
-  setRaces: (races: Race[]) => set({ races }),
+  setRaces: (races: Race[]) => {
+    const years = Array.from(
+      new Set(
+        races
+          .map((r) => parseInt(r.date.slice(0, 4), 10))
+          .filter((y) => !isNaN(y))
+      )
+    ).sort((a, b) => a - b);
+    set({ races, loadedYears: years });
+  },
+
+  addRacesForYear: (year: number, newRaces: Race[]) =>
+    set((state) => {
+      const existingMap = new Map<string, Race>();
+      for (const r of state.races) {
+        existingMap.set(r.id, r);
+      }
+      for (const r of newRaces) {
+        existingMap.set(r.id, r);
+      }
+      const merged = Array.from(existingMap.values()).sort((a, b) => {
+        return (
+          a.date.localeCompare(b.date) ||
+          (a.start_time || '').localeCompare(b.start_time || '') ||
+          (a.organization || '').localeCompare(b.organization || '') ||
+          a.id.localeCompare(b.id)
+        );
+      });
+      const updatedLoadedYears = state.loadedYears.includes(year)
+        ? state.loadedYears
+        : [...state.loadedYears, year].sort((a, b) => a - b);
+      return {
+        races: merged,
+        loadedYears: updatedLoadedYears,
+      };
+    }),
 
   setFilter: (key, value) => {
     if (key === 'organizations') {
