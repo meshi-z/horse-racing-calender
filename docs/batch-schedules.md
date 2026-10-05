@@ -10,11 +10,11 @@ GitHub Actions で定期稼働するバッチおよびローカル・手動実�
 
 | バッチ名称 | ワークフロー / スクリプト | トリガー / 頻度 | 実行タイミング（JST） | Cron設定 (UTC) | 主な処理内容 | 入力・出力対象 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **確定発走時刻自動更新** | `.github/workflows/update-race-times.yml`<br>`scripts/update-race-times.ts` | GitHub Actions (cron)<br>手動 (`workflow_dispatch`) | **毎日朝**: 07:30<br>**平日昼**: 12:30<br>**平日〜土曜夕**: 17:30<br>**毎日夜**: 21:30<br>**木曜**: 16:30, 17:00, 18:00<br>**金曜**: 10:30, 11:00, 12:00 | `30 22 * * *`<br>`30 3 * * 1-5`<br>`30 8 * * 1-6`<br>`30 12 * * *`<br>`30 7 * * 4`<br>`0 8 * * 4`<br>`0 9 * * 4`<br>`30 1 * * 5`<br>`0 2 * * 5`<br>`0 3 * * 5` | JRA公式出馬表、NAR公式出馬表（ダートグレード年間日程＋各競馬場RaceList）、PMUプログラム（フランス重賞）、Sporting Life API（イギリス・アイルランド重賞）、Equibase（アメリカ重賞）、およびHKJC（香港重賞）から直近レースの確定発走時刻・代替開催日を取得し更新 | 入力: 公式出馬表/API<br>出力: `public/data/races.json` |
-| **自動テスト・デプロイ** | `.github/workflows/deploy.yml` | push to `main`<br>手動 (`workflow_dispatch`) | 随時（PRマージ時、データ更新コミット時） | イベント駆動 | 型検査 (`type-check`)、テスト (`test`)、プロダクションビルド (`build`) を実行し GitHub Pages へ自動配信 | 入力: ソースコード<br>出力: `dist/` (GitHub Pages) |
+| **確定発走時刻自動更新** | `.github/workflows/update-race-times.yml`<br>`scripts/update-race-times.ts` | GitHub Actions (cron)<br>手動 (`workflow_dispatch`) | **毎日朝**: 07:30<br>**平日昼**: 12:30<br>**平日〜土曜夕**: 17:30<br>**毎日夜**: 21:30<br>**木曜**: 16:30, 17:00, 18:00<br>**金曜**: 10:30, 11:00, 12:00 | `30 22 * * *`<br>`30 3 * * 1-5`<br>`30 8 * * 1-6`<br>`30 12 * * *`<br>`30 7 * * 4`<br>`0 8 * * 4`<br>`0 9 * * 4`<br>`30 1 * * 5`<br>`0 2 * * 5`<br>`0 3 * * 5` | JRA公式出馬表、NAR公式出馬表（ダートグレード年間日程＋各競馬場RaceList）、PMUプログラム（フランス重賞）、Sporting Life API（イギリス・アイルランド重賞）、Equibase（アメリカ重賞）、およびHKJC（香港重賞）から直近レースの確定発走時刻・代替開催日を取得し更新。データ更新検出時は `deploy.yml` (`workflow_call`) を自動呼び出しし本番へ即時反映 | 入力: 公式出馬表/API<br>出力: `public/data/` (結合版 `races.json`, Shard版 `races-*.json`, `index.json`) |
+| **自動テスト・デプロイ** | `.github/workflows/deploy.yml` | push to `main`<br>手動 (`workflow_dispatch`)<br>定期バッチ連動 (`workflow_call`) | 随時（PRマージ時、定期バッチ更新時） | イベント駆動 | 型検査 (`type-check`)、テスト (`test`)、プロダクションビルド (`build`) を実行し GitHub Pages へ自動配信 | 入力: ソースコード<br>出力: `dist/` (GitHub Pages) |
 | **年間データ一括ビルド** | `scripts/parse-races.ts` | 手動実行 (ローカル) | 年間更新時、開催日程・マスタ辞書更新時 | オンデマンド | JRA公式ICS/HTML、NARスケジュールHTML、フランス競馬マスタ、イギリス競馬マスタ、アメリカ競馬マスタ、香港競馬マスタ、アイルランド競馬マスタから全レースデータを統合マージして再生成 | 入力: 各マスタ/公式データ<br>出力: `public/data/races.json` |
 | **PWAアイコン一括生成** | `scripts/generate-pwa-icons.ts` | 手動実行 (ローカル) | アプリアイコン刷新時 | オンデマンド | SVGアセットから各解像度PNGアイコンおよびファビコンを一括生成 | 入力: `src/assets/icon.svg`<br>出力: `public/icons/`, `favicon.svg` |
-| **レース結果・勝ち馬自動更新** | `.github/workflows/update-race-results.yml`<br>`scripts/update-race-results.ts` | GitHub Actions (cron)<br>手動 (`workflow_dispatch`) | **毎日昼〜夕**: 15:00, 15:45, 16:15, 17:00<br>**毎日夜**: 20:30, 21:30, 22:30, 23:30, 24:00<br>**毎日朝**: 07:30 | `0 6 * * *`<br>`45 6 * * *`<br>`15 7 * * *`<br>`0 8 * * *`<br>`30 11 * * *`<br>`30 12 * * *`<br>`30 13 * * *`<br>`30 14 * * *`<br>`0 15 * * *`<br>`30 22 * * *` | 直近終了レース（発走後15分以上経過）の公式着順確定リザルトから勝ち馬情報（馬名・騎手・馬番・走破タイム）を自動取得し反映。未確定対象がなければ早期終了。JRA祝日/金杯/代替開催、NAR昼間重賞、香港重賞、および欧州主要重賞の夜間確定取り込み（23:30/24:00 JST）に包括対応 | 入力: 公式リザルト/API<br>出力: `public/data/races.json`, `src/data/race_winners.json` |
+| **レース結果・勝ち馬自動更新** | `.github/workflows/update-race-results.yml`<br>`scripts/update-race-results.ts` | GitHub Actions (cron)<br>手動 (`workflow_dispatch`) | **毎日昼〜夕**: 15:00, 15:45, 16:15, 17:00<br>**毎日夜**: 20:30, 21:30, 22:30, 23:30, 24:00<br>**毎日朝**: 07:30 | `0 6 * * *`<br>`45 6 * * *`<br>`15 7 * * *`<br>`0 8 * * *`<br>`30 11 * * *`<br>`30 12 * * *`<br>`30 13 * * *`<br>`30 14 * * *`<br>`0 15 * * *`<br>`30 22 * * *` | 直近終了レース（発走後15分以上経過）の公式着順確定リザルトから勝ち馬情報（馬名・騎手・馬番・走破タイム）を自動取得し反映。未確定対象がなければ早期終了。JRA祝日/金杯/代替開催、NAR昼間重賞、香港重賞、および欧州主要重賞の夜間確定取り込み（23:30/24:00 JST）に包括対応。データ更新検出時は `deploy.yml` (`workflow_call`) を自動呼び出しし本番へ即時反映 | 入力: 公式リザルト/API<br>出力: `public/data/`, `src/data/race_winners.json` |
 | **過去全重賞結果バックフィル** | `scripts/backfill-race-winners.ts` | 手動実行 (ローカル) | 過去データ一括反映時、マスタ整合性回復時 | オンデマンド | 2026年の終了全重賞（G1, G2, G3, 地方重賞, 海外重賞）の勝ち馬情報（馬名・騎手・馬番・走破タイム）を公式アーカイブおよび確定マスタから包括的にバックフィル | 入力: 公式リザルト/マスタ<br>出力: `public/data/races.json`, `src/data/race_winners.json` |
 | **PRDドキュメントPDF生成** | `scripts/generate-prd-pdf.js` | 手動実行 (ローカル) | PRD改訂時・新機能リリース時 | オンデマンド | Headless Chrome を利用して `docs/PRD.md` から公式仕様書PDFを生成 | 入力: `docs/PRD.md`<br>出力: `docs/Horse_Racing_Calendar_PRD.pdf` |
 
@@ -182,11 +182,11 @@ flowchart TD
         FetchNAR --> Merge["public/data/races.json の更新<br>(発走時刻・代替開催日)"]
     end
 
-    Merge --> CheckDiff{"データに変更はあるか？<br>(git diff --quiet)"}
+    Merge --> CheckDiff{"データに変更はあるか？<br>(git status --porcelain)"}
     CheckDiff -- 変更なし --> NoCommit["コミットなし・デプロイ抑止<br>(不要なCI/CD実行を防ぐ)"]
-    CheckDiff -- 変更あり --> BotCommit["github-actions[bot] がコミット & プッシュ<br>(main ブランチへ)"]
+    CheckDiff -- 変更あり --> BotCommit["github-actions[bot] がコミット & プッシュ<br>(main ブランチへ / has_changes=true)"]
 
-    BotCommit --> DeployWorkflow["deploy.yml が自動トリガー"]
+    BotCommit --> DeployWorkflow["deploy.yml を自動連動呼び出し<br>(workflow_call: Issue #201)"]
     subgraph DeployProcess["自動デプロイパイプライン"]
         DeployWorkflow --> Test["型検査 (type-check) & テスト (test)"]
         Test --> Build["プロダクションビルド (Vite / PWA)"]
@@ -196,14 +196,16 @@ flowchart TD
 ```
 
 ### 設計上の安全機能
-1. **差分検知による不要デプロイの抑止 (`git diff --quiet`)**:
-   取得した発走時刻に更新がない場合、コミット処理は行われません。これにより、無駄なビルド・デプロイ（GitHub Actions 実行時間の消費）を防ぎます。
+1. **差分検知による不要デプロイの抑止 (`git status --porcelain`)**:
+   取得した発走時刻や勝ち馬データに更新がない場合、コミット処理および後続のデプロイジョブはスキップされます。無駄なビルド・デプロイ（GitHub Actions 実行時間の消費）を完全に防ぎます。データ更新が検出された場合のみ、`has_changes: true` を出力して `workflow_call` により `deploy.yml` を自動連動実行し、本番サイトへ即時反映します（Issue #201）。
 2. **早期終了ガード**:
    当週・直近ウィンドウ内の全レースの発走時刻がすでに確定している場合、JRA/NAR公式サイトへのリクエストを行わずに即時終了します（`--force` 指定時を除く）。
 3. **指数バックオフ付きリトライ (`fetchWithRetry`)**:
    公式サイトの一時的なネットワークエラーやサーバー高負荷（500/503等）に対し、自動で待機時間を延ばしながら最大2回までリトライします。
 4. **代替開催（日程変更）の自動ハンドリング**:
    悪天候等でレースの開催日が変更された場合、出馬表の日程に基づき `races.json` の `date` を上書きし、当初日程を `original_date` に、変更フラグを `is_rescheduled: true` として自動保持します。
+5. **年度別データ分割（Sharding）の完全同期**:
+   更新されたデータは結合版 `public/data/races.json` だけでなく、年度別ファイル `public/data/races-YYYY.json` および `public/data/index.json` にもアトミックに同期され、包括的にステージング・コミットされます。
 
 ---
 
