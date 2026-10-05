@@ -46938,8 +46938,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-08",
-    "start_time": "2026-10-08T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-08T07:20:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "笠松",
       "en": "Kasamatsu"
