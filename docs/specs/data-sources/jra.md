@@ -80,3 +80,21 @@
   - 毎週土日 07:30 JST（当日天候・順延監視枠）
 - **名寄せ・照合アルゴリズム**:
   - レース名の回数表記（「第〇回」）を除去し、競馬場名および開催日（`YYYY-MM-DD`）と完全一致照合。
+
+---
+
+## 6. レース結果・勝ち馬自動取得バッチ仕様 (RaceResultFetcher)
+
+- **プロバイダー名**: `JraRaceResultFetcher`
+- **実装ファイル**: `scripts/lib/jra-results.ts`, `scripts/update-race-results.ts`
+- **主要エンドポイント**:
+  - JRA公式データベース（常設）: `https://www.jra.go.jp/JRADB/accessS.html`（POST `cname=pw01sli00/AF`）
+  - フォールバック（開催週展望）: `https://www.jra.go.jp/keiba/thisweek/`
+- **データ取得フロー**:
+  1. `accessS.html`（POST `cname=pw01sli00/AF`）を取得・Shift_JISデコードし、直近1ヶ月以上の全開催日（YYYYMMDD）および開催場別CNAME（`pw01srl...`）を抽出。
+  2. 対象レースの開催日・競馬場に合致する開催場ページを取得し、レース名（「毎日王冠」「京都大賞典」等）からレース成績詳細CNAME（`pw01sde...`）を特定。
+  3. レース成績詳細ページ（`accessS.html?CNAME=pw01sde...`）を取得し、着順テーブルから 1着馬・馬番・騎手・タイムを抽出。
+- **特徴・堅牢性**:
+  - レース当日夕方の速報反映はもちろん、月曜早朝に「今週の注目レース」が次週に切り替わった後（週明け）の定期バッチでも、過去開催の一次ソースから漏れなく自動取得可能。
+  - Shift_JIS エンコーディング（`fatal: true` フォールバック付き）により文字化けを防止。
+

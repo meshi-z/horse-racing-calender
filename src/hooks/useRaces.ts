@@ -295,14 +295,13 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
     }
 
     const handleVisibilityChange = () => {
-      if (
-        document.visibilityState === 'visible' &&
-        typeof navigator !== 'undefined' &&
-        Boolean(navigator.serviceWorker)
-      ) {
-        void navigator.serviceWorker.getRegistration().then((reg) => {
-          void reg?.update();
-        });
+      if (document.visibilityState === 'visible') {
+        if (typeof navigator !== 'undefined' && Boolean(navigator.serviceWorker)) {
+          void navigator.serviceWorker.getRegistration().then((reg) => {
+            void reg?.update();
+          });
+        }
+        void reloadLatestRaces();
       }
     };
 

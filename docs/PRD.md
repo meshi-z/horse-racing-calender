@@ -4,7 +4,7 @@
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
 | **作成日** | 2026年9月12日 (最終更新: 2026年10月5日) |
-| **バージョン** | v1.43.1 (定期バッチ自動デプロイ連動・workflow_call・Sharding包括差分検知) |
+| **バージョン** | v1.44.4 (JRA重賞結果取得パイプライン恒久化・10/4毎日王冠/京都大賞典勝ち馬反映・SWタブ復帰再検証強化) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -728,6 +728,13 @@ docs/
   - バッチワークフロー（`update-race-times.yml`, `update-race-results.yml`）に `pages: write`, `id-token: write` 権限を付与し、`git status --porcelain` による差分検知（`public/data/` および `src/data/`）を導入。
   - データ更新が検出された場合のみ、結合版 `races.json` と Sharding ファイル群（`races-*.json`, `index.json`）を包括コミット＆プッシュし、後続の `deploy` ジョブが `deploy.yml` を自動連動実行（不要なビルド・デプロイを抑制しリソースを保護）。
   - バッチ実行後、人間の手動PRマージなしで数分以内に本番サイトへ確定時刻・勝ち馬が即時反映されるエンドツーエンドのパイプラインを確立。
+- **Step 70-10 (JRA G2・G3重賞勝ち馬自動取得バッチの恒久化および10/4重賞結果反映) (v1.44.4 / Issue #200) [完了]**:
+  - `JraRaceResultFetcher` の全面刷新: JRA公式データベース `https://www.jra.go.jp/JRADB/accessS.html`（POST `cname=pw01sli00/AF`）を一次ソースとする3段階多層フェッチパイプライン（トップ一覧 $\rightarrow$ 開催場別全レース一覧 $\rightarrow$ レース成績詳細）を構築。
+  - レース展望ポータル（`thisweek`）のShift_JIS文字化けおよび月曜早朝の週替わりによる結果取得漏れを根本解消。当日夕方の速報取得はもちろん、週明け月曜以降の定期バッチでも過去開催アーカイブから漏れなく自動取得可能に。
+  - 2026年10月4日開催のJRA重賞（毎日王冠: セイウンハーデス / 京都大賞典: エコロディノス）の公式実績値を `src/data/race_winners.json` に登録し、Shardingファイル群（`races-2026.json`, `races.json`）に完全同期。
+  - PWA / Service Worker のキャッシュ再検証挙動改善: `visibilitychange` イベントでアプリが表示状態（`visible`）に復帰した際、`reloadLatestRaces()` を明示的に呼び出し最新データを即座にリフェッチするよう改修。
+  - 単体テスト `tests/unit/updateRaceResults.test.ts` を拡充（accessS トップ解析・全レース成績抽出・多層フェッチモックテスト）し、全66テストファイル・627テスト全件パス、型検査・ビルド成功。
+
 
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
 - **Step 71: 海外主要レースのさらなる拡張**:

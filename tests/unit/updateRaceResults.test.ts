@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
@@ -7,7 +7,12 @@ import {
   updateRaceResults,
   JraRaceResultFetcher,
 } from '../../scripts/update-race-results';
-import { parseJraRaceResultHtml, buildJraRaceWinner } from '../../scripts/lib/jra-results';
+import {
+  parseJraRaceResultHtml,
+  buildJraRaceWinner,
+  parseAccessSTopHtml,
+  parseMeetingRacesHtml,
+} from '../../scripts/lib/jra-results';
 import { parseNarRaceResultHtml, buildNarRaceWinner } from '../../scripts/lib/nar-results';
 import {
   parsePmuResultsJson,
@@ -155,6 +160,158 @@ describe('update-race-results', () => {
       expect(winnerObj.jockey?.en).toBeUndefined();
       expect(winnerObj.horse_number).toBe(16);
       expect(winnerObj.time).toBe('1:09.2');
+    });
+
+    it('JRAデータベース (accessS.html?CNAME=...) の結果テーブルから1着馬情報をパースできること', () => {
+      const mockDbHtml = `
+        <div class="result_block">
+          <h1 class="race_name">毎日王冠</h1>
+          <table class="result_table">
+            <tr>
+              <th>着順</th><th>枠</th><th>馬番</th><th>馬名</th><th>性齢</th><th>負担重量</th><th>騎手名</th><th>タイム</th>
+            </tr>
+            <tr>
+              <td>1</td><td>1</td><td class="num">1</td><td class="horse">セイウンハーデス</td><td>牡7</td><td>57.0</td><td class="jockey">幸 英明</td><td class="time">1:45.5</td>
+            </tr>
+            <tr>
+              <td>2</td><td>7</td><td class="num">13</td><td class="horse">ホウオウビスケッツ</td><td>牡6</td><td>57.0</td><td class="jockey">岩田 康誠</td><td class="time">1:45.5</td>
+            </tr>
+          </table>
+        </div>
+      `;
+
+      const parsed = parseJraRaceResultHtml(mockDbHtml);
+      expect(parsed).toHaveLength(1);
+      expect(parsed[0].winner.horseName).toBe('セイウンハーデス');
+      expect(parsed[0].winner.horseNumber).toBe(1);
+      expect(parsed[0].winner.jockey).toBe('幸 英明');
+      expect(parsed[0].winner.time).toBe('1:45.5');
+    });
+  });
+
+  describe('parseAccessSTopHtml & parseMeetingRacesHtml (JRA公式DB accessS)', () => {
+    it('accessS.html トップから開催日と開催場のCNAME一覧を抽出できること', () => {
+      const mockTopHtml = `
+        <div class="panel">
+          <h3 class="sub_header">10月4日（日曜）</h3>
+          <div class="content">
+            <a href="#" onclick="return doAction('/JRADB/accessS.html', 'pw01srl10052026040220261004/7D');">4回東京2日</a>
+            <a href="#" onclick="return doAction('/JRADB/accessS.html', 'pw01srl10082026040220261004/5B');">4回京都2日</a>
+          </div>
+        </div>
+      `;
+
+      const meetings = parseAccessSTopHtml(mockTopHtml);
+      expect(meetings).toHaveLength(2);
+      expect(meetings[0].date).toBe('20261004');
+      expect(meetings[0].courseJa).toBe('東京');
+      expect(meetings[0].cname).toBe('pw01srl10052026040220261004/7D');
+
+      expect(meetings[1].date).toBe('20261004');
+      expect(meetings[1].courseJa).toBe('京都');
+      expect(meetings[1].cname).toBe('pw01srl10082026040220261004/5B');
+    });
+
+    it('開催場全レースHTMLから各レースの成績詳細CNAMEを抽出できること', () => {
+      const mockMeetingHtml = `
+        <table>
+          <tr>
+            <th scope="row" class="race_num"><a href="/JRADB/accessS.html?CNAME=pw01sde1005202604021120261004/60"><img alt="11レース" /></a></th>
+            <td class="race_name">
+              <div class="stakes">毎日王冠<span class="grade_icon">GII</span></div>
+            </td>
+          </tr>
+        </table>
+      `;
+
+      const races = parseMeetingRacesHtml(mockMeetingHtml);
+      expect(races).toHaveLength(1);
+      expect(races[0].raceNumber).toBe(11);
+      expect(races[0].raceName).toBe('毎日王冠');
+      expect(races[0].detailCname).toBe('pw01sde1005202604021120261004/60');
+    });
+
+    it('JraRaceResultFetcherがaccessS.htmlの多層リクエストを解決して勝ち馬を取得できること', async () => {
+      const mockTopHtml = `
+        <div class="panel">
+          <h3 class="sub_header">10月4日（日曜）</h3>
+          <div class="content">
+            <a href="#" onclick="return doAction('/JRADB/accessS.html', 'pw01srl10052026040220261004/7D');">4回東京2日</a>
+          </div>
+        </div>
+      `;
+
+      const mockMeetingHtml = `
+        <table>
+          <tr>
+            <th scope="row" class="race_num"><a href="/JRADB/accessS.html?CNAME=pw01sde1005202604021120261004/60"><img alt="11レース" /></a></th>
+            <td class="race_name">
+              <div class="stakes">毎日王冠<span class="grade_icon">GII</span></div>
+            </td>
+          </tr>
+        </table>
+      `;
+
+      const mockDetailHtml = `
+        <div class="result_block">
+          <h1 class="race_name">毎日王冠</h1>
+          <table class="result_table">
+            <tr>
+              <th>着順</th><th>枠</th><th>馬番</th><th>馬名</th><th>性齢</th><th>負担重量</th><th>騎手名</th><th>タイム</th>
+            </tr>
+            <tr>
+              <td>1</td><td>1</td><td class="num">1</td><td class="horse">セイウンハーデス</td><td>牡7</td><td>57.0</td><td class="jockey">幸 英明</td><td class="time">1:45.5</td>
+            </tr>
+          </table>
+        </div>
+      `;
+
+      const originalFetch = globalThis.fetch;
+      globalThis.fetch = vi.fn().mockImplementation(async (url: string, init?: RequestInit) => {
+        const body = typeof init?.body === 'string' ? init.body : '';
+        if (body.includes('cname=pw01sli00%2FAF') || body.includes('cname=pw01sli00/AF')) {
+          return new Response(Buffer.from(mockTopHtml, 'utf-8'));
+        }
+        if (body.includes('pw01srl10052026040220261004')) {
+          return new Response(Buffer.from(mockMeetingHtml, 'utf-8'));
+        }
+        if (url.includes('pw01sde1005202604021120261004')) {
+          return new Response(Buffer.from(mockDetailHtml, 'utf-8'));
+        }
+        return new Response('Not found', { status: 404 });
+      });
+
+      try {
+        const fetcher = new JraRaceResultFetcher();
+        const targets: RaceOutput[] = [
+          {
+            id: '2026-jra-g2-29',
+            organization: 'jra',
+            name: { ja: '毎日王冠', en: 'Mainichi Okan' },
+            grade: 'G2',
+            date: '2026-10-04',
+            start_time: '2026-10-04T06:45:00.000Z',
+            is_time_confirmed: true,
+            course: { ja: '東京', en: 'Tokyo' },
+            distance: 1800,
+            track_type: 'turf',
+            sex_constraint: 'none',
+            age_constraint: '3yo_and_up',
+            handicap: { code: 'set_weight', ja: '別定', en: 'Set Weight' },
+          },
+        ];
+
+        const records = await fetcher.fetchResultRecords(targets);
+        expect(records.size).toBe(1);
+        const record = records.get('2026-jra-g2-29');
+        expect(record).toBeDefined();
+        expect(record?.winner.name.ja).toBe('セイウンハーデス');
+        expect(record?.winner.jockey?.ja).toBe('幸 英明');
+        expect(record?.winner.horse_number).toBe(1);
+        expect(record?.winner.time).toBe('1:45.5');
+      } finally {
+        globalThis.fetch = originalFetch;
+      }
     });
   });
 

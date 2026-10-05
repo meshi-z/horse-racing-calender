@@ -1,0 +1,12 @@
+fix(jra): robust accessS database fetcher and 10/4 graded race winners (#200)
+
+- Revamp JraRaceResultFetcher to fetch results from permanent official database (accessS.html pw01sli00/AF)
+- Implement parseAccessSTopHtml and parseMeetingRacesHtml for multi-stage traversal
+- Fix Shift_JIS decoding with fatal: true fallback to UTF-8
+- Backfill confirmed winners for 2026-10-04 JRA G2 races (Mainichi Okan: Seiun Hades, Kyoto Daishoten: Ecolo Dinos)
+- Enhance useRaces to trigger reloadLatestRaces on visibilitychange when tab becomes visible
+- Add comprehensive unit tests in tests/unit/updateRaceResults.test.ts
+- Update specs (data-sources/jra.md, data-pipeline.md), PRD.md, CHANGELOG.md and regenerate PRD PDF
+- Bump version to v1.44.4
+
+Co-authored-by: Antigravity <antigravity@example.com>

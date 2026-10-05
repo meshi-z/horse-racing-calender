@@ -1,10 +1,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { RaceOutput, RaceWinner } from './parse-races';
-import { fetchWithRetry, raceNameMatches } from './lib/jra-syutsuba';
+import { fetchWithRetry, raceNameMatches, decodeShiftJis } from './lib/jra-syutsuba';
 import { frenchRaceMatches } from './lib/france-syutsuba';
 import { ukRaceMatches } from './lib/uk-syutsuba';
-import { parseJraRaceResultHtml, buildJraRaceWinner } from './lib/jra-results';
+import {
+  parseJraRaceResultHtml,
+  buildJraRaceWinner,
+  parseAccessSTopHtml,
+  parseMeetingRacesHtml,
+} from './lib/jra-results';
 import { parseNarRaceResultHtml, buildNarRaceWinner } from './lib/nar-results';
 import { NAR_BABA_CODES, cleanNarRaceName } from './lib/nar-syutsuba';
 import {
@@ -173,24 +178,15 @@ export class JraRaceResultFetcher implements RaceResultFetcher {
     const results = new Map<string, RaceResultRecord>();
     if (targetRaces.length === 0) return results;
 
+    const remainingTargets: RaceOutput[] = [];
+
+    // 1. Check fixtures first (for unit testing)
     for (const target of targetRaces) {
       let html: string | null = null;
-
       if (this.fixtures && this.fixtures[target.id]) {
         html = this.fixtures[target.id];
       } else if (this.fixtures && this.fixtures[target.date]) {
         html = this.fixtures[target.date];
-      } else {
-        // JRA公式サイトの結果URL等から取得を試行
-        try {
-          const url = `https://www.jra.go.jp/keiba/thisweek/`;
-          const res = await fetchWithRetry(url);
-          if (res.ok) {
-            html = await res.text();
-          }
-        } catch (e) {
-          console.warn(`[JRA Results] Failed to fetch live results for ${target.name.ja}: ${(e as Error).message}`);
-        }
       }
 
       if (html) {
@@ -202,6 +198,113 @@ export class JraRaceResultFetcher implements RaceResultFetcher {
             break;
           }
         }
+      } else {
+        remainingTargets.push(target);
+      }
+    }
+
+    if (remainingTargets.length === 0) return results;
+
+    // 2. JRA公式データベース accessS.html (pw01sli00/AF) から直近の開催・レース結果を取得
+    const baseUrl = 'https://www.jra.go.jp';
+    const accessUrl = `${baseUrl}/JRADB/accessS.html`;
+
+    try {
+      const topRes = await fetchWithRetry(accessUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        },
+        body: 'cname=pw01sli00/AF',
+      });
+
+      if (topRes.ok) {
+        const topBuf = await topRes.arrayBuffer();
+        const topHtml = decodeShiftJis(topBuf);
+        const meetings = parseAccessSTopHtml(topHtml);
+        const meetingHtmlCache = new Map<string, string>();
+
+        for (const target of remainingTargets) {
+          if (results.has(target.id)) continue;
+
+          const targetDateFormatted = target.date.replace(/-/g, '');
+          const targetCourse = target.course?.ja || '';
+
+          const matchedMeeting = meetings.find((m) => {
+            const dateMatch = m.date === targetDateFormatted || m.date === target.date;
+            const courseMatch = !targetCourse || m.courseJa.includes(targetCourse) || targetCourse.includes(m.courseJa);
+            return dateMatch && courseMatch;
+          }) || meetings.find((m) => m.date === targetDateFormatted);
+
+          if (!matchedMeeting) continue;
+
+          let meetingHtml = meetingHtmlCache.get(matchedMeeting.cname);
+          if (!meetingHtml) {
+            const meetingRes = await fetchWithRetry(accessUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+              },
+              body: `cname=${encodeURIComponent(matchedMeeting.cname)}`,
+            });
+            if (meetingRes.ok) {
+              const mBuf = await meetingRes.arrayBuffer();
+              meetingHtml = decodeShiftJis(mBuf);
+              meetingHtmlCache.set(matchedMeeting.cname, meetingHtml);
+            }
+          }
+
+          if (!meetingHtml) continue;
+
+          const meetingRaces = parseMeetingRacesHtml(meetingHtml);
+          const matchedRace = meetingRaces.find((r) => raceNameMatches(target.name.ja, r.raceName));
+          if (!matchedRace) continue;
+
+          const detailUrl = `${accessUrl}?CNAME=${encodeURIComponent(matchedRace.detailCname)}`;
+          const detailRes = await fetchWithRetry(detailUrl, {
+            headers: {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            },
+          });
+
+          if (detailRes.ok) {
+            const dBuf = await detailRes.arrayBuffer();
+            const detailHtml = decodeShiftJis(dBuf);
+            const parsedList = parseJraRaceResultHtml(detailHtml);
+            if (parsedList.length > 0) {
+              const winner = buildJraRaceWinner(parsedList[0].winner);
+              results.set(target.id, { winner });
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.warn(`[JRA Results] Failed to fetch accessS.html: ${(e as Error).message}`);
+    }
+
+    // 3. フォールバック: thisweek ページ
+    for (const target of remainingTargets) {
+      if (results.has(target.id)) continue;
+
+      try {
+        const url = `${baseUrl}/keiba/thisweek/`;
+        const res = await fetchWithRetry(url);
+        if (res.ok) {
+          const buf = await res.arrayBuffer();
+          const html = decodeShiftJis(buf);
+          const parsedList = parseJraRaceResultHtml(html);
+          for (const item of parsedList) {
+            if (raceNameMatches(target.name.ja, item.raceName) || !item.raceName) {
+              const winner = buildJraRaceWinner(item.winner);
+              results.set(target.id, { winner });
+              break;
+            }
+          }
+        }
+      } catch (e) {
+        console.warn(`[JRA Results] Failed fallback fetch for ${target.name.ja}: ${(e as Error).message}`);
       }
     }
 
