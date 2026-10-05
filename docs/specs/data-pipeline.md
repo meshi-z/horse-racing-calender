@@ -22,7 +22,8 @@ flowchart TD
         Providers["RaceTimeFetcher プロバイダー群<br>(JRA / NAR / France / UK / US / HK)"] --> UpdateScript
         OutputRaces --> UpdateScript
         UpdateScript --> Guard["早期終了ガード & 指数バックオフ"]
-        Guard --> Commit["差分コミット & 自動デプロイ"]
+        Guard --> Commit["差分コミット (main)"]
+        Commit --> Deploy["本番自動デプロイ<br>(deploy.yml / workflow_call)"]
     end
 ```
 

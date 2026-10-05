@@ -8,6 +8,7 @@ on:
     branches:
       - main
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
@@ -25,6 +26,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_call' && 'main' || '' }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -42,19 +45,20 @@ jobs:
         run: npm run test
 
       - name: Build production bundle
-        env:
-          BASE_URL: /${{ github.event.repository.name }}/
-        run: npm run build
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          export BASE_URL="/${REPO_NAME:-horse-racing-calender}/"
+          npm run build
 
       - name: Upload Pages artifact
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_call'
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist/
 
   deploy:
     name: Deploy to GitHub Pages
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_call'
     needs: build
     runs-on: ubuntu-latest
     environment:

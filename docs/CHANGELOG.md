@@ -6,6 +6,24 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 65: 定期バッチ（勝ち馬・発走時刻更新）実行時の本番GitHub Pages自動デプロイ連動 (v1.43.1 / Issue #201) [完了]
+- **再利用可能ワークフロー（`workflow_call`）による本番自動デプロイ連動 (`.github/workflows/deploy.yml`) [完了]**
+  - GITHUB_TOKEN の連鎖防止セキュリティ制約により、定期バッチ（`update-race-times.yml`, `update-race-results.yml`）のコミット・プッシュ時に本番デプロイ（`deploy.yml`）が自動起動しなかった問題を解消。
+  - `deploy.yml` に `workflow_call:` を追加し、他ワークフローから直接呼び出せる構成へ拡張。
+  - `actions/checkout@v4` において、`workflow_call` 実行時は確実に最新の `main` HEAD を取得するよう `ref` 指定を整備。
+  - `BASE_URL` 環境変数の抽出を `${GITHUB_REPOSITORY#*/}` から動的取得する形に改善し、`schedule` や `workflow_call` 契機でも常に正しいリポジトリ名 `/horse-racing-calender/` が渡るように堅牢化。
+- **定期バッチワークフローの改修 (`.github/workflows/update-race-times.yml`, `.github/workflows/update-race-results.yml`) [完了]**
+  - ワークフローレベルのパーミッションに `pages: write`, `id-token: write` を付与。
+  - 差分検知を `git status --porcelain public/data/ src/data/` に刷新し、結合版 `races.json` だけでなく Sharding ファイル（`races-*.json`, `index.json`）および結果マスタファイルを包括的にステージング・コミット。
+  - データ変更検出時のみ `has_changes: true` を出力し、後続の `deploy` ジョブが `uses: ./.github/workflows/deploy.yml` を自動連動実行（変更がない場合はデプロイをスキップしてリソース消費を防止）。
+  - バッチ実行後、人間の手動介入なしで数分以内に本番サイト（GitHub Pages）へ確定時刻・勝ち馬が即時反映されるエンドツーエンドのパイプラインを確立。
+- **ドキュメント更新 [完了]**
+  - `docs/batch-schedules.md`: バッチスケジュール一覧および自動デプロイ処理フロー図（mermaid）を最新化。
+  - `docs/specs/data-pipeline.md`: パイプライン全体アーキテクチャ図の自動デプロイ連動を更新。
+  - `docs/PRD.md` および `docs/CHANGELOG.md` を更新。
+
+---
+
 ### Step 64: 2027年番組追加および新国拡張を見据えた年度別データ分割（Sharding）アーキテクチャの導入 (v1.43.0 / Issue #181) [完了]
 - **年度別データ分割（Sharding）パイプラインの実装 (`scripts/lib/race-sharding.ts`, `scripts/parse-races.ts`, `scripts/update-race-times.ts`, `scripts/update-race-results.ts`) [完了]**
   - レースデータを西暦年度ごとに自動分割し、年度別JSON（`public/data/races-YYYY.json`）、インデックスメタデータ（`public/data/index.json`）、および結合版（`public/data/races.json`）をアトミックに同期書き出しする `syncShardedRaceFiles` を配備。

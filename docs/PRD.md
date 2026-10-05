@@ -3,8 +3,8 @@
 | 項目 | 内容 |
 | :--- | :--- |
 | **プロダクト名** | horse-racing-calendar Web アプリケーション |
-| **作成日** | 2026年9月12日 (最終更新: 2026年10月4日) |
-| **バージョン** | v1.43.0 (年度別データ分割Shardingアーキテクチャ・オンデマンド読み込み・2027年以降および新国拡張対応) |
+| **作成日** | 2026年9月12日 (最終更新: 2026年10月5日) |
+| **バージョン** | v1.43.1 (定期バッチ自動デプロイ連動・workflow_call・Sharding包括差分検知) |
 | **配信形式** | SPA / PWA (GitHub Pages ホスティング) |
 | **公式テーマカラー** | `#047B5F` (Turf Green / エメラルドグリーン) |
 
@@ -721,6 +721,13 @@ docs/
   - 空値原則（Null Value Principle）の遵守: 2026年11月28日施行予定の `2026-au-g3-121`（Sandown Stakes）および10月6日以降の未来レースは勝者を推測補完せず未設定（`undefined`）として厳格に保持。
   - 公式リンク方針（Issue #190）の遵守: オーストラリア競馬には推測URLを付与せず `official_url: undefined` を厳格保持。
   - 単体・統合・データ整合性テスト `tests/unit/australiaResults.test.ts` を拡充し、全66テストファイル・623テスト全件パス、型検査・プロダクションビルド成功。
+- **Step 70-9 (定期バッチからの本番GitHub Pages自動デプロイ連動・workflow_call導入) (Issue #201) [完了]**:
+  - GITHUB_TOKEN の連鎖防止セキュリティ制約により、定期バッチ（`update-race-times.yml`, `update-race-results.yml`）による push 時に本番デプロイ（`deploy.yml`）が起動せず本番サイトが古いまま残る問題を解消。
+  - `deploy.yml` を再利用可能ワークフロー（`workflow_call`）化し、定期バッチから直接自動呼び出しできる構成を確立。
+  - `deploy.yml` 内のチェックアウト処理（`workflow_call` 時は確実に最新の `main` HEAD を取得）および `BASE_URL` 環境変数の抽出（`${GITHUB_REPOSITORY#*/}`）を堅牢化。
+  - バッチワークフロー（`update-race-times.yml`, `update-race-results.yml`）に `pages: write`, `id-token: write` 権限を付与し、`git status --porcelain` による差分検知（`public/data/` および `src/data/`）を導入。
+  - データ更新が検出された場合のみ、結合版 `races.json` と Sharding ファイル群（`races-*.json`, `index.json`）を包括コミット＆プッシュし、後続の `deploy` ジョブが `deploy.yml` を自動連動実行（不要なビルド・デプロイを抑制しリソースを保護）。
+  - バッチ実行後、人間の手動PRマージなしで数分以内に本番サイトへ確定時刻・勝ち馬が即時反映されるエンドツーエンドのパイプラインを確立。
 
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
 - **Step 71: 海外主要レースのさらなる拡張**:

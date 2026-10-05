@@ -32,6 +32,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: 'update-race-results'
@@ -42,6 +44,8 @@ jobs:
     name: Fetch & Update Race Results
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    outputs:
+      has_changes: ${{ steps.commit-push.outputs.has_changes }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -74,13 +78,26 @@ jobs:
           fi
 
       - name: Commit and push changes if any
+        id: commit-push
         run: |
-          if git diff --quiet public/data/races.json src/data/race_winners.json; then
+          if [ -z "$(git status --porcelain public/data/ src/data/)" ]; then
             echo "No race results changes detected. Nothing to commit."
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
           else
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add public/data/races.json src/data/race_winners.json
+            git add public/data/ src/data/
             git commit -m "chore(data): update confirmed race winners from official results" -m "Co-authored-by: Antigravity <antigravity@example.com>"
             git push origin main
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
           fi
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: update-results
+    if: needs.update-results.outputs.has_changes == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml
