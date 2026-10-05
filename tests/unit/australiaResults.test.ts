@@ -321,5 +321,49 @@ describe('Australia Results utility', () => {
       expect(cox).toBeDefined();
       expect(cox?.winner).toBeUndefined();
     });
+
+    it('Issue #203: オーストラリアG2・G3の開催済み重賞レースに確定勝者が正しくバックフィルされ、未開催レースはundefinedを維持すること', () => {
+      const racesPath = path.resolve(process.cwd(), 'public/data/races.json');
+      const races: RaceOutput[] = JSON.parse(fs.readFileSync(racesPath, 'utf8'));
+
+      // 1. Perth Cup (G2) -> Apulia
+      const perthCup = races.find((r) => r.id === '2026-au-g2-01');
+      expect(perthCup).toBeDefined();
+      expect(perthCup?.winner?.name.en).toBe('Apulia');
+
+      // 2. La Trice Classic (G3) -> Luvnwar
+      const laTrice = races.find((r) => r.id === '2026-au-g3-01');
+      expect(laTrice).toBeDefined();
+      expect(laTrice?.winner?.name.en).toBe('Luvnwar');
+
+      // 3. Gimcrack Stakes (G3, 2026-10-03) -> Shraddha
+      const gimcrack = races.find((r) => r.id === '2026-au-g3-123');
+      expect(gimcrack).toBeDefined();
+      expect(gimcrack?.winner?.name.en).toBe('Shraddha');
+
+      // 4. Rose of Kingston Stakes (G2, 2026-10-03) -> Stylish
+      const roseOfKingston = races.find((r) => r.id === '2026-au-g2-70');
+      expect(roseOfKingston).toBeDefined();
+      expect(roseOfKingston?.winner?.name.en).toBe('Stylish');
+
+      // 5. Golden Pendant (G2, 2026-09-26) -> Lazzura
+      const goldenPendant = races.find((r) => r.id === '2026-au-g2-67');
+      expect(goldenPendant).toBeDefined();
+      expect(goldenPendant?.winner?.name.en).toBe('Lazzura');
+
+      // 6. 空値原則: 未開催の Sandown Stakes (2026-11-28予定) は winner: undefined
+      const sandownStakes = races.find((r) => r.id === '2026-au-g3-121');
+      expect(sandownStakes).toBeDefined();
+      expect(sandownStakes?.winner).toBeUndefined();
+
+      // 7. 空値原則: 10月6日以降のG2/G3レースはすべて winner: undefined
+      const futureAuRaces = races.filter(
+        (r) => r.organization === 'racing_australia' && r.date > '2026-10-05'
+      );
+      expect(futureAuRaces.length).toBeGreaterThan(0);
+      for (const fr of futureAuRaces) {
+        expect(fr.winner).toBeUndefined();
+      }
+    });
   });
 });
