@@ -182,3 +182,94 @@ export function buildJraRaceWinner(parsed: ParsedRaceResult['winner']): RaceWinn
     time: parsed.time,
   };
 }
+
+export interface JraMeetingInfo {
+  date: string; // YYYYMMDD または YYYY-MM-DD
+  courseCode?: string;
+  courseJa: string;
+  cname: string;
+}
+
+/**
+ * JRA公式データベース accessS.html (pw01sli00/AF) から直近の開催日・開催場一覧を抽出
+ */
+export function parseAccessSTopHtml(html: string): JraMeetingInfo[] {
+  const meetings: JraMeetingInfo[] = [];
+  const seenCnames = new Set<string>();
+  const regex = /doAction\(\s*['"]\/JRADB\/accessS\.html['"]\s*,\s*['"](pw01srl[a-zA-Z0-9\/]+)['"]\s*\)[^>]*>([\s\S]*?)<\/a>/gi;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(html)) !== null) {
+    const cname = match[1];
+    if (seenCnames.has(cname)) continue;
+    seenCnames.add(cname);
+
+    const linkText = match[2].replace(/<[^>]+>/g, '').trim();
+    let date = '';
+    let courseCode = '';
+
+    const cnameMatch = cname.match(/pw01srl10(\d{2})\d+(\d{8})\//);
+    if (cnameMatch) {
+      courseCode = cnameMatch[1];
+      date = cnameMatch[2]; // YYYYMMDD
+    }
+
+    let courseJa = '';
+    const courseKeywords = ['東京', '中山', '京都', '阪神', '新潟', '福島', '中京', '小倉', '札幌', '函館'];
+    for (const kw of courseKeywords) {
+      if (linkText.includes(kw)) {
+        courseJa = kw;
+        break;
+      }
+    }
+
+    meetings.push({
+      date,
+      courseCode,
+      courseJa: courseJa || linkText,
+      cname,
+    });
+  }
+
+  return meetings;
+}
+
+export interface JraMeetingRaceLink {
+  raceNumber?: number;
+  raceName: string;
+  detailCname: string;
+}
+
+/**
+ * 開催場別全レース一覧HTMLから各レースの成績詳細CNAMEを抽出
+ */
+export function parseMeetingRacesHtml(html: string): JraMeetingRaceLink[] {
+  const races: JraMeetingRaceLink[] = [];
+  const rowRegex = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
+  let rowMatch: RegExpExecArray | null;
+
+  while ((rowMatch = rowRegex.exec(html)) !== null) {
+    const row = rowMatch[1];
+    const cnameMatch = row.match(/CNAME=([^"'&>\s]+)/i) || row.match(/cname=([^"'&>\s]+)/i);
+    const stakesMatch =
+      row.match(/<div class=["']stakes["'][^>]*>([\s\S]*?)<\/div>/i) ||
+      row.match(/<td class=["']race_name["'][^>]*>([\s\S]*?)<\/td>/i);
+    const numMatch = row.match(/alt=["'](\d+)レース["']/i);
+
+    if (cnameMatch && stakesMatch) {
+      const cleanedTag = stakesMatch[1]
+        .replace(/<span[^>]*class=["'][^"']*grade[^"']*["'][^>]*>[\s\S]*?<\/span>/gi, '')
+        .replace(/<[^>]+>/g, '')
+        .trim();
+      const raceName = cleanRaceName(cleanedTag);
+      const raceNumber = numMatch ? parseInt(numMatch[1], 10) : undefined;
+      races.push({
+        raceNumber,
+        raceName,
+        detailCname: cnameMatch[1],
+      });
+    }
+  }
+
+  return races;
+}

@@ -6,6 +6,26 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 66: JRA G2・G3重賞勝ち馬自動取得バッチの恒久化および10/4重賞結果反映 (v1.44.4 / Issue #200) [完了]
+- **`JraRaceResultFetcher` の多層データベースフェッチ刷新 (`scripts/lib/jra-results.ts`, `scripts/update-race-results.ts`) [完了]**
+  - JRA公式データベース `https://www.jra.go.jp/JRADB/accessS.html`（POST `cname=pw01sli00/AF`）を一次ソースとして採用。
+  - 直近1ヶ月以上の全開催日・競馬場一覧（`pw01srl...`）$\rightarrow$ 開催場別全レース一覧 $\rightarrow$ レース成績詳細（`pw01sde...`）の3段階を辿る構造を構築。
+  - レース展望ポータル（`thisweek`）のShift_JIS文字化けおよび月曜早朝の週替わりによる情報消失問題を解消。当日夕方の速報取得および週明け月曜以降の過去アーカイブ取得の両方で漏れなく勝ち馬を自動更新できる恒久的なパイプラインを確立。
+  - `decodeShiftJis` に `{ fatal: true }` を導入し、UTF-8文字列（モック環境等）への自動フォールバックを安全化。
+- **2026年10月4日開催JRA重賞（毎日王冠・京都大賞典）の勝ち馬データ反映 [完了]**
+  - 公式実績値に基づき `src/data/race_winners.json` に反映:
+    - 毎日王冠 (`2026-jra-g2-29`): セイウンハーデス（幸 英明, 1番, 1:45.5）
+    - 京都大賞典 (`2026-jra-g2-28`): エコロディノス（田口 貫太, 12番, 2:24.0）
+  - `syncShardedRaceFiles` により `public/data/races.json`, `public/data/races-2026.json`, `public/data/index.json` に完全同期。
+- **PWA / Service Worker のタブ復帰時キャッシュ再検証強化 (`src/hooks/useRaces.ts`) [完了]**
+  - `handleVisibilityChange` において、ドキュメントが表示状態（`visible`）に切り替わった際に `reloadLatestRaces()` を明示的に呼び出すよう改善。
+  - ユーザーが別タブや別アプリから本サービスに戻った際、StaleWhileRevalidate による最新年度データの再取得とStore更新が自動実行されるように強化。
+- **テスト・ドキュメント整備 [完了]**
+  - `tests/unit/updateRaceResults.test.ts` に accessS トップ解析、全レース成績抽出、多層フェッチモックテストを追加。全66テストファイル・627テスト全件パス。
+  - `docs/specs/data-sources/jra.md`, `docs/specs/data-pipeline.md`, `docs/PRD.md`, `docs/CHANGELOG.md` を更新。
+
+---
+
 ### Step 65: 定期バッチ（勝ち馬・発走時刻更新）実行時の本番GitHub Pages自動デプロイ連動 (v1.43.1 / Issue #201) [完了]
 - **再利用可能ワークフロー（`workflow_call`）による本番自動デプロイ連動 (`.github/workflows/deploy.yml`) [完了]**
   - GITHUB_TOKEN の連鎖防止セキュリティ制約により、定期バッチ（`update-race-times.yml`, `update-race-results.yml`）のコミット・プッシュ時に本番デプロイ（`deploy.yml`）が自動起動しなかった問題を解消。

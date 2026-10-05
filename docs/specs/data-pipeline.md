@@ -194,7 +194,7 @@ export interface RaceTimeFetcher {
   }
   ```
 - **登録プロバイダー**:
-  - `JraRaceResultFetcher`: JRA公式レース結果HTML・特別レース成績から1着馬・馬番・騎手・タイムを抽出。ヘボン式英名自動補完。
+  - `JraRaceResultFetcher`: JRA公式データベース（`accessS.html` pw01sli00/AF）および特別レース成績から1着馬・馬番・騎手・タイムを抽出（当日夕方の速報および週明け月曜以降の過去アーカイブ取得に対応）。空値原則を遵守。
   - `NarRaceResultFetcher`: NAR公式競走成績HTML（RaceMarkTable）から1着馬・馬番・騎手・タイムを抽出。
   - `FranceRaceResultFetcher`: PMU公式プログラム/着順確定API（`ARRIVEE`）から1着馬・馬番・ドライバー・タイムを抽出。`ordreArrivee` の同着二重配列アンラップ対応および `/participants` エンドポイントによる出走馬情報動的フォールバック補完。
   - `UkRaceResultFetcher` / `IeRaceResultFetcher`: Sporting Life API / HTML結果ページ（`__NEXT_DATA__`）から1着馬・馬番・騎手・タイムを抽出。`rides` 未取得時は `top_horses` からの勝者自動フォールバック。

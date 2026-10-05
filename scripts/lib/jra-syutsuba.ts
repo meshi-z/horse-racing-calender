@@ -59,7 +59,7 @@ export async function fetchWithRetry(
  */
 export function decodeShiftJis(buf: ArrayBuffer | Buffer): string {
   try {
-    return new TextDecoder('shift-jis').decode(buf);
+    return new TextDecoder('shift-jis', { fatal: true }).decode(buf);
   } catch {
     return Buffer.isBuffer(buf) ? buf.toString('utf-8') : Buffer.from(new Uint8Array(buf)).toString('utf-8');
   }
