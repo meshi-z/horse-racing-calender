@@ -29,6 +29,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Apulia",
+        "en": "Apulia"
+      }
     }
   },
   {
@@ -61,6 +67,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Luvnwar",
+        "en": "Luvnwar"
+      }
     }
   },
   {
@@ -173,6 +185,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Ninja",
+        "en": "Ninja"
+      }
     }
   },
   {
@@ -649,6 +667,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Disneck",
+        "en": "Disneck"
+      }
     }
   },
   {
@@ -1249,6 +1273,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Green Spaces",
+        "en": "Green Spaces"
+      }
     }
   },
   {
@@ -1315,6 +1345,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Rubi's Choice",
+        "en": "Rubi's Choice"
+      }
     }
   },
   {
@@ -1347,6 +1383,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Space Rider",
+        "en": "Space Rider"
+      }
     }
   },
   {
@@ -2058,6 +2100,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Hidrix",
+        "en": "Hidrix"
+      }
     }
   },
   {
@@ -2090,6 +2138,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Willaidow",
+        "en": "Willaidow"
+      }
     }
   },
   {
@@ -2122,6 +2176,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Chilly Girl",
+        "en": "Chilly Girl"
+      }
     }
   },
   {
@@ -2154,6 +2214,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Newlook",
+        "en": "Newlook"
+      }
     }
   },
   {
@@ -2186,6 +2252,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Wrote To Arataki",
+        "en": "Wrote To Arataki"
+      }
     }
   },
   {
@@ -3052,6 +3124,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Oak Hill",
+        "en": "Oak Hill"
+      }
     }
   },
   {
@@ -3084,6 +3162,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Observer",
+        "en": "Observer"
+      }
     }
   },
   {
@@ -3116,6 +3200,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Streisand",
+        "en": "Streisand"
+      }
     }
   },
   {
@@ -3148,6 +3238,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Tempted",
+        "en": "Tempted"
+      }
     }
   },
   {
@@ -3180,6 +3276,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Wrote To Arataki",
+        "en": "Wrote To Arataki"
+      }
     }
   },
   {
@@ -3212,6 +3314,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "MRC Foundation Cup",
+        "en": "MRC Foundation Cup"
+      }
     }
   },
   {
@@ -3244,6 +3352,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Tom Kitten",
+        "en": "Tom Kitten"
+      }
     }
   },
   {
@@ -3276,6 +3390,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Closer To Free",
+        "en": "Closer To Free"
+      }
     }
   },
   {
@@ -3374,6 +3494,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Sanniya",
+        "en": "Sanniya"
+      }
     }
   },
   {
@@ -3406,6 +3532,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Blonde Star",
+        "en": "Blonde Star"
+      }
     }
   },
   {
@@ -3771,6 +3903,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Joliestar",
+        "en": "Joliestar"
+      }
     }
   },
   {
@@ -3803,6 +3941,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Autumn Glow",
+        "en": "Autumn Glow"
+      }
     }
   },
   {
@@ -3835,6 +3979,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Savvy Hallie",
+        "en": "Savvy Hallie"
+      }
     }
   },
   {
@@ -3867,6 +4017,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Weeping Woman",
+        "en": "Weeping Woman"
+      }
     }
   },
   {
@@ -3899,6 +4055,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Sixties",
+        "en": "Sixties"
+      }
     }
   },
   {
@@ -3931,6 +4093,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Paradise City",
+        "en": "Paradise City"
+      }
     }
   },
   {
@@ -4535,6 +4703,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Cinsault",
+        "en": "Cinsault"
+      }
     }
   },
   {
@@ -4567,6 +4741,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Stretan Ruler",
+        "en": "Stretan Ruler"
+      }
     }
   },
   {
@@ -4599,6 +4779,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Blonde Star",
+        "en": "Blonde Star"
+      }
     }
   },
   {
@@ -4631,6 +4817,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Observer",
+        "en": "Observer"
+      }
     }
   },
   {
@@ -4663,6 +4855,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Sheza Alibi",
+        "en": "Sheza Alibi"
+      }
     }
   },
   {
@@ -4695,6 +4893,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Piggyback",
+        "en": "Piggyback"
+      },
+      "jockey": {
+        "ja": "Dylan Gibbons",
+        "en": "Dylan Gibbons"
+      }
     }
   },
   {
@@ -4727,6 +4935,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Pallaton",
+        "en": "Pallaton"
+      }
     }
   },
   {
@@ -4759,6 +4973,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Bossy Benita",
+        "en": "Bossy Benita"
+      }
     }
   },
   {
@@ -4833,6 +5053,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Eventually",
+        "en": "Eventually"
+      }
     }
   },
   {
@@ -5277,6 +5503,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Sanniya",
+        "en": "Sanniya"
+      }
     }
   },
   {
@@ -5309,6 +5541,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Asva",
+        "en": "Asva"
+      }
     }
   },
   {
@@ -5562,6 +5800,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Verona Rose",
+        "en": "Verona Rose"
+      }
     }
   },
   {
@@ -5594,6 +5838,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Spicy Miss",
+        "en": "Spicy Miss"
+      }
     }
   },
   {
@@ -5626,6 +5876,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Camione D'italia",
+        "en": "Camione D'italia"
+      }
     }
   },
   {
@@ -5658,6 +5914,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Birdman",
+        "en": "Birdman"
+      }
     }
   },
   {
@@ -5690,6 +5952,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "King Of Roseau",
+        "en": "King Of Roseau"
+      }
     }
   },
   {
@@ -6526,6 +6794,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Tuileries",
+        "en": "Tuileries"
+      }
     }
   },
   {
@@ -6740,6 +7014,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Chayan",
+        "en": "Chayan"
+      }
     }
   },
   {
@@ -6772,6 +7052,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Generosity",
+        "en": "Generosity"
+      }
     }
   },
   {
@@ -6804,6 +7090,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Paradoxium",
+        "en": "Paradoxium"
+      }
     }
   },
   {
@@ -6836,6 +7128,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Sass Appeal",
+        "en": "Sass Appeal"
+      }
     }
   },
   {
@@ -6868,6 +7166,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Grinzinger Heart",
+        "en": "Grinzinger Heart"
+      }
     }
   },
   {
@@ -6900,6 +7204,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Pinito",
+        "en": "Pinito"
+      }
     }
   },
   {
@@ -6932,6 +7242,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Gangsta Granny",
+        "en": "Gangsta Granny"
+      }
     }
   },
   {
@@ -6964,6 +7280,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Ahha Ahha",
+        "en": "Ahha Ahha"
+      }
     }
   },
   {
@@ -6996,6 +7318,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Scheelite",
+        "en": "Scheelite"
+      }
     }
   },
   {
@@ -7028,6 +7356,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Medicinal",
+        "en": "Medicinal"
+      }
     }
   },
   {
@@ -7424,6 +7758,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Music Time",
+        "en": "Music Time"
+      }
     }
   },
   {
@@ -7634,6 +7974,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "American Wolf",
+        "en": "American Wolf"
+      }
     }
   },
   {
@@ -8210,6 +8556,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Feminino",
+        "en": "Feminino"
+      }
     }
   },
   {
@@ -8347,6 +8699,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Cristal Clear",
+        "en": "Cristal Clear"
+      }
     }
   },
   {
@@ -8379,6 +8737,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Sixties",
+        "en": "Sixties"
+      }
     }
   },
   {
@@ -8411,6 +8775,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Birdman",
+        "en": "Birdman"
+      }
     }
   },
   {
@@ -8443,6 +8813,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Vauban",
+        "en": "Vauban"
+      }
     }
   },
   {
@@ -8475,6 +8851,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Flying For Fun",
+        "en": "Flying For Fun"
+      }
     }
   },
   {
@@ -8507,6 +8889,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Warwoven",
+        "en": "Warwoven"
+      }
     }
   },
   {
@@ -8539,6 +8927,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Pembrey",
+        "en": "Pembrey"
+      }
     }
   },
   {
@@ -9213,6 +9607,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Roulette King",
+        "en": "Roulette King"
+      }
     }
   },
   {
@@ -9245,6 +9645,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Treasurethe Moment",
+        "en": "Treasurethe Moment"
+      }
     }
   },
   {
@@ -9277,6 +9683,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Mr Monaco",
+        "en": "Mr Monaco"
+      }
     }
   },
   {
@@ -9309,6 +9721,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Machine Gun Gracie",
+        "en": "Machine Gun Gracie"
+      }
     }
   },
   {
@@ -9341,6 +9759,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Catch The Glory",
+        "en": "Catch The Glory"
+      }
     }
   },
   {
@@ -9373,6 +9797,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Getta Good Feeling",
+        "en": "Getta Good Feeling"
+      }
     }
   },
   {
@@ -9405,6 +9835,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Point Barrow",
+        "en": "Point Barrow"
+      }
     }
   },
   {
@@ -10242,6 +10678,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Wootton Verni",
+        "en": "Wootton Verni"
+      }
     }
   },
   {
@@ -10274,6 +10716,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Idle Flyer",
+        "en": "Idle Flyer"
+      }
     }
   },
   {
@@ -10306,6 +10754,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Storm Leopard",
+        "en": "Storm Leopard"
+      }
     }
   },
   {
@@ -10338,6 +10792,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Roselyn's Son",
+        "en": "Roselyn's Son"
+      }
     }
   },
   {
@@ -10370,6 +10830,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Southend",
+        "en": "Southend"
+      }
     }
   },
   {
@@ -10402,6 +10868,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Roselyn's Son",
+        "en": "Roselyn's Son"
+      }
     }
   },
   {
@@ -10434,6 +10906,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Flying Houdini",
+        "en": "Flying Houdini"
+      }
     }
   },
   {
@@ -11231,6 +11709,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Wonderfully Made",
+        "en": "Wonderfully Made"
+      }
     }
   },
   {
@@ -11528,6 +12012,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Newlook",
+        "en": "Newlook"
+      },
+      "jockey": {
+        "ja": "Rachel King",
+        "en": "Rachel King"
+      }
     }
   },
   {
@@ -11560,6 +12054,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Plaintiff",
+        "en": "Plaintiff"
+      }
     }
   },
   {
@@ -11592,6 +12092,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Profoundly",
+        "en": "Profoundly"
+      }
     }
   },
   {
@@ -11624,6 +12130,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Blue Door",
+        "en": "Blue Door"
+      }
     }
   },
   {
@@ -11656,6 +12168,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Autumn Break",
+        "en": "Autumn Break"
+      }
     }
   },
   {
@@ -11688,6 +12206,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Ambassadorial",
+        "en": "Ambassadorial"
+      }
     }
   },
   {
@@ -11720,6 +12244,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Hughes",
+        "en": "Hughes"
+      }
     }
   },
   {
@@ -11906,6 +12436,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Rope Them In",
+        "en": "Rope Them In"
+      }
     }
   },
   {
@@ -11938,6 +12474,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Aurum Belle",
+        "en": "Aurum Belle"
+      }
     }
   },
   {
@@ -13518,6 +14060,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "In Flight",
+        "en": "In Flight"
+      }
     }
   },
   {
@@ -13550,6 +14098,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Cherry Bomshell",
+        "en": "Cherry Bomshell"
+      }
     }
   },
   {
@@ -13582,6 +14136,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Tempted",
+        "en": "Tempted"
+      }
     }
   },
   {
@@ -13656,6 +14216,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Mating Call",
+        "en": "Mating Call"
+      }
     }
   },
   {
@@ -13688,6 +14254,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Super Smink",
+        "en": "Super Smink"
+      }
     }
   },
   {
@@ -13832,6 +14404,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Sentimental Legend",
+        "en": "Sentimental Legend"
+      }
     }
   },
   {
@@ -14927,6 +15505,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Matias",
+        "en": "Matias"
+      }
     }
   },
   {
@@ -14959,6 +15543,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Snitzel Dancer",
+        "en": "Snitzel Dancer"
+      }
     }
   },
   {
@@ -14991,6 +15581,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Asterix",
+        "en": "Asterix"
+      }
     }
   },
   {
@@ -15023,6 +15619,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Mazu",
+        "en": "Mazu"
+      }
     }
   },
   {
@@ -15168,6 +15770,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Afireofgidgeecoals",
+        "en": "Afireofgidgeecoals"
+      }
     }
   },
   {
@@ -16023,6 +16631,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Cilacap",
+        "en": "Cilacap"
+      }
     }
   },
   {
@@ -16055,6 +16669,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Tycoon Star",
+        "en": "Tycoon Star"
+      }
     }
   },
   {
@@ -16087,6 +16707,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Flying Houdini",
+        "en": "Flying Houdini"
+      }
     }
   },
   {
@@ -16119,6 +16745,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Grand Larceny",
+        "en": "Grand Larceny"
+      }
     }
   },
   {
@@ -16151,6 +16783,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Impulsive Reaction",
+        "en": "Impulsive Reaction"
+      }
     }
   },
   {
@@ -17767,6 +18405,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Splash Back",
+        "en": "Splash Back"
+      }
     }
   },
   {
@@ -17799,6 +18443,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Brave Monarch",
+        "en": "Brave Monarch"
+      }
     }
   },
   {
@@ -17831,6 +18481,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Churchill's Choice",
+        "en": "Churchill's Choice"
+      }
     }
   },
   {
@@ -17863,6 +18519,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Chidiac",
+        "en": "Chidiac"
+      }
     }
   },
   {
@@ -17895,6 +18557,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Skyhook",
+        "en": "Skyhook"
+      }
     }
   },
   {
@@ -18039,6 +18707,16 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Beatty",
+        "en": "Beatty"
+      },
+      "jockey": {
+        "ja": "William Pike",
+        "en": "William Pike"
+      }
     }
   },
   {
@@ -18601,6 +19279,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Smooth Chino",
+        "en": "Smooth Chino"
+      }
     }
   },
   {
@@ -19593,6 +20277,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Pride Of Jenni",
+        "en": "Pride Of Jenni"
+      }
     }
   },
   {
@@ -19625,6 +20315,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "St Gotthard",
+        "en": "St Gotthard"
+      }
     }
   },
   {
@@ -19657,6 +20353,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Beadman",
+        "en": "Beadman"
+      }
     }
   },
   {
@@ -19731,6 +20433,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Brave Hustler",
+        "en": "Brave Hustler"
+      }
     }
   },
   {
@@ -19763,6 +20471,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Naifah",
+        "en": "Naifah"
+      }
     }
   },
   {
@@ -19795,6 +20509,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Arran Bay",
+        "en": "Arran Bay"
+      }
     }
   },
   {
@@ -19827,6 +20547,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Fringes",
+        "en": "Fringes"
+      }
     }
   },
   {
@@ -21030,6 +21756,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Vantorix",
+        "en": "Vantorix"
+      }
     }
   },
   {
@@ -21062,6 +21794,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Tuileries",
+        "en": "Tuileries"
+      }
     }
   },
   {
@@ -21094,6 +21832,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Newlook",
+        "en": "Newlook"
+      }
     }
   },
   {
@@ -21126,6 +21870,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Kilman",
+        "en": "Kilman"
+      }
     }
   },
   {
@@ -21235,6 +21985,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Western Empire",
+        "en": "Western Empire"
+      }
     }
   },
   {
@@ -22024,6 +22780,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Fireball Miss",
+        "en": "Fireball Miss"
+      }
     }
   },
   {
@@ -22056,6 +22818,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Abounding",
+        "en": "Abounding"
+      }
     }
   },
   {
@@ -22088,6 +22856,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Pinito",
+        "en": "Pinito"
+      }
     }
   },
   {
@@ -23121,6 +23895,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Berzelius",
+        "en": "Berzelius"
+      }
     }
   },
   {
@@ -23153,6 +23933,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Regal Award",
+        "en": "Regal Award"
+      }
     }
   },
   {
@@ -23185,6 +23971,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Boniface",
+        "en": "Boniface"
+      }
     }
   },
   {
@@ -23217,6 +24009,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Athanatos",
+        "en": "Athanatos"
+      }
     }
   },
   {
@@ -23326,6 +24124,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Western Empire",
+        "en": "Western Empire"
+      }
     }
   },
   {
@@ -24757,6 +25561,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Uncommon James",
+        "en": "Uncommon James"
+      }
     }
   },
   {
@@ -25804,6 +26614,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Alalcance",
+        "en": "Alalcance"
+      }
     }
   },
   {
@@ -25836,6 +26652,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "She's Got Pizzazz",
+        "en": "She's Got Pizzazz"
+      }
     }
   },
   {
@@ -25868,6 +26690,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Royal Supremacy",
+        "en": "Royal Supremacy"
+      }
     }
   },
   {
@@ -25900,6 +26728,16 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Skyhook",
+        "en": "Skyhook"
+      },
+      "jockey": {
+        "ja": "Kerrin McEvoy",
+        "en": "Kerrin McEvoy"
+      }
     }
   },
   {
@@ -25967,6 +26805,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Belmont Park",
+        "en": "Belmont Park"
+      }
     }
   },
   {
@@ -28071,6 +28915,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Yellow Brick",
+        "en": "Yellow Brick"
+      }
     }
   },
   {
@@ -28103,6 +28953,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Asterix",
+        "en": "Asterix"
+      }
     }
   },
   {
@@ -28936,6 +29792,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Cellarmaster",
+        "en": "Cellarmaster"
+      }
     }
   },
   {
@@ -30009,6 +30871,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Winnasedge",
+        "en": "Winnasedge"
+      }
     }
   },
   {
@@ -30742,6 +31610,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Neveu",
+        "en": "Neveu"
+      }
     }
   },
   {
@@ -32096,6 +32970,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Cosmic Crusader",
+        "en": "Cosmic Crusader"
+      }
     }
   },
   {
@@ -33212,6 +34092,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Boomtown Boss",
+        "en": "Boomtown Boss"
+      }
     }
   },
   {
@@ -34124,6 +35010,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Ninja",
+        "en": "Ninja"
+      }
     }
   },
   {
@@ -34156,6 +35048,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Sir Now",
+        "en": "Sir Now"
+      }
     }
   },
   {
@@ -35170,6 +36068,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Cosmic Crusader",
+        "en": "Cosmic Crusader"
+      }
     }
   },
   {
@@ -35202,6 +36106,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Hard Kick",
+        "en": "Hard Kick"
+      }
     }
   },
   {
@@ -35234,6 +36144,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Natural Fling",
+        "en": "Natural Fling"
+      }
     }
   },
   {
@@ -36409,6 +37325,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Pembrey",
+        "en": "Pembrey"
+      }
     }
   },
   {
@@ -36441,6 +37363,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Midnight In Tokyo",
+        "en": "Midnight In Tokyo"
+      }
     }
   },
   {
@@ -36473,6 +37401,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Prima Bella",
+        "en": "Prima Bella"
+      }
     }
   },
   {
@@ -36505,6 +37439,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Boniface",
+        "en": "Boniface"
+      }
     }
   },
   {
@@ -37573,6 +38513,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Plagiarism",
+        "en": "Plagiarism"
+      }
     }
   },
   {
@@ -37605,6 +38551,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Guest House",
+        "en": "Guest House"
+      }
     }
   },
   {
@@ -37637,6 +38589,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Oliveanotherday",
+        "en": "Oliveanotherday"
+      }
     }
   },
   {
@@ -37669,6 +38627,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "American Eagle",
+        "en": "American Eagle"
+      }
     }
   },
   {
@@ -37701,6 +38665,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Custom",
+        "en": "Custom"
+      }
     }
   },
   {
@@ -38935,6 +39905,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Modella",
+        "en": "Modella"
+      },
+      "jockey": {
+        "ja": "Zac Lloyd",
+        "en": "Zac Lloyd"
+      }
     }
   },
   {
@@ -38967,6 +39947,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Bangkok Hottie",
+        "en": "Bangkok Hottie"
+      }
     }
   },
   {
@@ -38999,6 +39985,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Headley Grange",
+        "en": "Headley Grange"
+      }
     }
   },
   {
@@ -39031,6 +40023,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Lindermann",
+        "en": "Lindermann"
+      }
     }
   },
   {
@@ -39063,6 +40061,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Tempted",
+        "en": "Tempted"
+      }
     }
   },
   {
@@ -40769,6 +41773,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Warwoven",
+        "en": "Warwoven"
+      }
     }
   },
   {
@@ -40801,6 +41811,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Savvy Hallie",
+        "en": "Savvy Hallie"
+      }
     }
   },
   {
@@ -40833,6 +41849,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Skyhook",
+        "en": "Skyhook"
+      }
     }
   },
   {
@@ -40865,6 +41887,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Losesomewinmore",
+        "en": "Losesomewinmore"
+      }
     }
   },
   {
@@ -40897,6 +41925,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Pondalowie",
+        "en": "Pondalowie"
+      }
     }
   },
   {
@@ -40929,6 +41963,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Persian Wonder",
+        "en": "Persian Wonder"
+      }
     }
   },
   {
@@ -40961,6 +42001,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Shockletz",
+        "en": "Shockletz"
+      }
     }
   },
   {
@@ -42228,6 +43274,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Fully Lit",
+        "en": "Fully Lit"
+      }
     }
   },
   {
@@ -42260,6 +43312,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Aethelwulf",
+        "en": "Aethelwulf"
+      }
     }
   },
   {
@@ -42292,6 +43350,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Perfumist",
+        "en": "Perfumist"
+      }
     }
   },
   {
@@ -42429,6 +43493,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Mazu",
+        "en": "Mazu"
+      }
     }
   },
   {
@@ -42461,6 +43531,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Bangkok Hottie",
+        "en": "Bangkok Hottie"
+      }
     }
   },
   {
@@ -42493,6 +43569,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "General Salute",
+        "en": "General Salute"
+      }
     }
   },
   {
@@ -42525,6 +43607,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "The Euphrates",
+        "en": "The Euphrates"
+      }
     }
   },
   {
@@ -42557,6 +43645,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Zahrann",
+        "en": "Zahrann"
+      }
     }
   },
   {
@@ -42589,6 +43683,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Blind Raise",
+        "en": "Blind Raise"
+      }
     }
   },
   {
@@ -43475,6 +44575,16 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Diameter",
+        "en": "Diameter"
+      },
+      "jockey": {
+        "ja": "James McDonald",
+        "en": "James McDonald"
+      }
     }
   },
   {
@@ -43507,6 +44617,13 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Pride of Jenni",
+        "en": "Pride of Jenni"
+      },
+      "time": "1:35.32"
     }
   },
   {
@@ -43539,6 +44656,17 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Changing Colours",
+        "en": "Changing Colours"
+      },
+      "jockey": {
+        "ja": "Blake Shinn",
+        "en": "Blake Shinn"
+      },
+      "time": "1:36.41"
     }
   },
   {
@@ -43571,6 +44699,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Fireball",
+        "en": "Fireball"
+      }
     }
   },
   {
@@ -43821,6 +44955,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Skyhook",
+        "en": "Skyhook"
+      },
+      "jockey": {
+        "ja": "Kerrin McEvoy",
+        "en": "Kerrin McEvoy"
+      }
     }
   },
   {
@@ -43853,6 +44997,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Lazzura",
+        "en": "Lazzura"
+      },
+      "jockey": {
+        "ja": "James McDonald",
+        "en": "James McDonald"
+      }
     }
   },
   {
@@ -43885,6 +45039,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Icelady",
+        "en": "Icelady"
+      }
     }
   },
   {
@@ -43917,6 +45077,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "So You Are",
+        "en": "So You Are"
+      },
+      "jockey": {
+        "ja": "Rachel King",
+        "en": "Rachel King"
+      }
     }
   },
   {
@@ -45208,6 +46378,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Tempted",
+        "en": "Tempted"
+      }
     }
   },
   {
@@ -45240,6 +46416,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Stylish",
+        "en": "Stylish"
+      },
+      "jockey": {
+        "ja": "Ethan Brown",
+        "en": "Ethan Brown"
+      }
     }
   },
   {
@@ -45272,6 +46458,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Skybird",
+        "en": "Skybird"
+      }
     }
   },
   {
@@ -45304,6 +46496,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Saintly Dancer",
+        "en": "Saintly Dancer"
+      }
     }
   },
   {
@@ -45336,6 +46534,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "The Next Episode",
+        "en": "The Next Episode"
+      }
     }
   },
   {
@@ -45368,6 +46572,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Flying Houdini",
+        "en": "Flying Houdini"
+      }
     }
   },
   {
@@ -45400,6 +46610,17 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Shraddha",
+        "en": "Shraddha"
+      },
+      "jockey": {
+        "ja": "Tommy Berry",
+        "en": "Tommy Berry"
+      },
+      "time": "0:59.66"
     }
   },
   {
@@ -45432,6 +46653,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Mr Monaco",
+        "en": "Mr Monaco"
+      }
     }
   },
   {

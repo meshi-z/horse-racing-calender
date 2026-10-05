@@ -715,6 +715,12 @@ docs/
   - `src/data/australia_race_master.json` にG2（`2026-au-g2-01`〜`97`）およびG3（`2026-au-g3-01`〜`174`）を追加統合し、オーストラリア重賞総数を74レースから345レース（G1: 74, G2: 97, G3: 174）へ拡張。
   - `scripts/parse-races.ts` によるビルドで `public/data/races.json`（総レース数1,681件）および年度別 shard に同期。
   - 単体テスト `tests/unit/australiaRaces.test.ts`、データ整合性テスト `tests/unit/racesData.test.ts`、多言語テスト `tests/unit/i18n.test.ts` を拡充・更新し、全66テストファイル・622テスト全件パス、型検査・ビルド成功。
+- **Step 70-8 (オーストラリア競馬G2・G3開催済みレースの勝ち馬バックフィル) (Issue #203) [完了]**:
+  - 2026年開催済みのオーストラリアG2（73レース）・G3（123レース）の計196レースについて、公式一次ソース・準公式アーカイブ（Racing Australia、各州競馬統括団体、Racing Post、Wikipedia）に基づく確定勝ち馬データを特定し、`src/data/race_winners.json` に追加統合（勝者マスタ登録件数: 1,071件 -> 1,267件）。
+  - `scripts/parse-races.ts`（`npm run data:build`）を実行し、`public/data/races.json` および年度別 shard に勝者データを完全同期。
+  - 空値原則（Null Value Principle）の遵守: 2026年11月28日施行予定の `2026-au-g3-121`（Sandown Stakes）および10月6日以降の未来レースは勝者を推測補完せず未設定（`undefined`）として厳格に保持。
+  - 公式リンク方針（Issue #190）の遵守: オーストラリア競馬には推測URLを付与せず `official_url: undefined` を厳格保持。
+  - 単体・統合・データ整合性テスト `tests/unit/australiaResults.test.ts` を拡充し、全66テストファイル・623テスト全件パス、型検査・プロダクションビルド成功。
 
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
 - **Step 71: 海外主要レースのさらなる拡張**:
