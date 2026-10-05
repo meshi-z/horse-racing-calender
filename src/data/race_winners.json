@@ -8722,6 +8722,73 @@
     },
     "horse_number": 9
   },
+  "2026-france-g1-25": {
+    "name": {
+      "ja": "Daryz",
+      "en": "Daryz",
+      "fr": "Daryz"
+    },
+    "jockey": {
+      "ja": "M.barzalona",
+      "en": "M.barzalona",
+      "fr": "M.barzalona"
+    },
+    "horse_number": 1
+  },
+  "2026-france-g1-21": {
+    "name": {
+      "ja": "Miss Scott",
+      "en": "Miss Scott",
+      "fr": "Miss Scott"
+    },
+    "jockey": {
+      "ja": "C.soumillon",
+      "en": "C.soumillon",
+      "fr": "C.soumillon"
+    },
+    "horse_number": 9
+  },
+  "2026-france-g1-23": {
+    "name": {
+      "ja": "True Love",
+      "en": "True Love",
+      "fr": "True Love"
+    },
+    "jockey": {
+      "ja": "Rl.moore",
+      "en": "Rl.moore",
+      "fr": "Rl.moore"
+    },
+    "horse_number": 8
+  },
+  "2026-us-g1-66": {
+    "name": {
+      "ja": "Fully Subscribed",
+      "en": "Fully Subscribed"
+    },
+    "time": null
+  },
+  "2026-us-g2-110": {
+    "name": {
+      "ja": "Agate",
+      "en": "Agate"
+    },
+    "time": null
+  },
+  "2026-us-g3-147": {
+    "name": {
+      "ja": "Vanta",
+      "en": "Vanta"
+    },
+    "time": null
+  },
+  "2026-us-g3-149": {
+    "name": {
+      "ja": "Repo Man",
+      "en": "Repo Man"
+    },
+    "time": null
+  },
   "2026-au-g1-02": {
     "name": {
       "ja": "Tentyris",

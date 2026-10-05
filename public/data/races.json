@@ -40221,6 +40221,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Daryz",
+        "en": "Daryz",
+        "fr": "Daryz"
+      },
+      "jockey": {
+        "ja": "M.barzalona",
+        "en": "M.barzalona",
+        "fr": "M.barzalona"
+      },
+      "horse_number": 1
     }
   },
   {
@@ -40282,6 +40295,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Miss Scott",
+        "en": "Miss Scott",
+        "fr": "Miss Scott"
+      },
+      "jockey": {
+        "ja": "C.soumillon",
+        "en": "C.soumillon",
+        "fr": "C.soumillon"
+      },
+      "horse_number": 9
     }
   },
   {
@@ -40311,6 +40337,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "True Love",
+        "en": "True Love",
+        "fr": "True Love"
+      },
+      "jockey": {
+        "ja": "Rl.moore",
+        "en": "Rl.moore",
+        "fr": "Rl.moore"
+      },
+      "horse_number": 8
     }
   },
   {
@@ -40339,6 +40378,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Fully Subscribed",
+        "en": "Fully Subscribed"
+      },
+      "time": null
     }
   },
   {
@@ -40367,6 +40413,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Agate",
+        "en": "Agate"
+      },
+      "time": null
     }
   },
   {
@@ -40395,6 +40448,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Vanta",
+        "en": "Vanta"
+      },
+      "time": null
     }
   },
   {
@@ -40451,6 +40511,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Repo Man",
+        "en": "Repo Man"
+      },
+      "time": null
     }
   },
   {
@@ -40516,7 +40583,7 @@
     "grade": "local_grade",
     "date": "2026-10-07",
     "start_time": "2026-10-07T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "笠松",
       "en": "Kasamatsu"
