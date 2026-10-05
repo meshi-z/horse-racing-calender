@@ -48801,34 +48801,6 @@
     }
   },
   {
-    "id": "2026-uk-g1-32",
-    "organization": "bha",
-    "country_code": "GB",
-    "name": {
-      "ja": "デューハーストステークス",
-      "en": "Dewhurst Stakes"
-    },
-    "grade": "G1",
-    "date": "2026-10-10",
-    "start_time": "2026-10-10T12:25:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-10",
-    "course": {
-      "ja": "ニューマーケット",
-      "en": "Newmarket"
-    },
-    "distance": 1408,
-    "track_type": "turf",
-    "sex_constraint": "colt_and_filly",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
     "id": "2026-uk-g3-67",
     "organization": "bha",
     "country_code": "GB",
@@ -48838,7 +48810,7 @@
     },
     "grade": "G3",
     "date": "2026-10-10",
-    "start_time": "2026-10-10T12:25:00.000Z",
+    "start_time": "2026-10-10T11:15:00.000Z",
     "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-10",
@@ -48866,8 +48838,8 @@
     },
     "grade": "G3",
     "date": "2026-10-10",
-    "start_time": "2026-10-10T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-10T11:50:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-10",
     "course": {
@@ -48882,6 +48854,34 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-uk-g1-32",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "デューハーストステークス",
+      "en": "Dewhurst Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-10-10",
+    "start_time": "2026-10-10T13:00:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-10",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "colt_and_filly",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
     }
   },
   {
