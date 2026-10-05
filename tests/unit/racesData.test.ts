@@ -102,6 +102,9 @@ describe('public/data/races.json integrity check', () => {
 
     // オーストラリア重賞の検証
     const australiaRaces = races.filter((r) => r.organization === 'racing_australia');
-    expect(australiaRaces.length).toBe(74);
+    expect(australiaRaces.length).toBe(345);
+    expect(australiaRaces.filter((r) => r.grade === 'G1').length).toBe(74);
+    expect(australiaRaces.filter((r) => r.grade === 'G2').length).toBe(97);
+    expect(australiaRaces.filter((r) => r.grade === 'G3').length).toBe(174);
   });
 });

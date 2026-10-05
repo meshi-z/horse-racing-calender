@@ -38,7 +38,10 @@ describe('Australia Races Pipeline and Master Data (Issue #193)', () => {
       fr: 'Moonee Valley',
     });
 
-    expect(master.races).toHaveLength(74);
+    expect(master.races).toHaveLength(345);
+    expect(master.races.filter((r) => r.grade === 'G1')).toHaveLength(74);
+    expect(master.races.filter((r) => r.grade === 'G2')).toHaveLength(97);
+    expect(master.races.filter((r) => r.grade === 'G3')).toHaveLength(174);
   });
 
   it('全レースが型安全なスキーマ要件を満たしていること', () => {
@@ -46,7 +49,7 @@ describe('Australia Races Pipeline and Master Data (Issue #193)', () => {
     const races = getAustraliaRaces(master, new Map());
 
     for (const r of races) {
-      expect(r.id).toMatch(/^2026-au-g1-\d{2}$/);
+      expect(r.id).toMatch(/^2026-au-(g1|g2|g3)-\d{2,3}$/);
       expect(r.organization).toBe('racing_australia');
       expect(r.country_code).toBe('AU');
       expect(r.name.ja).toBeTruthy();
@@ -98,6 +101,22 @@ describe('Australia Races Pipeline and Master Data (Issue #193)', () => {
     expect(goldenSlipper?.course.en).toBe('Rosehill Gardens');
     expect(goldenSlipper?.distance).toBe(1200);
     expect(goldenSlipper?.age_constraint).toBe('2yo');
+
+    // G2 / G3 代表競走の検証
+    const missileStakes = races.find((r) => r.name.en === 'Missile Stakes');
+    expect(missileStakes).toBeDefined();
+    expect(missileStakes?.grade).toBe('G2');
+    expect(missileStakes?.course.en).toBe('Royal Randwick');
+
+    const schillaciStakes = races.find((r) => r.name.en === 'Schillaci Stakes');
+    expect(schillaciStakes).toBeDefined();
+    expect(schillaciStakes?.grade).toBe('G2');
+    expect(schillaciStakes?.course.en).toBe('Caulfield');
+
+    const quezetteStakes = races.find((r) => r.name.en === 'Quezette Stakes');
+    expect(quezetteStakes).toBeDefined();
+    expect(quezetteStakes?.grade).toBe('G3');
+    expect(quezetteStakes?.course.en).toBe('Caulfield');
   });
 
   it('confirmedTimesMap が提供された場合、確定時刻が正しくオーバーライドされること', () => {
