@@ -4,7 +4,9 @@ on:
   schedule:
     # 毎日朝 07:30 JST (アメリカ競馬結果・海外重賞確定取り込み)
     - cron: '30 22 * * *'  # 毎日 22:30 UTC = 07:30 JST
-    # 毎日昼〜夕 (JRA重賞メイン・祝日/変則/代替開催、NAR昼間重賞、香港重賞など)
+    # 毎週土曜昼 (オーストラリア重賞確定直後取り込み: 現地16:30前後 = 14:30 JST)
+    - cron: '30 5 * * 6'   # 毎週土曜 05:30 UTC = 14:30 JST
+    # 毎日昼〜夕 (JRA重賞メイン・祝日/変則/代替開催、NAR昼間重賞、香港重賞、オーストラリア重賞など)
     - cron: '0 6 * * *'    # 毎日 06:00 UTC = 15:00 JST
     - cron: '45 6 * * *'   # 毎日 06:45 UTC = 15:45 JST
     - cron: '15 7 * * *'   # 毎日 07:15 UTC = 16:15 JST
@@ -23,7 +25,7 @@ on:
         type: boolean
         default: false
       org:
-        description: 'Filter by organization (e.g. jra, nar, france_galop, bha, equibase, hkjc, hri)'
+        description: 'Filter by organization (e.g. jra, nar, france_galop, bha, equibase, hkjc, hri, racing_australia)'
         required: false
         type: string
         default: ''

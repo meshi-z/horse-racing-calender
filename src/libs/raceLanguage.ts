@@ -22,7 +22,9 @@ export function getRaceOriginLanguage(race: Race): RaceOriginLanguage {
     race.country_code === 'US' ||
     (race.organization as string) === 'equibase' ||
     race.country_code === 'IE' ||
-    (race.organization as string) === 'hri'
+    (race.organization as string) === 'hri' ||
+    race.country_code === 'AU' ||
+    (race.organization as string) === 'racing_australia'
   ) {
     return 'en';
   }

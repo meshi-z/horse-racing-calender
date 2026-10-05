@@ -12,7 +12,7 @@
 
 ## 1. プロジェクト概要
 
-本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France Galop / IFHA Part I 平地重賞およびオートゥイユ競馬場主要障害重賞: G1, G2, G3）、イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 平地重賞およびBHA Jump Pattern 主要障害重賞: G1, G2, G3）、アメリカ競馬（The Jockey Club / Equibase / IFHA Part I 重賞: G1, G2, G3）、香港競馬（Hong Kong Jockey Club: HKJC / IFHA Part I 重賞: G1, G2, G3）、およびアイルランド競馬（Horse Racing Ireland: HRI / IFHA Part I 平地重賞およびHRI Jump Pattern 主要障害重賞: G1, G2, G3）を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
+本プロダクト（`horse-racing-calendar`）は、JRA（日本中央競馬会）の重賞レース（G1, G2, G3, J.G1, J.G2, J.G3）に加え、NAR（地方競馬全国協会）のダートグレード競走（Jpn1〜Jpn3、国際G1）、南関東重賞（S1〜S3）、全国各地区の地方重賞、ばんえい競馬（重賞）、フランス競馬（France Galop / IFHA Part I 平地重賞およびオートゥイユ競馬場主要障害重賞: G1, G2, G3）、イギリス競馬（British Horseracing Authority: BHA / IFHA Part I 平地重賞およびBHA Jump Pattern 主要障害重賞: G1, G2, G3）、アメリカ競馬（The Jockey Club / Equibase / IFHA Part I 重賞: G1, G2, G3）、香港競馬（Hong Kong Jockey Club: HKJC / IFHA Part I 重賞: G1, G2, G3）、アイルランド競馬（Horse Racing Ireland: HRI / IFHA Part I 平地重賞およびHRI Jump Pattern 主要障害重賞: G1, G2, G3）、およびオーストラリア競馬（Racing Australia / IFHA Part I 重賞および主要競走: G1, G2, G3, ジ・エベレスト、メルボルンカップ等）を包括的に統合し、国内外の主要競馬年間・月間スケジュールを一元的に視覚的かつ軽快に確認できるモダンなWebアプリケーションである。
 
 モバイル閲覧時は直近レースを素早く確認できる **「タイムライン形式」**、PC/タブレット閲覧時は月全体のスケジュールを鳥瞰できる **「月間カレンダー形式」** を初期表示とし、PWA（Progressive Web Apps）およびオフライン閲覧に対応することで、競馬場や外出先などの電波状況が不安定な環境でもミリ秒単位でストレスなくアクセスできる体験を提供する。
 
@@ -38,7 +38,8 @@ docs/
 │       ├── uk.md                  # イギリス（BHA / Sporting Life）仕様
 │       ├── us.md                  # アメリカ（Equibase / The Jockey Club）仕様
 │       ├── hk.md                  # 香港（HKJC）仕様
-│       └── ireland.md             # アイルランド（HRI / Sporting Life）仕様
+│       ├── ireland.md             # アイルランド（HRI / Sporting Life）仕様
+│       └── australia.md           # オーストラリア（Racing Australia）仕様
 ├── guides/
 │   └── adding-new-country.md      # 新国追加の開発・運用手順書
 ├── batch-schedules.md             # 定期cronバッチスケジュール・運用仕様書
@@ -85,6 +86,7 @@ docs/
 | **US** | `US` | インディゴネイビー (`#4338ca`) | Equibase / The Jockey Club |
 | **HK** | `HK` | オリエンタルクリムゾン (`#b91c1c`) | HKJC (The Hong Kong Jockey Club / 香港賽馬會) |
 | **IE** | `IE` | クローバーグリーン (`#15803d`) | HRI (Horse Racing Ireland) |
+| **AU** | `AU` | オーストラリアンゴールド (`#d97706`) | Racing Australia |
 
 ---
 
@@ -658,9 +660,59 @@ docs/
   - 分割・インデックス出力・ソート順整合性の単体テスト、オンデマンドフェッチ・フォールバック・ストアマージテストを配備。
   - 全63テストファイル・594テスト全件パス、TypeScript型チェック（tsc --noEmit）パス、プロダクションビルド成功。
 
+### 過去のステップ: Step 70 (オーストラリア競馬（Racing Australia）の包括的統合) (Issue #192〜#197) [完了]
+- **Step 70-1 (データ仕様策定・PRD改訂・スキーマ拡張) (Issue #192) [完了]**:
+  - 一次データソース選定（IFHA Part I Australia 2026 リスト、Racing Australia 公式カレンダー）。
+  - オーストラリア競馬データ仕様書（`docs/specs/data-sources/australia.md`）の作成（AEST/AEDT 南半球夏時間規則、競馬場一覧、出馬表・リザルト仕様）。
+  - 新国追加ガイド（`docs/guides/adding-new-country.md`）の更新（RaceResultFetcher / リザルト自動化手順の明記、Issue #190準拠の公式URL方針明記、候補国表の更新）。
+  - TypeScript 型定義（`src/types/race.ts`）の拡張（`Organization` に `'racing_australia'` を追加）。
+  - 公式リンク方針の確定: Issue #190 に準拠し、オーストラリア競馬の各レースには推測URLを付与せず未設定（`undefined`）を保持。
+- **Step 70-2 (オーストラリア重賞データ抽出・マスタ作成およびパイプライン統合) (Issue #193) [完了]**:
+  - 2026年オーストラリアの全G1および主要重要競走（ジ・エベレスト、メルボルンカップ、コックスプレート、コーフィールドカップ、ゴールデンスリッパー等計74レース）をIFHA Part Iリストおよび公式スケジュールから構造化。
+  - 日英仏中4言語レース名および主要競馬場（フレミントン、ランドウィック、コーフィールド、ローズヒル、ムーニーバレー、イーグルファーム、ドゥームベン、モーフェットビル、アスコット）の日英仏中辞書を定義した `src/data/australia_race_master.json` を配備。
+  - 南半球タイムゾーン（AEST: UTC+10 / AEDT: UTC+11）の夏時間切替に対応したデータ変換モジュール `scripts/lib/australia-races.ts` を実装。
+  - `scripts/parse-races.ts`（`npm run data:build`）に統合マージし、全74レースを `public/data/races.json` および年度別 shard へ正常出力。
+  - 単体テスト `tests/unit/australiaRaces.test.ts` およびデータ整合性テスト `tests/unit/racesData.test.ts` を配備・全件パス。
+- **Step 70-3 (発走予定時刻自動更新バッチ実装および過去発走時刻バックフィル) (Issue #194) [完了]**:
+  - オーストラリア専用出馬表パーサーおよび確定時刻取得モジュール `scripts/lib/australia-syutsuba.ts` を実装。
+  - 南半球夏時間（AEDT: UTC+11 / AEST: UTC+10）の正確な動的オフセット判定（`isAedt`）および州別タイムゾーン（NSW/VIC: AEDT/AEST, QLD: AEST, WA: AWST, SA: ACDT/ACST）に対応。
+  - イギリス・アイルランド用ストップワードとの競合（Cup や Guineas の欠落による誤照合）を回避するオーストラリア専用トークナイザー `tokenizeAustralia` を構築。
+  - `scripts/update-race-times.ts` に `AustraliaRaceTimeFetcher` を組み込み、デフォルトフェッチャーとして統合。
+  - `package.json` に `"data:update-times:au"` スクリプトを追加し、個別実行および `--dry-run` に対応。
+  - `.github/workflows/update-race-times.yml` にオーストラリア開催枠（毎週土曜 00:30 UTC = 09:30 JST）を追加。
+  - `src/data/australia_race_master.json` の開催済み過去全レース（2026-10-03以前の全45レース）の発走確定時刻（現地時間およびUTC）をバックフィルし、`is_time_confirmed: true` を設定。
+  - 公式リンク方針（Issue #190）を遵守し、出馬表URLの一時的な推測付与を排除し空値（`undefined`）を保持。
+  - 単体・統合テスト `tests/unit/australiaSyutsuba.test.ts` を配備し、全65テストファイル・604テスト全件パスを達成。
+- **Step 70-4 (レース結果・勝ち馬自動取得バッチ実装および過去勝ち馬バックフィル) (Issue #195) [完了]**:
+  - オーストラリア専用レース結果パーサー `scripts/lib/australia-results.ts`（`parseAustraliaResultsJson`）を実装。
+  - `scripts/update-race-results.ts` に `AustraliaRaceResultFetcher` を追加し、`DEFAULT_RESULT_FETCHERS` に統合（`racing_australia`, `au`, `australia`）。
+  - `package.json` に `"data:update-results:au"` スクリプトを追加し、個別更新および `--dry-run` に対応。
+  - `.github/workflows/update-race-results.yml` にオーストラリア開催直後取り込み枠（毎週土曜 05:30 UTC = 14:30 JST）を追加。
+  - 2026年開催済みのオーストラリア主要G1全53レースの公式実在勝ち馬データ（ゴールデンスリッパー: Guest House / Zac Lloyd、ドンカスターマイル: Sheza Alibi / Jamie Kah、クイーンエリザベスS: Sir Delius / Craig Williams、オーストラリアンダービー: Green Spaces / Rachel King、エプソムH: God's Window / Siena Grima、ターンブルS: Cosmic Crusader / William Pike等）を一次ソースより特定し、`src/data/race_winners.json` および `public/data/races.json` にバックフィル。
+  - 空値原則（Null Value Principle）の徹底: 11月へ日程変更された未開催の `2026-au-g1-01`（CF Orr Stakes）および未来レースは勝者を推測補完せず未設定（`undefined`）として厳格に保護。
+  - 公式リンク方針（Issue #190）を遵守し、`official_url` は付与せず未設定（`undefined`）を保持。
+  - 単体・統合・データ整合性テスト `tests/unit/australiaResults.test.ts` を配備し、全66テストファイル・613テスト全件パスを達成。
+- **Step 70-5 (オーストラリア競馬UI対応) (Issue #196) [完了]**:
+  - 主催者フィルターモーダル（`FilterBar`）に「オセアニア（🇦🇺 Oceania）」地域グループおよび「オーストラリア (Racing Australia)」チェック項目を追加。
+  - デスクトップ用主催者セグメントコントロール（`orgOptions`）に「オーストラリア (Racing Australia)」を追加。
+  - 競馬場フィルターパネルに「🇦🇺 オセアニア」クイック切替タブを追加し、豪州9競馬場（フレミントン、ランドウィック、コーフィールド、ローズヒル、ムーニーバレー、イーグルファーム、ドゥームベン、モーフェットビル、アスコット (豪)）の選択・一括操作に対応。
+  - レースカード（`RaceCard`）および詳細モーダル（`RaceDetailDialog`）に「AU」国コードバッジ（アンバー色系）および「RACING AUSTRALIA」主催者バッジ・表記を配備。
+  - カレンダーグリッド（`CalendarView`）のレースチップに「AU」国コードバッジおよび「AUS」主催者ラベルを統合。
+  - 発走時刻確定ガイドダイアログ（`ConfirmedTimeHelpDialog`）にオーストラリア（Racing Australia）の公式発表・反映目安スケジュールを追加。
+  - 免責事項ダイアログ（`DisclaimerDialog`）および静的フッターに Racing Australia の出典表記・権利表記を追加。
+  - 地域判定・初期主催者選定ユーティリティ（`src/libs/geolocation.ts`）にオーストラリア（AU、`Australia/*`、`en-AU`）自動判定を追加。
+  - レース原語判定（`src/libs/raceLanguage.ts`）に `AU` / `racing_australia`（英語原語）を追加。
+  - 単体・統合・UIテスト（`tests/unit/FilterBar.test.tsx`, `tests/unit/RaceCard.test.tsx`, `tests/unit/RaceDetailDialog.test.tsx`, `tests/unit/ConfirmedTimeHelpDialog.test.tsx`, `tests/unit/geolocation.test.ts`, `tests/unit/DisclaimerDialog.test.tsx`, `tests/unit/Layout.test.tsx` 等）を配備・更新し、全66テストファイル・616テスト全件パス。
+- **Step 70-6 (多言語辞書（日英仏中）対応およびローカライズ整備) (Issue #197) [完了]**:
+  - `src/libs/i18n.ts` にオーストラリア主催者（`filter.orgAustralia`）、地域（`filter.regionOceania`、`filter.selectAllOceania`）、発走確定スケジュール、免責事項・フッター文言の日英仏中4言語完全対訳を配備。
+  - 競馬場名変換ヘルパー（`getLocalizedCourseName`）に豪州9競馬場（フレミントン、ランドウィック、コーフィールド、ローズヒル、ムーニーバレー、イーグルファーム、ドゥームベン、モーフェットビル、アスコット (豪)）の4言語相互変換ロジックを統合。
+  - `src/store/useRaceStore.ts` の `filterRaces` において、日本語名・英語名・フランス語名・繁体字中国語名（例: "The Everest" / "ジ・エベレスト" / "珠穆朗瑪峰錦標"）のいずれの入力に対しても即座にヒットする多言語検索処理を強化。
+  - 英語圏レースの表示ルール（英語UI時は原語である英語名をメイン表示しサブ表記なしでスマートに表示）の動作を検証。
+  - 辞書パリティテスト（`tests/unit/i18n.test.ts`）、検索フィルタテスト（`tests/unit/useRaceStore.test.ts`）、UI多言語レンダリングテスト（`tests/unit/RaceCard.test.tsx`）を配備・更新し、全66テストファイル・622テスト全件パス。
+
 ### 次期ロードマップ: フェーズ4 (将来拡張スコープ)
 - **Step 71: 海外主要レースのさらなる拡張**:
-  - オーストラリア（Racing Australia / IFHA Part I）、UAE/ドバイ（ERA）、サウジアラビア（JCSA）等の重賞データ統合。
+  - UAE/ドバイ（ERA）、サウジアラビア（JCSA）等の重賞データ統合。
   - 各国公式出馬表フェッチャーの追加による確定発走時刻自動取得。
 - **Step 72: リアルタイム馬場状態・天候情報の表示**:
   - レース当日の天候（晴・雨等）および馬場状態（良・稍重・重・不良）のリアルタイム取得とバッジ表示。

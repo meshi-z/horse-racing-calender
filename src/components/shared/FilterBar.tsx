@@ -81,6 +81,16 @@ export const ORGANIZATION_GROUPS: OrganizationGroupItem[] = [
       { value: "hkjc", labelKey: "filter.orgHk" },
     ],
   },
+  {
+    id: "oceania",
+    labelKey: "filter.regionOceania",
+    allLabelKey: "filter.selectAllOceania",
+    flag: "🇦🇺",
+    organizations: ["racing_australia"],
+    items: [
+      { value: "racing_australia", labelKey: "filter.orgAustralia" },
+    ],
+  },
 ];
 
 export interface GradeGroupItem {
@@ -159,7 +169,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
   const hasJra = filters.organizations.includes("jra");
   const hasNar = filters.organizations.includes("nar");
   const hasOverseas = filters.organizations.some((o) =>
-    ["france_galop", "bha", "equibase", "hkjc", "hri"].includes(o)
+    ["france_galop", "bha", "equibase", "hkjc", "hri", "racing_australia"].includes(o)
   );
 
   // 主催者選択に応じたグレード表示フラグ
@@ -418,6 +428,7 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
     { value: "equibase", label: t("filter.orgUsa") },
     { value: "hkjc", label: t("filter.orgHk") },
     { value: "hri", label: t("filter.orgIreland") },
+    { value: "racing_australia", label: t("filter.orgAustralia") },
   ];
 
   return (
@@ -1130,6 +1141,18 @@ export function FilterBar({ className, ...props }: FilterBarProps) {
                     )}
                   >
                     🇭🇰 {t("filter.regionAsia")}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedRegionTab("oceania")}
+                    className={cn(
+                      "rounded-full px-2.5 py-0.5 text-[11px] font-semibold transition-all shrink-0 cursor-pointer border",
+                      selectedRegionTab === "oceania"
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-muted/40 text-muted-foreground border-border hover:bg-muted hover:text-foreground"
+                    )}
+                  >
+                    🇦🇺 {t("filter.regionOceania")}
                   </button>
                 </div>
               )}

@@ -14,7 +14,7 @@ describe('public/data/races.json integrity check', () => {
     expect(Array.isArray(races)).toBe(true);
     expect(races.length).toBeGreaterThan(0);
 
-    const validOrganizations = ['jra', 'nar', 'france_galop', 'bha', 'equibase', 'hkjc', 'hri'];
+    const validOrganizations = ['jra', 'nar', 'france_galop', 'bha', 'equibase', 'hkjc', 'hri', 'racing_australia'];
     const validGrades = [
       'G1', 'G2', 'G3', 'J.G1', 'J.G2', 'J.G3',
       'Jpn1', 'Jpn2', 'Jpn3', 'S1', 'S2', 'S3', 'local_grade'
@@ -23,7 +23,7 @@ describe('public/data/races.json integrity check', () => {
     const validSexConstraints = ['filly_and_mare', 'colt_and_filly', 'none'];
     const validAgeConstraints = ['2yo', '3yo', '3yo_and_up', '4yo_and_up', '4yo'];
     const validHandicapCodes = ['weight_for_age', 'special_weight', 'set_weight', 'handicap'];
-    const validCountryCodes = ['JP', 'FR', 'GB', 'US', 'HK', 'IE'];
+    const validCountryCodes = ['JP', 'FR', 'GB', 'US', 'HK', 'IE', 'AU'];
 
     for (const race of races) {
       expect(typeof race.id).toBe('string');
@@ -99,5 +99,9 @@ describe('public/data/races.json integrity check', () => {
     // 南関東重賞の検証
     const sRaces = races.filter((r) => ['S1', 'S2', 'S3'].includes(r.grade));
     expect(sRaces.length).toBeGreaterThan(40);
+
+    // オーストラリア重賞の検証
+    const australiaRaces = races.filter((r) => r.organization === 'racing_australia');
+    expect(australiaRaces.length).toBe(74);
   });
 });

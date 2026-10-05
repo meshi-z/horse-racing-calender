@@ -6,7 +6,7 @@ export type LocalizedText = {
 };
 
 export type CountryCode = 'JP' | 'FR' | 'GB' | 'US' | 'HK' | 'AU' | 'IE';
-export type Organization = 'jra' | 'nar' | 'france_galop' | 'bha' | 'equibase' | 'hkjc' | 'hri' | 'overseas';
+export type Organization = 'jra' | 'nar' | 'france_galop' | 'bha' | 'equibase' | 'hkjc' | 'hri' | 'racing_australia' | 'overseas';
 export type TrackType = 'turf' | 'dirt' | 'obstacle' | 'banei' | 'aw';
 export type SexConstraint = 'filly_and_mare' | 'colt_and_filly' | 'none';
 export type AgeConstraint = '2yo' | '3yo' | '3yo_and_up' | '4yo_and_up' | '4yo';

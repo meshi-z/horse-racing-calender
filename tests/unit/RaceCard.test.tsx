@@ -137,6 +137,27 @@ describe("RaceCard", () => {
     expect(card).toBeInTheDocument();
   });
 
+  it("オーストラリア競馬のレースで AU 国コードと RACING AUSTRALIA 主催者バッジが表示されること", () => {
+    const auRace: Race = {
+      ...mockRace,
+      id: "2026-au-melbourne-cup",
+      organization: "racing_australia",
+      country_code: "AU",
+      name: {
+        ja: "メルボルンカップ",
+        en: "Melbourne Cup",
+      },
+      course: {
+        ja: "フレミントン",
+        en: "Flemington",
+      },
+    };
+    render(<RaceCard race={auRace} />);
+    expect(screen.getByText("AU")).toBeInTheDocument();
+    expect(screen.getByText("RACING AUSTRALIA")).toBeInTheDocument();
+    expect(screen.getByText("メルボルンカップ")).toBeInTheDocument();
+  });
+
   it("isToday=true の場合、カードにハイライトスタイル（ring-2等）と'本日開催'バッジが表示されること", () => {
     render(<RaceCard race={mockRace} isToday={true} />);
 
@@ -325,6 +346,69 @@ describe("RaceCard", () => {
       render(<RaceCard race={raceWithWinner} />);
       const card = screen.getByRole("button", { name: /フェブラリーステークス.*ロブチェン.*詳細を表示/ });
       expect(card).toBeInTheDocument();
+    });
+  });
+
+  describe("オーストラリア競馬の多言語レンダリング (Issue #197)", () => {
+    const auRace: Race = {
+      ...mockRace,
+      id: "2026-au-the-everest",
+      organization: "racing_australia",
+      country_code: "AU",
+      name: {
+        ja: "ジ・エベレスト",
+        en: "The Everest",
+        fr: "The Everest",
+        zh: "珠穆朗瑪峰錦標",
+      },
+      course: {
+        ja: "ロイヤルランドウィック",
+        en: "Royal Randwick",
+        fr: "Royal Randwick",
+        zh: "皇家蘭域",
+      },
+      winner: {
+        name: {
+          ja: "ゲストハウス",
+          en: "Guest House",
+          fr: "Guest House",
+          zh: "賓客之家",
+        },
+        jockey: {
+          ja: "ザック・ロイド",
+          en: "Zac Lloyd",
+        },
+      },
+    };
+
+    it("日本語モード時に日本語名がメイン、英語名がサブで表示され、競馬場も日本語になること", () => {
+      useLanguageStore.setState({ language: "ja" });
+      render(<RaceCard race={auRace} />);
+
+      expect(screen.getByText("ジ・エベレスト")).toBeInTheDocument();
+      expect(screen.getByText("The Everest")).toBeInTheDocument();
+      expect(screen.getByText("ロイヤルランドウィック")).toBeInTheDocument();
+      expect(screen.getByText("ゲストハウス")).toBeInTheDocument();
+    });
+
+    it("英語モード時に原語である英語名がメインで表示され、英語圏レースのためサブ非表示となり、競馬場も英語になること", () => {
+      useLanguageStore.setState({ language: "en" });
+      render(<RaceCard race={auRace} />);
+
+      expect(screen.getByText("The Everest")).toBeInTheDocument();
+      expect(screen.queryByText("ジ・エベレスト")).not.toBeInTheDocument();
+      expect(screen.getByText("Royal Randwick")).toBeInTheDocument();
+      expect(screen.getByText("Guest House")).toBeInTheDocument();
+    });
+
+    it("繁体字中国語モード時に中国語名がメイン、英語名がサブで表示され、競馬場も中国語になること", () => {
+      useLanguageStore.setState({ language: "zh" });
+      render(<RaceCard race={auRace} />);
+
+      expect(screen.getByText("珠穆朗瑪峰錦標")).toBeInTheDocument();
+      expect(screen.getByText("The Everest")).toBeInTheDocument();
+      expect(screen.getByText("皇家蘭域")).toBeInTheDocument();
+      expect(screen.getByText("賓客之家")).toBeInTheDocument();
     });
   });
 });

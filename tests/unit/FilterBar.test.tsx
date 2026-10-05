@@ -800,6 +800,15 @@ describe("FilterBar", () => {
       expect(within(panel).queryByText("中央競馬 (JRA)")).not.toBeInTheDocument();
       expect(within(panel).queryByText("アメリカ (USA)")).not.toBeInTheDocument();
       expect(within(panel).getByText("香港 (Hong Kong)")).toBeInTheDocument();
+
+      // 「オセアニア」タブをクリック
+      const oceaniaTab = within(regionTabs).getByRole("button", { name: /オセアニア/ });
+      fireEvent.click(oceaniaTab);
+
+      expect(within(panel).queryByText("中央競馬 (JRA)")).not.toBeInTheDocument();
+      expect(within(panel).queryByText("香港 (Hong Kong)")).not.toBeInTheDocument();
+      expect(within(panel).getByText("豪州 (Australia)")).toBeInTheDocument();
+      expect(within(panel).getByText("フレミントン")).toBeInTheDocument();
     });
 
     it("競馬場パネルおよび詳細フィルターパネルに高さ制限・内部スクロールクラスが付与されていること", () => {

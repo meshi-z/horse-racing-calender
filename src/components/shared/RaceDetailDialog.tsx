@@ -83,6 +83,8 @@ export function RaceDetailDialog({
                     ? "border-red-600/40 text-red-800 dark:text-red-300 bg-red-50/60 dark:bg-red-950/40"
                     : race.country_code === "IE"
                     ? "border-green-600/40 text-green-800 dark:text-green-300 bg-green-50/60 dark:bg-green-950/40"
+                    : race.country_code === "AU"
+                    ? "border-amber-600/40 text-amber-800 dark:text-amber-300 bg-amber-50/60 dark:bg-amber-950/40"
                     : "border-slate-500/40 text-slate-700 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900/40"
                 )}
               >
@@ -105,6 +107,8 @@ export function RaceDetailDialog({
                   ? "border-red-600/40 text-red-800 dark:text-red-300 bg-red-50/50 dark:bg-red-950/30"
                   : race.organization === "hri"
                   ? "border-green-600/40 text-green-800 dark:text-green-300 bg-green-50/50 dark:bg-green-950/30"
+                  : race.organization === "racing_australia"
+                  ? "border-amber-600/40 text-amber-800 dark:text-amber-300 bg-amber-50/50 dark:bg-amber-950/30"
                   : "border-emerald-500/40 text-emerald-700 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/30"
               )}
             >
@@ -120,6 +124,8 @@ export function RaceDetailDialog({
                 ? language === "ja" ? "HKJC (香港)" : language === "fr" ? "HKJC (Hong Kong)" : "HKJC (Hong Kong)"
                 : race.organization === "hri"
                 ? language === "ja" ? "HRI (アイルランド)" : language === "fr" ? "HRI (Irlande)" : language === "zh" ? "HRI (愛爾蘭)" : "HRI (Ireland)"
+                : race.organization === "racing_australia"
+                ? language === "ja" ? "Racing Australia (豪州)" : language === "fr" ? "Racing Australia (Australie)" : language === "zh" ? "Racing Australia (澳洲)" : "Racing Australia"
                 : language === "en" ? "NAR" : language === "fr" ? "NAR (Japon Régional)" : "地方競馬 (NAR)"}
             </Badge>
           </div>

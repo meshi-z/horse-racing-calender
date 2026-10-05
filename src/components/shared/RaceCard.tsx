@@ -109,6 +109,8 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                         ? "border-red-600/40 text-red-800 dark:text-red-300 bg-red-50/60 dark:bg-red-950/40"
                         : race.country_code === "IE"
                         ? "border-green-600/40 text-green-800 dark:text-green-300 bg-green-50/60 dark:bg-green-950/40"
+                        : race.country_code === "AU"
+                        ? "border-amber-600/40 text-amber-800 dark:text-amber-300 bg-amber-50/60 dark:bg-amber-950/40"
                         : "border-slate-500/40 text-slate-700 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900/40"
                     )}
                   >
@@ -131,10 +133,12 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
                       ? "border-red-600/40 text-red-800 dark:text-red-300 bg-red-50/50 dark:bg-red-950/30"
                       : race.organization === "hri"
                       ? "border-green-600/40 text-green-800 dark:text-green-300 bg-green-50/50 dark:bg-green-950/30"
+                      : race.organization === "racing_australia"
+                      ? "border-amber-600/40 text-amber-800 dark:text-amber-300 bg-amber-50/50 dark:bg-amber-950/30"
                       : "border-emerald-500/40 text-emerald-700 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/30"
                   )}
                 >
-                  {race.organization === "france_galop" ? "FRANCE GALOP" : race.organization.toUpperCase()}
+                  {race.organization === "france_galop" ? "FRANCE GALOP" : race.organization === "racing_australia" ? "RACING AUSTRALIA" : race.organization.toUpperCase()}
                 </Badge>
                 <Calendar className="h-3.5 w-3.5 shrink-0" />
                 <span>{formattedDate}</span>

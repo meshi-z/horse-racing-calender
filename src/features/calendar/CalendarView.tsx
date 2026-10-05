@@ -252,6 +252,8 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                                   ? "text-red-800 dark:text-red-300 bg-red-50 dark:bg-red-950/40 border-red-200 dark:border-red-800"
                                   : race.country_code === "IE"
                                   ? "text-green-800 dark:text-green-300 bg-green-50 dark:bg-green-950/40 border-green-200 dark:border-green-800"
+                                  : race.country_code === "AU"
+                                  ? "text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800"
                                   : "text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800"
                               )}
                             >
@@ -271,10 +273,14 @@ export function CalendarView({ races, className }: CalendarViewProps) {
                                 ? "text-blue-800 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/40"
                                 : race.organization === "hkjc"
                                 ? "text-red-800 dark:text-red-300 bg-red-50 dark:bg-red-950/40"
+                                : race.organization === "hri"
+                                ? "text-green-800 dark:text-green-300 bg-green-50 dark:bg-green-950/40"
+                                : race.organization === "racing_australia"
+                                ? "text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40"
                                 : "text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40"
                             )}
                           >
-                            {race.organization === "france_galop" ? "FRANCE" : race.organization.toUpperCase()}
+                            {race.organization === "france_galop" ? "FRANCE" : race.organization === "racing_australia" ? "AUS" : race.organization.toUpperCase()}
                           </span>
                           {race.is_rescheduled && (
                             <Badge

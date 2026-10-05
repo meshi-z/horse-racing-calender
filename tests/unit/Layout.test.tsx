@@ -135,7 +135,7 @@ describe("Layout", () => {
       ).toBeInTheDocument();
       expect(
         screen.getByText(
-          /当サイトは非公式ファンサイトです。レース日程・発走時刻等の最新情報は必ず主催者（JRA・NAR・France Galop・BHA・Equibase・HKJC・HRI等）公式発表をご確認ください。/
+          /当サイトは非公式ファンサイトです。レース日程・発走時刻等の最新情報は必ず主催者（JRA・NAR・France Galop・BHA・Equibase・HKJC・HRI・Racing Australia等）公式発表をご確認ください。/
         )
       ).toBeInTheDocument();
 

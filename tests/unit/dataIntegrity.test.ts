@@ -68,6 +68,9 @@ describe('Data Integrity & Multilingual Winners Audit (Issue #160)', () => {
       const ja = winner.name?.ja;
       if (!en || !ja) continue;
 
+      // 海外レース等で日本語訳がなく英語名が ja にフォールバックされている場合は除外
+      if (ja.trim().toLowerCase() === en.trim().toLowerCase()) continue;
+
       if (!enNameToJaNames[en]) {
         enNameToJaNames[en] = new Set();
       }

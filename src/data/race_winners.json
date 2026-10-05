@@ -8685,7 +8685,7 @@
   },
   "2026-france-g1-24": {
     "name": {
-      "ja": "Green Empress",
+      "ja": "グリーンエンプレス",
       "en": "Green Empress",
       "fr": "Green Empress"
     },
@@ -8711,7 +8711,7 @@
   },
   "2026-france-g1-20": {
     "name": {
-      "ja": "Miss Yechance",
+      "ja": "ミスエチャンス",
       "en": "Miss Yechance",
       "fr": "Miss Yechance"
     },
@@ -8788,5 +8788,536 @@
       "en": "Repo Man"
     },
     "time": null
+  },
+  "2026-au-g1-02": {
+    "name": {
+      "ja": "Tentyris",
+      "en": "Tentyris"
+    },
+    "jockey": {
+      "ja": "Damian Lane",
+      "en": "Damian Lane"
+    }
+  },
+  "2026-au-g1-03": {
+    "name": {
+      "ja": "Streisand",
+      "en": "Streisand"
+    },
+    "jockey": {
+      "ja": "Ben Melham",
+      "en": "Ben Melham"
+    }
+  },
+  "2026-au-g1-04": {
+    "name": {
+      "ja": "Pericles",
+      "en": "Pericles"
+    },
+    "jockey": {
+      "ja": "Craig Williams",
+      "en": "Craig Williams"
+    }
+  },
+  "2026-au-g1-05": {
+    "name": {
+      "ja": "Tropicus",
+      "en": "Tropicus"
+    },
+    "jockey": {
+      "ja": "Craig Williams",
+      "en": "Craig Williams"
+    }
+  },
+  "2026-au-g1-06": {
+    "name": {
+      "ja": "Autumn Glow",
+      "en": "Autumn Glow"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-07": {
+    "name": {
+      "ja": "Tempted",
+      "en": "Tempted"
+    },
+    "jockey": {
+      "ja": "Chad Schofield",
+      "en": "Chad Schofield"
+    }
+  },
+  "2026-au-g1-08": {
+    "name": {
+      "ja": "Observer",
+      "en": "Observer"
+    },
+    "jockey": {
+      "ja": "Ethan Brown",
+      "en": "Ethan Brown"
+    }
+  },
+  "2026-au-g1-09": {
+    "name": {
+      "ja": "Sheza Alibi",
+      "en": "Sheza Alibi"
+    },
+    "jockey": {
+      "ja": "Luke Nolen",
+      "en": "Luke Nolen"
+    }
+  },
+  "2026-au-g1-10": {
+    "name": {
+      "ja": "Joliestar",
+      "en": "Joliestar"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-11": {
+    "name": {
+      "ja": "Caballus",
+      "en": "Caballus"
+    },
+    "jockey": {
+      "ja": "Craig Newitt",
+      "en": "Craig Newitt"
+    }
+  },
+  "2026-au-g1-12": {
+    "name": {
+      "ja": "Lazzura",
+      "en": "Lazzura"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-13": {
+    "name": {
+      "ja": "Guest House",
+      "en": "Guest House"
+    },
+    "jockey": {
+      "ja": "Zac Lloyd",
+      "en": "Zac Lloyd"
+    }
+  },
+  "2026-au-g1-14": {
+    "name": {
+      "ja": "Autumn Glow",
+      "en": "Autumn Glow"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-15": {
+    "name": {
+      "ja": "Aeliana",
+      "en": "Aeliana"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-16": {
+    "name": {
+      "ja": "Marhoona",
+      "en": "Marhoona"
+    },
+    "jockey": {
+      "ja": "Kerrin McEvoy",
+      "en": "Kerrin McEvoy"
+    }
+  },
+  "2026-au-g1-17": {
+    "name": {
+      "ja": "Autumn Boy",
+      "en": "Autumn Boy"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-18": {
+    "name": {
+      "ja": "Jigsaw",
+      "en": "Jigsaw"
+    },
+    "jockey": {
+      "ja": "Logan Bates",
+      "en": "Logan Bates"
+    }
+  },
+  "2026-au-g1-19": {
+    "name": {
+      "ja": "Light Infantry Man",
+      "en": "Light Infantry Man"
+    },
+    "jockey": {
+      "ja": "Harry Coffey",
+      "en": "Harry Coffey"
+    }
+  },
+  "2026-au-g1-20": {
+    "name": {
+      "ja": "Aeliana",
+      "en": "Aeliana"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-21": {
+    "name": {
+      "ja": "Belle Cheval",
+      "en": "Belle Cheval"
+    },
+    "jockey": {
+      "ja": "Zac Lloyd",
+      "en": "Zac Lloyd"
+    }
+  },
+  "2026-au-g1-22": {
+    "name": {
+      "ja": "Sheza Alibi",
+      "en": "Sheza Alibi"
+    },
+    "jockey": {
+      "ja": "Jamie Kah",
+      "en": "Jamie Kah"
+    }
+  },
+  "2026-au-g1-23": {
+    "name": {
+      "ja": "Joliestar",
+      "en": "Joliestar"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-24": {
+    "name": {
+      "ja": "Green Spaces",
+      "en": "Green Spaces"
+    },
+    "jockey": {
+      "ja": "Rachel King",
+      "en": "Rachel King"
+    }
+  },
+  "2026-au-g1-25": {
+    "name": {
+      "ja": "Campione d'Italia",
+      "en": "Campione d'Italia"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    },
+    "time": "1:24.80"
+  },
+  "2026-au-g1-26": {
+    "name": {
+      "ja": "Sir Delius",
+      "en": "Sir Delius"
+    },
+    "jockey": {
+      "ja": "Craig Williams",
+      "en": "Craig Williams"
+    }
+  },
+  "2026-au-g1-27": {
+    "name": {
+      "ja": "Changingoftheguard",
+      "en": "Changingoftheguard"
+    },
+    "jockey": {
+      "ja": "Jason Collett",
+      "en": "Jason Collett"
+    }
+  },
+  "2026-au-g1-28": {
+    "name": {
+      "ja": "Ohope Wins",
+      "en": "Ohope Wins"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-29": {
+    "name": {
+      "ja": "Idle Flyer",
+      "en": "Idle Flyer"
+    },
+    "jockey": {
+      "ja": "Zac Lloyd",
+      "en": "Zac Lloyd"
+    }
+  },
+  "2026-au-g1-30": {
+    "name": {
+      "ja": "Beiwacht",
+      "en": "Beiwacht"
+    },
+    "jockey": {
+      "ja": "Nash Rawiller",
+      "en": "Nash Rawiller"
+    }
+  },
+  "2026-au-g1-31": {
+    "name": {
+      "ja": "Fireball",
+      "en": "Fireball"
+    },
+    "jockey": {
+      "ja": "Tim Clark",
+      "en": "Tim Clark"
+    }
+  },
+  "2026-au-g1-32": {
+    "name": {
+      "ja": "Panova",
+      "en": "Panova"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-33": {
+    "name": {
+      "ja": "Geegees Mistruth",
+      "en": "Geegees Mistruth"
+    },
+    "jockey": {
+      "ja": "Jordan Childs",
+      "en": "Jordan Childs"
+    }
+  },
+  "2026-au-g1-34": {
+    "name": {
+      "ja": "Wigmore",
+      "en": "Wigmore"
+    },
+    "jockey": {
+      "ja": "Teo Nugent",
+      "en": "Teo Nugent"
+    }
+  },
+  "2026-au-g1-35": {
+    "name": {
+      "ja": "Rothfire",
+      "en": "Rothfire"
+    },
+    "jockey": {
+      "ja": "Brad Rawiller",
+      "en": "Brad Rawiller"
+    }
+  },
+  "2026-au-g1-36": {
+    "name": {
+      "ja": "Desert Lightning",
+      "en": "Desert Lightning"
+    },
+    "jockey": {
+      "ja": "Luke Nolen",
+      "en": "Luke Nolen"
+    }
+  },
+  "2026-au-g1-37": {
+    "name": {
+      "ja": "Birdman",
+      "en": "Birdman"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-38": {
+    "name": {
+      "ja": "Headley Grange",
+      "en": "Headley Grange"
+    },
+    "jockey": {
+      "ja": "Adam Hyeronimus",
+      "en": "Adam Hyeronimus"
+    }
+  },
+  "2026-au-g1-39": {
+    "name": {
+      "ja": "Providence",
+      "en": "Providence"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-40": {
+    "name": {
+      "ja": "Fireball Miss",
+      "en": "Fireball Miss"
+    },
+    "jockey": {
+      "ja": "Declan Bates",
+      "en": "Declan Bates"
+    }
+  },
+  "2026-au-g1-41": {
+    "name": {
+      "ja": "Spicy Martini",
+      "en": "Spicy Martini"
+    },
+    "jockey": {
+      "ja": "Taylor Marshall",
+      "en": "Taylor Marshall"
+    }
+  },
+  "2026-au-g1-42": {
+    "name": {
+      "ja": "Tron Bolt",
+      "en": "Tron Bolt"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-43": {
+    "name": {
+      "ja": "Splash Back",
+      "en": "Splash Back"
+    },
+    "jockey": {
+      "ja": "Jordan Childs",
+      "en": "Jordan Childs"
+    }
+  },
+  "2026-au-g1-44": {
+    "name": {
+      "ja": "Autumn Glow",
+      "en": "Autumn Glow"
+    },
+    "jockey": {
+      "ja": "James McDonald",
+      "en": "James McDonald"
+    }
+  },
+  "2026-au-g1-45": {
+    "name": {
+      "ja": "Beiwacht",
+      "en": "Beiwacht"
+    },
+    "jockey": {
+      "ja": "Nash Rawiller",
+      "en": "Nash Rawiller"
+    }
+  },
+  "2026-au-g1-46": {
+    "name": {
+      "ja": "My Gladiola",
+      "en": "My Gladiola"
+    },
+    "jockey": {
+      "ja": "Jamie Mott",
+      "en": "Jamie Mott"
+    }
+  },
+  "2026-au-g1-47": {
+    "name": {
+      "ja": "Sheza Alibi",
+      "en": "Sheza Alibi"
+    },
+    "jockey": {
+      "ja": "Luke Nolen",
+      "en": "Luke Nolen"
+    }
+  },
+  "2026-au-g1-48": {
+    "name": {
+      "ja": "Birdman",
+      "en": "Birdman"
+    },
+    "jockey": {
+      "ja": "Ben Melham",
+      "en": "Ben Melham"
+    }
+  },
+  "2026-au-g1-49": {
+    "name": {
+      "ja": "Jimmysstar",
+      "en": "Jimmysstar"
+    },
+    "jockey": {
+      "ja": "Ethan Brown",
+      "en": "Ethan Brown"
+    }
+  },
+  "2026-au-g1-50": {
+    "name": {
+      "ja": "Warwoven",
+      "en": "Warwoven"
+    },
+    "jockey": {
+      "ja": "Rachel King",
+      "en": "Rachel King"
+    }
+  },
+  "2026-au-g1-51": {
+    "name": {
+      "ja": "God's Window",
+      "en": "God's Window"
+    },
+    "jockey": {
+      "ja": "Siena Grima",
+      "en": "Siena Grima"
+    }
+  },
+  "2026-au-g1-52": {
+    "name": {
+      "ja": "Juja Kibo",
+      "en": "Juja Kibo"
+    },
+    "jockey": {
+      "ja": "Sam Clipperton",
+      "en": "Sam Clipperton"
+    }
+  },
+  "2026-au-g1-53": {
+    "name": {
+      "ja": "Global Goal",
+      "en": "Global Goal"
+    },
+    "jockey": {
+      "ja": "Dylan Gibbons",
+      "en": "Dylan Gibbons"
+    }
+  },
+  "2026-au-g1-54": {
+    "name": {
+      "ja": "Cosmic Crusader",
+      "en": "Cosmic Crusader"
+    },
+    "jockey": {
+      "ja": "William Pike",
+      "en": "William Pike"
+    }
   }
 }

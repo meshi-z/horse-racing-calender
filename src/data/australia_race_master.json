@@ -1,0 +1,2280 @@
+{
+  "venues": {
+    "Flemington": {
+      "ja": "フレミントン",
+      "en": "Flemington",
+      "zh": "費明頓",
+      "fr": "Flemington"
+    },
+    "Royal Randwick": {
+      "ja": "ロイヤルランドウィック",
+      "en": "Royal Randwick",
+      "zh": "皇家蘭域",
+      "fr": "Royal Randwick"
+    },
+    "Caulfield": {
+      "ja": "コーフィールド",
+      "en": "Caulfield",
+      "zh": "考菲爾德",
+      "fr": "Caulfield"
+    },
+    "Rosehill Gardens": {
+      "ja": "ローズヒルガーデンズ",
+      "en": "Rosehill Gardens",
+      "zh": "玫瑰崗",
+      "fr": "Rosehill Gardens"
+    },
+    "Moonee Valley": {
+      "ja": "ムーニーバレー",
+      "en": "Moonee Valley",
+      "zh": "滿利谷",
+      "fr": "Moonee Valley"
+    },
+    "Eagle Farm": {
+      "ja": "イーグルファーム",
+      "en": "Eagle Farm",
+      "zh": "鷹園",
+      "fr": "Eagle Farm"
+    },
+    "Doomben": {
+      "ja": "ドゥームベン",
+      "en": "Doomben",
+      "zh": "多姆奔",
+      "fr": "Doomben"
+    },
+    "Morphettville": {
+      "ja": "モーフェットビル",
+      "en": "Morphettville",
+      "zh": "莫費特維爾",
+      "fr": "Morphettville"
+    },
+    "Ascot": {
+      "ja": "アスコット (豪)",
+      "en": "Ascot (AUS)",
+      "zh": "雅士閣 (澳洲)",
+      "fr": "Ascot (AUS)"
+    }
+  },
+  "races": [
+    {
+      "id": "2026-au-g1-01",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "CFオーアステークス",
+        "en": "C.F. Orr Stakes",
+        "zh": "柯爾錦標",
+        "fr": "C.F. Orr Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-02-07",
+      "start_time": "2026-02-07T05:10:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "コーフィールド",
+        "en": "Caulfield",
+        "zh": "考菲爾德",
+        "fr": "Caulfield"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-02",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ブラックキャビアライトニング",
+        "en": "Black Caviar Lightning",
+        "zh": "魚 itertools 閃電錦標",
+        "fr": "Black Caviar Lightning"
+      },
+      "grade": "G1",
+      "date": "2026-02-14",
+      "start_time": "2026-02-14T05:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 1000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-03",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ブルーダイヤモンドステークス",
+        "en": "Blue Diamond Stakes",
+        "zh": "藍鑽石錦標",
+        "fr": "Blue Diamond Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-02-21",
+      "start_time": "2026-02-21T04:40:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "コーフィールド",
+        "en": "Caulfield",
+        "zh": "考菲爾德",
+        "fr": "Caulfield"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-04",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "フューチュリティステークス",
+        "en": "Futurity Stakes",
+        "zh": "未來錦標",
+        "fr": "Futurity Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-02-21",
+      "start_time": "2026-02-21T05:20:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "コーフィールド",
+        "en": "Caulfield",
+        "zh": "考菲爾德",
+        "fr": "Caulfield"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-05",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "オークレイプレート",
+        "en": "Oakleigh Plate",
+        "zh": "渥利盾",
+        "fr": "Oakleigh Plate"
+      },
+      "grade": "G1",
+      "date": "2026-02-21",
+      "start_time": "2026-02-21T06:00:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "コーフィールド",
+        "en": "Caulfield",
+        "zh": "考菲爾德",
+        "fr": "Caulfield"
+      },
+      "distance": 1100,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-06",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "チッピングノートンステークス",
+        "en": "Chipping Norton Stakes",
+        "zh": "齊賓諾頓錦標",
+        "fr": "Chipping Norton Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-02-28",
+      "start_time": "2026-02-28T05:00:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-07",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "サラウンドステークス",
+        "en": "Surround Stakes",
+        "zh": "環繞錦標",
+        "fr": "Surround Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-02-28",
+      "start_time": "2026-02-28T04:20:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-08",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "オーストラリアンギニー",
+        "en": "Australian Guineas",
+        "zh": "澳洲堅尼",
+        "fr": "Australian Guineas"
+      },
+      "grade": "G1",
+      "date": "2026-02-28",
+      "start_time": "2026-02-28T05:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-09",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ランドウィックギニー",
+        "en": "Randwick Guineas",
+        "zh": "蘭域堅尼",
+        "fr": "Randwick Guineas"
+      },
+      "grade": "G1",
+      "date": "2026-03-07",
+      "start_time": "2026-03-07T05:00:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-10",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "カンタベリーステークス",
+        "en": "Canterbury Stakes",
+        "zh": "坎特伯雷錦標",
+        "fr": "Canterbury Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-03-07",
+      "start_time": "2026-03-07T04:20:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1300,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-11",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ニューマーケットハンデキャップ",
+        "en": "Newmarket Handicap",
+        "zh": "新市場讓賽",
+        "fr": "Newmarket Handicap"
+      },
+      "grade": "G1",
+      "date": "2026-03-07",
+      "start_time": "2026-03-07T05:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-12",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "クールモアクラシック",
+        "en": "Coolmore Classic",
+        "zh": "高多芬經典賽",
+        "fr": "Coolmore Classic"
+      },
+      "grade": "G1",
+      "date": "2026-03-14",
+      "start_time": "2026-03-14T05:00:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ローズヒルガーデンズ",
+        "en": "Rosehill Gardens",
+        "zh": "玫瑰崗",
+        "fr": "Rosehill Gardens"
+      },
+      "distance": 1500,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-13",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ゴールデンスリッパー",
+        "en": "Golden Slipper Stakes",
+        "zh": "金拖鞋大賽",
+        "fr": "Golden Slipper Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-03-21",
+      "start_time": "2026-03-21T05:45:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ローズヒルガーデンズ",
+        "en": "Rosehill Gardens",
+        "zh": "玫瑰崗",
+        "fr": "Rosehill Gardens"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-14",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ジョージライダーステークス",
+        "en": "George Ryder Stakes",
+        "zh": "佐治萊德錦標",
+        "fr": "George Ryder Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-03-21",
+      "start_time": "2026-03-21T04:25:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ローズヒルガーデンズ",
+        "en": "Rosehill Gardens",
+        "zh": "玫瑰崗",
+        "fr": "Rosehill Gardens"
+      },
+      "distance": 1500,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-15",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ランヴェットステークス",
+        "en": "Ranvet Stakes",
+        "zh": "蘭域錦標",
+        "fr": "Ranvet Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-03-21",
+      "start_time": "2026-03-21T03:45:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ローズヒルガーデンズ",
+        "en": "Rosehill Gardens",
+        "zh": "玫瑰崗",
+        "fr": "Rosehill Gardens"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-16",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ザ・ギャラクシー",
+        "en": "The Galaxy",
+        "zh": "星河大賽",
+        "fr": "The Galaxy"
+      },
+      "grade": "G1",
+      "date": "2026-03-21",
+      "start_time": "2026-03-21T05:05:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ローズヒルガーデンズ",
+        "en": "Rosehill Gardens",
+        "zh": "玫瑰崗",
+        "fr": "Rosehill Gardens"
+      },
+      "distance": 1100,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-17",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ローズヒルギニー",
+        "en": "Rosehill Guineas",
+        "zh": "玫瑰崗堅尼",
+        "fr": "Rosehill Guineas"
+      },
+      "grade": "G1",
+      "date": "2026-03-21",
+      "start_time": "2026-03-21T03:10:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ローズヒルガーデンズ",
+        "en": "Rosehill Gardens",
+        "zh": "玫瑰崗",
+        "fr": "Rosehill Gardens"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-18",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ウィリアムレイドステークス",
+        "en": "William Reid Stakes",
+        "zh": "威廉烈特錦標",
+        "fr": "William Reid Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-03-20",
+      "start_time": "2026-03-20T10:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ムーニーバレー",
+        "en": "Moonee Valley",
+        "zh": "滿利谷",
+        "fr": "Moonee Valley"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-19",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "オーストラリアンカップ",
+        "en": "Australian Cup",
+        "zh": "澳洲盃",
+        "fr": "Australian Cup"
+      },
+      "grade": "G1",
+      "date": "2026-03-28",
+      "start_time": "2026-03-28T05:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-20",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "タンクレッドステークス",
+        "en": "Tancred Stakes",
+        "zh": "鄧格錦標",
+        "fr": "Tancred Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-03-28",
+      "start_time": "2026-03-28T05:00:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ローズヒルガーデンズ",
+        "en": "Rosehill Gardens",
+        "zh": "玫瑰崗",
+        "fr": "Rosehill Gardens"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-21",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ヴァイナリースタッドステークス",
+        "en": "Vinery Stud Stakes",
+        "zh": "葡萄園育馬場錦標",
+        "fr": "Vinery Stud Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-03-28",
+      "start_time": "2026-03-28T04:20:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ローズヒルガーデンズ",
+        "en": "Rosehill Gardens",
+        "zh": "玫瑰崗",
+        "fr": "Rosehill Gardens"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-22",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ドンカスターマイル",
+        "en": "Doncaster Mile",
+        "zh": "唐加士打一哩賽",
+        "fr": "Doncaster Mile"
+      },
+      "grade": "G1",
+      "date": "2026-04-04",
+      "start_time": "2026-04-04T05:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-23",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "TJスミスステークス",
+        "en": "TJ Smith Stakes",
+        "zh": "史密夫錦標",
+        "fr": "TJ Smith Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-04-04",
+      "start_time": "2026-04-04T04:35:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-24",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "オーストラリアンダービー",
+        "en": "Australian Derby",
+        "zh": "澳洲打吡",
+        "fr": "Derby Australien"
+      },
+      "grade": "G1",
+      "date": "2026-04-04",
+      "start_time": "2026-04-04T03:55:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-25",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ATCサイアーズプロデュースステークス",
+        "en": "ATC Sires' Produce Stakes",
+        "zh": "澳洲賽馬會育馬者錦標",
+        "fr": "ATC Sires' Produce Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-04-04",
+      "start_time": "2026-04-04T03:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-26",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "クイーンエリザベスステークス",
+        "en": "Queen Elizabeth Stakes",
+        "zh": "女皇伊利沙伯錦標",
+        "fr": "Queen Elizabeth Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-04-11",
+      "start_time": "2026-04-11T05:55:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-27",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "シドニーカップ",
+        "en": "Sydney Cup",
+        "zh": "悉尼盃",
+        "fr": "Sydney Cup"
+      },
+      "grade": "G1",
+      "date": "2026-04-11",
+      "start_time": "2026-04-11T05:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 3200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-28",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "オーストラリアンオークス",
+        "en": "Australian Oaks",
+        "zh": "澳洲橡樹大賽",
+        "fr": "Oaks d'Australie"
+      },
+      "grade": "G1",
+      "date": "2026-04-11",
+      "start_time": "2026-04-11T04:35:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-29",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "クイーンオブザターフステークス",
+        "en": "Queen of the Turf Stakes",
+        "zh": "草地女皇錦標",
+        "fr": "Queen of the Turf Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-04-11",
+      "start_time": "2026-04-11T06:35:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-30",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "オールエイジドステークス",
+        "en": "All Aged Stakes",
+        "zh": "全齡錦標",
+        "fr": "All Aged Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-04-18",
+      "start_time": "2026-04-18T05:50:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-31",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "シャンペンステークス",
+        "en": "Champagne Stakes",
+        "zh": "香檳錦標",
+        "fr": "Champagne Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-04-18",
+      "start_time": "2026-04-18T05:10:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-32",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "オーストララシアンオークス",
+        "en": "Australasian Oaks",
+        "zh": "澳大拉西亞橡樹大賽",
+        "fr": "Australasian Oaks"
+      },
+      "grade": "G1",
+      "date": "2026-04-25",
+      "start_time": "2026-04-25T06:25:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "モーフェットビル",
+        "en": "Morphettville",
+        "zh": "莫費特維爾",
+        "fr": "Morphettville"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-33",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ロバートサングスターステークス",
+        "en": "Robert Sangster Stakes",
+        "zh": "羅拔桑士達錦標",
+        "fr": "Robert Sangster Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-04-25",
+      "start_time": "2026-04-25T05:45:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "モーフェットビル",
+        "en": "Morphettville",
+        "zh": "莫費特維爾",
+        "fr": "Morphettville"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-34",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "サウスオーストラリアンダービー",
+        "en": "South Australian Derby",
+        "zh": "南澳打吡",
+        "fr": "Derby d'Australie du Sud"
+      },
+      "grade": "G1",
+      "date": "2026-05-02",
+      "start_time": "2026-05-02T06:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "モーフェットビル",
+        "en": "Morphettville",
+        "zh": "莫費特維爾",
+        "fr": "Morphettville"
+      },
+      "distance": 2500,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-35",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ドゥームベン10000",
+        "en": "Doomben 10,000",
+        "zh": "東奔一萬錦標",
+        "fr": "Doomben 10,000"
+      },
+      "grade": "G1",
+      "date": "2026-05-09",
+      "start_time": "2026-05-09T05:40:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ドゥームベン",
+        "en": "Doomben",
+        "zh": "多姆奔",
+        "fr": "Doomben"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-36",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ザ・グッドウッド",
+        "en": "The Goodwood",
+        "zh": "古活讓賽",
+        "fr": "The Goodwood"
+      },
+      "grade": "G1",
+      "date": "2026-05-09",
+      "start_time": "2026-05-09T06:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "モーフェットビル",
+        "en": "Morphettville",
+        "zh": "莫費特維爾",
+        "fr": "Morphettville"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-37",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ドゥームベンカップ",
+        "en": "Doomben Cup",
+        "zh": "東奔盃",
+        "fr": "Doomben Cup"
+      },
+      "grade": "G1",
+      "date": "2026-05-16",
+      "start_time": "2026-05-16T05:40:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ドゥームベン",
+        "en": "Doomben",
+        "zh": "多姆奔",
+        "fr": "Doomben"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-38",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "キングスフォードスミスカップ",
+        "en": "Kingsford-Smith Cup",
+        "zh": "史密夫國王盃",
+        "fr": "Kingsford-Smith Cup"
+      },
+      "grade": "G1",
+      "date": "2026-05-23",
+      "start_time": "2026-05-23T05:40:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "イーグルファーム",
+        "en": "Eagle Farm",
+        "zh": "鷹園",
+        "fr": "Eagle Farm"
+      },
+      "distance": 1300,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-39",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "クイーンズランドダービー",
+        "en": "Queensland Derby",
+        "zh": "昆士蘭打吡",
+        "fr": "Derby du Queensland"
+      },
+      "grade": "G1",
+      "date": "2026-05-30",
+      "start_time": "2026-05-30T05:40:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "イーグルファーム",
+        "en": "Eagle Farm",
+        "zh": "鷹園",
+        "fr": "Eagle Farm"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-40",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "クイーンズランドオークス",
+        "en": "Queensland Oaks",
+        "zh": "昆士蘭橡樹大賽",
+        "fr": "Oaks du Queensland"
+      },
+      "grade": "G1",
+      "date": "2026-06-06",
+      "start_time": "2026-06-06T05:00:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "イーグルファーム",
+        "en": "Eagle Farm",
+        "zh": "鷹園",
+        "fr": "Eagle Farm"
+      },
+      "distance": 2200,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-41",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ストラドブロークハンデキャップ",
+        "en": "Stradbroke Handicap",
+        "zh": "葉森讓賽 (昆士蘭)",
+        "fr": "Stradbroke Handicap"
+      },
+      "grade": "G1",
+      "date": "2026-06-06",
+      "start_time": "2026-06-06T05:40:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "イーグルファーム",
+        "en": "Eagle Farm",
+        "zh": "鷹園",
+        "fr": "Eagle Farm"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-42",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "JJアトキンス",
+        "en": "J.J. Atkins",
+        "zh": "阿堅斯錦標",
+        "fr": "J.J. Atkins"
+      },
+      "grade": "G1",
+      "date": "2026-06-06",
+      "start_time": "2026-06-06T04:20:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "イーグルファーム",
+        "en": "Eagle Farm",
+        "zh": "鷹園",
+        "fr": "Eagle Farm"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "2yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-43",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "タタソールズティアラ",
+        "en": "Tattersall's Tiara",
+        "zh": "達德素王冠錦標",
+        "fr": "Tattersall's Tiara"
+      },
+      "grade": "G1",
+      "date": "2026-06-20",
+      "start_time": "2026-06-20T05:40:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "イーグルファーム",
+        "en": "Eagle Farm",
+        "zh": "鷹園",
+        "fr": "Eagle Farm"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-44",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ウィンクスステークス",
+        "en": "Winx Stakes",
+        "zh": "雲絲仙子錦標",
+        "fr": "Winx Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-08-22",
+      "start_time": "2026-08-22T05:45:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-45",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "メムジーステークス",
+        "en": "Memsie Stakes",
+        "zh": "戴花錦標",
+        "fr": "Memsie Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-08-29",
+      "start_time": "2026-08-29T06:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "コーフィールド",
+        "en": "Caulfield",
+        "zh": "考菲爾德",
+        "fr": "Caulfield"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-46",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "モイアステークス",
+        "en": "Moir Stakes",
+        "zh": "摩亞錦標",
+        "fr": "Moir Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-09-05",
+      "start_time": "2026-09-05T06:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ムーニーバレー",
+        "en": "Moonee Valley",
+        "zh": "滿利谷",
+        "fr": "Moonee Valley"
+      },
+      "distance": 1000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-47",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "マカイビーディーヴァステークス",
+        "en": "Makybe Diva Stakes",
+        "zh": "戴花錦標 (費明頓)",
+        "fr": "Makybe Diva Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-09-12",
+      "start_time": "2026-09-12T06:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-48",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "アンダーウッドステークス",
+        "en": "Underwood Stakes",
+        "zh": "安達錦標",
+        "fr": "Underwood Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-09-19",
+      "start_time": "2026-09-19T06:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "コーフィールド",
+        "en": "Caulfield",
+        "zh": "考菲爾德",
+        "fr": "Caulfield"
+      },
+      "distance": 1800,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-49",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "マニカトステークス",
+        "en": "Manikato Stakes",
+        "zh": "萬利嘉多錦標",
+        "fr": "Manikato Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-09-25",
+      "start_time": "2026-09-25T11:15:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ムーニーバレー",
+        "en": "Moonee Valley",
+        "zh": "滿利谷",
+        "fr": "Moonee Valley"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-50",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ゴールデンローズステークス",
+        "en": "Golden Rose Stakes",
+        "zh": "金玫瑰錦標",
+        "fr": "Golden Rose Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-09-26",
+      "start_time": "2026-09-26T06:00:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ローズヒルガーデンズ",
+        "en": "Rosehill Gardens",
+        "zh": "玫瑰崗",
+        "fr": "Rosehill Gardens"
+      },
+      "distance": 1400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-51",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "エプソムハンデキャップ",
+        "en": "Epsom Handicap",
+        "zh": "葉森讓賽 (悉尼)",
+        "fr": "Epsom Handicap"
+      },
+      "grade": "G1",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T06:05:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-52",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ザ・メトロポリタン",
+        "en": "The Metropolitan",
+        "zh": "大都會錦標",
+        "fr": "The Metropolitan"
+      },
+      "grade": "G1",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T06:45:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-53",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "フライトステークス",
+        "en": "Flight Stakes",
+        "zh": "飛向錦標",
+        "fr": "Flight Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T05:25:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-54",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ターンブルステークス",
+        "en": "Turnbull Stakes",
+        "zh": "東寶錦標",
+        "fr": "Turnbull Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-10-03",
+      "start_time": "2026-10-03T06:25:00.000Z",
+      "is_time_confirmed": true,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "4yo_and_up",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-55",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "コーフィールドギニー",
+        "en": "Caulfield Guineas",
+        "zh": "考菲爾德堅尼",
+        "fr": "Caulfield Guineas"
+      },
+      "grade": "G1",
+      "date": "2026-10-10",
+      "start_time": "2026-10-10T05:30:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "コーフィールド",
+        "en": "Caulfield",
+        "zh": "考菲爾德",
+        "fr": "Caulfield"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-56",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "マイトアンドパワーステークス",
+        "en": "Might And Power Stakes",
+        "zh": "神威錦標",
+        "fr": "Might And Power Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-10-10",
+      "start_time": "2026-10-10T04:50:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "コーフィールド",
+        "en": "Caulfield",
+        "zh": "考菲爾德",
+        "fr": "Caulfield"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-57",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "トゥーラックハンデキャップ",
+        "en": "Toorak Handicap",
+        "zh": "圖拉克讓賽",
+        "fr": "Toorak Handicap"
+      },
+      "grade": "G1",
+      "date": "2026-10-10",
+      "start_time": "2026-10-10T06:10:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "コーフィールド",
+        "en": "Caulfield",
+        "zh": "考菲爾德",
+        "fr": "Caulfield"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-58",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ジ・エベレスト",
+        "en": "The Everest",
+        "zh": "珠穆朗瑪峰錦標",
+        "fr": "The Everest"
+      },
+      "grade": "G1",
+      "date": "2026-10-17",
+      "start_time": "2026-10-17T05:15:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-59",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "キングチャールズ3世ステークス",
+        "en": "King Charles III Stakes",
+        "zh": "查理斯三世國王錦標",
+        "fr": "King Charles III Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-10-17",
+      "start_time": "2026-10-17T06:35:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-60",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "コーフィールドカップ",
+        "en": "Caulfield Cup",
+        "zh": "考菲爾德盃",
+        "fr": "Caulfield Cup"
+      },
+      "grade": "G1",
+      "date": "2026-10-17",
+      "start_time": "2026-10-17T06:15:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "コーフィールド",
+        "en": "Caulfield",
+        "zh": "考菲爾德",
+        "fr": "Caulfield"
+      },
+      "distance": 2400,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-61",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "コックスプレート",
+        "en": "Cox Plate",
+        "zh": "覺士盾",
+        "fr": "Cox Plate"
+      },
+      "grade": "G1",
+      "date": "2026-10-24",
+      "start_time": "2026-10-24T06:10:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "ムーニーバレー",
+        "en": "Moonee Valley",
+        "zh": "滿利谷",
+        "fr": "Moonee Valley"
+      },
+      "distance": 2040,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-62",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "スプリングチャンピオンステークス",
+        "en": "Spring Champion Stakes",
+        "zh": "春季冠軍錦標",
+        "fr": "Spring Champion Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-10-24",
+      "start_time": "2026-10-24T05:00:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "ロイヤルランドウィック",
+        "en": "Royal Randwick",
+        "zh": "皇家蘭域",
+        "fr": "Royal Randwick"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-63",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ヴィクトリアダービー",
+        "en": "Victoria Derby",
+        "zh": "維多利亞打吡",
+        "fr": "Derby de Victoria"
+      },
+      "grade": "G1",
+      "date": "2026-10-31",
+      "start_time": "2026-10-31T04:45:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 2500,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-64",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "クールモアスタッドステークス",
+        "en": "Coolmore Stud Stakes",
+        "zh": "雅閣錦標",
+        "fr": "Coolmore Stud Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-10-31",
+      "start_time": "2026-10-31T04:00:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-65",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "エンパイアローズステークス",
+        "en": "Empire Rose Stakes",
+        "zh": "帝國玫瑰錦標",
+        "fr": "Empire Rose Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-10-31",
+      "start_time": "2026-10-31T05:30:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-66",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "メルボルンカップ",
+        "en": "Melbourne Cup",
+        "zh": "墨爾本盃",
+        "fr": "Melbourne Cup"
+      },
+      "grade": "G1",
+      "date": "2026-11-03",
+      "start_time": "2026-11-03T04:00:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 3200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-67",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "VRCオークス",
+        "en": "VRC Oaks",
+        "zh": "維多利亞橡樹大賽",
+        "fr": "VRC Oaks"
+      },
+      "grade": "G1",
+      "date": "2026-11-05",
+      "start_time": "2026-11-05T06:10:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 2500,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-68",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "チャンピオンズステークス",
+        "en": "Champions Stakes",
+        "zh": "冠軍錦標 (澳洲)",
+        "fr": "Champions Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-11-07",
+      "start_time": "2026-11-07T05:30:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 2000,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-69",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "チャンピオンズスプリント",
+        "en": "Champions Sprint",
+        "zh": "冠軍短途錦標",
+        "fr": "Champions Sprint"
+      },
+      "grade": "G1",
+      "date": "2026-11-07",
+      "start_time": "2026-11-07T04:50:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-70",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "チャンピオンズマイル",
+        "en": "Champions Mile",
+        "zh": "冠軍一哩賽 (澳洲)",
+        "fr": "Champions Mile"
+      },
+      "grade": "G1",
+      "date": "2026-11-07",
+      "start_time": "2026-11-07T04:10:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "フレミントン",
+        "en": "Flemington",
+        "zh": "費明頓",
+        "fr": "Flemington"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-71",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "サウザンドギニー",
+        "en": "Thousand Guineas",
+        "zh": "一千堅尼 (澳洲)",
+        "fr": "Thousand Guineas"
+      },
+      "grade": "G1",
+      "date": "2026-11-14",
+      "start_time": "2026-11-14T05:30:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "コーフィールド",
+        "en": "Caulfield",
+        "zh": "考菲爾德",
+        "fr": "Caulfield"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "filly_and_mare",
+      "age_constraint": "3yo",
+      "handicap": {
+        "code": "set_weight",
+        "ja": "定量",
+        "en": "Set Weights"
+      }
+    },
+    {
+      "id": "2026-au-g1-72",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "レイルウェイステークス",
+        "en": "Railway Stakes",
+        "zh": "鐵路錦標",
+        "fr": "Railway Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-11-21",
+      "start_time": "2026-11-21T08:50:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "アスコット (豪)",
+        "en": "Ascot (AUS)",
+        "zh": "雅士閣 (澳洲)",
+        "fr": "Ascot (AUS)"
+      },
+      "distance": 1600,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "handicap",
+        "ja": "ハンデ",
+        "en": "Handicap"
+      }
+    },
+    {
+      "id": "2026-au-g1-73",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ウィンターボトムステークス",
+        "en": "Winterbottom Stakes",
+        "zh": "冬金錦標",
+        "fr": "Winterbottom Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-11-28",
+      "start_time": "2026-11-28T08:50:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "アスコット (豪)",
+        "en": "Ascot (AUS)",
+        "zh": "雅士閣 (澳洲)",
+        "fr": "Ascot (AUS)"
+      },
+      "distance": 1200,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    },
+    {
+      "id": "2026-au-g1-74",
+      "organization": "racing_australia",
+      "country_code": "AU",
+      "name": {
+        "ja": "ノラリーステークス",
+        "en": "Northerly Stakes",
+        "zh": "諾瑟利錦標",
+        "fr": "Northerly Stakes"
+      },
+      "grade": "G1",
+      "date": "2026-12-05",
+      "start_time": "2026-12-05T08:50:00.000Z",
+      "is_time_confirmed": false,
+      "course": {
+        "ja": "アスコット (豪)",
+        "en": "Ascot (AUS)",
+        "zh": "雅士閣 (澳洲)",
+        "fr": "Ascot (AUS)"
+      },
+      "distance": 1800,
+      "track_type": "turf",
+      "sex_constraint": "none",
+      "age_constraint": "3yo_and_up",
+      "handicap": {
+        "code": "weight_for_age",
+        "ja": "馬齢",
+        "en": "Weight for Age"
+      }
+    }
+  ]
+}
