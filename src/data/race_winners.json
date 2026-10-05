@@ -8760,5 +8760,33 @@
       "fr": "Rl.moore"
     },
     "horse_number": 8
+  },
+  "2026-us-g1-66": {
+    "name": {
+      "ja": "Fully Subscribed",
+      "en": "Fully Subscribed"
+    },
+    "time": null
+  },
+  "2026-us-g2-110": {
+    "name": {
+      "ja": "Agate",
+      "en": "Agate"
+    },
+    "time": null
+  },
+  "2026-us-g3-147": {
+    "name": {
+      "ja": "Vanta",
+      "en": "Vanta"
+    },
+    "time": null
+  },
+  "2026-us-g3-149": {
+    "name": {
+      "ja": "Repo Man",
+      "en": "Repo Man"
+    },
+    "time": null
   }
 }

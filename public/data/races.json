@@ -38119,6 +38119,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Fully Subscribed",
+        "en": "Fully Subscribed"
+      },
+      "time": null
     }
   },
   {
@@ -38147,6 +38154,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Agate",
+        "en": "Agate"
+      },
+      "time": null
     }
   },
   {
@@ -38175,6 +38189,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Vanta",
+        "en": "Vanta"
+      },
+      "time": null
     }
   },
   {
@@ -38231,6 +38252,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Repo Man",
+        "en": "Repo Man"
+      },
+      "time": null
     }
   },
   {
