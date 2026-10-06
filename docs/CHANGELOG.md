@@ -6,6 +6,18 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 69: PRDロードマップ章の肥大化解消と主要マイルストーンへの集約（詳細のCHANGELOG委譲によるスリム化） (v1.44.7 / Issue #213) [完了]
+- **詳細変更履歴のCHANGELOGへの完全移譲・集約 [完了]**
+  - `docs/PRD.md` 第7章に詳細実装メモとして蓄積されていた各Stepの記録（オーストラリア包括統合、公式リンク方針、勝ち馬自動化パイプライン、過去データ是正等）を精査し、`docs/CHANGELOG.md` へ時系列で完全統合。
+  - 過去の全開発履歴のSingle Source of Truthを `docs/CHANGELOG.md` に集約。
+- **`docs/PRD.md` 第7章「ロードマップ & 開発フェーズ」の大幅スリム化 [完了]**
+  - 500行以上の実装詳細ログを削ぎ落とし、プロダクト要求仕様書本来の責務に沿ったハイレベルな構成（開発フェーズ変遷、主要マイルストーン達成実績表、次期ロードマップ）に刷新。
+  - PRDの見通し、可読性、保守性を大幅に向上。
+- **PDFドキュメントの適正化 [完了]**
+  - `npm run docs:pdf` により `docs/Horse_Racing_Calendar_PRD.pdf` を再生成し、ページ数と構成を適正化。
+
+---
+
 ### Step 68: .agents/ 配下の不要一時ファイルクリーンアップおよび一時生成先のワークスペース外統一 (v1.44.6 / Issue #208) [完了]
 - **不要一時ファイルのクリーンアップ [完了]**
   - `.agents/` 直下に蓄積されていたPR本文・コミットメッセージ・リリースノート・Issue本文の一時ファイル（Git追跡中17件およびUntrackedファイル群）を全削除。
@@ -56,6 +68,47 @@
 - **テスト・ドキュメント整備 [完了]**
   - `tests/unit/updateRaceResults.test.ts` に accessS トップ解析、全レース成績抽出、多層フェッチモックテストを追加。全66テストファイル・627テスト全件パス。
   - `docs/specs/data-sources/jra.md`, `docs/specs/data-pipeline.md`, `docs/PRD.md`, `docs/CHANGELOG.md` を更新。
+
+---
+
+### オーストラリア競馬（Racing Australia）の包括的統合 & G2・G3重賞拡充 (v1.44.0〜v1.44.3 / Issue #192〜#197, #199, #203) [完了]
+- **オーストラリア主要G1・重要競走のデータマスタ構築 & パイプライン統合 (v1.44.0 / Issue #192, #193) [完了]**
+  - IFHA Part I および Racing Australia 公式カレンダーから全G1および主要競走（ジ・エベレスト、メルボルンカップ、コックスプレート、コーフィールドカップ等74競走）を構造化し `src/data/australia_race_master.json` を新設。
+  - 南半球タイムゾーン・夏時間（AEST: UTC+10 / AEDT: UTC+11）に対応したデータ変換モジュール `scripts/lib/australia-races.ts` を配備。
+  - `Organization` 型に `'racing_australia'` を追加、`scripts/parse-races.ts` にマージ統合。
+- **発走予定時刻自動更新バッチ & 過去発走時刻バックフィル (v1.44.0 / Issue #194) [完了]**
+  - オーストラリア専用出馬表パーサー `scripts/lib/australia-syutsuba.ts`（`AustraliaRaceTimeFetcher`）を実装。
+  - 州別タイムゾーン（NSW/VIC, QLD, WA, SA）の動的夏時間オフセット判定および専用トークナイザー `tokenizeAustralia` を構築。
+  - 開催済み過去全レースの発走確定時刻をバックフィルし `is_time_confirmed: true` を設定。定期バッチ（`update-race-times.yml`）に豪州開催枠（土曜 00:30 UTC）を追加。
+- **レース結果・勝ち馬自動取得バッチ & 過去主要G1勝者バックフィル (v1.44.0 / Issue #195) [完了]**
+  - オーストラリア専用リザルトパーサー `scripts/lib/australia-results.ts`（`AustraliaRaceResultFetcher`）を実装。
+  - 2026年開催済みの豪主要G1全53レースの公式実在勝ち馬データ（ゴールデンスリッパー、ドンカスターマイル、クイーンエリザベスS、オーストラリアンダービー等）をバックフィル。
+  - 定期結果更新バッチ（`update-race-results.yml`）に豪州開催直後枠（土曜 05:30 UTC）を追加。
+- **オーストラリア競馬UI・フィルター・多言語対応 (v1.44.0 / Issue #196, #197) [完了]**
+  - フィルターバーに「オセアニア（Oceania）」地域グループおよび「オーストラリア (Racing Australia)」チェック項目、競馬場フィルターにオセアニアタブを追加。
+  - レースカード、詳細ダイアログ、カレンダーに「AU」国コードバッジ（アンバー調）および主催者バッジを配備。
+  - 日英仏中4言語辞書（`src/libs/i18n.ts`）に主催者名、地域名、競馬場名（9場）の完全対訳を配備。
+- **オーストラリアG2・G3重賞データの網羅的拡充 (v1.44.1 / Issue #199) [完了]**
+  - IFHA Part I リストおよび公式カレンダーより、G2競走（97レース）およびG3競走（174レース）の計271競走を抽出・構造化。
+  - 新規17競馬場（サンダウン、ゴールドコースト、ケンブラグランジ等）をマスタおよび多言語辞書に追加（全26場へ拡充）。
+  - オーストラリア重賞総数を74レースから345レース（G1: 74, G2: 97, G3: 174）へ拡張し、全1,681レースへ同期。
+- **オーストラリアG2・G3開催済みレースの勝ち馬バックフィル (v1.44.2 / Issue #203) [完了]**
+  - 2026年開催済みのオーストラリアG2（73レース）・G3（123レース）計196レースについて、公式一次ソースに基づく確定勝ち馬データを特定し `src/data/race_winners.json` に追加統合（登録件数: 1,071 -> 1,267件）。
+  - 11月開催予定レースおよび未来レースは勝者未設定（`undefined`）として厳格保護。
+- **公式リンク方針（Issue #190）の遵守 (v1.44.3) [完了]**
+  - オーストラリア競馬には推測URLを付与せず `official_url: undefined` を厳格保持。
+
+---
+
+### 公式リンクのJRA G1特化に伴う不要な動的推測URL処理撤廃および秋G1マスタ事前整備 (Issue #190) [完了]
+- **動的推測コード（デッドコード）の完全撤廃 (`src/libs/officialUrl.ts`) [完了]**
+  - かつて出馬表や結果URLを競馬場名や日付から推測組み立てしていた関数群（`resolveNarOfficialUrl`, `resolveHkjcOfficialUrl`, `NAR_BABA_CODES` 等）を完全削除。
+  - 実在検証済みの `official_url`（JRA G1確定結果）のみを返却し、未検証レースは一律 `null`（UI非表示）とする堅牢な実装へ純化。
+- **結果更新バッチの未使用URL処理整理 (`scripts/update-race-results.ts`) [完了]**
+  - 各プロバイダー（NAR, PMU, Sporting Life, HKJC, US）から未使用の `resultUrl` 組み立て処理を撤廃し、責務を勝ち馬抽出に純化。
+  - `JRA_G1_RESULT_URLS` に2026年秋のJRA G1/J.G1（全12レース）の公式実在スラッグを事前定義し、レース終了後の自動バッチで確実に公式結果URLが反映される仕組みを確立。
+- **テスト・品質検証 [完了]**
+  - 不要関数のテストを削除し、JRA G1確定結果のみのURL返却および他レースの一律非表示を保証するテストへ刷新。全63テストファイル・592テスト全件パス。
 
 ---
 
@@ -361,22 +414,54 @@
 ---
 
 ### Step 48: 2026年過去全重賞レース結果（勝ち馬）の包括的バックフィルパイプラインの導入 (v1.37.0 / Issue #147) [完了]
+- **過去全重賞バックフィル専用パイプラインの実装 (`scripts/backfill-race-winners.ts`) [完了]**
+  - 2026年1月1日〜2026年9月27日までに終了した過去全重賞レース（1,010件中未登録989件）を対象に、公式リザルトアーカイブおよび確定マスタから勝ち馬情報（馬名・騎手・馬番・走破タイム）を包括的に解決・反映するバックフィルエンジンを構築。
+  - レートリミット制御、指数バックオフ（`fetchWithRetry`）、未来レース安全除外ガード（`date > beforeDate`）を完備。
+  - `src/data/race_winners.json`（永続マスタ）および `public/data/races.json` への二重永続化を自動実行。
+- **データ完全性 & テスト検証 [完了]**
+  - `package.json` に `"data:backfill-results": "tsx scripts/backfill-race-winners.ts"` を追加。
+  - 未開催未来レース（秋華賞、菊花賞、天皇賞秋、凱旋門賞、有馬記念等）は厳格に勝者未登録のまま保護。
+  - `tests/unit/backfillRaceWinners.test.ts` を新設し、過去レース抽出条件、未来レース除外、主催者・グレード別フィルター、dryRunモード、二重永続化を検証。
+
+---
+
+### Step 47: 2026年G1/Jpn1レース勝ち馬データの是正（2024年誤データの解消） (v1.36.1) [完了]
+- **2026年G1/Jpn1レース実績データへの全面是正 [完了]**
+  - `src/data/race_winners.json` に初期登録されていた2024年実績データ（日本ダービー：ダノンデサイル、皐月賞：ジャスティンミラノ等）を解消し、2026年の日本ダービー勝ち馬「**ロブチェン**（松山弘平、17番、2:22.7）」をはじめとする2026年確定実績データへ全件是正。
+  - JRA G1（フェブラリーS：コスタノヴァ、高松宮記念：サトノレーヴ、大阪杯：クロワデュノール、桜花賞：スターアニス、中山GJ：エコロデュエル、皐月賞：ロブチェン、天皇賞春：クロワデュノール、NHKマイルC：ロデオドライブ、ヴィクトリアM：エンブロイダリー、オークス：ジュウリョクピエロ、日本ダービー：ロブチェン、安田記念：シックスペンス、宝塚記念：メイショウタバル、スプリンターズS：ピューロマジック）。
+  - NAR Jpn1（川崎記念：カゼノランナー、羽田盃：フィンガー、かしわ記念：ウィルソンテソーロ、東京ダービー：フィンガー、帝王賞：ミッキーファイト）。
+  - 海外主要G1（ケンタッキーダービー：Golden Tempo、QE2世カップ：Romantic Warrior）。
+- **未開催未来レースからの勝者データ完全削除 [完了]**
+  - 有馬記念、凱旋門賞など未来レースに誤設定されていた勝者データを完全削除（`undefined`）。
+  - `scripts/parse-races.ts` による再ビルドで `public/data/races.json` と完全同期。
+
+---
+
+### Step 46: 各競馬主催者公式リザルトの自動パース機能および当日高頻度更新パイプラインの導入 (v1.36.0) [完了]
+- **公式一次ソースに基づく自動リザルトパースプロバイダーの実装 [完了]**
+  - `RaceResultFetcher` インターフェースに基づき、各競馬主催者（JRA, NAR, France Galop, BHA, HRI, HKJC, Equibase）の公式リザルトから機械的に勝ち馬情報（馬名・騎手名・馬番・走破タイム）を直接抽出するプロバイダー群を `scripts/update-race-results.ts` および `scripts/lib/` に実装。
+- **当日中・発走直後ターゲット抽出ロジック (`getTargetPastRacesForResults`) [完了]**
+  - 確定発走時刻と現在時刻を照合し、「発走後15分以上経過した当日レース＋直近3日以内の未確定レース」を即座にターゲット選出。未確定対象がない場合は早期終了ガード（Early Exit）により実行枠と外部負荷を最小化。
+- **二重永続化アーキテクチャ & GitHub Actions 自動巡回 [完了]**
+  - `public/data/races.json` と `src/data/race_winners.json` への二重永続化を実装。
+  - GitHub Actions ワークフロー（`update-race-results.yml`）により、週末昼〜夕方、平日・土曜夜間、毎日早朝の高頻度自動巡回と GitHub Pages 自動デプロイ連動を配備。
+  - `.agents/rules/00-project.md` に「Data accuracy & Single Source of Truth」セクションを新設。
+
+---
+
+### Step 45: レース終了後の勝ち馬（優勝馬）表示機能およびリザルト反映パイプラインの実装 (v1.35.0) [完了]
 - **データスキーマ・型定義の拡張 (`src/types/race.ts`, パイプライン型) [完了]**
   - `RaceWinner` インターフェースを新設し、`Race` および `RaceOutput` 型に `winner?: RaceWinner;`（馬名、騎手名、馬番、走破タイム）を追加。
 - **勝ち馬データの管理 & パイプライン連携 [完了]**
-  - `src/data/race_winners.json` を新設し、2026年主要重賞（日本ダービー、皐月賞、天皇賞春、宝塚記念、スプリンターズS、ケンタッキーダービー、凱旋門賞等）の実績勝ち馬データを多言語（日・英・仏・中）、騎手、馬番、走破タイムを含めて登録。
+  - `src/data/race_winners.json` を新設し、主要重賞の実績勝ち馬データを多言語（日・英・仏・中）、騎手、馬番、走破タイムを含めて登録。
   - `scripts/parse-races.ts` において、`race_winners.json` のマージおよび既存 `races.json` からの勝ち馬データ保持保護ロジック（`extractRaceWinnersMap`）を実装。
-  - レース終了後（月曜バッチ等）に着順確定リザルトから勝ち馬情報を取得・マージ・更新するパイプラインスクリプト (`scripts/update-race-results.ts`) を新設し、`npm run data:update-results` を整備。
+  - レース終了後に着順確定リザルトから勝ち馬情報を取得・マージ・更新するパイプラインスクリプト (`scripts/update-race-results.ts`) を新設し、`npm run data:update-results` を整備。
 - **UIコンポーネントへの勝ち馬表示 [完了]**
   - **タイムライン (`RaceCard.tsx`)**: レース終了後、かつ `winner` が存在する場合に「🏆 {馬名}」のコンパクトなアンバー調バッジを表示。
   - **カレンダー (`CalendarView.tsx`)**: セル内のレースチップ内にトロフィーアイコン付きで勝ち馬名（`🏆 {winnerName}`）を表示。
-  - **レース詳細ダイアログ (`RaceDetailDialog.tsx`)**: 専用の「レース結果 / 優勝 (Race Result / Winner)」セクションを新設し、優勝馬名（第1・第2言語）、馬番（`{number}番` / `No. {number}`）、騎手名、走破タイムを整然と表示。
-- **多言語（i18n）完全対応 [完了]**
-  - 日本語（`ja`）、英語（`en`）、フランス語（`fr`）、繁体字中国語（`zh`）でダイアログタイトル、馬名、騎手、馬番、タイム等のラベルを完全定義。
-- **テスト拡充 & 仕様書更新 [完了]**
-  - `RaceCard.test.tsx`, `CalendarView.test.tsx`, `RaceDetailDialog.test.tsx`, `updateRaceResults.test.ts`, `parseRacesPreserveWinners.test.ts` を追加・拡充（全50テストファイル・489テストすべて合格、ビルド・型検査も正常完了）。
-  - `docs/PRD.md` を v1.35.0 (Step 45) へ更新し、PDF（`docs/Horse_Racing_Calendar_PRD.pdf`）を再生成。
-  - `docs/specs/data-pipeline.md`, `docs/batch-schedules.md` を更新。
+  - **レース詳細ダイアログ (`RaceDetailDialog.tsx`)**: 専用の「レース結果 / 優勝 (Race Result / Winner)」セクションを新設し、優勝馬名（第1・第2言語）、馬番、騎手名、走破タイムを整然と表示。
+- **多言語（i18n）完全対応 & テスト拡充 [完了]**
+  - 日英仏中の4言語対応および単体テスト `RaceCard.test.tsx`, `CalendarView.test.tsx`, `RaceDetailDialog.test.tsx`, `updateRaceResults.test.ts`, `parseRacesPreserveWinners.test.ts` を追加・全件合格。
 
 ---
 
