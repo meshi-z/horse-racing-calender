@@ -1,4 +1,4 @@
-﻿# Dependencies
+# Dependencies
 node_modules
 .pnp
 .pnp.js
@@ -30,3 +30,9 @@ yarn-error.log*
 *.sw?
 .DS_Store
 Thumbs.db
+
+# AI Agent temporary files & scratch
+.agents/*.txt
+.agents/*.md
+!.agents/rules/**
+scripts/scratch/
