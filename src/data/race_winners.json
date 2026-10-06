@@ -10566,5 +10566,25 @@
       "ja": "Mr Monaco",
       "en": "Mr Monaco"
     }
+  },
+  "2026-nar-local-185": {
+    "name": {
+      "ja": "スターキャンディ"
+    },
+    "jockey": {
+      "ja": "望月洵"
+    },
+    "horse_number": 6,
+    "time": "1:36.6"
+  },
+  "2026-nar-jpn2-09": {
+    "name": {
+      "ja": "メモリアカフェ"
+    },
+    "jockey": {
+      "ja": "ルメー"
+    },
+    "horse_number": 7,
+    "time": "1:51.6"
   }
 }
