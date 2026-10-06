@@ -48095,6 +48095,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "スターキャンディ"
+      },
+      "jockey": {
+        "ja": "望月洵"
+      },
+      "horse_number": 6,
+      "time": "1:36.6"
     }
   },
   {
@@ -48121,6 +48131,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "メモリアカフェ"
+      },
+      "jockey": {
+        "ja": "ルメー"
+      },
+      "horse_number": 7,
+      "time": "1:51.6"
     }
   },
   {
