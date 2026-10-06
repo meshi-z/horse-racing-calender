@@ -58,9 +58,9 @@ export function Header({ className, ...props }: HeaderProps) {
       )}
       {...props}
     >
-      <div className="container flex h-14 items-center justify-between gap-4">
+      <div className="container flex h-14 items-center justify-between gap-2 sm:gap-4 px-3 sm:px-8">
         {/* タイトル & ロゴ */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           <img
             src={`${import.meta.env.BASE_URL}icons/icon-192.png`}
             alt="重賞カレンダー ロゴ"
@@ -69,30 +69,40 @@ export function Header({ className, ...props }: HeaderProps) {
             height={32}
           />
           <div>
-            <h1 className="text-base sm:text-lg font-bold tracking-tight">
+            <h1 className="text-sm sm:text-base md:text-lg font-bold tracking-tight whitespace-nowrap">
               {t("app.title")}
             </h1>
-            <p className="hidden sm:block text-[10px] text-muted-foreground leading-none">
+            <p className="hidden sm:block text-[10px] text-muted-foreground leading-none whitespace-nowrap">
               {t("app.subtitle")}
             </p>
           </div>
         </div>
 
         {/* 表示モード切替 (Tabs) & コントロール群 */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
           <Tabs
             value={viewMode}
             onValueChange={(val) => setViewMode(val as "timeline" | "calendar")}
-            className="w-auto"
+            className="w-auto shrink-0"
           >
             <TabsList className="grid grid-cols-2 h-8">
-              <TabsTrigger value="timeline" className="gap-1 px-2.5 text-xs">
-                <ListFilter className="h-3.5 w-3.5" />
-                <span>{t("nav.timeline")}</span>
+              <TabsTrigger
+                value="timeline"
+                className="gap-1 px-2 sm:px-2.5 text-xs whitespace-nowrap"
+                aria-label={t("nav.timeline")}
+                title={t("nav.timeline")}
+              >
+                <ListFilter className="h-3.5 w-3.5 shrink-0" />
+                <span className="hidden sm:inline">{t("nav.timeline")}</span>
               </TabsTrigger>
-              <TabsTrigger value="calendar" className="gap-1 px-2.5 text-xs">
-                <Calendar className="h-3.5 w-3.5" />
-                <span>{t("nav.calendar")}</span>
+              <TabsTrigger
+                value="calendar"
+                className="gap-1 px-2 sm:px-2.5 text-xs whitespace-nowrap"
+                aria-label={t("nav.calendar")}
+                title={t("nav.calendar")}
+              >
+                <Calendar className="h-3.5 w-3.5 shrink-0" />
+                <span className="hidden sm:inline">{t("nav.calendar")}</span>
               </TabsTrigger>
             </TabsList>
           </Tabs>
@@ -103,7 +113,7 @@ export function Header({ className, ...props }: HeaderProps) {
             onValueChange={(val) => handleLanguageChange(val as Language)}
           >
             <SelectTrigger
-              className="h-8 px-2 text-xs font-semibold gap-1.5 border-transparent bg-transparent hover:bg-accent focus:ring-0 focus:ring-offset-0 shadow-none w-auto"
+              className="h-8 px-1.5 sm:px-2 text-xs font-semibold gap-1 sm:gap-1.5 border-transparent bg-transparent hover:bg-accent focus:ring-0 focus:ring-offset-0 shadow-none w-auto shrink-0"
               aria-label={
                 language === "ja"
                   ? "言語を選択 (日本語)"
@@ -129,7 +139,7 @@ export function Header({ className, ...props }: HeaderProps) {
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8"
+            className="h-8 w-8 shrink-0"
             onClick={handleRefresh}
             disabled={isRefreshing}
             aria-label={t("nav.refresh")}
@@ -143,7 +153,7 @@ export function Header({ className, ...props }: HeaderProps) {
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8"
+            className="h-8 w-8 shrink-0"
             onClick={toggleTheme}
             aria-label={
               resolvedTheme === "dark"
