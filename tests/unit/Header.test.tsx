@@ -233,4 +233,34 @@ describe("Header", () => {
       screen.getByRole("button", { name: "Refresh data" })
     ).toBeInTheDocument();
   });
+
+  it("モバイル表示の最適化クラス（whitespace-nowrap、テキスト非表示、aria-label）が適用されていること (Issue #207)", () => {
+    const { container } = render(<Header />);
+
+    // タイトルが折り返されないこと
+    const title = screen.getByRole("heading", { level: 1 });
+    expect(title).toHaveClass("whitespace-nowrap");
+    expect(title).toHaveClass("text-sm");
+
+    // タブに aria-label と whitespace-nowrap が付与され、テキストがモバイルで非表示（hidden sm:inline）となること
+    const timelineTab = screen.getByRole("tab", { name: "タイムライン" });
+    const calendarTab = screen.getByRole("tab", { name: "カレンダー" });
+    expect(timelineTab).toHaveClass("whitespace-nowrap");
+    expect(calendarTab).toHaveClass("whitespace-nowrap");
+    expect(timelineTab).toHaveAttribute("aria-label", "タイムライン");
+    expect(calendarTab).toHaveAttribute("aria-label", "カレンダー");
+
+    const timelineTextSpan = timelineTab.querySelector("span");
+    const calendarTextSpan = calendarTab.querySelector("span");
+    expect(timelineTextSpan).toHaveClass("hidden");
+    expect(timelineTextSpan).toHaveClass("sm:inline");
+    expect(calendarTextSpan).toHaveClass("hidden");
+    expect(calendarTextSpan).toHaveClass("sm:inline");
+
+    // コンテナにモバイル向け余白が設定されていること
+    const containerDiv = container.querySelector(".container");
+    expect(containerDiv).toHaveClass("px-3");
+    expect(containerDiv).toHaveClass("sm:px-8");
+  });
 });
+

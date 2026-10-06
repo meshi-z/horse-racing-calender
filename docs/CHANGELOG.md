@@ -6,6 +6,23 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 67: モバイル画面におけるヘッダー表示最適化・タイトル改行防止・タブ文字重なり解消 (v1.44.5 / Issue #207) [完了]
+- **タイトル領域のスマート化 (`src/components/shared/Header.tsx`) [完了]**
+  - サービス名称 `h1` に `whitespace-nowrap` を付与し、狭小モバイル幅で「重賞カ」「レンダ」「ー」と3段に折り返される視認性低下問題を完全解消。
+  - モバイル画面向けにフォントサイズを `text-sm sm:text-base md:text-lg` にレスポンシブ調整。
+  - タイトル・ロゴのラッパーに `shrink-0` を付与し、右側コントロール群の幅による圧迫・縮小を防止。
+- **表示モード切替（Tabs）のモバイル最適化 (`src/components/shared/Header.tsx`) [完了]**
+  - 画面幅 `sm:` 未満ではテキストラベルを `hidden sm:inline` とし、アイコンのみ（`ListFilter` / `Calendar`）をコンパクトに表示してタブ幅を約70pxへ圧縮。
+  - 各 `TabsTrigger` に `aria-label`、`title`、および `whitespace-nowrap` を付与し、アクセシビリティ（スクリーンリーダー対応）および文字重なりの完全防止を両立。
+- **コンテナおよび右側コントロール群の省スペース化 (`src/components/shared/Header.tsx`) [完了]**
+  - ヘッダー内コンテナのパディングを `px-3 sm:px-8`、左右ブロック間の gap を `gap-2 sm:gap-4` に最適化。
+  - 右側コントロール群の gap を `gap-1 sm:gap-1.5`、言語セレクターの余白を `px-1.5 sm:px-2` に調整し、幅360px〜390pxのモバイル画面でも全要素が1行に快適に収まるレイアウトを実現。
+- **テスト・ドキュメント整備 [完了]**
+  - `tests/unit/Header.test.tsx` にモバイル最適化クラスおよびアクセシビリティ検証テストを追加（全66テストファイル・628テスト全件パス）。
+  - `docs/PRD.md`（Step 70-11, v1.44.5）および `docs/CHANGELOG.md` を更新。
+
+---
+
 ### Step 66: JRA G2・G3重賞勝ち馬自動取得バッチの恒久化および10/4重賞結果反映 (v1.44.4 / Issue #200) [完了]
 - **`JraRaceResultFetcher` の多層データベースフェッチ刷新 (`scripts/lib/jra-results.ts`, `scripts/update-race-results.ts`) [完了]**
   - JRA公式データベース `https://www.jra.go.jp/JRADB/accessS.html`（POST `cname=pw01sli00/AF`）を一次ソースとして採用。
