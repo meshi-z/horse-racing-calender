@@ -6,6 +6,20 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 70: postcss-selector-parser 脆弱性解消（overrides適用）および Dependabot 破壊的更新抑止設定 (v1.44.8 / Issue #216) [完了]
+- **`postcss-selector-parser` 脆弱性（GHSA-rj75-hqrm-r3gf）の安全な解消 [完了]**
+  - Dependabot（PR #211）による Tailwind CSS v4 への破壊的メジャーバージョンアップ（PostCSS プラグイン廃止等によるビルド破損）を回避。
+  - Tailwind CSS v3（`3.4.19`）環境を完全維持したまま、`package.json` の `overrides` に `"postcss-selector-parser": "^7.1.6"` を設定。
+  - `postcss-selector-parser` を `7.1.6` へ、`source-map-js` を `1.2.2` へ更新し、セキュリティ脆弱性を完全に解消。
+- **Dependabot 設定ファイル配備による再発防止 (`.github/dependabot.yml`) [完了]**
+  - `.github/dependabot.yml` を新規作成し、Tailwind CSS のメジャーバージョン更新（`semver-major`）を無視するルールを設定。
+  - Tailwind CSS v4 への移行は Issue #215 にて別途計画的に実施する体制を確立。
+- **品質・整合性検証 [完了]**
+  - `npm audit` で対象の脆弱性が解消されたことを確認。
+  - 全66テストファイル・628テスト全件パス、型検査・プロダクションビルド成功。
+
+---
+
 ### Step 69: PRDロードマップ章の肥大化解消と主要マイルストーンへの集約（詳細のCHANGELOG委譲によるスリム化） (v1.44.7 / Issue #213) [完了]
 - **詳細変更履歴のCHANGELOGへの完全移譲・集約 [完了]**
   - `docs/PRD.md` 第7章に詳細実装メモとして蓄積されていた各Stepの記録（オーストラリア包括統合、公式リンク方針、勝ち馬自動化パイプライン、過去データ是正等）を精査し、`docs/CHANGELOG.md` へ時系列で完全統合。
