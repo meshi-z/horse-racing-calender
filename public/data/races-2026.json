@@ -48330,6 +48330,34 @@
     }
   },
   {
+    "id": "2026-uk-g2-47",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "チャレンジステークス",
+      "en": "Challenge Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-10-09",
+    "start_time": "2026-10-09T12:25:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-09",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-uk-g1-31",
     "organization": "bha",
     "country_code": "GB",
@@ -48355,34 +48383,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-uk-g2-47",
-    "organization": "bha",
-    "country_code": "GB",
-    "name": {
-      "ja": "チャレンジステークス",
-      "en": "Challenge Stakes"
-    },
-    "grade": "G2",
-    "date": "2026-10-09",
-    "start_time": "2026-10-09T13:40:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-09",
-    "course": {
-      "ja": "ニューマーケット",
-      "en": "Newmarket"
-    },
-    "distance": 1408,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
     }
   },
   {
@@ -55518,8 +55518,8 @@
     },
     "grade": "Jpn2",
     "date": "2026-11-25",
-    "start_time": "2026-11-25T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-25T08:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "浦和",
       "en": "Urawa"
@@ -55528,6 +55528,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-jpn2-12",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "兵庫ジュニアグランプリ",
+      "en": "Hyogo Junior Grand Prix"
+    },
+    "grade": "Jpn2",
+    "date": "2026-11-26",
+    "start_time": "2026-11-26T07:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "園田",
+      "en": "Sonoda"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -55580,32 +55606,6 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-jpn2-12",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "兵庫ジュニアグランプリ",
-      "en": "Hyogo Junior Grand Prix"
-    },
-    "grade": "Jpn2",
-    "date": "2026-11-26",
-    "start_time": "2026-11-26T11:05:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "園田",
-      "en": "Sonoda"
-    },
-    "distance": 1400,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
