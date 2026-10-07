@@ -48167,6 +48167,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ダグフォース"
+      },
+      "jockey": {
+        "ja": "飛田愛"
+      },
+      "horse_number": 8,
+      "time": "2:04.4"
     }
   },
   {
@@ -48193,6 +48203,16 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "シルバーレシオ"
+      },
+      "jockey": {
+        "ja": "横山武"
+      },
+      "horse_number": 3,
+      "time": "2:04.0"
     }
   },
   {
