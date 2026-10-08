@@ -48311,6 +48311,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ゼロアワー"
+      },
+      "jockey": {
+        "ja": "落合玄"
+      },
+      "horse_number": 7,
+      "time": "1:49.5"
     }
   },
   {
