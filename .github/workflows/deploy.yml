@@ -9,6 +9,12 @@ on:
       - main
   workflow_dispatch:
   workflow_call:
+    inputs:
+      checkout_latest:
+        description: 'Fetch and checkout latest origin/main HEAD'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -27,11 +33,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event_name == 'workflow_call' && 'main' || '' }}
           fetch-depth: 0
 
-      - name: Ensure latest remote HEAD on workflow_call
-        if: github.event_name == 'workflow_call'
+      - name: Ensure latest remote HEAD
+        if: inputs.checkout_latest == true
         run: |
           git fetch origin main
           git checkout -B main origin/main
