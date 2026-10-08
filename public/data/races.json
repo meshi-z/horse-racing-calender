@@ -48239,6 +48239,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "キャトルブランシュ"
+      },
+      "jockey": {
+        "ja": "渡邊竜"
+      },
+      "horse_number": 11,
+      "time": "1:29.1"
     }
   },
   {
@@ -48265,6 +48275,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ゼーロス"
+      },
+      "jockey": {
+        "ja": "笹川翼"
+      },
+      "horse_number": 12,
+      "time": "1:11.0"
     }
   },
   {
