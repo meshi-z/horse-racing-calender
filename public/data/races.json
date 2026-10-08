@@ -48823,8 +48823,8 @@
     },
     "grade": "G3",
     "date": "2026-10-10",
-    "start_time": "2026-10-10T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-10T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
@@ -48897,6 +48897,34 @@
     }
   },
   {
+    "id": "2026-uk-g3-69",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "オータムステークス",
+      "en": "Autumn Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-10",
+    "start_time": "2026-10-10T12:25:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-10",
+    "course": {
+      "ja": "ニューマーケット",
+      "en": "Newmarket"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-uk-g1-32",
     "organization": "bha",
     "country_code": "GB",
@@ -48922,34 +48950,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-uk-g3-69",
-    "organization": "bha",
-    "country_code": "GB",
-    "name": {
-      "ja": "オータムステークス",
-      "en": "Autumn Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-10-10",
-    "start_time": "2026-10-10T13:40:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-10",
-    "course": {
-      "ja": "ニューマーケット",
-      "en": "Newmarket"
-    },
-    "distance": 1609,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
     }
   },
   {
@@ -49355,8 +49355,8 @@
     },
     "grade": "G2",
     "date": "2026-10-11",
-    "start_time": "2026-10-11T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-11T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
@@ -49437,7 +49437,7 @@
     "grade": "G2",
     "date": "2026-10-12",
     "start_time": "2026-10-12T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto",
