@@ -48454,6 +48454,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Musical Times",
+        "en": "Musical Times"
+      },
+      "time": "1m 35.07s"
     }
   },
   {
