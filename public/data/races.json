@@ -48489,6 +48489,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Song Of The Clouds",
+        "en": "Song Of The Clouds"
+      },
+      "time": "2m 3.59s"
     }
   },
   {
