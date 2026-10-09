@@ -49484,32 +49484,6 @@
     }
   },
   {
-    "id": "2026-nar-local-190",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "トパーズカップ",
-      "en": "Topaz Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-10-12",
-    "start_time": "2026-10-12T07:30:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "盛岡",
-      "en": "Morioka"
-    },
-    "distance": 1800,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-191",
     "organization": "nar",
     "country_code": "JP",
@@ -49529,6 +49503,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "2yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-190",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "トパーズカップ",
+      "en": "Topaz Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-10-12",
+    "start_time": "2026-10-12T08:35:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "盛岡",
+      "en": "Morioka"
+    },
+    "distance": 1800,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
