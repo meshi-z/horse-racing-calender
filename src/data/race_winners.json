@@ -10636,5 +10636,26 @@
     },
     "horse_number": 7,
     "time": "1:49.5"
+  },
+  "2026-uk-g3-66": {
+    "name": {
+      "ja": "Mussab",
+      "en": "Mussab"
+    },
+    "time": "56.98s"
+  },
+  "2026-uk-g3-64": {
+    "name": {
+      "ja": "Lola De Valence",
+      "en": "Lola De Valence"
+    },
+    "time": "1m 23.55s"
+  },
+  "2026-uk-g2-47": {
+    "name": {
+      "ja": "Never So Brave",
+      "en": "Never So Brave"
+    },
+    "time": "1m 22.85s"
   }
 }
