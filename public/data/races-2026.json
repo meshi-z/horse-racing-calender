@@ -49412,8 +49412,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-11",
-    "start_time": "2026-10-11T10:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-11T11:00:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "帯広",
       "en": "Obihiro"
@@ -49510,6 +49510,32 @@
     }
   },
   {
+    "id": "2026-nar-local-191",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "ネクストスター佐賀",
+      "en": "Next Star Saga"
+    },
+    "grade": "local_grade",
+    "date": "2026-10-12",
+    "start_time": "2026-10-12T08:25:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "佐賀",
+      "en": "Saga"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-jpn1-08",
     "organization": "nar",
     "country_code": "JP",
@@ -49529,32 +49555,6 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-191",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "ネクストスター佐賀",
-      "en": "Next Star Saga"
-    },
-    "grade": "local_grade",
-    "date": "2026-10-12",
-    "start_time": "2026-10-12T11:05:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "佐賀",
-      "en": "Saga"
-    },
-    "distance": 1400,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
