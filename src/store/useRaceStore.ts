@@ -450,7 +450,8 @@ export const useRaceStore = create<RaceState>((set, get) => ({
             currentYearMonth: { year: nextYear, month: 1 },
           };
         }
-        return { currentYearMonth: { year: nextYear, month: 1 } };
+        // サポート年度の上限（例: 2027年12月）に達している場合は進行を抑止
+        return {};
       }
       return { currentYearMonth: { year, month: month + 1 } };
     }),
@@ -467,7 +468,8 @@ export const useRaceStore = create<RaceState>((set, get) => ({
             currentYearMonth: { year: prevYear, month: 12 },
           };
         }
-        return { currentYearMonth: { year: prevYear, month: 12 } };
+        // サポート年度の下限（例: 2026年1月）に達している場合は遡及を抑止
+        return {};
       }
       return { currentYearMonth: { year, month: month - 1 } };
     }),

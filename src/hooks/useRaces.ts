@@ -17,7 +17,11 @@ export interface UseRacesResult {
 import {
   DEFAULT_DATA_URL,
   getYearDataUrl,
+  isAvailableYear,
+  syncYearToUrl,
 } from '../constants/years';
+import { showToast } from '../store/useToastStore';
+import { useTranslation } from '../libs/i18n';
 export { DEFAULT_DATA_URL, getYearDataUrl };
 
 export const BROADCAST_CHANNEL_NAME = 'races-data-updates';
@@ -125,6 +129,34 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
     return (races.length === 0 && !racesByYear[selectedYear]) || forceRefresh;
   });
   const [error, setError] = useState<Error | null>(null);
+  const { t } = useTranslation();
+
+  // 0. URLクエリパラメータのサニタイズ・正規化と不正値通知（例: ?year=2028 や ?year=abc）
+  const hasValidatedUrlParamRef = useRef(false);
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.location || hasValidatedUrlParamRef.current) {
+      return;
+    }
+    hasValidatedUrlParamRef.current = true;
+
+    const params = new URLSearchParams(window.location.search);
+    const rawYearParam = params.get('year');
+    if (rawYearParam !== null) {
+      const parsed = parseInt(rawYearParam, 10);
+      if (!isAvailableYear(parsed)) {
+        // 不正な年パラメータが指定された場合はURLをサポート年度（selectedYear）に自動補正
+        syncYearToUrl(selectedYear);
+        // ユーザーにフォールバックした旨をトースト案内
+        showToast(
+          t('nav.unsupportedYearNotice', {
+            year: rawYearParam,
+            fallbackYear: String(selectedYear),
+          }),
+          'info'
+        );
+      }
+    }
+  }, [selectedYear, t]);
 
   // 1. 初回データ取得またはカスタム dataUrl / forceRefresh 変更時
   useEffect(() => {
@@ -211,8 +243,19 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
       const yearParam = params.get('year');
       if (yearParam) {
         const parsed = parseInt(yearParam, 10);
-        if (!isNaN(parsed) && parsed !== selectedYear) {
-          void setSelectedYear(parsed);
+        if (isAvailableYear(parsed)) {
+          if (parsed !== selectedYear) {
+            void setSelectedYear(parsed);
+          }
+        } else {
+          syncYearToUrl(selectedYear);
+          showToast(
+            t('nav.unsupportedYearNotice', {
+              year: yearParam,
+              fallbackYear: String(selectedYear),
+            }),
+            'info'
+          );
         }
       }
     };

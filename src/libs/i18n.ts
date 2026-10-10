@@ -24,6 +24,7 @@ export const translations = {
       refresh: '最新のデータに更新',
       refreshSuccess: 'レースデータを最新に更新しました',
       refreshError: 'データの更新に失敗しました（オフライン）',
+      unsupportedYearNotice: '{year}年のデータは未対応のため、{fallbackYear}年の日程を表示しました',
     },
     status: {
       scheduled: '発走予定',
@@ -280,6 +281,7 @@ export const translations = {
       refresh: 'Refresh data',
       refreshSuccess: 'Race data updated to latest',
       refreshError: 'Failed to refresh data (offline)',
+      unsupportedYearNotice: '{year} is not available. Displaying {fallbackYear} season instead.',
     },
     status: {
       scheduled: 'Scheduled',
@@ -536,6 +538,7 @@ export const translations = {
       refresh: 'Actualiser les données',
       refreshSuccess: 'Données des courses actualisées',
       refreshError: "Échec de l'actualisation (hors ligne)",
+      unsupportedYearNotice: "Les données pour {year} ne sont pas disponibles. Affichage de la saison {fallbackYear}.",
     },
     status: {
       scheduled: 'Prévu',
@@ -792,6 +795,7 @@ export const translations = {
       refresh: '重新載入資料',
       refreshSuccess: '賽事資料已更新至最新',
       refreshError: '更新資料失敗（離線中）',
+      unsupportedYearNotice: '{year}年的賽事資料尚未開放，已為您顯示{fallbackYear}年日程',
     },
     status: {
       scheduled: '預計開跑',

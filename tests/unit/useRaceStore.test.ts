@@ -462,16 +462,28 @@ describe('useRaceStore & filterRaces', () => {
       expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2026, month: 5 });
     });
 
-    it('年跨ぎの nextMonth (12月 -> 翌年1月) が正しく計算されること', () => {
+    it('年跨ぎの nextMonth (12月 -> 翌年1月) がサポート年度内で正しく計算されること', () => {
       useRaceStore.getState().setYearMonth({ year: 2026, month: 12 });
       useRaceStore.getState().nextMonth();
       expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2027, month: 1 });
     });
 
-    it('年跨ぎの prevMonth (1月 -> 前年12月) が正しく計算されること', () => {
+    it('サポート上限（2027年12月）での nextMonth は進行せず上限を保持すること', () => {
+      useRaceStore.getState().setYearMonth({ year: 2027, month: 12 });
+      useRaceStore.getState().nextMonth();
+      expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2027, month: 12 });
+    });
+
+    it('年跨ぎの prevMonth (1月 -> 前年12月) がサポート年度内で正しく計算されること', () => {
+      useRaceStore.getState().setYearMonth({ year: 2027, month: 1 });
+      useRaceStore.getState().prevMonth();
+      expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2026, month: 12 });
+    });
+
+    it('サポート下限（2026年1月）での prevMonth は遡及せず下限を保持すること', () => {
       useRaceStore.getState().setYearMonth({ year: 2026, month: 1 });
       useRaceStore.getState().prevMonth();
-      expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2025, month: 12 });
+      expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2026, month: 1 });
     });
 
     it('resetFilters でフィルタが初期化されること', () => {

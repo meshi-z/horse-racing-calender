@@ -25,9 +25,13 @@
   - IntersectionObserver によるスクロール連動（Scroll Spy）を実装し、ユーザーがスクロールして新年度セクションへ到達した際に、ジャンプを起こさずヘッダーの年度セレクターおよび URL（`?year=YYYY`）を自動同期（`setYearFromScroll`）。
   - タイムライン末尾に到達した際、未取得の翌年度データをオンデマンドで自動フェッチするセンチネル（`timeline-bottom-sentinel`）を配置。
   - カレンダービュー: 年度切り替え時に表示月を当該年度の適切な月（現在年なら現在月、別年度なら1月）へ同期。また月送り（12月→1月、1月→12月）で年を跨いだ場合も `selectedYear` および URL を自動追従。
+  - カレンダー年度境界ガード: サポート範囲外（2026年1月未満、2027年12月超過）への進行を抑止し、最前月では「前月」ボタン、最終月では「翌月」ボタンを `disabled` に制御。
+- **URLクエリパラメータの堅牢性・サニタイズ & トースト通知 (`src/hooks/useRaces.ts`) [完了]**
+  - アドレスバーや外部リンク・ブックマークから未対応の年度（例: `?year=2028` や不正文字列）が直接指定された場合、URL を即座にサポート年度（`2026`）へ `replaceState` で自動補正（正規化）。
+  - 4言語トースト通知（`unsupportedYearNotice`）を発火し、「2028年のデータは未対応のため、2026年の日程を表示しました」と親切にフィードバック。ブラウザの「戻る/進む（`popstate`）」による不正パラメータ遷移にも対応。
 - **テスト・品質検証 [完了]**
-  - 単体テスト `tests/unit/yearsConstant.test.ts`、`tests/unit/yearSelector.test.tsx`、`tests/unit/raceSharding.test.ts`、`tests/unit/useRaceStore.test.ts`、`tests/unit/useRaces.test.ts`、`tests/unit/TimelineView.test.tsx`、`tests/unit/TimelineVirtualScroll.test.tsx` を追加・更新。
-  - 全68テストファイル・648テスト全件パス、TypeScript型チェック（tsc --noEmit）パス、プロダクションビルド（`npm run build`）成功。
+  - 単体テスト `tests/unit/yearsConstant.test.ts`、`tests/unit/yearSelector.test.tsx`、`tests/unit/raceSharding.test.ts`、`tests/unit/useRaceStore.test.ts`、`tests/unit/useRaces.test.ts`、`tests/unit/TimelineView.test.tsx`、`tests/unit/TimelineVirtualScroll.test.tsx`、`tests/unit/CalendarView.test.tsx` を追加・更新。
+  - 全68テストファイル・653テスト全件パス、TypeScript型チェック（tsc --noEmit）パス、プロダクションビルド（`npm run build`）成功。
 
 ---
 

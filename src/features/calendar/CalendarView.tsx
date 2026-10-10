@@ -26,10 +26,16 @@ export interface CalendarViewProps {
  */
 export function CalendarView({ races, className }: CalendarViewProps) {
   const currentYearMonth = useRaceStore((state) => state.currentYearMonth);
+  const availableYears = useRaceStore((state) => state.availableYears);
   const nextMonth = useRaceStore((state) => state.nextMonth);
   const prevMonth = useRaceStore((state) => state.prevMonth);
   const goToCurrentMonth = useRaceStore((state) => state.goToCurrentMonth);
   const { language, t } = useTranslation();
+
+  const minYear = Math.min(...availableYears);
+  const maxYear = Math.max(...availableYears);
+  const isPrevDisabled = currentYearMonth.year <= minYear && currentYearMonth.month <= 1;
+  const isNextDisabled = currentYearMonth.year >= maxYear && currentYearMonth.month >= 12;
 
   // 詳細ダイアログ管理
   const [selectedRace, setSelectedRace] = React.useState<Race | null>(null);
@@ -95,6 +101,7 @@ export function CalendarView({ races, className }: CalendarViewProps) {
               size="icon"
               className="h-8 w-8"
               onClick={prevMonth}
+              disabled={isPrevDisabled}
               aria-label={t("calendar.prevMonth")}
             >
               <ChevronLeft className="h-4 w-4" />
@@ -113,6 +120,7 @@ export function CalendarView({ races, className }: CalendarViewProps) {
               size="icon"
               className="h-8 w-8"
               onClick={nextMonth}
+              disabled={isNextDisabled}
               aria-label={t("calendar.nextMonth")}
             >
               <ChevronRight className="h-4 w-4" />

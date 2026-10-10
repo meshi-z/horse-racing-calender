@@ -268,5 +268,33 @@ describe("CalendarView", () => {
       expect(raceButton).toBeInTheDocument();
     });
   });
+
+  describe("サポート年度の境界ガード (2026年1月 / 2027年12月)", () => {
+    it("2026年1月では前月ボタンが disabled になること", () => {
+      useRaceStore.setState({
+        currentYearMonth: { year: 2026, month: 1 },
+      });
+      render(<CalendarView races={mockRaces} />);
+
+      const prevButton = screen.getByRole("button", { name: "前月へ" });
+      expect(prevButton).toBeDisabled();
+
+      const nextButton = screen.getByRole("button", { name: "翌月へ" });
+      expect(nextButton).not.toBeDisabled();
+    });
+
+    it("2027年12月では翌月ボタンが disabled になること", () => {
+      useRaceStore.setState({
+        currentYearMonth: { year: 2027, month: 12 },
+      });
+      render(<CalendarView races={mockRaces} />);
+
+      const nextButton = screen.getByRole("button", { name: "翌月へ" });
+      expect(nextButton).toBeDisabled();
+
+      const prevButton = screen.getByRole("button", { name: "前月へ" });
+      expect(prevButton).not.toBeDisabled();
+    });
+  });
 });
 

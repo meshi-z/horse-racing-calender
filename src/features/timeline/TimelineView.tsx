@@ -433,7 +433,6 @@ export function TimelineView({ races, className }: TimelineViewProps) {
             ? parseInt(groupedRaces[idx - 1].date.slice(0, 4), 10)
             : null;
         const isYearBoundary = prevRaceYear !== null && prevRaceYear !== currentRaceYear;
-        const isFirstItemOfYear = idx === 0 || isYearBoundary;
 
         return (
           <React.Fragment key={date}>
