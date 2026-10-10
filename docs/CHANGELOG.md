@@ -6,6 +6,21 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 73: 依存関係の一括安定更新（Vite / Radix Tabs / Lucide / tsx）および TypeScript 7 メジャー更新抑止設定 (v1.44.13 / PR #219, #222, #230, #231, #232) [完了]
+- **Dependabot 起票 PR の一括統合・安定バージョン更新 [完了]**
+  - 個別マージによる lockfile コンフリクトを回避するため、安全なパッチ・マイナー更新 4 件を一括統合して更新：
+    - `vite`: `8.3.0` → `8.3.3`（パフォーマンス向上、ウォッチャー例外処理）
+    - `@radix-ui/react-tabs`: `1.1.21` → `1.1.22`（タブ切替時のフォーカス/blur制御修正）
+    - `lucide-react`: `1.46.0` → `1.52.0`（新規アイコン追加、SVGエスケープ修正）
+    - `tsx`: `4.23.13` → `4.23.15`（スクリプト実行時バグ修正）
+- **TypeScript 7.0 メジャー更新の抑止設定 (`.github/dependabot.yml`) [完了]**
+  - PRD 要件（TypeScript 5）および周辺エコシステム（Vite, tsx, vitest 等）との整合性を維持するため、TypeScript 7 への破壊的メジャーバージョンアップ（PR #222）をクローズ。
+  - `.github/dependabot.yml` の `ignore` ルールに `typescript` の `semver-major` を追加し、以後の自動起票を抑止。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`、`npm test`（全66テストファイル・628テスト）、`npm run build` による検証を実施し、全件成功を確認。
+
+---
+
 ### Step 72: Dependabot による @types/node メジャーバージョン自動更新の抑止設定 (v1.44.12 / PR #220) [完了]
 - **Node.js 22 ランタイム整合性維持のための Dependabot 設定 (`.github/dependabot.yml`) [完了]**
   - プロジェクトの実行環境（CI/CD、GitHub Actions、各バッチ）が Node.js 22 LTS（`node-version: 22`）であるため、Node 26 向けの型定義（`@types/node@26.6.4`）への自動アップグレードによる実行時未定義エラーリスクを防止。
