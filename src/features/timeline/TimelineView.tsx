@@ -205,8 +205,9 @@ export const TimelineDateSection = React.memo(function TimelineDateSection({
  */
 export function TimelineView({ races, className }: TimelineViewProps) {
   const resetFilters = useRaceStore((state) => state.resetFilters);
+  const selectedYear = useRaceStore((state) => state.selectedYear);
   const { language, t } = useTranslation();
-  const hasScrolledRef = React.useRef(false);
+  const lastScrolledYearRef = React.useRef<number | null>(null);
 
   const groupedRaces = React.useMemo(() => groupRacesByDate(races, language), [races, language]);
   const todayStr = React.useMemo(() => getTodayLocalDateString(), []);
@@ -217,29 +218,43 @@ export function TimelineView({ races, className }: TimelineViewProps) {
   const [isTargetVisible, setIsTargetVisible] = React.useState(true);
   const isLazyEnabled = groupedRaces.length > 5;
 
-  // タイムラインビュー表示時に今日または直近・次のレースへ自動スクロール (Issue #6)
+  // タイムラインビュー表示時または年度切り替え時の自動スクロール
+  // 現在年（システム年）であれば「今日/直近レース」、別年度であれば先頭レースへスクロール
   React.useEffect(() => {
-    if (hasScrolledRef.current || !targetDate) {
+    if (groupedRaces.length === 0) {
+      return;
+    }
+    if (lastScrolledYearRef.current === selectedYear) {
       return;
     }
 
-    const element = document.getElementById(`section-date-${targetDate}`);
-    if (element) {
-      const prefersReducedMotion =
-        typeof window !== "undefined" &&
-        window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const currentSystemYear = new Date().getFullYear();
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-      const timer = setTimeout(() => {
-        element.scrollIntoView({
-          behavior: prefersReducedMotion ? "auto" : "smooth",
-          block: "start",
-        });
-      }, 0);
+    const scrollTargetDate =
+      selectedYear === currentSystemYear
+        ? targetDate || groupedRaces[0]?.date
+        : groupedRaces[0]?.date;
 
-      hasScrolledRef.current = true;
-      return () => clearTimeout(timer);
+    if (scrollTargetDate) {
+      const element = document.getElementById(`section-date-${scrollTargetDate}`);
+      if (element) {
+        const timer = setTimeout(() => {
+          element.scrollIntoView({
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+            block: "start",
+          });
+        }, 0);
+
+        lastScrolledYearRef.current = selectedYear;
+        return () => clearTimeout(timer);
+      }
     }
-  }, [targetDate]);
+
+    lastScrolledYearRef.current = selectedYear;
+  }, [selectedYear, targetDate, groupedRaces]);
 
   // ターゲット日付セクションの画面内表示状態を監視し、ボタンの表示/非表示を制御 (Issue #9)
   React.useEffect(() => {

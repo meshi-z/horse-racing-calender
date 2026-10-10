@@ -14,18 +14,11 @@ export interface UseRacesResult {
   refreshRaces: () => Promise<boolean>;
 }
 
-const baseUrl = import.meta.env.BASE_URL ?? '/';
-const normalizedBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
-export const DEFAULT_DATA_URL = `${normalizedBase}data/races.json`;
-
-/**
- * 指定年度の Sharding JSON ファイル URL を生成
- */
-export function getYearDataUrl(year: number, customBaseUrl?: string): string {
-  const base = customBaseUrl ?? baseUrl;
-  const norm = base.endsWith('/') ? base : `${base}/`;
-  return `${norm}data/races-${year}.json`;
-}
+import {
+  DEFAULT_DATA_URL,
+  getYearDataUrl,
+} from '../constants/years';
+export { DEFAULT_DATA_URL, getYearDataUrl };
 
 export const BROADCAST_CHANNEL_NAME = 'races-data-updates';
 
@@ -121,11 +114,15 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
   const races = useRaceStore((state) => state.races);
   const loadedYears = useRaceStore((state) => state.loadedYears);
   const currentYear = useRaceStore((state) => state.currentYearMonth.year);
+  const selectedYear = useRaceStore((state) => state.selectedYear);
+  const racesByYear = useRaceStore((state) => state.racesByYear);
   const setRaces = useRaceStore((state) => state.setRaces);
   const addRacesForYear = useRaceStore((state) => state.addRacesForYear);
+  const fetchRacesForYear = useRaceStore((state) => state.fetchRacesForYear);
+  const setSelectedYear = useRaceStore((state) => state.setSelectedYear);
 
   const [isLoading, setIsLoading] = useState<boolean>(() => {
-    return races.length === 0 || forceRefresh;
+    return (races.length === 0 && !racesByYear[selectedYear]) || forceRefresh;
   });
   const [error, setError] = useState<Error | null>(null);
 
@@ -152,27 +149,10 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
           return;
         }
 
-        // 年度別 Shard を試行
-        const shardUrl = getYearDataUrl(currentYear);
-        const shardRes = await fetch(shardUrl, { signal: abortController.signal });
-
-        if (shardRes.ok) {
-          const data = (await shardRes.json()) as Race[];
-          if (isMounted) {
-            addRacesForYear(currentYear, data);
-            setIsLoading(false);
-          }
-        } else {
-          // Shard が見つからない場合は結合版 races.json へフォールバック
-          const fallbackRes = await fetch(DEFAULT_DATA_URL, { signal: abortController.signal });
-          if (!fallbackRes.ok) {
-            throw new Error(`Failed to fetch races: ${fallbackRes.status} ${fallbackRes.statusText}`);
-          }
-          const data = (await fallbackRes.json()) as Race[];
-          if (isMounted) {
-            setRaces(data);
-            setIsLoading(false);
-          }
+        // 選択中年度の Shard を取得（ストアのキャッシュ機構を活用）
+        await fetchRacesForYear(selectedYear, forceRefresh, { signal: abortController.signal });
+        if (isMounted) {
+          setIsLoading(false);
         }
       } catch (err) {
         if (err instanceof DOMException && err.name === 'AbortError') {
@@ -186,7 +166,7 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
       }
     }
 
-    if (races.length === 0 || forceRefresh) {
+    if (races.length === 0 || forceRefresh || !racesByYear[selectedYear]) {
       void initialFetch();
     } else {
       setIsLoading(false);
@@ -196,7 +176,7 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
       isMounted = false;
       abortController.abort();
     };
-  }, [customDataUrl, forceRefresh]);
+  }, [customDataUrl, forceRefresh, selectedYear, fetchRacesForYear, setRaces]);
 
   // 2. カレンダー・タイムラインの年度切り替えに伴うオンデマンド取得
   const fetchingYearsRef = useRef<Set<number>>(new Set());
@@ -210,18 +190,9 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
 
     async function fetchYearShard() {
       try {
-        const shardUrl = getYearDataUrl(currentYear);
-        const res = await fetch(shardUrl, { signal: abortController.signal });
-        if (res.ok) {
-          const data = (await res.json()) as Race[];
-          addRacesForYear(currentYear, data);
-        } else {
-          // 該当年度のデータが存在しない場合（例: 過去年・遠い未来年）は空データで loadedYears に記録し再取得を防ぐ
-          addRacesForYear(currentYear, []);
-        }
+        await fetchRacesForYear(currentYear, false, { signal: abortController.signal });
       } catch (err) {
         if (err instanceof DOMException && err.name === 'AbortError') return;
-        // ネットワーク失敗時は次回再試行できるようフラグ解除
         fetchingYearsRef.current.delete(currentYear);
       }
     }
@@ -231,7 +202,26 @@ export function useRaces(options?: UseRacesOptions): UseRacesResult {
     return () => {
       abortController.abort();
     };
-  }, [currentYear, loadedYears, customDataUrl, races.length, addRacesForYear]);
+  }, [currentYear, loadedYears, customDataUrl, races.length, fetchRacesForYear]);
+
+  // 3. ブラウザの「戻る/進む」（popstate）で ?year= が変更されたときの同期
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const yearParam = params.get('year');
+      if (yearParam) {
+        const parsed = parseInt(yearParam, 10);
+        if (!isNaN(parsed) && parsed !== selectedYear) {
+          void setSelectedYear(parsed);
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [selectedYear, setSelectedYear]);
 
   // 3. バックグラウンドキャッシュ更新（BroadcastChannel / Service Worker / VisibilityChange）
   useEffect(() => {

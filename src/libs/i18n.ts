@@ -254,6 +254,11 @@ export const translations = {
       dismiss: '閉じる',
       dismissAria: 'インストール案内を閉じる',
     },
+    yearSelector: {
+      label: '年度',
+      selectAria: 'シーズン年度を選択（現在: {year}年）',
+      optionLabel: '{year}年',
+    },
   },
   en: {
     app: {
@@ -503,6 +508,11 @@ export const translations = {
       installButton: 'Install',
       dismiss: 'Close',
       dismissAria: 'Dismiss install prompt',
+    },
+    yearSelector: {
+      label: 'Season',
+      selectAria: 'Select racing season year (current: {year})',
+      optionLabel: '{year}',
     },
   },
   fr: {
@@ -754,6 +764,11 @@ export const translations = {
       dismiss: 'Fermer',
       dismissAria: "Fermer l'invitation d'installation",
     },
+    yearSelector: {
+      label: 'Saison',
+      selectAria: "Sélectionner l'année de la saison (actuelle : {year})",
+      optionLabel: '{year}',
+    },
   },
   zh: {
     app: {
@@ -1003,6 +1018,11 @@ export const translations = {
       installButton: '安裝',
       dismiss: '關閉',
       dismissAria: '關閉安裝提示',
+    },
+    yearSelector: {
+      label: '年度',
+      selectAria: '選擇賽季年度（目前: {year}年）',
+      optionLabel: '{year}年',
     },
   },
 } as const;
@@ -1447,4 +1467,14 @@ export function useTranslation() {
     t: (key: TranslationKey, params?: Record<string, string | number>) =>
       t(key, language, params),
   };
+}
+
+/**
+ * 言語設定に応じた年度ラベル表示を生成（ja/zh: YYYY年, en/fr: YYYY）
+ */
+export function formatYearLabel(year: number, lang: Language): string {
+  if (lang === 'ja' || lang === 'zh') {
+    return `${year}年`;
+  }
+  return String(year);
 }

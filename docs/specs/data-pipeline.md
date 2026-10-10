@@ -99,9 +99,10 @@ export interface RaceOutput {
 
 #### クライアント側オンデマンド読み込み (`useRaces.ts` & `useRaceStore.ts`)
 
-- **初期ロード**: アプリ起動時は表示対象年度（通常はカレント年 `2026`）の `races-YYYY.json` のみをフェッチし、初期転送コストを大幅に削減。
-- **オンデマンド取得**: カレンダーやタイムラインの年送り操作で未取得年度（`loadedYears` に存在しない年）に遷移した際、バックグラウンドで該当年の `races-YYYY.json` を非同期フェッチ。
-- **シームレスマージ**: `useRaceStore.getState().addRacesForYear(year, races)` により、レースID重複排除および日付・時刻順ソートを自動適用して既存データにマージ。画面の再描画によるチラつきやレイアウトシフトを防止。
+- **初期ロード**: アプリ起動時は URL パラメータ（`?year=YYYY`）、システム日時、またはデフォルト年（`2026`）に基づき、表示対象年度の `races-YYYY.json` のみをフェッチし、初期転送コストを大幅に削減。
+- **オンデマンド取得 & キャッシュ**: ヘッダーの `YearSelector`（年度セレクター）やカレンダーの年送り操作で未取得年度（`racesByYear` 未格納）に切り替わった際、バックグラウンドで該当年の `races-YYYY.json` を非同期取得して `racesByYear` にキャッシュ。同一セッション内での重複フェッチを抑止。
+- **シームレスマージ & ビュー連動**: `useRaceStore.getState().addRacesForYear(year, races)` により、レースID重複排除および日付・時刻順ソートを自動適用して既存データにマージ。画面の再描画によるチラつきやレイアウトシフトを防止。年度切り替え時はカレンダー月およびタイムラインのスクロール位置（現在年なら今日/直近レース、別年度なら先頭レース）を自動調整。
+- **URL双方向同期**: `?year=...` クエリパラメータとストアの `selectedYear` を双方向同期（`history.replaceState` および `popstate` イベント購読）。
 - **堅牢なフォールバック**: Sharding ファイルが存在しない場合（404等）は即座に従来の結合版 `races.json` へフォールバック。
 - **PWA & キャッシュ更新**: Service Worker（Workbox）は `/\/data\/(races(-[0-9]{4})?|index)\.json$/` を一括して `StaleWhileRevalidate` キャッシュ管理し、BroadcastChannel を通じてバックグラウンド更新を自動同期。
 

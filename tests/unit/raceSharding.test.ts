@@ -119,4 +119,18 @@ describe('syncShardedRaceFiles', () => {
     expect(fs.existsSync(path.join(nestedDir, 'index.json'))).toBe(true);
     expect(fs.existsSync(path.join(nestedDir, 'races-2026.json'))).toBe(true);
   });
+
+  it('データが0件の年度でも ensureYears に含まれていれば空配列の shard を作成すること', () => {
+    const only2026Races = mockRaces.filter((r) => r.date.startsWith('2026'));
+    const result = syncShardedRaceFiles(only2026Races, tempDir, [2026, 2027]);
+
+    expect(result.index.years).toEqual([2026, 2027]);
+    expect(result.index.yearCounts['2026']).toBe(2);
+    expect(result.index.yearCounts['2027']).toBe(0);
+
+    const shard2027Path = path.join(tempDir, 'races-2027.json');
+    expect(fs.existsSync(shard2027Path)).toBe(true);
+    const content = JSON.parse(fs.readFileSync(shard2027Path, 'utf-8'));
+    expect(content).toEqual([]);
+  });
 });

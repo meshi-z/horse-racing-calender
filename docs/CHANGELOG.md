@@ -6,6 +6,29 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 74: 2027年シーズン対応 年度切り替えUIおよびデータSharding（オンデマンド読み込み基盤）の実装 (v1.45.0) [完了]
+- **データSharding (年度別分割) 基盤の拡張 (`scripts/lib/race-sharding.ts`, `src/constants/years.ts`, `public/data/races-2027.json`) [完了]**
+  - 利用可能年度定数 `AVAILABLE_YEARS = [2026, 2027]` および初期年度解決ヘルパー `resolveInitialYear`、URL同期ヘルパー `syncYearToUrl` を新設（`src/constants/years.ts`）。
+  - `syncShardedRaceFiles` において指定サポート年度（`ensureYears`）の Shard が常に空配列 `[]` 以上で生成されるよう堅牢化。
+  - 先行受け皿として `public/data/races-2027.json` および更新版 `public/data/index.json` を配備。
+- **Zustand ストア拡張 & オンデマンドフェッチ・キャッシュ機構 (`src/store/useRaceStore.ts`, `src/hooks/useRaces.ts`) [完了]**
+  - ストアに `selectedYear: number`、`availableYears: readonly number[]`、`racesByYear: Record<number, Race[]>`、`isLoadingYear: boolean` を追加。
+  - 初回アクセス判定（URLクエリパラメータ `?year=...` ＞ システム日時 ＞ `DEFAULT_YEAR (2026)`）を実装。
+  - 非同期フェッチ関数 `fetchRacesForYear` により、未取得年度のみオンデマンド取得して `racesByYear` にキャッシュ（同一セッション内の重複フェッチを抑止）。
+  - ブラウザの戻る・進む（`popstate`）による `?year=...` パラメータ変更の検知・双方向同期を実装。
+- **年度セレクターUI (YearSelector) & 4言語多言語化 (`src/components/shared/YearSelector.tsx`, `src/components/shared/Header.tsx`, `src/libs/i18n.ts`) [完了]**
+  - Shadcn UI `Select` を採用したアクセスしやすい `YearSelector` コンポーネントを開発。
+  - ヘッダーのタイトル横に自然に配置し、モバイル画面でも横揺れ・はみ出しが発生しないレスポンシブスタイルを適用。
+  - 4言語辞書（ja, en, fr, zh）に年度関連ラベルおよび年度フォーマットヘルパー `formatYearLabel`（ja/zh: `YYYY年`, en/fr: `YYYY`）を実装。
+- **タイムライン / カレンダーの初期表示・スクロール連動 [完了]**
+  - タイムラインビュー: 当該年度切り替え時、現在年（システム年）であれば「今日/直近レース」へ自動スクロール、別年度（2027年）であれば「先頭レース」へスクロール位置を調整。
+  - カレンダービュー: 年度切り替え時に表示月を当該年度の適切な月（現在年なら現在月、別年度なら1月）へ同期。また月送り（12月→1月、1月→12月）で年を跨いだ場合も `selectedYear` および URL を自動追従。
+- **テスト・品質検証 [完了]**
+  - 単体テスト `tests/unit/yearsConstant.test.ts`、`tests/unit/yearSelector.test.tsx`、`tests/unit/raceSharding.test.ts`、`tests/unit/useRaceStore.test.ts`、`tests/unit/useRaces.test.ts` を追加・更新。
+  - 全68テストファイル・644テスト全件パス、TypeScript型チェック（tsc --noEmit）パス、プロダクションビルド成功。
+
+---
+
 ### Step 73: 依存関係の一括安定更新（Vite / Radix Tabs / Lucide / tsx）および TypeScript 7 メジャー更新抑止設定 (v1.44.13 / PR #219, #222, #230, #231, #232) [完了]
 - **Dependabot 起票 PR の一括統合・安定バージョン更新 [完了]**
   - 個別マージによる lockfile コンフリクトを回避するため、安全なパッチ・マイナー更新 4 件を一括統合して更新：

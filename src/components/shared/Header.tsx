@@ -14,6 +14,7 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
+import { YearSelector } from "@/components/shared/YearSelector";
 import { Calendar, Languages, ListFilter, Moon, RotateCw, Sun } from "lucide-react";
 import { cn } from "@/libs/utils";
 
@@ -59,7 +60,7 @@ export function Header({ className, ...props }: HeaderProps) {
       {...props}
     >
       <div className="container flex h-14 items-center justify-between gap-2 sm:gap-4 px-3 sm:px-8">
-        {/* タイトル & ロゴ */}
+        {/* タイトル & ロゴ & 年度セレクター */}
         <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           <img
             src={`${import.meta.env.BASE_URL}icons/icon-192.png`}
@@ -69,9 +70,12 @@ export function Header({ className, ...props }: HeaderProps) {
             height={32}
           />
           <div>
-            <h1 className="text-sm sm:text-base md:text-lg font-bold tracking-tight whitespace-nowrap">
-              {t("app.title")}
-            </h1>
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <h1 className="text-sm sm:text-base md:text-lg font-bold tracking-tight whitespace-nowrap">
+                {t("app.title")}
+              </h1>
+              <YearSelector />
+            </div>
             <p className="hidden sm:block text-[10px] text-muted-foreground leading-none whitespace-nowrap">
               {t("app.subtitle")}
             </p>
