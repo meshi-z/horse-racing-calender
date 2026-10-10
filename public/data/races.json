@@ -50240,34 +50240,6 @@
     }
   },
   {
-    "id": "2026-uk-g1-33",
-    "organization": "bha",
-    "country_code": "GB",
-    "name": {
-      "ja": "ブリティッシュ・チャンピオンズ・ロングディスタンスカップ",
-      "en": "British Champions Long Distance Cup"
-    },
-    "grade": "G1",
-    "date": "2026-10-17",
-    "start_time": "2026-10-17T13:40:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-17",
-    "course": {
-      "ja": "アスコット",
-      "en": "Ascot"
-    },
-    "distance": 3219,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
     "id": "2026-uk-g1-34",
     "organization": "bha",
     "country_code": "GB",
@@ -50277,8 +50249,8 @@
     },
     "grade": "G1",
     "date": "2026-10-17",
-    "start_time": "2026-10-17T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-17T10:55:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-17",
     "course": {
@@ -50305,8 +50277,8 @@
     },
     "grade": "G1",
     "date": "2026-10-17",
-    "start_time": "2026-10-17T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-17T10:55:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-17",
     "course": {
@@ -50324,24 +50296,24 @@
     }
   },
   {
-    "id": "2026-uk-g1-36",
+    "id": "2026-uk-g1-37",
     "organization": "bha",
     "country_code": "GB",
     "name": {
-      "ja": "クイーンエリザベス2世ステークス",
-      "en": "Queen Elizabeth II Stakes"
+      "ja": "チャンピオンステークス",
+      "en": "Champion Stakes"
     },
     "grade": "G1",
     "date": "2026-10-17",
-    "start_time": "2026-10-17T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-17T10:55:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-17",
     "course": {
       "ja": "アスコット",
       "en": "Ascot"
     },
-    "distance": 1609,
+    "distance": 2012,
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
@@ -50352,24 +50324,52 @@
     }
   },
   {
-    "id": "2026-uk-g1-37",
+    "id": "2026-uk-g1-33",
     "organization": "bha",
     "country_code": "GB",
     "name": {
-      "ja": "チャンピオンステークス",
-      "en": "Champion Stakes"
+      "ja": "ブリティッシュ・チャンピオンズ・ロングディスタンスカップ",
+      "en": "British Champions Long Distance Cup"
     },
     "grade": "G1",
     "date": "2026-10-17",
-    "start_time": "2026-10-17T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-17T11:30:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-17",
     "course": {
       "ja": "アスコット",
       "en": "Ascot"
     },
-    "distance": 2012,
+    "distance": 3219,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g1-36",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "クイーンエリザベス2世ステークス",
+      "en": "Queen Elizabeth II Stakes"
+    },
+    "grade": "G1",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T12:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "アスコット",
+      "en": "Ascot"
+    },
+    "distance": 1609,
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
