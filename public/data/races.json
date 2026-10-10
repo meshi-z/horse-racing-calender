@@ -49008,6 +49008,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Rock Montreal",
+        "en": "Rock Montreal"
+      },
+      "time": "1m 36.31s"
     }
   },
   {
