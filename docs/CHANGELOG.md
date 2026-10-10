@@ -6,6 +6,15 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 71: tsconfig.json の非推奨オプション baseUrl 削除とモダンなパス設定への移行 (v1.44.11 / Issue #227) [完了]
+- **非推奨オプション `baseUrl` の削除 (`tsconfig.json`) [完了]**
+  - TypeScript 6.0+ / 7.0 に向けた警告解消のため、`tsconfig.json` の `compilerOptions` から非推奨となった `"baseUrl": "."` を削除。
+  - TypeScript 5.0+ の標準仕様に則り、`paths`（`"@/*": ["./src/*"]`）のみで `tsconfig.json` 相対のパス解決を行う構成へ移行。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`、`npm test`（全66テストファイル・628テスト）、`npm run build` による検証を実施し、全件成功を確認。
+
+---
+
 ### Step 70: postcss-selector-parser 脆弱性解消（overrides適用）および Dependabot 破壊的更新抑止設定 (v1.44.8 / Issue #216) [完了]
 - **`postcss-selector-parser` 脆弱性（GHSA-rj75-hqrm-r3gf）の安全な解消 [完了]**
   - Dependabot（PR #211）による Tailwind CSS v4 への破壊的メジャーバージョンアップ（PostCSS プラグイン廃止等によるビルド破損）を回避。
