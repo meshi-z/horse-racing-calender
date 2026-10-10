@@ -45,6 +45,7 @@ export interface RaceState {
   nextMonth: () => void;
   prevMonth: () => void;
   goToCurrentMonth: () => void;
+  setYearFromScroll: (year: number) => void;
   getFilteredRaces: () => Race[];
 }
 
@@ -204,23 +205,30 @@ export const filterRaces = (
 let lastRaces: Race[] | null = null;
 let lastFilters: FilterState | null = null;
 let lastSelectedYear: number | null = null;
+let lastViewMode: 'timeline' | 'calendar' | null = null;
 let lastFilteredResult: Race[] = [];
 
 /**
  * Zustand 用の純粋セレクタ関数（メモ化キャッシュ付き）
+ * - calendar ビュー: 選択年度（selectedYear）で絞り込み
+ * - timeline ビュー: ロード済みの全年度レースを連結してシームレス表示
  */
 export const selectFilteredRaces = (state: RaceState): Race[] => {
   if (
     state.races === lastRaces &&
     state.filters === lastFilters &&
-    state.selectedYear === lastSelectedYear
+    state.selectedYear === lastSelectedYear &&
+    state.viewMode === lastViewMode
   ) {
     return lastFilteredResult;
   }
   lastRaces = state.races;
   lastFilters = state.filters;
   lastSelectedYear = state.selectedYear;
-  lastFilteredResult = filterRaces(state.races, state.filters, state.selectedYear);
+  lastViewMode = state.viewMode;
+
+  const yearToFilter = state.viewMode === 'calendar' ? state.selectedYear : undefined;
+  lastFilteredResult = filterRaces(state.races, state.filters, yearToFilter);
   return lastFilteredResult;
 };
 
@@ -471,6 +479,12 @@ export const useRaceStore = create<RaceState>((set, get) => ({
     } else {
       set({ currentYearMonth: getInitialYearMonth() });
     }
+  },
+
+  setYearFromScroll: (year: number) => {
+    if (get().selectedYear === year) return;
+    syncYearToUrl(year);
+    set({ selectedYear: year });
   },
 
   getFilteredRaces: () => filterRaces(get().races, get().filters),

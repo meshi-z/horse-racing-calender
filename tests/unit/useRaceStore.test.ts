@@ -684,6 +684,55 @@ describe('useRaceStore & filterRaces', () => {
         });
         expect(useRaceStore.getState().selectedYear).toBe(2026);
       });
+
+      it('setYearFromScroll はスクロール再発火なしで selectedYear のみ更新すること', () => {
+        useRaceStore.setState({
+          selectedYear: 2026,
+          currentYearMonth: { year: 2026, month: 10 },
+        });
+
+        useRaceStore.getState().setYearFromScroll(2027);
+
+        expect(useRaceStore.getState().selectedYear).toBe(2027);
+        // currentYearMonth は変更されないこと
+        expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2026, month: 10 });
+      });
+
+      it('selectFilteredRaces は timeline 表示時に全ロード済みレースを返し、calendar 表示時に選択年で絞り込むこと', () => {
+        const race2026 = {
+          id: '2026-jra-g1-01',
+          organization: 'jra',
+          name: { ja: '有馬記念' },
+          date: '2026-12-27',
+          start_time: '2026-12-27T06:25:00.000Z',
+          grade: 'G1',
+        } as unknown as Race;
+        const race2027 = {
+          id: '2027-jra-g3-01',
+          organization: 'jra',
+          name: { ja: '中山金杯' },
+          date: '2027-01-05',
+          start_time: '2027-01-05T06:45:00.000Z',
+          grade: 'G3',
+        } as unknown as Race;
+
+        useRaceStore.setState({
+          races: [race2026, race2027],
+          selectedYear: 2026,
+          viewMode: 'timeline',
+          filters: { ...useRaceStore.getState().filters },
+        });
+
+        // timeline モード: 2026年と2027年が両方含まれること（クロスイヤー表示）
+        const timelineRaces = selectFilteredRaces(useRaceStore.getState());
+        expect(timelineRaces).toHaveLength(2);
+
+        // calendar モード: selectedYear (2026) で絞り込まれること
+        useRaceStore.setState({ viewMode: 'calendar' });
+        const calendarRaces = selectFilteredRaces(useRaceStore.getState());
+        expect(calendarRaces).toHaveLength(1);
+        expect(calendarRaces[0].id).toBe('2026-jra-g1-01');
+      });
     });
   });
 });

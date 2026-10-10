@@ -297,4 +297,55 @@ describe("TimelineView", () => {
       expect(screen.getByText("Reset Filters")).toBeInTheDocument();
     });
   });
+
+  describe("年度境界ディバイダー & クロスイヤー表示 (2026年 -> 2027年)", () => {
+    const crossYearRaces: Race[] = [
+      ...mockRaces,
+      {
+        id: "2026-jra-g1-99",
+        organization: "jra",
+        name: { ja: "有馬記念", en: "Arima Kinen" },
+        grade: "G1",
+        date: "2026-12-27",
+        start_time: "2026-12-27T06:25:00.000Z",
+        is_time_confirmed: false,
+        course: { ja: "中山", en: "Nakayama" },
+        distance: 2500,
+        track_type: "turf",
+        sex_constraint: "none",
+        age_constraint: "3yo_and_up",
+        handicap: { code: "weight_for_age", ja: "定量", en: "Weight for Age" },
+      },
+      {
+        id: "2027-jra-g3-01",
+        organization: "jra",
+        name: { ja: "中山金杯（2027）", en: "Nakayama Kimpai 2027" },
+        grade: "G3",
+        date: "2027-01-05",
+        start_time: "2027-01-05T06:45:00.000Z",
+        is_time_confirmed: false,
+        course: { ja: "中山", en: "Nakayama" },
+        distance: 2000,
+        track_type: "turf",
+        sex_constraint: "none",
+        age_constraint: "4yo_and_up",
+        handicap: { code: "handicap", ja: "ハンデ", en: "Handicap" },
+      },
+    ];
+
+    it("年度が切り替わる境界に年度セパレーター（Year Divider）が表示されること", () => {
+      render(<TimelineView races={crossYearRaces} />);
+
+      const divider = screen.getByTestId("year-divider-2027");
+      expect(divider).toBeInTheDocument();
+      expect(divider).toHaveTextContent("2027年 シーズン");
+    });
+
+    it("最下部に次年度オンデマンド取得用のセンチネルが配置されていること", () => {
+      render(<TimelineView races={crossYearRaces} />);
+
+      const sentinel = screen.getByTestId("timeline-bottom-sentinel");
+      expect(sentinel).toBeInTheDocument();
+    });
+  });
 });

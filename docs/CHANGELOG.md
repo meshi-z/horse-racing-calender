@@ -6,7 +6,7 @@
 
 ## バージョン履歴 (Version History)
 
-### Step 74: 2027年シーズン対応 年度切り替えUIおよびデータSharding（オンデマンド読み込み基盤）の実装 (v1.45.0) [完了]
+### Step 74: 2027年シーズン対応 年度切り替えUI、データSharding（オンデマンド読み込み基盤）およびシームレス・クロスイヤースクロールの実装 (v1.45.0) [完了]
 - **データSharding (年度別分割) 基盤の拡張 (`scripts/lib/race-sharding.ts`, `src/constants/years.ts`, `public/data/races-2027.json`) [完了]**
   - 利用可能年度定数 `AVAILABLE_YEARS = [2026, 2027]` および初期年度解決ヘルパー `resolveInitialYear`、URL同期ヘルパー `syncYearToUrl` を新設（`src/constants/years.ts`）。
   - `syncShardedRaceFiles` において指定サポート年度（`ensureYears`）の Shard が常に空配列 `[]` 以上で生成されるよう堅牢化。
@@ -19,13 +19,15 @@
 - **年度セレクターUI (YearSelector) & 4言語多言語化 (`src/components/shared/YearSelector.tsx`, `src/components/shared/Header.tsx`, `src/libs/i18n.ts`) [完了]**
   - Shadcn UI `Select` を採用したアクセスしやすい `YearSelector` コンポーネントを開発。
   - ヘッダーのタイトル横に自然に配置し、モバイル画面でも横揺れ・はみ出しが発生しないレスポンシブスタイルを適用。
-  - 4言語辞書（ja, en, fr, zh）に年度関連ラベルおよび年度フォーマットヘルパー `formatYearLabel`（ja/zh: `YYYY年`, en/fr: `YYYY`）を実装。
-- **タイムライン / カレンダーの初期表示・スクロール連動 [完了]**
-  - タイムラインビュー: 当該年度切り替え時、現在年（システム年）であれば「今日/直近レース」へ自動スクロール、別年度（2027年）であれば「先頭レース」へスクロール位置を調整。
+  - 4言語辞書（ja, en, fr, zh）に年度関連ラベル、年度フォーマットヘルパー `formatYearLabel`（ja/zh: `YYYY年`, en/fr: `YYYY`）、および年度ディバイダー用テキスト（`seasonHeader`）を実装。
+- **タイムライン / カレンダーの初期表示・スクロール連動 & シームレス・クロスイヤースクロール (`src/features/timeline/TimelineView.tsx`, `src/store/useRaceStore.ts`) [完了]**
+  - タイムラインビュー: 12月末から翌年1月へ連続してスクロール閲覧できるシームレス連結（クロスイヤー・インフィニットスクロール）を実現。年度境界には洗練された年度区切りセパレーター（`year-divider`）を配置。
+  - IntersectionObserver によるスクロール連動（Scroll Spy）を実装し、ユーザーがスクロールして新年度セクションへ到達した際に、ジャンプを起こさずヘッダーの年度セレクターおよび URL（`?year=YYYY`）を自動同期（`setYearFromScroll`）。
+  - タイムライン末尾に到達した際、未取得の翌年度データをオンデマンドで自動フェッチするセンチネル（`timeline-bottom-sentinel`）を配置。
   - カレンダービュー: 年度切り替え時に表示月を当該年度の適切な月（現在年なら現在月、別年度なら1月）へ同期。また月送り（12月→1月、1月→12月）で年を跨いだ場合も `selectedYear` および URL を自動追従。
 - **テスト・品質検証 [完了]**
-  - 単体テスト `tests/unit/yearsConstant.test.ts`、`tests/unit/yearSelector.test.tsx`、`tests/unit/raceSharding.test.ts`、`tests/unit/useRaceStore.test.ts`、`tests/unit/useRaces.test.ts` を追加・更新。
-  - 全68テストファイル・644テスト全件パス、TypeScript型チェック（tsc --noEmit）パス、プロダクションビルド成功。
+  - 単体テスト `tests/unit/yearsConstant.test.ts`、`tests/unit/yearSelector.test.tsx`、`tests/unit/raceSharding.test.ts`、`tests/unit/useRaceStore.test.ts`、`tests/unit/useRaces.test.ts`、`tests/unit/TimelineView.test.tsx`、`tests/unit/TimelineVirtualScroll.test.tsx` を追加・更新。
+  - 全68テストファイル・648テスト全件パス、TypeScript型チェック（tsc --noEmit）パス、プロダクションビルド（`npm run build`）成功。
 
 ---
 
