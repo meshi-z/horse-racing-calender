@@ -10699,5 +10699,18 @@
       "en": "Rock Montreal"
     },
     "time": "1m 36.31s"
+  },
+  "2026-france-g2-23": {
+    "name": {
+      "ja": "Al Hamaad",
+      "en": "Al Hamaad",
+      "fr": "Al Hamaad"
+    },
+    "jockey": {
+      "ja": "O.murphy",
+      "en": "O.murphy",
+      "fr": "O.murphy"
+    },
+    "horse_number": 3
   }
 }

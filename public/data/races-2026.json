@@ -49072,6 +49072,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Al Hamaad",
+        "en": "Al Hamaad",
+        "fr": "Al Hamaad"
+      },
+      "jockey": {
+        "ja": "O.murphy",
+        "en": "O.murphy",
+        "fr": "O.murphy"
+      },
+      "horse_number": 3
     }
   },
   {
