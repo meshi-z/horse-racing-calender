@@ -10678,5 +10678,19 @@
       "en": "Lambeth"
     },
     "time": null
+  },
+  "2026-uk-g3-67": {
+    "name": {
+      "ja": "Humidity",
+      "en": "Humidity"
+    },
+    "time": "1m 48.12s"
+  },
+  "2026-uk-g3-68": {
+    "name": {
+      "ja": "Drumbeat",
+      "en": "Drumbeat"
+    },
+    "time": "2m 0.72s"
   }
 }

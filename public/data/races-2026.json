@@ -48938,6 +48938,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Humidity",
+        "en": "Humidity"
+      },
+      "time": "1m 48.12s"
     }
   },
   {
@@ -48966,6 +48973,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Drumbeat",
+        "en": "Drumbeat"
+      },
+      "time": "2m 0.72s"
     }
   },
   {
