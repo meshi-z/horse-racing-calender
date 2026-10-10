@@ -6,6 +6,25 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 75: JRA公式結果スクレイパーの当日開催パースおよびRC略称対応（サウジアラビアRC結果反映） (v1.45.1 / Issue #241) [完了]
+- **JRA公式DB当日開催リンク（pw01srl00）抽出対応 (`scripts/lib/jra-results.ts`) [完了]**
+  - JRA公式DB（`accessS.html`）において、当日開催のミーティングリンクCNAMEプレフィックスが `pw01srl00`（過去開催は `pw01srl10`）であることに対応。
+  - `parseAccessSTopHtml` の正規表現を `/pw01srl\d{2}(\d{2})\d+(\d{8})\//` に拡張し、当日開催リンクからも開催日および競馬場コードを確実に抽出するよう修正。
+- **レース名略称名寄せルール強化 (`scripts/lib/jra-syutsuba.ts`) [完了]**
+  - `raceNameMatches` の `simplify` 関数に `ロイヤルカップ` / `ロイヤルC` $\rightarrow$ `RC` の相互変換置換を追加。
+  - 公式サイト上の「サウジアラビアRC」とアプリ登録名「サウジアラビアロイヤルカップ」の一致判定を可能に改善。
+- **公式一次ソースに基づくレース結果データの反映 [完了]**
+  - 2026年10月10日開催の「サウジアラビアロイヤルカップ（G3）」確定結果（勝ち馬: アゴルディーノ、騎手: 横山 和生、馬番: 4、タイム: 1:34.4）を JRA公式DBから自動取得し、`public/data/races-2026.json`, `public/data/races.json`, `src/data/race_winners.json` へ反映。
+- **仕様書・ドキュメント更新 [完了]**
+  - `docs/specs/data-sources/jra.md`: 第6章に当日開催CNAME抽出およびRC略称名寄せ仕様を追記。
+  - `docs/PRD.md`: 第7章 マイルストーン M6 を更新。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+- **品質・整合性検証 [完了]**
+  - 単体テスト（当日CNAMEパース、RC名寄せ判定）を追加。
+  - `npm run type-check`、`npm test`（全68テストファイル・655テスト）、`npm run build` による検証を実施し、全件成功を確認。
+
+---
+
 ### Step 74: 2027年シーズン対応 年度切り替えUI、データSharding（オンデマンド読み込み基盤）およびシームレス・クロスイヤースクロールの実装 (v1.45.0) [完了]
 - **データSharding (年度別分割) 基盤の拡張 (`scripts/lib/race-sharding.ts`, `src/constants/years.ts`, `public/data/races-2027.json`) [完了]**
   - 利用可能年度定数 `AVAILABLE_YEARS = [2026, 2027]` および初期年度解決ヘルパー `resolveInitialYear`、URL同期ヘルパー `syncYearToUrl` を新設（`src/constants/years.ts`）。

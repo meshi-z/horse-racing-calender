@@ -62,6 +62,8 @@ describe('jra-syutsuba utility', () => {
       expect(raceNameMatches('阪神ジャンプS', '阪神ジャンプステークス')).toBe(true);
       expect(raceNameMatches('産経賞オールカマー', 'オールカマー')).toBe(true);
       expect(raceNameMatches('京成杯オータムハンデキャップ', '京成杯オータムH')).toBe(true);
+      expect(raceNameMatches('サウジアラビアロイヤルカップ', 'サウジアラビアRC')).toBe(true);
+      expect(raceNameMatches('サウジアラビアRC', 'サウジアラビアロイヤルカップ')).toBe(true);
     });
 
     it('全く異なるレース名の場合はfalseを返すこと', () => {

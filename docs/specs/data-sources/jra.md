@@ -91,10 +91,10 @@
   - JRA公式データベース（常設）: `https://www.jra.go.jp/JRADB/accessS.html`（POST `cname=pw01sli00/AF`）
   - フォールバック（開催週展望）: `https://www.jra.go.jp/keiba/thisweek/`
 - **データ取得フロー**:
-  1. `accessS.html`（POST `cname=pw01sli00/AF`）を取得・Shift_JISデコードし、直近1ヶ月以上の全開催日（YYYYMMDD）および開催場別CNAME（`pw01srl...`）を抽出。
-  2. 対象レースの開催日・競馬場に合致する開催場ページを取得し、レース名（「毎日王冠」「京都大賞典」等）からレース成績詳細CNAME（`pw01sde...`）を特定。
+  1. `accessS.html`（POST `cname=pw01sli00/AF`）を取得・Shift_JISデコードし、直近1ヶ月以上の全開催日（YYYYMMDD）および開催場別CNAME（当日開催 `pw01srl00...`、過去開催 `pw01srl10...` 等の全プレフィックスに対応）を抽出。
+  2. 対象レースの開催日・競馬場に合致する開催場ページを取得し、レース名からレース成績詳細CNAME（`pw01sde...`）を特定。レース名照合では「ステークス $\leftrightarrow$ S」「カップ $\leftrightarrow$ C」「トロフィー $\leftrightarrow$ T」「ロイヤルカップ/ロイヤルC $\leftrightarrow$ RC」「オータムハンデキャップ $\leftrightarrow$ オータムH」等の公式略称表記揺れを正規化（`raceNameMatches`）して名寄せ。
   3. レース成績詳細ページ（`accessS.html?CNAME=pw01sde...`）を取得し、着順テーブルから 1着馬・馬番・騎手・タイムを抽出。
 - **特徴・堅牢性**:
-  - レース当日夕方の速報反映はもちろん、月曜早朝に「今週の注目レース」が次週に切り替わった後（週明け）の定期バッチでも、過去開催の一次ソースから漏れなく自動取得可能。
+  - レース当日夕方の速報反映（当日開催プレフィックス `pw01srl00` 抽出対応）はもちろん、月曜早朝に「今週の注目レース」が次週に切り替わった後（週明け）の定期バッチでも、過去開催（`pw01srl10`）の一次ソースから漏れなく自動取得可能。
   - Shift_JIS エンコーディング（`fatal: true` フォールバック付き）により文字化けを防止。
 
