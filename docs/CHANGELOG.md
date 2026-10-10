@@ -6,6 +6,16 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 72: Dependabot による @types/node メジャーバージョン自動更新の抑止設定 (v1.44.12 / PR #220) [完了]
+- **Node.js 22 ランタイム整合性維持のための Dependabot 設定 (`.github/dependabot.yml`) [完了]**
+  - プロジェクトの実行環境（CI/CD、GitHub Actions、各バッチ）が Node.js 22 LTS（`node-version: 22`）であるため、Node 26 向けの型定義（`@types/node@26.6.4`）への自動アップグレードによる実行時未定義エラーリスクを防止。
+  - `.github/dependabot.yml` の `ignore` ルールに `@types/node` のメジャーバージョン更新（`semver-major`）を追加。
+  - Node 22 系のパッチ・マイナー更新は引き続き受信しつつ、将来の Node.js バージョン移行時に計画的更新を行う体制を確立。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`、`npm test`（全66テストファイル・628テスト）、`npm run build` による検証を実施し、全件成功を確認。
+
+---
+
 ### Step 71: tsconfig.json の非推奨オプション baseUrl 削除とモダンなパス設定への移行 (v1.44.11 / Issue #227) [完了]
 - **非推奨オプション `baseUrl` の削除 (`tsconfig.json`) [完了]**
   - TypeScript 6.0+ / 7.0 に向けた警告解消のため、`tsconfig.json` の `compilerOptions` から非推奨となった `"baseUrl": "."` を削除。
