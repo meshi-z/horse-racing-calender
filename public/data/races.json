@@ -48910,6 +48910,16 @@
       "code": "special_weight",
       "ja": "馬齢",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "アゴルディーノ"
+      },
+      "jockey": {
+        "ja": "横山 和生"
+      },
+      "horse_number": 4,
+      "time": "1:34.4"
     }
   },
   {
@@ -49043,6 +49053,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Darkness Falls",
+        "en": "Darkness Falls"
+      },
+      "time": "1m 22.47s"
     }
   },
   {

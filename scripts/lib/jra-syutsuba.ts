@@ -137,6 +137,8 @@ export function raceNameMatches(targetName: string, scrapedName: string): boolea
   const simplify = (s: string) =>
     s
       .replace(/ステークス/g, 'S')
+      .replace(/ロイヤルカップ/g, 'RC')
+      .replace(/ロイヤルC/g, 'RC')
       .replace(/カップ/g, 'C')
       .replace(/トロフィー/g, 'T')
       .replace(/オータムハンデキャップ/g, 'オータムH')

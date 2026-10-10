@@ -212,6 +212,30 @@ describe('update-race-results', () => {
       expect(meetings[1].cname).toBe('pw01srl10082026040220261004/5B');
     });
 
+    it('当日開催のCNAMEプレフィックス (pw01srl00) からも日付と開催場を抽出できること (Issue #241)', () => {
+      const mockTopHtml = `
+        <div class="panel">
+          <h3 class="sub_header">10月10日（土曜）</h3>
+          <div class="content">
+            <a href="#" onclick="return doAction('/JRADB/accessS.html', 'pw01srl00052026040320261010/8A');">4回東京3日</a>
+            <a href="#" onclick="return doAction('/JRADB/accessS.html', 'pw01srl00082026040320261010/6C');">4回京都3日</a>
+          </div>
+        </div>
+      `;
+
+      const meetings = parseAccessSTopHtml(mockTopHtml);
+      expect(meetings).toHaveLength(2);
+      expect(meetings[0].date).toBe('20261010');
+      expect(meetings[0].courseJa).toBe('東京');
+      expect(meetings[0].courseCode).toBe('05');
+      expect(meetings[0].cname).toBe('pw01srl00052026040320261010/8A');
+
+      expect(meetings[1].date).toBe('20261010');
+      expect(meetings[1].courseJa).toBe('京都');
+      expect(meetings[1].courseCode).toBe('08');
+      expect(meetings[1].cname).toBe('pw01srl00082026040320261010/6C');
+    });
+
     it('開催場全レースHTMLから各レースの成績詳細CNAMEを抽出できること', () => {
       const mockMeetingHtml = `
         <table>

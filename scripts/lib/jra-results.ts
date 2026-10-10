@@ -208,7 +208,7 @@ export function parseAccessSTopHtml(html: string): JraMeetingInfo[] {
     let date = '';
     let courseCode = '';
 
-    const cnameMatch = cname.match(/pw01srl10(\d{2})\d+(\d{8})\//);
+    const cnameMatch = cname.match(/pw01srl\d{2}(\d{2})\d+(\d{8})\//);
     if (cnameMatch) {
       courseCode = cnameMatch[1];
       date = cnameMatch[2]; // YYYYMMDD
