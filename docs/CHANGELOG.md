@@ -6,6 +6,22 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 76: Dependabot 起票依存関係の一括安定更新（Radix UI Select・Slot / @types/node / jsdom / vite-plugin-pwa v2） (v1.45.2 / PR #236, #237, #238, #239, #240) [完了]
+- **Dependabot 起票 PR の一括統合・安定バージョン更新 [完了]**
+  - 個別マージによる lockfile コンフリクトを回避するため、安全なパッチ・マイナーおよび検証済みメジャー更新 5 件を一括統合して更新：
+    - `@radix-ui/react-select`: `2.3.7` → `2.3.8`（パッチ更新、選択肢制御のバグ修正）
+    - `@radix-ui/react-slot`: `1.3.3` → `1.4.0`（マイナー更新、スロット合成の改善）
+    - `@types/node`: `22.20.2` → `22.20.5`（Node 22 LTS 準拠の型定義パッチ更新）
+    - `jsdom`: `30.1.1` → `30.1.2`（テスト環境DOMパッチ更新）
+    - `vite-plugin-pwa`: `1.3.0` → `2.0.0`（PWAプラグインメジャー更新、Service Worker生成およびWorkbox連携の正常動作検証完了）
+- **仕様書・ドキュメント更新 [完了]**
+  - `docs/PRD.md`: 第7章 マイルストーン M6 を更新。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`、`npm test`（全68テストファイル・654テスト）、`npm run build` による検証を実施し、全件成功を確認。
+
+---
+
 ### Step 75: JRA公式結果スクレイパーの当日開催パースおよびRC略称対応（サウジアラビアRC結果反映） (v1.45.1 / Issue #241) [完了]
 - **JRA公式DB当日開催リンク（pw01srl00）抽出対応 (`scripts/lib/jra-results.ts`) [完了]**
   - JRA公式DB（`accessS.html`）において、当日開催のミーティングリンクCNAMEプレフィックスが `pw01srl00`（過去開催は `pw01srl10`）であることに対応。
