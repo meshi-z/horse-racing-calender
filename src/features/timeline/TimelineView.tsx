@@ -205,8 +205,14 @@ export const TimelineDateSection = React.memo(function TimelineDateSection({
  */
 export function TimelineView({ races, className }: TimelineViewProps) {
   const resetFilters = useRaceStore((state) => state.resetFilters);
+  const selectedYear = useRaceStore((state) => state.selectedYear);
+  const availableYears = useRaceStore((state) => state.availableYears);
+  const loadedYears = useRaceStore((state) => state.loadedYears);
+  const fetchRacesForYear = useRaceStore((state) => state.fetchRacesForYear);
+  const setYearFromScroll = useRaceStore((state) => state.setYearFromScroll);
   const { language, t } = useTranslation();
-  const hasScrolledRef = React.useRef(false);
+  const lastScrolledYearRef = React.useRef<number | null>(null);
+  const bottomSentinelRef = React.useRef<HTMLDivElement | null>(null);
 
   const groupedRaces = React.useMemo(() => groupRacesByDate(races, language), [races, language]);
   const todayStr = React.useMemo(() => getTodayLocalDateString(), []);
@@ -217,29 +223,114 @@ export function TimelineView({ races, className }: TimelineViewProps) {
   const [isTargetVisible, setIsTargetVisible] = React.useState(true);
   const isLazyEnabled = groupedRaces.length > 5;
 
-  // タイムラインビュー表示時に今日または直近・次のレースへ自動スクロール (Issue #6)
+  // タイムラインビュー表示時または年度切り替え時の自動スクロール
+  // 現在年（システム年）であれば「今日/直近レース」、別年度であれば先頭レースへスクロール
   React.useEffect(() => {
-    if (hasScrolledRef.current || !targetDate) {
+    if (groupedRaces.length === 0) {
+      return;
+    }
+    if (lastScrolledYearRef.current === selectedYear) {
       return;
     }
 
-    const element = document.getElementById(`section-date-${targetDate}`);
-    if (element) {
-      const prefersReducedMotion =
-        typeof window !== "undefined" &&
-        window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const currentSystemYear = new Date().getFullYear();
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-      const timer = setTimeout(() => {
-        element.scrollIntoView({
-          behavior: prefersReducedMotion ? "auto" : "smooth",
-          block: "start",
-        });
-      }, 0);
+    // 選択された年度内のレースを抽出
+    const yearGroups = groupedRaces.filter(
+      (g) => parseInt(g.date.slice(0, 4), 10) === selectedYear
+    );
+    const scrollTargetDate =
+      selectedYear === currentSystemYear
+        ? targetDate || yearGroups[0]?.date || groupedRaces[0]?.date
+        : yearGroups[0]?.date || groupedRaces[0]?.date;
 
-      hasScrolledRef.current = true;
-      return () => clearTimeout(timer);
+    if (scrollTargetDate) {
+      const element = document.getElementById(`section-date-${scrollTargetDate}`);
+      if (element) {
+        const timer = setTimeout(() => {
+          element.scrollIntoView({
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+            block: "start",
+          });
+        }, 0);
+
+        lastScrolledYearRef.current = selectedYear;
+        return () => clearTimeout(timer);
+      }
     }
-  }, [targetDate]);
+
+    lastScrolledYearRef.current = selectedYear;
+  }, [selectedYear, targetDate, groupedRaces]);
+
+  // スクロール位置に応じて現在閲覧中の年度を検知し、URLおよびヘッダーの年度セレクターを同期
+  React.useEffect(() => {
+    if (typeof IntersectionObserver === "undefined" || groupedRaces.length === 0) {
+      return;
+    }
+
+    // 各年度の先頭要素（year-anchor）を監視して、スクロール位置に応じた年度セレクター/URL同期を行う
+    const anchors = Array.from(document.querySelectorAll<HTMLElement>("[data-year-anchor]"));
+    if (anchors.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries.filter((e) => e?.isIntersecting && e?.target);
+        if (visibleEntries.length > 0) {
+          visibleEntries.sort(
+            (a, b) => (a.boundingClientRect?.top ?? 0) - (b.boundingClientRect?.top ?? 0)
+          );
+          const topElement = visibleEntries[0]?.target as HTMLElement;
+          const yearStr = topElement?.dataset.yearAnchor;
+          const year = yearStr ? parseInt(yearStr, 10) : NaN;
+          if (!isNaN(year) && year !== lastScrolledYearRef.current) {
+            lastScrolledYearRef.current = year;
+            setYearFromScroll(year);
+          }
+        }
+      },
+      {
+        rootMargin: "-10% 0px -70% 0px",
+        threshold: 0,
+      }
+    );
+
+    anchors.forEach((anc) => observer.observe(anc));
+    return () => observer.disconnect();
+  }, [groupedRaces, setYearFromScroll]);
+
+  // 末尾スクロール到達時の翌年度レース自動オンデマンドフェッチ
+  React.useEffect(() => {
+    const sentinel = bottomSentinelRef.current;
+    if (!sentinel || typeof IntersectionObserver === "undefined") {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          // 現在ロードされていない未来の年度が存在するかチェック
+          const nextUnloadedYear = availableYears.find(
+            (y) => !loadedYears.includes(y) && y > selectedYear
+          );
+          if (nextUnloadedYear) {
+            fetchRacesForYear(nextUnloadedYear).catch(() => {
+              // 取得失敗時は静かに握りつぶす
+            });
+          }
+        }
+      },
+      {
+        rootMargin: "600px 0px",
+        threshold: 0,
+      }
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [availableYears, loadedYears, selectedYear, fetchRacesForYear]);
 
   // ターゲット日付セクションの画面内表示状態を監視し、ボタンの表示/非表示を制御 (Issue #9)
   React.useEffect(() => {
@@ -333,24 +424,64 @@ export function TimelineView({ races, className }: TimelineViewProps) {
       aria-busy="false"
       aria-label={t("timeline.ariaLabel")}
     >
-      {groupedRaces.map(({ date, formattedDate, races: dateRaces }) => {
+      {groupedRaces.map(({ date, formattedDate, races: dateRaces }, idx) => {
         const isToday = date === todayStr;
         const isTargetDate = date === targetDate;
+        const currentRaceYear = parseInt(date.slice(0, 4), 10);
+        const prevRaceYear =
+          idx > 0
+            ? parseInt(groupedRaces[idx - 1].date.slice(0, 4), 10)
+            : null;
+        const isYearBoundary = prevRaceYear !== null && prevRaceYear !== currentRaceYear;
 
         return (
-          <TimelineDateSection
-            key={date}
-            date={date}
-            formattedDate={formattedDate}
-            dateRaces={dateRaces}
-            isToday={isToday}
-            isTargetDate={isTargetDate}
-            isLazyEnabled={isLazyEnabled}
-            todayBadgeText={t("timeline.todayBadge")}
-            racesCountText={t("timeline.racesCount", { count: dateRaces.length })}
-          />
+          <React.Fragment key={date}>
+            {/* 年度が切り替わる境界のディバイダー（例: 2026年12月 → 2027年1月） */}
+            {isYearBoundary && (
+              <div
+                data-testid={`year-divider-${currentRaceYear}`}
+                data-year-anchor={currentRaceYear}
+                role="separator"
+                aria-label={t("timeline.seasonHeader", { year: currentRaceYear })}
+                className="my-10 flex items-center gap-4 py-2"
+              >
+                <div className="h-px flex-1 bg-border/60" />
+                <span className="rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-primary tracking-wide shadow-2xs">
+                  {t("timeline.seasonHeader", { year: currentRaceYear })}
+                </span>
+                <div className="h-px flex-1 bg-border/60" />
+              </div>
+            )}
+
+            {idx === 0 && (
+              <div
+                data-year-anchor={currentRaceYear}
+                className="sr-only"
+                aria-hidden="true"
+              />
+            )}
+
+            <TimelineDateSection
+              date={date}
+              formattedDate={formattedDate}
+              dateRaces={dateRaces}
+              isToday={isToday}
+              isTargetDate={isTargetDate}
+              isLazyEnabled={isLazyEnabled}
+              todayBadgeText={t("timeline.todayBadge")}
+              racesCountText={t("timeline.racesCount", { count: dateRaces.length })}
+            />
+          </React.Fragment>
         );
       })}
+
+      {/* スクロール末尾監視用センチネル（次年度オンデマンド読み込み用） */}
+      <div
+        ref={bottomSentinelRef}
+        data-testid="timeline-bottom-sentinel"
+        className="h-1 w-full"
+        aria-hidden="true"
+      />
 
       {/* 今日（または直近レース）へ戻るジャンプボタン (Issue #9) */}
       {targetDate && races.length > 0 && (

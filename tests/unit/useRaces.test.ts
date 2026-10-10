@@ -362,5 +362,30 @@ describe('useRaces hook', () => {
       expect(refreshSuccess).toBe(true);
       expect(useRaceStore.getState().races[0]?.name.ja).toBe('フック経由更新');
     });
+
+    it('アドレスバーに未対応の年度（例: ?year=2028）が入力された場合、サポート年度へ正規化しトースト通知を行うこと', async () => {
+      const fetchMock = vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => [mockRace],
+      });
+      globalThis.fetch = fetchMock;
+
+      // ?year=2028 を設定
+      window.history.replaceState({}, '', '?year=2028');
+
+      const toastState = (await import('@/store/useToastStore')).useToastStore;
+
+      const { result } = renderHook(() => useRaces());
+      await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+      // URLがサポート年度（?year=2026）に自動補正されていること
+      const currentParams = new URLSearchParams(window.location.search);
+      expect(currentParams.get('year')).toBe('2026');
+
+      // トースト通知が発火されていること
+      const activeToasts = toastState.getState().toasts;
+      expect(activeToasts.length).toBeGreaterThan(0);
+      expect(activeToasts[0].message).toContain('2028');
+    });
   });
 });

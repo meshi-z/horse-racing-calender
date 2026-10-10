@@ -16,13 +16,18 @@ export interface RacesIndex {
  */
 export function syncShardedRaceFiles(
   races: RaceOutput[],
-  dataDir: string
+  dataDir: string,
+  ensureYears: number[] = [2026, 2027]
 ): { index: RacesIndex; shards: Record<number, RaceOutput[]> } {
   fs.mkdirSync(dataDir, { recursive: true });
 
-  // 1. 年度ごとにレースをグルーピング
+  // 1. 年度ごとにレースをグルーピング（サポート年度は空配列で事前初期化）
   const shards: Record<number, RaceOutput[]> = {};
   const yearCounts: Record<number, number> = {};
+
+  for (const ey of ensureYears) {
+    shards[ey] = [];
+  }
 
   for (const race of races) {
     const yearStr = race.date.slice(0, 4);

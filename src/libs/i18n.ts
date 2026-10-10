@@ -24,6 +24,7 @@ export const translations = {
       refresh: '最新のデータに更新',
       refreshSuccess: 'レースデータを最新に更新しました',
       refreshError: 'データの更新に失敗しました（オフライン）',
+      unsupportedYearNotice: '{year}年のデータは未対応のため、{fallbackYear}年の日程を表示しました',
     },
     status: {
       scheduled: '発走予定',
@@ -41,6 +42,7 @@ export const translations = {
       todayBadge: '本日開催',
       rescheduledBadge: '代替開催',
       racesCount: '{count}レース',
+      seasonHeader: '{year}年 シーズン',
       noRacesTitle: '該当するレースがありません',
       noRacesDesc: '検索キーワードやフィルター条件を変更するか、条件のリセットをお試しください。',
       resetFilters: 'フィルターをリセット',
@@ -254,6 +256,11 @@ export const translations = {
       dismiss: '閉じる',
       dismissAria: 'インストール案内を閉じる',
     },
+    yearSelector: {
+      label: '年度',
+      selectAria: 'シーズン年度を選択（現在: {year}年）',
+      optionLabel: '{year}年',
+    },
   },
   en: {
     app: {
@@ -274,6 +281,7 @@ export const translations = {
       refresh: 'Refresh data',
       refreshSuccess: 'Race data updated to latest',
       refreshError: 'Failed to refresh data (offline)',
+      unsupportedYearNotice: '{year} is not available. Displaying {fallbackYear} season instead.',
     },
     status: {
       scheduled: 'Scheduled',
@@ -291,6 +299,7 @@ export const translations = {
       todayBadge: 'Today',
       rescheduledBadge: 'Rescheduled',
       racesCount: '{count} Races',
+      seasonHeader: '{year} Season',
       noRacesTitle: 'No races found',
       noRacesDesc: 'Try changing keywords/filter criteria or reset filters.',
       resetFilters: 'Reset Filters',
@@ -504,6 +513,11 @@ export const translations = {
       dismiss: 'Close',
       dismissAria: 'Dismiss install prompt',
     },
+    yearSelector: {
+      label: 'Season',
+      selectAria: 'Select racing season year (current: {year})',
+      optionLabel: '{year}',
+    },
   },
   fr: {
     app: {
@@ -524,6 +538,7 @@ export const translations = {
       refresh: 'Actualiser les données',
       refreshSuccess: 'Données des courses actualisées',
       refreshError: "Échec de l'actualisation (hors ligne)",
+      unsupportedYearNotice: "Les données pour {year} ne sont pas disponibles. Affichage de la saison {fallbackYear}.",
     },
     status: {
       scheduled: 'Prévu',
@@ -541,6 +556,7 @@ export const translations = {
       todayBadge: "Aujourd'hui",
       rescheduledBadge: 'Reporté',
       racesCount: '{count} courses',
+      seasonHeader: 'Saison {year}',
       noRacesTitle: 'Aucune course trouvée',
       noRacesDesc: 'Modifiez vos mots-clés ou réinitialisez les filtres.',
       resetFilters: 'Réinitialiser les filtres',
@@ -754,6 +770,11 @@ export const translations = {
       dismiss: 'Fermer',
       dismissAria: "Fermer l'invitation d'installation",
     },
+    yearSelector: {
+      label: 'Saison',
+      selectAria: "Sélectionner l'année de la saison (actuelle : {year})",
+      optionLabel: '{year}',
+    },
   },
   zh: {
     app: {
@@ -774,6 +795,7 @@ export const translations = {
       refresh: '重新載入資料',
       refreshSuccess: '賽事資料已更新至最新',
       refreshError: '更新資料失敗（離線中）',
+      unsupportedYearNotice: '{year}年的賽事資料尚未開放，已為您顯示{fallbackYear}年日程',
     },
     status: {
       scheduled: '預計開跑',
@@ -791,6 +813,7 @@ export const translations = {
       todayBadge: '本日賽事',
       rescheduledBadge: '補賽',
       racesCount: '{count} 場賽事',
+      seasonHeader: '{year}年 賽季',
       noRacesTitle: '沒有符合條件的賽事',
       noRacesDesc: '請嘗試變更搜尋關鍵字或篩選條件，或重設所有條件。',
       resetFilters: '重設篩選條件',
@@ -1003,6 +1026,11 @@ export const translations = {
       installButton: '安裝',
       dismiss: '關閉',
       dismissAria: '關閉安裝提示',
+    },
+    yearSelector: {
+      label: '年度',
+      selectAria: '選擇賽季年度（目前: {year}年）',
+      optionLabel: '{year}年',
     },
   },
 } as const;
@@ -1447,4 +1475,14 @@ export function useTranslation() {
     t: (key: TranslationKey, params?: Record<string, string | number>) =>
       t(key, language, params),
   };
+}
+
+/**
+ * 言語設定に応じた年度ラベル表示を生成（ja/zh: YYYY年, en/fr: YYYY）
+ */
+export function formatYearLabel(year: number, lang: Language): string {
+  if (lang === 'ja' || lang === 'zh') {
+    return `${year}年`;
+  }
+  return String(year);
 }

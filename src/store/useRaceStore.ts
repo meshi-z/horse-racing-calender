@@ -1,5 +1,12 @@
 import { create } from 'zustand';
 import {
+  AVAILABLE_YEARS,
+  DEFAULT_DATA_URL,
+  getYearDataUrl,
+  resolveInitialYear,
+  syncYearToUrl,
+} from '../constants/years';
+import {
   getInitialOrganizations,
   saveOrganizationsPreference,
 } from '../libs/geolocation';
@@ -12,12 +19,23 @@ export interface YearMonth {
 
 export interface RaceState {
   races: Race[];
+  racesByYear: Record<number, Race[]>;
+  selectedYear: number;
+  availableYears: readonly number[];
+  isLoadingYear: boolean;
   loadedYears: number[];
   filters: FilterState;
   viewMode: 'timeline' | 'calendar';
   currentYearMonth: YearMonth;
 
   // Actions
+  setSelectedYear: (year: number) => Promise<void>;
+  fetchRacesForYear: (
+    year: number,
+    force?: boolean,
+    options?: { signal?: AbortSignal }
+  ) => Promise<Race[]>;
+  setRacesForYear: (year: number, races: Race[]) => void;
   setRaces: (races: Race[]) => void;
   addRacesForYear: (year: number, races: Race[]) => void;
   setFilter: <K extends keyof FilterState>(key: K, value: FilterState[K]) => void;
@@ -27,6 +45,7 @@ export interface RaceState {
   nextMonth: () => void;
   prevMonth: () => void;
   goToCurrentMonth: () => void;
+  setYearFromScroll: (year: number) => void;
   getFilteredRaces: () => Race[];
 }
 
@@ -54,10 +73,20 @@ export const initialFilters: FilterState = {
   yearMonth: null,
 };
 
-export const getInitialYearMonth = (): YearMonth => {
+export const getInitialYearMonth = (year?: number): YearMonth => {
   const now = new Date();
+  const currentYear = now.getFullYear();
+  const targetYear =
+    year ??
+    resolveInitialYear(typeof window !== 'undefined' ? window.location?.search : '');
+  if (targetYear !== currentYear) {
+    return {
+      year: targetYear,
+      month: 1,
+    };
+  }
   return {
-    year: now.getFullYear(),
+    year: currentYear,
     month: now.getMonth() + 1,
   };
 };
@@ -83,8 +112,20 @@ export const matchDistanceCategory = (distance: number, category: DistanceCatego
 /**
  * フィルタ条件に基づいてレース一覧を絞り込む純粋関数
  */
-export const filterRaces = (races: Race[], filters: FilterState): Race[] => {
+export const filterRaces = (
+  races: Race[],
+  filters: FilterState,
+  selectedYear?: number
+): Race[] => {
   return races.filter((race) => {
+    // 選択中年度の絞り込み（指定時）
+    if (selectedYear !== undefined) {
+      const raceYear = parseInt(race.date.slice(0, 4), 10);
+      if (raceYear !== selectedYear) {
+        return false;
+      }
+    }
+
     // 主催者絞り込み（空配列の場合はすべて表示）
     if (filters.organizations && filters.organizations.length > 0) {
       if (!filters.organizations.includes(race.organization)) {
@@ -163,18 +204,31 @@ export const filterRaces = (races: Race[], filters: FilterState): Race[] => {
 
 let lastRaces: Race[] | null = null;
 let lastFilters: FilterState | null = null;
+let lastSelectedYear: number | null = null;
+let lastViewMode: 'timeline' | 'calendar' | null = null;
 let lastFilteredResult: Race[] = [];
 
 /**
  * Zustand 用の純粋セレクタ関数（メモ化キャッシュ付き）
+ * - calendar ビュー: 選択年度（selectedYear）で絞り込み
+ * - timeline ビュー: ロード済みの全年度レースを連結してシームレス表示
  */
 export const selectFilteredRaces = (state: RaceState): Race[] => {
-  if (state.races === lastRaces && state.filters === lastFilters) {
+  if (
+    state.races === lastRaces &&
+    state.filters === lastFilters &&
+    state.selectedYear === lastSelectedYear &&
+    state.viewMode === lastViewMode
+  ) {
     return lastFilteredResult;
   }
   lastRaces = state.races;
   lastFilters = state.filters;
-  lastFilteredResult = filterRaces(state.races, state.filters);
+  lastSelectedYear = state.selectedYear;
+  lastViewMode = state.viewMode;
+
+  const yearToFilter = state.viewMode === 'calendar' ? state.selectedYear : undefined;
+  lastFilteredResult = filterRaces(state.races, state.filters, yearToFilter);
   return lastFilteredResult;
 };
 
@@ -198,22 +252,99 @@ export function getInitialViewMode(): 'timeline' | 'calendar' {
   return 'timeline';
 }
 
+const initialSelectedYear = resolveInitialYear(
+  typeof window !== 'undefined' ? window.location?.search : ''
+);
+
 export const useRaceStore = create<RaceState>((set, get) => ({
   races: [],
+  racesByYear: {},
+  selectedYear: initialSelectedYear,
+  availableYears: AVAILABLE_YEARS,
+  isLoadingYear: false,
   loadedYears: [],
   filters: getInitialFilters(),
   viewMode: getInitialViewMode(),
-  currentYearMonth: getInitialYearMonth(),
+  currentYearMonth: getInitialYearMonth(initialSelectedYear),
 
-  setRaces: (races: Race[]) => {
-    const years = Array.from(
-      new Set(
-        races
-          .map((r) => parseInt(r.date.slice(0, 4), 10))
-          .filter((y) => !isNaN(y))
-      )
-    ).sort((a, b) => a - b);
-    set({ races, loadedYears: years });
+  setSelectedYear: async (year: number) => {
+    const current = get().selectedYear;
+    if (current === year && get().races.length > 0) return;
+
+    syncYearToUrl(year);
+
+    const now = new Date();
+    const isCurrentSystemYear = year === now.getFullYear();
+    const newYearMonth = isCurrentSystemYear
+      ? { year, month: now.getMonth() + 1 }
+      : { year, month: 1 };
+
+    const cachedRaces = get().racesByYear[year];
+    if (cachedRaces) {
+      set({
+        selectedYear: year,
+        races: cachedRaces,
+        currentYearMonth: newYearMonth,
+      });
+      return;
+    }
+
+    set({
+      selectedYear: year,
+      currentYearMonth: newYearMonth,
+    });
+    try {
+      await get().fetchRacesForYear(year);
+    } catch {
+      // ネットワーク切断時等も選択年度の状態は保護
+    }
+  },
+
+  fetchRacesForYear: async (
+    year: number,
+    force = false,
+    options?: { signal?: AbortSignal }
+  ): Promise<Race[]> => {
+    const state = get();
+    if (!force && state.racesByYear[year] && state.loadedYears.includes(year)) {
+      return state.racesByYear[year];
+    }
+
+    set({ isLoadingYear: true });
+    try {
+      const shardUrl = getYearDataUrl(year);
+      const fetchOptions: RequestInit = {
+        signal: options?.signal,
+        ...(force ? { cache: 'reload' } : {}),
+      };
+      const res = await fetch(
+        `${shardUrl}${force ? `?t=${Date.now()}` : ''}`,
+        fetchOptions
+      );
+      if (res.ok) {
+        const data = (await res.json()) as Race[];
+        get().addRacesForYear(year, data);
+        return data;
+      }
+
+      // Shard が 404 等の場合は結合版 races.json から抽出またはフォールバック
+      const fallbackRes = await fetch(
+        `${DEFAULT_DATA_URL}${force ? `?t=${Date.now()}` : ''}`,
+        fetchOptions
+      );
+      if (fallbackRes.ok) {
+        const allRaces = (await fallbackRes.json()) as Race[];
+        get().setRaces(allRaces);
+        const yearRaces = allRaces.filter((r) => r.date.startsWith(String(year)));
+        return yearRaces;
+      }
+
+      throw new Error(
+        `Failed to fetch races: ${res.status} ${res.statusText}`
+      );
+    } finally {
+      set({ isLoadingYear: false });
+    }
   },
 
   addRacesForYear: (year: number, newRaces: Race[]) =>
@@ -236,11 +367,49 @@ export const useRaceStore = create<RaceState>((set, get) => ({
       const updatedLoadedYears = state.loadedYears.includes(year)
         ? state.loadedYears
         : [...state.loadedYears, year].sort((a, b) => a - b);
+      const yearOnlyRaces = merged.filter((r) => r.date.startsWith(String(year)));
+      const updatedRacesByYear = {
+        ...state.racesByYear,
+        [year]: yearOnlyRaces,
+      };
       return {
         races: merged,
+        racesByYear: updatedRacesByYear,
         loadedYears: updatedLoadedYears,
       };
     }),
+
+  setRacesForYear: (year: number, newRaces: Race[]) => {
+    get().addRacesForYear(year, newRaces);
+  },
+
+  setRaces: (races: Race[]) => {
+    const years = Array.from(
+      new Set(
+        races
+          .map((r) => parseInt(r.date.slice(0, 4), 10))
+          .filter((y) => !isNaN(y))
+      )
+    ).sort((a, b) => a - b);
+
+    const grouped: Record<number, Race[]> = {};
+    for (const r of races) {
+      const y = parseInt(r.date.slice(0, 4), 10);
+      if (!isNaN(y)) {
+        if (!grouped[y]) grouped[y] = [];
+        grouped[y].push(r);
+      }
+    }
+
+    set((state) => ({
+      races,
+      racesByYear: {
+        ...state.racesByYear,
+        ...grouped,
+      },
+      loadedYears: Array.from(new Set([...state.loadedYears, ...years])).sort((a, b) => a - b),
+    }));
+  },
 
   setFilter: (key, value) => {
     if (key === 'organizations') {
@@ -273,7 +442,16 @@ export const useRaceStore = create<RaceState>((set, get) => ({
     set((state) => {
       const { year, month } = state.currentYearMonth;
       if (month === 12) {
-        return { currentYearMonth: { year: year + 1, month: 1 } };
+        const nextYear = year + 1;
+        if (state.availableYears.includes(nextYear)) {
+          syncYearToUrl(nextYear);
+          return {
+            selectedYear: nextYear,
+            currentYearMonth: { year: nextYear, month: 1 },
+          };
+        }
+        // サポート年度の上限（例: 2027年12月）に達している場合は進行を抑止
+        return {};
       }
       return { currentYearMonth: { year, month: month + 1 } };
     }),
@@ -282,12 +460,34 @@ export const useRaceStore = create<RaceState>((set, get) => ({
     set((state) => {
       const { year, month } = state.currentYearMonth;
       if (month === 1) {
-        return { currentYearMonth: { year: year - 1, month: 12 } };
+        const prevYear = year - 1;
+        if (state.availableYears.includes(prevYear)) {
+          syncYearToUrl(prevYear);
+          return {
+            selectedYear: prevYear,
+            currentYearMonth: { year: prevYear, month: 12 },
+          };
+        }
+        // サポート年度の下限（例: 2026年1月）に達している場合は遡及を抑止
+        return {};
       }
       return { currentYearMonth: { year, month: month - 1 } };
     }),
 
-  goToCurrentMonth: () => set({ currentYearMonth: getInitialYearMonth() }),
+  goToCurrentMonth: () => {
+    const currentYear = new Date().getFullYear();
+    if (get().selectedYear !== currentYear) {
+      void get().setSelectedYear(currentYear);
+    } else {
+      set({ currentYearMonth: getInitialYearMonth() });
+    }
+  },
+
+  setYearFromScroll: (year: number) => {
+    if (get().selectedYear === year) return;
+    syncYearToUrl(year);
+    set({ selectedYear: year });
+  },
 
   getFilteredRaces: () => filterRaces(get().races, get().filters),
 }));

@@ -6,6 +6,35 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 74: 2027年シーズン対応 年度切り替えUI、データSharding（オンデマンド読み込み基盤）およびシームレス・クロスイヤースクロールの実装 (v1.45.0) [完了]
+- **データSharding (年度別分割) 基盤の拡張 (`scripts/lib/race-sharding.ts`, `src/constants/years.ts`, `public/data/races-2027.json`) [完了]**
+  - 利用可能年度定数 `AVAILABLE_YEARS = [2026, 2027]` および初期年度解決ヘルパー `resolveInitialYear`、URL同期ヘルパー `syncYearToUrl` を新設（`src/constants/years.ts`）。
+  - `syncShardedRaceFiles` において指定サポート年度（`ensureYears`）の Shard が常に空配列 `[]` 以上で生成されるよう堅牢化。
+  - 先行受け皿として `public/data/races-2027.json` および更新版 `public/data/index.json` を配備。
+- **Zustand ストア拡張 & オンデマンドフェッチ・キャッシュ機構 (`src/store/useRaceStore.ts`, `src/hooks/useRaces.ts`) [完了]**
+  - ストアに `selectedYear: number`、`availableYears: readonly number[]`、`racesByYear: Record<number, Race[]>`、`isLoadingYear: boolean` を追加。
+  - 初回アクセス判定（URLクエリパラメータ `?year=...` ＞ システム日時 ＞ `DEFAULT_YEAR (2026)`）を実装。
+  - 非同期フェッチ関数 `fetchRacesForYear` により、未取得年度のみオンデマンド取得して `racesByYear` にキャッシュ（同一セッション内の重複フェッチを抑止）。
+  - ブラウザの戻る・進む（`popstate`）による `?year=...` パラメータ変更の検知・双方向同期を実装。
+- **年度セレクターUI (YearSelector) & 4言語多言語化 (`src/components/shared/YearSelector.tsx`, `src/components/shared/Header.tsx`, `src/libs/i18n.ts`) [完了]**
+  - Shadcn UI `Select` を採用したアクセスしやすい `YearSelector` コンポーネントを開発。
+  - ヘッダーのタイトル横に自然に配置し、モバイル画面でも横揺れ・はみ出しが発生しないレスポンシブスタイルを適用。
+  - 4言語辞書（ja, en, fr, zh）に年度関連ラベル、年度フォーマットヘルパー `formatYearLabel`（ja/zh: `YYYY年`, en/fr: `YYYY`）、および年度ディバイダー用テキスト（`seasonHeader`）を実装。
+- **タイムライン / カレンダーの初期表示・スクロール連動 & シームレス・クロスイヤースクロール (`src/features/timeline/TimelineView.tsx`, `src/store/useRaceStore.ts`) [完了]**
+  - タイムラインビュー: 12月末から翌年1月へ連続してスクロール閲覧できるシームレス連結（クロスイヤー・インフィニットスクロール）を実現。年度境界には洗練された年度区切りセパレーター（`year-divider`）を配置。
+  - IntersectionObserver によるスクロール連動（Scroll Spy）を実装し、ユーザーがスクロールして新年度セクションへ到達した際に、ジャンプを起こさずヘッダーの年度セレクターおよび URL（`?year=YYYY`）を自動同期（`setYearFromScroll`）。
+  - タイムライン末尾に到達した際、未取得の翌年度データをオンデマンドで自動フェッチするセンチネル（`timeline-bottom-sentinel`）を配置。
+  - カレンダービュー: 年度切り替え時に表示月を当該年度の適切な月（現在年なら現在月、別年度なら1月）へ同期。また月送り（12月→1月、1月→12月）で年を跨いだ場合も `selectedYear` および URL を自動追従。
+  - カレンダー年度境界ガード: サポート範囲外（2026年1月未満、2027年12月超過）への進行を抑止し、最前月では「前月」ボタン、最終月では「翌月」ボタンを `disabled` に制御。
+- **URLクエリパラメータの堅牢性・サニタイズ & トースト通知 (`src/hooks/useRaces.ts`) [完了]**
+  - アドレスバーや外部リンク・ブックマークから未対応の年度（例: `?year=2028` や不正文字列）が直接指定された場合、URL を即座にサポート年度（`2026`）へ `replaceState` で自動補正（正規化）。
+  - 4言語トースト通知（`unsupportedYearNotice`）を発火し、「2028年のデータは未対応のため、2026年の日程を表示しました」と親切にフィードバック。ブラウザの「戻る/進む（`popstate`）」による不正パラメータ遷移にも対応。
+- **テスト・品質検証 [完了]**
+  - 単体テスト `tests/unit/yearsConstant.test.ts`、`tests/unit/yearSelector.test.tsx`、`tests/unit/raceSharding.test.ts`、`tests/unit/useRaceStore.test.ts`、`tests/unit/useRaces.test.ts`、`tests/unit/TimelineView.test.tsx`、`tests/unit/TimelineVirtualScroll.test.tsx`、`tests/unit/CalendarView.test.tsx` を追加・更新。
+  - 全68テストファイル・653テスト全件パス、TypeScript型チェック（tsc --noEmit）パス、プロダクションビルド（`npm run build`）成功。
+
+---
+
 ### Step 73: 依存関係の一括安定更新（Vite / Radix Tabs / Lucide / tsx）および TypeScript 7 メジャー更新抑止設定 (v1.44.13 / PR #219, #222, #230, #231, #232) [完了]
 - **Dependabot 起票 PR の一括統合・安定バージョン更新 [完了]**
   - 個別マージによる lockfile コンフリクトを回避するため、安全なパッチ・マイナー更新 4 件を一括統合して更新：

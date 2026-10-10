@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { useRaceStore, filterRaces, selectFilteredRaces, initialFilters } from '../../src/store/useRaceStore';
 import type { Race } from '../../src/types/race';
 
@@ -462,16 +462,28 @@ describe('useRaceStore & filterRaces', () => {
       expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2026, month: 5 });
     });
 
-    it('年跨ぎの nextMonth (12月 -> 翌年1月) が正しく計算されること', () => {
+    it('年跨ぎの nextMonth (12月 -> 翌年1月) がサポート年度内で正しく計算されること', () => {
       useRaceStore.getState().setYearMonth({ year: 2026, month: 12 });
       useRaceStore.getState().nextMonth();
       expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2027, month: 1 });
     });
 
-    it('年跨ぎの prevMonth (1月 -> 前年12月) が正しく計算されること', () => {
+    it('サポート上限（2027年12月）での nextMonth は進行せず上限を保持すること', () => {
+      useRaceStore.getState().setYearMonth({ year: 2027, month: 12 });
+      useRaceStore.getState().nextMonth();
+      expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2027, month: 12 });
+    });
+
+    it('年跨ぎの prevMonth (1月 -> 前年12月) がサポート年度内で正しく計算されること', () => {
+      useRaceStore.getState().setYearMonth({ year: 2027, month: 1 });
+      useRaceStore.getState().prevMonth();
+      expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2026, month: 12 });
+    });
+
+    it('サポート下限（2026年1月）での prevMonth は遡及せず下限を保持すること', () => {
       useRaceStore.getState().setYearMonth({ year: 2026, month: 1 });
       useRaceStore.getState().prevMonth();
-      expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2025, month: 12 });
+      expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2026, month: 1 });
     });
 
     it('resetFilters でフィルタが初期化されること', () => {
@@ -597,6 +609,142 @@ describe('useRaceStore & filterRaces', () => {
       filtered = filterRaces(testRaces, { ...initialFilters, courses: ['皇家蘭域'] });
       expect(filtered).toHaveLength(1);
       expect(filtered[0].id).toBe('2026-au-the-everest');
+    });
+
+    describe('年度切り替え (setSelectedYear) & オンデマンドキャッシュ', () => {
+      const originalFetch = globalThis.fetch;
+
+      beforeEach(() => {
+        globalThis.fetch = vi.fn().mockResolvedValue({
+          ok: true,
+          json: async () => [],
+        });
+      });
+
+      afterEach(() => {
+        globalThis.fetch = originalFetch;
+      });
+
+      it('setSelectedYear で年度が切り替わり、キャッシュがある場合は再フェッチせず即座に適用されること', async () => {
+        const race2026: Race = mockRaces[0];
+        const race2027: Race = {
+          ...mockRaces[0],
+          id: '2027-jra-g1-01',
+          date: '2027-02-21',
+        };
+
+        useRaceStore.setState({
+          selectedYear: 2026,
+          availableYears: [2026, 2027],
+          racesByYear: { 2026: [race2026], 2027: [race2027] },
+          races: [race2026],
+        });
+
+        const fetchSpy = vi.spyOn(globalThis, 'fetch');
+
+        await useRaceStore.getState().setSelectedYear(2027);
+
+        expect(useRaceStore.getState().selectedYear).toBe(2027);
+        // キャッシュヒットのため fetch は呼ばれない
+        expect(fetchSpy).not.toHaveBeenCalled();
+      });
+
+      it('年度切り替え時、カレンダー年月が同期されること（別年度なら1月）', async () => {
+        useRaceStore.setState({
+          selectedYear: 2026,
+          availableYears: [2026, 2027],
+          currentYearMonth: { year: 2026, month: 10 },
+          racesByYear: { 2027: [] },
+        });
+
+        await useRaceStore.getState().setSelectedYear(2027);
+
+        expect(useRaceStore.getState().currentYearMonth).toEqual({
+          year: 2027,
+          month: 1,
+        });
+      });
+
+      it('年跨ぎの nextMonth (12月 -> 1月) で selectedYear も翌年に追従すること', () => {
+        useRaceStore.setState({
+          selectedYear: 2026,
+          availableYears: [2026, 2027],
+          currentYearMonth: { year: 2026, month: 12 },
+        });
+
+        useRaceStore.getState().nextMonth();
+
+        expect(useRaceStore.getState().currentYearMonth).toEqual({
+          year: 2027,
+          month: 1,
+        });
+        expect(useRaceStore.getState().selectedYear).toBe(2027);
+      });
+
+      it('年跨ぎの prevMonth (1月 -> 12月) で selectedYear も前年に追従すること', () => {
+        useRaceStore.setState({
+          selectedYear: 2027,
+          availableYears: [2026, 2027],
+          currentYearMonth: { year: 2027, month: 1 },
+        });
+
+        useRaceStore.getState().prevMonth();
+
+        expect(useRaceStore.getState().currentYearMonth).toEqual({
+          year: 2026,
+          month: 12,
+        });
+        expect(useRaceStore.getState().selectedYear).toBe(2026);
+      });
+
+      it('setYearFromScroll はスクロール再発火なしで selectedYear のみ更新すること', () => {
+        useRaceStore.setState({
+          selectedYear: 2026,
+          currentYearMonth: { year: 2026, month: 10 },
+        });
+
+        useRaceStore.getState().setYearFromScroll(2027);
+
+        expect(useRaceStore.getState().selectedYear).toBe(2027);
+        // currentYearMonth は変更されないこと
+        expect(useRaceStore.getState().currentYearMonth).toEqual({ year: 2026, month: 10 });
+      });
+
+      it('selectFilteredRaces は timeline 表示時に全ロード済みレースを返し、calendar 表示時に選択年で絞り込むこと', () => {
+        const race2026 = {
+          id: '2026-jra-g1-01',
+          organization: 'jra',
+          name: { ja: '有馬記念' },
+          date: '2026-12-27',
+          start_time: '2026-12-27T06:25:00.000Z',
+          grade: 'G1',
+        } as unknown as Race;
+        const race2027 = {
+          id: '2027-jra-g3-01',
+          organization: 'jra',
+          name: { ja: '中山金杯' },
+          date: '2027-01-05',
+          start_time: '2027-01-05T06:45:00.000Z',
+          grade: 'G3',
+        } as unknown as Race;
+
+        useRaceStore.setState({
+          races: [race2026, race2027],
+          selectedYear: 2026,
+          viewMode: 'timeline',
+          filters: { ...useRaceStore.getState().filters },
+        });
+
+        // timeline モード: 2026年と2027年が両方含まれること（クロスイヤー表示）
+        const timelineRaces = selectFilteredRaces(useRaceStore.getState());
+        expect(timelineRaces).toHaveLength(2);
+
+        // calendar モード: selectedYear (2026) で絞り込まれること
+        useRaceStore.setState({ viewMode: 'calendar' });
+        const calendarRaces = selectFilteredRaces(useRaceStore.getState());
+        expect(calendarRaces).toHaveLength(1);
+        expect(calendarRaces[0].id).toBe('2026-jra-g1-01');
+      });
     });
   });
 });
