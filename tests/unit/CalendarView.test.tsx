@@ -57,12 +57,15 @@ describe("CalendarView", () => {
     });
   });
 
-  it("現在の年月表示と当月レース件数が正しく表示されること", () => {
+  it("現在の年月表示と当月レース件数、および年度セレクタが表示されること (Issue #244)", () => {
     render(<CalendarView races={mockRaces} />);
 
     expect(screen.getByText("2026年2月")).toBeInTheDocument();
     // 2026年2月のレースはフェブラリーSの1件
     expect(screen.getByText("1 レース")).toBeInTheDocument();
+    // カレンダービュー内に年度セレクタが存在すること
+    expect(screen.getByTestId("year-selector")).toBeInTheDocument();
+    expect(screen.getByText("2026年")).toBeInTheDocument();
   });
 
   it("ナビゲーションボタン（翌月・前月・今月）で年月が正しく更新されること", () => {

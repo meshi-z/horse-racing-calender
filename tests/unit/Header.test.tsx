@@ -20,13 +20,14 @@ describe("Header", () => {
     vi.restoreAllMocks();
   });
 
-  it("ロゴとタイトル、タイムライン/カレンダー切替タブが表示されること", () => {
+  it("ロゴとタイトル、タイムライン/カレンダー切替タブが表示され、年度セレクタはヘッダーに含まれないこと (Issue #244)", () => {
     render(<Header />);
 
     expect(screen.getByText("重賞カレンダー")).toBeInTheDocument();
     expect(screen.getByText("Graded Races Calendar")).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: /タイムライン/ })).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: /カレンダー/ })).toBeInTheDocument();
+    expect(screen.queryByTestId("year-selector")).not.toBeInTheDocument();
   });
 
   it("テーマ切替ボタンが表示され、クリックするとライト/ダークがトグルされること", () => {
