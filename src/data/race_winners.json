@@ -10729,5 +10729,25 @@
       "en": "Darkness Falls"
     },
     "time": "1m 22.47s"
+  },
+  "2026-jra-g2-30": {
+    "name": {
+      "ja": "カムニャック"
+    },
+    "jockey": {
+      "ja": "川田 将雅"
+    },
+    "horse_number": 16,
+    "time": "1:44.4"
+  },
+  "2026-nar-local-189": {
+    "name": {
+      "ja": "クリスタルザイオン"
+    },
+    "jockey": {
+      "ja": "西謙一"
+    },
+    "horse_number": 5,
+    "time": "1:50.0"
   }
 }
