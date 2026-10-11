@@ -49716,8 +49716,8 @@
     },
     "grade": "S2",
     "date": "2026-10-14",
-    "start_time": "2026-10-14T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-14T11:10:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "川崎",
       "en": "Kawasaki"
@@ -49726,6 +49726,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "2yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-193",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "園田オータムトロフィー",
+      "en": "Sonoda Autumn Trophy"
+    },
+    "grade": "local_grade",
+    "date": "2026-10-15",
+    "start_time": "2026-10-15T07:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "園田",
+      "en": "Sonoda"
+    },
+    "distance": 1700,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -49752,32 +49778,6 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-193",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "園田オータムトロフィー",
-      "en": "Sonoda Autumn Trophy"
-    },
-    "grade": "local_grade",
-    "date": "2026-10-15",
-    "start_time": "2026-10-15T11:05:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "園田",
-      "en": "Sonoda"
-    },
-    "distance": 1700,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
