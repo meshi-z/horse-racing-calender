@@ -1,6 +1,7 @@
 import * as React from "react";
 import { GradeBadge } from "@/components/shared/GradeBadge";
 import { RaceDetailDialog } from "@/components/shared/RaceDetailDialog";
+import { YearSelector } from "@/components/shared/YearSelector";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -94,7 +95,7 @@ export function CalendarView({ races, className }: CalendarViewProps) {
     <div className={cn("space-y-4", className)}>
       {/* ナビゲーションヘッダー */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-card p-3 rounded-lg border shadow-sm">
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <div className="flex items-center gap-1">
             <Button
               variant="outline"
@@ -135,6 +136,11 @@ export function CalendarView({ races, className }: CalendarViewProps) {
               {t("calendar.monthRaces", { count: currentMonthRaceCount })}
             </Badge>
           </div>
+        </div>
+
+        {/* 年度切り替えセレクター */}
+        <div className="flex items-center">
+          <YearSelector />
         </div>
       </div>
 

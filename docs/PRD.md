@@ -103,6 +103,9 @@ docs/
 ### 4.2 月間カレンダービュー (`CalendarView`)
 - **デフォルト初期表示**: PC・タブレット画面幅（`>= 768px`）においてデフォルト表示。
 - **カレンダーグリッド**: 月曜始まり・土日連続の7列グリッド。各日付セルに重賞チップをコンパクト配置。
+- **ナビゲーションヘッダー & 年度セレクタ (`YearSelector`)**:
+  - 前月・翌月・今月ボタン、当月年月タイトル、当月レース件数バッジに加え、右側に年度セレクタ（`YearSelector`）を配置。
+  - グローバルヘッダーから年度セレクタをカレンダービュー内へ移設することで、モバイル表示時のヘッダー横幅超過および `position: sticky` のガタつきを解消しつつ、月間・年間閲覧時のスムーズな年度切り替えを実現（Issue #244）。
 - **確定時刻表示**: 公式発表前の未確定レースは日付セル内で時刻を非表示化し省スペース化。
 - **レース終了後の勝ち馬表示**: 勝ち馬データが存在する場合、セル内のレースチップ内にトロフィーアイコン付きで勝ち馬名（`🏆 {winnerName}`）を表示し、月間グリッド上で一目で優勝馬を確認可能。
 
@@ -259,7 +262,7 @@ docs/
 | **M3: 4言語完全ローカライズ & SEO** | v1.16.0 〜 v1.42.0 | 日本語、英語、フランス語、繁体字中国語の完全多言語対応。レース名・競馬場名・出走条件の対訳辞書、言語別URLパス（`/ja/`, `/en/`, `/fr/`, `/zh/`）、言語別静的OGP出力。 |
 | **M4: 公式リザルト自動更新パイプライン** | v1.35.0 〜 v1.44.4 | 各国公式一次ソース（JRAデータベース、NAR当日メニュー、PMU、Sporting Life、HKJC等）に基づく勝ち馬自動パース、二重永続化、確定時刻・勝者の定期巡回バッチとGitHub Pages自動デプロイ連動。 |
 | **M5: 超高速化 & データ最適化 (NFR)** | v1.40.0 〜 v1.43.0 | 非機能要件仕様書（NFR）策定。タイムライン仮想スクロール導入（同時展開DOM数を6万から1,200へ97.9%削減、INP大幅改善）。年度別データ分割（Sharding）による初期転送量・メモリ最適化。 |
-| **M6: モバイルUX & 運用基盤堅牢化** | v1.44.5 〜 v1.45.2 | 狭小モバイル画面（360px〜）でのヘッダーレイアウト最適化（タイトル改行防止、タブアイコン化、幅収容）。AIエージェント一時ファイル管理規約の確立・ワークスペース外統一。PRDロードマップの適正化。postcss-selector-parser 脆弱性解消（overrides）および Dependabot 破壊的メジャー更新抑止設定（Tailwind CSS v4、Node 22 ランタイム整合性維持のための @types/node、エコシステム互換性維持のための TypeScript 7）。依存関係の一括安定更新（vite, @radix-ui/react-tabs, lucide-react, tsx, @radix-ui/react-select, @radix-ui/react-slot, @types/node, jsdom, vite-plugin-pwa）。定期バッチ連動時の Reusable Workflow（`workflow_call`）入力パラメータ（`inputs.checkout_latest`）による最新HEADチェックアウト保証と自動デプロイ整合性の確立。TypeScript 6.0+/7.0 に向けた `tsconfig.json` 非推奨オプション `baseUrl` 削除とモダンなパスエイリアス設定移行。JRA公式結果取得における当日開催CNAME（`pw01srl00`）パース対応およびレース名略称（ロイヤルカップ/RC）名寄せ改善による自動取得堅牢化。 |
+| **M6: モバイルUX & 運用基盤堅牢化** | v1.44.5 〜 v1.45.3 | 狭小モバイル画面（360px〜）でのヘッダーレイアウト最適化（タイトル改行防止、タブアイコン化、幅収容）。グローバルヘッダーから年度セレクタを撤去しカレンダービュー内へ移設することによるモバイル追従崩れ（`position: sticky` ガタつき）の完全解消（Issue #244）。AIエージェント一時ファイル管理規約の確立・ワークスペース外統一。PRDロードマップの適正化。postcss-selector-parser 脆弱性解消（overrides）および Dependabot 破壊的メジャー更新抑止設定（Tailwind CSS v4、Node 22 ランタイム整合性維持のための @types/node、エコシステム互換性維持のための TypeScript 7）。依存関係の一括安定更新（vite, @radix-ui/react-tabs, lucide-react, tsx, @radix-ui/react-select, @radix-ui/react-slot, @types/node, jsdom, vite-plugin-pwa）。定期バッチ連動時の Reusable Workflow（`workflow_call`）入力パラメータ（`inputs.checkout_latest`）による最新HEADチェックアウト保証と自動デプロイ整合性の確立。TypeScript 6.0+/7.0 に向けた `tsconfig.json` 非推奨オプション `baseUrl` 削除とモダンなパスエイリアス設定移行。JRA公式結果取得における当日開催CNAME（`pw01srl00`）パース対応およびレース名略称（ロイヤルカップ/RC）名寄せ改善による自動取得堅牢化。 |
 
 ### 7.3 次期ロードマップ: フェーズ4 (将来拡張計画)
 

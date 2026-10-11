@@ -6,6 +6,22 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 77: ヘッダーから年度セレクタを撤去しカレンダービュー内へ移設（ヘッダー追従崩れの解消） (v1.45.3 / Issue #244) [完了]
+- **ヘッダー追従崩れの解消 & グローバルヘッダーの軽量化 (`src/components/shared/Header.tsx`) [完了]**
+  - タイトル横に配置されていた `YearSelector`（幅約85px）を撤去し、モバイル画面幅（360px〜390px）における横スクロールおよび `position: sticky` の上下左右ガタつき現象を完全に解消。
+  - タイトル・ビュー切替タブ・設定コントロールのみのシンプルなレイアウトに復元。
+- **カレンダービューへの年度セレクタ移設・統合 (`src/features/calendar/CalendarView.tsx`) [完了]**
+  - 月間・年間単位でのレース閲覧を行う `CalendarView` のナビゲーションヘッダー（前月・翌月・今月ボタン、年月タイトル、レース件数バッジ）の右側に `YearSelector` を移設・統合。
+  - レスポンシブな flex コンテナ設計により、狭小画面でも折り返しや崩れを起こさずスムーズに年度切替が可能に改善。
+- **テストコード修正 & カレンダー連動テストの追加 (`tests/unit/Header.test.tsx`, `tests/unit/CalendarView.test.tsx`) [完了]**
+  - `Header.test.tsx`: ヘッダー内に `YearSelector` がレンダリングされないことを検証するアサーションを追加。
+  - `CalendarView.test.tsx`: カレンダービュー内に `YearSelector` が存在し、初期選択年度が表示されることを検証するテストケースを追加。
+- **仕様書・ドキュメント更新 [完了]**
+  - `docs/PRD.md`: 第4.2節（カレンダービュー仕様）にナビゲーションヘッダー内の年度セレクタ配置を追記、第7章 マイルストーン M6（`v1.44.5 〜 v1.45.3`）を更新。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+
+---
+
 ### Step 76: Dependabot 起票依存関係の一括安定更新（Radix UI Select・Slot / @types/node / jsdom / vite-plugin-pwa v2） (v1.45.2 / PR #236, #237, #238, #239, #240) [完了]
 - **Dependabot 起票 PR の一括統合・安定バージョン更新 [完了]**
   - 個別マージによる lockfile コンフリクトを回避するため、安全なパッチ・マイナーおよび検証済みメジャー更新 5 件を一括統合して更新：
