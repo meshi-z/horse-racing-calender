@@ -49567,6 +49567,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Time To Dazzle",
+        "en": "Time To Dazzle"
+      },
+      "time": "1m 4.52s"
     }
   },
   {

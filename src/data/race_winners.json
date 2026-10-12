@@ -10749,5 +10749,12 @@
     },
     "horse_number": 5,
     "time": "1:50.0"
+  },
+  "2026-us-g2-116": {
+    "name": {
+      "ja": "Time To Dazzle",
+      "en": "Time To Dazzle"
+    },
+    "time": "1m 4.52s"
   }
 }
