@@ -10756,5 +10756,45 @@
       "en": "Time To Dazzle"
     },
     "time": "1m 4.52s"
+  },
+  "2026-jra-g2-31": {
+    "name": {
+      "ja": "ダイヤモンドノット"
+    },
+    "jockey": {
+      "ja": "横山 武史"
+    },
+    "horse_number": 1,
+    "time": "1:19.2"
+  },
+  "2026-nar-local-191": {
+    "name": {
+      "ja": "リケアルンバ"
+    },
+    "jockey": {
+      "ja": "石川倭"
+    },
+    "horse_number": 5,
+    "time": "1:30.3"
+  },
+  "2026-nar-local-190": {
+    "name": {
+      "ja": "ブライオン"
+    },
+    "jockey": {
+      "ja": "菅原辰"
+    },
+    "horse_number": 1,
+    "time": "1:52.8"
+  },
+  "2026-nar-jpn1-08": {
+    "name": {
+      "ja": "メイショウハチロー"
+    },
+    "jockey": {
+      "ja": "吉原寛人"
+    },
+    "horse_number": 1,
+    "time": "1:34.7"
   }
 }

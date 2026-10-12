@@ -49601,6 +49601,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ダイヤモンドノット"
+      },
+      "jockey": {
+        "ja": "横山 武史"
+      },
+      "horse_number": 1,
+      "time": "1:19.2"
     }
   },
   {
@@ -49627,6 +49637,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "リケアルンバ"
+      },
+      "jockey": {
+        "ja": "石川倭"
+      },
+      "horse_number": 5,
+      "time": "1:30.3"
     }
   },
   {
@@ -49653,6 +49673,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ブライオン"
+      },
+      "jockey": {
+        "ja": "菅原辰"
+      },
+      "horse_number": 1,
+      "time": "1:52.8"
     }
   },
   {
@@ -49679,6 +49709,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "メイショウハチロー"
+      },
+      "jockey": {
+        "ja": "吉原寛人"
+      },
+      "horse_number": 1,
+      "time": "1:34.7"
     }
   },
   {
