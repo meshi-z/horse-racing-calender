@@ -6,6 +6,28 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 78: オーストラリア競馬のレース結果・確定勝者取得パイプライン改修および確定結果反映 (v1.45.4 / Issue #246) [完了]
+- **豪州公認サラブレッドメディア Breednet 連携によるレース結果自動取得パイプライン構築 (`scripts/lib/australia-results.ts`, `scripts/update-race-results.ts`) [完了]**
+  - Racing Australia 公式サイト等の外部アクセス制限（403/404/WAF）に対応し、オーストラリア公認サラブレッドメディア Breednet（`breednet.com.au/stakes-race-results/`）と連携する自動取得パーサー（`parseBreednetStakesResultsHtml`）を実装。
+  - レース見出し（`StakesHeader`）から開催日・競馬場・レース名を抽出し、1着馬および騎手（斤量サニタイズ処理付き）を確実にパース。
+- **名寄せロジック強化 & スタブコード排除 (`scripts/lib/australia-syutsuba.ts`, `scripts/lib/australia-results.ts`) [完了]**
+  - 冠スポンサー名除去（`Sportsbet Caulfield Guineas` $\rightarrow$ `Caulfield Guineas` 等）、略称置換（`HCP` $\leftrightarrow$ `HANDICAP`）、およびレース別名マッピング（`Ladies Day Vase` $\leftrightarrow$ `Evergreen Turf Vase`）を実装。
+  - PR #249 の新規約に基づき、未実装スタブや空関数を排除し、実通信によるライブ検証を実施。
+  - Issue #190 に準拠し、オーストラリア競馬の各レースにおける `official_url` は未設定（`undefined`）を厳格に保持。
+- **2026年10月10日開催の全11重賞および10月14日開催重賞の確定結果反映 [完了]**
+  - コーフィールドギニー（G1: Warwoven）、マイトアンドパワーステークス（G1: Land Legend）、トゥーラックハンデキャップ（G1: Lady Shenandoah）を含む10/10開催の全11重賞および10/14開催のクンジーハンデキャップ（G3: Ziryab）の確定勝者・騎手を反映し、`public/data/races-2026.json`, `public/data/races.json`, `src/data/race_winners.json` へ二重永続化。
+- **単体テスト拡充 & 空値原則検証 (`tests/unit/australiaResults.test.ts`) [完了]**
+  - `parseBreednetStakesResultsHtml` の単体テスト（基本パース、別名名寄せ、斤量除去、official_url未設定検証）を追加。
+  - 10/10開催の11重賞の反映確認および、未開催レース（10/15以降）における `winner: undefined` の空値原則を検証するテストを追加。
+- **仕様書・ドキュメント更新 [完了]**
+  - `docs/specs/data-sources/australia.md`: Breednet によるレース結果取得パイプライン仕様および反映実績を追記。
+  - `docs/PRD.md`: 第7章 マイルストーン M6（`v1.44.5 〜 v1.45.4`）を更新。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`、`npm test`（全68テストファイル・656テスト）、`npm run build` による検証を実施し、全件成功を確認。
+
+---
+
 ### Step 77: ヘッダーから年度セレクタを撤去しカレンダービュー内へ移設（ヘッダー追従崩れの解消） (v1.45.3 / Issue #244) [完了]
 - **ヘッダー追従崩れの解消 & グローバルヘッダーの軽量化 (`src/components/shared/Header.tsx`) [完了]**
   - タイトル横に配置されていた `YearSelector`（幅約85px）を撤去し、モバイル画面幅（360px〜390px）における横スクロールおよび `position: sticky` の上下左右ガタつき現象を完全に解消。

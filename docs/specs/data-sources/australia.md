@@ -25,7 +25,7 @@
 | **年間日程 / カレンダー** | [Racing Australia](https://www.racingaustralia.horse/) / 州統轄団体（Racing NSW, Racing Victoria 等） | Web / スケジュール | 年間開催日程、開催競馬場 |
 | **格付け・出走条件** | IFHA Part I Australia リスト | PDF | レース格付け、出走資格、斤量、距離、馬場 |
 | **出馬表・確定発走時刻** | [Racing Australia Calendar & Race Fields](https://www.racingaustralia.horse/FreeServices/Calendar_Races.aspx) 等 | Web / REST | Racing Australia 公式出馬表・確定発走時刻 |
-| **レース結果・勝ち馬情報** | Racing Australia 公式リザルトアーカイブ | Web / JSON | 着順、勝ち馬（英語名・騎手・タイム・馬番） |
+| **レース結果・勝ち馬情報 (公式・メディア)** | [Breednet Stakes Race Results](https://www.breednet.com.au/stakes-race-results/) / Racing Australia | Web / HTML / JSON | 豪州公認主要サラブレッドメディアによる全重賞（G1/G2/G3）公式確定結果（1着馬・騎手） |
 | **過去実績補完データ** | `src/data/australia_race_master.json` | JSON | 2026年開催済み重賞の確定発走時刻・勝ち馬バックフィル |
 
 ---
@@ -112,9 +112,19 @@
 ### 5.2 レース結果・勝ち馬自動取得バッチ (RaceResultFetcher)
 - **プロバイダー名**: `AustraliaRaceResultFetcher`
 - **実装ファイル**: `scripts/lib/australia-results.ts`, `scripts/update-race-results.ts`
-- **CLI実行コマンド**: `npm run data:update-results -- --org racing_australia`
+- **データ取得元**: 豪州公認サラブレッドメディア [Breednet Stakes Race Results](https://www.breednet.com.au/stakes-race-results/)（全重賞 G1/G2/G3 の当日速報・確定リザルト）
+- **名寄せ・パースロジック**:
+  - `parseBreednetStakesResultsHtml`: 直近の重賞一覧見出し（`StakesHeader`）から開催日・競馬場・レース名を抽出し、1着馬・騎手（斤量除去サニタイズ適用）を取得。
+  - スポンサー冠名除去（`Sportsbet Caulfield Guineas` $\rightarrow$ `Caulfield Guineas` 等）およびレース別名マッピング（`Ladies Day Vase` $\leftrightarrow$ `Evergreen Turf Vase`）による高精度名寄せ。
+- **データ二重永続化**:
+  - 更新された勝者データは `public/data/races.json`、`public/data/races-{year}.json`、および `src/data/race_winners.json` へ同時に同期保存。
+- **CLI実行コマンド**:
+  - 当日/直近自動更新: `npm run data:update-results -- --org racing_australia`
+  - 日数指定バックフィル: `npm run data:update-results -- --org racing_australia --days 7`
 - **定期実行スケジュール**:
   - オーストラリア開催終了枠（日本時間土曜 16:30, 18:30 JST 等）
+- **実績反映 (Issue #246)**:
+  - 2026年10月10日開催の全11重賞（コーフィールドギニー、マイトアンドパワーステークス、トゥーラックハンデキャップ等）および10月14日開催のクンジーハンデキャップ（Coongy Hcp）の確定勝者・騎手を自動取得・永続化完了。
 
 ### 5.3 公式サイトリンク（official_url）に関する方針
 - **基本方針 (Issue #190 準拠)**:

@@ -10796,5 +10796,125 @@
     },
     "horse_number": 1,
     "time": "1:34.7"
+  },
+  "2026-au-g2-74": {
+    "name": {
+      "ja": "Satono Glow",
+      "en": "Satono Glow"
+    },
+    "jockey": {
+      "ja": "Zac Lloyd",
+      "en": "Zac Lloyd"
+    }
+  },
+  "2026-au-g2-75": {
+    "name": {
+      "ja": "Attrition",
+      "en": "Attrition"
+    },
+    "jockey": {
+      "ja": "J Mott",
+      "en": "J Mott"
+    }
+  },
+  "2026-au-g2-76": {
+    "name": {
+      "ja": "Jigsaw",
+      "en": "Jigsaw"
+    },
+    "jockey": {
+      "ja": "Logan Bates",
+      "en": "Logan Bates"
+    }
+  },
+  "2026-au-g2-77": {
+    "name": {
+      "ja": "Pinhole",
+      "en": "Pinhole"
+    },
+    "jockey": {
+      "ja": "J B Mc Donald",
+      "en": "J B Mc Donald"
+    }
+  },
+  "2026-au-g3-125": {
+    "name": {
+      "ja": "Proxima Dea",
+      "en": "Proxima Dea"
+    },
+    "jockey": {
+      "ja": "Zac Lloyd",
+      "en": "Zac Lloyd"
+    }
+  },
+  "2026-au-g3-126": {
+    "name": {
+      "ja": "Gerringong",
+      "en": "Gerringong"
+    },
+    "jockey": {
+      "ja": "Tyler Schiller",
+      "en": "Tyler Schiller"
+    }
+  },
+  "2026-au-g3-127": {
+    "name": {
+      "ja": "Point Barrow",
+      "en": "Point Barrow"
+    },
+    "jockey": {
+      "ja": "M Zahra",
+      "en": "M Zahra"
+    }
+  },
+  "2026-au-g3-128": {
+    "name": {
+      "ja": "Surfin' Bird",
+      "en": "Surfin' Bird"
+    },
+    "jockey": {
+      "ja": "Jordan Childs",
+      "en": "Jordan Childs"
+    }
+  },
+  "2026-au-g1-56": {
+    "name": {
+      "ja": "Land Legend",
+      "en": "Land Legend"
+    },
+    "jockey": {
+      "ja": "Ethan Brown",
+      "en": "Ethan Brown"
+    }
+  },
+  "2026-au-g1-55": {
+    "name": {
+      "ja": "Warwoven",
+      "en": "Warwoven"
+    },
+    "jockey": {
+      "ja": "Rachel King",
+      "en": "Rachel King"
+    }
+  },
+  "2026-au-g1-57": {
+    "name": {
+      "ja": "Lady Shenandoah",
+      "en": "Lady Shenandoah"
+    },
+    "jockey": {
+      "ja": "J B Mc Donald",
+      "en": "J B Mc Donald"
+    }
+  },
+  "2026-au-g3-129": {
+    "name": {
+      "ja": "Ziryab",
+      "en": "Ziryab"
+    },
+    "jockey": {
+      "ja": "Jabez Johnstone",
+      "en": "Jabez Johnstone"
+    }
   }
 }
