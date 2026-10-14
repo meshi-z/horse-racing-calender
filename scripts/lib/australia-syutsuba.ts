@@ -1,6 +1,5 @@
 import { ConfirmedRaceTime } from './jra-syutsuba';
 import type { RaceOutput } from '../update-race-times';
-import { fetchWithRetry } from './uk-syutsuba';
 
 export type { ConfirmedRaceTime };
 
@@ -114,6 +113,8 @@ const AU_STOP_WORDS = new Set([
   'STAKES',
   'GROUP',
   'GRADE',
+  'HANDICAP',
+  'HCP',
 ]);
 
 /**
@@ -132,9 +133,30 @@ export function tokenizeAustralia(str: string): string[] {
 }
 
 /**
+ * レース名の公認別名・スポンサー名マッピング
+ */
+const AU_RACE_ALIASES: Array<[string, string]> = [
+  ['LADIES DAY VASE', 'EVERGREEN TURF VASE'],
+  ['EVERGREEN TURF VASE', 'LADIES DAY VASE'],
+];
+
+/**
  * オーストラリア重賞レース名と出馬表レース名のマッチング判定
  */
 export function australiaRaceMatches(targetName: string, candidateName: string): boolean {
+  const normTarget = targetName.toUpperCase();
+  const normCandidate = candidateName.toUpperCase();
+
+  // 別名マッピングのチェック
+  for (const [aliasA, aliasB] of AU_RACE_ALIASES) {
+    if (
+      (normTarget.includes(aliasA) && normCandidate.includes(aliasB)) ||
+      (normTarget.includes(aliasB) && normCandidate.includes(aliasA))
+    ) {
+      return true;
+    }
+  }
+
   const targetTokens = tokenizeAustralia(targetName);
   const candidateTokens = tokenizeAustralia(candidateName);
   const candidateSet = new Set(candidateTokens);
@@ -204,30 +226,10 @@ export async function fetchAustraliaConfirmedRaceTimes(
       continue;
     }
 
-    // 2. 外部API / スクレイピング（実リクエスト）
-    try {
-      const apiUrl = `https://www.racingaustralia.horse/FreeServices/Calendar_Races.aspx?Date=${target.date}`;
-      const response = await fetchWithRetry(apiUrl, {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-          'Accept': 'text/html,application/xhtml+xml',
-        },
-      });
-
-      if (!response.ok) {
-        continue;
-      }
-
-      const html = await response.text();
-      // HTMLパース処理（Racing Australia カレンダー/出馬表テーブルから該当レース番号・発走時刻を抽出）
-      const timeRegex = /(\d{1,2}:\d{2})\s*(?:AM|PM)?/gi;
-      const match = timeRegex.exec(html);
-      if (match) {
-        // パース可能な時刻があれば処理
-      }
-    } catch {
-      // ネットワークエラー時はフォールバック（スキップ）
-    }
+    // 2. 外部API / スクレイピング
+    // オーストラリア競馬の公式出馬表（Racing Australia等）は Cloudflare WAF による厳格なアンチBot防御が
+    // 敷かれており、公開REST APIも存在しないため、事前発走予定時刻は australia_race_master.json にて
+    // 定義・保持する（Issue #246, PR #249 規約準拠）。
   }
 
   return results;

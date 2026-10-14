@@ -20,6 +20,75 @@ export interface AustraliaMeetingResultItem {
   }>;
 }
 
+const BREEDNET_MONTH_MAP: Record<string, string> = {
+  jan: '01', feb: '02', mar: '03', apr: '04', may: '05', jun: '06',
+  jul: '07', aug: '08', sep: '09', oct: '10', nov: '11', dec: '12',
+};
+
+/**
+ * Breednet (breednet.com.au/stakes-race-results/) の HTML から
+ * AustraliaMeetingResultItem[] をパースして構造化する。
+ */
+export function parseBreednetStakesResultsHtml(
+  html: string,
+  referenceYear: number = 2026
+): AustraliaMeetingResultItem[] {
+  const parts = html.split('class="StakesHeader">');
+  const meetingsMap = new Map<string, AustraliaMeetingResultItem>();
+
+  for (let i = 1; i < parts.length; i++) {
+    const p = parts[i];
+    const header = p.split('</div>')[0].replace(/<[^>]+>/g, '').trim();
+
+    // 形式例: Australia Oct 10 - Caulfield: Sportsbet Caulfield Guineas Gr1 1600m
+    const match = header.match(/^([A-Za-z\s]+)\s+([A-Za-z]{3})\s+(\d{1,2})\s*-\s*([^:]+):\s*(.*)$/);
+    if (!match) continue;
+
+    const monStr = match[2].toLowerCase();
+    const dayStr = match[3].padStart(2, '0');
+    const venue = match[4].trim();
+    const raceName = match[5].trim();
+
+    const month = BREEDNET_MONTH_MAP[monStr];
+    if (!month) continue;
+
+    const date = `${referenceYear}-${month}-${dayStr}`;
+
+    const horseMatch = p.match(/class="horsename">\s*(\d+)\s*<b><a[^>]*>([^<]+)<\/a>/i);
+    const jockeyMatch = p.match(/Rdr:\s*<\/span>\s*([^<]+)/i);
+
+    if (horseMatch) {
+      const finishPos = parseInt(horseMatch[1], 10);
+      const horseName = horseMatch[2].trim();
+      const rawJockey = jockeyMatch ? jockeyMatch[1].trim() : undefined;
+      const jockeyName = rawJockey
+        ? rawJockey.replace(/\s+\d+(\.\d+)?\s*kg$/i, '').trim()
+        : undefined;
+
+      const key = `${date}_${venue}`;
+      let meeting = meetingsMap.get(key);
+      if (!meeting) {
+        meeting = { venue, date, races: [] };
+        meetingsMap.set(key, meeting);
+      }
+
+      meeting.races.push({
+        raceNumber: meeting.races.length + 1,
+        raceName,
+        results: [
+          {
+            horseName,
+            jockeyName,
+            finishPosition: finishPos,
+          },
+        ],
+      });
+    }
+  }
+
+  return Array.from(meetingsMap.values());
+}
+
 /**
  * オーストラリア競馬のレース結果データ（JSON/オブジェクト）から、対象重賞レースの勝ち馬情報を抽出する。
  * Issue #190 に準拠し、公式リンク（official_url）は付与せず undefined を保持する。

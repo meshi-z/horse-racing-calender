@@ -4,6 +4,7 @@ import path from 'node:path';
 import os from 'node:os';
 import {
   parseAustraliaResultsJson,
+  parseBreednetStakesResultsHtml,
   type AustraliaMeetingResultItem,
 } from '../../scripts/lib/australia-results';
 import {
@@ -118,6 +119,126 @@ describe('Australia Results utility', () => {
 
       const resultMap = parseAustraliaResultsJson(meetings, targetRaces);
       expect(resultMap.size).toBe(0);
+    });
+  });
+
+  describe('parseBreednetStakesResultsHtml', () => {
+    it('Breednet Stakes Results HTML からレース結果を正しくパースすること', () => {
+      const sampleHtml = `
+      <div class="StakesHeader">Australia Oct 10 - Caulfield: Sportsbet Caulfield Guineas Gr1 1600m</div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="horsename">1 <b><a href="/horse/warwoven">Warwoven</a></b> (b c 3 Street Boss - War Flower)</td>
+            <td class="jockey"><span class="mobile-only">Rdr: </span>Rachel King 57.0kg</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="StakesHeader">Australia Oct 10 - Caulfield: Might And Power Stakes Gr1 2000m</div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="horsename">1 <b><a href="/horse/land-legend">Land Legend</a></b> (b g 5 Galileo - Landfall)</td>
+            <td class="jockey"><span class="mobile-only">Rdr: </span>Ethan Brown 59.0kg</td>
+          </tr>
+        </tbody>
+      </table>
+      `;
+
+      const targetRaces: RaceOutput[] = [
+        {
+          id: '2026-au-g1-55',
+          organization: 'racing_australia',
+          country_code: 'AU',
+          name: { ja: 'コーフィールドギニー', en: 'Caulfield Guineas' },
+          grade: 'G1',
+          date: '2026-10-10',
+          start_time: '2026-10-10T06:10:00.000Z',
+          is_time_confirmed: true,
+          course: { ja: 'コーフィールド', en: 'Caulfield' },
+          distance: 1600,
+          track_type: 'turf',
+          sex_constraint: 'none',
+          age_constraint: '3yo',
+          handicap: { code: 'set_weight', ja: '馬齢', en: 'Set Weights' },
+        },
+        {
+          id: '2026-au-g1-56',
+          organization: 'racing_australia',
+          country_code: 'AU',
+          name: { ja: 'マイトアンドパワーステークス', en: 'Might And Power Stakes' },
+          grade: 'G1',
+          date: '2026-10-10',
+          start_time: '2026-10-10T04:55:00.000Z',
+          is_time_confirmed: true,
+          course: { ja: 'コーフィールド', en: 'Caulfield' },
+          distance: 2000,
+          track_type: 'turf',
+          sex_constraint: 'none',
+          age_constraint: '3yo_and_up',
+          handicap: { code: 'weight_for_age', ja: '馬齢', en: 'Weight for Age' },
+        },
+      ];
+
+      const meetings = parseBreednetStakesResultsHtml(sampleHtml, 2026);
+      expect(meetings.length).toBe(1);
+      expect(meetings[0].races.length).toBe(2);
+
+      const resultMap = parseAustraliaResultsJson(meetings, targetRaces);
+      expect(resultMap.size).toBe(2);
+
+      const r1 = resultMap.get('2026-au-g1-55');
+      expect(r1).toBeDefined();
+      expect(r1?.name.en).toBe('Warwoven');
+      expect(r1?.jockey?.en).toBe('Rachel King');
+      expect((r1 as any)?.official_url).toBeUndefined(); // Issue #190: official_url は undefined を維持
+
+      const r2 = resultMap.get('2026-au-g1-56');
+      expect(r2).toBeDefined();
+      expect(r2?.name.en).toBe('Land Legend');
+      expect(r2?.jockey?.en).toBe('Ethan Brown');
+    });
+
+    it('別名（Ladies Day Vase vs Evergreen Turf Vase）および日付・競馬場一致で正しく名寄せできること', () => {
+      const sampleHtml = `
+      <div class="StakesHeader">Australia Oct 10 - Caulfield: Evergreen Turf Vase Gr3 1600m</div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="horsename">1 <b><a href="/horse/surfin-bird">Surfin' Bird</a></b></td>
+            <td class="jockey"><span class="mobile-only">Rdr: </span>Jordan Childs 56.0kg</td>
+          </tr>
+        </tbody>
+      </table>
+      `;
+
+      const targetRaces: RaceOutput[] = [
+        {
+          id: '2026-au-g3-128',
+          organization: 'racing_australia',
+          country_code: 'AU',
+          name: { ja: 'レディースデイヴェイス', en: 'Ladies Day Vase' },
+          grade: 'G3',
+          date: '2026-10-10',
+          start_time: '2026-10-10T03:45:00.000Z',
+          is_time_confirmed: true,
+          course: { ja: 'コーフィールド', en: 'Caulfield' },
+          distance: 1600,
+          track_type: 'turf',
+          sex_constraint: 'filly_and_mare',
+          age_constraint: '4yo_and_up',
+          handicap: { code: 'set_weight', ja: '別定', en: 'Set Weights with Penalties' },
+        },
+      ];
+
+      const meetings = parseBreednetStakesResultsHtml(sampleHtml, 2026);
+      expect(meetings.length).toBe(1);
+
+      const resultMap = parseAustraliaResultsJson(meetings, targetRaces);
+      expect(resultMap.size).toBe(1);
+      const r = resultMap.get('2026-au-g3-128');
+      expect(r?.name.en).toBe("Surfin' Bird");
+      expect(r?.jockey?.en).toBe('Jordan Childs');
     });
   });
 
@@ -351,14 +472,31 @@ describe('Australia Results utility', () => {
       expect(goldenPendant).toBeDefined();
       expect(goldenPendant?.winner?.name.en).toBe('Lazzura');
 
-      // 6. 空値原則: 未開催の Sandown Stakes (2026-11-28予定) は winner: undefined
+      // 6. Issue #246: 2026-10-10 に開催された11重賞レースに確定勝者が正しく反映されていること
+      const caulfieldGuineas = races.find((r) => r.id === '2026-au-g1-55');
+      expect(caulfieldGuineas?.winner?.name.en).toBe('Warwoven');
+      expect(caulfieldGuineas?.winner?.jockey?.en).toBe('Rachel King');
+
+      const mightAndPower = races.find((r) => r.id === '2026-au-g1-56');
+      expect(mightAndPower?.winner?.name.en).toBe('Land Legend');
+      expect(mightAndPower?.winner?.jockey?.en).toBe('Ethan Brown');
+
+      const toorakHandicap = races.find((r) => r.id === '2026-au-g1-57');
+      expect(toorakHandicap?.winner?.name.en).toBe('Lady Shenandoah');
+      expect(toorakHandicap?.winner?.jockey?.en).toBe('J B Mc Donald');
+
+      const ladiesDayVase = races.find((r) => r.id === '2026-au-g3-128');
+      expect(ladiesDayVase?.winner?.name.en).toBe("Surfin' Bird");
+      expect(ladiesDayVase?.winner?.jockey?.en).toBe('Jordan Childs');
+
+      // 7. 空値原則: 未開催の Sandown Stakes (2026-11-28予定) は winner: undefined
       const sandownStakes = races.find((r) => r.id === '2026-au-g3-121');
       expect(sandownStakes).toBeDefined();
       expect(sandownStakes?.winner).toBeUndefined();
 
-      // 7. 空値原則: 10月6日以降のG2/G3レースはすべて winner: undefined
+      // 8. 空値原則: 10月15日以降の未開催オーストラリア重賞レースはすべて winner: undefined
       const futureAuRaces = races.filter(
-        (r) => r.organization === 'racing_australia' && r.date > '2026-10-05'
+        (r) => r.organization === 'racing_australia' && r.date >= '2026-10-15'
       );
       expect(futureAuRaces.length).toBeGreaterThan(0);
       for (const fr of futureAuRaces) {

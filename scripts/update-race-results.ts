@@ -22,6 +22,7 @@ import {
 } from './lib/foreign-results';
 import {
   parseAustraliaResultsJson,
+  parseBreednetStakesResultsHtml,
   type AustraliaMeetingResultItem,
 } from './lib/australia-results';
 import { syncShardedRaceFiles } from './lib/race-sharding';
@@ -937,41 +938,51 @@ export class AustraliaRaceResultFetcher implements RaceResultFetcher {
     const results = new Map<string, RaceResultRecord>();
     if (targetRaces.length === 0) return results;
 
-    const dateMap = new Map<string, RaceOutput[]>();
-    for (const r of targetRaces) {
-      const list = dateMap.get(r.date) || [];
-      list.push(r);
-      dateMap.set(r.date, list);
+    // 1. テストフィクスチャがある場合
+    if (this.fixtures) {
+      const dateMap = new Map<string, RaceOutput[]>();
+      for (const r of targetRaces) {
+        const list = dateMap.get(r.date) || [];
+        list.push(r);
+        dateMap.set(r.date, list);
+      }
+
+      for (const [dateYmd, racesOnDate] of dateMap.entries()) {
+        const meetings = this.fixtures[dateYmd];
+        if (meetings) {
+          const parsedMap = parseAustraliaResultsJson(meetings, racesOnDate);
+          for (const [id, winner] of parsedMap.entries()) {
+            results.set(id, { winner });
+          }
+        }
+      }
+      return results;
     }
 
-    for (const [dateYmd, racesOnDate] of dateMap.entries()) {
-      let meetings: AustraliaMeetingResultItem[] | null = null;
-      if (this.fixtures && this.fixtures[dateYmd]) {
-        meetings = this.fixtures[dateYmd];
-      } else {
-        // 実リクエスト処理
-        try {
-          const url = `https://www.racingaustralia.horse/FreeServices/Calendar_Races.aspx?Date=${dateYmd}`;
-          const res = await fetchWithRetry(url, {
-            headers: {
-              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-              'Accept': 'text/html,application/xhtml+xml',
-            },
-          });
-          if (res.ok) {
-            // 将来的なライブスクレイピング拡張用
-          }
-        } catch (e) {
-          console.warn(`[AU Results] Failed to fetch Racing Australia results for ${dateYmd}: ${(e as Error).message}`);
-        }
-      }
+    // 2. 実通信: Breednet (breednet.com.au/stakes-race-results/) から直近の重賞速報を取得
+    try {
+      const breednetUrl = 'https://www.breednet.com.au/stakes-race-results/';
+      const res = await fetchWithRetry(breednetUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'text/html,application/xhtml+xml',
+        },
+      });
 
-      if (meetings) {
-        const parsedMap = parseAustraliaResultsJson(meetings, racesOnDate);
-        for (const [id, winner] of parsedMap.entries()) {
-          results.set(id, { winner });
+      if (res.ok) {
+        const html = await res.text();
+        const meetings = parseBreednetStakesResultsHtml(html);
+        if (meetings.length > 0) {
+          const parsedMap = parseAustraliaResultsJson(meetings, targetRaces);
+          for (const [id, winner] of parsedMap.entries()) {
+            results.set(id, { winner });
+          }
         }
+      } else {
+        console.warn(`[AU Results] Breednet HTTP ${res.status} returned when fetching stakes results.`);
       }
+    } catch (e) {
+      console.warn(`[AU Results] Failed to fetch Breednet stakes results: ${(e as Error).message}`);
     }
 
     return results;
@@ -1027,12 +1038,20 @@ export function parseArgs(argv: string[] = process.argv.slice(2)): {
     const arg = argv[i];
     if (arg === '--date' && argv[i + 1]) {
       refDate = argv[++i];
+    } else if (arg.startsWith('--date=')) {
+      refDate = arg.split('=')[1];
     } else if (arg === '--time' && argv[i + 1]) {
       refTimeIso = argv[++i];
+    } else if (arg.startsWith('--time=')) {
+      refTimeIso = arg.split('=')[1];
     } else if (arg === '--days' && argv[i + 1]) {
       daysAgo = parseInt(argv[++i], 10);
+    } else if (arg.startsWith('--days=')) {
+      daysAgo = parseInt(arg.split('=')[1], 10);
     } else if (arg === '--org' && argv[i + 1]) {
       orgFilter = argv[++i].toLowerCase();
+    } else if (arg.startsWith('--org=')) {
+      orgFilter = arg.split('=')[1].toLowerCase();
     } else if (arg === '--dry-run') {
       dryRun = true;
     } else if (arg === '--force') {

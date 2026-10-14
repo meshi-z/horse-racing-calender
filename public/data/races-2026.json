@@ -48563,6 +48563,16 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Satono Glow",
+        "en": "Satono Glow"
+      },
+      "jockey": {
+        "ja": "Zac Lloyd",
+        "en": "Zac Lloyd"
+      }
     }
   },
   {
@@ -48595,6 +48605,16 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Attrition",
+        "en": "Attrition"
+      },
+      "jockey": {
+        "ja": "J Mott",
+        "en": "J Mott"
+      }
     }
   },
   {
@@ -48627,6 +48647,16 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Jigsaw",
+        "en": "Jigsaw"
+      },
+      "jockey": {
+        "ja": "Logan Bates",
+        "en": "Logan Bates"
+      }
     }
   },
   {
@@ -48659,6 +48689,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Pinhole",
+        "en": "Pinhole"
+      },
+      "jockey": {
+        "ja": "J B Mc Donald",
+        "en": "J B Mc Donald"
+      }
     }
   },
   {
@@ -48691,6 +48731,16 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Proxima Dea",
+        "en": "Proxima Dea"
+      },
+      "jockey": {
+        "ja": "Zac Lloyd",
+        "en": "Zac Lloyd"
+      }
     }
   },
   {
@@ -48723,6 +48773,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Gerringong",
+        "en": "Gerringong"
+      },
+      "jockey": {
+        "ja": "Tyler Schiller",
+        "en": "Tyler Schiller"
+      }
     }
   },
   {
@@ -48755,6 +48815,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Point Barrow",
+        "en": "Point Barrow"
+      },
+      "jockey": {
+        "ja": "M Zahra",
+        "en": "M Zahra"
+      }
     }
   },
   {
@@ -48787,6 +48857,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Surfin' Bird",
+        "en": "Surfin' Bird"
+      },
+      "jockey": {
+        "ja": "Jordan Childs",
+        "en": "Jordan Childs"
+      }
     }
   },
   {
@@ -48819,6 +48899,16 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Land Legend",
+        "en": "Land Legend"
+      },
+      "jockey": {
+        "ja": "Ethan Brown",
+        "en": "Ethan Brown"
+      }
     }
   },
   {
@@ -48851,6 +48941,16 @@
       "code": "set_weight",
       "ja": "定量",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Warwoven",
+        "en": "Warwoven"
+      },
+      "jockey": {
+        "ja": "Rachel King",
+        "en": "Rachel King"
+      }
     }
   },
   {
@@ -48883,6 +48983,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Lady Shenandoah",
+        "en": "Lady Shenandoah"
+      },
+      "jockey": {
+        "ja": "J B Mc Donald",
+        "en": "J B Mc Donald"
+      }
     }
   },
   {
@@ -49751,6 +49861,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Ziryab",
+        "en": "Ziryab"
+      },
+      "jockey": {
+        "ja": "Jabez Johnstone",
+        "en": "Jabez Johnstone"
+      }
     }
   },
   {
