@@ -49777,6 +49777,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ブラフキャッチ"
+      },
+      "jockey": {
+        "ja": "野畑凌"
+      },
+      "horse_number": 7,
+      "time": "1:44.3"
     }
   },
   {
