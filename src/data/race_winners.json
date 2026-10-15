@@ -10926,5 +10926,25 @@
     },
     "horse_number": 7,
     "time": "1:44.3"
+  },
+  "2026-nar-local-193": {
+    "name": {
+      "ja": "ハイラブレジェンド"
+    },
+    "jockey": {
+      "ja": "小谷哲"
+    },
+    "horse_number": 2,
+    "time": "1:53.4"
+  },
+  "2026-nar-local-192": {
+    "name": {
+      "ja": "ベント"
+    },
+    "jockey": {
+      "ja": "今井貴"
+    },
+    "horse_number": 5,
+    "time": "1:32.6"
   }
 }

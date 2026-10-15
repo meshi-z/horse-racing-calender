@@ -49933,6 +49933,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ハイラブレジェンド"
+      },
+      "jockey": {
+        "ja": "小谷哲"
+      },
+      "horse_number": 2,
+      "time": "1:53.4"
     }
   },
   {
@@ -49959,6 +49969,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ベント"
+      },
+      "jockey": {
+        "ja": "今井貴"
+      },
+      "horse_number": 5,
+      "time": "1:32.6"
     }
   },
   {
