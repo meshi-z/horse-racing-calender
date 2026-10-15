@@ -50387,8 +50387,8 @@
     },
     "grade": "G2",
     "date": "2026-10-17",
-    "start_time": "2026-10-17T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-17T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
@@ -50674,8 +50674,8 @@
     },
     "grade": "J.G2",
     "date": "2026-10-18",
-    "start_time": "2026-10-18T04:50:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-18T05:10:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
@@ -50702,8 +50702,8 @@
     },
     "grade": "G1",
     "date": "2026-10-18",
-    "start_time": "2026-10-18T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-18T06:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto",
@@ -50739,32 +50739,6 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "2yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-195",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "金沢スプリントカップ",
-      "en": "Kanazawa Sprint Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-10-18",
-    "start_time": "2026-10-18T07:30:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "金沢",
-      "en": "Kanazawa"
-    },
-    "distance": 1400,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -50811,11 +50785,37 @@
     },
     "grade": "local_grade",
     "date": "2026-10-18",
-    "start_time": "2026-10-18T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-18T08:25:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "佐賀",
       "en": "Saga"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-195",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "金沢スプリントカップ",
+      "en": "Kanazawa Sprint Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-10-18",
+    "start_time": "2026-10-18T09:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "金沢",
+      "en": "Kanazawa"
     },
     "distance": 1400,
     "track_type": "dirt",
@@ -50894,8 +50894,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-20",
-    "start_time": "2026-10-20T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-20T09:00:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "金沢",
       "en": "Kanazawa"
