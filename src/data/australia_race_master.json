@@ -1881,7 +1881,7 @@
       "grade": "G1",
       "date": "2026-10-17",
       "start_time": "2026-10-17T05:15:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -1911,7 +1911,7 @@
       "grade": "G1",
       "date": "2026-10-17",
       "start_time": "2026-10-17T06:35:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -9167,7 +9167,7 @@
         "zh": "Atc St. Leger錦標",
         "fr": "Atc St. Leger Stakes"
       },
-      "start_time": "2026-10-17T04:30:00.000Z",
+      "start_time": "2026-10-17T03:15:00.000Z",
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -9186,7 +9186,7 @@
       "id": "2026-au-g3-130",
       "organization": "racing_australia",
       "country_code": "AU",
-      "is_time_confirmed": false
+      "is_time_confirmed": true
     },
     {
       "date": "2026-10-17",
@@ -9197,7 +9197,7 @@
         "zh": "The Silver Eagle",
         "fr": "The Silver Eagle"
       },
-      "start_time": "2026-10-17T04:30:00.000Z",
+      "start_time": "2026-10-17T05:50:00.000Z",
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -9216,7 +9216,7 @@
       "id": "2026-au-g3-131",
       "organization": "racing_australia",
       "country_code": "AU",
-      "is_time_confirmed": false
+      "is_time_confirmed": true
     },
     {
       "date": "2026-10-17",
@@ -9227,7 +9227,7 @@
         "zh": "City Tatt's Lightning",
         "fr": "City Tatt's Lightning"
       },
-      "start_time": "2026-10-17T04:30:00.000Z",
+      "start_time": "2026-10-17T04:25:00.000Z",
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -9246,7 +9246,7 @@
       "id": "2026-au-g3-132",
       "organization": "racing_australia",
       "country_code": "AU",
-      "is_time_confirmed": false
+      "is_time_confirmed": true
     },
     {
       "date": "2026-10-17",
@@ -9257,7 +9257,7 @@
         "zh": "Angst Quality讓賽",
         "fr": "Angst Quality Handicap"
       },
-      "start_time": "2026-10-17T04:30:00.000Z",
+      "start_time": "2026-10-17T02:40:00.000Z",
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -9276,7 +9276,7 @@
       "id": "2026-au-g3-133",
       "organization": "racing_australia",
       "country_code": "AU",
-      "is_time_confirmed": false
+      "is_time_confirmed": true
     },
     {
       "date": "2026-10-17",
@@ -9287,7 +9287,7 @@
         "zh": "Reginald Allen讓賽",
         "fr": "Reginald Allen Quality"
       },
-      "start_time": "2026-10-17T04:30:00.000Z",
+      "start_time": "2026-10-17T02:05:00.000Z",
       "course": {
         "ja": "ロイヤルランドウィック",
         "en": "Royal Randwick",
@@ -9306,7 +9306,7 @@
       "id": "2026-au-g3-134",
       "organization": "racing_australia",
       "country_code": "AU",
-      "is_time_confirmed": false
+      "is_time_confirmed": true
     },
     {
       "date": "2026-10-17",

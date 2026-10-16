@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest';
+import fs from 'node:fs';
+import path from 'node:path';
 import { loadAustraliaRaceMaster, getAustraliaRaces } from '../../scripts/lib/australia-races';
 
 describe('Australia Races Pipeline and Master Data (Issue #193)', () => {
@@ -133,4 +135,41 @@ describe('Australia Races Pipeline and Master Data (Issue #193)', () => {
     expect(theEverest?.start_time).toBe('2026-10-17T05:15:00.000Z');
     expect(theEverest?.is_time_confirmed).toBe(true);
   });
+
+  it('2026年10月17日 ジ・エベレストデー（ロイヤルランドウィック）の7重賞が確定発走時刻として反映されていること (Issue #251)', () => {
+    const master = loadAustraliaRaceMaster(rootDir);
+    const races = getAustraliaRaces(master, new Map());
+
+    const expectedRaces = [
+      { id: '2026-au-g3-134', name: 'Reginald Allen Quality', time: '2026-10-17T02:05:00.000Z' },
+      { id: '2026-au-g3-133', name: 'Angst Quality Handicap', time: '2026-10-17T02:40:00.000Z' },
+      { id: '2026-au-g3-130', name: 'Atc St. Leger Stakes', time: '2026-10-17T03:15:00.000Z' },
+      { id: '2026-au-g3-132', name: "City Tatt's Lightning", time: '2026-10-17T04:25:00.000Z' },
+      { id: '2026-au-g1-58', name: 'The Everest', time: '2026-10-17T05:15:00.000Z' },
+      { id: '2026-au-g3-131', name: 'The Silver Eagle', time: '2026-10-17T05:50:00.000Z' },
+      { id: '2026-au-g1-59', name: 'King Charles III Stakes', time: '2026-10-17T06:35:00.000Z' },
+    ];
+
+    for (const exp of expectedRaces) {
+      const race = races.find((r) => r.id === exp.id);
+      expect(race).toBeDefined();
+      expect(race?.name.en).toBe(exp.name);
+      expect(race?.start_time).toBe(exp.time);
+      expect(race?.is_time_confirmed).toBe(true);
+      expect(race?.course.en).toBe('Royal Randwick');
+    }
+
+    // 配布用 JSON (races.json, races-2026.json) の同期検証
+    for (const file of ['public/data/races.json', 'public/data/races-2026.json']) {
+      const publicPath = path.resolve(rootDir, file);
+      const publicRaces = JSON.parse(fs.readFileSync(publicPath, 'utf8'));
+      for (const exp of expectedRaces) {
+        const pr = publicRaces.find((r: { id: string }) => r.id === exp.id);
+        expect(pr).toBeDefined();
+        expect(pr?.start_time).toBe(exp.time);
+        expect(pr?.is_time_confirmed).toBe(true);
+      }
+    }
+  });
 });
+
