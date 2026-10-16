@@ -49982,6 +49982,134 @@
     }
   },
   {
+    "id": "2026-au-g3-134",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "REGINALD ALLENクオリティ",
+      "en": "Reginald Allen Quality",
+      "zh": "Reginald Allen讓賽",
+      "fr": "Reginald Allen Quality"
+    },
+    "grade": "G3",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T02:05:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "ロイヤルランドウィック",
+      "en": "Royal Randwick",
+      "zh": "皇家蘭域",
+      "fr": "Royal Randwick"
+    },
+    "distance": 1400,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
+    }
+  },
+  {
+    "id": "2026-au-g3-133",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "ANGST QUALITYハンデキャップ",
+      "en": "Angst Quality Handicap",
+      "zh": "Angst Quality讓賽",
+      "fr": "Angst Quality Handicap"
+    },
+    "grade": "G3",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T02:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "ロイヤルランドウィック",
+      "en": "Royal Randwick",
+      "zh": "皇家蘭域",
+      "fr": "Royal Randwick"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-au-g3-130",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "ATC ST. LEGERステークス",
+      "en": "Atc St. Leger Stakes",
+      "zh": "Atc St. Leger錦標",
+      "fr": "Atc St. Leger Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T03:15:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "ロイヤルランドウィック",
+      "en": "Royal Randwick",
+      "zh": "皇家蘭域",
+      "fr": "Royal Randwick"
+    },
+    "distance": 2600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-au-g3-132",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "CITY TATT'S LIGHTNING",
+      "en": "City Tatt's Lightning",
+      "zh": "City Tatt's Lightning",
+      "fr": "City Tatt's Lightning"
+    },
+    "grade": "G3",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T04:25:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "ロイヤルランドウィック",
+      "en": "Royal Randwick",
+      "zh": "皇家蘭域",
+      "fr": "Royal Randwick"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "馬齢",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-au-g2-78",
     "organization": "racing_australia",
     "country_code": "AU",
@@ -50039,166 +50167,6 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "handicap",
-      "ja": "ハンデ",
-      "en": "Handicap"
-    }
-  },
-  {
-    "id": "2026-au-g3-130",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "ATC ST. LEGERステークス",
-      "en": "Atc St. Leger Stakes",
-      "zh": "Atc St. Leger錦標",
-      "fr": "Atc St. Leger Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-10-17",
-    "start_time": "2026-10-17T03:15:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-17",
-    "course": {
-      "ja": "ロイヤルランドウィック",
-      "en": "Royal Randwick",
-      "zh": "皇家蘭域",
-      "fr": "Royal Randwick"
-    },
-    "distance": 2600,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
-    "id": "2026-au-g3-131",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "THE SILVER EAGLE",
-      "en": "The Silver Eagle",
-      "zh": "The Silver Eagle",
-      "fr": "The Silver Eagle"
-    },
-    "grade": "G3",
-    "date": "2026-10-17",
-    "start_time": "2026-10-17T05:50:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-17",
-    "course": {
-      "ja": "ロイヤルランドウィック",
-      "en": "Royal Randwick",
-      "zh": "皇家蘭域",
-      "fr": "Royal Randwick"
-    },
-    "distance": 1300,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
-    "id": "2026-au-g3-132",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "CITY TATT'S LIGHTNING",
-      "en": "City Tatt's Lightning",
-      "zh": "City Tatt's Lightning",
-      "fr": "City Tatt's Lightning"
-    },
-    "grade": "G3",
-    "date": "2026-10-17",
-    "start_time": "2026-10-17T04:25:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-17",
-    "course": {
-      "ja": "ロイヤルランドウィック",
-      "en": "Royal Randwick",
-      "zh": "皇家蘭域",
-      "fr": "Royal Randwick"
-    },
-    "distance": 1200,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "馬齢",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-au-g3-133",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "ANGST QUALITYハンデキャップ",
-      "en": "Angst Quality Handicap",
-      "zh": "Angst Quality讓賽",
-      "fr": "Angst Quality Handicap"
-    },
-    "grade": "G3",
-    "date": "2026-10-17",
-    "start_time": "2026-10-17T02:40:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-17",
-    "course": {
-      "ja": "ロイヤルランドウィック",
-      "en": "Royal Randwick",
-      "zh": "皇家蘭域",
-      "fr": "Royal Randwick"
-    },
-    "distance": 1600,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
-    "id": "2026-au-g3-134",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "REGINALD ALLENクオリティ",
-      "en": "Reginald Allen Quality",
-      "zh": "Reginald Allen讓賽",
-      "fr": "Reginald Allen Quality"
-    },
-    "grade": "G3",
-    "date": "2026-10-17",
-    "start_time": "2026-10-17T02:05:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-17",
-    "course": {
-      "ja": "ロイヤルランドウィック",
-      "en": "Royal Randwick",
-      "zh": "皇家蘭域",
-      "fr": "Royal Randwick"
-    },
-    "distance": 1400,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
     "handicap": {
       "code": "handicap",
       "ja": "ハンデ",
@@ -50331,6 +50299,38 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-au-g3-131",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "THE SILVER EAGLE",
+      "en": "The Silver Eagle",
+      "zh": "The Silver Eagle",
+      "fr": "The Silver Eagle"
+    },
+    "grade": "G3",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T05:50:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "ロイヤルランドウィック",
+      "en": "Royal Randwick",
+      "zh": "皇家蘭域",
+      "fr": "Royal Randwick"
+    },
+    "distance": 1300,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -50858,8 +50858,8 @@
     },
     "grade": "G2",
     "date": "2026-10-18",
-    "start_time": "2026-10-18T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-18T13:50:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-18",
     "course": {
