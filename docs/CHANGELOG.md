@@ -6,6 +6,28 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 79: オーストラリア競馬 ジ・エベレストデー（Randwick）の確定発走予定時刻反映 (v1.45.5 / Issue #251) [完了]
+- **ロイヤルランドウィック競馬場 ジ・エベレストデー7重賞の確定発走予定時刻の反映 (`src/data/australia_race_master.json`, `public/data/races-2026.json`, `public/data/races.json`) [完了]**
+  - 2026年10月17日（土）開催の「ジ・エベレスト（G1: 16:15 AEDT / 14:15 JST / 05:15 UTC）」、「キングチャールズ3世ステークス（G1: 17:35 AEDT / 15:35 JST / 06:35 UTC）」をはじめとする全7重賞の公式確定発走予定時刻（AEDT $\rightarrow$ UTC）をマスタおよび本番配布用データへ反映し、`is_time_confirmed: true` に更新。
+  - 対象7重賞:
+    - `2026-au-g3-134`: Reginald Allen Quality (13:05 AEDT / 02:05 UTC)
+    - `2026-au-g3-133`: Angst Quality Handicap (13:40 AEDT / 02:40 UTC)
+    - `2026-au-g3-130`: Atc St. Leger Stakes (14:15 AEDT / 03:15 UTC)
+    - `2026-au-g3-132`: City Tatt's Lightning / Sydney Stakes (15:25 AEDT / 04:25 UTC)
+    - `2026-au-g1-58`: The Everest (16:15 AEDT / 05:15 UTC)
+    - `2026-au-g3-131`: The Silver Eagle (16:50 AEDT / 05:50 UTC)
+    - `2026-au-g1-59`: King Charles III Stakes (17:35 AEDT / 06:35 UTC)
+- **単体テスト拡充 & 配布用データ整合性検証 (`tests/unit/australiaRaces.test.ts`) [完了]**
+  - マスタから生成されたオーストラリア重賞データおよび `public/data/races*.json` において、対象7レースの確定発走予定時刻および確定フラグ（`is_time_confirmed: true`）が正確に保持されていることを検証するテストを追加。
+- **仕様書・ドキュメント更新 [完了]**
+  - `docs/specs/data-sources/australia.md`: ジ・エベレストデー確定発走予定時刻の反映実績を追記。
+  - `docs/PRD.md`: 第7章 マイルストーン M6（`v1.44.5 〜 v1.45.5`）を更新。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`、`npm test`（全68テストファイル・657テスト）、`npm run build` による検証を実施し、全件成功を確認。
+
+---
+
 ### Step 78: オーストラリア競馬のレース結果・確定勝者取得パイプライン改修および確定結果反映 (v1.45.4 / Issue #246) [完了]
 - **豪州公認サラブレッドメディア Breednet 連携によるレース結果自動取得パイプライン構築 (`scripts/lib/australia-results.ts`, `scripts/update-race-results.ts`) [完了]**
   - Racing Australia 公式サイト等の外部アクセス制限（403/404/WAF）に対応し、オーストラリア公認サラブレッドメディア Breednet（`breednet.com.au/stakes-race-results/`）と連携する自動取得パーサー（`parseBreednetStakesResultsHtml`）を実装。

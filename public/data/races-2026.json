@@ -50057,8 +50057,8 @@
     },
     "grade": "G3",
     "date": "2026-10-17",
-    "start_time": "2026-10-17T04:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-17T03:15:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-17",
     "course": {
@@ -50089,8 +50089,8 @@
     },
     "grade": "G3",
     "date": "2026-10-17",
-    "start_time": "2026-10-17T04:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-17T05:50:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-17",
     "course": {
@@ -50121,8 +50121,8 @@
     },
     "grade": "G3",
     "date": "2026-10-17",
-    "start_time": "2026-10-17T04:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-17T04:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-17",
     "course": {
@@ -50153,8 +50153,8 @@
     },
     "grade": "G3",
     "date": "2026-10-17",
-    "start_time": "2026-10-17T04:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-17T02:40:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-17",
     "course": {
@@ -50185,8 +50185,8 @@
     },
     "grade": "G3",
     "date": "2026-10-17",
-    "start_time": "2026-10-17T04:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-17T02:05:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-17",
     "course": {
@@ -50314,7 +50314,7 @@
     "grade": "G1",
     "date": "2026-10-17",
     "start_time": "2026-10-17T05:15:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-17",
     "course": {
@@ -50378,7 +50378,7 @@
     "grade": "G1",
     "date": "2026-10-17",
     "start_time": "2026-10-17T06:35:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-17",
     "course": {
