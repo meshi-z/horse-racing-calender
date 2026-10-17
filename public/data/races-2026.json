@@ -14546,8 +14546,8 @@
     },
     "winner": {
       "name": {
-        "ja": "Expensive Queen",
-        "en": "Expensive Queen"
+        "ja": "Segesta",
+        "en": "Segesta"
       },
       "time": "1m 40.98s"
     }
@@ -23859,10 +23859,10 @@
     },
     "winner": {
       "name": {
-        "ja": "Bandiagara",
-        "en": "Bandiagara"
+        "ja": "Alpyland",
+        "en": "Alpyland"
       },
-      "time": "1m 35.6s"
+      "time": "1m 34.17s"
     }
   },
   {
@@ -26842,10 +26842,10 @@
     },
     "winner": {
       "name": {
-        "ja": "Big Cuddle",
-        "en": "Big Cuddle"
+        "ja": "Luv Your Neighbor",
+        "en": "Luv Your Neighbor"
       },
-      "time": "1m 44.27s"
+      "time": "1m 44.05s"
     }
   },
   {
@@ -29282,9 +29282,10 @@
     },
     "winner": {
       "name": {
-        "ja": "Closethegame Sugar",
-        "en": "Closethegame Sugar"
-      }
+        "ja": "Harrodsburg",
+        "en": "Harrodsburg"
+      },
+      "time": "1m 15.95s"
     }
   },
   {
@@ -29642,16 +29643,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    },
-    "winner": {
-      "name": {
-        "ja": "Neat",
-        "en": "Neat"
-      },
-      "jockey": {
-        "ja": "J.アルバラード",
-        "en": "Junior Alvarado"
-      }
     }
   },
   {
@@ -30333,8 +30324,8 @@
     },
     "winner": {
       "name": {
-        "ja": "Zulu Kingdom",
-        "en": "Zulu Kingdom"
+        "ja": "Mi Bago",
+        "en": "Mi Bago"
       },
       "time": "1m 34.08s"
     }
@@ -35707,10 +35698,10 @@
     },
     "winner": {
       "name": {
-        "ja": "ブラケットバスター",
-        "en": "Bracket Buster"
+        "ja": "Zihnal",
+        "en": "Zihnal"
       },
-      "time": "1m 44.05s"
+      "time": "1m 52.47s"
     }
   },
   {
@@ -39232,10 +39223,9 @@
     },
     "winner": {
       "name": {
-        "ja": "ミッドアメリカン",
-        "en": "Mid American"
-      },
-      "time": "1m 17.39s"
+        "ja": "In Our Time",
+        "en": "In Our Time"
+      }
     }
   },
   {
@@ -41280,10 +41270,10 @@
     },
     "winner": {
       "name": {
-        "ja": "ストームズウェイク",
-        "en": "Storm's Wake"
+        "ja": "Lennox The Grey",
+        "en": "Lennox The Grey"
       },
-      "time": "1m 48.6s"
+      "time": "1m 49.77s"
     }
   },
   {
@@ -43423,10 +43413,10 @@
     },
     "winner": {
       "name": {
-        "ja": "アワースウィートベル",
-        "en": "Our Sweet Belle"
+        "ja": "Reagan's Flame",
+        "en": "Reagan's Flame"
       },
-      "time": "1m 16.04s"
+      "time": "1m 14.62s"
     }
   },
   {

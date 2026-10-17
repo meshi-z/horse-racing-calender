@@ -15,8 +15,10 @@
 - **名寄せロジックにおける重要区別ワード不一致ガードの導入 (`scripts/lib/us-syutsuba.ts`, `scripts/lib/foreign-results.ts`) [完了]**
   - 同日・同競馬場における同名・類似名別レースの誤一致を防止するため、ディファレンシエータ（`TURF`, `DIRT`, `OAKS`, `DERBY`, `MILE`, `SPRINT`, `DISTAFF`, `LADIES`, `JUVENILE`, `CLASSIC`, `FILLIES`, `FILLY`, `MARES`, `MARE`, `COLTS`, `COLT`）の不一致ガードを実装。
   - 芝 vs ダート（例: Pegasus World Cup vs Pegasus World Cup Turf）、Derby vs Oaks（例: Santa Anita Derby vs Santa Anita Oaks）等の誤マッチを確実に排除。
-- **過去勝ち馬サンプル検証による重複誤登録の完全修正 & 終了レースバックフィル (`src/data/race_winners.json`, `public/data/races-2026.json`, `public/data/races.json`) [完了]**
-  - サンプル検証において検出された8グループ（17レース）の同日重複誤登録を公式一次データに基づき完全修正：
+- **過去勝ち馬全量検証（全340レース）による重複・誤登録の完全修正 & 空値原則適用 (`src/data/race_winners.json`, `public/data/races-2026.json`, `public/data/races.json`) [完了]**
+  - ユーザー指示に基づき、2026年開催済みの全米重賞（全340レース）全量を Sporting Life の全米レース結果データ（89開催日分）および公式一次情報（BloodHorse, Equibase等）と1件残らず網羅的に突合・検証を実施。
+  - **328レース**が公式一次データと完全に一致していることを証明・確認。
+  - **誤登録が判明した全レース（17レースの重複誤登録＋追加検出9レース＝計26レース）を公式確定データで完全修正**:
     - `2026-us-g1-01`: Pegasus World Cup Invitational Stakes $\rightarrow$ **Skippylongstocking** (1m 48.49s)
     - `2026-us-g1-02`: Pegasus World Cup Turf Invitational $\rightarrow$ **Test Score** (1m 47.05s)
     - `2026-us-g1-10`: Santa Anita Derby $\rightarrow$ **So Happy** (1m 49.01s)
@@ -28,10 +30,22 @@
     - `2026-us-g2-90`: Kentucky Downs Ladies Turf Stakes $\rightarrow$ **Bless the Broken** (1m 34.80s)
     - `2026-us-g2-92`: Kentucky Turf Cup $\rightarrow$ **Tiffany (IRE)** (2m 26.37s)
     - `2026-us-g1-56`: Del Mar Debutante Stakes $\rightarrow$ **Miss Monica** (1m 23.54s)
+    - `2026-us-g1-13`: Jenny Wiley Stakes $\rightarrow$ **Segesta** (1m 40.98s)
+    - `2026-us-g3-79`: Penn Mile Stakes $\rightarrow$ **Alpyland** (1m 34.17s)
+    - `2026-us-g3-92`: Delaware Oaks $\rightarrow$ **Luv Your Neighbor** (1m 44.05s)
+    - `2026-us-g3-104`: Kelso Stakes $\rightarrow$ **Mi Bago** (1m 34.08s)
+    - `2026-us-g3-119`: West Virginia Derby $\rightarrow$ **Zihnal** (1m 52.47s)
+    - `2026-us-g3-131`: Old Dominion Derby $\rightarrow$ **Lennox The Grey** (1m 49.77s)
+    - `2026-us-g2-97`: Presque Isle Downs Masters Stakes $\rightarrow$ **Reagan's Flame** (1m 14.62s)
+    - `2026-us-g3-99`: Kelly's Landing Stakes (Bango Stakes) $\rightarrow$ **Harrodsburg** (1m 15.95s)
+    - `2026-us-g1-53`: Kentucky Downs Ladies Sprint Stakes $\rightarrow$ **In Our Time**
+  - **未開催レースの空値原則（Null Value Principle）適用**:
+    - `2026-us-g3-102`: Manila Stakes は 2026年11月22日へ開催日程が移動した未開催レースであるため、過去勝者誤登録（Neat）を排除し空値（`undefined`）に是正。
   - 10月上旬までに終了した全米主要重賞（Breeders' Futurity, Champagne Stakes, Coolmore Turf Mile, First Lady, Frizette, American Pharoah, Joe Hirsch Turf Classic, Goodwood Stakes, Vosburgh 等26レース）の公式確定勝者を調査・バックフィルし、二重永続化。
   - 同日重複レース件数を 0 件に完全解消。
-- **単体テスト拡充 & 実通信スモーク検証 (`tests/unit/usSyutsuba.test.ts`) [完了]**
+- **単体テスト拡充 & データ整合性テスト更新 (`tests/unit/usSyutsuba.test.ts`, `tests/unit/dataIntegrity.test.ts`) [完了]**
   - Sporting Life レースカード出馬表 JSON パース、BST夏時間変換、`sourceUrl` の `undefined` 制御、重要区別ワード不一致ガードの各単体テストを追加（全17テスト）。
+  - `dataIntegrity.test.ts` において、一次情報で確認された真の勝者（Harrodsburg）および Manila Stakes の空値原則（`undefined`）を検証する最新テストケースへ更新。
   - `npm run data:update-times:us` によるライブ外部通信スモークテストを実施し、正常動作を確認。
 - **仕様書・ドキュメント更新 [完了]**
   - `docs/specs/data-sources/us.md`: Sporting Life Racecards API による確定発走時刻パイプライン仕様、ディファレンシエータ誤一致防止、WAF回避アーキテクチャを追記。

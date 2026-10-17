@@ -855,8 +855,8 @@
   },
   "2026-us-g1-13": {
     "name": {
-      "ja": "Expensive Queen",
-      "en": "Expensive Queen"
+      "ja": "Segesta",
+      "en": "Segesta"
     },
     "time": "1m 40.98s"
   },
@@ -1534,10 +1534,10 @@
   },
   "2026-us-g3-79": {
     "name": {
-      "ja": "Bandiagara",
-      "en": "Bandiagara"
+      "ja": "Alpyland",
+      "en": "Alpyland"
     },
-    "time": "1m 35.6s"
+    "time": "1m 34.17s"
   },
   "2026-us-g2-49": {
     "name": {
@@ -1744,10 +1744,10 @@
   },
   "2026-us-g3-92": {
     "name": {
-      "ja": "Big Cuddle",
-      "en": "Big Cuddle"
+      "ja": "Luv Your Neighbor",
+      "en": "Luv Your Neighbor"
     },
-    "time": "1m 44.27s"
+    "time": "1m 44.05s"
   },
   "2026-us-g3-93": {
     "name": {
@@ -2063,8 +2063,8 @@
   },
   "2026-us-g3-104": {
     "name": {
-      "ja": "Zulu Kingdom",
-      "en": "Zulu Kingdom"
+      "ja": "Mi Bago",
+      "en": "Mi Bago"
     },
     "time": "1m 34.08s"
   },
@@ -2602,10 +2602,10 @@
   },
   "2026-us-g3-119": {
     "name": {
-      "ja": "ブラケットバスター",
-      "en": "Bracket Buster"
+      "ja": "Zihnal",
+      "en": "Zihnal"
     },
-    "time": "1m 44.05s"
+    "time": "1m 52.47s"
   },
   "2026-us-g3-117": {
     "name": {
@@ -2874,10 +2874,9 @@
   },
   "2026-us-g1-53": {
     "name": {
-      "ja": "ミッドアメリカン",
-      "en": "Mid American"
-    },
-    "time": "1m 17.39s"
+      "ja": "In Our Time",
+      "en": "In Our Time"
+    }
   },
   "2026-us-g2-86": {
     "name": {
@@ -3021,10 +3020,10 @@
   },
   "2026-us-g3-131": {
     "name": {
-      "ja": "ストームズウェイク",
-      "en": "Storm's Wake"
+      "ja": "Lennox The Grey",
+      "en": "Lennox The Grey"
     },
-    "time": "1m 48.6s"
+    "time": "1m 49.77s"
   },
   "2026-us-g2-94": {
     "name": {
@@ -3196,10 +3195,10 @@
   },
   "2026-us-g2-97": {
     "name": {
-      "ja": "アワースウィートベル",
-      "en": "Our Sweet Belle"
+      "ja": "Reagan's Flame",
+      "en": "Reagan's Flame"
     },
-    "time": "1m 16.04s"
+    "time": "1m 14.62s"
   },
   "2026-uk-g2-43": {
     "name": {
@@ -8127,19 +8126,10 @@
   },
   "2026-us-g3-99": {
     "name": {
-      "ja": "Closethegame Sugar",
-      "en": "Closethegame Sugar"
-    }
-  },
-  "2026-us-g3-102": {
-    "name": {
-      "ja": "Neat",
-      "en": "Neat"
+      "ja": "Harrodsburg",
+      "en": "Harrodsburg"
     },
-    "jockey": {
-      "ja": "J.アルバラード",
-      "en": "Junior Alvarado"
-    }
+    "time": "1m 15.95s"
   },
   "2026-us-g3-108": {
     "name": {
