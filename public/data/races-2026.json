@@ -51045,8 +51045,8 @@
     },
     "grade": "G3",
     "date": "2026-10-18",
-    "start_time": "2026-10-18T21:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-18T19:12:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-18",
     "course": {
