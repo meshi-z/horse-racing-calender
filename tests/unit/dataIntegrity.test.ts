@@ -178,8 +178,7 @@ describe('Data Integrity & Multilingual Winners Audit (Issue #160)', () => {
       expect(winners['2026-us-g3-09']?.name?.en).toBe('Nafisa');
       expect(winners['2026-us-g3-17']?.name?.en).toBe('Nitrogen');
       expect(winners['2026-us-g3-77']?.name?.en).toBe('Heroic Move');
-      expect(winners['2026-us-g3-99']?.name?.en).toBe('Closethegame Sugar');
-      expect(winners['2026-us-g3-102']?.name?.en).toBe('Neat');
+      expect(winners['2026-us-g3-99']?.name?.en).toBe('Harrodsburg');
       expect(winners['2026-us-g3-108']?.name?.en).toBe('Navajo Warrior');
       expect(winners['2026-us-g3-124']?.name?.en).toBe('Rabeeba');
       expect(winners['2026-us-g3-137']?.name?.en).toBe('Shelzawa');
@@ -195,6 +194,10 @@ describe('Data Integrity & Multilingual Winners Audit (Issue #160)', () => {
       const brooklyn = races.find((r) => r.id === '2026-us-g2-59');
       expect(brooklyn?.winner, 'Brooklyn S must have no winner (scheduled for 2026-12-05)').toBeUndefined();
       expect(winners['2026-us-g2-59']).toBeUndefined();
+
+      const manila = races.find((r) => r.id === '2026-us-g3-102');
+      expect(manila?.winner, 'Manila S must have no winner (rescheduled to 2026-11-22)').toBeUndefined();
+      expect(winners['2026-us-g3-102']).toBeUndefined();
 
       // 2026年不開催（Cougar II S）
       const cougarII = races.find((r) => r.id === '2026-us-g3-113');
@@ -235,12 +238,11 @@ describe('Data Integrity & Multilingual Winners Audit (Issue #160)', () => {
   });
 
   describe('勝ち馬名へのレース名誤混入防止・アメリカ重賞勝者是正検証 (Issue #174)', () => {
-    it('ウィンターMemoriesステークスを含む7レースの勝ち馬名（ja/en）が正しく是正されていること', () => {
+    it('ウィンターMemoriesステークスを含む6レースの勝ち馬名（ja/en）が正しく是正されていること', () => {
       const targetExpectations: Record<string, { ja: string; en: string }> = {
         '2026-us-g3-09': { ja: 'Nafisa', en: 'Nafisa' },
         '2026-us-g3-77': { ja: 'Heroic Move', en: 'Heroic Move' },
-        '2026-us-g3-99': { ja: 'Closethegame Sugar', en: 'Closethegame Sugar' },
-        '2026-us-g3-102': { ja: 'Neat', en: 'Neat' },
+        '2026-us-g3-99': { ja: 'Harrodsburg', en: 'Harrodsburg' },
         '2026-us-g3-124': { ja: 'Rabeeba', en: 'Rabeeba' },
         '2026-us-g2-101': { ja: 'Super Corredora', en: 'Super Corredora' },
         '2026-us-g3-137': { ja: 'Shelzawa', en: 'Shelzawa' },

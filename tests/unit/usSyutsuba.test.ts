@@ -10,6 +10,7 @@ import {
   usRaceMatches,
   usCourseMatches,
   parseEquibaseRacecardsJson,
+  parseSportingLifeUsRacecardsJson,
   EquibaseRaceItem,
 } from '../../scripts/lib/us-syutsuba';
 import {
@@ -113,6 +114,26 @@ describe('US Syutsuba utility', () => {
       expect(usRaceMatches('Kentucky Derby', 'Kentucky Oaks')).toBe(false);
     });
 
+    it('重要区別ワード（ディファレンシエータ）による同名別レースの誤一致を防止すること', () => {
+      // 芝 vs ダート
+      expect(usRaceMatches('Pegasus World Cup Invitational Stakes', 'Pegasus World Cup Turf Invitational')).toBe(false);
+      expect(usRaceMatches('Pegasus World Cup Turf Invitational', 'Pegasus World Cup Invitational Stakes')).toBe(false);
+
+      // Derby vs Oaks
+      expect(usRaceMatches('Santa Anita Derby', 'Santa Anita Oaks')).toBe(false);
+      expect(usRaceMatches('Belmont Derby', 'Belmont Oaks')).toBe(false);
+      expect(usRaceMatches('Indiana Derby', 'Indiana Oaks')).toBe(false);
+
+      // Classic vs Oaks
+      expect(usRaceMatches('Charles Town Classic', 'Charles Town Oaks')).toBe(false);
+
+      // Mile vs Oaks
+      expect(usRaceMatches('Del Mar Mile Stakes', 'Del Mar Oaks')).toBe(false);
+
+      // Ladies / Distaff
+      expect(usRaceMatches('Kentucky Downs Ladies Turf Stakes', 'Kentucky Turf Cup')).toBe(false);
+    });
+
     it('競馬場名の一致を正しく判定すること', () => {
       expect(usCourseMatches('Churchill Downs', 'Churchill Downs Racetrack')).toBe(true);
       expect(usCourseMatches('Santa Anita Park', 'Santa Anita')).toBe(true);
@@ -177,12 +198,81 @@ describe('US Syutsuba utility', () => {
       expect(confirmed[0].raceName).toBe('ケンタッキーダービー');
       expect(confirmed[0].timeJst).toBe('07:57');
       expect(confirmed[0].utcIso).toBe('2026-05-02T22:57:00.000Z');
-      expect(confirmed[0].sourceUrl).toContain('equibase.com');
+      expect(confirmed[0].sourceUrl).toBeUndefined(); // Issue #190 に準拠
     });
 
     it('日付が異なるエントリはマッチしないこと', () => {
       const confirmed = parseEquibaseRacecardsJson(mockEntries, mockTargetRaces, '2026-05-03');
       expect(confirmed).toHaveLength(0);
+    });
+  });
+
+  describe('parseSportingLifeUsRacecardsJson', () => {
+    it('Sporting Life の出馬表 JSON（英国時間表記）から北米レースの確定時刻を抽出し正確に変換すること', () => {
+      const mockMeetings = [
+        {
+          meeting_summary: {
+            name: 'Keeneland',
+            country: {
+              code: 'USA',
+              name: 'United States',
+            },
+            course: {
+              name: 'Keeneland',
+            },
+            date: '2026-10-17',
+          },
+          races: [
+            {
+              name: 'Perryville Stakes (Grade 3)',
+              time: '20:12', // BST (UTC+1) -> 19:12 UTC -> 04:12 JST (+1 day)
+              course_name: 'Keeneland',
+            },
+            {
+              name: 'Allowance',
+              time: '20:45',
+              course_name: 'Keeneland',
+            },
+          ],
+        },
+      ];
+
+      const mockTargets: RaceOutput[] = [
+        {
+          id: '2026-us-g3-perryville',
+          organization: 'equibase',
+          country_code: 'US',
+          name: {
+            ja: 'ペリーヴィルステークス',
+            en: 'Perryville Stakes',
+          },
+          grade: 'G3',
+          date: '2026-10-17',
+          start_time: '2026-10-17T20:00:00.000Z',
+          is_time_confirmed: false,
+          course: {
+            ja: 'キーンランド',
+            en: 'Keeneland',
+          },
+          distance: 1400,
+          track_type: 'dirt',
+          sex_constraint: 'none',
+          age_constraint: '3yo',
+          handicap: {
+            code: 'special_weight',
+            ja: '別定',
+            en: 'Special Weight',
+          },
+        },
+      ];
+
+      const confirmed = parseSportingLifeUsRacecardsJson(mockMeetings, mockTargets, '2026-10-17');
+      expect(confirmed).toHaveLength(1);
+      expect(confirmed[0].raceId).toBe('2026-us-g3-perryville');
+      expect(confirmed[0].raceName).toBe('ペリーヴィルステークス');
+      expect(confirmed[0].utcIso).toBe('2026-10-17T19:12:00.000Z');
+      expect(confirmed[0].timeJst).toBe('04:12');
+      expect(confirmed[0].sourceUrl).toBeUndefined();
     });
   });
 
