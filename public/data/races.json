@@ -50750,6 +50750,13 @@
       "code": "set_weight",
       "ja": "定量",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Capability Brown",
+        "en": "Capability Brown"
+      },
+      "time": "1m 30.99s"
     }
   },
   {
@@ -50778,6 +50785,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Talk Of New York",
+        "en": "Talk Of New York"
+      },
+      "time": "1m 39.83s"
     }
   },
   {
@@ -50806,6 +50820,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Ombudsman",
+        "en": "Ombudsman"
+      },
+      "time": "2m 4.22s"
     }
   },
   {
