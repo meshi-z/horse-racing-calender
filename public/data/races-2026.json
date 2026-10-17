@@ -50571,6 +50571,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "シュガークン"
+      },
+      "jockey": {
+        "ja": "吉村 誠之助"
+      },
+      "horse_number": 13,
+      "time": "1:32.2"
     }
   },
   {

@@ -11095,5 +11095,15 @@
       "ja": "Little Opal",
       "en": "Little Opal"
     }
+  },
+  "2026-jra-g2-32": {
+    "name": {
+      "ja": "シュガークン"
+    },
+    "jockey": {
+      "ja": "吉村 誠之助"
+    },
+    "horse_number": 13,
+    "time": "1:32.2"
   }
 }
