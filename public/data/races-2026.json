@@ -1483,10 +1483,10 @@
     },
     "winner": {
       "name": {
-        "ja": "Destino D'oro",
-        "en": "Destino D'oro"
+        "ja": "Skippylongstocking",
+        "en": "Skippylongstocking"
       },
-      "time": "1m 40.33s"
+      "time": "1m 48.49s"
     }
   },
   {
@@ -1518,10 +1518,10 @@
     },
     "winner": {
       "name": {
-        "ja": "Destino D'oro",
-        "en": "Destino D'oro"
+        "ja": "Test Score",
+        "en": "Test Score"
       },
-      "time": "1m 40.33s"
+      "time": "1m 47.05s"
     }
   },
   {
@@ -12865,10 +12865,10 @@
     },
     "winner": {
       "name": {
-        "ja": "Meaning",
-        "en": "Meaning"
+        "ja": "So Happy",
+        "en": "So Happy"
       },
-      "time": "1m 43.99s"
+      "time": "1m 49.01s"
     }
   },
   {
@@ -29976,9 +29976,10 @@
     },
     "winner": {
       "name": {
-        "ja": "Kensington Lane",
-        "en": "Kensington Lane"
-      }
+        "ja": "Title Role (GB)",
+        "en": "Title Role (GB)"
+      },
+      "time": "1m 47.55s"
     }
   },
   {
@@ -31118,10 +31119,10 @@
     },
     "winner": {
       "name": {
-        "ja": "In The Stars",
-        "en": "In The Stars"
+        "ja": "Leading Change",
+        "en": "Leading Change"
       },
-      "time": "1m 39.44s"
+      "time": "1m 41.36s"
     }
   },
   {
@@ -31153,10 +31154,10 @@
     },
     "winner": {
       "name": {
-        "ja": "In The Stars",
-        "en": "In The Stars"
+        "ja": "Maximum Offer",
+        "en": "Maximum Offer"
       },
-      "time": "1m 39.44s"
+      "time": "1m 42.65s"
     }
   },
   {
@@ -37848,10 +37849,10 @@
     },
     "winner": {
       "name": {
-        "ja": "タムタム",
-        "en": "Tam Tam"
+        "ja": "King of Gosford (GB)",
+        "en": "King of Gosford (GB)"
       },
-      "time": "1m 48.06s"
+      "time": "1m 34.22s"
     }
   },
   {
@@ -38407,10 +38408,10 @@
     },
     "winner": {
       "name": {
-        "ja": "ニーチェ",
-        "en": "Niche"
+        "ja": "Willy D's",
+        "en": "Willy D's"
       },
-      "time": "1m 25.36s"
+      "time": "1m 50.68s"
     }
   },
   {
@@ -40420,10 +40421,10 @@
     },
     "winner": {
       "name": {
-        "ja": "ポッシブルメンテ",
-        "en": "Possiblemente"
+        "ja": "Bless the Broken",
+        "en": "Bless the Broken"
       },
-      "time": "1m 9.28s"
+      "time": "1m 34.80s"
     }
   },
   {
@@ -40490,10 +40491,10 @@
     },
     "winner": {
       "name": {
-        "ja": "ポッシブルメンテ",
-        "en": "Possiblemente"
+        "ja": "Tiffany (IRE)",
+        "en": "Tiffany (IRE)"
       },
-      "time": "1m 9.28s"
+      "time": "2m 26.37s"
     }
   },
   {
@@ -40595,10 +40596,10 @@
     },
     "winner": {
       "name": {
-        "ja": "オブザーヴド",
-        "en": "Observed"
+        "ja": "Miss Monica",
+        "en": "Miss Monica"
       },
-      "time": "1m 36.4s"
+      "time": "1m 23.54s"
     }
   },
   {
@@ -46114,6 +46115,12 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Brickyard Belle",
+        "en": "Brickyard Belle"
+      }
     }
   },
   {
@@ -46276,6 +46283,12 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Good to Be King",
+        "en": "Good to Be King"
+      }
     }
   },
   {
@@ -46304,6 +46317,12 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Let Em Know",
+        "en": "Let Em Know"
+      }
     }
   },
   {
@@ -47128,6 +47147,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Minaret Station",
+        "en": "Minaret Station"
+      }
     }
   },
   {
@@ -47156,6 +47181,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "R Disaster",
+        "en": "R Disaster"
+      }
     }
   },
   {
@@ -47184,6 +47215,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "T Kraft",
+        "en": "T Kraft"
+      }
     }
   },
   {
@@ -47275,6 +47312,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Bishops Bay",
+        "en": "Bishops Bay"
+      }
     }
   },
   {
@@ -47303,6 +47346,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Egyptian Mau (SAF)",
+        "en": "Egyptian Mau (SAF)"
+      }
     }
   },
   {
@@ -47331,6 +47380,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Dragoon Guard",
+        "en": "Dragoon Guard"
+      }
     }
   },
   {
@@ -47359,6 +47414,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Forged Steel",
+        "en": "Forged Steel"
+      }
     }
   },
   {
@@ -47387,6 +47448,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Cabo Spirit",
+        "en": "Cabo Spirit"
+      }
     }
   },
   {
@@ -47415,6 +47482,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Sorrento Sky (IRE)",
+        "en": "Sorrento Sky (IRE)"
+      }
     }
   },
   {
@@ -47443,6 +47516,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Atitlan",
+        "en": "Atitlan"
+      }
     }
   },
   {
@@ -47471,6 +47550,12 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Little Opal",
+        "en": "Little Opal"
+      }
     }
   },
   {
@@ -49240,6 +49325,12 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "American History",
+        "en": "American History"
+      }
     }
   },
   {
@@ -49268,6 +49359,12 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "U. S. S. Valor",
+        "en": "U. S. S. Valor"
+      }
     }
   },
   {
@@ -49296,6 +49393,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Rhetorical",
+        "en": "Rhetorical"
+      }
     }
   },
   {
@@ -49324,6 +49427,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Classic Q",
+        "en": "Classic Q"
+      }
     }
   },
   {
@@ -49352,6 +49461,12 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Dotsy",
+        "en": "Dotsy"
+      }
     }
   },
   {
@@ -49380,6 +49495,12 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Domestic Agenda",
+        "en": "Domestic Agenda"
+      }
     }
   },
   {
@@ -49408,6 +49529,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Evanescence",
+        "en": "Evanescence"
+      }
     }
   },
   {
@@ -49436,6 +49563,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Joe Shiesty",
+        "en": "Joe Shiesty"
+      },
+      "time": "1m 02.58s"
     }
   },
   {
@@ -49492,6 +49626,12 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Hughes",
+        "en": "Hughes"
+      }
     }
   },
   {
@@ -49520,6 +49660,12 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Domain Expansion",
+        "en": "Domain Expansion"
+      }
     }
   },
   {
@@ -49548,6 +49694,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Thought Process",
+        "en": "Thought Process"
+      },
+      "time": "1m 58.47s"
     }
   },
   {
@@ -49576,6 +49729,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Our Moonlight",
+        "en": "Our Moonlight"
+      }
     }
   },
   {
@@ -49982,6 +50141,134 @@
     }
   },
   {
+    "id": "2026-au-g3-134",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "REGINALD ALLENクオリティ",
+      "en": "Reginald Allen Quality",
+      "zh": "Reginald Allen讓賽",
+      "fr": "Reginald Allen Quality"
+    },
+    "grade": "G3",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T02:05:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "ロイヤルランドウィック",
+      "en": "Royal Randwick",
+      "zh": "皇家蘭域",
+      "fr": "Royal Randwick"
+    },
+    "distance": 1400,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
+    }
+  },
+  {
+    "id": "2026-au-g3-133",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "ANGST QUALITYハンデキャップ",
+      "en": "Angst Quality Handicap",
+      "zh": "Angst Quality讓賽",
+      "fr": "Angst Quality Handicap"
+    },
+    "grade": "G3",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T02:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "ロイヤルランドウィック",
+      "en": "Royal Randwick",
+      "zh": "皇家蘭域",
+      "fr": "Royal Randwick"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-au-g3-130",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "ATC ST. LEGERステークス",
+      "en": "Atc St. Leger Stakes",
+      "zh": "Atc St. Leger錦標",
+      "fr": "Atc St. Leger Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T03:15:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "ロイヤルランドウィック",
+      "en": "Royal Randwick",
+      "zh": "皇家蘭域",
+      "fr": "Royal Randwick"
+    },
+    "distance": 2600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-au-g3-132",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "CITY TATT'S LIGHTNING",
+      "en": "City Tatt's Lightning",
+      "zh": "City Tatt's Lightning",
+      "fr": "City Tatt's Lightning"
+    },
+    "grade": "G3",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T04:25:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "ロイヤルランドウィック",
+      "en": "Royal Randwick",
+      "zh": "皇家蘭域",
+      "fr": "Royal Randwick"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "馬齢",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-au-g2-78",
     "organization": "racing_australia",
     "country_code": "AU",
@@ -50039,166 +50326,6 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "handicap",
-      "ja": "ハンデ",
-      "en": "Handicap"
-    }
-  },
-  {
-    "id": "2026-au-g3-130",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "ATC ST. LEGERステークス",
-      "en": "Atc St. Leger Stakes",
-      "zh": "Atc St. Leger錦標",
-      "fr": "Atc St. Leger Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-10-17",
-    "start_time": "2026-10-17T03:15:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-17",
-    "course": {
-      "ja": "ロイヤルランドウィック",
-      "en": "Royal Randwick",
-      "zh": "皇家蘭域",
-      "fr": "Royal Randwick"
-    },
-    "distance": 2600,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
-    "id": "2026-au-g3-131",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "THE SILVER EAGLE",
-      "en": "The Silver Eagle",
-      "zh": "The Silver Eagle",
-      "fr": "The Silver Eagle"
-    },
-    "grade": "G3",
-    "date": "2026-10-17",
-    "start_time": "2026-10-17T05:50:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-17",
-    "course": {
-      "ja": "ロイヤルランドウィック",
-      "en": "Royal Randwick",
-      "zh": "皇家蘭域",
-      "fr": "Royal Randwick"
-    },
-    "distance": 1300,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
-    "id": "2026-au-g3-132",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "CITY TATT'S LIGHTNING",
-      "en": "City Tatt's Lightning",
-      "zh": "City Tatt's Lightning",
-      "fr": "City Tatt's Lightning"
-    },
-    "grade": "G3",
-    "date": "2026-10-17",
-    "start_time": "2026-10-17T04:25:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-17",
-    "course": {
-      "ja": "ロイヤルランドウィック",
-      "en": "Royal Randwick",
-      "zh": "皇家蘭域",
-      "fr": "Royal Randwick"
-    },
-    "distance": 1200,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "馬齢",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-au-g3-133",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "ANGST QUALITYハンデキャップ",
-      "en": "Angst Quality Handicap",
-      "zh": "Angst Quality讓賽",
-      "fr": "Angst Quality Handicap"
-    },
-    "grade": "G3",
-    "date": "2026-10-17",
-    "start_time": "2026-10-17T02:40:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-17",
-    "course": {
-      "ja": "ロイヤルランドウィック",
-      "en": "Royal Randwick",
-      "zh": "皇家蘭域",
-      "fr": "Royal Randwick"
-    },
-    "distance": 1600,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
-    "id": "2026-au-g3-134",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "REGINALD ALLENクオリティ",
-      "en": "Reginald Allen Quality",
-      "zh": "Reginald Allen讓賽",
-      "fr": "Reginald Allen Quality"
-    },
-    "grade": "G3",
-    "date": "2026-10-17",
-    "start_time": "2026-10-17T02:05:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-17",
-    "course": {
-      "ja": "ロイヤルランドウィック",
-      "en": "Royal Randwick",
-      "zh": "皇家蘭域",
-      "fr": "Royal Randwick"
-    },
-    "distance": 1400,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
     "handicap": {
       "code": "handicap",
       "ja": "ハンデ",
@@ -50331,6 +50458,38 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-au-g3-131",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "THE SILVER EAGLE",
+      "en": "The Silver Eagle",
+      "zh": "The Silver Eagle",
+      "fr": "The Silver Eagle"
+    },
+    "grade": "G3",
+    "date": "2026-10-17",
+    "start_time": "2026-10-17T05:50:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-17",
+    "course": {
+      "ja": "ロイヤルランドウィック",
+      "en": "Royal Randwick",
+      "zh": "皇家蘭域",
+      "fr": "Royal Randwick"
+    },
+    "distance": 1300,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {

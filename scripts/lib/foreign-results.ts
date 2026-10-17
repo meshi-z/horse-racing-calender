@@ -1,6 +1,7 @@
 import type { RaceOutput, RaceWinner } from '../update-race-times';
 import { frenchRaceMatches } from './france-syutsuba';
 import { ukRaceMatches, ukCourseMatches } from './uk-syutsuba';
+import { usRaceMatches, usCourseMatches } from './us-syutsuba';
 
 // ==========================================
 // 1. France (PMU) レース結果パーサー
@@ -168,18 +169,24 @@ export function parseSportingLifeResultsJson(
   for (const targetRace of targetRaces) {
     const enName = targetRace.name.en || '';
     const targetCourseEn = targetRace.course.en || '';
+    const isUsRace = targetRace.country_code === 'US' || targetRace.organization === 'equibase' || targetRace.organization === 'us';
 
     let matchedRace: SportingLifeResultRaceItem | null = null;
 
     for (const meeting of meetings) {
       const meetingCourseName = meeting.meeting_summary?.course?.name || '';
-      const courseMatch = targetCourseEn ? ukCourseMatches(targetCourseEn, meetingCourseName) : true;
+      const courseMatch = targetCourseEn
+        ? (isUsRace ? usCourseMatches(targetCourseEn, meetingCourseName) : ukCourseMatches(targetCourseEn, meetingCourseName))
+        : true;
 
       for (const rc of meeting.races || []) {
         const rcCourse = rc.course_name || meetingCourseName;
-        const currentCourseMatch = courseMatch || (targetCourseEn ? ukCourseMatches(targetCourseEn, rcCourse) : true);
+        const currentCourseMatch =
+          courseMatch || (targetCourseEn ? (isUsRace ? usCourseMatches(targetCourseEn, rcCourse) : ukCourseMatches(targetCourseEn, rcCourse)) : true);
 
-        if (currentCourseMatch && ukRaceMatches(enName, rc.name)) {
+        const raceMatch = isUsRace ? usRaceMatches(enName, rc.name) : ukRaceMatches(enName, rc.name);
+
+        if (currentCourseMatch && raceMatch) {
           matchedRace = rc;
           break;
         }

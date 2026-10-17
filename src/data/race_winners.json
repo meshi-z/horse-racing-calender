@@ -43,17 +43,17 @@
   },
   "2026-us-g1-01": {
     "name": {
-      "ja": "Destino D'oro",
-      "en": "Destino D'oro"
+      "ja": "Skippylongstocking",
+      "en": "Skippylongstocking"
     },
-    "time": "1m 40.33s"
+    "time": "1m 48.49s"
   },
   "2026-us-g1-02": {
     "name": {
-      "ja": "Destino D'oro",
-      "en": "Destino D'oro"
+      "ja": "Test Score",
+      "en": "Test Score"
     },
-    "time": "1m 40.33s"
+    "time": "1m 47.05s"
   },
   "2026-us-g2-02": {
     "name": {
@@ -736,10 +736,10 @@
   },
   "2026-us-g1-10": {
     "name": {
-      "ja": "Meaning",
-      "en": "Meaning"
+      "ja": "So Happy",
+      "en": "So Happy"
     },
-    "time": "1m 43.99s"
+    "time": "1m 49.01s"
   },
   "2026-us-g2-29": {
     "name": {
@@ -2031,9 +2031,10 @@
   },
   "2026-us-g1-35": {
     "name": {
-      "ja": "Kensington Lane",
-      "en": "Kensington Lane"
-    }
+      "ja": "Title Role (GB)",
+      "en": "Title Role (GB)"
+    },
+    "time": "1m 47.55s"
   },
   "2026-us-g1-36": {
     "name": {
@@ -2160,17 +2161,17 @@
   },
   "2026-us-g3-106": {
     "name": {
-      "ja": "In The Stars",
-      "en": "In The Stars"
+      "ja": "Leading Change",
+      "en": "Leading Change"
     },
-    "time": "1m 39.44s"
+    "time": "1m 41.36s"
   },
   "2026-us-g3-107": {
     "name": {
-      "ja": "In The Stars",
-      "en": "In The Stars"
+      "ja": "Maximum Offer",
+      "en": "Maximum Offer"
     },
-    "time": "1m 39.44s"
+    "time": "1m 42.65s"
   },
   "2026-uk-g3-36": {
     "name": {
@@ -2755,10 +2756,10 @@
   },
   "2026-us-g2-81": {
     "name": {
-      "ja": "タムタム",
-      "en": "Tam Tam"
+      "ja": "King of Gosford (GB)",
+      "en": "King of Gosford (GB)"
     },
-    "time": "1m 48.06s"
+    "time": "1m 34.22s"
   },
   "2026-us-g2-82": {
     "name": {
@@ -2776,10 +2777,10 @@
   },
   "2026-us-g2-84": {
     "name": {
-      "ja": "ニーチェ",
-      "en": "Niche"
+      "ja": "Willy D's",
+      "en": "Willy D's"
     },
-    "time": "1m 25.36s"
+    "time": "1m 50.68s"
   },
   "2026-us-g2-85": {
     "name": {
@@ -2943,10 +2944,10 @@
   },
   "2026-us-g2-90": {
     "name": {
-      "ja": "ポッシブルメンテ",
-      "en": "Possiblemente"
+      "ja": "Bless the Broken",
+      "en": "Bless the Broken"
     },
-    "time": "1m 9.28s"
+    "time": "1m 34.80s"
   },
   "2026-us-g2-91": {
     "name": {
@@ -2957,10 +2958,10 @@
   },
   "2026-us-g2-92": {
     "name": {
-      "ja": "ポッシブルメンテ",
-      "en": "Possiblemente"
+      "ja": "Tiffany (IRE)",
+      "en": "Tiffany (IRE)"
     },
-    "time": "1m 9.28s"
+    "time": "2m 26.37s"
   },
   "2026-us-g2-93": {
     "name": {
@@ -2978,10 +2979,10 @@
   },
   "2026-us-g1-56": {
     "name": {
-      "ja": "オブザーヴド",
-      "en": "Observed"
+      "ja": "Miss Monica",
+      "en": "Miss Monica"
     },
-    "time": "1m 36.4s"
+    "time": "1m 23.54s"
   },
   "2026-us-g3-125": {
     "name": {
@@ -10946,5 +10947,163 @@
     },
     "horse_number": 5,
     "time": "1:32.6"
+  },
+  "2026-us-g1-68": {
+    "name": {
+      "ja": "American History",
+      "en": "American History"
+    }
+  },
+  "2026-us-g1-69": {
+    "name": {
+      "ja": "U. S. S. Valor",
+      "en": "U. S. S. Valor"
+    }
+  },
+  "2026-us-g1-70": {
+    "name": {
+      "ja": "Rhetorical",
+      "en": "Rhetorical"
+    }
+  },
+  "2026-us-g1-71": {
+    "name": {
+      "ja": "Classic Q",
+      "en": "Classic Q"
+    }
+  },
+  "2026-us-g1-72": {
+    "name": {
+      "ja": "Dotsy",
+      "en": "Dotsy"
+    }
+  },
+  "2026-us-g1-67": {
+    "name": {
+      "ja": "Hughes",
+      "en": "Hughes"
+    }
+  },
+  "2026-us-g1-64": {
+    "name": {
+      "ja": "Minaret Station",
+      "en": "Minaret Station"
+    }
+  },
+  "2026-us-g1-63": {
+    "name": {
+      "ja": "Forged Steel",
+      "en": "Forged Steel"
+    }
+  },
+  "2026-us-g2-106": {
+    "name": {
+      "ja": "T Kraft",
+      "en": "T Kraft"
+    }
+  },
+  "2026-us-g2-104": {
+    "name": {
+      "ja": "R Disaster",
+      "en": "R Disaster"
+    }
+  },
+  "2026-us-g3-140": {
+    "name": {
+      "ja": "Bishops Bay",
+      "en": "Bishops Bay"
+    }
+  },
+  "2026-us-g3-143": {
+    "name": {
+      "ja": "Dragoon Guard",
+      "en": "Dragoon Guard"
+    }
+  },
+  "2026-us-g2-102": {
+    "name": {
+      "ja": "Cabo Spirit",
+      "en": "Cabo Spirit"
+    }
+  },
+  "2026-us-g2-103": {
+    "name": {
+      "ja": "Sorrento Sky (IRE)",
+      "en": "Sorrento Sky (IRE)"
+    }
+  },
+  "2026-us-g2-105": {
+    "name": {
+      "ja": "Atitlan",
+      "en": "Atitlan"
+    }
+  },
+  "2026-us-g2-113": {
+    "name": {
+      "ja": "Thought Process",
+      "en": "Thought Process"
+    },
+    "time": "1m 58.47s"
+  },
+  "2026-us-g2-112": {
+    "name": {
+      "ja": "Domain Expansion",
+      "en": "Domain Expansion"
+    }
+  },
+  "2026-us-g3-151": {
+    "name": {
+      "ja": "Our Moonlight",
+      "en": "Our Moonlight"
+    }
+  },
+  "2026-us-g2-114": {
+    "name": {
+      "ja": "Evanescence",
+      "en": "Evanescence"
+    }
+  },
+  "2026-us-g2-115": {
+    "name": {
+      "ja": "Joe Shiesty",
+      "en": "Joe Shiesty"
+    },
+    "time": "1m 02.58s"
+  },
+  "2026-us-g3-144": {
+    "name": {
+      "ja": "Brickyard Belle",
+      "en": "Brickyard Belle"
+    }
+  },
+  "2026-us-g3-145": {
+    "name": {
+      "ja": "Good to Be King",
+      "en": "Good to Be King"
+    }
+  },
+  "2026-us-g3-146": {
+    "name": {
+      "ja": "Let Em Know",
+      "en": "Let Em Know"
+    }
+  },
+  "2026-us-g3-141": {
+    "name": {
+      "ja": "Egyptian Mau (SAF)",
+      "en": "Egyptian Mau (SAF)"
+    }
+  },
+  "2026-us-g2-111": {
+    "name": {
+      "ja": "Domestic Agenda",
+      "en": "Domestic Agenda"
+    }
+  },
+  "2026-us-g3-142": {
+    "name": {
+      "ja": "Little Opal",
+      "en": "Little Opal"
+    }
   }
 }

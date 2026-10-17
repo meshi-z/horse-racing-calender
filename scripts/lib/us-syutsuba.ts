@@ -1,4 +1,5 @@
 import { ConfirmedRaceTime } from './jra-syutsuba';
+import { parseUkTimeToIsoAndJst } from './uk-syutsuba';
 import type { RaceOutput } from '../update-race-times';
 
 export type { ConfirmedRaceTime };
@@ -25,6 +26,29 @@ const US_STOP_WORDS = new Set([
   'RACE',
   'HANDICAP',
   'MEMORIAL',
+]);
+
+/**
+ * レース名に含まれる重要な区別単語（ディファレンシエータ）
+ * 片方に含まれもう片方に含まれない場合は同名別レースとみなし誤一致を防ぐ
+ */
+const US_RACE_DIFFERENTIATORS = new Set([
+  'TURF',
+  'DIRT',
+  'OAKS',
+  'DERBY',
+  'MILE',
+  'SPRINT',
+  'DISTAFF',
+  'LADIES',
+  'JUVENILE',
+  'CLASSIC',
+  'FILLIES',
+  'FILLY',
+  'MARES',
+  'MARE',
+  'COLTS',
+  'COLT',
 ]);
 
 export const US_COURSE_TIMEZONES: Record<string, UsTimeZone> = {
@@ -152,11 +176,8 @@ export function isUsDaylightSavingTime(dateStr: string): boolean {
   const year = date.getUTCFullYear();
 
   // 3月第2日曜日
-  // 3月1日の曜日を取得 (0: 日, 1: 月, ...)
   const march1 = new Date(Date.UTC(year, 2, 1));
   const march1Day = march1.getUTCDay();
-  // 1回目の日曜日: 1 + (7 - march1Day) % 7
-  // 2回目の日曜日: 1 + (7 - march1Day) % 7 + 7
   const secondSundayMarchDay = 1 + ((7 - march1Day) % 7) + 7;
   const dstStart = new Date(Date.UTC(year, 2, secondSundayMarchDay, 2, 0, 0));
 
@@ -266,15 +287,25 @@ export function tokenizeEnglish(str: string): string[] {
 export function usRaceMatches(targetName: string, candidateName: string): boolean {
   const targetTokens = tokenizeEnglish(targetName);
   const candidateTokens = tokenizeEnglish(candidateName);
+  const targetSet = new Set(targetTokens);
   const candidateSet = new Set(candidateTokens);
 
   if (targetTokens.length === 0) return true;
 
-  // 固有単語がすべて candidate に含まれているかチェック
+  // 1. 重要区別ワード（TURF, DIRT, OAKS, DERBY, MILE, SPRINT, DISTAFF等）の不一致ガード
+  for (const diff of US_RACE_DIFFERENTIATORS) {
+    const inTarget = targetSet.has(diff);
+    const inCandidate = candidateSet.has(diff);
+    if (inTarget !== inCandidate) {
+      return false;
+    }
+  }
+
+  // 2. 固有単語がすべて candidate に含まれているかチェック
   const allTokensMatch = targetTokens.every((t) => candidateSet.has(t));
   if (allTokensMatch) return true;
 
-  // 結合文字列による部分一致チェック
+  // 3. 結合文字列による部分一致チェック
   const joinedCandidate = candidateTokens.join('');
   const joinedTarget = targetTokens.join('');
   if (joinedTarget.length >= 4 && joinedCandidate.includes(joinedTarget)) {
@@ -300,6 +331,33 @@ export interface EquibaseRaceItem {
   date: string; // YYYY-MM-DD
   post_time: string; // "17:45" or "5:45 PM"
   time_zone?: string; // "ET", "CT", "MT", "PT"
+}
+
+export interface SportingLifeRacecardRaceItem {
+  race_summary_reference?: {
+    id?: number;
+  };
+  name: string;
+  course_name?: string;
+  date?: string;
+  time: string; // 英国時間 HH:mm (BST or GMT)
+  ride_count?: number;
+  has_racecard?: boolean;
+}
+
+export interface SportingLifeRacecardMeetingItem {
+  meeting_summary?: {
+    name?: string;
+    country?: {
+      code?: string; // 'USA', 'CAN', 'GBR', etc.
+      name?: string;
+    };
+    course?: {
+      name?: string;
+    };
+    date?: string;
+  };
+  races?: SportingLifeRacecardRaceItem[];
 }
 
 /**
@@ -336,7 +394,73 @@ export function parseEquibaseRacecardsJson(
         rawTime,
         raceId: targetRace.id,
         utcIso,
-        sourceUrl: `https://www.equibase.com/static/entry/`,
+        sourceUrl: undefined, // PR #249 / Issue #190 に準拠し、非JRA/NARはundefined
+      });
+    }
+  }
+
+  return confirmed;
+}
+
+/**
+ * Sporting Life出馬表 JSON から北米レースの確定発走時刻を抽出
+ */
+export function parseSportingLifeUsRacecardsJson(
+  meetings: SportingLifeRacecardMeetingItem[],
+  targetRaces: RaceOutput[],
+  targetDateYmd: string
+): ConfirmedRaceTime[] {
+  const confirmed: ConfirmedRaceTime[] = [];
+
+  for (const targetRace of targetRaces) {
+    const enName = targetRace.name.en || '';
+    const jaName = targetRace.name.ja || '';
+    const targetCourseEn = targetRace.course.en || '';
+
+    let matchedRace: SportingLifeRacecardRaceItem | null = null;
+    let matchedMeeting: SportingLifeRacecardMeetingItem | null = null;
+
+    for (const meeting of meetings) {
+      const countryCode = meeting.meeting_summary?.country?.code?.toUpperCase();
+      const meetingCourse =
+        meeting.meeting_summary?.course?.name || meeting.meeting_summary?.name || '';
+
+      // 北米（USAまたはCAN）または競馬場名が一致するミーティングを対象
+      const isNorthAmerica =
+        countryCode === 'USA' ||
+        countryCode === 'CAN' ||
+        (targetCourseEn && usCourseMatches(targetCourseEn, meetingCourse));
+
+      if (!isNorthAmerica) continue;
+
+      const courseMatch = targetCourseEn ? usCourseMatches(targetCourseEn, meetingCourse) : true;
+
+      for (const rc of meeting.races || []) {
+        const rcCourse = rc.course_name || meetingCourse;
+        const currentCourseMatch = courseMatch || (targetCourseEn ? usCourseMatches(targetCourseEn, rcCourse) : true);
+
+        if (currentCourseMatch && usRaceMatches(enName, rc.name)) {
+          matchedRace = rc;
+          matchedMeeting = meeting;
+          break;
+        }
+      }
+      if (matchedRace) break;
+    }
+
+    if (matchedRace && matchedRace.time) {
+      const raceDate = matchedRace.date || matchedMeeting?.meeting_summary?.date || targetDateYmd;
+      // Sporting Life API の時刻は英国時間（BST / GMT）表記
+      const { utcIso, timeJst, rawTime } = parseUkTimeToIsoAndJst(raceDate, matchedRace.time);
+
+      confirmed.push({
+        raceName: jaName,
+        date: targetDateYmd,
+        timeJst,
+        rawTime,
+        raceId: targetRace.id,
+        utcIso,
+        sourceUrl: undefined,
       });
     }
   }
@@ -346,7 +470,7 @@ export function parseEquibaseRacecardsJson(
 
 export interface FetchUsConfirmedOptions {
   targetRaces: RaceOutput[];
-  fixtures?: Record<string, EquibaseRaceItem[]>;
+  fixtures?: Record<string, EquibaseRaceItem[] | SportingLifeRacecardMeetingItem[]>;
   delayMs?: number;
 }
 
@@ -366,21 +490,45 @@ export async function fetchUsConfirmedRaceTimes(
   for (const dateYmd of dates) {
     const dayRaces = targetRaces.filter((r) => r.date === dateYmd);
 
-    // フィクスチャが注入されている場合
+    // 1. フィクスチャが注入されている場合の処理
     if (fixtures && fixtures[dateYmd]) {
-      const confirmed = parseEquibaseRacecardsJson(fixtures[dateYmd], dayRaces, dateYmd);
-      allConfirmed.push(...confirmed);
-      continue;
+      const fixtureData = fixtures[dateYmd];
+      if (Array.isArray(fixtureData) && fixtureData.length > 0) {
+        // SportingLife形式かEquibase形式か判定
+        if ('meeting_summary' in fixtureData[0] || 'races' in fixtureData[0]) {
+          const confirmed = parseSportingLifeUsRacecardsJson(
+            fixtureData as SportingLifeRacecardMeetingItem[],
+            dayRaces,
+            dateYmd
+          );
+          allConfirmed.push(...confirmed);
+        } else {
+          const confirmed = parseEquibaseRacecardsJson(
+            fixtureData as EquibaseRaceItem[],
+            dayRaces,
+            dateYmd
+          );
+          allConfirmed.push(...confirmed);
+        }
+        continue;
+      }
     }
 
-    // 外部通信による取得（Equibase API/Web）
+    // 2. Sporting Life Racecards API による実通信取得
     try {
-      // 公開エントリのフォールバック・チェック
-      console.log(`[US Syutsuba] Fetching Equibase entries for ${dateYmd}...`);
-      // 実環境ではスクレイピングまたはフィード取得
-      // ここでは安全にフィクスチャまたは将来のAPIエンドポイント接続を想定
+      console.log(`[US Syutsuba] Fetching racecards for ${dateYmd} from Sporting Life API...`);
+      const url = `https://www.sportinglife.com/api/horse-racing/racing/racecards/${dateYmd}`;
+      const res = await fetchWithRetry(url);
+      if (res.ok) {
+        const meetings = (await res.json()) as SportingLifeRacecardMeetingItem[];
+        const confirmed = parseSportingLifeUsRacecardsJson(meetings, dayRaces, dateYmd);
+        console.log(`[US Syutsuba] Extracted ${confirmed.length} confirmed race times for ${dateYmd}`);
+        allConfirmed.push(...confirmed);
+      } else {
+        console.warn(`[US Syutsuba] HTTP error fetching racecards for ${dateYmd}: status ${res.status}`);
+      }
     } catch (err) {
-      console.warn(`[US Syutsuba] Failed to fetch entries for ${dateYmd}:`, err);
+      console.warn(`[US Syutsuba] Failed to fetch entries for ${dateYmd}:`, (err as Error).message);
     }
   }
 

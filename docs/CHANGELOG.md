@@ -6,7 +6,39 @@
 
 ## バージョン履歴 (Version History)
 
-### Step 79: オーストラリア競馬 ジ・エベレストデー（Randwick）の確定発走予定時刻反映 (v1.45.5 / Issue #251) [完了]
+### Step 80: アメリカ競馬（Equibase）確定発走時刻取得パイプライン実装（スタブ解消） & 勝ち馬名寄せ精度強化・バックフィル (v1.45.6 / Issue #247) [完了]
+- **Sporting Life Racecards API 連携による米国確定発走時刻取得パイプラインの実装 (`scripts/lib/us-syutsuba.ts`, `scripts/update-race-times.ts`) [完了]**
+  - Equibase 公式Webサイトの Imperva WAF（チャレンジ画面）による自動HTTP遮断を回避し、英国最大手競馬情報メディア **Sporting Life Racecards API (`https://www.sportinglife.com/api/horse-racing/racing/racecards/${dateYmd}`)** を用いた実通信による確定発走時刻取得パーサー（`parseSportingLifeUsRacecardsJson`）を実装。
+  - 既存の空スタブ（`console.log` のみ）を完全に解消し、実通信およびフィクスチャ両対応の堅牢なパイプラインを確立（PR #249 の新規約に完全準拠）。
+  - Sporting Life API の英国時間（BST / GMT）表記から、英国夏時間ルール（3月最終日〜10月最終日）に基づく正確な UTC ISO 8601 および JST `HH:mm` への時刻変換ロジックを実装。
+  - Issue #190 に準拠し、`sourceUrl` は `undefined`（安全な非表示制御）を維持。
+- **名寄せロジックにおける重要区別ワード不一致ガードの導入 (`scripts/lib/us-syutsuba.ts`, `scripts/lib/foreign-results.ts`) [完了]**
+  - 同日・同競馬場における同名・類似名別レースの誤一致を防止するため、ディファレンシエータ（`TURF`, `DIRT`, `OAKS`, `DERBY`, `MILE`, `SPRINT`, `DISTAFF`, `LADIES`, `JUVENILE`, `CLASSIC`, `FILLIES`, `FILLY`, `MARES`, `MARE`, `COLTS`, `COLT`）の不一致ガードを実装。
+  - 芝 vs ダート（例: Pegasus World Cup vs Pegasus World Cup Turf）、Derby vs Oaks（例: Santa Anita Derby vs Santa Anita Oaks）等の誤マッチを確実に排除。
+- **過去勝ち馬サンプル検証による重複誤登録の完全修正 & 終了レースバックフィル (`src/data/race_winners.json`, `public/data/races-2026.json`, `public/data/races.json`) [完了]**
+  - サンプル検証において検出された8グループ（17レース）の同日重複誤登録を公式一次データに基づき完全修正：
+    - `2026-us-g1-01`: Pegasus World Cup Invitational Stakes $\rightarrow$ **Skippylongstocking** (1m 48.49s)
+    - `2026-us-g1-02`: Pegasus World Cup Turf Invitational $\rightarrow$ **Test Score** (1m 47.05s)
+    - `2026-us-g1-10`: Santa Anita Derby $\rightarrow$ **So Happy** (1m 49.01s)
+    - `2026-us-g1-35`: Belmont Derby $\rightarrow$ **Title Role (GB)** (1m 47.55s)
+    - `2026-us-g3-106`: Indiana Derby $\rightarrow$ **Leading Change** (1m 41.36s)
+    - `2026-us-g3-107`: Indiana Oaks $\rightarrow$ **Maximum Offer** (1m 42.65s)
+    - `2026-us-g2-81`: Del Mar Mile Stakes $\rightarrow$ **King of Gosford (GB)** (1m 34.22s)
+    - `2026-us-g2-84`: Charles Town Classic $\rightarrow$ **Willy D's** (1m 50.68s)
+    - `2026-us-g2-90`: Kentucky Downs Ladies Turf Stakes $\rightarrow$ **Bless the Broken** (1m 34.80s)
+    - `2026-us-g2-92`: Kentucky Turf Cup $\rightarrow$ **Tiffany (IRE)** (2m 26.37s)
+    - `2026-us-g1-56`: Del Mar Debutante Stakes $\rightarrow$ **Miss Monica** (1m 23.54s)
+  - 10月上旬までに終了した全米主要重賞（Breeders' Futurity, Champagne Stakes, Coolmore Turf Mile, First Lady, Frizette, American Pharoah, Joe Hirsch Turf Classic, Goodwood Stakes, Vosburgh 等26レース）の公式確定勝者を調査・バックフィルし、二重永続化。
+  - 同日重複レース件数を 0 件に完全解消。
+- **単体テスト拡充 & 実通信スモーク検証 (`tests/unit/usSyutsuba.test.ts`) [完了]**
+  - Sporting Life レースカード出馬表 JSON パース、BST夏時間変換、`sourceUrl` の `undefined` 制御、重要区別ワード不一致ガードの各単体テストを追加（全17テスト）。
+  - `npm run data:update-times:us` によるライブ外部通信スモークテストを実施し、正常動作を確認。
+- **仕様書・ドキュメント更新 [完了]**
+  - `docs/specs/data-sources/us.md`: Sporting Life Racecards API による確定発走時刻パイプライン仕様、ディファレンシエータ誤一致防止、WAF回避アーキテクチャを追記。
+  - `docs/PRD.md`: 第7章 マイルストーン M6（`v1.44.5 〜 v1.45.6`）を更新。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`、`npm test`（全68テストファイル・659テスト全件成功）、`npm run build` による検証を実施。
 - **ロイヤルランドウィック競馬場 ジ・エベレストデー7重賞の確定発走予定時刻の反映 (`src/data/australia_race_master.json`, `public/data/races-2026.json`, `public/data/races.json`) [完了]**
   - 2026年10月17日（土）開催の「ジ・エベレスト（G1: 16:15 AEDT / 14:15 JST / 05:15 UTC）」、「キングチャールズ3世ステークス（G1: 17:35 AEDT / 15:35 JST / 06:35 UTC）」をはじめとする全7重賞の公式確定発走予定時刻（AEDT $\rightarrow$ UTC）をマスタおよび本番配布用データへ反映し、`is_time_confirmed: true` に更新。
   - 対象7重賞:

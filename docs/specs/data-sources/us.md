@@ -24,8 +24,9 @@
 | :--- | :--- | :--- | :--- |
 | **年間日程 / カレンダー** | [Equibase](https://www.equibase.com/) | Web / データベース | 北米公式開催日程、競馬場 |
 | **格付け・出走条件** | IFHA Part I United States of America リスト | PDF | レース格付け、出走条件、斤量、距離、馬場 |
-| **出馬表・確定発走時刻** | Equibase Racecards Web エンドポイント | Web JSON / HTML | 確定出馬表、公式発走時刻 |
-| **過去実績補完データ** | `src/data/us_race_master.json` | JSON | 2026年開催済み全重賞の確定発走時刻バックフィル |
+| **出馬表・確定発走時刻** | Sporting Life Racecards API (`api/horse-racing/racing/racecards/${date}`) | Web REST API (JSON) | 北米全主要競馬場の出馬表・公式確定発走時刻（WAF回避・実通信パイプライン） |
+| **レース結果 / 勝者** | Sporting Life Results API (`api/horse-racing/racing/results/${date}`) / Equibase | Web JSON / HTML | 終了レースの確定着順・勝ち馬・確定勝ちタイム |
+| **過去実績補完データ** | `src/data/us_race_master.json`, `src/data/race_winners.json` | JSON | 2026年開催済み全重賞の確定発走時刻・勝ち馬マスター |
 
 ---
 
@@ -81,15 +82,22 @@
 
 ---
 
-## 5. 確定発走時刻自動取得バッチ仕様 (RaceTimeFetcher)
+## 5. 確定発走時刻自動取得パイプライン仕様 (RaceTimeFetcher)
 
 - **プロバイダー名**: `UsRaceTimeFetcher`
 - **実装ファイル**: `scripts/lib/us-syutsuba.ts`, `scripts/update-race-times.ts`
 - **対象開催ウィンドウ**: 基準日（JST）から直近7日間の開催予定レース（`getUsUpcomingWindowRange`）
 - **CLI実行コマンド**: `npm run data:update-times:us`（または `--org equibase`）
-- **定期実行スケジュール**:
-  - 毎日 07:30 JST（米国現地前夜〜当日・出馬表確定枠）
-  - 毎日 21:30 JST（米国現地早朝・最新時刻監視枠）
-- **名寄せ・照合アルゴリズム**:
-  - `getCourseTimeZone` により、競馬場から所属州の正確なタイムゾーンを自動判別。
-  - `usRaceMatches` / `usCourseMatches` により、レース名に含まれる冠名、ステークス略称（`S.`, `H.`, `INVITATIONAL`）をトークン化して照合。
+- **実通信アーキテクチャ & WAF回避**:
+  - Equibase 公式Webサイトは Imperva Incapsula WAF によるチャレンジ画面が介在し自動通信がブロックされるため、英国最大手かつグローバル競馬情報配信基盤である **Sporting Life Racecards API (`https://www.sportinglife.com/api/horse-racing/racing/racecards/${dateYmd}`)** をデータ取得基盤として採用。
+  - 北米全主要競馬場（Keeneland, Belmont, Saratoga, Santa Anita, Del Mar, Churchill Downs, Aqueduct, Gulfstream 等）のレースカードを完全網羅。
+- **タイムゾーン変換仕様**:
+  - Sporting Life API から配信される発走予定時刻は英国時間（BST: UTC+1 / GMT: UTC+0）で統一表記。
+  - 英国夏時間規則（3月最終日曜日〜10月最終日曜日）に基づき `parseUkTimeToIsoAndJst` にて UTC ISO 8601 および JST `HH:mm` を算出し、ミリ秒精度で正確な発走時刻を生成。
+- **名寄せ・照合アルゴリズム（同名別レース誤一致防止）**:
+  - `usCourseMatches`: 競馬場名（`Keeneland`, `Santa Anita`, `Churchill Downs` 等）の正規化部分一致判定。
+  - `usRaceMatches`: レース名トークン照合に加え、以下の**重要区別ワード（ディファレンシエータ）不一致ガード**を搭載：
+    - `['TURF', 'DIRT', 'OAKS', 'DERBY', 'MILE', 'SPRINT', 'DISTAFF', 'LADIES', 'JUVENILE', 'CLASSIC', 'FILLIES', 'FILLY', 'MARES', 'MARE', 'COLTS', 'COLT']`
+    - 片方のレース名にのみ区別ワードが含まれる場合は同日開催の別レース（例: Pegasus World Cup vs Pegasus World Cup Turf、Santa Anita Derby vs Santa Anita Oaks）と判定し、誤一致を確実に防止。
+- **データ開示・URL表示ポリシー (Issue #190 準拠)**:
+  - JRA / NAR 以外の海外レースでは、外部直リンクの信頼性・規約保護の観点から `sourceUrl` は `undefined` を設定し、公式リンクボタンは非表示とする。
