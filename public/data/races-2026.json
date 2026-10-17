@@ -51202,8 +51202,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-22",
-    "start_time": "2026-10-22T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-22T11:50:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "門別",
       "en": "Mombetsu"
