@@ -50571,6 +50571,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "シュガークン"
+      },
+      "jockey": {
+        "ja": "吉村 誠之助"
+      },
+      "horse_number": 13,
+      "time": "1:32.2"
     }
   },
   {
@@ -51035,8 +51045,8 @@
     },
     "grade": "G3",
     "date": "2026-10-18",
-    "start_time": "2026-10-18T21:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-18T19:12:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-18",
     "course": {
@@ -51202,8 +51212,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-22",
-    "start_time": "2026-10-22T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-22T11:50:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "門別",
       "en": "Mombetsu"
