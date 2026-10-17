@@ -41,20 +41,20 @@ describe('UK Syutsuba utility', () => {
   });
 
   describe('parseUkTimeToIsoAndJst', () => {
-    it('夏時間（BST: UTC+1）の現地時刻から UTC ISO と JST 表記を生成すること', () => {
-      // 2026-09-19 12:02 BST -> 11:02 UTC -> 20:02 JST
+    it('Sporting Life API の UTC 時刻から UTC ISO と JST 表記を生成すること', () => {
+      // 12:02 (UTC) -> 21:02 JST
       const result = parseUkTimeToIsoAndJst('2026-09-19', '12:02');
-      expect(result.utcIso).toBe('2026-09-19T11:02:00.000Z');
-      expect(result.timeJst).toBe('20:02');
-      expect(result.rawTime).toBe('20:02 JST');
+      expect(result.utcIso).toBe('2026-09-19T12:02:00.000Z');
+      expect(result.timeJst).toBe('21:02');
+      expect(result.rawTime).toBe('21:02 JST');
     });
 
-    it('冬時間（GMT: UTC+0）の現地時刻から UTC ISO と JST 表記を生成すること', () => {
-      // 2026-02-21 14:40 GMT -> 14:40 UTC -> 23:40 JST
-      const result = parseUkTimeToIsoAndJst('2026-02-21', '14:40');
-      expect(result.utcIso).toBe('2026-02-21T14:40:00.000Z');
-      expect(result.timeJst).toBe('23:40');
-      expect(result.rawTime).toBe('23:40 JST');
+    it('日付をまたぐ深夜JST（UTC 15:00 -> 翌日 00:00 JST）を正しく計算すること', () => {
+      // 2026-10-17 15:00 UTC -> 2026-10-18 00:00 JST
+      const result = parseUkTimeToIsoAndJst('2026-10-17', '15:00');
+      expect(result.utcIso).toBe('2026-10-17T15:00:00.000Z');
+      expect(result.timeJst).toBe('00:00');
+      expect(result.rawTime).toBe('00:00 JST');
     });
   });
 
@@ -143,6 +143,36 @@ describe('UK Syutsuba utility', () => {
         ukRaceMatches('Punchestown Champion Hurdle', "Boodles Champion Hurdle (Grade 1)")
       ).toBe(true);
     });
+
+    it('英チャンピオンズデーの各競走が第1競走（Conditions Stakes）に誤マッチせず正しく照合できること (#254)', () => {
+      const ascotConditionsStakes = 'Qatar Racing British Champions Day Two-Year-Old Conditions Stakes (GBB Race)';
+      const ascotLongDistanceCup = 'Qatar Racing British Champions Long Distance Cup (Group 1)';
+      const ascotSprintStakes = 'Qatar Racing British Champions Sprint Stakes (Group 1)';
+      const ascotFilliesMares = 'Qatar Racing British Champions Fillies & Mares Stakes (Group 1)';
+      const ascotQE2 = 'Queen Elizabeth II Stakes (Sponsored By Qatar Racing) (Group 1) (Str)';
+      const ascotChampionStakes = 'Qatar Racing Champion Stakes (Group 1)';
+
+      // チャンピオンステークス
+      expect(ukRaceMatches('Champion Stakes', ascotChampionStakes)).toBe(true);
+      expect(ukRaceMatches('Champion Stakes', ascotConditionsStakes)).toBe(false);
+      expect(ukRaceMatches('Champion Stakes', ascotLongDistanceCup)).toBe(false);
+
+      // フィリーズ&メアズステークス
+      expect(ukRaceMatches("British Champions Fillies' and Mares' Stakes", ascotFilliesMares)).toBe(true);
+      expect(ukRaceMatches("British Champions Fillies' and Mares' Stakes", ascotConditionsStakes)).toBe(false);
+
+      // スプリントステークス
+      expect(ukRaceMatches('British Champions Sprint Stakes', ascotSprintStakes)).toBe(true);
+      expect(ukRaceMatches('British Champions Sprint Stakes', ascotConditionsStakes)).toBe(false);
+
+      // ロングディスタンスカップ
+      expect(ukRaceMatches('British Champions Long Distance Cup', ascotLongDistanceCup)).toBe(true);
+      expect(ukRaceMatches('British Champions Long Distance Cup', ascotConditionsStakes)).toBe(false);
+
+      // クイーンエリザベス2世ステークス
+      expect(ukRaceMatches('Queen Elizabeth II Stakes', ascotQE2)).toBe(true);
+      expect(ukRaceMatches('Queen Elizabeth II Stakes', ascotConditionsStakes)).toBe(false);
+    });
   });
 
   describe('ukCourseMatches', () => {
@@ -216,9 +246,9 @@ describe('UK Syutsuba utility', () => {
       expect(results[0].raceId).toBe('2026-uk-g3-70');
       expect(results[0].raceName).toBe('ワールドトロフィー');
       expect(results[0].date).toBe('2026-09-19');
-      // 12:02 BST -> 11:02 UTC
-      expect(results[0].utcIso).toBe('2026-09-19T11:02:00.000Z');
-      expect(results[0].timeJst).toBe('20:02');
+      // 12:02 (UTC) -> 21:02 JST
+      expect(results[0].utcIso).toBe('2026-09-19T12:02:00.000Z');
+      expect(results[0].timeJst).toBe('21:02');
     });
   });
 
@@ -278,9 +308,9 @@ describe('UK Syutsuba utility', () => {
 
       expect(results).toHaveLength(1);
       expect(results[0].raceId).toBe('2026-uk-g3-71');
-      // 14:05 BST -> 13:05 UTC -> 22:05 JST
-      expect(results[0].utcIso).toBe('2026-09-19T13:05:00.000Z');
-      expect(results[0].timeJst).toBe('22:05');
+      // 14:05 (UTC) -> 23:05 JST
+      expect(results[0].utcIso).toBe('2026-09-19T14:05:00.000Z');
+      expect(results[0].timeJst).toBe('23:05');
     });
   });
 
@@ -359,12 +389,12 @@ describe('UK Syutsuba utility', () => {
 
       expect(result.updatedRaces).toHaveLength(1);
       expect(result.updatedRaces[0].id).toBe('2026-uk-g2-sample');
-      // 13:12 BST -> 12:12 UTC
-      expect(result.updatedRaces[0].newTime).toBe('2026-09-21T12:12:00.000Z');
+      // 13:12 (UTC) -> 22:12 JST
+      expect(result.updatedRaces[0].newTime).toBe('2026-09-21T13:12:00.000Z');
 
       const savedRaces: RaceOutput[] = JSON.parse(fs.readFileSync(tempRacesPath, 'utf-8'));
       expect(savedRaces[0].is_time_confirmed).toBe(true);
-      expect(savedRaces[0].start_time).toBe('2026-09-21T12:12:00.000Z');
+      expect(savedRaces[0].start_time).toBe('2026-09-21T13:12:00.000Z');
 
       fs.rmSync(tempDir, { recursive: true, force: true });
     });
