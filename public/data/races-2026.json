@@ -50641,6 +50641,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Mount Atlas",
+        "en": "Mount Atlas"
+      },
+      "time": "3m 25.6s"
     }
   },
   {
@@ -50669,6 +50676,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Almeraq",
+        "en": "Almeraq"
+      },
+      "time": "1m 12.2s"
     }
   },
   {
@@ -50697,6 +50711,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Minnie Hauk",
+        "en": "Minnie Hauk"
+      },
+      "time": "2m 29.49s"
     }
   },
   {

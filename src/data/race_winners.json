@@ -11105,5 +11105,26 @@
     },
     "horse_number": 13,
     "time": "1:32.2"
+  },
+  "2026-uk-g1-33": {
+    "name": {
+      "ja": "Mount Atlas",
+      "en": "Mount Atlas"
+    },
+    "time": "3m 25.6s"
+  },
+  "2026-uk-g1-34": {
+    "name": {
+      "ja": "Almeraq",
+      "en": "Almeraq"
+    },
+    "time": "1m 12.2s"
+  },
+  "2026-uk-g1-35": {
+    "name": {
+      "ja": "Minnie Hauk",
+      "en": "Minnie Hauk"
+    },
+    "time": "2m 29.49s"
   }
 }
