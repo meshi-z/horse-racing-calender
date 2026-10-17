@@ -20,8 +20,6 @@ const UK_STOP_WORDS = new Set([
   'TROPHY',
   'GROUP',
   'GRADE',
-  'FILLIES',
-  'MARES',
   'COLTS',
   'HORSE',
   'RACE',
@@ -98,7 +96,9 @@ export function isBritishSummerTime(dateStr: string): boolean {
 }
 
 /**
- * 英国現地時刻（HH:mm または HH:mm:ss）から UTC ISO 8601 文字列および JST HH:mm 表記を生成
+ * Sporting Life API の時刻（HH:mm または HH:mm:ss）から UTC ISO 8601 文字列および JST HH:mm 表記を生成
+ * 注意: Sporting Life API の time フィールドは英国現地時刻（BST/GMT）ではなく、あらかじめ UTC で提供されている。
+ * そのため、夏時間（BST）中であっても減算オフセットは適用せず、そのまま UTC として扱う。
  */
 export function parseUkTimeToIsoAndJst(
   dateYmd: string,
@@ -113,12 +113,8 @@ export function parseUkTimeToIsoAndJst(
   const minutes = parts[1];
   const seconds = parts.length > 2 ? parts[2] : 0;
 
-  const isBst = isBritishSummerTime(dateYmd);
-  // BST は UTC+1、GMT は UTC+0
-  const utcOffsetHours = isBst ? 1 : 0;
-
   const [y, m, d] = dateYmd.split('-').map(Number);
-  const utcTimestamp = Date.UTC(y, m - 1, d, hours - utcOffsetHours, minutes, seconds, 0);
+  const utcTimestamp = Date.UTC(y, m - 1, d, hours, minutes, seconds, 0);
   const utcDate = new Date(utcTimestamp);
   const utcIso = utcDate.toISOString();
 
@@ -161,17 +157,6 @@ export function ukRaceMatches(targetName: string, candidateName: string): boolea
 
   if (targetTokens.length === 0) return true;
 
-  // 固有単語がすべて candidate に含まれているかチェック
-  const allTokensMatch = targetTokens.every((t) => candidateSet.has(t));
-  if (allTokensMatch) return true;
-
-  // 結合文字列による部分一致チェック（複合名やスペース揺れ対策）
-  const joinedCandidate = candidateTokens.join('');
-  const joinedTarget = targetTokens.join('');
-  if (joinedTarget.length >= 4 && joinedCandidate.includes(joinedTarget)) {
-    return true;
-  }
-
   // スポンサー変更・別名（エイリアス）チェック
   const UK_RACE_ALIASES: Record<string, string[]> = {
     'WELD PARK': ['DARLEY FILLIES', 'WELD'],
@@ -197,6 +182,26 @@ export function ukRaceMatches(targetName: string, candidateName: string): boolea
           return true;
         }
       }
+    }
+  }
+
+  // 「Champion Stakes」等、重要語が単数形「CHAMPION」の場合、
+  // 「British Champions ...」など複数形や別シリーズ冠名を持つレースへの誤判定を防止
+  if (targetTokens.length === 1 && targetTokens[0] === 'CHAMPION') {
+    return candidateTokens.includes('CHAMPION') && !candidateTokens.includes('BRITISH') && !candidateTokens.includes('CHAMPIONS');
+  }
+
+  // 固有単語がすべて candidate に含まれているかチェック
+  const allTokensMatch = targetTokens.every((t) => candidateSet.has(t));
+  if (allTokensMatch) return true;
+
+  // 結合文字列による部分一致チェック（複合名やスペース揺れ対策）
+  // targetTokens が1語のみの場合は誤判定を防止するためスキップ
+  if (targetTokens.length >= 2) {
+    const joinedCandidate = candidateTokens.join('');
+    const joinedTarget = targetTokens.join('');
+    if (joinedTarget.length >= 6 && joinedCandidate.includes(joinedTarget)) {
+      return true;
     }
   }
 

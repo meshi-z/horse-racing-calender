@@ -4228,8 +4228,8 @@
       },
       "grade": "G1",
       "date": "2026-10-17",
-      "start_time": "2026-10-17T13:40:00.000Z",
-      "is_time_confirmed": false,
+      "start_time": "2026-10-17T12:30:00.000Z",
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-10-17",
       "course": {
@@ -4256,8 +4256,8 @@
       },
       "grade": "G1",
       "date": "2026-10-17",
-      "start_time": "2026-10-17T13:40:00.000Z",
-      "is_time_confirmed": false,
+      "start_time": "2026-10-17T13:05:00.000Z",
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-10-17",
       "course": {
@@ -4285,7 +4285,7 @@
       "grade": "G1",
       "date": "2026-10-17",
       "start_time": "2026-10-17T13:40:00.000Z",
-      "is_time_confirmed": false,
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-10-17",
       "course": {
@@ -4312,8 +4312,8 @@
       },
       "grade": "G1",
       "date": "2026-10-17",
-      "start_time": "2026-10-17T13:40:00.000Z",
-      "is_time_confirmed": false,
+      "start_time": "2026-10-17T14:20:00.000Z",
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-10-17",
       "course": {
@@ -4340,8 +4340,8 @@
       },
       "grade": "G1",
       "date": "2026-10-17",
-      "start_time": "2026-10-17T13:40:00.000Z",
-      "is_time_confirmed": false,
+      "start_time": "2026-10-17T15:00:00.000Z",
+      "is_time_confirmed": true,
       "is_rescheduled": false,
       "original_date": "2026-10-17",
       "course": {

@@ -225,7 +225,7 @@ describe('US Syutsuba utility', () => {
           races: [
             {
               name: 'Perryville Stakes (Grade 3)',
-              time: '20:12', // BST (UTC+1) -> 19:12 UTC -> 04:12 JST (+1 day)
+              time: '20:12', // Sporting Life API time is UTC -> 20:12 UTC -> 05:12 JST (+1 day)
               course_name: 'Keeneland',
             },
             {
@@ -270,8 +270,8 @@ describe('US Syutsuba utility', () => {
       expect(confirmed).toHaveLength(1);
       expect(confirmed[0].raceId).toBe('2026-us-g3-perryville');
       expect(confirmed[0].raceName).toBe('ペリーヴィルステークス');
-      expect(confirmed[0].utcIso).toBe('2026-10-17T19:12:00.000Z');
-      expect(confirmed[0].timeJst).toBe('04:12');
+      expect(confirmed[0].utcIso).toBe('2026-10-17T20:12:00.000Z');
+      expect(confirmed[0].timeJst).toBe('05:12');
       expect(confirmed[0].sourceUrl).toBeUndefined();
     });
   });
