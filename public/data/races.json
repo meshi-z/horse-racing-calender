@@ -51205,8 +51205,8 @@
     },
     "grade": "S3",
     "date": "2026-10-21",
-    "start_time": "2026-10-21T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-21T08:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "浦和",
       "en": "Urawa"
@@ -51432,7 +51432,7 @@
     "grade": "local_grade",
     "date": "2026-10-23",
     "start_time": "2026-10-23T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "園田",
       "en": "Sonoda"
