@@ -50910,6 +50910,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ジューンベロシティ"
+      },
+      "jockey": {
+        "ja": "高田 潤"
+      },
+      "horse_number": 9,
+      "time": "3:23.2"
     }
   },
   {
@@ -50938,7 +50948,18 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "winner": {
+      "name": {
+        "ja": "モンローウォーク"
+      },
+      "jockey": {
+        "ja": "戸崎 圭太"
+      },
+      "horse_number": 8,
+      "time": "1:56.1"
+    },
+    "official_url": "https://www.jra.go.jp/datafile/seiseki/g1/shuka/result/shuka2026.html"
   },
   {
     "id": "2026-hk-g2-03",
@@ -50994,6 +51015,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "アメストリス"
+      },
+      "jockey": {
+        "ja": "田中直"
+      },
+      "horse_number": 2,
+      "time": "1:28.5"
     }
   },
   {
@@ -51020,6 +51051,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ストライクオン"
+      },
+      "jockey": {
+        "ja": "望月洵"
+      },
+      "horse_number": 6,
+      "time": "1:27.5"
     }
   },
   {
@@ -51046,6 +51087,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "クリムゾンダリア"
+      },
+      "jockey": {
+        "ja": "山本政"
+      },
+      "horse_number": 6,
+      "time": "1:25.6"
     }
   },
   {
