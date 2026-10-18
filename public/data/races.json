@@ -51126,6 +51126,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Rembrand To Go",
+        "en": "Rembrand To Go",
+        "fr": "Rembrand To Go"
+      },
+      "jockey": {
+        "ja": "M.grandin",
+        "en": "M.grandin",
+        "fr": "M.grandin"
+      },
+      "horse_number": 2
     }
   },
   {

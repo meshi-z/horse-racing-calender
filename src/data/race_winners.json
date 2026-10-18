@@ -11197,5 +11197,18 @@
     },
     "horse_number": 6,
     "time": "1:25.6"
+  },
+  "2026-france-g2-24": {
+    "name": {
+      "ja": "Rembrand To Go",
+      "en": "Rembrand To Go",
+      "fr": "Rembrand To Go"
+    },
+    "jockey": {
+      "ja": "M.grandin",
+      "en": "M.grandin",
+      "fr": "M.grandin"
+    },
+    "horse_number": 2
   }
 }
