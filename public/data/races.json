@@ -51963,8 +51963,8 @@
     },
     "grade": "G3",
     "date": "2026-10-24",
-    "start_time": "2026-10-24T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-24T13:35:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-24",
     "course": {
@@ -51975,34 +51975,6 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
-    "id": "2026-uk-g3-71",
-    "organization": "bha",
-    "country_code": "GB",
-    "name": {
-      "ja": "ホリスヒルステークス",
-      "en": "Horris Hill Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-10-24",
-    "start_time": "2026-10-24T13:40:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-24",
-    "course": {
-      "ja": "ニューベリー",
-      "en": "Newbury"
-    },
-    "distance": 1408,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
     "handicap": {
       "code": "special_weight",
       "ja": "別定",
@@ -52036,6 +52008,34 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-71",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ホリスヒルステークス",
+      "en": "Horris Hill Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-24",
+    "start_time": "2026-10-24T14:10:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-24",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
