@@ -51200,6 +51200,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ハジマリノアイズ"
+      },
+      "jockey": {
+        "ja": "加藤翔"
+      },
+      "horse_number": 5,
+      "time": "1:30.3"
     }
   },
   {
