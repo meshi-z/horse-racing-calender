@@ -51236,6 +51236,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "スレイマン"
+      },
+      "jockey": {
+        "ja": "御神訓"
+      },
+      "horse_number": 8,
+      "time": "2:07.5"
     }
   },
   {
