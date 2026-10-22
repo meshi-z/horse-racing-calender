@@ -51928,8 +51928,8 @@
     },
     "grade": "G3",
     "date": "2026-10-24",
-    "start_time": "2026-10-24T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-24T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
@@ -52153,8 +52153,8 @@
     },
     "grade": "G1",
     "date": "2026-10-25",
-    "start_time": "2026-10-25T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-25T06:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto",
