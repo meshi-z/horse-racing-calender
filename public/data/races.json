@@ -51333,6 +51333,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "アースジャッジ"
+      },
+      "jockey": {
+        "ja": "丸野勝"
+      },
+      "horse_number": 9,
+      "time": "2:03.6"
     }
   },
   {
