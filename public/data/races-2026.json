@@ -51544,6 +51544,13 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Washington Heights",
+        "en": "Washington Heights"
+      },
+      "time": "58.77s"
     }
   },
   {

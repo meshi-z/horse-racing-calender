@@ -11277,5 +11277,12 @@
     },
     "horse_number": 3,
     "time": "1:17.4"
+  },
+  "2026-ie-g3-39": {
+    "name": {
+      "ja": "Washington Heights",
+      "en": "Washington Heights"
+    },
+    "time": "58.77s"
   }
 }
