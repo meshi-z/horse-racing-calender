@@ -52191,32 +52191,6 @@
     }
   },
   {
-    "id": "2026-nar-local-203",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "絆カップ",
-      "en": "Kizuna Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-10-25",
-    "start_time": "2026-10-25T07:30:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "盛岡",
-      "en": "Morioka"
-    },
-    "distance": 1200,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-204",
     "organization": "nar",
     "country_code": "JP",
@@ -52299,6 +52273,32 @@
     }
   },
   {
+    "id": "2026-nar-local-203",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "絆カップ",
+      "en": "Kizuna Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-10-25",
+    "start_time": "2026-10-25T09:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "盛岡",
+      "en": "Morioka"
+    },
+    "distance": 1200,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-202",
     "organization": "nar",
     "country_code": "JP",
@@ -52308,8 +52308,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-25",
-    "start_time": "2026-10-25T10:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-25T11:00:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "帯広",
       "en": "Obihiro"
