@@ -11257,5 +11257,15 @@
     },
     "horse_number": 4,
     "time": "1:51.6"
+  },
+  "2026-nar-local-200": {
+    "name": {
+      "ja": "ゴールドボンド"
+    },
+    "jockey": {
+      "ja": "渡邊竜"
+    },
+    "horse_number": 2,
+    "time": "1:25.8"
   }
 }

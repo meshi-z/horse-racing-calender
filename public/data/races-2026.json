@@ -51466,6 +51466,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ゴールドボンド"
+      },
+      "jockey": {
+        "ja": "渡邊竜"
+      },
+      "horse_number": 2,
+      "time": "1:25.8"
     }
   },
   {
