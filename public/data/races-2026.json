@@ -51502,6 +51502,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ミスズグランドオー"
+      },
+      "jockey": {
+        "ja": "塚本征"
+      },
+      "horse_number": 3,
+      "time": "1:17.4"
     }
   },
   {
