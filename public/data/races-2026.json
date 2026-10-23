@@ -52355,8 +52355,8 @@
     },
     "grade": "G1",
     "date": "2026-10-25",
-    "start_time": "2026-10-25T12:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-25T12:23:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-25",
     "course": {
@@ -52374,6 +52374,35 @@
     }
   },
   {
+    "id": "2026-france-g3-59",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "パース賞",
+      "en": "Prix Perth",
+      "fr": "Prix Perth"
+    },
+    "grade": "G3",
+    "date": "2026-10-25",
+    "start_time": "2026-10-25T12:58:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-25",
+    "course": {
+      "ja": "サンクルー",
+      "en": "Saint-Cloud"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-france-g1-27",
     "organization": "france_galop",
     "country_code": "FR",
@@ -52384,8 +52413,8 @@
     },
     "grade": "G1",
     "date": "2026-10-25",
-    "start_time": "2026-10-25T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-25T13:33:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-25",
     "course": {
@@ -52413,8 +52442,8 @@
     },
     "grade": "G1",
     "date": "2026-10-25",
-    "start_time": "2026-10-25T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-25T14:50:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-25",
     "course": {
@@ -52422,35 +52451,6 @@
       "en": "Saint-Cloud"
     },
     "distance": 3100,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g3-59",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "パース賞",
-      "en": "Prix Perth",
-      "fr": "Prix Perth"
-    },
-    "grade": "G3",
-    "date": "2026-10-25",
-    "start_time": "2026-10-25T14:00:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-25",
-    "course": {
-      "ja": "サンクルー",
-      "en": "Saint-Cloud"
-    },
-    "distance": 1600,
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
