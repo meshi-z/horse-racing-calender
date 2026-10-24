@@ -6,6 +6,37 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 84: アメリカ競馬（Equibase）2026年ブリーダーズカップ全14競走の確定発走予定時刻反映 (v1.45.10 / Issue #270) [完了]
+- **ブリーダーズカップ全14競走の公式確定発走予定時刻の反映 (`src/data/us_race_master.json`, `public/data/races-2026.json`, `public/data/races.json`) [完了]**
+  - 現地時間2026年10月30日（金）・31日（土）に米キーンランド競馬場で開催される「ブリーダーズカップ（Breeders' Cup World Championships）」全14競走について、主催者公式発表の確定発走予定時刻（EDT: UTC-4 $\rightarrow$ UTC）を本番データおよびマスタデータに反映し、`is_time_confirmed: true` に更新：
+    - **第1日：2026年10月30日（金）［日本時間 10月31日（土）］**:
+      - `2026-us-g1-78`: BCジュヴェナイルターフスプリント (14:55 EDT $\rightarrow$ `2026-10-30T18:55:00.000Z` / JST 10/31 03:55)
+      - `2026-us-g1-75`: BCジュヴェナイルフィリーズ (15:35 EDT $\rightarrow$ `2026-10-30T19:35:00.000Z` / JST 10/31 04:35)
+      - `2026-us-g1-76`: BCジュヴェナイルフィリーズターフ (16:15 EDT $\rightarrow$ `2026-10-30T20:15:00.000Z` / JST 10/31 05:15)
+      - `2026-us-g1-74`: BCジュヴェナイル (16:55 EDT $\rightarrow$ `2026-10-30T20:55:00.000Z` / JST 10/31 05:55)
+      - `2026-us-g1-77`: BCジュヴェナイルターフ (17:35 EDT $\rightarrow$ `2026-10-30T21:35:00.000Z` / JST 10/31 06:35)
+    - **第2日：2026年10月31日（土）［日本時間 11月1日（日）］**:
+      - `2026-us-g1-80`: BCダートマイル (13:10 EDT $\rightarrow$ `2026-10-31T17:10:00.000Z` / JST 11/01 02:10)
+      - `2026-us-g1-87`: BCターフスプリント (13:48 EDT $\rightarrow$ `2026-10-31T17:48:00.000Z` / JST 11/01 02:48)
+      - `2026-us-g1-85`: BCスプリント (14:26 EDT $\rightarrow$ `2026-10-31T18:26:00.000Z` / JST 11/01 03:26)
+      - `2026-us-g1-83`: BCフィリー&メアターフ (15:04 EDT $\rightarrow$ `2026-10-31T19:04:00.000Z` / JST 11/01 04:04)
+      - `2026-us-g1-82`: BCフィリー&メアスプリント (15:42 EDT $\rightarrow$ `2026-10-31T19:42:00.000Z` / JST 11/01 04:42)
+      - `2026-us-g1-84`: BCマイル (16:20 EDT $\rightarrow$ `2026-10-31T20:20:00.000Z` / JST 11/01 05:20)
+      - `2026-us-g1-81`: BCディスタフ (16:58 EDT $\rightarrow$ `2026-10-31T20:58:00.000Z` / JST 11/01 05:58)
+      - `2026-us-g1-86`: BCターフ (17:36 EDT $\rightarrow$ `2026-10-31T21:36:00.000Z` / JST 11/01 06:36)
+      - `2026-us-g1-79`: BCクラシック (18:16 EDT $\rightarrow$ `2026-10-31T22:16:00.000Z` / JST 11/01 07:16)
+- **テストケース追加 (`tests/unit/usSyutsuba.test.ts`) [完了]**
+  - 全14競走の `start_time` および `is_time_confirmed: true` がマスタ（`src/data/us_race_master.json`）および本番配布データ（`public/data/races-2026.json`, `public/data/races.json`）間で完全整合していることを検証する単体テストを追加。
+- **仕様書・ドキュメント更新 [完了]**
+  - `docs/specs/data-sources/us.md`: Issue #270 反映実績を追記。
+  - `docs/PRD.md`: バージョン `v1.45.10` 反映および M6 実績追記。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`: 全ファイル型エラー 0 件を確認。
+  - `npm test`: 全68テストスイート・665件の単体/統合テスト全件合格を確認。
+  - `npm run build`: プロダクションビルド（Vite / PWA GenerateSW）正常終了を確認。
+
+
 ### Step 83: Dependabot提案の依存関係一括更新・脆弱性解消 & テスト環境堅牢化 (v1.45.9 / PR #256, #257, #258, #259, #260, #265, #266, #267, #268) [完了]
 - **Dependabot 登録 PR の安全な一括統合 (`package.json`, `package-lock.json`) [完了]**
   - 個別オープンされていた Dependabot の全9件のプルリクエストを1本のリリースに統合し安全に更新：
