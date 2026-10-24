@@ -54,6 +54,164 @@ function groupRacesByDate(races: Race[], lang: Language): GroupedRaces[] {
   return result;
 }
 
+/**
+ * ターゲット要素の scroll-margin-top (ヘッダー + FilterBar + 余白) のピクセル値を算出する
+ */
+function getExpectedScrollMarginTop(element: HTMLElement): number {
+  if (typeof window === "undefined") return 0;
+  const computed = window.getComputedStyle(element).scrollMarginTop;
+  const parsed = parseFloat(computed);
+  if (!isNaN(parsed) && parsed > 0) {
+    return parsed;
+  }
+  const filterBarHeightStr = window
+    .getComputedStyle(document.documentElement)
+    .getPropertyValue("--filterbar-height");
+  const filterBarHeight = parseFloat(filterBarHeightStr) || 0;
+  // 3.5rem (56px) + filterBarHeight + 0.75rem (12px) = 68px + filterBarHeight
+  return 56 + filterBarHeight + 12;
+}
+
+/**
+ * 遅延描画（Windowing）によるスクロール途中のレイアウトシフトを補正し、
+ * 1回の操作で確実にターゲット日付セクションの先頭位置へ到達させる (Issue #272)
+ */
+export function scrollToSectionWithCorrection(
+  element: HTMLElement,
+  prefersReducedMotion: boolean
+): () => void {
+  const initialBehavior: ScrollBehavior = prefersReducedMotion ? "auto" : "smooth";
+
+  // 1. 初回の scrollIntoView を実行
+  element.scrollIntoView({
+    behavior: initialBehavior,
+    block: "start",
+  });
+
+  if (typeof window === "undefined") {
+    return () => {};
+  }
+
+  // JSDOM 等の実レイアウトが存在しない環境（初期状態で rect がすべて 0 かつ scrollY も 0）では追加監視不要
+  const initialRect = element.getBoundingClientRect();
+  if (
+    initialRect.top === 0 &&
+    initialRect.bottom === 0 &&
+    initialRect.height === 0 &&
+    window.scrollY === 0
+  ) {
+    return () => {};
+  }
+
+  let isCancelled = false;
+  let intervalId: ReturnType<typeof setInterval> | null = null;
+  let attempts = 0;
+  const maxAttempts = 35; // 60ms * 35 = 最大約2.1秒
+  let lastScrollY = window.scrollY;
+  let lastDistance = Math.abs(initialRect.top - getExpectedScrollMarginTop(element));
+  let stalledCount = 0;
+  let settledCount = 0;
+  let smoothRetryCount = 0;
+
+  const cleanup = () => {
+    if (isCancelled) return;
+    isCancelled = true;
+    if (intervalId !== null) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+    window.removeEventListener("wheel", handleUserInterrupt);
+    window.removeEventListener("touchmove", handleUserInterrupt);
+    window.removeEventListener("keydown", handleKeyDownInterrupt);
+  };
+
+  const handleUserInterrupt = () => {
+    cleanup();
+  };
+
+  const handleKeyDownInterrupt = (e: KeyboardEvent) => {
+    if (
+      ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(e.key)
+    ) {
+      cleanup();
+    }
+  };
+
+  window.addEventListener("wheel", handleUserInterrupt, { passive: true });
+  window.addEventListener("touchmove", handleUserInterrupt, { passive: true });
+  window.addEventListener("keydown", handleKeyDownInterrupt, { passive: true });
+
+  intervalId = setInterval(() => {
+    if (isCancelled) return;
+    attempts += 1;
+
+    if (!element.isConnected) {
+      cleanup();
+      return;
+    }
+
+    const rect = element.getBoundingClientRect();
+    const expectedTop = getExpectedScrollMarginTop(element);
+    const diff = rect.top - expectedTop;
+    const absDiff = Math.abs(diff);
+    const currentScrollY = window.scrollY;
+    const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+
+    // 目標位置（許容誤差 ±4px 以内）に到達しているかチェック
+    if (absDiff <= 4) {
+      settledCount += 1;
+      if (settledCount >= 2 || prefersReducedMotion || attempts >= maxAttempts) {
+        cleanup();
+        return;
+      }
+      lastScrollY = currentScrollY;
+      lastDistance = absDiff;
+      return;
+    }
+
+    settledCount = 0;
+
+    if (prefersReducedMotion) {
+      element.scrollIntoView({ behavior: "auto", block: "start" });
+      cleanup();
+      return;
+    }
+
+    // スクロールが停止（またはほぼ停止）しているか判定
+    if (scrollDelta < 2) {
+      stalledCount += 1;
+    } else {
+      stalledCount = 0;
+    }
+
+    // 途中のセクション展開（レイアウトシフト）によりターゲットが遠ざかったか判定
+    const driftedFurther = attempts > 1 && absDiff > lastDistance + 16;
+
+    // 再スクロール補正の発火条件:
+    // 1. スクロールが停止したのにまだ目標位置に未到達 (stalledCount >= 2)
+    // 2. レイアウトシフトでターゲット位置が遠ざかった (driftedFurther)
+    // 3. 最終試行回数に到達した (attempts >= maxAttempts)
+    if (stalledCount >= 2 || driftedFurther || attempts >= maxAttempts) {
+      stalledCount = 0;
+      if (absDiff > 120 && smoothRetryCount < 4 && attempts < maxAttempts) {
+        smoothRetryCount += 1;
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        element.scrollIntoView({ behavior: "auto", block: "start" });
+        if (attempts >= maxAttempts) {
+          cleanup();
+          return;
+        }
+      }
+    }
+
+    lastScrollY = window.scrollY;
+    lastDistance = absDiff;
+  }, 60);
+
+  return cleanup;
+}
+
 interface TimelineDateSectionProps {
   date: string;
   formattedDate: string;
@@ -61,6 +219,7 @@ interface TimelineDateSectionProps {
   isToday: boolean;
   isTargetDate: boolean;
   isLazyEnabled: boolean;
+  isSingleColumn?: boolean;
   todayBadgeText: string;
   racesCountText: string;
 }
@@ -76,6 +235,7 @@ export const TimelineDateSection = React.memo(function TimelineDateSection({
   isToday,
   isTargetDate,
   isLazyEnabled,
+  isSingleColumn,
   todayBadgeText,
   racesCountText,
 }: TimelineDateSectionProps) {
@@ -87,13 +247,34 @@ export const TimelineDateSection = React.memo(function TimelineDateSection({
     () => !isLazyEnabled || isTargetDate || typeof IntersectionObserver === "undefined"
   );
 
-  // 1カードあたりの推定高さ: デスクトップ2列(md:grid-cols-2)で約150px、ヘッダー約45px
-  const estimatedCardsHeight = React.useMemo(() => {
-    const rows = Math.max(1, Math.ceil(dateRaces.length / 2));
-    return rows * 150;
-  }, [dateRaces.length]);
+  const effectiveSingleColumn =
+    isSingleColumn ?? (typeof window !== "undefined" && window.innerWidth < 768);
 
-  const totalEstimatedHeight = measuredHeightRef.current ?? (estimatedCardsHeight + 50);
+  // 画面幅に応じた列数（モバイル1列 / md以上2列）およびカード内容（勝者バッジ・海外副題有無）を考慮した推定高さ (Issue #272)
+  const estimatedSectionHeight = React.useMemo(() => {
+    const cols = effectiveSingleColumn ? 1 : 2;
+    let totalCardsHeight = 0;
+    const rowCount = Math.max(1, Math.ceil(dateRaces.length / cols));
+    for (let r = 0; r < rowCount; r++) {
+      const rowRaces = dateRaces.slice(r * cols, (r + 1) * cols);
+      const hasWinner = rowRaces.some((race) => Boolean(race.winner));
+      const hasSecondary = rowRaces.some((race) => Boolean(race.country_code));
+      const rowHeight = 148 + (hasSecondary ? 16 : 0) + (hasWinner ? 28 : 0);
+      totalCardsHeight += rowHeight;
+    }
+    const gapsHeight = Math.max(0, rowCount - 1) * 16; // gap-4 (16px)
+    const headerAndSpacing = 53; // 日付ヘッダー(約41px) + space-y-3(12px)
+    return totalCardsHeight + gapsHeight + headerAndSpacing;
+  }, [dateRaces, effectiveSingleColumn]);
+
+  const totalEstimatedHeight = measuredHeightRef.current ?? estimatedSectionHeight;
+
+  // 表示状態のときに実測高さが取得可能であれば随時キャッシュしてレイアウトシフトを抑止
+  React.useEffect(() => {
+    if (isVisible && sectionRef.current && sectionRef.current.offsetHeight > 0) {
+      measuredHeightRef.current = sectionRef.current.offsetHeight;
+    }
+  }, [isVisible, dateRaces.length, effectiveSingleColumn]);
 
   React.useEffect(() => {
     if (!isLazyEnabled || typeof IntersectionObserver === "undefined") {
@@ -213,6 +394,29 @@ export function TimelineView({ races, className }: TimelineViewProps) {
   const { language, t } = useTranslation();
   const lastScrolledYearRef = React.useRef<number | null>(null);
   const bottomSentinelRef = React.useRef<HTMLDivElement | null>(null);
+  const activeScrollCancelRef = React.useRef<(() => void) | null>(null);
+
+  const [isSingleColumn, setIsSingleColumn] = React.useState<boolean>(() =>
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
+
+  React.useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mql = window.matchMedia("(max-width: 767px)");
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsSingleColumn(e.matches);
+    };
+    if (typeof mql.addEventListener === "function") {
+      mql.addEventListener("change", handleChange);
+      return () => mql.removeEventListener("change", handleChange);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    return () => {
+      activeScrollCancelRef.current?.();
+    };
+  }, []);
 
   const groupedRaces = React.useMemo(() => groupRacesByDate(races, language), [races, language]);
   const todayStr = React.useMemo(() => getTodayLocalDateString(), []);
@@ -236,7 +440,7 @@ export function TimelineView({ races, className }: TimelineViewProps) {
     const currentSystemYear = new Date().getFullYear();
     const prefersReducedMotion =
       typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
 
     // 選択された年度内のレースを抽出
     const yearGroups = groupedRaces.filter(
@@ -251,14 +455,18 @@ export function TimelineView({ races, className }: TimelineViewProps) {
       const element = document.getElementById(`section-date-${scrollTargetDate}`);
       if (element) {
         const timer = setTimeout(() => {
-          element.scrollIntoView({
-            behavior: prefersReducedMotion ? "auto" : "smooth",
-            block: "start",
-          });
+          activeScrollCancelRef.current?.();
+          activeScrollCancelRef.current = scrollToSectionWithCorrection(
+            element,
+            prefersReducedMotion
+          );
         }, 0);
 
         lastScrolledYearRef.current = selectedYear;
-        return () => clearTimeout(timer);
+        return () => {
+          clearTimeout(timer);
+          activeScrollCancelRef.current?.();
+        };
       }
     }
 
@@ -369,12 +577,13 @@ export function TimelineView({ races, className }: TimelineViewProps) {
     if (element) {
       const prefersReducedMotion =
         typeof window !== "undefined" &&
-        window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+        Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
 
-      element.scrollIntoView({
-        behavior: prefersReducedMotion ? "auto" : "smooth",
-        block: "start",
-      });
+      activeScrollCancelRef.current?.();
+      activeScrollCancelRef.current = scrollToSectionWithCorrection(
+        element,
+        prefersReducedMotion
+      );
     }
   };
 
@@ -468,6 +677,7 @@ export function TimelineView({ races, className }: TimelineViewProps) {
               isToday={isToday}
               isTargetDate={isTargetDate}
               isLazyEnabled={isLazyEnabled}
+              isSingleColumn={isSingleColumn}
               todayBadgeText={t("timeline.todayBadge")}
               racesCountText={t("timeline.racesCount", { count: dateRaces.length })}
             />
