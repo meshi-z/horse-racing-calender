@@ -363,4 +363,58 @@ describe('US Syutsuba utility', () => {
       expect(derby?.start_time).toBe('2026-05-02T22:57:00.000Z');
     });
   });
+
+  describe("2026年ブリーダーズカップ全14競走の確定発走予定時刻検証 (Issue #270)", () => {
+    const expectedSchedule = {
+      // 第1日：2026年10月30日（金）
+      '2026-us-g1-78': { nameJa: 'ブリーダーズカップジュヴェナイルターフスプリント', utcTime: '2026-10-30T18:55:00.000Z', localTime: '14:55 EDT', date: '2026-10-30' },
+      '2026-us-g1-75': { nameJa: 'ブリーダーズカップジュヴェナイルフィリーズ', utcTime: '2026-10-30T19:35:00.000Z', localTime: '15:35 EDT', date: '2026-10-30' },
+      '2026-us-g1-76': { nameJa: 'ブリーダーズカップジュヴェナイルフィリーズターフ', utcTime: '2026-10-30T20:15:00.000Z', localTime: '16:15 EDT', date: '2026-10-30' },
+      '2026-us-g1-74': { nameJa: 'ブリーダーズカップジュヴェナイル', utcTime: '2026-10-30T20:55:00.000Z', localTime: '16:55 EDT', date: '2026-10-30' },
+      '2026-us-g1-77': { nameJa: 'ブリーダーズカップジュヴェナイルターフ', utcTime: '2026-10-30T21:35:00.000Z', localTime: '17:35 EDT', date: '2026-10-30' },
+      // 第2日：2026年10月31日（土）
+      '2026-us-g1-80': { nameJa: 'ブリーダーズカップダートマイル', utcTime: '2026-10-31T17:10:00.000Z', localTime: '13:10 EDT', date: '2026-10-31' },
+      '2026-us-g1-87': { nameJa: 'ブリーダーズカップターフスプリント', utcTime: '2026-10-31T17:48:00.000Z', localTime: '13:48 EDT', date: '2026-10-31' },
+      '2026-us-g1-85': { nameJa: 'ブリーダーズカップスプリント', utcTime: '2026-10-31T18:26:00.000Z', localTime: '14:26 EDT', date: '2026-10-31' },
+      '2026-us-g1-83': { nameJa: 'ブリーダーズカップフィリー&メアターフ', utcTime: '2026-10-31T19:04:00.000Z', localTime: '15:04 EDT', date: '2026-10-31' },
+      '2026-us-g1-82': { nameJa: 'ブリーダーズカップフィリー&メアスプリント', utcTime: '2026-10-31T19:42:00.000Z', localTime: '15:42 EDT', date: '2026-10-31' },
+      '2026-us-g1-84': { nameJa: 'ブリーダーズカップマイル', utcTime: '2026-10-31T20:20:00.000Z', localTime: '16:20 EDT', date: '2026-10-31' },
+      '2026-us-g1-81': { nameJa: 'ブリーダーズカップディスタフ', utcTime: '2026-10-31T20:58:00.000Z', localTime: '16:58 EDT', date: '2026-10-31' },
+      '2026-us-g1-86': { nameJa: 'ブリーダーズカップターフ', utcTime: '2026-10-31T21:36:00.000Z', localTime: '17:36 EDT', date: '2026-10-31' },
+      '2026-us-g1-79': { nameJa: 'ブリーダーズカップクラシック', utcTime: '2026-10-31T22:16:00.000Z', localTime: '18:16 EDT', date: '2026-10-31' },
+    };
+
+    it('src/data/us_race_master.json の全14競走が確定時刻かつ is_time_confirmed: true であること', () => {
+      const masterPath = path.resolve('src/data/us_race_master.json');
+      const master = JSON.parse(fs.readFileSync(masterPath, 'utf-8'));
+
+      for (const [id, expected] of Object.entries(expectedSchedule)) {
+        const race = master.races.find((r: any) => r.id === id);
+        expect(race, 'Race ' + id + ' must exist in us_race_master.json').toBeDefined();
+        expect(race.date).toBe(expected.date);
+        expect(race.start_time, 'Race ' + id + ' start_time must match ' + expected.utcTime).toBe(expected.utcTime);
+        expect(race.is_time_confirmed, 'Race ' + id + ' is_time_confirmed must be true').toBe(true);
+      }
+    });
+
+    it('public/data/races-2026.json および public/data/races.json と整合していること', () => {
+      const races2026Path = path.resolve('public/data/races-2026.json');
+      const racesPath = path.resolve('public/data/races.json');
+
+      const races2026 = JSON.parse(fs.readFileSync(races2026Path, 'utf-8'));
+      const races = JSON.parse(fs.readFileSync(racesPath, 'utf-8'));
+
+      for (const [id, expected] of Object.entries(expectedSchedule)) {
+        const r2026 = races2026.find((r: any) => r.id === id);
+        expect(r2026, 'Race ' + id + ' must exist in races-2026.json').toBeDefined();
+        expect(r2026.start_time).toBe(expected.utcTime);
+        expect(r2026.is_time_confirmed).toBe(true);
+
+        const rAll = races.find((r: any) => r.id === id);
+        expect(rAll, 'Race ' + id + ' must exist in races.json').toBeDefined();
+        expect(rAll.start_time).toBe(expected.utcTime);
+        expect(rAll.is_time_confirmed).toBe(true);
+      }
+    });
+  });
 });
