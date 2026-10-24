@@ -51546,6 +51546,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Sister Troienne",
+        "en": "Sister Troienne"
+      },
+      "time": null
     }
   },
   {
