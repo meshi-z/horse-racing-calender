@@ -199,6 +199,135 @@ describe('Australia Results utility', () => {
       expect(r2?.jockey?.en).toBe('Ethan Brown');
     });
 
+    it('Issue #263: アーカイブ一覧形式（stakes-races）のHTMLからレース結果を正しくパースできること', () => {
+      const archiveHtml = `
+<div class="stakes-location">Oct 17 - Randwick:</div>
+<div class="stakes-racename"><b><a href="/stakes-race-results/result.aspx?v=Randwick&d=2026-10-17&race=King+Charles+III+Stakes">King Charles III Stakes</a> Gr1</b> 1609m</div>
+<div class="horsename"><a href="/horse/autumn-glow">Autumn Glow</a></div>
+<div class="stakes-location">Oct 21 - Geelong:</div>
+<div class="stakes-racename"><b><a href="/stakes-race-results/result.aspx?v=Geelong&d=2026-10-21&race=Ladbrokes+Geelong+Cup">Ladbrokes Geelong Cup</a> Gr3</b> 2400m</div>
+<div class="horsename"><a href="/horse/point-of-law">Point Of Law</a></div>
+`;
+      const meetings = parseBreednetStakesResultsHtml(archiveHtml);
+      expect(meetings.length).toBe(2);
+
+      const randwick = meetings.find((m) => m.venue === 'Randwick' && m.date === '2026-10-17');
+      expect(randwick).toBeDefined();
+      expect(randwick?.races[0].raceName).toBe('King Charles III Stakes');
+      expect(randwick?.races[0].results[0].horseName).toBe('Autumn Glow');
+
+      const geelong = meetings.find((m) => m.venue === 'Geelong' && m.date === '2026-10-21');
+      expect(geelong).toBeDefined();
+      expect(geelong?.races[0].raceName).toBe('Ladbrokes Geelong Cup');
+      expect(geelong?.races[0].results[0].horseName).toBe('Point Of Law');
+    });
+
+    it('Issue #263: スポンサー冠名や改称名（Caulfield Sprint, Harry White Stakes, Sydney Stakes等）で正しく名寄せできること', () => {
+      const meetings: AustraliaMeetingResultItem[] = [
+        {
+          venue: 'Caulfield',
+          date: '2026-10-17',
+          races: [
+            {
+              raceNumber: 1,
+              raceName: 'Henley Homes Sprint',
+              results: [{ horseName: 'Cavalry Girl', jockeyName: 'Craig Williams', finishPosition: 1 }],
+            },
+            {
+              raceNumber: 2,
+              raceName: 'Sportsbet Classic',
+              results: [{ horseName: 'King Snitz', jockeyName: 'Damian Lane', finishPosition: 1 }],
+            },
+            {
+              raceNumber: 3,
+              raceName: 'Sportsbet Harry White Stakes',
+              results: [{ horseName: 'War Machine', jockeyName: 'Mark Zahra', finishPosition: 1 }],
+            },
+          ],
+        },
+        {
+          venue: 'Royal Randwick',
+          date: '2026-10-17',
+          races: [
+            {
+              raceNumber: 4,
+              raceName: 'Toyota Forklifts Sydney Stakes',
+              results: [{ horseName: 'Grafterburners', jockeyName: 'Nash Rawiller', finishPosition: 1 }],
+            },
+          ],
+        },
+      ];
+
+      const targetRaces: RaceOutput[] = [
+        {
+          id: '2026-au-g2-79',
+          organization: 'racing_australia',
+          name: { ja: 'コーフィールドスプリント', en: 'Caulfield Sprint' },
+          date: '2026-10-17',
+          course: { ja: 'コーフィールド', en: 'Caulfield' },
+          grade: 'G2',
+          start_time: '2026-10-17T04:10:00.000Z',
+          is_time_confirmed: true,
+          distance: 1000,
+          track_type: 'turf',
+          sex_constraint: 'none',
+          age_constraint: '3yo_and_up',
+          handicap: { code: 'handicap', ja: 'ハンデ', en: 'Handicap' },
+        },
+        {
+          id: '2026-au-g3-135',
+          organization: 'racing_australia',
+          name: { ja: 'ノーマンロビンソンステークス', en: 'Norman Robinson Stakes' },
+          date: '2026-10-17',
+          course: { ja: 'コーフィールド', en: 'Caulfield' },
+          grade: 'G3',
+          start_time: '2026-10-17T04:45:00.000Z',
+          is_time_confirmed: true,
+          distance: 2000,
+          track_type: 'turf',
+          sex_constraint: 'none',
+          age_constraint: '3yo',
+          handicap: { code: 'set_weight', ja: '馬齢', en: 'Set Weights' },
+        },
+        {
+          id: '2026-au-g3-136',
+          organization: 'racing_australia',
+          name: { ja: 'MOONGAステークス', en: 'Moonga Stakes' },
+          date: '2026-10-17',
+          course: { ja: 'コーフィールド', en: 'Caulfield' },
+          grade: 'G3',
+          start_time: '2026-10-17T05:25:00.000Z',
+          is_time_confirmed: true,
+          distance: 1400,
+          track_type: 'turf',
+          sex_constraint: 'none',
+          age_constraint: '4yo_and_up',
+          handicap: { code: 'special_weight', ja: '別定', en: 'Special Weight' },
+        },
+        {
+          id: '2026-au-g3-132',
+          organization: 'racing_australia',
+          name: { ja: "CITY TATT'S LIGHTNING", en: "City Tatt's Lightning" },
+          date: '2026-10-17',
+          course: { ja: 'ロイヤルランドウィック', en: 'Royal Randwick' },
+          grade: 'G3',
+          start_time: '2026-10-17T04:25:00.000Z',
+          is_time_confirmed: true,
+          distance: 1200,
+          track_type: 'turf',
+          sex_constraint: 'none',
+          age_constraint: '3yo_and_up',
+          handicap: { code: 'weight_for_age', ja: '馬齢', en: 'Weight for Age' },
+        },
+      ];
+
+      const resultMap = parseAustraliaResultsJson(meetings, targetRaces);
+      expect(resultMap.get('2026-au-g2-79')?.name.en).toBe('Cavalry Girl');
+      expect(resultMap.get('2026-au-g3-135')?.name.en).toBe('King Snitz');
+      expect(resultMap.get('2026-au-g3-136')?.name.en).toBe('War Machine');
+      expect(resultMap.get('2026-au-g3-132')?.name.en).toBe('Grafterburners');
+    });
+
     it('別名（Ladies Day Vase vs Evergreen Turf Vase）および日付・競馬場一致で正しく名寄せできること', () => {
       const sampleHtml = `
       <div class="StakesHeader">Australia Oct 10 - Caulfield: Evergreen Turf Vase Gr3 1600m</div>
@@ -432,12 +561,25 @@ describe('Australia Results utility', () => {
       expect(melb).toBeDefined();
       expect(melb?.winner).toBeUndefined();
 
-      // ジ・エベレスト (2026-10-17)
+      // ジ・エベレスト (2026-10-17 開催済み -> Tempted)
       const everest = races.find((r) => r.id === '2026-au-g1-58');
       expect(everest).toBeDefined();
-      expect(everest?.winner).toBeUndefined();
+      expect(everest?.winner?.name.en).toBe('Tempted');
+      expect(everest?.winner?.jockey?.en).toBe('C. Schofield');
 
-      // コックスプレート (2026-10-24)
+      // キングチャールズ3世ステークス (2026-10-17 開催済み -> Autumn Glow)
+      const kc3 = races.find((r) => r.id === '2026-au-g1-59');
+      expect(kc3).toBeDefined();
+      expect(kc3?.winner?.name.en).toBe('Autumn Glow');
+      expect(kc3?.winner?.jockey?.en).toBe('J. McDonald');
+
+      // コーフィールドカップ (2026-10-17 開催済み -> Kingswood)
+      const caulfieldCup = races.find((r) => r.id === '2026-au-g1-60');
+      expect(caulfieldCup).toBeDefined();
+      expect(caulfieldCup?.winner?.name.en).toBe('Kingswood');
+      expect(caulfieldCup?.winner?.jockey?.en).toBe('John Allen');
+
+      // コックスプレート (2026-10-24 本日未開催・未終了)
       const cox = races.find((r) => r.id === '2026-au-g1-61');
       expect(cox).toBeDefined();
       expect(cox?.winner).toBeUndefined();
@@ -494,9 +636,32 @@ describe('Australia Results utility', () => {
       expect(sandownStakes).toBeDefined();
       expect(sandownStakes?.winner).toBeUndefined();
 
-      // 8. 空値原則: 10月15日以降の未開催オーストラリア重賞レースはすべて winner: undefined
+      // 8. Issue #263: 2026-10-17 および 2026-10-21 に開催された全重賞に確定勝者・騎手が反映されていること
+      const expectedOct17And21 = [
+        { id: '2026-au-g2-78', name: 'Tristarc Stakes', winner: 'Shadhavar', jockey: 'Craig Williams' },
+        { id: '2026-au-g2-79', name: 'Caulfield Sprint', winner: 'Cavalry Girl', jockey: 'Craig Williams' },
+        { id: '2026-au-g3-130', name: 'Atc St. Leger Stakes', winner: 'So You Are', jockey: 'Tommy Berry' },
+        { id: '2026-au-g3-131', name: 'The Silver Eagle', winner: 'Apocalyptic', jockey: 'Tommy Berry' },
+        { id: '2026-au-g3-132', name: "City Tatt's Lightning", winner: 'Grafterburners', jockey: 'Nash Rawiller' },
+        { id: '2026-au-g3-133', name: 'Angst Quality Handicap', winner: 'Unleeshing', jockey: 'Jason Collett' },
+        { id: '2026-au-g3-134', name: 'Reginald Allen Quality', winner: 'Beyond The Reef', jockey: 'Dylan Gibbons' },
+        { id: '2026-au-g3-135', name: 'Norman Robinson Stakes', winner: 'King Snitz', jockey: 'Damian Lane' },
+        { id: '2026-au-g3-136', name: 'Moonga Stakes', winner: 'War Machine', jockey: 'Mark Zahra' },
+        { id: '2026-au-g3-137', name: 'Ethereal Stakes', winner: 'Quick Finish', jockey: 'Jye McNeil' },
+        { id: '2026-au-g3-138', name: 'Eurythmic Stakes', winner: 'King Of Light', jockey: 'Lucy Fiore' },
+        { id: '2026-au-g3-139', name: 'Geelong Cup', winner: 'Point Of Law', jockey: 'Ethan Brown' },
+      ];
+
+      for (const exp of expectedOct17And21) {
+        const race = races.find((r) => r.id === exp.id);
+        expect(race).toBeDefined();
+        expect(race?.winner?.name.en).toBe(exp.winner);
+        expect(race?.winner?.jockey?.en).toBe(exp.jockey);
+      }
+
+      // 9. 空値原則: 10月24日以降の未開催オーストラリア重賞レースはすべて winner: undefined
       const futureAuRaces = races.filter(
-        (r) => r.organization === 'racing_australia' && r.date >= '2026-10-15'
+        (r) => r.organization === 'racing_australia' && r.date >= '2026-10-24'
       );
       expect(futureAuRaces.length).toBeGreaterThan(0);
       for (const fr of futureAuRaces) {

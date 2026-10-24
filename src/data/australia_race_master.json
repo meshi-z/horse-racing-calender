@@ -9429,7 +9429,7 @@
       "is_time_confirmed": false
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-21",
       "grade": "G3",
       "name": {
         "ja": "GEELONGカップ",
@@ -9437,7 +9437,7 @@
         "zh": "Geelong盃",
         "fr": "Geelong Cup"
       },
-      "start_time": "2026-10-22T04:30:00.000Z",
+      "start_time": "2026-10-21T05:00:00.000Z",
       "course": {
         "ja": "ジーロング",
         "en": "Geelong",
@@ -9456,7 +9456,7 @@
       "id": "2026-au-g3-139",
       "organization": "racing_australia",
       "country_code": "AU",
-      "is_time_confirmed": false
+      "is_time_confirmed": true
     },
     {
       "date": "2026-10-24",
