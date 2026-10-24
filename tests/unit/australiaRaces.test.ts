@@ -171,5 +171,42 @@ describe('Australia Races Pipeline and Master Data (Issue #193)', () => {
       }
     }
   });
-});
 
+  it('2026年10月24日 コックスプレートデーの7重賞が確定発走時刻として反映され、MVゴールドカップの開催日が修正されていること (Issue #261)', () => {
+    const master = loadAustraliaRaceMaster(rootDir);
+    const races = getAustraliaRaces(master, new Map());
+
+    const expectedRaces = [
+      { id: '2026-au-g3-143', name: 'Red Anchor Stakes', date: '2026-10-24', time: '2026-10-24T02:00:00.000Z' },
+      { id: '2026-au-g2-86', name: 'Moonee Valley Vase', date: '2026-10-24', time: '2026-10-24T02:40:00.000Z' },
+      { id: '2026-au-g2-84', name: 'Ian Mcewen Trophy', date: '2026-10-24', time: '2026-10-24T04:00:00.000Z' },
+      { id: '2026-au-g2-83', name: 'Crystal Mile', date: '2026-10-24', time: '2026-10-24T04:40:00.000Z' },
+      { id: '2026-au-g2-80', name: 'Moonee Valley Gold Cup', date: '2026-10-24', time: '2026-10-24T05:20:00.000Z' },
+      { id: '2026-au-g1-61', name: 'Cox Plate', date: '2026-10-24', time: '2026-10-24T06:10:00.000Z' },
+      { id: '2026-au-g3-141', name: 'Tesio Stakes', date: '2026-10-24', time: '2026-10-24T06:50:00.000Z' },
+    ];
+
+    for (const exp of expectedRaces) {
+      const race = races.find((r) => r.id === exp.id);
+      expect(race).toBeDefined();
+      expect(race?.name.en).toBe(exp.name);
+      expect(race?.date).toBe(exp.date);
+      expect(race?.start_time).toBe(exp.time);
+      expect(race?.is_time_confirmed).toBe(true);
+      expect(race?.course.en).toBe('Moonee Valley');
+    }
+
+    // 配布用 JSON (races.json, races-2026.json) の同期検証
+    for (const file of ['public/data/races.json', 'public/data/races-2026.json']) {
+      const publicPath = path.resolve(rootDir, file);
+      const publicRaces = JSON.parse(fs.readFileSync(publicPath, 'utf8'));
+      for (const exp of expectedRaces) {
+        const pr = publicRaces.find((r: { id: string }) => r.id === exp.id);
+        expect(pr).toBeDefined();
+        expect(pr?.date).toBe(exp.date);
+        expect(pr?.start_time).toBe(exp.time);
+        expect(pr?.is_time_confirmed).toBe(true);
+      }
+    }
+  });
+});

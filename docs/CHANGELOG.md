@@ -6,6 +6,28 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 81: オーストラリア競馬（Racing Australia）コックスプレートデー等の確定発走時刻および開催日反映 (v1.45.7 / Issue #261) [完了]
+- **コックスプレートデー7重賞の確定発走予定時刻の反映 (`src/data/australia_race_master.json`, `public/data/races-2026.json`, `public/data/races.json`) [完了]**
+  - 本日2026年10月24日（土）に開催される看板G1「コックスプレート（Ladbrokes Cox Plate）」をはじめとするムーニーバレー開催（フレミントン競馬場代替開催）の重賞競走について、公式一次情報に基づく確定発走時刻（AEDT $\rightarrow$ UTC）をマスタおよび本番配布用データへ反映し、`is_time_confirmed: true` に更新。
+  - 対象7重賞:
+    - `2026-au-g3-143`: HKJC World Pool Red Anchor Stakes (13:00 AEDT / 11:00 JST / 02:00 UTC)
+    - `2026-au-g2-86`: Drummond Golf Vase (Moonee Valley Vase) (13:40 AEDT / 11:40 JST / 02:40 UTC)
+    - `2026-au-g2-84`: Cirka McEwen Stakes (Ian McEwen Trophy) (15:00 AEDT / 13:00 JST / 04:00 UTC)
+    - `2026-au-g2-83`: Kia Ora Stud Mile (Crystal Mile) (15:40 AEDT / 13:40 JST / 04:40 UTC)
+    - `2026-au-g2-80`: Ladbrokes Moonee Valley Gold Cup (16:20 AEDT / 14:20 JST / 05:20 UTC)
+    - `2026-au-g1-61`: Ladbrokes Cox Plate (17:10 AEDT / 15:10 JST / 06:10 UTC)
+    - `2026-au-g3-141`: Powerflo Solutions Tesio Stakes (17:50 AEDT / 15:50 JST / 06:50 UTC)
+- **ムーニーバレーゴールドカップ（`2026-au-g2-80`）の開催日修正 (`src/data/australia_race_master.json`, `public/data/races-2026.json`, `public/data/races.json`) [完了]**
+  - 同日のコックスプレート当日プログラムとして開催されるため、開催日を誤登録（`2026-10-23`）から正確な `2026-10-24` に修正。
+- **単体テスト拡充 & 配布用データ整合性検証 (`tests/unit/australiaRaces.test.ts`) [完了]**
+  - マスタから生成されたオーストラリア重賞データおよび `public/data/races*.json` において、対象7レースの確定発走予定時刻、確定フラグ（`is_time_confirmed: true`）、および開催日（`date: "2026-10-24"`）が正確に保持されていることを検証するテストを追加。
+- **仕様書・ドキュメント更新 [完了]**
+  - `docs/specs/data-sources/australia.md`: コックスプレートデー確定発走予定時刻および開催日修正実績を追記。
+  - `docs/PRD.md`: 第7章 マイルストーン M6（`v1.44.5 〜 v1.45.7`）を更新。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`、`npm test`、`npm run build` による検証を実施。
+
 ### Step 80: アメリカ競馬（Equibase）確定発走時刻取得パイプライン実装（スタブ解消） & 勝ち馬名寄せ精度強化・バックフィル (v1.45.6 / Issue #247) [完了]
 - **Sporting Life Racecards API 連携による米国確定発走時刻取得パイプラインの実装 (`scripts/lib/us-syutsuba.ts`, `scripts/update-race-times.ts`) [完了]**
   - Equibase 公式Webサイトの Imperva WAF（チャレンジ画面）による自動HTTP遮断を回避し、英国最大手競馬情報メディア **Sporting Life Racecards API (`https://www.sportinglife.com/api/horse-racing/racing/racecards/${dateYmd}`)** を用いた実通信による確定発走時刻取得パーサー（`parseSportingLifeUsRacecardsJson`）を実装。
