@@ -51258,38 +51258,6 @@
     }
   },
   {
-    "id": "2026-au-g2-80",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "ムーニーバレーゴールドカップ",
-      "en": "Moonee Valley Gold Cup",
-      "zh": "滿利谷金盃",
-      "fr": "Moonee Valley Gold Cup"
-    },
-    "grade": "G2",
-    "date": "2026-10-23",
-    "start_time": "2026-10-23T04:30:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-23",
-    "course": {
-      "ja": "ムーニーバレー",
-      "en": "Moonee Valley",
-      "zh": "滿利谷",
-      "fr": "Moonee Valley"
-    },
-    "distance": 2500,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-200",
     "organization": "nar",
     "country_code": "JP",
@@ -51402,6 +51370,102 @@
     }
   },
   {
+    "id": "2026-au-g3-143",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "レッドアンカーステークス",
+      "en": "Red Anchor Stakes",
+      "zh": "Red Anchor錦標",
+      "fr": "Red Anchor Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-24",
+    "start_time": "2026-10-24T02:00:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-24",
+    "course": {
+      "ja": "ムーニーバレー",
+      "en": "Moonee Valley",
+      "zh": "滿利谷",
+      "fr": "Moonee Valley"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-au-g2-86",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "MOONEE VALLEYヴァーズ",
+      "en": "Moonee Valley Vase",
+      "zh": "Moonee Valley瓶",
+      "fr": "Moonee Valley Vase"
+    },
+    "grade": "G2",
+    "date": "2026-10-24",
+    "start_time": "2026-10-24T02:40:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-24",
+    "course": {
+      "ja": "ムーニーバレー",
+      "en": "Moonee Valley",
+      "zh": "滿利谷",
+      "fr": "Moonee Valley"
+    },
+    "distance": 2040,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "馬齢",
+      "en": "Set Weights"
+    }
+  },
+  {
+    "id": "2026-au-g2-84",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "IAN McEWENトロフィー",
+      "en": "Ian Mcewen Trophy",
+      "zh": "Ian Mcewen獎盃",
+      "fr": "Ian Mcewen Trophy"
+    },
+    "grade": "G2",
+    "date": "2026-10-24",
+    "start_time": "2026-10-24T04:00:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-24",
+    "course": {
+      "ja": "ムーニーバレー",
+      "en": "Moonee Valley",
+      "zh": "滿利谷",
+      "fr": "Moonee Valley"
+    },
+    "distance": 1200,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "馬齢",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-au-g2-81",
     "organization": "racing_australia",
     "country_code": "AU",
@@ -51466,70 +51530,6 @@
     }
   },
   {
-    "id": "2026-au-g2-83",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "クリスタルマイル",
-      "en": "Crystal Mile",
-      "zh": "水晶一哩賽",
-      "fr": "Crystal Mile"
-    },
-    "grade": "G2",
-    "date": "2026-10-24",
-    "start_time": "2026-10-24T04:30:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-24",
-    "course": {
-      "ja": "ムーニーバレー",
-      "en": "Moonee Valley",
-      "zh": "滿利谷",
-      "fr": "Moonee Valley"
-    },
-    "distance": 1600,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
-    "id": "2026-au-g2-84",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "IAN McEWENトロフィー",
-      "en": "Ian Mcewen Trophy",
-      "zh": "Ian Mcewen獎盃",
-      "fr": "Ian Mcewen Trophy"
-    },
-    "grade": "G2",
-    "date": "2026-10-24",
-    "start_time": "2026-10-24T04:30:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-24",
-    "course": {
-      "ja": "ムーニーバレー",
-      "en": "Moonee Valley",
-      "zh": "滿利谷",
-      "fr": "Moonee Valley"
-    },
-    "distance": 1200,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "馬齢",
-      "en": "Weight for Age"
-    }
-  },
-  {
     "id": "2026-au-g2-85",
     "organization": "racing_australia",
     "country_code": "AU",
@@ -51554,38 +51554,6 @@
     "distance": 1600,
     "track_type": "turf",
     "sex_constraint": "filly_and_mare",
-    "age_constraint": "3yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "馬齢",
-      "en": "Set Weights"
-    }
-  },
-  {
-    "id": "2026-au-g2-86",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "MOONEE VALLEYヴァーズ",
-      "en": "Moonee Valley Vase",
-      "zh": "Moonee Valley瓶",
-      "fr": "Moonee Valley Vase"
-    },
-    "grade": "G2",
-    "date": "2026-10-24",
-    "start_time": "2026-10-24T04:30:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-24",
-    "course": {
-      "ja": "ムーニーバレー",
-      "en": "Moonee Valley",
-      "zh": "滿利谷",
-      "fr": "Moonee Valley"
-    },
-    "distance": 2040,
-    "track_type": "turf",
-    "sex_constraint": "none",
     "age_constraint": "3yo",
     "handicap": {
       "code": "set_weight",
@@ -51626,38 +51594,6 @@
     }
   },
   {
-    "id": "2026-au-g3-141",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "テシオステークス",
-      "en": "Tesio Stakes",
-      "zh": "Tesio錦標",
-      "fr": "Tesio Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-10-24",
-    "start_time": "2026-10-24T04:30:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-24",
-    "course": {
-      "ja": "ムーニーバレー",
-      "en": "Moonee Valley",
-      "zh": "滿利谷",
-      "fr": "Moonee Valley"
-    },
-    "distance": 2040,
-    "track_type": "turf",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "4yo_and_up",
-    "handicap": {
-      "code": "handicap",
-      "ja": "ハンデ",
-      "en": "Handicap"
-    }
-  },
-  {
     "id": "2026-au-g3-142",
     "organization": "racing_australia",
     "country_code": "AU",
@@ -51690,19 +51626,19 @@
     }
   },
   {
-    "id": "2026-au-g3-143",
+    "id": "2026-au-g2-83",
     "organization": "racing_australia",
     "country_code": "AU",
     "name": {
-      "ja": "レッドアンカーステークス",
-      "en": "Red Anchor Stakes",
-      "zh": "Red Anchor錦標",
-      "fr": "Red Anchor Stakes"
+      "ja": "クリスタルマイル",
+      "en": "Crystal Mile",
+      "zh": "水晶一哩賽",
+      "fr": "Crystal Mile"
     },
-    "grade": "G3",
+    "grade": "G2",
     "date": "2026-10-24",
-    "start_time": "2026-10-24T04:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-24T04:40:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-24",
     "course": {
@@ -51711,10 +51647,10 @@
       "zh": "滿利谷",
       "fr": "Moonee Valley"
     },
-    "distance": 1200,
+    "distance": 1600,
     "track_type": "turf",
     "sex_constraint": "none",
-    "age_constraint": "3yo",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "special_weight",
       "ja": "別定",
@@ -51754,6 +51690,38 @@
     }
   },
   {
+    "id": "2026-au-g2-80",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "ムーニーバレーゴールドカップ",
+      "en": "Moonee Valley Gold Cup",
+      "zh": "滿利谷金盃",
+      "fr": "Moonee Valley Gold Cup"
+    },
+    "grade": "G2",
+    "date": "2026-10-24",
+    "start_time": "2026-10-24T05:20:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-24",
+    "course": {
+      "ja": "ムーニーバレー",
+      "en": "Moonee Valley",
+      "zh": "滿利谷",
+      "fr": "Moonee Valley"
+    },
+    "distance": 2500,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-au-g1-61",
     "organization": "racing_australia",
     "country_code": "AU",
@@ -51766,7 +51734,7 @@
     "grade": "G1",
     "date": "2026-10-24",
     "start_time": "2026-10-24T06:10:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-24",
     "course": {
@@ -51810,6 +51778,38 @@
       "code": "special_weight",
       "ja": "馬齢",
       "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-au-g3-141",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "テシオステークス",
+      "en": "Tesio Stakes",
+      "zh": "Tesio錦標",
+      "fr": "Tesio Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-24",
+    "start_time": "2026-10-24T06:50:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-24",
+    "course": {
+      "ja": "ムーニーバレー",
+      "en": "Moonee Valley",
+      "zh": "滿利谷",
+      "fr": "Moonee Valley"
+    },
+    "distance": 2040,
+    "track_type": "turf",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "4yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
     }
   },
   {
