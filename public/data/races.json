@@ -50641,6 +50641,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Mount Atlas",
+        "en": "Mount Atlas"
+      },
+      "time": "3m 25.6s"
     }
   },
   {
@@ -50669,6 +50676,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Almeraq",
+        "en": "Almeraq"
+      },
+      "time": "1m 12.2s"
     }
   },
   {
@@ -50697,6 +50711,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Minnie Hauk",
+        "en": "Minnie Hauk"
+      },
+      "time": "2m 29.49s"
     }
   },
   {
@@ -50729,6 +50750,13 @@
       "code": "set_weight",
       "ja": "定量",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Capability Brown",
+        "en": "Capability Brown"
+      },
+      "time": "1m 30.99s"
     }
   },
   {
@@ -50757,6 +50785,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Talk Of New York",
+        "en": "Talk Of New York"
+      },
+      "time": "1m 39.83s"
     }
   },
   {
@@ -50785,6 +50820,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Ombudsman",
+        "en": "Ombudsman"
+      },
+      "time": "2m 4.22s"
     }
   },
   {
@@ -50868,6 +50910,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ジューンベロシティ"
+      },
+      "jockey": {
+        "ja": "高田 潤"
+      },
+      "horse_number": 9,
+      "time": "3:23.2"
     }
   },
   {
@@ -50896,6 +50948,16 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "モンローウォーク"
+      },
+      "jockey": {
+        "ja": "戸崎 圭太"
+      },
+      "horse_number": 8,
+      "time": "1:56.1"
     }
   },
   {
@@ -50952,6 +51014,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "アメストリス"
+      },
+      "jockey": {
+        "ja": "田中直"
+      },
+      "horse_number": 2,
+      "time": "1:28.5"
     }
   },
   {
@@ -50978,6 +51050,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ストライクオン"
+      },
+      "jockey": {
+        "ja": "望月洵"
+      },
+      "horse_number": 6,
+      "time": "1:27.5"
     }
   },
   {
@@ -51004,6 +51086,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "クリムゾンダリア"
+      },
+      "jockey": {
+        "ja": "山本政"
+      },
+      "horse_number": 6,
+      "time": "1:25.6"
     }
   },
   {
@@ -51033,6 +51125,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Rembrand To Go",
+        "en": "Rembrand To Go",
+        "fr": "Rembrand To Go"
+      },
+      "jockey": {
+        "ja": "M.grandin",
+        "en": "M.grandin",
+        "fr": "M.grandin"
+      },
+      "horse_number": 2
     }
   },
   {
@@ -51045,7 +51150,7 @@
     },
     "grade": "G3",
     "date": "2026-10-18",
-    "start_time": "2026-10-18T19:12:00.000Z",
+    "start_time": "2026-10-18T20:12:00.000Z",
     "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-18",
@@ -51061,6 +51166,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Malibu Smart",
+        "en": "Malibu Smart"
+      },
+      "time": null
     }
   },
   {
@@ -51087,6 +51199,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ハジマリノアイズ"
+      },
+      "jockey": {
+        "ja": "加藤翔"
+      },
+      "horse_number": 5,
+      "time": "1:30.3"
     }
   },
   {
@@ -51099,8 +51221,8 @@
     },
     "grade": "S3",
     "date": "2026-10-21",
-    "start_time": "2026-10-21T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-21T08:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "浦和",
       "en": "Urawa"
@@ -51113,6 +51235,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "スレイマン"
+      },
+      "jockey": {
+        "ja": "御神訓"
+      },
+      "horse_number": 8,
+      "time": "2:07.5"
     }
   },
   {
@@ -51186,8 +51318,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-22",
-    "start_time": "2026-10-22T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-22T06:50:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "笠松",
       "en": "Kasamatsu"
@@ -51200,6 +51332,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "アースジャッジ"
+      },
+      "jockey": {
+        "ja": "丸野勝"
+      },
+      "horse_number": 9,
+      "time": "2:03.6"
     }
   },
   {
@@ -51226,6 +51368,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "シリントーン"
+      },
+      "jockey": {
+        "ja": "金山昇"
+      },
+      "horse_number": 4,
+      "time": "1:51.6"
     }
   },
   {
@@ -51267,8 +51419,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-23",
-    "start_time": "2026-10-23T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-23T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "笠松",
       "en": "Kasamatsu"
@@ -51281,6 +51433,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ゴールドボンド"
+      },
+      "jockey": {
+        "ja": "渡邊竜"
+      },
+      "horse_number": 2,
+      "time": "1:25.8"
     }
   },
   {
@@ -51294,7 +51456,7 @@
     "grade": "local_grade",
     "date": "2026-10-23",
     "start_time": "2026-10-23T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "園田",
       "en": "Sonoda"
@@ -51307,6 +51469,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ミスズグランドオー"
+      },
+      "jockey": {
+        "ja": "塚本征"
+      },
+      "horse_number": 3,
+      "time": "1:17.4"
     }
   },
   {
@@ -51339,6 +51511,13 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Washington Heights",
+        "en": "Washington Heights"
+      },
+      "time": "58.77s"
     }
   },
   {
@@ -51351,8 +51530,8 @@
     },
     "grade": "G2",
     "date": "2026-10-23",
-    "start_time": "2026-10-23T21:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-23T21:16:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-23",
     "course": {
@@ -51763,8 +51942,8 @@
     },
     "grade": "G3",
     "date": "2026-10-24",
-    "start_time": "2026-10-24T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-24T06:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
@@ -51822,8 +52001,8 @@
     },
     "grade": "G1",
     "date": "2026-10-24",
-    "start_time": "2026-10-24T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-24T12:30:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-24",
     "course": {
@@ -51850,8 +52029,8 @@
     },
     "grade": "G3",
     "date": "2026-10-24",
-    "start_time": "2026-10-24T13:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-24T13:35:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-24",
     "course": {
@@ -51862,34 +52041,6 @@
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
-    "id": "2026-uk-g3-71",
-    "organization": "bha",
-    "country_code": "GB",
-    "name": {
-      "ja": "ホリスヒルステークス",
-      "en": "Horris Hill Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-10-24",
-    "start_time": "2026-10-24T13:40:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-24",
-    "course": {
-      "ja": "ニューベリー",
-      "en": "Newbury"
-    },
-    "distance": 1408,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
     "handicap": {
       "code": "special_weight",
       "ja": "別定",
@@ -51923,6 +52074,34 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-uk-g3-71",
+    "organization": "bha",
+    "country_code": "GB",
+    "name": {
+      "ja": "ホリスヒルステークス",
+      "en": "Horris Hill Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-10-24",
+    "start_time": "2026-10-24T14:10:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-24",
+    "course": {
+      "ja": "ニューベリー",
+      "en": "Newbury"
+    },
+    "distance": 1408,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -52020,8 +52199,8 @@
     },
     "grade": "G1",
     "date": "2026-10-25",
-    "start_time": "2026-10-25T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-25T06:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto",
@@ -52035,32 +52214,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-nar-local-203",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "絆カップ",
-      "en": "Kizuna Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-10-25",
-    "start_time": "2026-10-25T07:30:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "盛岡",
-      "en": "Morioka"
-    },
-    "distance": 1200,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
     }
   },
   {
@@ -52120,32 +52273,6 @@
     }
   },
   {
-    "id": "2026-nar-local-202",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "北見記念",
-      "en": "Kitami Kinen"
-    },
-    "grade": "local_grade",
-    "date": "2026-10-25",
-    "start_time": "2026-10-25T10:30:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "帯広",
-      "en": "Obihiro"
-    },
-    "distance": 200,
-    "track_type": "banei",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-205",
     "organization": "nar",
     "country_code": "JP",
@@ -52155,8 +52282,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-25",
-    "start_time": "2026-10-25T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-25T09:05:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "高知",
       "en": "Kochi"
@@ -52172,6 +52299,58 @@
     }
   },
   {
+    "id": "2026-nar-local-203",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "絆カップ",
+      "en": "Kizuna Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-10-25",
+    "start_time": "2026-10-25T09:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "盛岡",
+      "en": "Morioka"
+    },
+    "distance": 1200,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-202",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "北見記念",
+      "en": "Kitami Kinen"
+    },
+    "grade": "local_grade",
+    "date": "2026-10-25",
+    "start_time": "2026-10-25T11:00:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "帯広",
+      "en": "Obihiro"
+    },
+    "distance": 200,
+    "track_type": "banei",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-france-g1-26",
     "organization": "france_galop",
     "country_code": "FR",
@@ -52182,8 +52361,8 @@
     },
     "grade": "G1",
     "date": "2026-10-25",
-    "start_time": "2026-10-25T12:35:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-25T12:23:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-25",
     "course": {
@@ -52201,6 +52380,35 @@
     }
   },
   {
+    "id": "2026-france-g3-59",
+    "organization": "france_galop",
+    "country_code": "FR",
+    "name": {
+      "ja": "パース賞",
+      "en": "Prix Perth",
+      "fr": "Prix Perth"
+    },
+    "grade": "G3",
+    "date": "2026-10-25",
+    "start_time": "2026-10-25T12:58:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-25",
+    "course": {
+      "ja": "サンクルー",
+      "en": "Saint-Cloud"
+    },
+    "distance": 1600,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-france-g1-27",
     "organization": "france_galop",
     "country_code": "FR",
@@ -52211,8 +52419,8 @@
     },
     "grade": "G1",
     "date": "2026-10-25",
-    "start_time": "2026-10-25T13:15:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-25T13:33:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-25",
     "course": {
@@ -52240,8 +52448,8 @@
     },
     "grade": "G1",
     "date": "2026-10-25",
-    "start_time": "2026-10-25T14:00:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-25T14:50:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-25",
     "course": {
@@ -52249,35 +52457,6 @@
       "en": "Saint-Cloud"
     },
     "distance": 3100,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-france-g3-59",
-    "organization": "france_galop",
-    "country_code": "FR",
-    "name": {
-      "ja": "パース賞",
-      "en": "Prix Perth",
-      "fr": "Prix Perth"
-    },
-    "grade": "G3",
-    "date": "2026-10-25",
-    "start_time": "2026-10-25T14:00:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-25",
-    "course": {
-      "ja": "サンクルー",
-      "en": "Saint-Cloud"
-    },
-    "distance": 1600,
     "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
