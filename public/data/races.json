@@ -50160,6 +50160,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Beyond The Reef",
+        "en": "Beyond The Reef"
+      },
+      "jockey": {
+        "ja": "Dylan Gibbons",
+        "en": "Dylan Gibbons"
+      }
     }
   },
   {
@@ -50192,6 +50202,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Unleeshing",
+        "en": "Unleeshing"
+      },
+      "jockey": {
+        "ja": "Jason Collett",
+        "en": "Jason Collett"
+      }
     }
   },
   {
@@ -50224,6 +50244,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "So You Are",
+        "en": "So You Are"
+      },
+      "jockey": {
+        "ja": "Tommy Berry",
+        "en": "Tommy Berry"
+      }
     }
   },
   {
@@ -50256,6 +50286,16 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Grafterburners",
+        "en": "Grafterburners"
+      },
+      "jockey": {
+        "ja": "Nash Rawiller",
+        "en": "Nash Rawiller"
+      }
     }
   },
   {
@@ -50288,6 +50328,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Shadhavar",
+        "en": "Shadhavar"
+      },
+      "jockey": {
+        "ja": "Craig Williams",
+        "en": "Craig Williams"
+      }
     }
   },
   {
@@ -50320,6 +50370,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Cavalry Girl",
+        "en": "Cavalry Girl"
+      },
+      "jockey": {
+        "ja": "Craig Williams",
+        "en": "Craig Williams"
+      }
     }
   },
   {
@@ -50352,6 +50412,16 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "King Snitz",
+        "en": "King Snitz"
+      },
+      "jockey": {
+        "ja": "Damian Lane",
+        "en": "Damian Lane"
+      }
     }
   },
   {
@@ -50384,6 +50454,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "War Machine",
+        "en": "War Machine"
+      },
+      "jockey": {
+        "ja": "Mark Zahra",
+        "en": "Mark Zahra"
+      }
     }
   },
   {
@@ -50416,6 +50496,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Quick Finish",
+        "en": "Quick Finish"
+      },
+      "jockey": {
+        "ja": "Jye McNeil",
+        "en": "Jye McNeil"
+      }
     }
   },
   {
@@ -50448,6 +50538,16 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Tempted",
+        "en": "Tempted"
+      },
+      "jockey": {
+        "ja": "C. Schofield",
+        "en": "C. Schofield"
+      }
     }
   },
   {
@@ -50480,6 +50580,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Apocalyptic",
+        "en": "Apocalyptic"
+      },
+      "jockey": {
+        "ja": "Tommy Berry",
+        "en": "Tommy Berry"
+      }
     }
   },
   {
@@ -50512,6 +50622,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Kingswood",
+        "en": "Kingswood"
+      },
+      "jockey": {
+        "ja": "John Allen",
+        "en": "John Allen"
+      }
     }
   },
   {
@@ -50544,6 +50664,16 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Autumn Glow",
+        "en": "Autumn Glow"
+      },
+      "jockey": {
+        "ja": "J. McDonald",
+        "en": "J. McDonald"
+      }
     }
   },
   {
@@ -50613,6 +50743,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "King Of Light",
+        "en": "King Of Light"
+      },
+      "jockey": {
+        "ja": "Lucy Fiore",
+        "en": "Lucy Fiore"
+      }
     }
   },
   {
@@ -51212,6 +51352,48 @@
     }
   },
   {
+    "id": "2026-au-g3-139",
+    "organization": "racing_australia",
+    "country_code": "AU",
+    "name": {
+      "ja": "GEELONGカップ",
+      "en": "Geelong Cup",
+      "zh": "Geelong盃",
+      "fr": "Geelong Cup"
+    },
+    "grade": "G3",
+    "date": "2026-10-21",
+    "start_time": "2026-10-21T05:00:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-21",
+    "course": {
+      "ja": "ジーロング",
+      "en": "Geelong",
+      "zh": "吉朗",
+      "fr": "Geelong"
+    },
+    "distance": 2400,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "handicap",
+      "ja": "ハンデ",
+      "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Point Of Law",
+        "en": "Point Of Law"
+      },
+      "jockey": {
+        "ja": "Ethan Brown",
+        "en": "Ethan Brown"
+      }
+    }
+  },
+  {
     "id": "2026-nar-s3-20",
     "organization": "nar",
     "country_code": "JP",
@@ -51274,38 +51456,6 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-au-g3-139",
-    "organization": "racing_australia",
-    "country_code": "AU",
-    "name": {
-      "ja": "GEELONGカップ",
-      "en": "Geelong Cup",
-      "zh": "Geelong盃",
-      "fr": "Geelong Cup"
-    },
-    "grade": "G3",
-    "date": "2026-10-22",
-    "start_time": "2026-10-22T04:30:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-10-22",
-    "course": {
-      "ja": "ジーロング",
-      "en": "Geelong",
-      "zh": "吉朗",
-      "fr": "Geelong"
-    },
-    "distance": 2400,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "handicap",
-      "ja": "ハンデ",
-      "en": "Handicap"
     }
   },
   {

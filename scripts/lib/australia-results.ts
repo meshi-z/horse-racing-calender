@@ -16,6 +16,7 @@ export interface AustraliaMeetingResultItem {
     raceNumber: number;
     raceName: string;
     winningTime?: string;
+    resultUrl?: string;
     results: AustraliaRaceResultItem[];
   }>;
 }
@@ -26,16 +27,17 @@ const BREEDNET_MONTH_MAP: Record<string, string> = {
 };
 
 /**
- * Breednet (breednet.com.au/stakes-race-results/) の HTML から
+ * Breednet (breednet.com.au/stakes-race-results/ および /stakes-races) の HTML から
  * AustraliaMeetingResultItem[] をパースして構造化する。
  */
 export function parseBreednetStakesResultsHtml(
   html: string,
   referenceYear: number = 2026
 ): AustraliaMeetingResultItem[] {
-  const parts = html.split('class="StakesHeader">');
   const meetingsMap = new Map<string, AustraliaMeetingResultItem>();
 
+  // 1. トップページ形式のパース (class="StakesHeader">... Australia Oct 10 - Caulfield: ...)
+  const parts = html.split('class="StakesHeader">');
   for (let i = 1; i < parts.length; i++) {
     const p = parts[i];
     const header = p.split('</div>')[0].replace(/<[^>]+>/g, '').trim();
@@ -80,6 +82,51 @@ export function parseBreednetStakesResultsHtml(
             horseName,
             jockeyName,
             finishPosition: finishPos,
+          },
+        ],
+      });
+    }
+  }
+
+  // 2. アーカイブ一覧形式のパース (stakes-races: <div class="stakes-location">Oct 17 - Randwick:</div> ...)
+  const archiveItemRegex = /<div class="stakes-location">([^<]+)<\/div>\s*<div class="stakes-racename"><b><a href="([^"]+)">([^<]+)<\/a>([^<]*)<\/b>[\s\S]*?<\/div>\s*<div class="horsename"><a[^>]*>([^<]+)<\/a>/g;
+  let am;
+  while ((am = archiveItemRegex.exec(html)) !== null) {
+    const locRaw = am[1].trim(); // e.g. "Oct 17 - Randwick:"
+    const link = am[2].trim();
+    const raceName = am[3].trim();
+    const horseName = am[5].trim();
+
+    const locMatch = locRaw.match(/^([A-Za-z]{3})\s+(\d{1,2})\s*-\s*([^:]+):?$/);
+    if (!locMatch) continue;
+
+    const monStr = locMatch[1].toLowerCase();
+    const dayStr = locMatch[2].padStart(2, '0');
+    const venue = locMatch[3].trim();
+
+    const month = BREEDNET_MONTH_MAP[monStr];
+    if (!month) continue;
+
+    const date = `${referenceYear}-${month}-${dayStr}`;
+    const key = `${date}_${venue}`;
+
+    let meeting = meetingsMap.get(key);
+    if (!meeting) {
+      meeting = { venue, date, races: [] };
+      meetingsMap.set(key, meeting);
+    }
+
+    // 既に同一レース名が登録されているかチェック
+    const existing = meeting.races.find((r) => r.raceName === raceName);
+    if (!existing) {
+      meeting.races.push({
+        raceNumber: meeting.races.length + 1,
+        raceName,
+        resultUrl: link,
+        results: [
+          {
+            horseName,
+            finishPosition: 1,
           },
         ],
       });

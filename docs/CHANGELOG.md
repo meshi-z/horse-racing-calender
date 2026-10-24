@@ -6,6 +6,48 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 82: オーストラリア競馬（Racing Australia）10/17以降の重賞レース結果・勝者データ反映 & Breednetアーカイブ対応 (v1.45.8 / Issue #263) [完了]
+- **Breednet アーカイブフェッチ対応およびパース処理拡張 (`scripts/lib/australia-results.ts`, `scripts/update-race-results.ts`) [完了]**
+  - Breednet のトップページ（`/stakes-race-results/`）が最新1〜2日分のみの掲載である仕様に対応し、過去全重賞の記録が保持されているアーカイブ一覧（`/stakes-race-results/stakes-races`）も自動フェッチするよう改修。
+  - アーカイブ一覧形式（`<div class="stakes-location">...<div class="stakes-racename">...<div class="horsename">...`）のパース処理を実装。
+  - 個別レース詳細（`result.aspx`）からの騎手名抽出サポートを追加し、トップページから押し出されたレースでも確実に勝者・騎手を取得可能に改善。
+- **レース別名・スポンサー冠名・改称名マッピングの拡充 (`scripts/lib/australia-syutsuba.ts`) [完了]**
+  - `AU_RACE_ALIASES` に以下の重要別名マッピングを追加し、名寄せ精度を大幅強化：
+    - `Caulfield Sprint` $\leftrightarrow$ `Henley Homes Sprint` (スポンサー冠名)
+    - `Norman Robinson Stakes` $\leftrightarrow$ `Caulfield Classic` / `Sportsbet Classic` (登録名・別名)
+    - `Moonga Stakes` $\leftrightarrow$ `Harry White Stakes` / `Sportsbet Harry White Stakes` (2026年改称名)
+    - `City Tatt's Lightning` $\leftrightarrow$ `Sydney Stakes` (登録名・別名)
+    - `Angst Quality Handicap` $\leftrightarrow$ `Angst Stakes` / `Asahi Super Dry Angst Stakes`
+    - `Reginald Allen Quality` $\leftrightarrow$ `Reginald Allen Qlty`
+    - `Atc St. Leger Stakes` $\leftrightarrow$ `St Leger Stakes`
+- **ジーロングカップ（`2026-au-g3-139`）の開催日補正 (`src/data/australia_race_master.json`, `public/data/races-2026.json`, `public/data/races.json`) [完了]**
+  - 実際の現地開催日（水曜日）に合わせて、登録日を `2026-10-22` から正確な `2026-10-21` へ修正。発走時刻も `2026-10-21T05:00:00.000Z` に補正。
+- **10月17日・21日のオーストラリア全15重賞における公式確定勝者（馬名・騎手）の二重永続化 (`src/data/race_winners.json`, `public/data/races-2026.json`, `public/data/races.json`) [完了]**
+  - 公式一次情報（Breednet, Racing Australia 等）に基づき、以下の全15重賞の勝者・騎手を完全反映：
+    - `2026-au-g1-58`: The Everest $\rightarrow$ **Tempted** (C. Schofield)
+    - `2026-au-g1-59`: King Charles III Stakes $\rightarrow$ **Autumn Glow** (J. McDonald)
+    - `2026-au-g1-60`: Caulfield Cup $\rightarrow$ **Kingswood** (John Allen)
+    - `2026-au-g2-78`: Tristarc Stakes $\rightarrow$ **Shadhavar** (Craig Williams)
+    - `2026-au-g2-79`: Caulfield Sprint $\rightarrow$ **Cavalry Girl** (Craig Williams)
+    - `2026-au-g3-130`: Atc St. Leger Stakes $\rightarrow$ **So You Are** (Tommy Berry)
+    - `2026-au-g3-131`: The Silver Eagle $\rightarrow$ **Apocalyptic** (Tommy Berry)
+    - `2026-au-g3-132`: City Tatt's Lightning $\rightarrow$ **Grafterburners** (Nash Rawiller)
+    - `2026-au-g3-133`: Angst Quality Handicap $\rightarrow$ **Unleeshing** (Jason Collett)
+    - `2026-au-g3-134`: Reginald Allen Quality $\rightarrow$ **Beyond The Reef** (Dylan Gibbons)
+    - `2026-au-g3-135`: Norman Robinson Stakes $\rightarrow$ **King Snitz** (Damian Lane)
+    - `2026-au-g3-136`: Moonga Stakes $\rightarrow$ **War Machine** (Mark Zahra)
+    - `2026-au-g3-137`: Ethereal Stakes $\rightarrow$ **Quick Finish** (Jye McNeil)
+    - `2026-au-g3-138`: Eurythmic Stakes $\rightarrow$ **King Of Light** (Lucy Fiore)
+    - `2026-au-g3-139`: Geelong Cup $\rightarrow$ **Point Of Law** (Ethan Brown)
+- **単体テスト拡充 & データ整合性テスト更新 (`tests/unit/australiaResults.test.ts`) [完了]**
+  - アーカイブパース、新エイリアス名寄せ、10月17日〜21日の全15重賞リザルト検証、および最新未開催レース（10月24日以降）の空値原則アサーションを追加・更新（全11テストパス）。
+- **仕様書・ドキュメント更新 [完了]**
+  - `docs/specs/data-sources/australia.md`: アーカイブフェッチ対応、エイリアスマッピング、Issue #263 反映実績を追記。
+  - `docs/PRD.md`: 第7章 マイルストーン M6（`v1.44.5 〜 v1.45.8`）を更新。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`、`npm test`、`npm run build` による検証を実施。
+
 ### Step 81: オーストラリア競馬（Racing Australia）コックスプレートデー等の確定発走時刻および開催日反映 (v1.45.7 / Issue #261) [完了]
 - **コックスプレートデー7重賞の確定発走予定時刻の反映 (`src/data/australia_race_master.json`, `public/data/races-2026.json`, `public/data/races.json`) [完了]**
   - 本日2026年10月24日（土）に開催される看板G1「コックスプレート（Ladbrokes Cox Plate）」をはじめとするムーニーバレー開催（フレミントン競馬場代替開催）の重賞競走について、公式一次情報に基づく確定発走時刻（AEDT $\rightarrow$ UTC）をマスタおよび本番配布用データへ反映し、`is_time_confirmed: true` に更新。

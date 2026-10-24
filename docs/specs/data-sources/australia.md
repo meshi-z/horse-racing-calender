@@ -127,6 +127,10 @@
   - 日数指定バックフィル: `npm run data:update-results -- --org racing_australia --days 7`
 - **定期実行スケジュール**:
   - オーストラリア開催終了枠（日本時間土曜 16:30, 18:30 JST 等）
+- **実績反映 (Issue #263)**:
+  - Breednet の過去重賞アーカイブ一覧（`/stakes-race-results/stakes-races`）および個別レース詳細パースへの対応により、トップページから押し出された過去重賞の安定取得パイプラインを確立。
+  - レース別名・スポンサー冠名マッピング（Caulfield Sprint $\leftrightarrow$ Henley Homes Sprint, Norman Robinson $\leftrightarrow$ Sportsbet Classic, Moonga Stakes $\leftrightarrow$ Harry White Stakes, Sydney Stakes $\leftrightarrow$ City Tatt's Lightning 等）を拡充。
+  - 2026年10月17日開催の14重賞（ジ・エベレスト、コーフィールドカップ、キングチャールズ3世S、トリスタークS、コーフィールドスプリント、ATCセントレジャーS、シルバーイーグル、シティタッツライトニング、アングストS、レジナルドアレンクオリティ、ノーマンロビンソンS、ムーンガS、エセリアルS、ユーリスミックS）および10月21日開催のジーロングカップ（計15レース）の公式確定勝者（馬名・騎手）を本番データおよび永続化マスタ（`src/data/race_winners.json`）へ反映完了。また、ジーロングカップの開催日を `2026-10-21` に補正完了。
 - **実績反映 (Issue #246)**:
   - 2026年10月10日開催の全11重賞（コーフィールドギニー、マイトアンドパワーステークス、トゥーラックハンデキャップ等）および10月14日開催のクンジーハンデキャップ（Coongy Hcp）の確定勝者・騎手を自動取得・永続化完了。
 
