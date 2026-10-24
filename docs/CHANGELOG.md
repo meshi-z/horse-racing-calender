@@ -6,6 +6,29 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 83: Dependabot提案の依存関係一括更新・脆弱性解消 & テスト環境堅牢化 (v1.45.9 / PR #256, #257, #258, #259, #260, #265, #266, #267, #268) [完了]
+- **Dependabot 登録 PR の安全な一括統合 (`package.json`, `package-lock.json`) [完了]**
+  - 個別オープンされていた Dependabot の全9件のプルリクエストを1本のリリースに統合し安全に更新：
+    - PR #256: `@vitejs/plugin-react` (`6.1.1` $\rightarrow$ `6.1.2`)
+    - PR #257: `@radix-ui/react-select` (`2.3.8` $\rightarrow$ `2.4.1`)
+    - PR #258: `postcss` (`8.5.28` $\rightarrow$ `8.5.30`)
+    - PR #259: `@radix-ui/react-slot` (`1.4.0` $\rightarrow$ `1.5.0`)
+    - PR #260: `@radix-ui/react-tabs` (`1.1.22` $\rightarrow$ `1.2.1`)
+    - PR #265: `undici` (`8.12.2` $\rightarrow$ `8.12.3` / 推移的依存のセキュリティ・修正反映)
+    - PR #266: `fast-uri` (`3.1.8` $\rightarrow$ `3.1.9` / 推移的依存のセキュリティ・修正反映)
+    - PR #267: `serialize-javascript` (`7.1.3` $\rightarrow$ `7.1.4` / 推移的依存のセキュリティ・修正反映)
+    - PR #268: `vitest` (`5.0.0` $\rightarrow$ `5.0.5`)
+- **テスト環境および peerDependencies の整合性強化 (`package.json`) [完了]**
+  - `@testing-library/react` が要求する `@testing-library/dom`（`^10.4.2`）を `devDependencies` に明示追加し、`npm install` 時の peer 解決揺らぎによる型定義消失を防止。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`: 全ファイル型エラー 0 件を確認。
+  - `npm test`: 全68テストスイート・663件の単体/統合テスト全件合格を確認。
+  - `npm run build`: プロダクションビルド（Vite / PWA GenerateSW）正常終了を確認。
+- **ドキュメント更新 [完了]**
+  - `docs/PRD.md`: バージョン `v1.45.9` 反映および M6 実績追記。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: PDF再生成。
+
+
 ### Step 82: オーストラリア競馬（Racing Australia）10/17以降の重賞レース結果・勝者データ反映 & Breednetアーカイブ対応 (v1.45.8 / Issue #263) [完了]
 - **Breednet アーカイブフェッチ対応およびパース処理拡張 (`scripts/lib/australia-results.ts`, `scripts/update-race-results.ts`) [完了]**
   - Breednet のトップページ（`/stakes-race-results/`）が最新1〜2日分のみの掲載である仕様に対応し、過去全重賞の記録が保持されているアーカイブ一覧（`/stakes-race-results/stakes-races`）も自動フェッチするよう改修。
