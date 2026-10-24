@@ -198,7 +198,7 @@ describe("TimelineView", () => {
     });
   });
 
-  describe("今日へ戻るジャンプボタン (Issue #9)", () => {
+  describe("今日へ戻るジャンプボタン (Issue #9, Issue #272)", () => {
     it("レースが存在する場合にジャンプボタンが配置され、クリックするとターゲットへスクロールすること", () => {
       const scrollIntoViewMock = vi.fn();
       Element.prototype.scrollIntoView = scrollIntoViewMock;
@@ -221,6 +221,119 @@ describe("TimelineView", () => {
           block: "start",
         })
       );
+
+      vi.useRealTimers();
+    });
+
+    it("スクロール途中のレイアウトシフトにより途中で停止しても自動再スクロール補正が行われ、1回のクリックで到達すること (Issue #272)", () => {
+      vi.useFakeTimers();
+      vi.setSystemTime(new Date(2026, 0, 4, 10, 0, 0));
+
+      render(<TimelineView races={mockRaces} />);
+      act(() => {
+        vi.runAllTimers();
+      });
+
+      const targetSection = document.getElementById("section-date-2026-01-04")!;
+      expect(targetSection).toBeInTheDocument();
+
+      // 初期状態: ターゲットが 1800px 下方に離れている状態をシミュレート
+      let simulatedTop = 1800;
+      vi.spyOn(targetSection, "getBoundingClientRect").mockImplementation(
+        () =>
+          ({
+            top: simulatedTop,
+            bottom: simulatedTop + 300,
+            height: 300,
+            left: 0,
+            right: 800,
+            width: 800,
+            x: 0,
+            y: simulatedTop,
+            toJSON: () => {},
+          }) as DOMRect
+      );
+
+      let scrollCallCount = 0;
+      const scrollIntoViewMock = vi.fn().mockImplementation(() => {
+        scrollCallCount += 1;
+        if (scrollCallCount === 1) {
+          // 1回目のスクロール: 途中のセクション展開（レイアウトシフト）により top: 550px で途中停止した状態を再現
+          simulatedTop = 550;
+        } else {
+          // 2回目（自動補正スクロール）: 目標位置 (expectedTop = 68px) に到達
+          simulatedTop = 68;
+        }
+      });
+      targetSection.scrollIntoView = scrollIntoViewMock;
+
+      const jumpButton = screen.getByRole("button", { name: "今日開催のレースへジャンプ" });
+      fireEvent.click(jumpButton);
+
+      // クリック直後に1回目の scrollIntoView が呼ばれ、途中 (550px) まで進む
+      expect(scrollIntoViewMock).toHaveBeenCalledTimes(1);
+      expect(simulatedTop).toBe(550);
+
+      // 120ms (60ms * 2ステップ) 経過でスクロール停止 & 未到達が検知され、自動的に2回目のスクロール補正が発火する
+      act(() => {
+        vi.advanceTimersByTime(150);
+      });
+
+      expect(scrollIntoViewMock).toHaveBeenCalledTimes(2);
+      expect(simulatedTop).toBe(68);
+
+      // 到達後はタイマーを進めても余計な再スクロールが呼ばれないこと
+      act(() => {
+        vi.advanceTimersByTime(500);
+      });
+      expect(scrollIntoViewMock).toHaveBeenCalledTimes(2);
+
+      vi.useRealTimers();
+    });
+
+    it("スクロール補正中にユーザーが手動スクロール操作（wheel）を行った場合は自動補正が即座に中断されること (Issue #272)", () => {
+      vi.useFakeTimers();
+      vi.setSystemTime(new Date(2026, 0, 4, 10, 0, 0));
+
+      render(<TimelineView races={mockRaces} />);
+      act(() => {
+        vi.runAllTimers();
+      });
+
+      const targetSection = document.getElementById("section-date-2026-01-04")!;
+      let simulatedTop = 1200;
+      vi.spyOn(targetSection, "getBoundingClientRect").mockImplementation(
+        () =>
+          ({
+            top: simulatedTop,
+            bottom: simulatedTop + 300,
+            height: 300,
+            left: 0,
+            right: 800,
+            width: 800,
+            x: 0,
+            y: simulatedTop,
+            toJSON: () => {},
+          }) as DOMRect
+      );
+
+      const scrollIntoViewMock = vi.fn().mockImplementation(() => {
+        simulatedTop = 500;
+      });
+      targetSection.scrollIntoView = scrollIntoViewMock;
+
+      const jumpButton = screen.getByRole("button", { name: "今日開催のレースへジャンプ" });
+      fireEvent.click(jumpButton);
+      expect(scrollIntoViewMock).toHaveBeenCalledTimes(1);
+
+      // ユーザーが手動でホイール操作を行う
+      fireEvent.wheel(window);
+
+      // タイマーを進めても自動補正は中断されており再発火しないこと
+      act(() => {
+        vi.advanceTimersByTime(500);
+      });
+      expect(scrollIntoViewMock).toHaveBeenCalledTimes(1);
 
       vi.useRealTimers();
     });

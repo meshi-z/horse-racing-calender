@@ -169,6 +169,47 @@ describe("TimelineView 仮想スクロール / 遅延マウント (Issue #180, N
     vi.useRealTimers();
   });
 
+  it("モバイル1列表示（<768px）とデスクトップ2列表示（>=768px）で未計測プレースホルダーの推定高さが適切に算出されること (Issue #272)", () => {
+    const dates = [
+      "2026-05-01",
+      "2026-05-02",
+      "2026-05-03",
+      "2026-05-04",
+      "2026-05-05",
+      "2026-05-06",
+    ];
+    // 各日付2レースずつ
+    const mockRaces = createMockRacesForDates(dates);
+    const originalInnerWidth = window.innerWidth;
+
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-05-06T00:00:00.000Z"));
+
+    // 1. デスクトップ幅 (1024px: 2列 -> 2レースで1行)
+    Object.defineProperty(window, "innerWidth", { writable: true, configurable: true, value: 1024 });
+    const { unmount } = render(<TimelineView races={mockRaces} />);
+    const desktopPlaceholder = screen.getByTestId("timeline-placeholder-2026-05-01");
+    const desktopHeight = parseInt(desktopPlaceholder.style.minHeight, 10);
+    unmount();
+
+    // 2. モバイル幅 (375px: 1列 -> 2レースで2行)
+    Object.defineProperty(window, "innerWidth", { writable: true, configurable: true, value: 375 });
+    render(<TimelineView races={mockRaces} />);
+    const mobilePlaceholder = screen.getByTestId("timeline-placeholder-2026-05-01");
+    const mobileHeight = parseInt(mobilePlaceholder.style.minHeight, 10);
+
+    // モバイル1列表示（2行分）の推定高さがデスクトップ2列表示（1行分）より1カード+gap分（164px）大きいこと
+    expect(mobileHeight).toBeGreaterThan(desktopHeight);
+    expect(mobileHeight - desktopHeight).toBe(148 + 16);
+
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: originalInnerWidth,
+    });
+    vi.useRealTimers();
+  });
+
   it("実データ（全1,336レース / 276開催日）読み込み時でも、DOMノード数が1,500個以下に抑制されること (NFR 2.2 達成ベンチマーク)", () => {
     const racesFilePath = path.resolve(__dirname, "../../public/data/races.json");
     const rawData = fs.readFileSync(racesFilePath, "utf8");
