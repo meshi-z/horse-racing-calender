@@ -52184,6 +52184,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Giant Sequoia",
+        "en": "Giant Sequoia"
+      },
+      "time": "1m 42.3s"
     }
   },
   {

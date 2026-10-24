@@ -11451,5 +11451,12 @@
     },
     "horse_number": 9,
     "time": "1:35.8"
+  },
+  "2026-uk-g1-38": {
+    "name": {
+      "ja": "Giant Sequoia",
+      "en": "Giant Sequoia"
+    },
+    "time": "1m 42.3s"
   }
 }
