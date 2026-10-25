@@ -6,6 +6,27 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 86: Dependabot 依存関係更新の安全な一括統合 & バージョン整合性維持 (v1.45.12) [完了]
+- **依存関係の安全な一括統合 (`package.json`, `package-lock.json`) [完了]**
+  - Dependabot が個別に提案した全5件の依存関係更新PRを一括統合して反映：
+    - `lucide-react`: `1.52.0` $\rightarrow$ `^1.61.0` (PR #274)
+    - `@radix-ui/react-dialog`: `1.1.23` $\rightarrow$ `^1.3.1` (PR #275)
+    - `vite`: `8.3.3` $\rightarrow$ `^8.3.5` (PR #276)
+    - `react`: `19.3.0` $\rightarrow$ `^19.3.1` (PR #277)
+    - `jsdom`: `30.1.2` $\rightarrow$ `^30.1.3` (PR #278)
+  - `react-dom` も `react` に合わせて `^19.3.1` へ揃え、バージョン整合性を維持。
+  - `jsdom` 30.1.3 への更新に伴い推移的依存の `undici` も `8.12.1+` へ引き上げられ、依存関係ツリー全体の健全性とセキュリティを向上。
+  - プロダクションビルド（Vite）において、JSバンドルサイズが 584.37 kB から 546.94 kB（gzip 176.12 kB $\rightarrow$ 165.63 kB）へ約37kB削減。
+- **仕様書・ドキュメント更新 [完了]**
+  - `package.json`: バージョン `1.45.12` へ更新。
+  - `docs/PRD.md`: バージョン `v1.45.12`、M6 実績を更新。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`: 全ファイル型エラー 0 件を確認。
+  - `npm test`: 全68テストスイート・668件の単体/統合テスト全件合格を確認。
+  - `npm run build`: プロダクションビルド（Vite / PWA GenerateSW）正常終了を確認。
+
+
 ### Step 85: タイムラインビュー「今日に戻る」ボタンのスクロール途中停止修正・到達保証制御 (v1.45.11 / Issue #272) [完了]
 - **スクロール到達保証・自動補正制御の導入 (`src/features/timeline/TimelineView.tsx`) [完了]**
   - `scrollToSectionWithCorrection` 関数を実装し、「今日に戻る（直近の開催へ）」ボタン押下時および初回マウント・年度切り替え時の自動スクロールに適用。
