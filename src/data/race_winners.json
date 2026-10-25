@@ -11541,5 +11541,18 @@
       "fr": "Rl.moore"
     },
     "horse_number": 6
+  },
+  "2026-france-g1-28": {
+    "name": {
+      "ja": "Queenstown",
+      "en": "Queenstown",
+      "fr": "Queenstown"
+    },
+    "jockey": {
+      "ja": "Rl.moore",
+      "en": "Rl.moore",
+      "fr": "Rl.moore"
+    },
+    "horse_number": 2
   }
 }
