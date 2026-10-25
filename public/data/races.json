@@ -52596,6 +52596,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Master Man",
+        "en": "Master Man",
+        "fr": "Master Man"
+      },
+      "jockey": {
+        "ja": "A.crastus",
+        "en": "A.crastus",
+        "fr": "A.crastus"
+      },
+      "horse_number": 7
     }
   },
   {
