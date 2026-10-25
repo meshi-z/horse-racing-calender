@@ -52912,8 +52912,8 @@
     },
     "grade": "S2",
     "date": "2026-10-28",
-    "start_time": "2026-10-28T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-28T11:10:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "大井",
       "en": "Oi"
@@ -52922,6 +52922,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-207",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "ネクストスター園田",
+      "en": "Next Star Sonoda"
+    },
+    "grade": "local_grade",
+    "date": "2026-10-29",
+    "start_time": "2026-10-29T06:55:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "園田",
+      "en": "Sonoda"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -52981,32 +53007,6 @@
     }
   },
   {
-    "id": "2026-nar-local-207",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "ネクストスター園田",
-      "en": "Next Star Sonoda"
-    },
-    "grade": "local_grade",
-    "date": "2026-10-29",
-    "start_time": "2026-10-29T11:05:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "園田",
-      "en": "Sonoda"
-    },
-    "distance": 1400,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-208",
     "organization": "nar",
     "country_code": "JP",
@@ -53016,8 +53016,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-30",
-    "start_time": "2026-10-30T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-30T11:00:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "園田",
       "en": "Sonoda"
