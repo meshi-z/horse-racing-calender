@@ -52638,6 +52638,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Half Half",
+        "en": "Half Half",
+        "fr": "Half Half"
+      },
+      "jockey": {
+        "ja": "C.soumillon",
+        "en": "C.soumillon",
+        "fr": "C.soumillon"
+      },
+      "horse_number": 4
     }
   },
   {
@@ -52667,6 +52680,19 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Drumbeat",
+        "en": "Drumbeat",
+        "fr": "Drumbeat"
+      },
+      "jockey": {
+        "ja": "Rl.moore",
+        "en": "Rl.moore",
+        "fr": "Rl.moore"
+      },
+      "horse_number": 6
     }
   },
   {

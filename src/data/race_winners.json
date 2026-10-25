@@ -11515,5 +11515,31 @@
       "fr": "A.crastus"
     },
     "horse_number": 7
+  },
+  "2026-france-g3-59": {
+    "name": {
+      "ja": "Half Half",
+      "en": "Half Half",
+      "fr": "Half Half"
+    },
+    "jockey": {
+      "ja": "C.soumillon",
+      "en": "C.soumillon",
+      "fr": "C.soumillon"
+    },
+    "horse_number": 4
+  },
+  "2026-france-g1-27": {
+    "name": {
+      "ja": "Drumbeat",
+      "en": "Drumbeat",
+      "fr": "Drumbeat"
+    },
+    "jockey": {
+      "ja": "Rl.moore",
+      "en": "Rl.moore",
+      "fr": "Rl.moore"
+    },
+    "horse_number": 6
   }
 }
