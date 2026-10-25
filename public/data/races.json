@@ -52557,6 +52557,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "メムロボブサップ"
+      },
+      "jockey": {
+        "ja": "阿部武"
+      },
+      "horse_number": 5,
+      "time": "2:40.5"
     }
   },
   {
