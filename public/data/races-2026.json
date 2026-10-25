@@ -52388,7 +52388,18 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "winner": {
+      "name": {
+        "ja": "ゴーイントゥスカイ"
+      },
+      "jockey": {
+        "ja": "武 豊"
+      },
+      "horse_number": 9,
+      "time": "3:04.5"
+    },
+    "official_url": "https://www.jra.go.jp/datafile/seiseki/g1/kikka/result/kikka2026.html"
   },
   {
     "id": "2026-nar-local-204",
@@ -52444,6 +52455,20 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "RAGING BLIZZARD",
+        "en": "RAGING BLIZZARD",
+        "zh": "精算暴雪"
+      },
+      "jockey": {
+        "ja": "B Avdulla",
+        "en": "B Avdulla",
+        "zh": "艾道拿"
+      },
+      "horse_number": 1,
+      "time": "1:07.71"
     }
   },
   {
@@ -52470,6 +52495,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "リケアボレロ"
+      },
+      "jockey": {
+        "ja": "渡邊竜"
+      },
+      "horse_number": 12,
+      "time": "1:30.0"
     }
   },
   {

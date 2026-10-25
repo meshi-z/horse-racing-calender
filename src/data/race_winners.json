@@ -11458,5 +11458,39 @@
       "en": "Giant Sequoia"
     },
     "time": "1m 42.3s"
+  },
+  "2026-jra-g1-15": {
+    "name": {
+      "ja": "ゴーイントゥスカイ"
+    },
+    "jockey": {
+      "ja": "武 豊"
+    },
+    "horse_number": 9,
+    "time": "3:04.5"
+  },
+  "2026-nar-local-205": {
+    "name": {
+      "ja": "リケアボレロ"
+    },
+    "jockey": {
+      "ja": "渡邊竜"
+    },
+    "horse_number": 12,
+    "time": "1:30.0"
+  },
+  "2026-hk-g2-04": {
+    "name": {
+      "ja": "RAGING BLIZZARD",
+      "en": "RAGING BLIZZARD",
+      "zh": "精算暴雪"
+    },
+    "jockey": {
+      "ja": "B Avdulla",
+      "en": "B Avdulla",
+      "zh": "艾道拿"
+    },
+    "horse_number": 1,
+    "time": "1:07.71"
   }
 }
