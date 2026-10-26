@@ -52984,8 +52984,8 @@
     },
     "grade": "local_grade",
     "date": "2026-10-29",
-    "start_time": "2026-10-29T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-10-29T09:00:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "名古屋",
       "en": "Nagoya"
