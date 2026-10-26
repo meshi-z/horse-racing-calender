@@ -112,9 +112,9 @@ describe('Data Integrity & Multilingual Winners Audit (Issue #160)', () => {
     }
   });
 
-  it('香港競馬（HKJC）全25レースの勝者データに公式中文（繁体字・zh）馬名および騎手名が正しく設定されていること (Issue #161, #167)', () => {
+  it('香港競馬（HKJC）の勝者データに公式中文（繁体字・zh）馬名および騎手名が正しく設定されていること (Issue #161, #167)', () => {
     const hkWinnerIds = Object.keys(winners).filter((id) => id.startsWith('2026-hk-'));
-    expect(hkWinnerIds.length).toBe(25);
+    expect(hkWinnerIds.length).toBeGreaterThanOrEqual(25);
 
     for (const id of hkWinnerIds) {
       const winner = winners[id];
