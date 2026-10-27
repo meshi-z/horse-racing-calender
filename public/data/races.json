@@ -53069,7 +53069,7 @@
     },
     "grade": "G1",
     "date": "2026-10-30",
-    "start_time": "2026-10-30T18:55:00.000Z",
+    "start_time": "2026-10-30T20:55:00.000Z",
     "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-30",
@@ -53088,62 +53088,6 @@
     }
   },
   {
-    "id": "2026-us-g1-77",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "ブリーダーズカップジュヴェナイルターフ",
-      "en": "Breeders' Cup Juvenile Turf"
-    },
-    "grade": "G1",
-    "date": "2026-10-30",
-    "start_time": "2026-10-30T18:55:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-30",
-    "course": {
-      "ja": "キーンランド",
-      "en": "Keeneland"
-    },
-    "distance": 1609,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
-    "id": "2026-us-g1-78",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "ブリーダーズカップジュヴェナイルターフスプリント",
-      "en": "Breeders' Cup Juvenile Turf Sprint"
-    },
-    "grade": "G1",
-    "date": "2026-10-30",
-    "start_time": "2026-10-30T18:55:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-30",
-    "course": {
-      "ja": "キーンランド",
-      "en": "Keeneland"
-    },
-    "distance": 1006,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
-    }
-  },
-  {
     "id": "2026-us-g1-75",
     "organization": "equibase",
     "country_code": "US",
@@ -53153,7 +53097,7 @@
     },
     "grade": "G1",
     "date": "2026-10-30",
-    "start_time": "2026-10-30T19:35:00.000Z",
+    "start_time": "2026-10-30T20:55:00.000Z",
     "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-30",
@@ -53181,7 +53125,7 @@
     },
     "grade": "G1",
     "date": "2026-10-30",
-    "start_time": "2026-10-30T19:35:00.000Z",
+    "start_time": "2026-10-30T20:55:00.000Z",
     "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-10-30",
@@ -53192,6 +53136,62 @@
     "distance": 1609,
     "track_type": "turf",
     "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-us-g1-77",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "ブリーダーズカップジュヴェナイルターフ",
+      "en": "Breeders' Cup Juvenile Turf"
+    },
+    "grade": "G1",
+    "date": "2026-10-30",
+    "start_time": "2026-10-30T20:55:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-30",
+    "course": {
+      "ja": "キーンランド",
+      "en": "Keeneland"
+    },
+    "distance": 1609,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-us-g1-78",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "ブリーダーズカップジュヴェナイルターフスプリント",
+      "en": "Breeders' Cup Juvenile Turf Sprint"
+    },
+    "grade": "G1",
+    "date": "2026-10-30",
+    "start_time": "2026-10-30T20:55:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-30",
+    "course": {
+      "ja": "キーンランド",
+      "en": "Keeneland"
+    },
+    "distance": 1006,
+    "track_type": "turf",
+    "sex_constraint": "none",
     "age_constraint": "2yo",
     "handicap": {
       "code": "weight_for_age",
@@ -53639,62 +53639,6 @@
     }
   },
   {
-    "id": "2026-us-g1-86",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "ブリーダーズカップターフ",
-      "en": "Breeders' Cup Turf"
-    },
-    "grade": "G1",
-    "date": "2026-10-31",
-    "start_time": "2026-10-31T17:48:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-31",
-    "course": {
-      "ja": "キーンランド",
-      "en": "Keeneland"
-    },
-    "distance": 2414,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
-    "id": "2026-us-g1-87",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "ブリーダーズカップターフスプリント",
-      "en": "Breeders' Cup Turf Sprint"
-    },
-    "grade": "G1",
-    "date": "2026-10-31",
-    "start_time": "2026-10-31T17:48:00.000Z",
-    "is_time_confirmed": true,
-    "is_rescheduled": false,
-    "original_date": "2026-10-31",
-    "course": {
-      "ja": "キーンランド",
-      "en": "Keeneland"
-    },
-    "distance": 1006,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
     "id": "2026-us-g1-80",
     "organization": "equibase",
     "country_code": "US",
@@ -53882,6 +53826,62 @@
     },
     "distance": 1811,
     "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-us-g1-86",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "ブリーダーズカップターフ",
+      "en": "Breeders' Cup Turf"
+    },
+    "grade": "G1",
+    "date": "2026-10-31",
+    "start_time": "2026-10-31T21:36:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-31",
+    "course": {
+      "ja": "キーンランド",
+      "en": "Keeneland"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
+    "id": "2026-us-g1-87",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "ブリーダーズカップターフスプリント",
+      "en": "Breeders' Cup Turf Sprint"
+    },
+    "grade": "G1",
+    "date": "2026-10-31",
+    "start_time": "2026-10-31T21:36:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-10-31",
+    "course": {
+      "ja": "キーンランド",
+      "en": "Keeneland"
+    },
+    "distance": 1006,
+    "track_type": "turf",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
     "handicap": {
