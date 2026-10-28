@@ -465,6 +465,90 @@ describe('update-race-times script (Provider Architecture)', () => {
       expect(hakusan?.start_time).toBe('2026-09-22T09:00:00.000Z');
     });
 
+    it('同一開催日・同名系統（部分一致するレース名）が複数存在する場合でも、raceId による完全一致が最優先され誤上書きされないこと (Issue #281)', async () => {
+      const collisionRaces: RaceOutput[] = [
+        {
+          id: 'sample-juvenile',
+          organization: 'equibase',
+          name: { ja: 'ブリーダーズカップジュヴェナイル', en: "Breeders' Cup Juvenile" },
+          grade: 'G1',
+          date: '2026-10-30',
+          start_time: '2026-10-30T10:00:00.000Z',
+          is_time_confirmed: false,
+          course: { ja: 'キーンランド', en: 'Keeneland' },
+          distance: 1700,
+          track_type: 'dirt',
+          sex_constraint: 'colt_and_filly',
+          age_constraint: '2yo',
+          handicap: { code: 'set_weight', ja: '定量', en: 'Weight for Age' },
+        },
+        {
+          id: 'sample-juvenile-turf-sprint',
+          organization: 'equibase',
+          name: { ja: 'ブリーダーズカップジュヴェナイルターフスプリント', en: "Breeders' Cup Juvenile Turf Sprint" },
+          grade: 'G1',
+          date: '2026-10-30',
+          start_time: '2026-10-30T10:00:00.000Z',
+          is_time_confirmed: false,
+          course: { ja: 'キーンランド', en: 'Keeneland' },
+          distance: 1000,
+          track_type: 'turf',
+          sex_constraint: 'colt_and_filly',
+          age_constraint: '2yo',
+          handicap: { code: 'set_weight', ja: '定量', en: 'Weight for Age' },
+        },
+      ];
+      fs.writeFileSync(tempFilePath, JSON.stringify(collisionRaces, null, 2), 'utf-8');
+
+      const mockConfirmed: ConfirmedRaceTime[] = [
+        {
+          raceId: 'sample-juvenile',
+          raceName: 'ブリーダーズカップジュヴェナイル',
+          date: '2026-10-30',
+          timeJst: '05:55',
+          rawTime: '16:55 EDT',
+          utcIso: '2026-10-30T20:55:00.000Z',
+        },
+        {
+          raceId: 'sample-juvenile-turf-sprint',
+          raceName: 'ブリーダーズカップジュヴェナイルターフスプリント',
+          date: '2026-10-30',
+          timeJst: '03:55',
+          rawTime: '14:55 EDT',
+          utcIso: '2026-10-30T18:55:00.000Z',
+        },
+      ];
+
+      const customFetcher: RaceTimeFetcher = {
+        organization: 'equibase',
+        getTargetWindowRaces(races) {
+          return races.filter((r) => r.organization === 'equibase');
+        },
+        async fetchConfirmedTimes() {
+          return mockConfirmed;
+        },
+      };
+
+      const result = await updateRaceTimes({
+        filePath: tempFilePath,
+        referenceDate: '2026-10-28',
+        organization: 'equibase',
+        fetchers: { equibase: customFetcher },
+      });
+
+      expect(result.updatedRaces).toHaveLength(2);
+
+      const saved: RaceOutput[] = JSON.parse(fs.readFileSync(tempFilePath, 'utf-8'));
+      const juvenile = saved.find((r) => r.id === 'sample-juvenile');
+      const sprint = saved.find((r) => r.id === 'sample-juvenile-turf-sprint');
+
+      // raceNameMatches の includes による誤マッチで sprint が juvenile の時刻 (20:55) に汚染されていないことを検証
+      expect(juvenile?.start_time).toBe('2026-10-30T20:55:00.000Z');
+      expect(sprint?.start_time).toBe('2026-10-30T18:55:00.000Z');
+      expect(juvenile?.is_time_confirmed).toBe(true);
+      expect(sprint?.is_time_confirmed).toBe(true);
+    });
+
     it('DEFAULT_FETCHERS に hkjc および hk プロバイダーが登録されていること', () => {
       expect(DEFAULT_FETCHERS['hkjc']).toBeDefined();
       expect(DEFAULT_FETCHERS['hkjc'].organization).toBe('hkjc');
