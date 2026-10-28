@@ -620,16 +620,23 @@ export async function updateRaceTimes(options: UpdateOptions = {}): Promise<Upda
     for (const race of races) {
       if (race.organization !== org) continue;
 
-      // 1. 同日での一致を優先検索（raceIdの一致またはレース名一致）
-      let match = confirmedTimes.find((c) => {
-        if (c.raceId && c.raceId === race.id) return true;
-        return c.date === race.date && raceNameMatches(race.name.ja, c.raceName);
-      });
+      // 1. raceId による完全一致を最優先検索
+      let match = confirmedTimes.find((c) => c.raceId && c.raceId === race.id);
 
-      // 2. 同日で見つからない場合、代替開催（同名レースで近傍日程）の候補を検索
+      // 2. raceIdで一致しない場合のみ、同日でのレース名一致を検索
+      // ※注意: c自身が別のraceIdを持っている場合は、その別レース固有の時刻であるため誤マッチさせない
+      if (!match) {
+        match = confirmedTimes.find((c) => {
+          if (c.raceId && c.raceId !== race.id) return false;
+          return c.date === race.date && raceNameMatches(race.name.ja, c.raceName);
+        });
+      }
+
+      // 3. 同日で見つからない場合、代替開催（同名レースで近傍日程）の候補を検索
       let isRescheduled = false;
       if (!match) {
         const candidate = confirmedTimes.find((c) => {
+          if (c.raceId && c.raceId !== race.id) return false;
           const isNameOrIdMatch = (c.raceId && c.raceId === race.id) || raceNameMatches(race.name.ja, c.raceName);
           if (!isNameOrIdMatch) return false;
           // 日付の差分をチェック (7日以内)
