@@ -53968,7 +53968,7 @@
     "grade": "G1",
     "date": "2026-11-01",
     "start_time": "2026-11-01T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
@@ -54037,6 +54037,32 @@
     }
   },
   {
+    "id": "2026-nar-local-212",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "九州大賞典",
+      "en": "Kyushu Daishoten"
+    },
+    "grade": "local_grade",
+    "date": "2026-11-01",
+    "start_time": "2026-11-01T09:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "佐賀",
+      "en": "Saga"
+    },
+    "distance": 2500,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-209",
     "organization": "nar",
     "country_code": "JP",
@@ -54058,32 +54084,6 @@
     "age_constraint": "3yo",
     "handicap": {
       "code": "special_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-212",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "九州大賞典",
-      "en": "Kyushu Daishoten"
-    },
-    "grade": "local_grade",
-    "date": "2026-11-01",
-    "start_time": "2026-11-01T11:05:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "佐賀",
-      "en": "Saga"
-    },
-    "distance": 2500,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
     }
