@@ -52989,6 +52989,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ジョイドール"
+      },
+      "jockey": {
+        "ja": "小牧太"
+      },
+      "horse_number": 11,
+      "time": "1:30.8"
     }
   },
   {
@@ -53015,6 +53025,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ニューハーピー"
+      },
+      "jockey": {
+        "ja": "渡邊竜"
+      },
+      "horse_number": 4,
+      "time": "1:36.7"
     }
   },
   {
@@ -53041,6 +53061,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "クラプロスパー"
+      },
+      "jockey": {
+        "ja": "山本聡哉"
+      },
+      "horse_number": 6,
+      "time": "1:13.5"
     }
   },
   {
