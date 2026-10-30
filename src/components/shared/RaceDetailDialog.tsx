@@ -8,7 +8,7 @@ import {
 import { GradeBadge } from "./GradeBadge";
 import { ConfirmedTimeHelpDialog } from "./ConfirmedTimeHelpDialog";
 import { Badge } from "@/components/ui/badge";
-import { formatLocalDate, formatRaceTimeDisplay } from "@/libs/date";
+import { formatLocalDate, formatRaceTimeDisplay, getRaceLocalDate } from "@/libs/date";
 import {
   useTranslation,
   trackTypeLabels,
@@ -36,8 +36,9 @@ export function RaceDetailDialog({
 
   if (!race) return null;
 
+  const localDate = getRaceLocalDate(race);
   const timeInfo = formatRaceTimeDisplay(race.start_time, race.is_time_confirmed, undefined, language);
-  const formattedDate = formatLocalDate(race.date, language);
+  const formattedDate = formatLocalDate(localDate, language);
 
   const { primary: primaryName, secondary: secondaryName } = getRaceDisplayNames(race, language);
   const coursePrimary = race.course[language] || race.course.en || race.course.ja;

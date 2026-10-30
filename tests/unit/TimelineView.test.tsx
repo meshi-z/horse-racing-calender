@@ -120,6 +120,7 @@ describe("TimelineView", () => {
       {
         ...mockRaces[2],
         date: "2026-02-23", // 2/22(日) から 2/23(月) に順延
+        start_time: "2026-02-23T06:40:00.000Z",
         is_rescheduled: true,
         original_date: "2026-02-22",
       },

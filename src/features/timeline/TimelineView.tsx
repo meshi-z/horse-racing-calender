@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RaceCard } from "@/components/shared/RaceCard";
 import { Button } from "@/components/ui/button";
-import { formatLocalDate, findUpcomingOrLatestDate, getTodayLocalDateString } from "@/libs/date";
+import { formatLocalDate, findUpcomingOrLatestDate, getTodayLocalDateString, getRaceLocalDate } from "@/libs/date";
 import { useTranslation } from "@/libs/i18n";
 import { useRaceStore } from "@/store/useRaceStore";
 import type { Language } from "@/store/useLanguageStore";
@@ -24,21 +24,26 @@ interface GroupedRaces {
  * レース一覧を開催日昇順でグループ化するヘルパー
  */
 function groupRacesByDate(races: Race[], lang: Language): GroupedRaces[] {
-  // 日付昇順（同日の場合は発走時刻昇順）でソート
+  // 各レースのクライアントローカル開催日を計算し、発走時刻昇順でソート (Issue #283)
   const sortedRaces = [...races].sort((a, b) => {
-    if (a.date !== b.date) {
-      return a.date.localeCompare(b.date);
+    const dateA = getRaceLocalDate(a);
+    const dateB = getRaceLocalDate(b);
+    if (dateA !== dateB) {
+      return dateA.localeCompare(dateB);
     }
-    return a.start_time.localeCompare(b.start_time);
+    const timeCompare = a.start_time.localeCompare(b.start_time);
+    if (timeCompare !== 0) return timeCompare;
+    return a.id.localeCompare(b.id);
   });
 
   const groupsMap = new Map<string, Race[]>();
   for (const race of sortedRaces) {
-    const list = groupsMap.get(race.date);
+    const localDate = getRaceLocalDate(race);
+    const list = groupsMap.get(localDate);
     if (list) {
       list.push(race);
     } else {
-      groupsMap.set(race.date, [race]);
+      groupsMap.set(localDate, [race]);
     }
   }
 

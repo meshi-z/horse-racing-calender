@@ -33,6 +33,25 @@ const MONTH_NAMES_LONG_FR = [
  * UTC ISO 8601 文字列（例: "2026-02-22T06:40:00.000Z"）を
  * クライアントのローカル時刻（HH:mm）に変換する
  */
+/**
+ * クライアントのローカルタイムゾーンにおけるレース開催日（YYYY-MM-DD）を取得する
+ * start_time (UTC ISO 8601) から Date オブジェクトを生成し、ローカルの年月日を算出する。
+ * start_time が無効・空の場合は race.date（現地開催日）をフォールバックとして返す。(Issue #283)
+ */
+export function getRaceLocalDate(race: { date: string; start_time?: string }): string {
+  if (!race.start_time) return race.date;
+  try {
+    const d = new Date(race.start_time);
+    if (isNaN(d.getTime())) return race.date;
+    const year = d.getFullYear();
+    const month = (d.getMonth() + 1).toString().padStart(2, '0');
+    const day = d.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  } catch {
+    return race.date;
+  }
+}
+
 export function formatLocalTime(utcIsoString: string): string {
   try {
     const date = new Date(utcIsoString);

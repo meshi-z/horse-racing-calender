@@ -10,6 +10,7 @@ import {
   getInitialOrganizations,
   saveOrganizationsPreference,
 } from '../libs/geolocation';
+import { getRaceLocalDate } from '../libs/date';
 import type { DistanceCategory, FilterState, Organization, Race } from '../types/race';
 
 export interface YearMonth {
@@ -118,9 +119,10 @@ export const filterRaces = (
   selectedYear?: number
 ): Race[] => {
   return races.filter((race) => {
-    // 選択中年度の絞り込み（指定時）
+    // 選択中年度の絞り込み（指定時、ローカルタイムゾーン考慮: Issue #283）
     if (selectedYear !== undefined) {
-      const raceYear = parseInt(race.date.slice(0, 4), 10);
+      const localDate = getRaceLocalDate(race);
+      const raceYear = parseInt(localDate.slice(0, 4), 10);
       if (raceYear !== selectedYear) {
         return false;
       }
@@ -188,9 +190,10 @@ export const filterRaces = (
       }
     }
 
-    // 年月指定絞り込み (race.date: YYYY-MM-DD)
+    // 年月指定絞り込み (ローカルタイムゾーン考慮: Issue #283)
     if (filters.yearMonth !== null) {
-      const [yearStr, monthStr] = race.date.split('-');
+      const localDate = getRaceLocalDate(race);
+      const [yearStr, monthStr] = localDate.split('-');
       const raceYear = parseInt(yearStr, 10);
       const raceMonth = parseInt(monthStr, 10);
       if (raceYear !== filters.yearMonth.year || raceMonth !== filters.yearMonth.month) {

@@ -8,7 +8,7 @@ import {
   getCalendarDays,
   type CalendarDay,
 } from "@/libs/calendar";
-import { formatLocalDate, formatLocalTime, formatYearMonth } from "@/libs/date";
+import { formatLocalDate, formatLocalTime, formatYearMonth, getRaceLocalDate } from "@/libs/date";
 import { useTranslation, CALENDAR_WEEKDAYS_BY_LANG } from "@/libs/i18n";
 import { getLocalizedText } from "@/libs/raceLanguage";
 import { cn } from "@/libs/utils";
@@ -47,15 +47,16 @@ export function CalendarView({ races, className }: CalendarViewProps) {
     return getCalendarDays(currentYearMonth.year, currentYearMonth.month);
   }, [currentYearMonth.year, currentYearMonth.month]);
 
-  // 日付ごとのレース辞書（高速ルックアップ用）
+  // 日付ごとのレース辞書（高速ルックアップ用、ローカルタイムゾーン考慮: Issue #283）
   const racesByDate = React.useMemo(() => {
     const map = new Map<string, Race[]>();
     for (const race of races) {
-      const list = map.get(race.date);
+      const localDate = getRaceLocalDate(race);
+      const list = map.get(localDate);
       if (list) {
         list.push(race);
       } else {
-        map.set(race.date, [race]);
+        map.set(localDate, [race]);
       }
     }
     // 各日付のレースを発走時刻順にソート
@@ -65,10 +66,11 @@ export function CalendarView({ races, className }: CalendarViewProps) {
     return map;
   }, [races]);
 
-  // 当月のレース総数
+  // 当月のレース総数（ローカルタイムゾーン考慮: Issue #283）
   const currentMonthRaceCount = React.useMemo(() => {
     return races.filter((race) => {
-      const [y, m] = race.date.split("-");
+      const localDate = getRaceLocalDate(race);
+      const [y, m] = localDate.split("-");
       return (
         parseInt(y, 10) === currentYearMonth.year &&
         parseInt(m, 10) === currentYearMonth.month

@@ -161,6 +161,7 @@ describe("CalendarView", () => {
       {
         ...mockRaces[0],
         date: "2026-02-15",
+        start_time: "2026-02-15T06:45:00.000Z",
         is_time_confirmed: false,
       },
     ];
