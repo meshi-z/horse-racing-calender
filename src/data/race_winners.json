@@ -11618,5 +11618,12 @@
     },
     "horse_number": 7,
     "time": "1:27.6"
+  },
+  "2026-us-g1-78": {
+    "name": {
+      "ja": "Libertango",
+      "en": "Libertango"
+    },
+    "time": null
   }
 }
