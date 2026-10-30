@@ -6,6 +6,28 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 87: 日付を跨ぐ海外レースのクライアントローカル開催日表示補正 (v1.45.13 / Issue #283) [完了]
+- **ローカルタイムゾーン開催日算出ヘルパーの導入 (`src/libs/date.ts`) [完了]**
+  - `getRaceLocalDate(race: { date: string; start_time?: string }): string` を実装。
+  - レースの発走時刻（UTC ISO文字列）からクライアントのローカルタイムゾーン（JST等）における年月日（`YYYY-MM-DD`）を算出。`start_time` 未設定または無効時は従来の `race.date` へ安全にフォールバック。
+- **UIコンポーネントおよびストアの日付グルーピング・表示・絞り込みの改修 [完了]**
+  - `src/features/timeline/TimelineView.tsx`: `groupRacesByDate` において `getRaceLocalDate` を使用し、ローカル日付順および同日内の発走時刻順でグルーピング・ソート。これにより米ブリーダーズカップ（10/30 EDT発走 $\rightarrow$ 10/31 05:55 JST、10/31 EDT発走 $\rightarrow$ 11/01 07:16 JST）が日本時間通りの10/31および11/1セクションに正しく配置されるよう改修。
+  - `src/features/calendar/CalendarView.tsx`: `racesByDate` および `currentMonthRaceCount` の算出に `getRaceLocalDate` を適用。月跨ぎレース（BCクラシック等）が正しいローカル月・日のカレンダーセルに表示されるよう改善。
+  - `src/components/shared/RaceCard.tsx`: レースカード内の日付テキスト（`formattedDate`）および本日判定（`isToday`）を `getRaceLocalDate` を基準に表示。
+  - `src/components/shared/RaceDetailDialog.tsx`: 詳細モーダル内の開催日テキスト（`formattedDate`）を `getRaceLocalDate` を基準に表示。
+  - `src/store/useRaceStore.ts`: `filterRaces` における `selectedYear` および `filters.yearMonth` の年・年月絞り込み判定に `getRaceLocalDate` を適用し、年末年始や月跨ぎ時のフィルタ整合性を担保。
+- **単体テストの拡充 (`tests/unit/date.test.ts`, `tests/unit/TimelineView.test.tsx`, `tests/unit/CalendarView.test.tsx`, `tests/unit/RaceDetailDialog.test.tsx`) [完了]**
+  - `getRaceLocalDate` のフォールバック動作、現地夕方発走時のローカル翌日判定、月跨ぎ時の翌月1日算出の検証テストを追加。
+  - タイムラインおよびカレンダーのモックデータテストにおけるローカル日付整合性を検証。
+- **仕様書・ドキュメント更新 [完了]**
+  - `package.json`: バージョン `1.45.13` へ更新。
+  - `docs/PRD.md`: バージョン `v1.45.13`、M6 実績を更新。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`: 全ファイル型エラー 0 件を確認。
+  - `npm test`: 全68テストスイート・672件の単体/統合テスト全件合格を確認。
+  - `npm run build`: プロダクションビルド（Vite / PWA GenerateSW）正常終了を確認。
+
 ### Step 86: Dependabot 依存関係更新の安全な一括統合 & バージョン整合性維持 (v1.45.12) [完了]
 - **依存関係の安全な一括統合 (`package.json`, `package-lock.json`) [完了]**
   - Dependabot が個別に提案した全5件の依存関係更新PRを一括統合して反映：

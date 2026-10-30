@@ -6,6 +6,7 @@ import {
   formatRaceTimeDisplay,
   getTodayLocalDateString,
   findUpcomingOrLatestDate,
+  getRaceLocalDate,
 } from "../../src/libs/date";
 
 describe("src/libs/date.ts", () => {
@@ -173,6 +174,37 @@ describe("src/libs/date.ts", () => {
     it("すべての日付が未来の場合、先頭のレース日付を返すこと", () => {
       // 2025年の場合、2026-01-04
       expect(findUpcomingOrLatestDate(dates, "2025-12-01")).toBe("2026-01-04");
+    });
+  });
+  describe("getRaceLocalDate (Issue #283)", () => {
+    it("start_time が未設定または無効な場合は race.date を返すこと", () => {
+      expect(getRaceLocalDate({ date: "2026-10-30" })).toBe("2026-10-30");
+      expect(getRaceLocalDate({ date: "2026-10-30", start_time: "" })).toBe("2026-10-30");
+      expect(getRaceLocalDate({ date: "2026-10-30", start_time: "invalid" })).toBe("2026-10-30");
+    });
+
+    it("UTC発走時刻が現地夕方（20:55Z）の場合、JST環境では翌日（10/31）の日付を返すこと", () => {
+      // 2026-10-30T20:55:00.000Z は JST (UTC+9) で 2026-10-31 05:55
+      const race = {
+        date: "2026-10-30",
+        start_time: "2026-10-30T20:55:00.000Z",
+      };
+      const localDate = getRaceLocalDate(race);
+      const expectedDate = new Date("2026-10-30T20:55:00.000Z");
+      const expectedStr = `${expectedDate.getFullYear()}-${(expectedDate.getMonth() + 1).toString().padStart(2, '0')}-${expectedDate.getDate().toString().padStart(2, '0')}`;
+      expect(localDate).toBe(expectedStr);
+    });
+
+    it("月を跨ぐ海外レース（2026-10-31T22:16:00.000Z: BCクラシック）で翌月1日を正しく算出すること", () => {
+      // 2026-10-31T22:16:00.000Z は JST (UTC+9) で 2026-11-01 07:16
+      const race = {
+        date: "2026-10-31",
+        start_time: "2026-10-31T22:16:00.000Z",
+      };
+      const localDate = getRaceLocalDate(race);
+      const expectedDate = new Date("2026-10-31T22:16:00.000Z");
+      const expectedStr = `${expectedDate.getFullYear()}-${(expectedDate.getMonth() + 1).toString().padStart(2, '0')}-${expectedDate.getDate().toString().padStart(2, '0')}`;
+      expect(localDate).toBe(expectedStr);
     });
   });
 });

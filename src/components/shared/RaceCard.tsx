@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GradeBadge } from "./GradeBadge";
 import { RaceDetailDialog } from "./RaceDetailDialog";
-import { formatLocalDate, formatRaceTimeDisplay, getTodayLocalDateString } from "@/libs/date";
+import { formatLocalDate, formatRaceTimeDisplay, getTodayLocalDateString, getRaceLocalDate } from "@/libs/date";
 import {
   useTranslation,
   trackTypeLabels,
@@ -28,9 +28,10 @@ export const RaceCard = React.forwardRef<HTMLDivElement, RaceCardProps>(
     const [isDialogOpen, setIsDialogOpen] = React.useState(false);
     const { language, t } = useTranslation();
 
-    const isToday = isTodayProp ?? (race.date === getTodayLocalDateString());
+    const localDate = getRaceLocalDate(race);
+    const isToday = isTodayProp ?? (localDate === getTodayLocalDateString());
     const timeInfo = formatRaceTimeDisplay(race.start_time, race.is_time_confirmed, undefined, language);
-    const formattedDate = formatLocalDate(race.date, language);
+    const formattedDate = formatLocalDate(localDate, language);
     const sexTag = sexConstraintLabels[language][race.sex_constraint].short;
     const ageTag = ageConstraintLabels[language][race.age_constraint].short;
     const trackLabel = trackTypeLabels[language][race.track_type];
