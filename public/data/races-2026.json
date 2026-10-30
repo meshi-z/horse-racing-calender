@@ -54015,32 +54015,6 @@
     }
   },
   {
-    "id": "2026-nar-local-210",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "プリンセスカップ",
-      "en": "Princess Cup"
-    },
-    "grade": "local_grade",
-    "date": "2026-11-01",
-    "start_time": "2026-11-01T07:30:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "盛岡",
-      "en": "Morioka"
-    },
-    "distance": 1400,
-    "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-211",
     "organization": "nar",
     "country_code": "JP",
@@ -54093,6 +54067,32 @@
     }
   },
   {
+    "id": "2026-nar-local-210",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "プリンセスカップ",
+      "en": "Princess Cup"
+    },
+    "grade": "local_grade",
+    "date": "2026-11-01",
+    "start_time": "2026-11-01T09:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "盛岡",
+      "en": "Morioka"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-209",
     "organization": "nar",
     "country_code": "JP",
@@ -54102,8 +54102,8 @@
     },
     "grade": "local_grade",
     "date": "2026-11-01",
-    "start_time": "2026-11-01T10:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-01T11:00:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "帯広",
       "en": "Obihiro"
@@ -54412,8 +54412,8 @@
     },
     "grade": "local_grade",
     "date": "2026-11-03",
-    "start_time": "2026-11-03T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-03T07:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "門別",
       "en": "Mombetsu"
@@ -54422,32 +54422,6 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "2yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-214",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "道営スプリント",
-      "en": "Doei Sprint"
-    },
-    "grade": "local_grade",
-    "date": "2026-11-04",
-    "start_time": "2026-11-04T11:05:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "門別",
-      "en": "Mombetsu"
-    },
-    "distance": 1200,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -54500,6 +54474,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "2yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-214",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "道営スプリント",
+      "en": "Doei Sprint"
+    },
+    "grade": "local_grade",
+    "date": "2026-11-04",
+    "start_time": "2026-11-04T11:30:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "門別",
+      "en": "Mombetsu"
+    },
+    "distance": 1200,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -54606,8 +54606,8 @@
     },
     "grade": "local_grade",
     "date": "2026-11-05",
-    "start_time": "2026-11-05T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-05T11:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "門別",
       "en": "Mombetsu"
