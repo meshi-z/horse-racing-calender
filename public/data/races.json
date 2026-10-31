@@ -53721,6 +53721,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Ways And Means",
+        "en": "Ways And Means"
+      },
+      "time": null
     }
   },
   {
