@@ -53756,6 +53756,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Bacio",
+        "en": "Bacio"
+      },
+      "time": null
     }
   },
   {
@@ -53784,6 +53791,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Further Ado",
+        "en": "Further Ado"
+      },
+      "time": null
     }
   },
   {
