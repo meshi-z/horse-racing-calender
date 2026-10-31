@@ -53205,6 +53205,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Sun Goddess",
+        "en": "Sun Goddess"
+      },
+      "time": null
     }
   },
   {
@@ -53233,6 +53240,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Hughes",
+        "en": "Hughes"
+      },
+      "time": null
     }
   },
   {
@@ -53261,6 +53275,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Haffner",
+        "en": "Haffner"
+      },
+      "time": null
     }
   },
   {
