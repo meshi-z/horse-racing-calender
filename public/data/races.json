@@ -54120,7 +54120,18 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "winner": {
+      "name": {
+        "ja": "ダノンデサイル"
+      },
+      "jockey": {
+        "ja": "戸崎 圭太"
+      },
+      "horse_number": 17,
+      "time": "1:56.7"
+    },
+    "official_url": "https://www.jra.go.jp/datafile/seiseki/g1/akiten/result/akiten2026.html"
   },
   {
     "id": "2026-nar-local-211",
@@ -54146,6 +54157,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "カツテナイオイシサ"
+      },
+      "jockey": {
+        "ja": "上田将"
+      },
+      "horse_number": 7,
+      "time": "1:45.6"
     }
   },
   {
@@ -54172,6 +54193,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ケイアイアンタレス"
+      },
+      "jockey": {
+        "ja": "飛田愛"
+      },
+      "horse_number": 9,
+      "time": "2:48.0"
     }
   },
   {
@@ -54198,6 +54229,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "サザングルーヴ"
+      },
+      "jockey": {
+        "ja": "服部茂"
+      },
+      "horse_number": 9,
+      "time": "1:24.9"
     }
   },
   {
@@ -54224,6 +54265,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ホクセイイワキヤマ"
+      },
+      "jockey": {
+        "ja": "阿部優"
+      },
+      "horse_number": 3,
+      "time": "2:16.9"
     }
   },
   {
