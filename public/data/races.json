@@ -53826,6 +53826,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Kathynmarissa",
+        "en": "Kathynmarissa"
+      },
+      "time": null
     }
   },
   {
@@ -53854,6 +53861,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "T O Elvis",
+        "en": "T O Elvis"
+      },
+      "time": null
     }
   },
   {
@@ -53882,6 +53896,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Deterministic",
+        "en": "Deterministic"
+      },
+      "time": null
     }
   },
   {
@@ -53910,6 +53931,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Nitrogen",
+        "en": "Nitrogen"
+      },
+      "time": null
     }
   },
   {
@@ -53994,6 +54022,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Benvenuto Cellini",
+        "en": "Benvenuto Cellini"
+      },
+      "time": null
     }
   },
   {
@@ -54022,6 +54057,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Sovereignty",
+        "en": "Sovereignty"
+      },
+      "time": null
     }
   },
   {
