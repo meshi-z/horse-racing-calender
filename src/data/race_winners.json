@@ -11766,5 +11766,12 @@
     },
     "horse_number": 3,
     "time": "2:16.9"
+  },
+  "2026-us-g2-120": {
+    "name": {
+      "ja": "Unrivaled Time",
+      "en": "Unrivaled Time"
+    },
+    "time": null
   }
 }
