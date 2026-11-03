@@ -54488,6 +54488,16 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "アンズアメ"
+      },
+      "jockey": {
+        "ja": "川田将"
+      },
+      "horse_number": 9,
+      "time": "1:32.7"
     }
   },
   {
@@ -54514,6 +54524,16 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "メイショウハチロー"
+      },
+      "jockey": {
+        "ja": "吉原寛人"
+      },
+      "horse_number": 11,
+      "time": "1:25.5"
     }
   },
   {
@@ -54540,6 +54560,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "オーリエイト"
+      },
+      "jockey": {
+        "ja": "吉村誠"
+      },
+      "horse_number": 1,
+      "time": "1:55.7"
     }
   },
   {
@@ -54566,6 +54596,16 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "アウトレンジ"
+      },
+      "jockey": {
+        "ja": "松山弘"
+      },
+      "horse_number": 2,
+      "time": "2:11.3"
     }
   },
   {
@@ -54592,6 +54632,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "アペリティーヴォ"
+      },
+      "jockey": {
+        "ja": "落合玄"
+      },
+      "horse_number": 11,
+      "time": "1:13.9"
     }
   },
   {
