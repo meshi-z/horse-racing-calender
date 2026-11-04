@@ -6,6 +6,23 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 88: Dependabot 依存関係更新の安全な一括統合 & 健全性維持 (v1.45.14) [完了]
+- **依存関係の安全な一括統合 (`package.json`, `package-lock.json`) [完了]**
+  - Dependabot が個別に提案した全4件の依存関係更新PRを一括統合して反映：
+    - `lucide-react`: `1.61.0` $\rightarrow$ `^1.63.0` (PR #285)
+    - `postcss`: `8.5.30` $\rightarrow$ `^8.5.32` (PR #286)
+    - `zustand`: `5.0.15` $\rightarrow$ `^5.0.16` (PR #287)
+    - `autoprefixer`: `10.6.1` $\rightarrow$ `^10.6.2` (PR #288)
+- **仕様書・ドキュメント更新 [完了]**
+  - `package.json`: バージョン `1.45.14` へ更新。
+  - `docs/PRD.md`: バージョン `v1.45.14`、M6 実績を更新。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`: 全ファイル型エラー 0 件を確認。
+  - `npm test`: 全68テストスイート・672件の単体/統合テスト全件合格を確認。
+  - `npm run build`: プロダクションビルド（Vite / PWA GenerateSW）正常終了を確認。
+
+
 ### Step 87: 日付を跨ぐ海外レースのクライアントローカル開催日表示補正 (v1.45.13 / Issue #283) [完了]
 - **ローカルタイムゾーン開催日算出ヘルパーの導入 (`src/libs/date.ts`) [完了]**
   - `getRaceLocalDate(race: { date: string; start_time?: string }): string` を実装。
