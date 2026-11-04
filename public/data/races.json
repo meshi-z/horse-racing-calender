@@ -55345,6 +55345,32 @@
     }
   },
   {
+    "id": "2026-nar-local-220",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "黒潮マイルチャンピオンシップ",
+      "en": "Kuroshio Mile Championship"
+    },
+    "grade": "local_grade",
+    "date": "2026-11-08",
+    "start_time": "2026-11-08T09:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "高知",
+      "en": "Kochi"
+    },
+    "distance": 1600,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-218",
     "organization": "nar",
     "country_code": "JP",
@@ -55366,32 +55392,6 @@
     "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "special_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-220",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "黒潮マイルチャンピオンシップ",
-      "en": "Kuroshio Mile Championship"
-    },
-    "grade": "local_grade",
-    "date": "2026-11-08",
-    "start_time": "2026-11-08T11:05:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "高知",
-      "en": "Kochi"
-    },
-    "distance": 1600,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
     }
