@@ -54668,6 +54668,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ベストグリーン"
+      },
+      "jockey": {
+        "ja": "落合玄"
+      },
+      "horse_number": 4,
+      "time": "1:28.3"
     }
   },
   {
@@ -54694,6 +54704,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ルースアグレッシブ"
+      },
+      "jockey": {
+        "ja": "笹川翼"
+      },
+      "horse_number": 9,
+      "time": "1:42.5"
     }
   },
   {
@@ -54720,6 +54740,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ストリーム"
+      },
+      "jockey": {
+        "ja": "岩橋勇"
+      },
+      "horse_number": 10,
+      "time": "1:13.1"
     }
   },
   {
