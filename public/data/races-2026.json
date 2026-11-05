@@ -54840,6 +54840,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "パルムグレン"
+      },
+      "jockey": {
+        "ja": "多田誠"
+      },
+      "horse_number": 10,
+      "time": "1:42.9"
     }
   },
   {
@@ -54866,6 +54876,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ベルピット"
+      },
+      "jockey": {
+        "ja": "桑村真"
+      },
+      "horse_number": 10,
+      "time": "2:07.2"
     }
   },
   {
