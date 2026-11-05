@@ -54826,7 +54826,7 @@
     },
     "grade": "local_grade",
     "date": "2026-11-05",
-    "start_time": "2026-11-05T07:15:00.000Z",
+    "start_time": "2026-11-05T07:25:00.000Z",
     "is_time_confirmed": true,
     "course": {
       "ja": "笠松",
@@ -55057,33 +55057,6 @@
     }
   },
   {
-    "id": "2026-jra-jg3-05",
-    "organization": "jra",
-    "country_code": "JP",
-    "name": {
-      "ja": "京都ジャンプステークス",
-      "en": "Kyoto Jump Stakes"
-    },
-    "grade": "J.G3",
-    "date": "2026-11-07",
-    "start_time": "2026-11-07T04:50:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "京都",
-      "en": "Kyoto",
-      "fr": "Kyoto"
-    },
-    "distance": 3170,
-    "track_type": "obstacle",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-au-g1-69",
     "organization": "racing_australia",
     "country_code": "AU",
@@ -55113,6 +55086,33 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-jra-jg3-05",
+    "organization": "jra",
+    "country_code": "JP",
+    "name": {
+      "ja": "京都ジャンプステークス",
+      "en": "Kyoto Jump Stakes"
+    },
+    "grade": "J.G3",
+    "date": "2026-11-07",
+    "start_time": "2026-11-07T05:00:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "京都",
+      "en": "Kyoto",
+      "fr": "Kyoto"
+    },
+    "distance": 3170,
+    "track_type": "obstacle",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -55157,8 +55157,8 @@
     },
     "grade": "G2",
     "date": "2026-11-07",
-    "start_time": "2026-11-07T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-07T06:35:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
@@ -55274,8 +55274,8 @@
     },
     "grade": "G2",
     "date": "2026-11-08",
-    "start_time": "2026-11-08T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-08T06:30:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
@@ -55302,7 +55302,7 @@
     "grade": "G3",
     "date": "2026-11-08",
     "start_time": "2026-11-08T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto",
@@ -55375,6 +55375,32 @@
     }
   },
   {
+    "id": "2026-nar-local-221",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "カペラ賞",
+      "en": "Capella Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-11-08",
+    "start_time": "2026-11-08T09:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "佐賀",
+      "en": "Saga"
+    },
+    "distance": 1750,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-220",
     "organization": "nar",
     "country_code": "JP",
@@ -55422,32 +55448,6 @@
     "age_constraint": "4yo_and_up",
     "handicap": {
       "code": "special_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-221",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "カペラ賞",
-      "en": "Capella Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-11-08",
-    "start_time": "2026-11-08T11:05:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "佐賀",
-      "en": "Saga"
-    },
-    "distance": 1750,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
     }
