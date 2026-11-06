@@ -55339,32 +55339,6 @@
     }
   },
   {
-    "id": "2026-nar-local-219",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "すずらん賞",
-      "en": "Suzuran Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-11-08",
-    "start_time": "2026-11-08T07:30:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "盛岡",
-      "en": "Morioka"
-    },
-    "distance": 1800,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-hk-g3-13",
     "organization": "hkjc",
     "country_code": "HK",
@@ -55392,6 +55366,32 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    }
+  },
+  {
+    "id": "2026-nar-local-219",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "すずらん賞",
+      "en": "Suzuran Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-11-08",
+    "start_time": "2026-11-08T08:35:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "盛岡",
+      "en": "Morioka"
+    },
+    "distance": 1800,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
     }
   },
   {
@@ -55456,8 +55456,8 @@
     },
     "grade": "local_grade",
     "date": "2026-11-08",
-    "start_time": "2026-11-08T10:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-08T11:00:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "帯広",
       "en": "Obihiro"
