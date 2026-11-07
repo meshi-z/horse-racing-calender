@@ -959,30 +959,57 @@ export class AustraliaRaceResultFetcher implements RaceResultFetcher {
       return results;
     }
 
-    // 2. 実通信: Breednet (breednet.com.au/stakes-race-results/) から直近の重賞速報を取得
+    // 2. 実通信: Breednet (トップ速報および過去重賞アーカイブ一覧) から重賞結果を取得
     try {
-      const breednetUrl = 'https://www.breednet.com.au/stakes-race-results/';
-      const res = await fetchWithRetry(breednetUrl, {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-          'Accept': 'text/html,application/xhtml+xml',
-        },
-      });
+      const urls = [
+        'https://www.breednet.com.au/stakes-race-results/',
+        'https://www.breednet.com.au/stakes-race-results/stakes-races',
+      ];
+      const allMeetingsMap = new Map<string, AustraliaMeetingResultItem>();
 
-      if (res.ok) {
-        const html = await res.text();
-        const meetings = parseBreednetStakesResultsHtml(html);
-        if (meetings.length > 0) {
-          const parsedMap = parseAustraliaResultsJson(meetings, targetRaces);
-          for (const [id, winner] of parsedMap.entries()) {
-            results.set(id, { winner });
+      for (const url of urls) {
+        try {
+          const res = await fetchWithRetry(url, {
+            headers: {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+              'Accept': 'text/html,application/xhtml+xml',
+            },
+          });
+
+          if (res.ok) {
+            const html = await res.text();
+            const meetings = parseBreednetStakesResultsHtml(html);
+            for (const m of meetings) {
+              const key = `${m.date}_${m.venue}`;
+              if (!allMeetingsMap.has(key)) {
+                allMeetingsMap.set(key, { venue: m.venue, date: m.date, races: [...m.races] });
+              } else {
+                const existing = allMeetingsMap.get(key)!;
+                for (const r of m.races) {
+                  const already = existing.races.some((er) => er.raceName === r.raceName);
+                  if (!already) {
+                    existing.races.push(r);
+                  }
+                }
+              }
+            }
+          } else {
+            console.warn(`[AU Results] Breednet HTTP ${res.status} returned when fetching ${url}`);
           }
+        } catch (subErr) {
+          console.warn(`[AU Results] Failed to fetch ${url}: ${(subErr as Error).message}`);
         }
-      } else {
-        console.warn(`[AU Results] Breednet HTTP ${res.status} returned when fetching stakes results.`);
+      }
+
+      const allMeetings = Array.from(allMeetingsMap.values());
+      if (allMeetings.length > 0) {
+        const parsedMap = parseAustraliaResultsJson(allMeetings, targetRaces);
+        for (const [id, winner] of parsedMap.entries()) {
+          results.set(id, { winner });
+        }
       }
     } catch (e) {
-      console.warn(`[AU Results] Failed to fetch Breednet stakes results: ${(e as Error).message}`);
+      console.warn(`[AU Results] Failed to process Breednet stakes results: ${(e as Error).message}`);
     }
 
     return results;

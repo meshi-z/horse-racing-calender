@@ -11873,5 +11873,205 @@
     },
     "horse_number": 10,
     "time": "2:07.2"
+  },
+  "2026-au-g3-143": {
+    "name": {
+      "ja": "Buggsy",
+      "en": "Buggsy"
+    }
+  },
+  "2026-au-g2-86": {
+    "name": {
+      "ja": "True Rebel",
+      "en": "True Rebel"
+    }
+  },
+  "2026-au-g2-84": {
+    "name": {
+      "ja": "Smooth Chino",
+      "en": "Smooth Chino"
+    }
+  },
+  "2026-au-g2-81": {
+    "name": {
+      "ja": "Central Europe",
+      "en": "Central Europe"
+    }
+  },
+  "2026-au-g2-82": {
+    "name": {
+      "ja": "Lazzura",
+      "en": "Lazzura"
+    }
+  },
+  "2026-au-g2-85": {
+    "name": {
+      "ja": "Caddington",
+      "en": "Caddington"
+    }
+  },
+  "2026-au-g3-140": {
+    "name": {
+      "ja": "Lindermann",
+      "en": "Lindermann"
+    }
+  },
+  "2026-au-g2-83": {
+    "name": {
+      "ja": "Surfin' Bird",
+      "en": "Surfin' Bird"
+    }
+  },
+  "2026-au-g1-62": {
+    "name": {
+      "ja": "Proxima Dea",
+      "en": "Proxima Dea"
+    }
+  },
+  "2026-au-g2-80": {
+    "name": {
+      "ja": "Juja Kibo",
+      "en": "Juja Kibo"
+    }
+  },
+  "2026-au-g1-61": {
+    "name": {
+      "ja": "Cosmic Crusader",
+      "en": "Cosmic Crusader"
+    }
+  },
+  "2026-au-g3-141": {
+    "name": {
+      "ja": "Soverato",
+      "en": "Soverato"
+    }
+  },
+  "2026-au-g3-144": {
+    "name": {
+      "ja": "So You Are",
+      "en": "So You Are"
+    }
+  },
+  "2026-au-g1-64": {
+    "name": {
+      "ja": "The Next Episode",
+      "en": "The Next Episode"
+    }
+  },
+  "2026-au-g2-87": {
+    "name": {
+      "ja": "Private Eye",
+      "en": "Private Eye"
+    }
+  },
+  "2026-au-g2-88": {
+    "name": {
+      "ja": "De Armas",
+      "en": "De Armas"
+    }
+  },
+  "2026-au-g3-145": {
+    "name": {
+      "ja": "Travolta",
+      "en": "Travolta"
+    }
+  },
+  "2026-au-g3-146": {
+    "name": {
+      "ja": "Flying For Fun",
+      "en": "Flying For Fun"
+    }
+  },
+  "2026-au-g3-147": {
+    "name": {
+      "ja": "Regal Ambition",
+      "en": "Regal Ambition"
+    }
+  },
+  "2026-au-g3-148": {
+    "name": {
+      "ja": "Ndola",
+      "en": "Ndola"
+    }
+  },
+  "2026-au-g3-149": {
+    "name": {
+      "ja": "The Roaring Sun",
+      "en": "The Roaring Sun"
+    }
+  },
+  "2026-au-g1-63": {
+    "name": {
+      "ja": "Stormy Marco",
+      "en": "Stormy Marco"
+    }
+  },
+  "2026-au-g1-65": {
+    "name": {
+      "ja": "Lady Shenandoah",
+      "en": "Lady Shenandoah"
+    }
+  },
+  "2026-au-g3-150": {
+    "name": {
+      "ja": "Hot And High",
+      "en": "Hot And High"
+    }
+  },
+  "2026-au-g3-151": {
+    "name": {
+      "ja": "Talkanco",
+      "en": "Talkanco"
+    }
+  },
+  "2026-au-g1-66": {
+    "name": {
+      "ja": "Point Of Law",
+      "en": "Point Of Law"
+    },
+    "jockey": {
+      "ja": "Ethan Brown",
+      "en": "Ethan Brown"
+    }
+  },
+  "2026-au-g3-152": {
+    "name": {
+      "ja": "Shadhavar",
+      "en": "Shadhavar"
+    },
+    "jockey": {
+      "ja": "Craig Williams",
+      "en": "Craig Williams"
+    }
+  },
+  "2026-au-g3-153": {
+    "name": {
+      "ja": "Amelia's Affair",
+      "en": "Amelia's Affair"
+    },
+    "jockey": {
+      "ja": "Damian Lane",
+      "en": "Damian Lane"
+    }
+  },
+  "2026-au-g3-154": {
+    "name": {
+      "ja": "Lady Catalina",
+      "en": "Lady Catalina"
+    },
+    "jockey": {
+      "ja": "B Shinn",
+      "en": "B Shinn"
+    }
+  },
+  "2026-au-g1-67": {
+    "name": {
+      "ja": "Proxima Dea",
+      "en": "Proxima Dea"
+    },
+    "jockey": {
+      "ja": "Zac Lloyd",
+      "en": "Zac Lloyd"
+    }
   }
 }

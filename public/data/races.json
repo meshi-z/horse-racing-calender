@@ -51735,6 +51735,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Buggsy",
+        "en": "Buggsy"
+      }
     }
   },
   {
@@ -51767,6 +51773,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "True Rebel",
+        "en": "True Rebel"
+      }
     }
   },
   {
@@ -51799,6 +51811,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Smooth Chino",
+        "en": "Smooth Chino"
+      }
     }
   },
   {
@@ -51831,6 +51849,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Central Europe",
+        "en": "Central Europe"
+      }
     }
   },
   {
@@ -51863,6 +51887,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Lazzura",
+        "en": "Lazzura"
+      }
     }
   },
   {
@@ -51895,6 +51925,12 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Caddington",
+        "en": "Caddington"
+      }
     }
   },
   {
@@ -51927,6 +51963,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Lindermann",
+        "en": "Lindermann"
+      }
     }
   },
   {
@@ -51991,6 +52033,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Surfin' Bird",
+        "en": "Surfin' Bird"
+      }
     }
   },
   {
@@ -52023,6 +52071,12 @@
       "code": "set_weight",
       "ja": "定量",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Proxima Dea",
+        "en": "Proxima Dea"
+      }
     }
   },
   {
@@ -52055,6 +52109,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Juja Kibo",
+        "en": "Juja Kibo"
+      }
     }
   },
   {
@@ -52087,6 +52147,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Cosmic Crusader",
+        "en": "Cosmic Crusader"
+      }
     }
   },
   {
@@ -52156,6 +52222,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Soverato",
+        "en": "Soverato"
+      }
     }
   },
   {
@@ -52398,8 +52470,7 @@
       },
       "horse_number": 9,
       "time": "3:04.5"
-    },
-    "official_url": "https://www.jra.go.jp/datafile/seiseki/g1/kikka/result/kikka2026.html"
+    }
   },
   {
     "id": "2026-nar-local-204",
@@ -52927,6 +52998,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "So You Are",
+        "en": "So You Are"
+      }
     }
   },
   {
@@ -53314,6 +53391,12 @@
       "code": "set_weight",
       "ja": "定量",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "The Next Episode",
+        "en": "The Next Episode"
+      }
     }
   },
   {
@@ -53346,6 +53429,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Private Eye",
+        "en": "Private Eye"
+      }
     }
   },
   {
@@ -53378,6 +53467,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "De Armas",
+        "en": "De Armas"
+      }
     }
   },
   {
@@ -53410,6 +53505,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Travolta",
+        "en": "Travolta"
+      }
     }
   },
   {
@@ -53442,6 +53543,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Flying For Fun",
+        "en": "Flying For Fun"
+      }
     }
   },
   {
@@ -53474,6 +53581,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Regal Ambition",
+        "en": "Regal Ambition"
+      }
     }
   },
   {
@@ -53506,6 +53619,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Ndola",
+        "en": "Ndola"
+      }
     }
   },
   {
@@ -53538,6 +53657,12 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "The Roaring Sun",
+        "en": "The Roaring Sun"
+      }
     }
   },
   {
@@ -53570,6 +53695,12 @@
       "code": "set_weight",
       "ja": "定量",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Stormy Marco",
+        "en": "Stormy Marco"
+      }
     }
   },
   {
@@ -53602,6 +53733,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Lady Shenandoah",
+        "en": "Lady Shenandoah"
+      }
     }
   },
   {
@@ -53661,6 +53798,12 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Hot And High",
+        "en": "Hot And High"
+      }
     }
   },
   {
@@ -53693,6 +53836,12 @@
       "code": "weight_for_age",
       "ja": "馬齢",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Talkanco",
+        "en": "Talkanco"
+      }
     }
   },
   {
@@ -54137,8 +54286,7 @@
       },
       "horse_number": 17,
       "time": "1:56.7"
-    },
-    "official_url": "https://www.jra.go.jp/datafile/seiseki/g1/akiten/result/akiten2026.html"
+    }
   },
   {
     "id": "2026-nar-local-211",
@@ -54398,6 +54546,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "Point Of Law",
+        "en": "Point Of Law"
+      },
+      "jockey": {
+        "ja": "Ethan Brown",
+        "en": "Ethan Brown"
+      }
     }
   },
   {
@@ -54430,6 +54588,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Shadhavar",
+        "en": "Shadhavar"
+      },
+      "jockey": {
+        "ja": "Craig Williams",
+        "en": "Craig Williams"
+      }
     }
   },
   {
@@ -54462,6 +54630,16 @@
       "code": "set_weight",
       "ja": "馬齢",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Amelia's Affair",
+        "en": "Amelia's Affair"
+      },
+      "jockey": {
+        "ja": "Damian Lane",
+        "en": "Damian Lane"
+      }
     }
   },
   {
@@ -54782,6 +54960,16 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Lady Catalina",
+        "en": "Lady Catalina"
+      },
+      "jockey": {
+        "ja": "B Shinn",
+        "en": "B Shinn"
+      }
     }
   },
   {
@@ -54814,6 +55002,16 @@
       "code": "set_weight",
       "ja": "定量",
       "en": "Set Weights"
+    },
+    "winner": {
+      "name": {
+        "ja": "Proxima Dea",
+        "en": "Proxima Dea"
+      },
+      "jockey": {
+        "ja": "Zac Lloyd",
+        "en": "Zac Lloyd"
+      }
     }
   },
   {
