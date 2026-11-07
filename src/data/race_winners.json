@@ -12073,5 +12073,25 @@
       "ja": "Zac Lloyd",
       "en": "Zac Lloyd"
     }
+  },
+  "2026-jra-jg3-05": {
+    "name": {
+      "ja": "スマイルスルー"
+    },
+    "jockey": {
+      "ja": "小牧 加矢太"
+    },
+    "horse_number": 8,
+    "time": "3:37.0"
+  },
+  "2026-jra-g2-33": {
+    "name": {
+      "ja": "ブルージェイ"
+    },
+    "jockey": {
+      "ja": "C.ルメール"
+    },
+    "horse_number": 9,
+    "time": "1:21.3"
   }
 }

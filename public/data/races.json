@@ -55331,6 +55331,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "スマイルスルー"
+      },
+      "jockey": {
+        "ja": "小牧 加矢太"
+      },
+      "horse_number": 8,
+      "time": "3:37.0"
     }
   },
   {
@@ -55390,6 +55400,16 @@
       "code": "special_weight",
       "ja": "馬齢",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ブルージェイ"
+      },
+      "jockey": {
+        "ja": "C.ルメール"
+      },
+      "horse_number": 9,
+      "time": "1:21.3"
     }
   },
   {
