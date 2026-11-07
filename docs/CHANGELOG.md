@@ -6,6 +6,37 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 89: 10月24日以降のオーストラリア競馬レース結果・確定勝者反映 & 取得パイプライン堅牢化 (v1.45.15 / Issue #290) [完了]
+- **オーストラリア競馬リザルト自動取得パイプラインの拡充 (`scripts/update-race-results.ts`) [完了]**
+  - `AustraliaRaceResultFetcher` において、従来のトップページ（`stakes-race-results/`）に加え、過去重賞アーカイブ一覧（`stakes-race-results/stakes-races`）も順次フェッチしてミーティング結果をマージするよう改修。直近3日以上経過した過去重賞がトップから押し出されても確実に結果を取得可能に。
+- **代替開催競馬場照合および別名マッピングの追加 (`scripts/lib/australia-results.ts`, `scripts/lib/australia-syutsuba.ts`) [完了]**
+  - 2026年10月24日にムーニーバレー改修工事に伴いフレミントン競馬場で代替開催されたコックスプレートデー（Moonee Valley $\leftrightarrow$ Flemington）の競馬場照合互換判定を導入。
+  - 2026年春季重賞のスポンサー名・別名・改称名マッピング（`AU_RACE_ALIASES`）を拡充：
+    - `Moonee Valley Vase` $\leftrightarrow$ `Drummond Golf Vase`
+    - `Ian Mcewen Trophy` $\leftrightarrow$ `Cirka McEwen Stakes`
+    - `Crystal Mile` $\leftrightarrow$ `Kia Ora Stud Mile`
+    - `Stan Fox Stakes` $\leftrightarrow$ `Callander-Presnell`
+    - `Moonee Valley Fillies Classic` $\leftrightarrow$ `Crockett Stakes`
+    - `Linlithgow Stakes` $\leftrightarrow$ `The ABC Bullion Damien Oliver`
+    - `Chatham Stakes` $\leftrightarrow$ `G.H. Mumm Rising Fast Stakes`
+    - `Begonia Belle Stakes` $\leftrightarrow$ `Asahi Super Dry Sprint`
+    - `Rosehill Gold Cup` $\leftrightarrow$ `Sydney Gold Cup`
+    - `Maybe Mahal Stakes` $\leftrightarrow$ `The Hong Kong Jockey Club Stakes`
+    - `VRC Oaks` $\leftrightarrow$ `Crown Oaks`
+    - `Vrc Queen Elizabeth Stakes` $\leftrightarrow$ `Queen Elizabeth Stakes`
+    - `Vrc Carbine Club Stakes` $\leftrightarrow$ `Carbine Club Stakes`
+    - `Champions Sprint` $\leftrightarrow$ `VRC Champions Sprint`
+- **10月24日〜11月6日開催済み全30重賞の公式確定勝者の二重永続化 [完了]**
+  - コックスプレート（Cosmic Crusader）、スプリングチャンピオンS（Proxima Dea）、ヴィクトリアダービー（Stormy Marco）、クールモアスタッドS（The Next Episode）、エンパイアローズS（Lady Shenandoah）、メルボルンカップ（Point Of Law / Ethan Brown）、VRCオークス（Proxima Dea / Zac Lloyd）など全30重賞の公式確定勝者（馬名・騎手）を `src/data/race_winners.json` および本番データ（`public/data/races-2026.json`, `public/data/races.json`）へ反映。
+- **仕様書・ドキュメント更新 [完了]**
+  - `package.json`: バージョン `1.45.15` へ更新。
+  - `docs/PRD.md`: バージョン `v1.45.15`、M6 実績を更新。
+  - `docs/Horse_Racing_Calendar_PRD.pdf`: `npm run docs:pdf` により再生成。
+- **品質・整合性検証 [完了]**
+  - `npm run type-check`: 全ファイル型エラー 0 件を確認。
+  - `npm test`: 全68テストスイート・672件の単体/統合テスト全件合格を確認。
+  - `npm run build`: プロダクションビルド（Vite / PWA GenerateSW）正常終了を確認。
+
 ### Step 88: Dependabot 依存関係更新の安全な一括統合 & 健全性維持 (v1.45.14) [完了]
 - **依存関係の安全な一括統合 (`package.json`, `package-lock.json`) [完了]**
   - Dependabot が個別に提案した全4件の依存関係更新PRを一括統合して反映：

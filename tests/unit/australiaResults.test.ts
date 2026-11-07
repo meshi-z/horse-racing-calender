@@ -556,11 +556,6 @@ describe('Australia Results utility', () => {
       expect(orr).toBeDefined();
       expect(orr?.winner).toBeUndefined();
 
-      // メルボルンカップ (2026-11-03)
-      const melb = races.find((r) => r.id === '2026-au-g1-66');
-      expect(melb).toBeDefined();
-      expect(melb?.winner).toBeUndefined();
-
       // ジ・エベレスト (2026-10-17 開催済み -> Tempted)
       const everest = races.find((r) => r.id === '2026-au-g1-58');
       expect(everest).toBeDefined();
@@ -579,10 +574,35 @@ describe('Australia Results utility', () => {
       expect(caulfieldCup?.winner?.name.en).toBe('Kingswood');
       expect(caulfieldCup?.winner?.jockey?.en).toBe('John Allen');
 
-      // コックスプレート (2026-10-24 本日未開催・未終了)
+      // Issue #290: 2026-10-24 以降の看板G1（コックスプレート、ヴィクトリアダービー、メルボルンカップ、VRCオークス等）
       const cox = races.find((r) => r.id === '2026-au-g1-61');
       expect(cox).toBeDefined();
-      expect(cox?.winner).toBeUndefined();
+      expect(cox?.winner?.name.en).toBe('Cosmic Crusader');
+
+      const springChamp = races.find((r) => r.id === '2026-au-g1-62');
+      expect(springChamp?.winner?.name.en).toBe('Proxima Dea');
+
+      const derby = races.find((r) => r.id === '2026-au-g1-63');
+      expect(derby?.winner?.name.en).toBe('Stormy Marco');
+
+      const coolmore = races.find((r) => r.id === '2026-au-g1-64');
+      expect(coolmore?.winner?.name.en).toBe('The Next Episode');
+
+      const empire = races.find((r) => r.id === '2026-au-g1-65');
+      expect(empire?.winner?.name.en).toBe('Lady Shenandoah');
+
+      const melb = races.find((r) => r.id === '2026-au-g1-66');
+      expect(melb).toBeDefined();
+      expect(melb?.winner?.name.en).toBe('Point Of Law');
+      expect(melb?.winner?.jockey?.en).toBe('Ethan Brown');
+
+      const vrcOaks = races.find((r) => r.id === '2026-au-g1-67');
+      expect(vrcOaks?.winner?.name.en).toBe('Proxima Dea');
+      expect(vrcOaks?.winner?.jockey?.en).toBe('Zac Lloyd');
+
+      // 未開催の Sandown Classic (2026-11-28予定)
+      const sandownClassic = races.find((r) => r.id === '2026-au-g2-93');
+      expect(sandownClassic?.winner).toBeUndefined();
     });
 
     it('Issue #203: オーストラリアG2・G3の開催済み重賞レースに確定勝者が正しくバックフィルされ、未開催レースはundefinedを維持すること', () => {
@@ -659,9 +679,41 @@ describe('Australia Results utility', () => {
         expect(race?.winner?.jockey?.en).toBe(exp.jockey);
       }
 
-      // 9. 空値原則: 10月24日以降の未開催オーストラリア重賞レースはすべて winner: undefined
+      // 9. Issue #290: 2026-10-24 〜 2026-11-06 に開催された主要重賞（G2/G3）の確定勝者反映
+      const expectedOct24ToNov06 = [
+        { id: '2026-au-g2-80', name: 'Moonee Valley Gold Cup', winner: 'Juja Kibo' },
+        { id: '2026-au-g2-82', name: 'The Invitation', winner: 'Lazzura' },
+        { id: '2026-au-g2-83', name: 'Crystal Mile', winner: "Surfin' Bird" },
+        { id: '2026-au-g2-84', name: 'Ian Mcewen Trophy', winner: 'Smooth Chino' },
+        { id: '2026-au-g2-85', name: 'Moonee Valley Fillies Classic', winner: 'Caddington' },
+        { id: '2026-au-g2-86', name: 'Moonee Valley Vase', winner: 'True Rebel' },
+        { id: '2026-au-g3-140', name: 'Craven Plate', winner: 'Lindermann' },
+        { id: '2026-au-g3-141', name: 'Tesio Stakes', winner: 'Soverato' },
+        { id: '2026-au-g3-143', name: 'Red Anchor Stakes', winner: 'Buggsy' },
+        { id: '2026-au-g3-144', name: 'Bendigo Cup', winner: 'So You Are' },
+        { id: '2026-au-g2-87', name: 'Linlithgow Stakes', winner: 'Private Eye' },
+        { id: '2026-au-g2-88', name: 'Wakeful Stakes', winner: 'De Armas' },
+        { id: '2026-au-g3-145', name: 'Rosehill Gold Cup', winner: 'Travolta' },
+        { id: '2026-au-g3-146', name: 'Begonia Belle Stakes', winner: 'Flying For Fun' },
+        { id: '2026-au-g3-147', name: 'The Vanity', winner: 'Regal Ambition' },
+        { id: '2026-au-g3-148', name: 'Chatham Stakes', winner: 'Ndola' },
+        { id: '2026-au-g3-149', name: 'Vrc Carbine Club Stakes', winner: 'The Roaring Sun' },
+        { id: '2026-au-g3-150', name: 'Asian Beau Stakes', winner: 'Hot And High' },
+        { id: '2026-au-g3-151', name: 'Prince of Wales Stakes', winner: 'Talkanco' },
+        { id: '2026-au-g3-152', name: 'Maybe Mahal Stakes', winner: 'Shadhavar' },
+        { id: '2026-au-g3-153', name: 'Maribyrnong Plate', winner: "Amelia's Affair" },
+        { id: '2026-au-g3-154', name: 'Red Roses Stakes', winner: 'Lady Catalina' },
+      ];
+
+      for (const exp of expectedOct24ToNov06) {
+        const race = races.find((r) => r.id === exp.id);
+        expect(race).toBeDefined();
+        expect(race?.winner?.name.en).toBe(exp.winner);
+      }
+
+      // 10. 空値原則: 11月8日以降の未来のオーストラリア重賞レースはすべて winner: undefined
       const futureAuRaces = races.filter(
-        (r) => r.organization === 'racing_australia' && r.date >= '2026-10-24'
+        (r) => r.organization === 'racing_australia' && r.date >= '2026-11-08'
       );
       expect(futureAuRaces.length).toBeGreaterThan(0);
       for (const fr of futureAuRaces) {

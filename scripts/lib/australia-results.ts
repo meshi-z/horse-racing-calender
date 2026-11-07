@@ -155,7 +155,11 @@ export function parseAustraliaResultsJson(
 
     for (const meeting of meetings) {
       if (meeting.date !== targetRace.date) continue;
-      if (targetCourseEn && !australiaCourseMatches(targetCourseEn, meeting.venue)) continue;
+      const isMooneeValleyFlemingtonReplacement =
+        targetRace.date === '2026-10-24' &&
+        australiaCourseMatches('Moonee Valley', targetCourseEn) &&
+        australiaCourseMatches('Flemington', meeting.venue);
+      if (targetCourseEn && !australiaCourseMatches(targetCourseEn, meeting.venue) && !isMooneeValleyFlemingtonReplacement) continue;
 
       for (const rc of meeting.races) {
         if (australiaRaceMatches(enName, rc.raceName)) {
