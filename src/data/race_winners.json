@@ -12093,5 +12093,79 @@
     },
     "horse_number": 9,
     "time": "1:21.3"
+  },
+  "2026-jra-g2-34": {
+    "name": {
+      "ja": "ファミリータイム"
+    },
+    "jockey": {
+      "ja": "菅原 明良"
+    },
+    "horse_number": 6,
+    "time": "2:30.9"
+  },
+  "2026-jra-g3-60": {
+    "name": {
+      "ja": "ロードクロンヌ"
+    },
+    "jockey": {
+      "ja": "横山 和生"
+    },
+    "horse_number": 11,
+    "time": "1:49.6"
+  },
+  "2026-nar-local-219": {
+    "name": {
+      "ja": "リケアカプチーノ"
+    },
+    "jockey": {
+      "ja": "吉原寛人"
+    },
+    "horse_number": 1,
+    "time": "1:50.8"
+  },
+  "2026-nar-local-221": {
+    "name": {
+      "ja": "リケアルンバ"
+    },
+    "jockey": {
+      "ja": "石川倭"
+    },
+    "horse_number": 10,
+    "time": "1:57.7"
+  },
+  "2026-nar-local-220": {
+    "name": {
+      "ja": "サノノエスポ"
+    },
+    "jockey": {
+      "ja": "塚本征"
+    },
+    "horse_number": 4,
+    "time": "1:44.3"
+  },
+  "2026-nar-local-218": {
+    "name": {
+      "ja": "ホクセイヒラリ"
+    },
+    "jockey": {
+      "ja": "鈴木恵"
+    },
+    "horse_number": 2,
+    "time": "1:52.3"
+  },
+  "2026-hk-g3-13": {
+    "name": {
+      "ja": "SPEED DRAGON",
+      "en": "SPEED DRAGON",
+      "zh": "勁速威龍"
+    },
+    "jockey": {
+      "ja": "C L Chau",
+      "en": "C L Chau",
+      "zh": "周俊樂"
+    },
+    "horse_number": 7,
+    "time": "1:47.84"
   }
 }
