@@ -55887,8 +55887,8 @@
     },
     "grade": "local_grade",
     "date": "2026-11-12",
-    "start_time": "2026-11-12T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-12T09:00:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "名古屋",
       "en": "Nagoya"
@@ -55913,8 +55913,8 @@
     },
     "grade": "S2",
     "date": "2026-11-12",
-    "start_time": "2026-11-12T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-12T11:10:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "川崎",
       "en": "Kawasaki"
