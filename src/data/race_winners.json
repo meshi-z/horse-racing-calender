@@ -12177,5 +12177,18 @@
     },
     "horse_number": 10,
     "time": "2:21.7"
+  },
+  "2026-france-g3-62": {
+    "name": {
+      "ja": "Spirit Of Zarak",
+      "en": "Spirit Of Zarak",
+      "fr": "Spirit Of Zarak"
+    },
+    "jockey": {
+      "ja": "R.thomas",
+      "en": "R.thomas",
+      "fr": "R.thomas"
+    },
+    "horse_number": 10
   }
 }
