@@ -56186,8 +56186,8 @@
     },
     "grade": "G3",
     "date": "2026-11-14",
-    "start_time": "2026-11-14T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-14T06:30:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
@@ -56214,7 +56214,7 @@
     "grade": "G2",
     "date": "2026-11-14",
     "start_time": "2026-11-14T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto",
@@ -56449,8 +56449,8 @@
     },
     "grade": "G1",
     "date": "2026-11-15",
-    "start_time": "2026-11-15T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-15T06:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto",
@@ -56493,6 +56493,32 @@
     }
   },
   {
+    "id": "2026-nar-local-225",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "ウインターチャンピオン",
+      "en": "Winter Champion"
+    },
+    "grade": "local_grade",
+    "date": "2026-11-15",
+    "start_time": "2026-11-15T08:25:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "佐賀",
+      "en": "Saga"
+    },
+    "distance": 1400,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-local-224",
     "organization": "nar",
     "country_code": "JP",
@@ -56519,32 +56545,6 @@
     }
   },
   {
-    "id": "2026-nar-local-225",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "ウインターチャンピオン",
-      "en": "Winter Champion"
-    },
-    "grade": "local_grade",
-    "date": "2026-11-15",
-    "start_time": "2026-11-15T11:05:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "佐賀",
-      "en": "Saga"
-    },
-    "distance": 1400,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-226",
     "organization": "nar",
     "country_code": "JP",
@@ -56554,8 +56554,8 @@
     },
     "grade": "local_grade",
     "date": "2026-11-17",
-    "start_time": "2026-11-17T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-17T11:00:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "金沢",
       "en": "Kanazawa"
