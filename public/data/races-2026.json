@@ -56502,8 +56502,8 @@
     },
     "grade": "local_grade",
     "date": "2026-11-15",
-    "start_time": "2026-11-15T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-15T09:15:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "金沢",
       "en": "Kanazawa"
