@@ -12190,5 +12190,25 @@
       "fr": "R.thomas"
     },
     "horse_number": 10
+  },
+  "2026-nar-local-222": {
+    "name": {
+      "ja": "アップショウグン"
+    },
+    "jockey": {
+      "ja": "塚本征"
+    },
+    "horse_number": 11,
+    "time": "2:09.4"
+  },
+  "2026-nar-s2-11": {
+    "name": {
+      "ja": "ティンバリートス"
+    },
+    "jockey": {
+      "ja": "張田昂"
+    },
+    "horse_number": 5,
+    "time": "1:45.4"
   }
 }

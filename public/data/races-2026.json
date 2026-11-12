@@ -55924,6 +55924,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "アップショウグン"
+      },
+      "jockey": {
+        "ja": "塚本征"
+      },
+      "horse_number": 11,
+      "time": "2:09.4"
     }
   },
   {
@@ -55950,6 +55960,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ティンバリートス"
+      },
+      "jockey": {
+        "ja": "張田昂"
+      },
+      "horse_number": 5,
+      "time": "1:45.4"
     }
   },
   {
