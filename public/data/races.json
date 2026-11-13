@@ -56487,32 +56487,6 @@
     }
   },
   {
-    "id": "2026-nar-local-223",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "南部駒賞",
-      "en": "Nambukoma Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-11-15",
-    "start_time": "2026-11-15T07:30:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "水沢",
-      "en": "Mizusawa"
-    },
-    "distance": 1600,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-local-225",
     "organization": "nar",
     "country_code": "JP",
@@ -56532,6 +56506,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-223",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "南部駒賞",
+      "en": "Nambukoma Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-11-15",
+    "start_time": "2026-11-15T09:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "水沢",
+      "en": "Mizusawa"
+    },
+    "distance": 1600,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
