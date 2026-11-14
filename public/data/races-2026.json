@@ -56221,6 +56221,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ルヴァレドクール"
+      },
+      "jockey": {
+        "ja": "横山 和生"
+      },
+      "horse_number": 15,
+      "time": "1:35.3"
     }
   },
   {
@@ -56248,6 +56258,16 @@
       "code": "special_weight",
       "ja": "馬齢",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ブラッドバローズ"
+      },
+      "jockey": {
+        "ja": "松山 弘平"
+      },
+      "horse_number": 5,
+      "time": "1:34.3"
     }
   },
   {
