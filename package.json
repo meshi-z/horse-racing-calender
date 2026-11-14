@@ -21,6 +21,7 @@
     "data:backfill-jra": "tsx scripts/backfill-jra-past-times.ts",
     "icons:generate": "tsx scripts/generate-pwa-icons.ts",
     "docs:pdf": "node scripts/generate-prd-pdf.js",
+    "social:promo": "tsx scripts/post-social.ts",
     "type-check": "tsc --noEmit",
     "test": "vitest run"
   },
