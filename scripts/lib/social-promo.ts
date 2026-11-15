@@ -411,6 +411,12 @@ export function buildFallbackTweet(
   return lines.join('\n');
 }
 
+const GEMINI_MODEL_CANDIDATES = [
+  'gemini-3.8-flash',
+  'gemini-3.6-flash',
+  'gemini-flash-latest',
+];
+
 /**
  * Generate tweet text using Gemini API when available, falling back to template.
  */
@@ -426,39 +432,51 @@ export async function generateTweetText(
   }
 
   const prompt = buildGeminiPrompt(races, audience, mode, siteUrl);
-  const endpoint =
-    'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
 
-  try {
-    const res = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-goog-api-key': geminiApiKey,
-      },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.7, maxOutputTokens: 350 },
-      }),
-    });
+  for (const model of GEMINI_MODEL_CANDIDATES) {
+    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-goog-api-key': geminiApiKey,
+        },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { temperature: 0.7, maxOutputTokens: 1024 },
+        }),
+      });
 
-    if (!res.ok) {
-      throw new Error(`Gemini API HTTP ${res.status}`);
-    }
+      if (res.status === 404) {
+        console.warn(`[social] Gemini model ${model} returned HTTP 404; trying next candidate.`);
+        continue;
+      }
 
-    const data = (await res.json()) as {
-      candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
-    };
-    const raw = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? '';
-    if (!raw || !raw.includes(siteUrl) || calculateWeightedTweetLength(raw) > 280) {
+      if (!res.ok) {
+        throw new Error(`Gemini API HTTP ${res.status}`);
+      }
+
+      const data = (await res.json()) as {
+        candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
+      };
+      const raw = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? '';
+      if (!raw || !raw.includes(siteUrl) || calculateWeightedTweetLength(raw) > 280) {
+        console.warn(
+          `[social] Gemini output invalid or over limit (model=${model}); using template fallback.`
+        );
+        return { text: buildFallbackTweet(races, audience, mode, siteUrl), usedAi: false };
+      }
+      return { text: raw, usedAi: true };
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.warn(`[social] Gemini generation failed (${msg}); using template fallback.`);
       return { text: buildFallbackTweet(races, audience, mode, siteUrl), usedAi: false };
     }
-    return { text: raw, usedAi: true };
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    console.warn(`[social] Gemini generation failed (${msg}); using template fallback.`);
-    return { text: buildFallbackTweet(races, audience, mode, siteUrl), usedAi: false };
   }
+
+  console.warn('[social] All Gemini model candidates returned 404; using template fallback.');
+  return { text: buildFallbackTweet(races, audience, mode, siteUrl), usedAi: false };
 }
 
 function percentEncode(str: string): string {
