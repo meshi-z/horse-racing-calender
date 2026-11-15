@@ -1,0 +1,114 @@
+name: Social Media Promo (X / Twitter)
+
+on:
+  schedule:
+    # Japan (JST 20:30 on Mon, Fri, Sat, Sun)
+    - cron: '30 11 * * 0,1,5,6'
+    # Hong Kong (HKT 20:30 on Mon, Fri, Sat, Sun)
+    - cron: '30 12 * * 0,1,5,6'
+    # Europe (UTC 19:00 on Mon, Fri, Sat, Sun)
+    - cron: '0 19 * * 0,1,5,6'
+    # United States (ET ~19:00-20:00 on Mon, Fri, Sat, Sun -> 00:00 UTC next day)
+    - cron: '0 0 * * 0,1,2,6'
+    # Australia (AEST 19:30 / AEDT 20:30 on Mon, Fri, Sat, Sun)
+    - cron: '30 9 * * 0,1,5,6'
+
+  workflow_dispatch:
+    inputs:
+      audience:
+        description: 'Target audience'
+        required: true
+        type: choice
+        default: 'ja'
+        options:
+          - ja
+          - eu
+          - us
+          - au
+          - hk
+      mode:
+        description: 'Post timing mode'
+        required: true
+        type: choice
+        default: 'auto'
+        options:
+          - auto
+          - monday-preview
+          - friday-preview
+          - saturday-preview
+          - sunday-results
+      dry_run:
+        description: 'Dry run (generate text & screenshot without posting to X)'
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  promo:
+    name: Generate & Post Promo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Resolve audience and mode
+        id: config
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            AUDIENCE="${{ inputs.audience }}"
+            MODE="${{ inputs.mode }}"
+            DRY_RUN="${{ inputs.dry_run }}"
+          else
+            DRY_RUN="false"
+            MODE="auto"
+            case "${{ github.event.schedule }}" in
+              "30 11 * * 0,1,5,6") AUDIENCE="ja" ;;
+              "30 12 * * 0,1,5,6") AUDIENCE="hk" ;;
+              "0 19 * * 0,1,5,6")  AUDIENCE="eu" ;;
+              "0 0 * * 0,1,2,6")   AUDIENCE="us" ;;
+              "30 9 * * 0,1,5,6")  AUDIENCE="au" ;;
+              *)
+                echo "Unknown cron schedule: ${{ github.event.schedule }}"
+                exit 1
+                ;;
+            esac
+          fi
+          echo "audience=$AUDIENCE" >> "$GITHUB_OUTPUT"
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "dry_run=$DRY_RUN" >> "$GITHUB_OUTPUT"
+
+      - name: Run social promo script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+        run: |
+          ARGS="--audience=${{ steps.config.outputs.audience }} --mode=${{ steps.config.outputs.mode }} --out-dir=dist-social"
+          if [ "${{ steps.config.outputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          npm run social:promo -- $ARGS
+
+      - name: Upload generated tweet & screenshot artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: social-promo-${{ steps.config.outputs.audience }}-${{ github.run_id }}
+          path: dist-social/
+          if-no-files-found: ignore
+          retention-days: 7

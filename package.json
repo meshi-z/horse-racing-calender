@@ -22,6 +22,7 @@
     "icons:generate": "tsx scripts/generate-pwa-icons.ts",
     "pages:build-redirect": "tsx scripts/generate-pages-redirect.ts",
     "docs:pdf": "node scripts/generate-prd-pdf.js",
+    "social:promo": "tsx scripts/post-social.ts",
     "type-check": "tsc --noEmit",
     "test": "vitest run"
   },
