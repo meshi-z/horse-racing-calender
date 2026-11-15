@@ -143,21 +143,21 @@ describe('social-promo', () => {
     expect(calculateWeightedTweetLength('競馬')).toBe(4);
   });
 
-  it('buildFallbackTweet includes hashtags, reply CTA without inline URL, and respects 280 weighted limit', () => {
-    const tweet = buildFallbackTweet([sampleRaces[0]], 'ja', 'sunday-results');
+  it('buildFallbackTweet includes hashtags, inline URL, and respects 280 weighted limit', () => {
+    const url = 'https://horse-racing-calendar.web.app/ja/';
+    const tweet = buildFallbackTweet([sampleRaces[0]], 'ja', 'sunday-results', url);
     expect(tweet).toContain('#エリザベス女王杯');
     expect(tweet).toContain('#テストホース');
     expect(tweet).toContain('#競馬');
-    expect(tweet).toContain('URLはリプ欄へ');
-    expect(tweet).not.toMatch(/https?:\/\//);
+    expect(tweet).toContain(url);
     expect(calculateWeightedTweetLength(tweet)).toBeLessThanOrEqual(280);
   });
 
-  it('buildGeminiPrompt includes @meshi__z style examples and forbids inline URLs', () => {
-    const prompt = buildGeminiPrompt([sampleRaces[0]], 'ja', 'friday-preview');
-    expect(prompt).toContain('URLはリプ欄へ');
+  it('buildGeminiPrompt includes @meshi__z style examples and inline URL', () => {
+    const url = 'https://horse-racing-calendar.web.app/ja/';
+    const prompt = buildGeminiPrompt([sampleRaces[0]], 'ja', 'friday-preview', url);
+    expect(prompt).toContain(url);
     expect(prompt).toContain('#競馬');
-    expect(prompt).toContain('DO NOT include any URL');
   });
 
   it('inferSocialMode maps Mon/Fri/Sat/Sun in target timezone', () => {

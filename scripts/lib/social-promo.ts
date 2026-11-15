@@ -293,12 +293,13 @@ export function buildRaceSummaryLines(
 
 /**
  * Build Gemini prompt for generating a grounded, hashtag-formatted X post.
- * Mirrors the style of @meshi__z: engaging hook -> calendar value prop -> "URL in reply" CTA.
+ * Mirrors the tone and structure of @meshi__z with the site URL included directly in the post.
  */
 export function buildGeminiPrompt(
   races: readonly Race[],
   audience: SocialAudience,
-  mode: SocialMode
+  mode: SocialMode,
+  siteUrl: string
 ): string {
   const { lang } = AUDIENCE_CONFIGS[audience];
   const raceLines = buildRaceSummaryLines(races, audience);
@@ -320,23 +321,23 @@ export function buildGeminiPrompt(
   const styleExamples =
     lang === 'ja'
       ? [
-          'Style reference examples (follow this tone, pacing, emoji usage, and structure):',
-          'Example 1: "今週は女王決定戦 #エリザベス女王杯 ！激戦必至の注目G1です👑 ここから年末まで続くG1連戦、発走日程がひと目でわかるWeb #競馬 カレンダーはこちら👇URLはリプ欄へ"',
-          'Example 2: "米国の熱戦 #ブリーダーズカップ の次は、日本のダートの祭典 #JBC が金沢で開幕！🏇 発走時刻や今後の重賞日程がひと目でわかるWeb #競馬 カレンダーはこちら👇URLはリプ欄へ"',
+          'Style reference examples (follow this tone, pacing, emoji usage, and structure, placing the URL at the end):',
+          `Example 1: "今週は女王決定戦 #エリザベス女王杯 ！激戦必至の注目G1です👑 ここから年末まで続くG1連戦、発走日程がひと目でわかるWeb #競馬 カレンダーはこちら👇\n${siteUrl}"`,
+          `Example 2: "米国の熱戦 #ブリーダーズカップ の次は、日本のダートの祭典 #JBC が金沢で開幕！🏇 発走時刻や今後の重賞日程がひと目でわかるWeb #競馬 カレンダーはこちら👇\n${siteUrl}"`,
         ].join('\n')
       : lang === 'zh'
-        ? 'Style reference: Highlight the excitement of the feature race(s) with 1-2 emojis (e.g. 🏇, 🏆, 🔥), mention that local post times & global G1 schedules can be checked at a glance on the Web #賽馬 calendar, and end with "連結在回覆欄 👇".'
-        : 'Style reference: Highlight the excitement of the feature race(s) with 1-2 fitting emojis (e.g. 🏇, 🏆, 🔥), mention that local post times & global G1 schedules can be checked at a glance on our Web #HorseRacing calendar, and end with "Link in reply 👇".';
+        ? `Style reference: Highlight the excitement of the feature race(s) with 1-2 emojis (e.g. 🏇, 🏆, 🔥), mention that local post times & global G1 schedules can be checked at a glance on the Web #賽馬 calendar, and end with "👇\\n${siteUrl}".`
+        : `Style reference: Highlight the excitement of the feature race(s) with 1-2 fitting emojis (e.g. 🏇, 🏆, 🔥), mention that local post times & global G1 schedules can be checked at a glance on our Web #HorseRacing calendar, and end with "👇\\n${siteUrl}".`;
 
   const ctaInstruction =
     lang === 'ja'
-      ? 'End with a call-to-action directing users to the reply for the link (e.g. "発走時刻や今後の重賞日程がひと目でわかるWeb #競馬 カレンダーはこちら👇URLはリプ欄へ").'
+      ? `Include the #競馬 hashtag and end with a call-to-action + the exact URL (e.g. "発走日程がひと目でわかるWeb #競馬 カレンダーはこちら👇\\n${siteUrl}").`
       : lang === 'zh'
-        ? 'Include the #賽馬 hashtag and end with "連結在回覆欄 👇".'
-        : 'Include the #HorseRacing hashtag and end with "Link in reply 👇".';
+        ? `Include the #賽馬 hashtag and end with "👇\\n${siteUrl}".`
+        : `Include the #HorseRacing hashtag and end with "👇\\n${siteUrl}".`;
 
   return [
-    'You are writing a promotional X (Twitter) main post for the Horse Racing Calendar web app.',
+    'You are writing a promotional X (Twitter) post for the Horse Racing Calendar web app.',
     langInstruction,
     `Context: ${modeContext[mode]}`,
     '',
@@ -347,10 +348,9 @@ export function buildGeminiPrompt(
     '',
     'Strict requirements:',
     '1. Convert race names (and winning horse names if Winner is listed) into #Hashtags (no spaces inside a hashtag).',
-    '2. DO NOT include any URL (http:// or https://) in the main post body; the URL will be posted automatically as a reply.',
-    `3. ${ctaInstruction}`,
-    '4. Keep the total X weighted length <= 260 characters (remember: CJK characters count as 2, ASCII as 1).',
-    '5. Output ONLY the final tweet text with no quotes, markdown fences, or explanations.',
+    `2. ${ctaInstruction}`,
+    '3. Keep the total X weighted length <= 270 characters (remember: CJK characters count as 2, ASCII as 1, URL as 23).',
+    '4. Output ONLY the final tweet text with no quotes, markdown fences, or explanations.',
   ].join('\n');
 }
 
@@ -360,7 +360,8 @@ export function buildGeminiPrompt(
 export function buildFallbackTweet(
   races: readonly Race[],
   audience: SocialAudience,
-  mode: SocialMode
+  mode: SocialMode,
+  siteUrl: string
 ): string {
   const { lang } = AUDIENCE_CONFIGS[audience];
 
@@ -386,9 +387,9 @@ export function buildFallbackTweet(
   };
 
   const footerMap: Record<'ja' | 'en' | 'zh', string> = {
-    ja: '発走時刻がひと目でわかるWeb #競馬 カレンダーはこちら👇URLはリプ欄へ',
-    en: 'Check local post times on our Web #HorseRacing calendar 👇 Link in reply',
-    zh: '一覽各地開跑時間的網頁版 #賽馬 行事曆 👇 連結在回覆欄',
+    ja: `発走時刻がひと目でわかるWeb #競馬 カレンダーはこちら👇\n${siteUrl}`,
+    en: `Check local post times on our Web #HorseRacing calendar 👇\n${siteUrl}`,
+    zh: `一覽各地開跑時間的網頁版 #賽馬 行事曆 👇\n${siteUrl}`,
   };
 
   const lines: string[] = [headerMap[lang][mode]];
@@ -417,13 +418,14 @@ export async function generateTweetText(
   races: readonly Race[],
   audience: SocialAudience,
   mode: SocialMode,
+  siteUrl: string,
   geminiApiKey?: string
 ): Promise<{ text: string; usedAi: boolean }> {
   if (!geminiApiKey) {
-    return { text: buildFallbackTweet(races, audience, mode), usedAi: false };
+    return { text: buildFallbackTweet(races, audience, mode, siteUrl), usedAi: false };
   }
 
-  const prompt = buildGeminiPrompt(races, audience, mode);
+  const prompt = buildGeminiPrompt(races, audience, mode, siteUrl);
   const endpoint =
     'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
 
@@ -448,14 +450,14 @@ export async function generateTweetText(
       candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
     };
     const raw = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? '';
-    if (!raw || /https?:\/\//i.test(raw) || calculateWeightedTweetLength(raw) > 280) {
-      return { text: buildFallbackTweet(races, audience, mode), usedAi: false };
+    if (!raw || !raw.includes(siteUrl) || calculateWeightedTweetLength(raw) > 280) {
+      return { text: buildFallbackTweet(races, audience, mode, siteUrl), usedAi: false };
     }
     return { text: raw, usedAi: true };
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.warn(`[social] Gemini generation failed (${msg}); using template fallback.`);
-    return { text: buildFallbackTweet(races, audience, mode), usedAi: false };
+    return { text: buildFallbackTweet(races, audience, mode, siteUrl), usedAi: false };
   }
 }
 
@@ -524,14 +526,13 @@ export function buildOAuth1Header(
 }
 
 /**
- * Upload an image buffer to X, post the main tweet, and reply with the site URL.
+ * Upload an image buffer to X and post a tweet with the uploaded media.
  */
 export async function postTweetWithMedia(
   text: string,
-  replyUrl: string,
   imageBuffer: Buffer | null,
   creds: XOAuthCredentials
-): Promise<{ tweetId: string; replyTweetId: string }> {
+): Promise<{ tweetId: string }> {
   let mediaId: string | undefined;
 
   if (imageBuffer) {
@@ -579,31 +580,9 @@ export async function postTweetWithMedia(
   }
 
   const tweetJson = (await tweetRes.json()) as { data?: { id?: string } };
-  const tweetId = tweetJson.data?.id;
-  if (!tweetId) {
+  if (!tweetJson.data?.id) {
     throw new Error('X post tweet response missing data.id');
   }
 
-  const replyRes = await fetch(tweetUrl, {
-    method: 'POST',
-    headers: {
-      Authorization: buildOAuth1Header('POST', tweetUrl, creds),
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      text: replyUrl,
-      reply: { in_reply_to_tweet_id: tweetId },
-    }),
-  });
-
-  if (!replyRes.ok) {
-    throw new Error(`X reply tweet failed with HTTP ${replyRes.status}`);
-  }
-
-  const replyJson = (await replyRes.json()) as { data?: { id?: string } };
-  if (!replyJson.data?.id) {
-    throw new Error('X reply tweet response missing data.id');
-  }
-
-  return { tweetId, replyTweetId: replyJson.data.id };
+  return { tweetId: tweetJson.data.id };
 }

@@ -142,6 +142,7 @@ async function main(): Promise<void> {
     targetRaces,
     audience,
     mode,
+    siteUrl,
     process.env.GEMINI_API_KEY?.trim()
   );
 
@@ -149,12 +150,10 @@ async function main(): Promise<void> {
   fs.mkdirSync(outDir, { recursive: true });
 
   const tweetPath = path.join(outDir, 'tweet.txt');
-  const replyPath = path.join(outDir, 'reply.txt');
   const screenshotPath = path.join(outDir, 'screenshot.png');
   const metaPath = path.join(outDir, 'meta.json');
 
   fs.writeFileSync(tweetPath, text, 'utf-8');
-  fs.writeFileSync(replyPath, siteUrl, 'utf-8');
 
   let hasScreenshot = false;
   if (!values['skip-screenshot']) {
@@ -181,8 +180,6 @@ async function main(): Promise<void> {
 
   console.log('--- Generated Tweet ---');
   console.log(text);
-  console.log('--- Reply URL ---');
-  console.log(siteUrl);
   console.log('-----------------------');
   console.log(
     `[social] Weighted length: ${calculateWeightedTweetLength(text)}/280, AI=${usedAi}, Screenshot=${hasScreenshot}`
@@ -202,15 +199,8 @@ async function main(): Promise<void> {
   }
 
   const imageBuffer = hasScreenshot ? fs.readFileSync(screenshotPath) : null;
-  const { tweetId, replyTweetId } = await postTweetWithMedia(
-    text,
-    siteUrl,
-    imageBuffer,
-    creds
-  );
-  console.log(
-    `[social] Posted successfully! Tweet ID: ${tweetId}, Reply ID: ${replyTweetId}`
-  );
+  const { tweetId } = await postTweetWithMedia(text, imageBuffer, creds);
+  console.log(`[social] Posted successfully! Tweet ID: ${tweetId}`);
 }
 
 main().catch((err) => {
