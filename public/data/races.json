@@ -56504,7 +56504,18 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
-    }
+    },
+    "winner": {
+      "name": {
+        "ja": "ラフターラインズ"
+      },
+      "jockey": {
+        "ja": "武 豊"
+      },
+      "horse_number": 15,
+      "time": "2:14.7"
+    },
+    "official_url": "https://www.jra.go.jp/datafile/seiseki/g1/eliza/result/eliza2026.html"
   },
   {
     "id": "2026-nar-local-225",
@@ -56530,6 +56541,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "アメストリス"
+      },
+      "jockey": {
+        "ja": "田中直"
+      },
+      "horse_number": 6,
+      "time": "1:30.2"
     }
   },
   {
@@ -56556,6 +56577,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "エイシンフロイデ"
+      },
+      "jockey": {
+        "ja": "落合玄"
+      },
+      "horse_number": 6,
+      "time": "1:40.8"
     }
   },
   {
@@ -56582,6 +56613,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "エイシンレオ"
+      },
+      "jockey": {
+        "ja": "廣瀬航"
+      },
+      "horse_number": 9,
+      "time": "2:52.3"
     }
   },
   {
