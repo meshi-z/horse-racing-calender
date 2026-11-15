@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { Race } from '../../src/types/race.js';
 import {
   buildFallbackTweet,
+  buildGeminiPrompt,
   buildOAuth1Header,
   calculateWeightedTweetLength,
   formatHashtag,
@@ -142,17 +143,21 @@ describe('social-promo', () => {
     expect(calculateWeightedTweetLength('競馬')).toBe(4);
   });
 
-  it('buildFallbackTweet includes hashtags, URL, and respects 280 weighted limit', () => {
-    const tweet = buildFallbackTweet(
-      [sampleRaces[0]],
-      'ja',
-      'sunday-results',
-      'https://meshi-z.github.io/horse-racing-calender/ja/'
-    );
+  it('buildFallbackTweet includes hashtags, reply CTA without inline URL, and respects 280 weighted limit', () => {
+    const tweet = buildFallbackTweet([sampleRaces[0]], 'ja', 'sunday-results');
     expect(tweet).toContain('#エリザベス女王杯');
     expect(tweet).toContain('#テストホース');
-    expect(tweet).toContain('https://meshi-z.github.io/horse-racing-calender/ja/');
+    expect(tweet).toContain('#競馬');
+    expect(tweet).toContain('URLはリプ欄へ');
+    expect(tweet).not.toMatch(/https?:\/\//);
     expect(calculateWeightedTweetLength(tweet)).toBeLessThanOrEqual(280);
+  });
+
+  it('buildGeminiPrompt includes @meshi__z style examples and forbids inline URLs', () => {
+    const prompt = buildGeminiPrompt([sampleRaces[0]], 'ja', 'friday-preview');
+    expect(prompt).toContain('URLはリプ欄へ');
+    expect(prompt).toContain('#競馬');
+    expect(prompt).toContain('DO NOT include any URL');
   });
 
   it('inferSocialMode maps Mon/Fri/Sat/Sun in target timezone', () => {
