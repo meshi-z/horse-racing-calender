@@ -6,6 +6,15 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 91: 旧 GitHub Pages から Firebase Hosting への4言語対応自動転送ページ & 旧 Service Worker 解除の実装 (v2.0.1 / Issue #303) [完了]
+- **4言語（日・英・仏・繁体字中）完全対応の転送バンドル生成スクリプト (`scripts/lib/pages-redirect.ts`, `scripts/generate-pages-redirect.ts`) [完了]**
+  - ルート `index.html`, `404.html`, および各言語（`ja/index.html`, `en/index.html`, `fr/index.html`, `zh/index.html`）向けの転送 HTML を出力。
+  - パス・クエリパラメータ（`?year=...`）・ハッシュを維持した `window.location.replace()` 即時転送に加え、クローラー向けの `<link rel="canonical">` と `<meta http-equiv="refresh" content="0; url=...">` を4言語すべてに設定。
+- **残存 PWA Service Worker (`sw.js`) およびキャッシュの自動解除機構 [完了]**
+  - 転送 HTML 側および自己解除用 `sw.js` 双方で `navigator.serviceWorker` の登録解除と `caches` の全削除を実行し、過去訪問ユーザーが古いキャッシュ画面に留まる問題を解消。
+- **GitHub Pages 転送専用デプロイワークフロー (`.github/workflows/deploy-pages-redirect.yml`) & テスト追加 [完了]**
+  - `tests/unit/pagesRedirect.test.ts` を新規追加し、URL変換ロジック・4言語 HTML 生成・`sw.js` 自己解除コードの単体テストを網羅。
+
 ### Step 90: GitHub Pages から Firebase Hosting への完全移行と配信構成の最適化 (v2.0.0 / Issue #301) [完了]
 - **Firebase Hosting 構成ファイルの新設と CDN キャッシュ最適化 (`firebase.json`, `.firebaserc`) [完了]**
   - Firebase プロジェクト `horse-racing-calendar` を新規構築し、`public: "dist"`, `trailingSlash: true`, SPA 用 `rewrites`（`** -> /index.html`）を定義。
