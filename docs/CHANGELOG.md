@@ -6,7 +6,7 @@
 
 ## バージョン履歴 (Version History)
 
-### Step 90: GitHub Pages から Firebase Hosting への完全移行と配信構成の最適化 (v1.46.0 / Issue #301) [完了]
+### Step 90: GitHub Pages から Firebase Hosting への完全移行と配信構成の最適化 (v2.0.0 / Issue #301) [完了]
 - **Firebase Hosting 構成ファイルの新設と CDN キャッシュ最適化 (`firebase.json`, `.firebaserc`) [完了]**
   - Firebase プロジェクト `horse-racing-calendar` を新規構築し、`public: "dist"`, `trailingSlash: true`, SPA 用 `rewrites`（`** -> /index.html`）を定義。
   - PWA / Service Worker（`sw.js`, `registerSW.js`, `manifest.webmanifest`, `workbox-*.js`）に対する `no-cache, no-store, must-revalidate`、年度別分割レースJSON（`/data/**/*.json`）に対する `public, max-age=60, s-maxage=300, stale-while-revalidate=86400`、およびハッシュ付きアセット（`/assets/**`）に対する `immutable` 長期キャッシュを最適化。
