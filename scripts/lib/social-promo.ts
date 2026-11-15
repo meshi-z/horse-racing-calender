@@ -54,7 +54,7 @@ export const AUDIENCE_CONFIGS: Record<SocialAudience, AudienceConfig> = {
   },
 };
 
-export const DEFAULT_SITE_URL = 'https://meshi-z.github.io/horse-racing-calender';
+export const DEFAULT_SITE_URL = 'https://horse-racing-calendar.web.app';
 
 const EU_ORGS: ReadonlySet<Organization> = new Set(['france_galop', 'bha', 'hri']);
 const EU_COUNTRIES: ReadonlySet<CountryCode> = new Set(['FR', 'GB', 'IE']);
