@@ -92,7 +92,7 @@ function generateLocalizedHtmlPlugin(): Plugin {
         );
 
         // 4. canonical & og:url
-        const canonicalUrl = `https://meshi-z.github.io/horse-racing-calender/${langKey}/`;
+        const canonicalUrl = `https://horse-racing-calendar.web.app/${langKey}/`;
         localizedHtml = localizedHtml.replace(
           /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i,
           `<link rel="canonical" href="${canonicalUrl}" />`

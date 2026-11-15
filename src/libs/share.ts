@@ -38,5 +38,5 @@ export function getShareUrl(language: Language, currentUrl?: string): string {
 
   // SSR / テスト環境用フォールバック
   const basePath = import.meta.env.BASE_URL || '/';
-  return `https://meshi-z.github.io${getLocalizedPath(language, basePath)}`;
+  return `https://horse-racing-calendar.web.app${getLocalizedPath(language, basePath)}`;
 }

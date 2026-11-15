@@ -21,7 +21,7 @@ JRA（日本中央競馬会）の重賞レース（G1, G2, G3等）スケジュ�
 - **詳細ダイアログ (RaceDetailDialog):**
   - 発走時刻（確定/予定ステータス）、開催場、距離、出走資格（性別・年齢制限）、負担重量種別を網羅。
 - **オフライン・PWA 対応:**
-  - 静的ホスティング（GitHub Pages）と Service Worker による軽快な動作。
+  - 静的ホスティング（Firebase Hosting）と Service Worker による軽快な動作。
 
 ---
 
@@ -91,26 +91,28 @@ npm run dev
 
 ## デプロイ & CI/CD パイプライン (Deployment & CI/CD)
 
-本プロジェクトは **GitHub Pages** による静的ホスティングに対応しており、GitHub Actions ワークフロー（`.github/workflows/deploy.yml`）によって自動ビルド・デプロイが行われます。また、毎週木〜日曜に確定発走時刻を自動取得するワークフロー（`.github/workflows/update-race-times.yml`）も稼働しています。
+本プロジェクトは **Firebase Hosting**（`https://horse-racing-calendar.web.app/`）によるグローバル CDN 配信に対応しており、GitHub Actions ワークフロー（`.github/workflows/deploy.yml`）によって自動ビルド・デプロイが行われます。また、確定発走時刻やレース結果を自動取得する定期バッチワークフロー（`.github/workflows/update-race-times.yml`, `.github/workflows/update-race-results.yml`）とも連動しています。
 
 ### 自動配信パイプラインの構成
 
 1. **トリガー条件:**
-   - `main` ブランチへの `push`: 自動ビルド、テスト、および GitHub Pages へのデプロイ（PRマージ時やデータ自動更新コミット時）
+   - `main` ブランチへの `push`: 自動ビルド、テスト、および Firebase Hosting（`live` チャネル）へのデプロイ（PRマージ時）
    - `pull_request` (対象: `main`): 型検査・テスト・ビルド検証（デプロイはスキップ）
+   - 定期バッチ連動 (`workflow_call`): 発走時刻・レース結果更新時に自動ビルド＆Firebase Hosting へ即時デプロイ
    - 手動実行 (`workflow_dispatch`): GitHub Web UI からのオンデマンドデプロイ
-2. **サブディレクトリ配信 (`BASE_URL`) 対応:**
-   - GitHub Pages のリポジトリ名サブディレクトリ（`/<repo-name>/`）に対応するため、ビルド時に環境変数 `BASE_URL` が動的に注入されます。
-   - レースデータ (`data/races.json`)、PWA マニフェスト (`manifest.webmanifest`)、各種アセットパスは `BASE_URL` に自動追従します。
-   - SPA ルーティングのフォールバックとして `dist/404.html` がビルド時に自動生成されます。
+2. **Firebase Hosting 最適化設定 (`firebase.json`):**
+   - ルートパス（`/`）および多言語パス（`/ja/`, `/en/`, `/fr/`, `/zh/`）のプリレンダリング HTML 配信と SPA フォールバック（`rewrites`）を両立。
+   - Service Worker（`sw.js`）の即時更新ヘッダー、年度別分割 JSON（`data/races-YYYY.json`）の `stale-while-revalidate` エッジキャッシュ、ハッシュ付きアセットの `immutable` 長期キャッシュを設定。
 
-### GitHub Pages 初期設定手順
+### Firebase Hosting デプロイ設定手順
 
-初回デプロイを行う際は、GitHub リポジトリ設定で以下を一度だけ有効化してください。
-
-1. GitHub リポジトリの **Settings** > **Pages** を開く。
-2. **Build and deployment** > **Source** で **「GitHub Actions」** を選択する。
-3. `main` ブランチにコミットをプッシュするか、Actions タブからワークフローを手動実行すると自動的に配信が完了します。
+1. ローカルからの手動デプロイ:
+   ```bash
+   npm run build
+   npx -y firebase-tools@latest deploy --only hosting
+   ```
+2. GitHub Actions 自動デプロイ:
+   - GitHub リポジトリの **Settings > Secrets and variables > Actions** に Firebase サービスアカウントキー（`FIREBASE_SERVICE_ACCOUNT_HORSE_RACING_CALENDAR` または `FIREBASE_SERVICE_ACCOUNT`）を登録すると、`main` ブランチへの push 時や定期バッチ更新時に自動デプロイされます。
 
 ---
 
