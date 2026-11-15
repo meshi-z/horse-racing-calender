@@ -81,6 +81,7 @@ npm run dev
 | `npm run data:build` | 公式データ（JRA/NAR/フランス）をパースし、レースマスター JSON を生成 |
 | `npm run data:update-times` | JRA・NAR公式出馬表から確定発走時刻・代替開催日を取得・更新 |
 | `npm run icons:generate` | PWA 用アプリアイコン（PNG/SVG）を一括生成 |
+| `npm run pages:build-redirect` | 旧 GitHub Pages 用の4言語対応転送バンドル（`dist-pages/`）を生成 |
 | `npm run docs:pdf` | PRD仕様書から公式PDF（`Horse_Racing_Calendar_PRD.pdf`）を生成 |
 
 > [!TIP]
