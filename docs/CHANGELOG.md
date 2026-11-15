@@ -10,9 +10,10 @@
 - **Firebase Hosting 構成ファイルの新設と CDN キャッシュ最適化 (`firebase.json`, `.firebaserc`) [完了]**
   - Firebase プロジェクト `horse-racing-calendar` を新規構築し、`public: "dist"`, `trailingSlash: true`, SPA 用 `rewrites`（`** -> /index.html`）を定義。
   - PWA / Service Worker（`sw.js`, `registerSW.js`, `manifest.webmanifest`, `workbox-*.js`）に対する `no-cache, no-store, must-revalidate`、年度別分割レースJSON（`/data/**/*.json`）に対する `public, max-age=60, s-maxage=300, stale-while-revalidate=86400`、およびハッシュ付きアセット（`/assets/**`）に対する `immutable` 長期キャッシュを最適化。
-- **正規 URL・SEO/OGP・シェアURL の Firebase ドメイン（`https://horse-racing-calendar.web.app/`）への統一 [完了]**
+- **正規 URL・SEO/OGP・シェアURL の Firebase ドメイン（`https://horse-racing-calendar.web.app/`）への統一 & Firebase Analytics 連携 [完了]**
   - `vite.config.ts`（多言語静的HTML生成プラグイン）、`index.html`、`public/robots.txt`、`public/sitemap.xml`、`src/libs/share.ts` のURLをルートパス（`/`）および新ドメインへ更新。
-  - 単体テスト（`tests/unit/seo.test.ts`, `tests/unit/localizedHtml.test.ts`）を新ドメイン仕様へ更新。
+  - Firebase プロジェクト内に Web アプリ（`horse-racing-calendar-web`）を登録し、リンク済み Google Analytics for Firebase ストリームの測定ID（`G-VJCLXX2BMC`）へ `src/libs/analytics.ts` を更新。
+  - 単体テスト（`tests/unit/seo.test.ts`, `tests/unit/localizedHtml.test.ts`, `tests/unit/analytics.test.ts`）を新仕様へ更新。
 - **GitHub Actions CI/CD および定期バッチ連動デプロイの Firebase Hosting 移行 [完了]**
   - `.github/workflows/deploy.yml` を `FirebaseExtended/action-hosting-deploy@v0` による単一ジョブビルド＆デプロイ構成へ刷新し、アーティファクト転送オーバーヘッドを削減。
   - `.github/workflows/update-race-times.yml` および `.github/workflows/update-race-results.yml` の `workflow_call` に `secrets: inherit` を連携し、確定発走時刻・勝ち馬自動更新時の Firebase Hosting 即時反映を継続。

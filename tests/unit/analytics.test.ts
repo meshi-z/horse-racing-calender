@@ -76,7 +76,7 @@ describe("analytics utility", () => {
     }).not.toThrow();
   });
 
-  it("GA_MEASUREMENT_ID が G-BWG7RYDEB9 であること", () => {
-    expect(GA_MEASUREMENT_ID).toBe("G-BWG7RYDEB9");
+  it("GA_MEASUREMENT_ID が G-VJCLXX2BMC であること", () => {
+    expect(GA_MEASUREMENT_ID).toBe("G-VJCLXX2BMC");
   });
 });
