@@ -349,7 +349,7 @@ export function buildGeminiPrompt(
     'Strict requirements:',
     '1. Convert race names (and winning horse names if Winner is listed) into #Hashtags (no spaces inside a hashtag).',
     `2. ${ctaInstruction}`,
-    '3. Keep the total X weighted length <= 270 characters (remember: CJK characters count as 2, ASCII as 1, URL as 23).',
+    '3. Keep the total X weighted length <= 240 characters (remember: CJK characters count as 2, ASCII as 1, URL as 23).',
     '4. Output ONLY the final tweet text with no quotes, markdown fences, or explanations.',
   ].join('\n');
 }
@@ -412,9 +412,9 @@ export function buildFallbackTweet(
 }
 
 const GEMINI_MODEL_CANDIDATES = [
-  'gemini-3.8-flash',
+  'gemini-3.5-flash-lite',
   'gemini-3.6-flash',
-  'gemini-flash-latest',
+  'gemini-3.8-flash',
 ];
 
 /**
@@ -461,9 +461,10 @@ export async function generateTweetText(
         candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
       };
       const raw = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? '';
-      if (!raw || !raw.includes(siteUrl) || calculateWeightedTweetLength(raw) > 280) {
+      const weighted = calculateWeightedTweetLength(raw);
+      if (!raw || !raw.includes(siteUrl) || weighted > 280) {
         console.warn(
-          `[social] Gemini output invalid or over limit (model=${model}); using template fallback.`
+          `[social] Gemini output rejected (model=${model}, empty=${!raw}, hasUrl=${raw.includes(siteUrl)}, weighted=${weighted}); using template fallback.`
         );
         return { text: buildFallbackTweet(races, audience, mode, siteUrl), usedAi: false };
       }
