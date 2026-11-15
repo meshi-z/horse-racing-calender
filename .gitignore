@@ -36,3 +36,8 @@ Thumbs.db
 .agents/*.md
 !.agents/rules/**
 scripts/scratch/
+
+# Firebase
+.firebase/
+firebase-debug.log*
+.runtimeconfig.json

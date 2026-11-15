@@ -40,7 +40,7 @@ describe('Localized Static HTML Output (Issue #187)', () => {
     expect(html).toContain('property="og:locale" content="ja_JP"');
     expect(html).toContain('property="og:title" content="重賞カレンダー | 中央・地方・海外重賞レーススケジュール"');
     expect(html).toContain('name="twitter:title" content="重賞カレンダー | 中央・地方・海外重賞レーススケジュール"');
-    expect(html).toContain('link rel="canonical" href="https://meshi-z.github.io/horse-racing-calender/ja/"');
+    expect(html).toContain('link rel="canonical" href="https://horse-racing-calendar.web.app/ja/"');
   });
 
   it('dist/en/index.html に英語OGPと英語タイトルが設定されていること', () => {
@@ -52,7 +52,7 @@ describe('Localized Static HTML Output (Issue #187)', () => {
     expect(html).toContain('<title>Graded Races Calendar | Schedule of World Graded Races</title>');
     expect(html).toContain('property="og:locale" content="en_US"');
     expect(html).toContain('property="og:title" content="Graded Races Calendar | Schedule of World Graded Races"');
-    expect(html).toContain('link rel="canonical" href="https://meshi-z.github.io/horse-racing-calender/en/"');
+    expect(html).toContain('link rel="canonical" href="https://horse-racing-calendar.web.app/en/"');
   });
 
   it('dist/fr/index.html にフランス語OGPとフランス語タイトルが設定されていること', () => {
@@ -64,7 +64,7 @@ describe('Localized Static HTML Output (Issue #187)', () => {
     expect(html).toContain('<title>Courses de Groupe | Calendrier Hippique International</title>');
     expect(html).toContain('property="og:locale" content="fr_FR"');
     expect(html).toContain('property="og:title" content="Courses de Groupe | Calendrier Hippique International"');
-    expect(html).toContain('link rel="canonical" href="https://meshi-z.github.io/horse-racing-calender/fr/"');
+    expect(html).toContain('link rel="canonical" href="https://horse-racing-calendar.web.app/fr/"');
   });
 
   it('dist/zh/index.html に繁体字中国語OGPと中国語タイトルが設定されていること', () => {
@@ -76,6 +76,6 @@ describe('Localized Static HTML Output (Issue #187)', () => {
     expect(html).toContain('<title>分級賽行事曆 | 香港・日本・歐美賽馬賽程</title>');
     expect(html).toContain('property="og:locale" content="zh_HK"');
     expect(html).toContain('property="og:title" content="分級賽行事曆 | 香港・日本・歐美賽馬賽程"');
-    expect(html).toContain('link rel="canonical" href="https://meshi-z.github.io/horse-racing-calender/zh/"');
+    expect(html).toContain('link rel="canonical" href="https://horse-racing-calendar.web.app/zh/"');
   });
 });

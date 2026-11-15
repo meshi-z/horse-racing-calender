@@ -1,6 +1,6 @@
 # バッチ処理・定期実行パイプライン スケジュール & 運用ガイド
 
-本ドキュメントは、管理者および開発者向けに、本リポジトリ（`horse-racing-calendar`）で稼働する各バッチ処理・定期実行パイプライン（確定時刻自動更新、GitHub Pagesデプロイ、年間データ再生成等）の実行スケジュール、トリガー条件、手動実行コマンド、および運用・トラブルシューティング手順をまとめた運用仕様書です。
+本ドキュメントは、管理者および開発者向けに、本リポジトリ（`horse-racing-calendar`）で稼働する各バッチ処理・定期実行パイプライン（確定時刻自動更新、Firebase Hostingデプロイ、年間データ再生成等）の実行スケジュール、トリガー条件、手動実行コマンド、および運用・トラブルシューティング手順をまとめた運用仕様書です。
 
 ---
 
@@ -11,7 +11,7 @@ GitHub Actions で定期稼働するバッチおよびローカル・手動実�
 | バッチ名称 | ワークフロー / スクリプト | トリガー / 頻度 | 実行タイミング（JST） | Cron設定 (UTC) | 主な処理内容 | 入力・出力対象 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **確定発走時刻自動更新** | `.github/workflows/update-race-times.yml`<br>`scripts/update-race-times.ts` | GitHub Actions (cron)<br>手動 (`workflow_dispatch`) | **毎日朝**: 07:30<br>**平日昼**: 12:30<br>**平日〜土曜夕**: 17:30<br>**毎日夜**: 21:30<br>**木曜**: 16:30, 17:00, 18:00<br>**金曜**: 10:30, 11:00, 12:00 | `30 22 * * *`<br>`30 3 * * 1-5`<br>`30 8 * * 1-6`<br>`30 12 * * *`<br>`30 7 * * 4`<br>`0 8 * * 4`<br>`0 9 * * 4`<br>`30 1 * * 5`<br>`0 2 * * 5`<br>`0 3 * * 5` | JRA公式出馬表、NAR公式出馬表（ダートグレード年間日程＋各競馬場RaceList）、PMUプログラム（フランス重賞）、Sporting Life API（イギリス・アイルランド重賞）、Equibase（アメリカ重賞）、およびHKJC（香港重賞）から直近レースの確定発走時刻・代替開催日を取得し更新。データ更新検出時は `deploy.yml` (`workflow_call`) を自動呼び出しし本番へ即時反映 | 入力: 公式出馬表/API<br>出力: `public/data/` (結合版 `races.json`, Shard版 `races-*.json`, `index.json`) |
-| **自動テスト・デプロイ** | `.github/workflows/deploy.yml` | push to `main`<br>手動 (`workflow_dispatch`)<br>定期バッチ連動 (`workflow_call`) | 随時（PRマージ時、定期バッチ更新時） | イベント駆動 | 型検査 (`type-check`)、テスト (`test`)、プロダクションビルド (`build`) を実行し GitHub Pages へ自動配信 | 入力: ソースコード<br>出力: `dist/` (GitHub Pages) |
+| **自動テスト・デプロイ** | `.github/workflows/deploy.yml` | push to `main`<br>手動 (`workflow_dispatch`)<br>定期バッチ連動 (`workflow_call`) | 随時（PRマージ時、定期バッチ更新時） | イベント駆動 | 型検査 (`type-check`)、テスト (`test`)、プロダクションビルド (`build`) を実行し Firebase Hosting へ自動配信 | 入力: ソースコード<br>出力: `dist/` (Firebase Hosting) |
 | **年間データ一括ビルド** | `scripts/parse-races.ts` | 手動実行 (ローカル) | 年間更新時、開催日程・マスタ辞書更新時 | オンデマンド | JRA公式ICS/HTML、NARスケジュールHTML、フランス競馬マスタ、イギリス競馬マスタ、アメリカ競馬マスタ、香港競馬マスタ、アイルランド競馬マスタから全レースデータを統合マージして再生成 | 入力: 各マスタ/公式データ<br>出力: `public/data/races.json` |
 | **PWAアイコン一括生成** | `scripts/generate-pwa-icons.ts` | 手動実行 (ローカル) | アプリアイコン刷新時 | オンデマンド | SVGアセットから各解像度PNGアイコンおよびファビコンを一括生成 | 入力: `src/assets/icon.svg`<br>出力: `public/icons/`, `favicon.svg` |
 | **レース結果・勝ち馬自動更新** | `.github/workflows/update-race-results.yml`<br>`scripts/update-race-results.ts` | GitHub Actions (cron)<br>手動 (`workflow_dispatch`) | **毎日昼〜夕**: 15:00, 15:45, 16:15, 17:00<br>**毎日夜**: 20:30, 21:30, 22:30, 23:30, 24:00<br>**毎日朝**: 07:30 | `0 6 * * *`<br>`45 6 * * *`<br>`15 7 * * *`<br>`0 8 * * *`<br>`30 11 * * *`<br>`30 12 * * *`<br>`30 13 * * *`<br>`30 14 * * *`<br>`0 15 * * *`<br>`30 22 * * *` | 直近終了レース（発走後15分以上経過）の公式着順確定リザルトから勝ち馬情報（馬名・騎手・馬番・走破タイム）を自動取得し反映。未確定対象がなければ早期終了。JRA祝日/金杯/代替開催、NAR昼間重賞、香港重賞、および欧州主要重賞の夜間確定取り込み（23:30/24:00 JST）に包括対応。データ更新検出時は `deploy.yml` (`workflow_call`) を自動呼び出しし本番へ即時反映 | 入力: 公式リザルト/API<br>出力: `public/data/`, `src/data/race_winners.json` |
@@ -167,7 +167,7 @@ npm run data:backfill-results -- --dry-run
 
 ## 3. パイプライン連携・自動化アーキテクチャ
 
-定期バッチによって確定発走時刻が更新され、本番環境（GitHub Pages）へ自動配信されるまでの処理フローは以下のとおりです。
+定期バッチによって確定発走時刻が更新され、本番環境（Firebase Hosting）へ自動配信されるまでの処理フローは以下のとおりです。
 
 ```mermaid
 flowchart TD
@@ -190,7 +190,7 @@ flowchart TD
     subgraph DeployProcess["自動デプロイパイプライン"]
         DeployWorkflow --> Test["型検査 (type-check) & テスト (test)"]
         Test --> Build["プロダクションビルド (Vite / PWA)"]
-        Build --> DeployPages["GitHub Pages へ自動デプロイ"]
+        Build --> DeployPages["Firebase Hosting へ自動デプロイ"]
     end
     DeployPages --> UserApp["ユーザー端末へ配信<br>(Service Worker BroadcastUpdate で画面即時反映)"]
 ```

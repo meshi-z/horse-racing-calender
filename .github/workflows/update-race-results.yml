@@ -32,8 +32,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: 'update-race-results'
@@ -93,13 +91,12 @@ jobs:
           fi
 
   deploy:
-    name: Deploy to GitHub Pages
+    name: Deploy to Firebase Hosting
     needs: update-results
     if: needs.update-results.outputs.has_changes == 'true'
     permissions:
       contents: read
-      pages: write
-      id-token: write
     uses: ./.github/workflows/deploy.yml
+    secrets: inherit
     with:
       checkout_latest: true

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://meshi-z.github.io/horse-racing-calender/sitemap.xml
+Sitemap: https://horse-racing-calendar.web.app/sitemap.xml

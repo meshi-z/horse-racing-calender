@@ -6,6 +6,18 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 90: GitHub Pages から Firebase Hosting への完全移行と配信構成の最適化 (v2.0.0 / Issue #301) [完了]
+- **Firebase Hosting 構成ファイルの新設と CDN キャッシュ最適化 (`firebase.json`, `.firebaserc`) [完了]**
+  - Firebase プロジェクト `horse-racing-calendar` を新規構築し、`public: "dist"`, `trailingSlash: true`, SPA 用 `rewrites`（`** -> /index.html`）を定義。
+  - PWA / Service Worker（`sw.js`, `registerSW.js`, `manifest.webmanifest`, `workbox-*.js`）に対する `no-cache, no-store, must-revalidate`、年度別分割レースJSON（`/data/**/*.json`）に対する `public, max-age=60, s-maxage=300, stale-while-revalidate=86400`、およびハッシュ付きアセット（`/assets/**`）に対する `immutable` 長期キャッシュを最適化。
+- **正規 URL・SEO/OGP・シェアURL の Firebase ドメイン（`https://horse-racing-calendar.web.app/`）への統一 & Firebase Analytics 連携 [完了]**
+  - `vite.config.ts`（多言語静的HTML生成プラグイン）、`index.html`、`public/robots.txt`、`public/sitemap.xml`、`src/libs/share.ts` のURLをルートパス（`/`）および新ドメインへ更新。
+  - Firebase プロジェクト内に Web アプリ（`horse-racing-calendar-web`）を登録し、リンク済み Google Analytics for Firebase ストリームの測定ID（`G-VJCLXX2BMC`）へ `src/libs/analytics.ts` を更新。
+  - 単体テスト（`tests/unit/seo.test.ts`, `tests/unit/localizedHtml.test.ts`, `tests/unit/analytics.test.ts`）を新仕様へ更新。
+- **GitHub Actions CI/CD および定期バッチ連動デプロイの Firebase Hosting 移行 [完了]**
+  - `.github/workflows/deploy.yml` を `FirebaseExtended/action-hosting-deploy@v0` による単一ジョブビルド＆デプロイ構成へ刷新し、アーティファクト転送オーバーヘッドを削減。
+  - `.github/workflows/update-race-times.yml` および `.github/workflows/update-race-results.yml` の `workflow_call` に `secrets: inherit` を連携し、確定発走時刻・勝ち馬自動更新時の Firebase Hosting 即時反映を継続。
+
 ### Step 89: 10月24日以降のオーストラリア競馬レース結果・確定勝者反映 & 取得パイプライン堅牢化 (v1.45.15 / Issue #290) [完了]
 - **オーストラリア競馬リザルト自動取得パイプラインの拡充 (`scripts/update-race-results.ts`) [完了]**
   - `AustraliaRaceResultFetcher` において、従来のトップページ（`stakes-race-results/`）に加え、過去重賞アーカイブ一覧（`stakes-race-results/stakes-races`）も順次フェッチしてミーティング結果をマージするよう改修。直近3日以上経過した過去重賞がトップから押し出されても確実に結果を取得可能に。

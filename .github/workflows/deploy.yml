@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to Firebase Hosting
 
 on:
   push:
@@ -18,16 +18,14 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: 'pages'
+  group: 'firebase-hosting'
   cancel-in-progress: false
 
 jobs:
-  build:
-    name: Build & Test
+  build-and-deploy:
+    name: Build, Test & Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -58,26 +56,13 @@ jobs:
         run: npm run test
 
       - name: Build production bundle
-        run: |
-          REPO_NAME="${GITHUB_REPOSITORY#*/}"
-          export BASE_URL="/${REPO_NAME:-horse-racing-calender}/"
-          npm run build
+        run: npm run build
 
-      - name: Upload Pages artifact
-        if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_call'
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to Firebase Hosting (Live)
+        if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch'
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          path: dist/
-
-  deploy:
-    name: Deploy to GitHub Pages
-    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_call'
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_HORSE_RACING_CALENDAR || secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: live
+          projectId: horse-racing-calendar

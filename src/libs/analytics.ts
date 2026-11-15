@@ -1,9 +1,9 @@
 /**
- * Google Analytics (gtag.js) client-side integration
- * Measurement ID: G-BWG7RYDEB9
+ * Google Analytics for Firebase (gtag.js) client-side integration
+ * Measurement ID: G-VJCLXX2BMC
  */
 
-export const GA_MEASUREMENT_ID = 'G-BWG7RYDEB9';
+export const GA_MEASUREMENT_ID = 'G-VJCLXX2BMC';
 
 declare global {
   interface Window {

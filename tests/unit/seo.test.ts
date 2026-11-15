@@ -16,7 +16,7 @@ describe("SEO and Meta configuration", () => {
 
     // Canonical URL
     expect(html).toContain(
-      '<link rel="canonical" href="https://meshi-z.github.io/horse-racing-calender/" />'
+      '<link rel="canonical" href="https://horse-racing-calendar.web.app/" />'
     );
 
     // Description (English default)
@@ -34,7 +34,7 @@ describe("SEO and Meta configuration", () => {
     // OGP
     expect(html).toContain('property="og:type" content="website"');
     expect(html).toContain(
-      'property="og:url" content="https://meshi-z.github.io/horse-racing-calender/"'
+      'property="og:url" content="https://horse-racing-calendar.web.app/"'
     );
     expect(html).toContain(
       'property="og:title" content="Graded Races Calendar | Schedule of World Graded Races"'
@@ -43,7 +43,7 @@ describe("SEO and Meta configuration", () => {
       'property="og:description" content="Comprehensive schedule and confirmed race times for graded horse racing worldwide."'
     );
     expect(html).toContain(
-      'property="og:image" content="https://meshi-z.github.io/horse-racing-calender/icons/icon-512.png"'
+      'property="og:image" content="https://horse-racing-calendar.web.app/icons/icon-512.png"'
     );
     expect(html).toContain('property="og:locale" content="en_US"');
     expect(html).toContain('property="og:locale:alternate" content="ja_JP"');
@@ -59,7 +59,7 @@ describe("SEO and Meta configuration", () => {
       'name="twitter:description" content="Comprehensive schedule and confirmed race times for graded horse racing worldwide."'
     );
     expect(html).toContain(
-      'name="twitter:image" content="https://meshi-z.github.io/horse-racing-calender/icons/icon-512.png"'
+      'name="twitter:image" content="https://horse-racing-calendar.web.app/icons/icon-512.png"'
     );
   });
 
@@ -87,7 +87,7 @@ describe("SEO and Meta configuration", () => {
     expect(data.inLanguage).toContain("fr");
     expect(data.inLanguage).toContain("zh-HK");
     expect(data.applicationCategory).toBe("SportsApplication");
-    expect(data.url).toBe("https://meshi-z.github.io/horse-racing-calender/");
+    expect(data.url).toBe("https://horse-racing-calendar.web.app/");
   });
 
   it("public/robots.txt が存在し、全クローラー許可とサイトマップURLが指定されていること", () => {
@@ -96,14 +96,14 @@ describe("SEO and Meta configuration", () => {
     expect(content).toContain("User-agent: *");
     expect(content).toContain("Allow: /");
     expect(content).toContain(
-      "Sitemap: https://meshi-z.github.io/horse-racing-calender/sitemap.xml"
+      "Sitemap: https://horse-racing-calendar.web.app/sitemap.xml"
     );
   });
 
   it("public/sitemap.xml が存在し、トップページのURLが含まれていること", () => {
     expect(fs.existsSync(sitemapXmlPath)).toBe(true);
     const content = fs.readFileSync(sitemapXmlPath, "utf-8");
-    expect(content).toContain("<loc>https://meshi-z.github.io/horse-racing-calender/</loc>");
+    expect(content).toContain("<loc>https://horse-racing-calendar.web.app/</loc>");
     expect(content).toContain("<changefreq>daily</changefreq>");
   });
 });
