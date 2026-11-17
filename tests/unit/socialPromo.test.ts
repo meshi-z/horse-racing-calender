@@ -7,6 +7,7 @@ import {
   calculateWeightedTweetLength,
   formatHashtag,
   inferSocialMode,
+  normalizeGeminiTweet,
   postTweetWithMedia,
   selectTargetRaces,
 } from '../../scripts/lib/social-promo.js';
@@ -226,5 +227,17 @@ describe('social-promo', () => {
     } finally {
       globalThis.fetch = originalFetch;
     }
+  });
+
+  it('normalizeGeminiTweet auto-appends siteUrl when omitted and preserves length check', () => {
+    const url = 'https://horse-racing-calendar.web.app/ja/';
+    const normalized = normalizeGeminiTweet('今週は #マイルチャンピオンシップ ！🔥', url);
+    expect(normalized).toBe(`今週は #マイルチャンピオンシップ ！🔥\n${url}`);
+
+    const alreadyHasUrl = normalizeGeminiTweet(`注目！\n${url}`, url);
+    expect(alreadyHasUrl).toBe(`注目！\n${url}`);
+
+    const tooLong = normalizeGeminiTweet('あ'.repeat(140), url);
+    expect(tooLong).toBeNull();
   });
 });
