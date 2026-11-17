@@ -411,6 +411,26 @@ export function buildFallbackTweet(
   return lines.join('\n');
 }
 
+/**
+ * Normalize Gemini output and auto-append siteUrl if missing, ensuring X's 280 weighted char limit.
+ */
+export function normalizeGeminiTweet(raw: string, siteUrl: string): string | null {
+  const cleaned = raw
+    .trim()
+    .replace(/^```[\s\S]*?\n/, '')
+    .replace(/\n```$/, '')
+    .replace(/^["「]([\s\S]*)["」]$/, '$1')
+    .trim();
+
+  if (!cleaned) return null;
+
+  const candidate = cleaned.includes(siteUrl) ? cleaned : `${cleaned}\n${siteUrl}`;
+  if (calculateWeightedTweetLength(candidate) > 280) {
+    return null;
+  }
+  return candidate;
+}
+
 const GEMINI_MODEL_CANDIDATES = [
   'gemini-3.5-flash-lite',
   'gemini-3.6-flash',
@@ -460,15 +480,16 @@ export async function generateTweetText(
       const data = (await res.json()) as {
         candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
       };
-      const raw = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? '';
-      const weighted = calculateWeightedTweetLength(raw);
-      if (!raw || !raw.includes(siteUrl) || weighted > 280) {
+      const raw = data.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+      const normalized = normalizeGeminiTweet(raw, siteUrl);
+      if (!normalized) {
+        const weighted = calculateWeightedTweetLength(raw.trim());
         console.warn(
-          `[social] Gemini output rejected (model=${model}, empty=${!raw}, hasUrl=${raw.includes(siteUrl)}, weighted=${weighted}); using template fallback.`
+          `[social] Gemini output rejected (model=${model}, empty=${!raw.trim()}, weighted=${weighted}); using template fallback.`
         );
         return { text: buildFallbackTweet(races, audience, mode, siteUrl), usedAi: false };
       }
-      return { text: raw, usedAi: true };
+      return { text: normalized, usedAi: true };
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       console.warn(`[social] Gemini generation failed (${msg}); using template fallback.`);
