@@ -3,16 +3,30 @@ name: Social Media Promo (X / Twitter)
 on:
   schedule:
     # Japan (JST 20:30 on Mon, Fri, Sat; JST 21:00 on Sun after 20:30 update-race-results)
-    - cron: '30 11 * * 1,5,6'
+    - cron: '30 11 * * 1'
+    - cron: '30 11 * * 5'
+    - cron: '30 11 * * 6'
     - cron: '0 12 * * 0'
     # Hong Kong (HKT 20:30 on Mon, Fri, Sat, Sun)
-    - cron: '30 12 * * 0,1,5,6'
+    - cron: '30 12 * * 1'
+    - cron: '30 12 * * 5'
+    - cron: '30 12 * * 6'
+    - cron: '30 12 * * 0'
     # Europe (UTC 19:00 on Mon, Fri, Sat, Sun)
-    - cron: '0 19 * * 0,1,5,6'
+    - cron: '0 19 * * 1'
+    - cron: '0 19 * * 5'
+    - cron: '0 19 * * 6'
+    - cron: '0 19 * * 0'
     # United States (ET ~19:00-20:00 on Mon, Fri, Sat, Sun -> 00:00 UTC next day)
-    - cron: '0 0 * * 0,1,2,6'
+    - cron: '0 0 * * 2'
+    - cron: '0 0 * * 6'
+    - cron: '0 0 * * 0'
+    - cron: '0 0 * * 1'
     # Australia (AEST 19:30 / AEDT 20:30 on Mon, Fri, Sat, Sun)
-    - cron: '30 9 * * 0,1,5,6'
+    - cron: '30 9 * * 1'
+    - cron: '30 9 * * 5'
+    - cron: '30 9 * * 6'
+    - cron: '30 9 * * 0'
 
   workflow_dispatch:
     inputs:
@@ -74,13 +88,27 @@ jobs:
             DRY_RUN="${{ inputs.dry_run }}"
           else
             DRY_RUN="false"
-            MODE="auto"
             case "${{ github.event.schedule }}" in
-              "30 11 * * 1,5,6"|"0 12 * * 0") AUDIENCE="ja" ;;
-              "30 12 * * 0,1,5,6") AUDIENCE="hk" ;;
-              "0 19 * * 0,1,5,6")  AUDIENCE="eu" ;;
-              "0 0 * * 0,1,2,6")   AUDIENCE="us" ;;
-              "30 9 * * 0,1,5,6")  AUDIENCE="au" ;;
+              "30 11 * * 1") AUDIENCE="ja"; MODE="monday-preview" ;;
+              "30 11 * * 5") AUDIENCE="ja"; MODE="friday-preview" ;;
+              "30 11 * * 6") AUDIENCE="ja"; MODE="saturday-preview" ;;
+              "0 12 * * 0")  AUDIENCE="ja"; MODE="sunday-results" ;;
+              "30 12 * * 1") AUDIENCE="hk"; MODE="monday-preview" ;;
+              "30 12 * * 5") AUDIENCE="hk"; MODE="friday-preview" ;;
+              "30 12 * * 6") AUDIENCE="hk"; MODE="saturday-preview" ;;
+              "30 12 * * 0") AUDIENCE="hk"; MODE="sunday-results" ;;
+              "0 19 * * 1")  AUDIENCE="eu"; MODE="monday-preview" ;;
+              "0 19 * * 5")  AUDIENCE="eu"; MODE="friday-preview" ;;
+              "0 19 * * 6")  AUDIENCE="eu"; MODE="saturday-preview" ;;
+              "0 19 * * 0")  AUDIENCE="eu"; MODE="sunday-results" ;;
+              "0 0 * * 2")   AUDIENCE="us"; MODE="monday-preview" ;;
+              "0 0 * * 6")   AUDIENCE="us"; MODE="friday-preview" ;;
+              "0 0 * * 0")   AUDIENCE="us"; MODE="saturday-preview" ;;
+              "0 0 * * 1")   AUDIENCE="us"; MODE="sunday-results" ;;
+              "30 9 * * 1")  AUDIENCE="au"; MODE="monday-preview" ;;
+              "30 9 * * 5")  AUDIENCE="au"; MODE="friday-preview" ;;
+              "30 9 * * 6")  AUDIENCE="au"; MODE="saturday-preview" ;;
+              "30 9 * * 0")  AUDIENCE="au"; MODE="sunday-results" ;;
               *)
                 echo "Unknown cron schedule: ${{ github.event.schedule }}"
                 exit 1

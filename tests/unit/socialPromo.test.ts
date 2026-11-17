@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import type { Race } from '../../src/types/race.js';
 import {
   buildFallbackTweet,
@@ -7,6 +7,7 @@ import {
   calculateWeightedTweetLength,
   formatHashtag,
   inferSocialMode,
+  postTweetWithMedia,
   selectTargetRaces,
 } from '../../scripts/lib/social-promo.js';
 
@@ -185,5 +186,45 @@ describe('social-promo', () => {
     expect(header).toContain('oauth_token="tk"');
     expect(header).toContain('oauth_signature_method="HMAC-SHA1"');
     expect(header).toContain('oauth_signature="');
+  });
+
+  it('postTweetWithMedia uploads media via X API v2 initialize/append/finalize and posts tweet', async () => {
+    const calls: string[] = [];
+    const fetchMock = vi.fn(async (input: string | URL) => {
+      const url = String(input);
+      calls.push(url);
+      if (url.endsWith('/2/media/upload/initialize')) {
+        return new Response(JSON.stringify({ data: { id: 'media-999' } }), { status: 200 });
+      }
+      if (url.endsWith('/2/media/upload/media-999/append')) {
+        return new Response(null, { status: 204 });
+      }
+      if (url.endsWith('/2/media/upload/media-999/finalize')) {
+        return new Response(JSON.stringify({ data: { id: 'media-999' } }), { status: 200 });
+      }
+      if (url.endsWith('/2/tweets')) {
+        return new Response(JSON.stringify({ data: { id: 'tweet-123' } }), { status: 201 });
+      }
+      return new Response('not found', { status: 404 });
+    });
+
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = fetchMock as typeof fetch;
+    try {
+      const result = await postTweetWithMedia(
+        'hello racing',
+        Buffer.from('pngbytes'),
+        { apiKey: 'ck', apiSecret: 'cs', accessToken: 'tk', accessSecret: 'ts' }
+      );
+      expect(result.tweetId).toBe('tweet-123');
+      expect(calls).toEqual([
+        'https://api.x.com/2/media/upload/initialize',
+        'https://api.x.com/2/media/upload/media-999/append',
+        'https://api.x.com/2/media/upload/media-999/finalize',
+        'https://api.x.com/2/tweets',
+      ]);
+    } finally {
+      globalThis.fetch = originalFetch;
+    }
   });
 });
