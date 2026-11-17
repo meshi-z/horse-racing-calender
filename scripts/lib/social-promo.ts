@@ -544,6 +544,88 @@ export function buildOAuth1Header(
   );
 }
 
+async function readErrorDetail(res: Response): Promise<string> {
+  try {
+    const body = (await res.text()).trim();
+    return body ? `: ${body.slice(0, 300)}` : '';
+  } catch {
+    return '';
+  }
+}
+
+/**
+ * Upload a PNG image buffer using X API v2 chunked media upload endpoints.
+ */
+export async function uploadMediaV2(
+  imageBuffer: Buffer,
+  creds: XOAuthCredentials
+): Promise<string> {
+  const initUrl = 'https://api.x.com/2/media/upload/initialize';
+  const initRes = await fetch(initUrl, {
+    method: 'POST',
+    headers: {
+      Authorization: buildOAuth1Header('POST', initUrl, creds),
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      media_type: 'image/png',
+      total_bytes: imageBuffer.byteLength,
+      media_category: 'tweet_image',
+    }),
+  });
+
+  if (!initRes.ok) {
+    throw new Error(
+      `X media initialize failed with HTTP ${initRes.status}${await readErrorDetail(initRes)}`
+    );
+  }
+
+  const initJson = (await initRes.json()) as { data?: { id?: string } };
+  const mediaId = initJson.data?.id;
+  if (!mediaId) {
+    throw new Error('X media initialize response missing data.id');
+  }
+
+  const appendUrl = `https://api.x.com/2/media/upload/${mediaId}/append`;
+  const form = new FormData();
+  form.append('segment_index', '0');
+  form.append(
+    'media',
+    new Blob([new Uint8Array(imageBuffer)], { type: 'image/png' }),
+    'screenshot.png'
+  );
+
+  const appendRes = await fetch(appendUrl, {
+    method: 'POST',
+    headers: {
+      Authorization: buildOAuth1Header('POST', appendUrl, creds),
+    },
+    body: form,
+  });
+
+  if (!appendRes.ok) {
+    throw new Error(
+      `X media append failed with HTTP ${appendRes.status}${await readErrorDetail(appendRes)}`
+    );
+  }
+
+  const finalizeUrl = `https://api.x.com/2/media/upload/${mediaId}/finalize`;
+  const finalizeRes = await fetch(finalizeUrl, {
+    method: 'POST',
+    headers: {
+      Authorization: buildOAuth1Header('POST', finalizeUrl, creds),
+    },
+  });
+
+  if (!finalizeRes.ok) {
+    throw new Error(
+      `X media finalize failed with HTTP ${finalizeRes.status}${await readErrorDetail(finalizeRes)}`
+    );
+  }
+
+  return mediaId;
+}
+
 /**
  * Upload an image buffer to X and post a tweet with the uploaded media.
  */
@@ -552,32 +634,7 @@ export async function postTweetWithMedia(
   imageBuffer: Buffer | null,
   creds: XOAuthCredentials
 ): Promise<{ tweetId: string }> {
-  let mediaId: string | undefined;
-
-  if (imageBuffer) {
-    const uploadUrl = 'https://upload.twitter.com/1.1/media/upload.json';
-    const form = new FormData();
-    form.append(
-      'media',
-      new Blob([new Uint8Array(imageBuffer)], { type: 'image/png' }),
-      'screenshot.png'
-    );
-
-    const uploadRes = await fetch(uploadUrl, {
-      method: 'POST',
-      headers: {
-        Authorization: buildOAuth1Header('POST', uploadUrl, creds),
-      },
-      body: form,
-    });
-
-    if (!uploadRes.ok) {
-      throw new Error(`X media upload failed with HTTP ${uploadRes.status}`);
-    }
-
-    const uploadJson = (await uploadRes.json()) as { media_id_string?: string };
-    mediaId = uploadJson.media_id_string;
-  }
+  const mediaId = imageBuffer ? await uploadMediaV2(imageBuffer, creds) : undefined;
 
   const tweetUrl = 'https://api.x.com/2/tweets';
   const payload: { text: string; media?: { media_ids: string[] } } = { text };
@@ -595,7 +652,9 @@ export async function postTweetWithMedia(
   });
 
   if (!tweetRes.ok) {
-    throw new Error(`X post tweet failed with HTTP ${tweetRes.status}`);
+    throw new Error(
+      `X post tweet failed with HTTP ${tweetRes.status}${await readErrorDetail(tweetRes)}`
+    );
   }
 
   const tweetJson = (await tweetRes.json()) as { data?: { id?: string } };
