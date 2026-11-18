@@ -56685,6 +56685,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ケテンパッション"
+      },
+      "jockey": {
+        "ja": "笹川翼"
+      },
+      "horse_number": 1,
+      "time": "1:41.3"
     }
   },
   {
