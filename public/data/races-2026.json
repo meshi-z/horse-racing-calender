@@ -59099,8 +59099,8 @@
     },
     "grade": "Jpn1",
     "date": "2026-12-16",
-    "start_time": "2026-12-16T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-12-16T11:10:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "川崎",
       "en": "Kawasaki"
@@ -59261,32 +59261,6 @@
     }
   },
   {
-    "id": "2026-nar-jpn3-20",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "名古屋大賞典",
-      "en": "Nagoya Daishoten"
-    },
-    "grade": "Jpn3",
-    "date": "2026-12-23",
-    "start_time": "2026-12-23T07:30:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "名古屋",
-      "en": "Nagoya"
-    },
-    "distance": 2000,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-s1-08",
     "organization": "nar",
     "country_code": "JP",
@@ -59313,6 +59287,32 @@
     }
   },
   {
+    "id": "2026-nar-jpn3-20",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "名古屋大賞典",
+      "en": "Nagoya Daishoten"
+    },
+    "grade": "Jpn3",
+    "date": "2026-12-23",
+    "start_time": "2026-12-23T10:35:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "名古屋",
+      "en": "Nagoya"
+    },
+    "distance": 2000,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
     "id": "2026-nar-jpn3-21",
     "organization": "nar",
     "country_code": "JP",
@@ -59322,8 +59322,8 @@
     },
     "grade": "Jpn3",
     "date": "2026-12-24",
-    "start_time": "2026-12-24T11:05:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-12-24T07:15:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "園田",
       "en": "Sonoda"
@@ -60192,6 +60192,32 @@
     }
   },
   {
+    "id": "2026-nar-g1-01",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "東京大賞典",
+      "en": "Tokyo Daishoten"
+    },
+    "grade": "G1",
+    "date": "2026-12-29",
+    "start_time": "2026-12-29T06:40:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "大井",
+      "en": "Oi"
+    },
+    "distance": 2000,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "weight_for_age",
+      "ja": "定量",
+      "en": "Weight for Age"
+    }
+  },
+  {
     "id": "2026-nar-local-247",
     "organization": "nar",
     "country_code": "JP",
@@ -60215,32 +60241,6 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-g1-01",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "東京大賞典",
-      "en": "Tokyo Daishoten"
-    },
-    "grade": "G1",
-    "date": "2026-12-29",
-    "start_time": "2026-12-29T11:05:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "大井",
-      "en": "Oi"
-    },
-    "distance": 2000,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "weight_for_age",
-      "ja": "定量",
-      "en": "Weight for Age"
     }
   },
   {
