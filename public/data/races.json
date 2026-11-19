@@ -56721,6 +56721,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "チカッパ"
+      },
+      "jockey": {
+        "ja": "下原理"
+      },
+      "horse_number": 10,
+      "time": "1:26.4"
     }
   },
   {

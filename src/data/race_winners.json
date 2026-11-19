@@ -12290,5 +12290,15 @@
     },
     "horse_number": 1,
     "time": "1:41.3"
+  },
+  "2026-nar-local-227": {
+    "name": {
+      "ja": "チカッパ"
+    },
+    "jockey": {
+      "ja": "下原理"
+    },
+    "horse_number": 10,
+    "time": "1:26.4"
   }
 }
