@@ -56797,8 +56797,8 @@
     },
     "grade": "G3",
     "date": "2026-11-21",
-    "start_time": "2026-11-21T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-21T06:20:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "福島",
       "en": "Fukushima",
@@ -56973,8 +56973,8 @@
     },
     "grade": "G1",
     "date": "2026-11-22",
-    "start_time": "2026-11-22T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-22T06:40:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto",
@@ -57144,8 +57144,8 @@
     },
     "grade": "G2",
     "date": "2026-11-23",
-    "start_time": "2026-11-23T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-23T06:30:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
