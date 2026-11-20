@@ -57101,7 +57101,7 @@
     "grade": "local_grade",
     "date": "2026-11-22",
     "start_time": "2026-11-22T10:30:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "帯広",
       "en": "Obihiro"
@@ -57207,8 +57207,8 @@
     },
     "grade": "local_grade",
     "date": "2026-11-23",
-    "start_time": "2026-11-23T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-23T09:15:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "金沢",
       "en": "Kanazawa"
