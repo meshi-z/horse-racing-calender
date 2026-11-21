@@ -56822,6 +56822,16 @@
       "code": "handicap",
       "ja": "ハンデ",
       "en": "Handicap"
+    },
+    "winner": {
+      "name": {
+        "ja": "マリアイリダータ"
+      },
+      "jockey": {
+        "ja": "戸崎 圭太"
+      },
+      "horse_number": 13,
+      "time": "2:03.2"
     }
   },
   {
