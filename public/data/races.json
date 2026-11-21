@@ -56924,6 +56924,13 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    },
+    "winner": {
+      "name": {
+        "ja": "Koktail Divin",
+        "en": "Koktail Divin"
+      },
+      "time": "5m 36.09s"
     }
   },
   {
