@@ -57681,8 +57681,8 @@
     },
     "grade": "G1",
     "date": "2026-11-28",
-    "start_time": "2026-11-28T14:10:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-28T14:00:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-11-28",
     "course": {
