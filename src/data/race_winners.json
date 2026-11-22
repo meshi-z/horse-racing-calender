@@ -12317,5 +12317,57 @@
       "en": "Koktail Divin"
     },
     "time": "5m 36.09s"
+  },
+  "2026-nar-local-228": {
+    "name": {
+      "ja": "キングフェスタ"
+    },
+    "jockey": {
+      "ja": "長澤幸"
+    },
+    "horse_number": 7,
+    "time": "1:50.6"
+  },
+  "2026-hk-g2-05": {
+    "name": {
+      "ja": "CIRCUIT CHAMPION",
+      "en": "CIRCUIT CHAMPION",
+      "zh": "綫路英雄"
+    },
+    "jockey": {
+      "ja": "Z Purton",
+      "en": "Z Purton",
+      "zh": "潘頓"
+    },
+    "horse_number": 8,
+    "time": "1:20.97"
+  },
+  "2026-hk-g2-06": {
+    "name": {
+      "ja": "CIRCUIT CHAMPION",
+      "en": "CIRCUIT CHAMPION",
+      "zh": "綫路英雄"
+    },
+    "jockey": {
+      "ja": "Z Purton",
+      "en": "Z Purton",
+      "zh": "潘頓"
+    },
+    "horse_number": 8,
+    "time": "1:20.97"
+  },
+  "2026-hk-g2-07": {
+    "name": {
+      "ja": "KA YING RISING",
+      "en": "KA YING RISING",
+      "zh": "嘉應高昇"
+    },
+    "jockey": {
+      "ja": "Z Purton",
+      "en": "Z Purton",
+      "zh": "潘頓"
+    },
+    "horse_number": 1,
+    "time": "1:07.93"
   }
 }
