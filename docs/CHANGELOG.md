@@ -6,6 +6,13 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 92: DevTools コンソールに出力される PWA 関連の非推奨警告・メッセージの解消 (v2.0.2 / Issue #317) [完了]
+- **PWA メタタグの標準化 (`index.html`) [完了]**
+  - Chromium（Blink エンジン）で非推奨警告が出力される `<meta name="apple-mobile-web-app-capable" content="yes" />` を、標準仕様の `<meta name="mobile-web-app-capable" content="yes" />` へ置換。
+- **Dismiss 済み時における不要な `beforeinstallprompt` イベント抑止の解消 (`src/hooks/usePwaInstallPrompt.ts`) [完了]**
+  - 14日以内の非表示（Dismiss）期間中は `beforeinstallprompt` イベントをリッスン・`e.preventDefault()` しないよう修正し、バナー非表示時の不要なコンソールメッセージ出力を解消。
+  - `tests/unit/PwaInstallPrompt.test.tsx` および `tests/unit/seo.test.ts` に回帰テストを追加。
+
 ### Step 91: 旧 GitHub Pages から Firebase Hosting への4言語対応自動転送ページ & 旧 Service Worker 解除の実装 (v2.0.1 / Issue #303) [完了]
 - **4言語（日・英・仏・繁体字中）完全対応の転送バンドル生成スクリプト (`scripts/lib/pages-redirect.ts`, `scripts/generate-pages-redirect.ts`) [完了]**
   - ルート `index.html`, `404.html`, および各言語（`ja/index.html`, `en/index.html`, `fr/index.html`, `zh/index.html`）向けの転送 HTML を出力。

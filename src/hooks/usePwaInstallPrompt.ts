@@ -82,10 +82,11 @@ export function usePwaInstallPrompt(): PwaInstallPromptState {
     const iosSafari = checkIsIosSafari();
     setIsIosSafari(iosSafari);
 
-    // スタンドアロンの場合はイベントリッスン不要
-    if (standalone) return;
+    // スタンドアロンまたはDismiss期間中の場合はイベントリッスン不要
+    if (standalone || dismissed) return;
 
     const handleBeforeInstallPrompt = (e: Event) => {
+      if (checkIsDismissed()) return;
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
     };
@@ -111,6 +112,7 @@ export function usePwaInstallPrompt(): PwaInstallPromptState {
       // ignore
     }
     setIsDismissed(true);
+    setDeferredPrompt(null);
   }, []);
 
   const promptInstall = React.useCallback(async () => {
