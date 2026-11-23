@@ -16,7 +16,7 @@ GitHub Actions で定期稼働するバッチおよびローカル・手動実�
 | **PWAアイコン一括生成** | `scripts/generate-pwa-icons.ts` | 手動実行 (ローカル) | アプリアイコン刷新時 | オンデマンド | SVGアセットから各解像度PNGアイコンおよびファビコンを一括生成 | 入力: `src/assets/icon.svg`<br>出力: `public/icons/`, `favicon.svg` |
 | **レース結果・勝ち馬自動更新** | `.github/workflows/update-race-results.yml`<br>`scripts/update-race-results.ts` | GitHub Actions (cron)<br>手動 (`workflow_dispatch`) | **毎日昼〜夕**: 15:00, 15:45, 16:15, 17:00<br>**毎日夜**: 20:30, 21:30, 22:30, 23:30, 24:00<br>**毎日朝**: 07:30 | `0 6 * * *`<br>`45 6 * * *`<br>`15 7 * * *`<br>`0 8 * * *`<br>`30 11 * * *`<br>`30 12 * * *`<br>`30 13 * * *`<br>`30 14 * * *`<br>`0 15 * * *`<br>`30 22 * * *` | 直近終了レース（発走後15分以上経過）の公式着順確定リザルトから勝ち馬情報（馬名・騎手・馬番・走破タイム）を自動取得し反映。未確定対象がなければ早期終了。JRA祝日/金杯/代替開催、NAR昼間重賞、香港重賞、および欧州主要重賞の夜間確定取り込み（23:30/24:00 JST）に包括対応。データ更新検出時は `deploy.yml` (`workflow_call`) を自動呼び出しし本番へ即時反映 | 入力: 公式リザルト/API<br>出力: `public/data/`, `src/data/race_winners.json` |
 | **過去全重賞結果バックフィル** | `scripts/backfill-race-winners.ts` | 手動実行 (ローカル) | 過去データ一括反映時、マスタ整合性回復時 | オンデマンド | 2026年の終了全重賞（G1, G2, G3, 地方重賞, 海外重賞）の勝ち馬情報（馬名・騎手・馬番・走破タイム）を公式アーカイブおよび確定マスタから包括的にバックフィル | 入力: 公式リザルト/マスタ<br>出力: `public/data/races.json`, `src/data/race_winners.json` |
-| **PRDドキュメントPDF生成** | `scripts/generate-prd-pdf.js` | 手動実行 (ローカル) | PRD改訂時・新機能リリース時 | オンデマンド | Headless Chrome を利用して `docs/PRD.md` から公式仕様書PDFを生成 | 入力: `docs/PRD.md`<br>出力: `docs/Horse_Racing_Calendar_PRD.pdf` |
+| **PRDドキュメントHTML生成** | `scripts/generate-prd-html.js` | 手動実行 (ローカル) | PRD改訂時・新機能リリース時 | オンデマンド | `docs/PRD.md` から目次・見出し装飾・ブランドテーマを適用した構造化HTMLを生成 | 入力: `docs/PRD.md`<br>出力: `docs/PRD.html` |
 
 ---
 
@@ -92,12 +92,12 @@ npm run icons:generate
 
 ---
 
-### 2.4 PRD公式ドキュメントPDF生成 (`generate-prd-pdf.js`)
+### 2.4 PRD公式ドキュメントHTML生成 (`generate-prd-html.js`)
 
-プロジェクト要求仕様書（`docs/PRD.md`）から、目次・見出し装飾・改ページ制御を適用した公式PDF（`docs/Horse_Racing_Calendar_PRD.pdf`）を Headless Chrome を利用して自動生成します。
+プロジェクト要求仕様書（`docs/PRD.md`）から、目次・見出し装飾・ブランドテーマ（`#047B5F`）を適用した配布・閲覧用HTML（`docs/PRD.html`）を自動生成します。
 
 ```bash
-npm run docs:pdf
+npm run docs:html
 ```
 
 ---

@@ -1,6 +1,5 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -9,15 +8,14 @@ const rootDir = path.resolve(__dirname, '..');
 
 const prdPath = path.join(rootDir, 'docs', 'PRD.md');
 const iconPath = path.join(rootDir, 'docs', 'assets', 'new_icon_master.png');
-const outputPdfPath = path.join(rootDir, 'docs', 'Horse_Racing_Calendar_PRD.pdf');
-const tempHtmlPath = path.join(rootDir, 'docs', '_temp_prd.html');
+const outputHtmlPath = path.join(rootDir, 'docs', 'PRD.html');
 
 console.log('Reading PRD.md...');
 const markdown = fs.readFileSync(prdPath, 'utf8');
 
 // Extract Version dynamically from PRD.md
 const versionMatch = markdown.match(/\|\s*\*\*バージョン\*\*\s*\|\s*([^|]+?)\s*\|/);
-const currentVersion = versionMatch ? versionMatch[1].trim() : 'v1.17.0';
+const currentVersion = versionMatch ? versionMatch[1].trim() : 'v2.0.3';
 console.log(`Detected PRD version: ${currentVersion}`);
 
 console.log('Reading icon asset...');
@@ -50,7 +48,6 @@ function markdownToHtml(md) {
   let inCodeBlock = false;
   let codeBlockContent = '';
   let inTable = false;
-  let tableHeaderParsed = false;
   let inList = false;
   let listType = 'ul'; // 'ul' or 'ol'
   let h2Index = 0;
@@ -66,7 +63,6 @@ function markdownToHtml(md) {
     if (inTable) {
       html += '</tbody>\n</table>\n</div>\n';
       inTable = false;
-      tableHeaderParsed = false;
     }
   }
 
@@ -105,9 +101,8 @@ function markdownToHtml(md) {
     if (line.trim().startsWith('|') && line.trim().endsWith('|')) {
       closeList();
       const cells = line.split('|').slice(1, -1).map(c => c.trim());
-      
+
       if (cells.every(c => /^:?-+:?$/.test(c))) {
-        tableHeaderParsed = true;
         continue;
       }
 
@@ -137,7 +132,7 @@ function markdownToHtml(md) {
       closeList();
       const level = headingMatch[1].length;
       const text = headingMatch[2].trim();
-      
+
       if (level === 2) {
         h2Index++;
         html += `<h2 id="section-${h2Index}">${formatInline(text)}</h2>\n`;
@@ -222,17 +217,22 @@ function formatInline(text) {
   // Inline code
   res = res.replace(/`([^`]+)`/g, '<code>$1</code>');
 
-  // Links: [label](url)
-  res = res.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+  // Links: [label](url) - normalize local file:///.../docs/ URLs to relative paths
+  res = res.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, url) => {
+    const normalizedUrl = url.replace(/^file:\/\/\/.*\/docs\//i, './');
+    return `<a href="${normalizedUrl}">${label}</a>`;
+  });
 
   // Line breaks in table cells
   res = res.replace(/&lt;br\s*\/?&gt;/gi, '<br>');
 
   // Highlight status tags
   res = res.replace(/\[完了\]/g, '<span class="badge-done">完了</span>');
+  res = res.replace(/\[完了 \/ 現在地\]/g, '<span class="badge-current">完了 / 現在地</span>');
   res = res.replace(/\[現在着手\]/g, '<span class="badge-current">現在着手</span>');
   res = res.replace(/\[開発着手 \/ Current\]/g, '<span class="badge-current">開発着手 / Current</span>');
   res = res.replace(/\[次のステップ\]/g, '<span class="badge-next">次のステップ</span>');
+  res = res.replace(/\[計画中\]/g, '<span class="badge-next">計画中</span>');
 
   return res;
 }
@@ -241,7 +241,7 @@ const bodyContent = markdownToHtml(markdown);
 
 // Generate TOC HTML
 const tocHtml = `
-  <div class="toc-card">
+  <nav class="toc-card" aria-label="目次">
     <div class="toc-header">
       <span class="toc-title">目次 / Table of Contents</span>
     </div>
@@ -253,7 +253,7 @@ const tocHtml = `
         </a>
       `).join('')}
     </div>
-  </div>
+  </nav>
 `;
 
 // HTML Template with Brand Color Styling (#047B5F)
@@ -261,50 +261,9 @@ const fullHtml = `<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Horse Racing Calendar PRD ${currentVersion}</title>
   <style>
-    @page {
-      size: A4 portrait;
-      margin: 14mm 14mm 15mm 14mm;
-      @top-left {
-        content: "重賞カレンダー プロダクト要求仕様書 (PRD)";
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", Meiryo, sans-serif;
-        font-size: 8pt;
-        color: #64748b;
-        font-weight: 500;
-        border-bottom: 0.75px solid #e2e8f0;
-        padding-bottom: 4px;
-        margin-bottom: 8px;
-      }
-      @top-right {
-        content: "${currentVersion} | 公式テーマカラー #047B5F";
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", Meiryo, sans-serif;
-        font-size: 8pt;
-        color: #047b5f;
-        font-weight: 600;
-        border-bottom: 0.75px solid #e2e8f0;
-        padding-bottom: 4px;
-        margin-bottom: 8px;
-      }
-      @bottom-left {
-        content: "Confidential - horse-racing-calendar Project";
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", Meiryo, sans-serif;
-        font-size: 7.5pt;
-        color: #94a3b8;
-        border-top: 0.75px solid #e2e8f0;
-        padding-top: 4px;
-      }
-      @bottom-right {
-        content: "Page " counter(page);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", Meiryo, sans-serif;
-        font-size: 8pt;
-        color: #047b5f;
-        font-weight: 700;
-        border-top: 0.75px solid #e2e8f0;
-        padding-top: 4px;
-      }
-    }
-
     :root {
       --primary: #047b5f;
       --primary-dark: #035e49;
@@ -315,6 +274,7 @@ const fullHtml = `<!DOCTYPE html>
       --text-main: #1e293b;
       --text-muted: #64748b;
       --code-bg: #0f172a;
+      --page-bg: #f8fafc;
     }
 
     * {
@@ -323,14 +283,28 @@ const fullHtml = `<!DOCTYPE html>
       print-color-adjust: exact !important;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", Meiryo, sans-serif;
-      font-size: 9.05pt;
-      line-height: 1.55;
+      font-size: 14px;
+      line-height: 1.65;
       color: var(--text-main);
-      background-color: #ffffff;
+      background-color: var(--page-bg);
       margin: 0;
-      padding: 0;
+      padding: 24px 16px 48px;
+    }
+
+    .prd-container {
+      max-width: 980px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+      padding: 28px 32px 36px;
     }
 
     /* Cover / Header section */
@@ -338,11 +312,11 @@ const fullHtml = `<!DOCTYPE html>
       display: flex;
       align-items: center;
       gap: 18px;
-      padding: 14px 18px;
+      padding: 18px 22px;
       background: linear-gradient(135deg, #f0fdf8 0%, #e6f7f2 100%);
       border: 1.5px solid var(--primary-border);
       border-radius: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       page-break-inside: avoid;
     }
 
@@ -359,21 +333,22 @@ const fullHtml = `<!DOCTYPE html>
 
     .doc-title-group {
       flex: 1;
+      min-width: 0;
     }
 
     .doc-badge-row {
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       flex-wrap: wrap;
     }
 
     .doc-badge {
       display: inline-block;
-      font-size: 7.5pt;
+      font-size: 11px;
       font-weight: 700;
-      padding: 2px 7px;
+      padding: 2px 8px;
       border-radius: 9999px;
       background-color: var(--primary);
       color: #ffffff;
@@ -382,9 +357,9 @@ const fullHtml = `<!DOCTYPE html>
 
     .doc-badge-secondary {
       display: inline-block;
-      font-size: 7.5pt;
+      font-size: 11px;
       font-weight: 600;
-      padding: 1.5px 7px;
+      padding: 2px 8px;
       border-radius: 9999px;
       background-color: #ffffff;
       color: var(--primary-dark);
@@ -393,26 +368,27 @@ const fullHtml = `<!DOCTYPE html>
 
     .doc-badge-accent {
       display: inline-block;
-      font-size: 7.5pt;
+      font-size: 11px;
       font-weight: 700;
-      padding: 1.5px 7px;
+      padding: 2px 8px;
       border-radius: 9999px;
       background-color: #0284c7;
       color: #ffffff;
     }
 
     .doc-title {
-      margin: 0 0 3px 0;
-      font-size: 16pt;
+      display: block;
+      margin: 0 0 4px 0;
+      font-size: 22px;
       font-weight: 800;
       color: var(--primary-dark);
       letter-spacing: -0.02em;
-      line-height: 1.25;
+      line-height: 1.3;
     }
 
     .doc-subtitle {
       margin: 0;
-      font-size: 9.2pt;
+      font-size: 13px;
       color: var(--text-muted);
       font-weight: 500;
     }
@@ -421,20 +397,20 @@ const fullHtml = `<!DOCTYPE html>
     .toc-card {
       background-color: #f8faf9;
       border: 1px solid var(--primary-border);
-      border-radius: 8px;
-      padding: 10px 14px;
-      margin-bottom: 16px;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
       page-break-inside: avoid;
     }
 
     .toc-header {
-      margin-bottom: 6px;
-      padding-bottom: 4px;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
       border-bottom: 1px solid #e2e8f0;
     }
 
     .toc-title {
-      font-size: 8.5pt;
+      font-size: 12px;
       font-weight: 700;
       color: var(--primary-dark);
       text-transform: uppercase;
@@ -443,23 +419,30 @@ const fullHtml = `<!DOCTYPE html>
 
     .toc-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4px 14px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 6px 16px;
     }
 
     .toc-item {
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 8.5pt;
+      font-size: 13px;
       color: #334155;
       text-decoration: none;
-      padding: 2px 0;
+      padding: 3px 6px;
+      border-radius: 6px;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .toc-item:hover {
+      background-color: var(--primary-tint);
+      color: var(--primary-dark);
     }
 
     .toc-num {
       display: inline-block;
-      min-width: 18px;
+      min-width: 20px;
       font-weight: 700;
       color: var(--primary);
     }
@@ -471,47 +454,47 @@ const fullHtml = `<!DOCTYPE html>
     }
 
     /* Headings */
-    h1 {
+    main > h1 {
       display: none;
     }
 
     h2 {
-      font-size: 12pt;
+      font-size: 18px;
       font-weight: 700;
       color: var(--primary-dark);
       border-left: 5px solid var(--primary);
       background: linear-gradient(to right, var(--primary-light), transparent);
-      padding: 5px 10px;
-      margin-top: 20px;
-      margin-bottom: 10px;
-      border-radius: 0 4px 4px 0;
+      padding: 7px 12px;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      border-radius: 0 6px 6px 0;
       page-break-after: avoid;
       page-break-inside: avoid;
     }
 
     h3 {
-      font-size: 10.5pt;
+      font-size: 15.5px;
       font-weight: 700;
       color: var(--primary-dark);
-      margin-top: 15px;
-      margin-bottom: 6px;
-      padding-bottom: 3px;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
       border-bottom: 1.5px solid var(--primary-tint);
       page-break-after: avoid;
       page-break-inside: avoid;
     }
 
     h4 {
-      font-size: 9.6pt;
+      font-size: 14px;
       font-weight: 700;
       color: #334155;
-      margin-top: 11px;
-      margin-bottom: 4px;
+      margin-top: 14px;
+      margin-bottom: 6px;
       page-break-after: avoid;
     }
 
     p {
-      margin: 0 0 8px 0;
+      margin: 0 0 10px 0;
       text-align: justify;
     }
 
@@ -522,31 +505,32 @@ const fullHtml = `<!DOCTYPE html>
 
     /* Lists */
     ul, ol {
-      margin: 0 0 8px 0;
-      padding-left: 20px;
+      margin: 0 0 10px 0;
+      padding-left: 22px;
     }
 
     li {
-      margin-bottom: 2px;
-      line-height: 1.52;
+      margin-bottom: 4px;
+      line-height: 1.6;
     }
 
     li.nested {
       list-style-type: circle;
-      margin-left: 6px;
+      margin-left: 12px;
     }
 
     /* Tables */
     .table-container {
-      margin: 10px 0 13px 0;
+      margin: 12px 0 16px 0;
+      overflow-x: auto;
       page-break-inside: avoid;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 8.4pt;
-      line-height: 1.46;
+      font-size: 13px;
+      line-height: 1.5;
       background-color: #ffffff;
       border: 1px solid #cbd5e1;
       border-radius: 6px;
@@ -558,13 +542,13 @@ const fullHtml = `<!DOCTYPE html>
       color: #ffffff;
       font-weight: 600;
       text-align: left;
-      padding: 6px 9px;
+      padding: 8px 12px;
       border: 1px solid #035e49;
       white-space: nowrap;
     }
 
     td {
-      padding: 5px 9px;
+      padding: 7px 12px;
       border: 1px solid #e2e8f0;
       vertical-align: top;
     }
@@ -576,10 +560,10 @@ const fullHtml = `<!DOCTYPE html>
     /* Code Blocks & Inline Code */
     code {
       font-family: "Cascadia Code", Consolas, Menlo, Monaco, monospace;
-      font-size: 8.1pt;
+      font-size: 12.5px;
       background-color: #edf4f1;
       color: var(--primary-dark);
-      padding: 1px 4px;
+      padding: 1.5px 5px;
       border-radius: 4px;
       border: 1px solid #d1e5dc;
       word-break: break-word;
@@ -588,12 +572,12 @@ const fullHtml = `<!DOCTYPE html>
     pre {
       background-color: var(--code-bg);
       color: #f8fafc;
-      padding: 10px 12px;
-      border-radius: 6px;
-      font-size: 7.9pt;
-      line-height: 1.42;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      line-height: 1.5;
       overflow-x: auto;
-      margin: 8px 0 12px 0;
+      margin: 10px 0 14px 0;
       page-break-inside: avoid;
       border: 1px solid #334155;
     }
@@ -608,12 +592,12 @@ const fullHtml = `<!DOCTYPE html>
 
     /* Blockquote */
     blockquote {
-      margin: 8px 0 10px 0;
-      padding: 6px 12px;
+      margin: 10px 0 12px 0;
+      padding: 8px 14px;
       background-color: var(--primary-light);
-      border-left: 3.5px solid var(--primary);
-      border-radius: 0 4px 4px 0;
-      font-size: 8.8pt;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 6px 6px 0;
+      font-size: 13.5px;
       color: #334155;
       page-break-inside: avoid;
     }
@@ -625,7 +609,7 @@ const fullHtml = `<!DOCTYPE html>
     hr {
       border: none;
       border-top: 1px solid #e2e8f0;
-      margin: 14px 0;
+      margin: 18px 0;
     }
 
     a {
@@ -634,16 +618,20 @@ const fullHtml = `<!DOCTYPE html>
       font-weight: 500;
     }
 
+    a:hover {
+      text-decoration: underline;
+    }
+
     /* Status Badges */
     .badge-done {
       display: inline-block;
-      font-size: 7.2pt;
+      font-size: 11px;
       font-weight: 700;
       color: #047b5f;
       background-color: #e6f7f2;
       border: 1px solid #a7f3d0;
-      padding: 0.5px 5px;
-      border-radius: 3px;
+      padding: 1px 6px;
+      border-radius: 4px;
       margin-left: 4px;
       vertical-align: middle;
       white-space: nowrap;
@@ -651,13 +639,13 @@ const fullHtml = `<!DOCTYPE html>
 
     .badge-current {
       display: inline-block;
-      font-size: 7.2pt;
+      font-size: 11px;
       font-weight: 700;
       color: #0369a1;
       background-color: #e0f2fe;
       border: 1px solid #7dd3fc;
-      padding: 0.5px 5px;
-      border-radius: 3px;
+      padding: 1px 6px;
+      border-radius: 4px;
       margin-left: 4px;
       vertical-align: middle;
       white-space: nowrap;
@@ -665,61 +653,77 @@ const fullHtml = `<!DOCTYPE html>
 
     .badge-next {
       display: inline-block;
-      font-size: 7.2pt;
+      font-size: 11px;
       font-weight: 700;
       color: #b45309;
       background-color: #fef3c7;
       border: 1px solid #fde68a;
-      padding: 0.5px 5px;
-      border-radius: 3px;
+      padding: 1px 6px;
+      border-radius: 4px;
       margin-left: 4px;
       vertical-align: middle;
       white-space: nowrap;
     }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 12px 8px 32px;
+      }
+
+      .prd-container {
+        padding: 18px 16px 24px;
+      }
+
+      .doc-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+        font-size: 9.05pt;
+      }
+
+      .prd-container {
+        max-width: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Top Hero Header with Brand Icon -->
-  <div class="doc-header">
-    <img src="${iconDataUri}" alt="App Icon" class="doc-icon" />
-    <div class="doc-title-group">
-      <div class="doc-badge-row">
-        <span class="doc-badge">PRD (プロダクト要求仕様書)</span>
-        <span class="doc-badge-secondary">${currentVersion}</span>
-        <span class="doc-badge-secondary">SPA / PWA</span>
-        <span class="doc-badge-secondary">公式テーマ: #047B5F</span>
-        <span class="doc-badge-accent">i18n (日/英対応)</span>
+  <div class="prd-container">
+    <!-- Top Hero Header with Brand Icon -->
+    <header class="doc-header">
+      <img src="${iconDataUri}" alt="App Icon" class="doc-icon" />
+      <div class="doc-title-group">
+        <div class="doc-badge-row">
+          <span class="doc-badge">PRD (プロダクト要求仕様書)</span>
+          <span class="doc-badge-secondary">${currentVersion}</span>
+          <span class="doc-badge-secondary">SPA / PWA</span>
+          <span class="doc-badge-secondary">公式テーマ: #047B5F</span>
+          <span class="doc-badge-accent">i18n (4言語対応)</span>
+        </div>
+        <h1 class="doc-title">重賞カレンダーサービス 要求仕様書</h1>
+        <p class="doc-subtitle">JRA, NAR &amp; International Graded Races Calendar Web Application Specifications</p>
       </div>
-      <h1 class="doc-title">重賞カレンダーサービス 要求仕様書</h1>
-      <p class="doc-subtitle">JRA & NAR Graded Races Calendar Web Application Specifications</p>
-    </div>
+    </header>
+
+    ${tocHtml}
+
+    <main>
+      ${bodyContent}
+    </main>
   </div>
-
-  ${tocHtml}
-
-  ${bodyContent}
-
 </body>
 </html>
 `;
 
-console.log('Writing temporary HTML...');
-fs.writeFileSync(tempHtmlPath, fullHtml, 'utf8');
-
-console.log('Generating PDF via Headless Chrome...');
-const chromePath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
-
-const cmd = `"${chromePath}" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf="${outputPdfPath}" "file:///${tempHtmlPath.replace(/\\/g, '/')}"`;
-
-try {
-  execSync(cmd, { stdio: 'inherit' });
-  console.log('PDF successfully generated at:', outputPdfPath);
-} catch (err) {
-  console.error('Failed to run chrome:', err);
-  process.exit(1);
-} finally {
-  if (fs.existsSync(tempHtmlPath)) {
-    fs.unlinkSync(tempHtmlPath);
-  }
-}
+console.log('Writing PRD.html...');
+fs.writeFileSync(outputHtmlPath, fullHtml, 'utf8');
+console.log('PRD HTML successfully generated at:', outputHtmlPath);

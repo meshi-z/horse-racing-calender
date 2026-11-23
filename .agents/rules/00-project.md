@@ -57,7 +57,7 @@
 - Lint / Type check: `npm run type-check`
 - Unit test: `npm test`
 - Build: `npm run build`
-- PRD PDF: `npm run docs:pdf`
+- PRD HTML: `npm run docs:html`
 
 存在しないコマンドを推測で実行しない。
 

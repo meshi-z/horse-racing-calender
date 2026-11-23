@@ -555,8 +555,8 @@ npm test
 # 3. プロダクションビルド検証 (正常完了 & バンドル生成)
 npm run build
 
-# 4. 公式PRD仕様書PDFの再生成
-npm run docs:pdf
+# 4. 公式PRD仕様書HTMLの再生成
+npm run docs:html
 ```
 
 ---

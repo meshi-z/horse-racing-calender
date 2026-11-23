@@ -6,6 +6,15 @@
 
 ## バージョン履歴 (Version History)
 
+### Step 93: 配布・閲覧用 PRD を PDF から構造化 HTML（`docs/PRD.html`）へ移行 (v2.0.3 / Issue #319) [完了]
+- **HTML 生成スクリプトへの移行 (`scripts/generate-prd-html.js`) [完了]**
+  - Headless Chrome に依存していた `scripts/generate-prd-pdf.js` を廃止し、Node.js 標準機能のみで `docs/PRD.md` から自己完結型・構造化 HTML（`docs/PRD.html`）を直接生成する `scripts/generate-prd-html.js` へ移行。
+  - ブラウザでのレスポンシブ閲覧（目次スムーズジャンプ・最大幅コンテナ・`@media print` 対応）および AI / Git によるテキスト差分管理・構造解析性を向上。
+- **旧 PDF の廃止および npm スクリプト・ドキュメントの更新 [完了]**
+  - `docs/Horse_Racing_Calendar_PRD.pdf` および `scripts/generate-prd-pdf.js` を削除し、`docs/PRD.html` を新規生成。
+  - `package.json` の `"docs:pdf"` を `"docs:html": "node scripts/generate-prd-html.js"` に更新。
+  - `.agents/rules/00-project.md`, `README.md`, `docs/PRD.md`, `docs/batch-schedules.md`, `docs/guides/adding-new-country.md` の記述を `npm run docs:html` / `docs/PRD.html` に更新。
+
 ### Step 92: DevTools コンソールに出力される PWA 関連の非推奨警告・メッセージの解消 (v2.0.2 / Issue #317) [完了]
 - **PWA メタタグの標準化 (`index.html`) [完了]**
   - Chromium（Blink エンジン）で非推奨警告が出力される `<meta name="apple-mobile-web-app-capable" content="yes" />` を、標準仕様の `<meta name="mobile-web-app-capable" content="yes" />` へ置換。
