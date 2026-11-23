@@ -49,10 +49,20 @@ describe('PwaInstallPrompt Component', () => {
     expect(screen.queryByRole('region')).toBeNull();
   });
 
-  it('Dismiss済み（14日以内の履歴あり）の場合はバナーを表示しないこと', () => {
+  it('Dismiss済み（14日以内の履歴あり）の場合はバナーを表示せず、beforeinstallpromptのpreventDefault()を呼ばないこと', () => {
     localStorage.setItem('horse_racing_calendar_pwa_prompt_dismissed', String(Date.now() - 1000));
 
     render(<PwaInstallPrompt />);
+    expect(screen.queryByRole('region')).toBeNull();
+
+    const mockEvent = new Event('beforeinstallprompt', { cancelable: true });
+    const preventDefaultSpy = vi.spyOn(mockEvent, 'preventDefault');
+
+    act(() => {
+      window.dispatchEvent(mockEvent);
+    });
+
+    expect(preventDefaultSpy).not.toHaveBeenCalled();
     expect(screen.queryByRole('region')).toBeNull();
   });
 

@@ -26,6 +26,10 @@ describe("SEO and Meta configuration", () => {
     // Keywords
     expect(html).toContain('name="keywords"');
     expect(html).toContain("horse racing, race calendar, graded races");
+
+    // PWA Mobile Web App Capable (uses standard meta tag, not deprecated apple-mobile-web-app-capable)
+    expect(html).toContain('<meta name="mobile-web-app-capable" content="yes" />');
+    expect(html).not.toContain('name="apple-mobile-web-app-capable"');
   });
 
   it("index.html に英語デフォルトOGPタグおよびTwitter Cardが設定されていること", () => {
