@@ -82,7 +82,7 @@ npm run dev
 | `npm run data:update-times` | JRA・NAR公式出馬表から確定発走時刻・代替開催日を取得・更新 |
 | `npm run icons:generate` | PWA 用アプリアイコン（PNG/SVG）を一括生成 |
 | `npm run pages:build-redirect` | 旧 GitHub Pages 用の4言語対応転送バンドル（`dist-pages/`）を生成 |
-| `npm run docs:pdf` | PRD仕様書から公式PDF（`Horse_Racing_Calendar_PRD.pdf`）を生成 |
+| `npm run docs:html` | PRD仕様書から閲覧・配布用HTML（`docs/PRD.html`）を生成 |
 
 > [!TIP]
 > - **バッチ運用ガイド**: 各バッチスクリプトの詳細なコマンドオプション（`--force`, `--dry-run`, `--org` 等）や、GitHub Actions による確定時刻自動更新の定期スケジュール（cron）については、[バッチ処理・定期実行パイプライン スケジュール & 運用ガイド](docs/batch-schedules.md) をご覧ください。
