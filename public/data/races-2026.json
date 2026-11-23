@@ -57345,32 +57345,6 @@
     }
   },
   {
-    "id": "2026-nar-local-231",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "ゴールドウィング賞",
-      "en": "Gold Wing Sho"
-    },
-    "grade": "local_grade",
-    "date": "2026-11-26",
-    "start_time": "2026-11-26T07:30:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "名古屋",
-      "en": "Nagoya"
-    },
-    "distance": 1700,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "2yo",
-    "handicap": {
-      "code": "set_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
     "id": "2026-nar-s3-21",
     "organization": "nar",
     "country_code": "JP",
@@ -57390,6 +57364,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "3yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-231",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "ゴールドウィング賞",
+      "en": "Gold Wing Sho"
+    },
+    "grade": "local_grade",
+    "date": "2026-11-26",
+    "start_time": "2026-11-26T11:15:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "名古屋",
+      "en": "Nagoya"
+    },
+    "distance": 1700,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "2yo",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
