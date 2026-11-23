@@ -57238,6 +57238,16 @@
       "code": "special_weight",
       "ja": "馬齢",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "オンユアマークス"
+      },
+      "jockey": {
+        "ja": "武 豊"
+      },
+      "horse_number": 12,
+      "time": "1:47.1"
     }
   },
   {
@@ -57264,6 +57274,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ヒロシクン"
+      },
+      "jockey": {
+        "ja": "山本政"
+      },
+      "horse_number": 11,
+      "time": "1:39.1"
     }
   },
   {
@@ -57290,6 +57310,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ニャンタロウ"
+      },
+      "jockey": {
+        "ja": "加藤翔"
+      },
+      "horse_number": 1,
+      "time": "1:28.6"
     }
   },
   {

@@ -12369,5 +12369,35 @@
     },
     "horse_number": 1,
     "time": "1:07.93"
+  },
+  "2026-jra-g2-36": {
+    "name": {
+      "ja": "オンユアマークス"
+    },
+    "jockey": {
+      "ja": "武 豊"
+    },
+    "horse_number": 12,
+    "time": "1:47.1"
+  },
+  "2026-nar-local-229": {
+    "name": {
+      "ja": "ヒロシクン"
+    },
+    "jockey": {
+      "ja": "山本政"
+    },
+    "horse_number": 11,
+    "time": "1:39.1"
+  },
+  "2026-nar-local-230": {
+    "name": {
+      "ja": "ニャンタロウ"
+    },
+    "jockey": {
+      "ja": "加藤翔"
+    },
+    "horse_number": 1,
+    "time": "1:28.6"
   }
 }
