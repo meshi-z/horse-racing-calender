@@ -57380,8 +57380,8 @@
     },
     "grade": "S3",
     "date": "2026-11-26",
-    "start_time": "2026-11-26T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-26T08:45:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "浦和",
       "en": "Urawa"
