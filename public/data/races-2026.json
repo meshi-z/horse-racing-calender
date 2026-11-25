@@ -57427,6 +57427,34 @@
     }
   },
   {
+    "id": "2026-us-g3-170",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "フォールズシティステークス",
+      "en": "Falls City Stakes"
+    },
+    "grade": "G3",
+    "date": "2026-11-26",
+    "start_time": "2026-11-26T21:14:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-11-26",
+    "course": {
+      "ja": "チャーチルダウンズ",
+      "en": "Churchill Downs"
+    },
+    "distance": 1811,
+    "track_type": "dirt",
+    "sex_constraint": "filly_and_mare",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
+    }
+  },
+  {
     "id": "2026-us-g2-122",
     "organization": "equibase",
     "country_code": "US",
@@ -57447,34 +57475,6 @@
     "distance": 1811,
     "track_type": "dirt",
     "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
-    "id": "2026-us-g3-170",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "フォールズシティステークス",
-      "en": "Falls City Stakes"
-    },
-    "grade": "G3",
-    "date": "2026-11-26",
-    "start_time": "2026-11-26T22:30:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-11-26",
-    "course": {
-      "ja": "チャーチルダウンズ",
-      "en": "Churchill Downs"
-    },
-    "distance": 1811,
-    "track_type": "dirt",
-    "sex_constraint": "filly_and_mare",
     "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "special_weight",
