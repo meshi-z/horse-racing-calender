@@ -57492,6 +57492,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Consequent",
+        "en": "Consequent"
+      },
+      "time": null
     }
   },
   {

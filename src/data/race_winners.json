@@ -12439,5 +12439,12 @@
     },
     "horse_number": 8,
     "time": "1:51.8"
+  },
+  "2026-us-g3-170": {
+    "name": {
+      "ja": "Consequent",
+      "en": "Consequent"
+    },
+    "time": null
   }
 }
