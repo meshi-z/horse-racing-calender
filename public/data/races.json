@@ -57382,6 +57382,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ワンスフォーユー"
+      },
+      "jockey": {
+        "ja": "ルメー"
+      },
+      "horse_number": 7,
+      "time": "1:29.2"
     }
   },
   {
@@ -57408,6 +57418,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ランニングビーチ"
+      },
+      "jockey": {
+        "ja": "本田重"
+      },
+      "horse_number": 13,
+      "time": "1:27.0"
     }
   },
   {
@@ -57434,6 +57454,16 @@
       "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "ドリームオブコージ"
+      },
+      "jockey": {
+        "ja": "村上弘"
+      },
+      "horse_number": 8,
+      "time": "1:51.8"
     }
   },
   {
