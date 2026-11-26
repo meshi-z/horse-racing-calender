@@ -57493,34 +57493,6 @@
     }
   },
   {
-    "id": "2026-us-g2-123",
-    "organization": "equibase",
-    "country_code": "US",
-    "name": {
-      "ja": "Hollywoodターフカップステークス",
-      "en": "Hollywood Turf Cup Stakes"
-    },
-    "grade": "G2",
-    "date": "2026-11-27",
-    "start_time": "2026-11-27T00:30:00.000Z",
-    "is_time_confirmed": false,
-    "is_rescheduled": false,
-    "original_date": "2026-11-27",
-    "course": {
-      "ja": "デルマー",
-      "en": "Del Mar"
-    },
-    "distance": 2414,
-    "track_type": "turf",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "special_weight",
-      "ja": "別定",
-      "en": "Special Weight"
-    }
-  },
-  {
     "id": "2026-us-g2-124",
     "organization": "equibase",
     "country_code": "US",
@@ -57530,8 +57502,8 @@
     },
     "grade": "G2",
     "date": "2026-11-27",
-    "start_time": "2026-11-27T22:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-27T22:25:00.000Z",
+    "is_time_confirmed": true,
     "is_rescheduled": false,
     "original_date": "2026-11-27",
     "course": {
@@ -57546,6 +57518,34 @@
       "code": "weight_for_age",
       "ja": "定量",
       "en": "Weight for Age"
+    }
+  },
+  {
+    "id": "2026-us-g2-123",
+    "organization": "equibase",
+    "country_code": "US",
+    "name": {
+      "ja": "Hollywoodターフカップステークス",
+      "en": "Hollywood Turf Cup Stakes"
+    },
+    "grade": "G2",
+    "date": "2026-11-27",
+    "start_time": "2026-11-27T23:35:00.000Z",
+    "is_time_confirmed": true,
+    "is_rescheduled": false,
+    "original_date": "2026-11-27",
+    "course": {
+      "ja": "デルマー",
+      "en": "Del Mar"
+    },
+    "distance": 2414,
+    "track_type": "turf",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
+    "handicap": {
+      "code": "special_weight",
+      "ja": "別定",
+      "en": "Special Weight"
     }
   },
   {
@@ -57943,7 +57943,7 @@
     "grade": "G1",
     "date": "2026-11-29",
     "start_time": "2026-11-29T06:40:00.000Z",
-    "is_time_confirmed": false,
+    "is_time_confirmed": true,
     "course": {
       "ja": "東京",
       "en": "Tokyo",
@@ -57969,8 +57969,8 @@
     },
     "grade": "G3",
     "date": "2026-11-29",
-    "start_time": "2026-11-29T06:45:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-29T07:15:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "京都",
       "en": "Kyoto",
@@ -58006,6 +58006,32 @@
     "track_type": "dirt",
     "sex_constraint": "none",
     "age_constraint": "2yo",
+    "handicap": {
+      "code": "set_weight",
+      "ja": "別定",
+      "en": "Set Weight"
+    }
+  },
+  {
+    "id": "2026-nar-local-235",
+    "organization": "nar",
+    "country_code": "JP",
+    "name": {
+      "ja": "鳥栖大賞",
+      "en": "Tosu Daisho"
+    },
+    "grade": "local_grade",
+    "date": "2026-11-29",
+    "start_time": "2026-11-29T08:05:00.000Z",
+    "is_time_confirmed": true,
+    "course": {
+      "ja": "佐賀",
+      "en": "Saga"
+    },
+    "distance": 2000,
+    "track_type": "dirt",
+    "sex_constraint": "none",
+    "age_constraint": "3yo_and_up",
     "handicap": {
       "code": "set_weight",
       "ja": "別定",
@@ -58060,32 +58086,6 @@
     "age_constraint": "3yo",
     "handicap": {
       "code": "special_weight",
-      "ja": "別定",
-      "en": "Set Weight"
-    }
-  },
-  {
-    "id": "2026-nar-local-235",
-    "organization": "nar",
-    "country_code": "JP",
-    "name": {
-      "ja": "鳥栖大賞",
-      "en": "Tosu Daisho"
-    },
-    "grade": "local_grade",
-    "date": "2026-11-29",
-    "start_time": "2026-11-29T11:05:00.000Z",
-    "is_time_confirmed": false,
-    "course": {
-      "ja": "佐賀",
-      "en": "Saga"
-    },
-    "distance": 2000,
-    "track_type": "dirt",
-    "sex_constraint": "none",
-    "age_constraint": "3yo_and_up",
-    "handicap": {
-      "code": "set_weight",
       "ja": "別定",
       "en": "Set Weight"
     }
