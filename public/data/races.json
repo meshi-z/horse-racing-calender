@@ -57527,6 +57527,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Bracket Buster",
+        "en": "Bracket Buster"
+      },
+      "time": null
     }
   },
   {
