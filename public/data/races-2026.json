@@ -58033,8 +58033,8 @@
     },
     "grade": "local_grade",
     "date": "2026-11-29",
-    "start_time": "2026-11-29T07:30:00.000Z",
-    "is_time_confirmed": false,
+    "start_time": "2026-11-29T07:55:00.000Z",
+    "is_time_confirmed": true,
     "course": {
       "ja": "水沢",
       "en": "Mizusawa"
