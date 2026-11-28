@@ -57597,6 +57597,13 @@
       "code": "special_weight",
       "ja": "別定",
       "en": "Special Weight"
+    },
+    "winner": {
+      "name": {
+        "ja": "Gold Phoenix",
+        "en": "Gold Phoenix"
+      },
+      "time": null
     }
   },
   {
